@@ -1,0 +1,28 @@
+{
+  "favorites": {
+    "delete": "Smazat",
+    "error": "Nepodařilo se načíst uložená města",
+    "loading": "Načítají se uložená města..",
+    "nosaved": "Nejsou uložena žádná oblíbená města",
+    "share": "Sdílet",
+    "title": "Oblíbené"
+  },
+  "search": {
+    "searchbar": "Zadejte město nebo souřadnice..",
+    "title": "Hledání"
+  },
+  "tab": {
+    "home": "Domů",
+    "maps": "Mapy",
+    "search": "Hledání",
+    "settings": "Nastavení",
+    "weather": "Počasí"
+  },
+  "toast": {
+    "add": "přidáno do oblíbených",
+    "city": "Město",
+    "notrefreshed": "Data nelze obnovit, zkuste to znovu",
+    "refreshed": "Data byla aktualizována",
+    "remove": "odstraněno z oblíbených"
+  }
+}
