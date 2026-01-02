@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Header } from "app/components/common/Header.web";
-import { Toaster } from "burnt/web";
-import { TolgeeProvider } from "app/provider/TolgeeProvider";
-import { useStorageString } from "app/storage/useStorageString";
-import { ClientOnly } from "app/components/common/ClientOnly";
-import { useState, useEffect } from "react";
-import { Platform } from "react-native";
-import { clsx } from "clsx";
-import { useColorScheme } from "nativewind";
-import { initThemeFromStorage } from "app/storage/initTheme";
-import { initStorageDefaults } from "app/storage/initStorageDefaults";
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import { Header } from 'app/components/common/Header.web';
+import { Toaster } from 'burnt/web';
+import { TolgeeProvider } from 'app/provider/TolgeeProvider';
+import { useStorageString } from 'app/storage/useStorageString';
+import { ClientOnly } from 'app/components/common/ClientOnly';
+import { useState, useEffect } from 'react';
+import { Platform } from 'react-native';
+import { clsx } from 'clsx';
+import { useColorScheme } from 'nativewind';
+import { initThemeFromStorage } from 'app/storage/initTheme';
+import { initStorageDefaults } from 'app/storage/initStorageDefaults';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+	variable: '--font-geist-sans',
+	subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+	variable: '--font-geist-mono',
+	subsets: ['latin'],
 });
 
 // export const metadata: Metadata = {
@@ -30,68 +30,68 @@ const geistMono = Geist_Mono({
 // };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  // const [mounted, setMounted] = useState(false);
-  // const [currentTheme] = useStorageString("currentTheme");
+	// const [mounted, setMounted] = useState(false);
+	// const [currentTheme] = useStorageString("currentTheme");
 
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+	// useEffect(() => {
+	//   setMounted(true);
+	// }, []);
 
-  useEffect(() => {
-    initThemeFromStorage();
-  }, []);
+	useEffect(() => {
+		initThemeFromStorage();
+	}, []);
 
-  useEffect(() => {
-    initStorageDefaults();
-  }, []);
+	useEffect(() => {
+		initStorageDefaults();
+	}, []);
 
-  // useEffect(() => {
-  //   // if (!mounted) return null;
-  //   if (Platform.OS === "web" && currentTheme === "system") {
-  //     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+	// useEffect(() => {
+	//   // if (!mounted) return null;
+	//   if (Platform.OS === "web" && currentTheme === "system") {
+	//     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-  //     const toggle = () => {
-  //       document.documentElement.classList.toggle("dark", mediaQuery.matches);
-  //     };
+	//     const toggle = () => {
+	//       document.documentElement.classList.toggle("dark", mediaQuery.matches);
+	//     };
 
-  //     toggle();
+	//     toggle();
 
-  //     mediaQuery.addEventListener("change", toggle);
+	//     mediaQuery.addEventListener("change", toggle);
 
-  //     return () => mediaQuery.removeEventListener("change", toggle);
-  //   }
+	//     return () => mediaQuery.removeEventListener("change", toggle);
+	//   }
 
-  //   // If user selects light/dark explicitly, force class
-  //   if (Platform.OS === "web" && currentTheme !== "system") {
-  //     document.documentElement.classList.toggle(
-  //       "dark",
-  //       currentTheme === "dark"
-  //     );
-  //   }
-  // }, [currentTheme]);
-  const NWTheme = useColorScheme();
-  return (
-    <html lang="en">
-      <title>NativeWeather</title>
-      <body
-        className={clsx(
-          "dark:bg-systemBackground_dark bg-secondarySystemBackground px-4",
-          geistSans.variable,
-          geistMono.variable
-        )}
-      >
-        <ClientOnly>
-          <TolgeeProvider>
-            <Header />
-            {children}
-            <Toaster theme={NWTheme.colorScheme} position="bottom-right" />
-          </TolgeeProvider>
-        </ClientOnly>
-      </body>
-    </html>
-  );
+	//   // If user selects light/dark explicitly, force class
+	//   if (Platform.OS === "web" && currentTheme !== "system") {
+	//     document.documentElement.classList.toggle(
+	//       "dark",
+	//       currentTheme === "dark"
+	//     );
+	//   }
+	// }, [currentTheme]);
+	const NWTheme = useColorScheme();
+	return (
+		<html lang="en">
+			<title>NativeWeather</title>
+			<body
+				className={clsx(
+					'dark:bg-systemBackground_dark bg-secondarySystemBackground px-4',
+					geistSans.variable,
+					geistMono.variable
+				)}
+			>
+				<ClientOnly>
+					<TolgeeProvider>
+						<Header />
+						{children}
+						<Toaster theme={NWTheme.colorScheme} position="bottom-right" />
+					</TolgeeProvider>
+				</ClientOnly>
+			</body>
+		</html>
+	);
 }

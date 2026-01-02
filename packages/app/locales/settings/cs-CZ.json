@@ -1,40 +1,40 @@
 {
-  "airquality": {
-    "american": "Americký",
-    "european": "Evropský",
-    "title": "Kvalita ovzduší",
-    "titleshort": "IKO"
-  },
-  "compass": {
-    "iosonly": "(pouze iOS)",
-    "title": "Kompas"
-  },
-  "datasource": "Zdroje dat",
-  "feedback": {
-    "button": "Poslat názor",
-    "text": "Každý názor je cenný. Pokud byste si proto našli chvilku času a poslali mi zprávu o tom, co se vám líbilo nebo nelíbilo, velmi bych to ocenil!",
-    "title": "Poslat názor"
-  },
-  "language": {
-    "czech": "Čeština",
-    "deutsch": "Němčina",
-    "english": "Angličtina",
-    "title": "Jazyk"
-  },
-  "localweather": "Místní počasí",
-  "settings": "Nastavení",
-  "temperature": "Teplota",
-  "theme": {
-    "dark": "Tmavý režim",
-    "light": "Světlý režim",
-    "system": "Podle systému",
-    "title": "Vzhled"
-  },
-  "units": {
-    "imperial": "Imperiální",
-    "metric": "Metrické",
-    "title": "Jednotky"
-  },
-  "version": "verze",
-  "worldtime": "Světový čas"
+	"airquality": {
+		"american": "Americký",
+		"european": "Evropský",
+		"title": "Kvalita ovzduší",
+		"titleshort": "IKO"
+	},
+	"compass": {
+		"iosonly": "(pouze iOS)",
+		"title": "Kompas"
+	},
+	"datasource": "Zdroje dat",
+	"feedback": {
+		"button": "Poslat názor",
+		"text": "Každý názor je cenný. Pokud byste si proto našli chvilku času a poslali mi zprávu o tom, co se vám líbilo nebo nelíbilo, velmi bych to ocenil!",
+		"title": "Poslat názor"
+	},
+	"language": {
+		"czech": "Čeština",
+		"deutsch": "Němčina",
+		"english": "Angličtina",
+		"title": "Jazyk"
+	},
+	"localweather": "Místní počasí",
+	"settings": "Nastavení",
+	"temperature": "Teplota",
+	"theme": {
+		"dark": "Tmavý režim",
+		"light": "Světlý režim",
+		"system": "Podle systému",
+		"title": "Vzhled"
+	},
+	"units": {
+		"imperial": "Imperiální",
+		"metric": "Metrické",
+		"title": "Jednotky"
+	},
+	"version": "verze",
+	"worldtime": "Světový čas"
 }

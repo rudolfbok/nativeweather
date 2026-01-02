@@ -1,28 +1,28 @@
 {
-  "favorites": {
-    "delete": "Delete",
-    "error": "There was an error loading your favorite cities. Please try again.",
-    "loading": "Loading your favorite cities..",
-    "nosaved": "There are no favorite cities saved",
-    "share": "Share",
-    "title": "Favorites"
-  },
-  "search": {
-    "searchbar": "Search any city or coordinates..",
-    "title": "Search"
-  },
-  "tab": {
-    "home": "Home",
-    "maps": "Maps",
-    "search": "Search",
-    "settings": "Settings",
-    "weather": "Weather"
-  },
-  "toast": {
-    "add": "added to favorites",
-    "city": "City",
-    "notrefreshed": "Data couldn't be refreshed, try again",
-    "refreshed": "Data refreshed",
-    "remove": "removed from favorites"
-  }
+	"favorites": {
+		"delete": "Delete",
+		"error": "There was an error loading your favorite cities. Please try again.",
+		"loading": "Loading your favorite cities..",
+		"nosaved": "There are no favorite cities saved",
+		"share": "Share",
+		"title": "Favorites"
+	},
+	"search": {
+		"searchbar": "Search any city or coordinates..",
+		"title": "Search"
+	},
+	"tab": {
+		"home": "Home",
+		"maps": "Maps",
+		"search": "Search",
+		"settings": "Settings",
+		"weather": "Weather"
+	},
+	"toast": {
+		"add": "added to favorites",
+		"city": "City",
+		"notrefreshed": "Data couldn't be refreshed, try again",
+		"refreshed": "Data refreshed",
+		"remove": "removed from favorites"
+	}
 }

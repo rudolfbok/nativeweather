@@ -1,484 +1,484 @@
 {
-  "airquality": {
-    "euaqi": {
-      "main": "The European Air Quality Index (EU AQI) is air quality metric used in Europe. The value reperesents the current quality of air. There is increased risk for people with heart and breathing problems.\n\nFor official guidelines by the European Union and for the realtime air pollution data please visit this site:",
-      "text": {
-        "0": "Excellent air quality with no health risk. Ideal for all outdoor activities and exercise.",
-        "1": "Satisfactory air quality for most people. Minimal risk for extremely sensitive individuals.",
-        "2": "Acceptable for most, but sensitive individuals may experience minor symptoms. Consider reducing intense outdoor exercise if sensitive.",
-        "3": "Health concerns for sensitive groups. Everyone may experience minor effects. Limit prolonged outdoor activities.",
-        "4": "Health risks for everyone. Avoid prolonged outdoor activities and exercise. Sensitive groups should stay indoors.",
-        "5": "Serious health risks for all. Avoid outdoor activities entirely. Stay indoors and keep windows closed."
-      },
-      "value": {
-        "0": "Good",
-        "1": "Fair",
-        "2": "Moderate",
-        "3": "Poor",
-        "4": "Very Poor",
-        "5": "Extremely Poor"
-      }
-    },
-    "indexvalues": "Index values:",
-    "item": {
-      "euaqi": "European index",
-      "no2": "Nitrogen Dioxide",
-      "ozone": "Ozone",
-      "pm10": "Fine particules < 10 μg",
-      "pm25": "Fine particules < 2.5 μg",
-      "usaqi": "United States index"
-    },
-    "no2": {
-      "main": "Nitrogen dioxide (NO₂) is a toxic gas that comes mainly from vehicle exhaust and power plants. It can irritate the respiratory tract, aggravate asthma, and increase susceptibility to respiratory infections. Long-term exposure can damage lung tissue and reduce lung function.",
-      "text": {
-        "0": "Air quality is excellent with minimal health risks for all groups.",
-        "1": "Air quality is acceptable for most people, although sensitive individuals may experience minor effects.",
-        "2": "People with asthma or respiratory problems should limit outdoor activities near busy roads and industrial areas.",
-        "3": "Anyone can experience breathing difficulties. Avoid exercising near traffic and industrial areas.",
-        "4": "Serious health consequences for everyone. Stay away from busy roads and industrial areas.",
-        "5": "Emergency situations. Everyone should avoid being outdoors, especially near traffic."
-      }
-    },
-    "o3": {
-      "main": "Ground-level ozone is harmful, formed by sunlight reacting with traffic and industrial emissions. Can cause chest pain, coughing, worsen asthma.",
-      "text": {
-        "0": "Air quality is excellent with minimal health risks for all groups.",
-        "1": "Air quality is acceptable for most people, although unusually sensitive individuals may experience mild respiratory discomfort.",
-        "2": "Active children, adults, and people with lung diseases should limit prolonged outdoor activities, especially during sunny hours.",
-        "3": "Anyone can experience health problems. Limit outdoor activities during peak sun hours.",
-        "4": "Serious health consequences for everyone. Avoid outdoor activities, especially during the afternoon hours.",
-        "5": "Emergency situations. Everyone should avoid being outdoors. A health warning is in effect."
-      }
-    },
-    "pm10": {
-      "main": "PM10 are particles ≤10 micrometers. Can irritate eyes, nose, throat; worsen asthma.",
-      "text": {
-        "0": "Air quality is excellent with minimal health risks for all groups.",
-        "1": "Air quality is acceptable for most people, although sensitive individuals may experience minor problems.",
-        "2": "Children, older people, and people with asthma or respiratory problems should limit outdoor activities.",
-        "3": "Anyone can experience breathing difficulties. Limit outdoor activities and consider wearing face masks.",
-        "4": "Serious health consequences for everyone. Avoid outdoor activities. Stay indoors with windows closed.",
-        "5": "Emergency situations. Everyone should avoid being outdoors. A health warning is in effect."
-      }
-    },
-    "pm25": {
-      "main": "PM2.5 are fine particles ≤2.5 micrometers. Can penetrate deep into lungs and bloodstream, causing serious health issues.",
-      "text": {
-        "0": "Air quality is excellent with minimal health risk for all groups.",
-        "1": "Air quality is acceptable for most people, though sensitive individuals may experience minor issues.",
-        "2": "Children, elderly, and people with heart/lung conditions should limit outdoor activities.",
-        "3": "Everyone may experience health effects. Limit outdoor activities and consider wearing masks.",
-        "4": "Serious health effects for everyone. Avoid outdoor activities. Stay indoors with windows closed.",
-        "5": "Emergency conditions. Everyone should avoid outdoor exposure. Health warnings in effect."
-      }
-    },
-    "provider": "Data provided by ",
-    "title": "Air quality",
-    "usaqi": {
-      "main": "The US Air Quality Index (AQI) is a metric of air quality used in the United States. The value ranges from 0 to 500, with higher AQI values indicating higher levels of air pollution and greater health risks. The system is used to warn the public when air pollution is dangerous. There is a risk for people with heart and respiratory conditions.\n\nFor official guidelines by the U.S. Environmental Protection Agency (EPA) and for the realtime air pollution data please visit this site:",
-      "text": {
-        "0": "Excellent air quality with no health risk. Ideal for all outdoor activities and exercise.",
-        "1": "Air quality is acceptable for most people. Unusually sensitive individuals may experience minor respiratory symptoms.",
-        "2": "Sensitive groups (children, elderly, people with heart/lung conditions) may experience health effects. General public is unlikely to be affected.",
-        "3": "Everyone may begin to experience health effects. Sensitive groups may experience more serious effects. Avoid prolonged outdoor exertion.",
-        "4": "Health alert conditions. Everyone may experience serious health effects. Avoid all outdoor activities, especially exercise.",
-        "5": "Emergency conditions affecting entire population. Stay indoors with windows and doors closed. Avoid all outdoor activities."
-      },
-      "value": {
-        "0": "Good",
-        "1": "Moderate",
-        "2": "Unhealthy for sensitive groups",
-        "3": "Unhealthy",
-        "4": "Very unhealthy",
-        "5": "Hazardous"
-      }
-    },
-    "value": {
-      "0": "Good",
-      "1": "Moderate",
-      "2": "Unhealthy for sensitive groups",
-      "3": "Unhealthy",
-      "4": "Very unhealthy",
-      "5": "Hazardous"
-    }
-  },
-  "alerts": {
-    "area": "Area",
-    "description": "Description of the event",
-    "disclaimer": "Alerts are issued by local government agencies",
-    "expires": "Expires",
-    "instructions": "Instructions",
-    "modaltitle": "Weather alerts",
-    "severity": "Severity",
-    "title": "weather alert"
-  },
-  "cloudcover": {
-    "percentage": {
-      "text": "In meteorology, cloud cover is measured by the percentage of the sky that is covered by clouds. Professional meteorologists use octas, but percentages or verbal descriptions are often used for easier reference.",
-      "title": "Percentage of cloud cover"
-    },
-    "title": "Clouds"
-  },
-  "compass": {
-    "button": {
-      "location": "Allow location access"
-    },
-    "text": "The compass feature is available only on supported Apple devices on iOS and iPadOS.\n\nMagnetometer needed for this feature is in all iPhones since 3GS and on iPad since Air 2. For iPad support varies for specific models.\n\nSince iOS 13 we must ask for your approval to use this specific hardware.",
-    "title": "Compass"
-  },
-  "condition": {
-    "1000": {
-      "day": "Sunny",
-      "night": "Clear"
-    },
-    "1003": "Partly cloudy",
-    "1006": "Cloudy",
-    "1009": "Overcast",
-    "1030": "Mist",
-    "1063": "Patchy rain",
-    "1066": "Patchy snow",
-    "1069": "Patchy sleet",
-    "1072": "Patchy freezing drizzle",
-    "1087": "Thundery outbreaks",
-    "1114": "Blowing snow",
-    "1117": "Blizzard",
-    "1135": "Fog",
-    "1147": "Freezing fog",
-    "1150": "Patchy light drizzle",
-    "1153": "Light drizzle",
-    "1168": "Freezing drizzle",
-    "1171": "Heavy freezing drizzle",
-    "1180": "Patchy light rain",
-    "1183": "Light rain",
-    "1186": "Moderate rain at times",
-    "1189": "Moderate rain",
-    "1192": "Heavy rain at times",
-    "1195": "Heavy rain",
-    "1198": "Light freezing rain",
-    "1201": "Heavy freezing rain",
-    "1204": "Patchy light snow",
-    "1207": "Heavy snow",
-    "1210": "Patchy light snow",
-    "1213": "Light snow",
-    "1216": "Patchy heavy snow",
-    "1219": "Moderate snow",
-    "1222": "Patchy heavy snow",
-    "1225": "Heavy snow",
-    "1237": "Ice pellets",
-    "1240": "Light rain storm",
-    "1243": "Heavy rain storm",
-    "1246": "Patchy snow storm",
-    "1249": "Heavy snow thunder",
-    "1252": "Freezing rain thunder",
-    "1255": "Patchy snow thunder",
-    "1258": "Heavy snow thunder",
-    "1261": "Patchy drizzle thunder",
-    "1264": "Freezing rain thunder",
-    "1273": "Patchy light rain with thunder",
-    "1276": "Heavy rain thunder",
-    "1279": "Patchy snow thunder",
-    "1282": "Moderate snow thunder"
-  },
-  "dailyforecast": {
-    "title": "Daily forecast",
-    "today": "today"
-  },
-  "description": {
-    "cloudcover": {
-      "0": "Clear skies",
-      "1": "Partly cloudy",
-      "2": "Cloudy",
-      "3": "Overcast"
-    },
-    "humidity": {
-      "0": "Very dry",
-      "1": "Comfortable",
-      "2": "Humid",
-      "3": "Very humid",
-      "4": "Extremely humid"
-    },
-    "moon": {
-      "firstquarter": "First quarter",
-      "fullmoon": "Full moon",
-      "lastquarter": "Last quarter",
-      "newmoon": "New moon",
-      "waningcrescent": "Waning crescent",
-      "waninggibbous": "Waning gibbous",
-      "waxingcrescent": "Waxing crescent",
-      "waxinggibbous": "Waxing gibbous"
-    },
-    "precip": {
-      "rain": {
-        "0": "Light rain",
-        "1": "Moderate rain",
-        "2": "Heavy rain"
-      },
-      "snow": {
-        "0": "Light snow",
-        "1": "Moderate snow",
-        "2": "Heavy snowfall"
-      }
-    },
-    "pressure": {
-      "0": "Extremely low",
-      "1": "Very low",
-      "2": "Low",
-      "3": "Slightly decreased",
-      "4": "Normal",
-      "5": "Slightly increased",
-      "6": "High",
-      "7": "Very high",
-      "8": "Extremely high"
-    },
-    "rain": {
-      "chance": {
-        "0": "Not expected",
-        "1": "Slight chance",
-        "2": "Showers possible",
-        "3": "Likely",
-        "4": "Very likely",
-        "5": "Almost certain",
-        "6": "Certain"
-      }
-    },
-    "snow": {
-      "0": "Not expected",
-      "1": "Slight chance",
-      "2": "Moderate chance",
-      "3": "It will snow"
-    },
-    "uvindex": {
-      "0": "Minimal",
-      "1": "Moderate",
-      "2": "High",
-      "3": "Very high",
-      "4": "Extreme"
-    },
-    "visibility": {
-      "0": "Dense fog",
-      "1": "Mist",
-      "2": "Light fog",
-      "3": "Light haze",
-      "4": "Good",
-      "5": "Very good",
-      "6": "Exceptional"
-    },
-    "windspeed": {
-      "0": "Calm",
-      "1": "Light air",
-      "10": "Storm",
-      "11": "Violent storm",
-      "12": "Hurricane force",
-      "2": "Light breeze",
-      "3": "Gentle breeze",
-      "4": "Moderate breeze",
-      "5": "Fresh breeze",
-      "6": "Strong breeze",
-      "7": "Moderate gale",
-      "8": "Gale",
-      "9": "Strong gale"
-    }
-  },
-  "feelslike": "Feels like:",
-  "hourlyforecast": {
-    "now": "now",
-    "title": "Hourly forecast"
-  },
-  "humidity": {
-    "dewpoint": {
-      "text": "The dew point is the temperature at which water vapor in the air begins to condense into dewdrops. The higher the dew point, the more moisture the air contains. The dew point describes how muggy it will be better than relative humidity.",
-      "title": "Dew point"
-    },
-    "relativehumidity": {
-      "text": "The relative air humidity indicates the amount of water vapor contained in the atmosphere and is an important factor in how we perceive the weather. It is measured in terms of relative humidity.",
-      "title": "Relative air humidity"
-    },
-    "title": "Humidity"
-  },
-  "localtime": "Local time",
-  "localweather": {
-    "button": {
-      "allow": "Allow permission",
-      "forbid": "Turn off the feature"
-    },
-    "error": {
-      "fetch": "Failed to fetch weather data for your location.",
-      "location": "Failed to get your location.",
-      "main": "We couldn't load your location.",
-      "permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu."
-    },
-    "loading": "Loading your location..",
-    "permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu.",
-    "title": "Local weather"
-  },
-  "maps": {
-    "layer": {
-      "0": "Temperature",
-      "1": "Precipitation",
-      "2": "Clouds"
-    },
-    "legend": {
-      "temperature": "Click on the map to show the current temperature.",
-      "title": "Legend"
-    },
-    "loading": "Maps are loading..",
-    "title": "Maps"
-  },
-  "moon": {
-    "description": "The moon goes through a regular cycle of eight phases, which lasts approximately 29.5 days. The phases occur as the moon orbits the Earth and the angle at which it is illuminated by the sun changes. Each phase represents a different amount of the moon's illuminated surface that we see from Earth. The phases of the moon affect the tides.",
-    "illumination": "Illumination:",
-    "moonrise": "Moonrise:",
-    "moonset": "Moonset:",
-    "now": "Current moon data",
-    "phase": {
-      "firstquarter": "First quarter",
-      "fullmoon": "Full moon",
-      "lastquarter": "Last quarter",
-      "newmoon": "New moon",
-      "waningcrescent": "Waning crescent",
-      "waninggibbous": "Waning gibbous",
-      "waxingcrescent": "Waxing crescent",
-      "waxinggibbous": "Waxing gibbous"
-    },
-    "phases": "Moon phases",
-    "text": {
-      "firstquarter": "The right half of the moon is illuminated",
-      "fullmoon": "The moon is fully illuminated and brightest",
-      "lastquarter": "The left half of the moon is illuminated",
-      "newmoon": "The moon is not visible, a new lunar cycle begins",
-      "waningcrescent": "A thin illuminated strip on the left side",
-      "waninggibbous": "More than half illuminated, but waning",
-      "waxingcrescent": "A thin illuminated strip on the right side",
-      "waxinggibbous": "More than half illuminated, approaching full moon"
-    },
-    "title": "Moon"
-  },
-  "pressure": {
-    "barometricscale": {
-      "text": "The barometric scale is a way of classifying atmospheric pressure according to its values and impact on the weather. The scale has 9 degrees, each corresponding to a specific pressure range and characteristic weather conditions.",
-      "title": "Barometric scale"
-    },
-    "text": {
-      "0": "Severe storms, heavy rain",
-      "1": "Unstable weather, frequent showers",
-      "2": "Cloudy skies, changeable weather",
-      "3": "Partly sunny with possible light",
-      "4": "Stable weather, pleasant conditions",
-      "5": "Mostly clear and calm weather",
-      "6": "Clear to partly sunny, light wind",
-      "7": "Very calm weather, possible fog",
-      "8": "Exceptionally stable and clear weather"
-    },
-    "title": "Pressure"
-  },
-  "rain": {
-    "chance": {
-      "description": "The percentage expresses the probability that it will rain in a given area during the forecast period. It does not indicate intensity, but rather the proportion of the territory where precipitation is expected.",
-      "text": {
-        "0": "It will hardly rain",
-        "1": "Isolated showers possible, most areas will remain dry",
-        "2": "Scattered precipitation likely, rain will appear in several places, but not everywhere",
-        "3": "Rainfall very likely, expected across most of the country",
-        "4": "Rain almost certain, precipitation will affect most of the territory",
-        "5": "Rainfall practically certain, probably across the entire territory"
-      },
-      "title": "Percentage chance"
-    },
-    "rainfall": "Rainfall:",
-    "title": "Rain"
-  },
-  "smartsummary": {
-    "title": "Smart summary"
-  },
-  "snow": {
-    "snowfall": "Snowfall:",
-    "title": "Snow"
-  },
-  "sunrise": {
-    "dawn": {
-      "text": "Dawn is the period of gradual brightening of the sky before sunrise. It signals the arrival of a new day and lasts, like dusk, 20–40 minutes, depending on the season and latitude.",
-      "title": "Dawn"
-    },
-    "modaltitle": "Sunrise",
-    "text": "Sunrise is the moment when the sun rises above the horizon and a new day begins. We see the first rays a few minutes before the sun actually rises above the horizon. The time of sunrise changes throughout the year. In winter, the sun rises later, and in summer, it rises earlier. It rises earliest around June 21 (summer solstice) and latest around December 21 (winter solstice).",
-    "title": "Sunrise"
-  },
-  "sunset": {
-    "modaltitle": "Sunset",
-    "text": "Sunset is the moment when the sun sets below the horizon and the day comes to an end. We see the last rays a few minutes after the sun actually sets below the horizon. The time of sunset changes throughout the year. In winter, the sun sets earlier, and in summer, it sets later. It sets latest around June 21 (summer solstice) and earliest around December 21 (winter solstice).",
-    "title": "Sunset",
-    "twilight": {
-      "text": "Twilight is the period of gradual darkening after sunset. During this time, the sun gradually disappears below the horizon and the sky turns warm colors. It usually lasts 20–40 minutes, depending on the season and latitude.",
-      "title": "Twilight"
-    }
-  },
-  "uvindex": {
-    "index": {
-      "description": "The UV Index is an international standard for measuring the intensity of ultraviolet radiation reaching the Earth's surface. This index helps people understand the risk of skin damage from sunlight and take appropriate protective measures.",
-      "title": "About index"
-    },
-    "radiation": {
-      "description": "Ultraviolet (UV) radiation is a type of electromagnetic radiation that is invisible to the human eye. It is naturally present in sunlight, but can also be produced artificially. Although it is beneficial to us in small amounts (e.g., it helps the body produce vitamin D), excessive exposure is harmful.",
-      "title": "Ultraviolet radiation"
-    },
-    "text": {
-      "0": "No protection from the sun is needed",
-      "1": "Wear a hat and protect yourself with SPF 15+ sunscreen, avoid the sun at midday",
-      "2": "Wear a hat and sunglasses. Protect yourself with SPF 30+ sunscreen, avoid the sun at midday and stay in shadows. You can burn yourself in 15 to 20 minutes.",
-      "3": "Wear a hat, sunglasses, and other protective gear. Protect yourself with SPF 50+ sunscreen and limit your time outdoors during midday. You will burn yourself in less then 15 minutes.",
-      "4": "Completely protect yourself from the sun, without any protection do not stay outside."
-    }
-  },
-  "visibility": {
-    "text": "Visibility indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Visibility is important for safety in transportation, aviation, and maritime navigation.",
-    "title": "Range"
-  },
-  "wind": {
-    "beaufortscale": "Beaufort scale",
-    "current": {
-      "direction": "Direction:",
-      "gust": "Gust:",
-      "speed": "Speed:",
-      "title": "Current wind data"
-    },
-    "description": "The Beaufort scale is a method of classifying wind strength based on its effects on the surrounding environment. It is used by meteorologists, sailors, and aviators around the world. It allows for quick and intuitive assessment of wind strength based on visible effects. The scale has 13 degrees (0-12), where each degree corresponds to a certain wind speed and characteristic conditions on land and at sea.",
-    "direction": {
-      "E": "E",
-      "ENE": "ENE",
-      "ESE": "ESE",
-      "main": "Direction:",
-      "N": "N",
-      "NE": "NE",
-      "NNE": "NNE",
-      "NNW": "NNW",
-      "NW": "NW",
-      "S": "S",
-      "SE": "SE",
-      "SSE": "SSE",
-      "SSW": "SSW",
-      "SW": "SW",
-      "W": "W",
-      "WNW": "WNW",
-      "WSW": "WSW"
-    },
-    "label": {
-      "east": "east",
-      "eastnortheast": "eastnortheast",
-      "eastsoutheast": "eastsoutheast",
-      "north": "north",
-      "northeast": "northeast",
-      "northnortheast": "northnortheast",
-      "northnorthwest": "northnorthwest",
-      "northwest": "northwest",
-      "south": "south",
-      "southeast": "southeast",
-      "southsoutheast": "southsoutheast",
-      "southsouthwest": "southsouthwest",
-      "southwest": "southwest",
-      "west": "west",
-      "westnorthwest": "westnorthwest",
-      "westsouthwest": "westsouthwest"
-    },
-    "title": "Wind"
-  }
+	"airquality": {
+		"euaqi": {
+			"main": "The European Air Quality Index (EU AQI) is air quality metric used in Europe. The value reperesents the current quality of air. There is increased risk for people with heart and breathing problems.\n\nFor official guidelines by the European Union and for the realtime air pollution data please visit this site:",
+			"text": {
+				"0": "Excellent air quality with no health risk. Ideal for all outdoor activities and exercise.",
+				"1": "Satisfactory air quality for most people. Minimal risk for extremely sensitive individuals.",
+				"2": "Acceptable for most, but sensitive individuals may experience minor symptoms. Consider reducing intense outdoor exercise if sensitive.",
+				"3": "Health concerns for sensitive groups. Everyone may experience minor effects. Limit prolonged outdoor activities.",
+				"4": "Health risks for everyone. Avoid prolonged outdoor activities and exercise. Sensitive groups should stay indoors.",
+				"5": "Serious health risks for all. Avoid outdoor activities entirely. Stay indoors and keep windows closed."
+			},
+			"value": {
+				"0": "Good",
+				"1": "Fair",
+				"2": "Moderate",
+				"3": "Poor",
+				"4": "Very Poor",
+				"5": "Extremely Poor"
+			}
+		},
+		"indexvalues": "Index values:",
+		"item": {
+			"euaqi": "European index",
+			"no2": "Nitrogen Dioxide",
+			"ozone": "Ozone",
+			"pm10": "Fine particules < 10 μg",
+			"pm25": "Fine particules < 2.5 μg",
+			"usaqi": "United States index"
+		},
+		"no2": {
+			"main": "Nitrogen dioxide (NO₂) is a toxic gas that comes mainly from vehicle exhaust and power plants. It can irritate the respiratory tract, aggravate asthma, and increase susceptibility to respiratory infections. Long-term exposure can damage lung tissue and reduce lung function.",
+			"text": {
+				"0": "Air quality is excellent with minimal health risks for all groups.",
+				"1": "Air quality is acceptable for most people, although sensitive individuals may experience minor effects.",
+				"2": "People with asthma or respiratory problems should limit outdoor activities near busy roads and industrial areas.",
+				"3": "Anyone can experience breathing difficulties. Avoid exercising near traffic and industrial areas.",
+				"4": "Serious health consequences for everyone. Stay away from busy roads and industrial areas.",
+				"5": "Emergency situations. Everyone should avoid being outdoors, especially near traffic."
+			}
+		},
+		"o3": {
+			"main": "Ground-level ozone is harmful, formed by sunlight reacting with traffic and industrial emissions. Can cause chest pain, coughing, worsen asthma.",
+			"text": {
+				"0": "Air quality is excellent with minimal health risks for all groups.",
+				"1": "Air quality is acceptable for most people, although unusually sensitive individuals may experience mild respiratory discomfort.",
+				"2": "Active children, adults, and people with lung diseases should limit prolonged outdoor activities, especially during sunny hours.",
+				"3": "Anyone can experience health problems. Limit outdoor activities during peak sun hours.",
+				"4": "Serious health consequences for everyone. Avoid outdoor activities, especially during the afternoon hours.",
+				"5": "Emergency situations. Everyone should avoid being outdoors. A health warning is in effect."
+			}
+		},
+		"pm10": {
+			"main": "PM10 are particles ≤10 micrometers. Can irritate eyes, nose, throat; worsen asthma.",
+			"text": {
+				"0": "Air quality is excellent with minimal health risks for all groups.",
+				"1": "Air quality is acceptable for most people, although sensitive individuals may experience minor problems.",
+				"2": "Children, older people, and people with asthma or respiratory problems should limit outdoor activities.",
+				"3": "Anyone can experience breathing difficulties. Limit outdoor activities and consider wearing face masks.",
+				"4": "Serious health consequences for everyone. Avoid outdoor activities. Stay indoors with windows closed.",
+				"5": "Emergency situations. Everyone should avoid being outdoors. A health warning is in effect."
+			}
+		},
+		"pm25": {
+			"main": "PM2.5 are fine particles ≤2.5 micrometers. Can penetrate deep into lungs and bloodstream, causing serious health issues.",
+			"text": {
+				"0": "Air quality is excellent with minimal health risk for all groups.",
+				"1": "Air quality is acceptable for most people, though sensitive individuals may experience minor issues.",
+				"2": "Children, elderly, and people with heart/lung conditions should limit outdoor activities.",
+				"3": "Everyone may experience health effects. Limit outdoor activities and consider wearing masks.",
+				"4": "Serious health effects for everyone. Avoid outdoor activities. Stay indoors with windows closed.",
+				"5": "Emergency conditions. Everyone should avoid outdoor exposure. Health warnings in effect."
+			}
+		},
+		"provider": "Data provided by ",
+		"title": "Air quality",
+		"usaqi": {
+			"main": "The US Air Quality Index (AQI) is a metric of air quality used in the United States. The value ranges from 0 to 500, with higher AQI values indicating higher levels of air pollution and greater health risks. The system is used to warn the public when air pollution is dangerous. There is a risk for people with heart and respiratory conditions.\n\nFor official guidelines by the U.S. Environmental Protection Agency (EPA) and for the realtime air pollution data please visit this site:",
+			"text": {
+				"0": "Excellent air quality with no health risk. Ideal for all outdoor activities and exercise.",
+				"1": "Air quality is acceptable for most people. Unusually sensitive individuals may experience minor respiratory symptoms.",
+				"2": "Sensitive groups (children, elderly, people with heart/lung conditions) may experience health effects. General public is unlikely to be affected.",
+				"3": "Everyone may begin to experience health effects. Sensitive groups may experience more serious effects. Avoid prolonged outdoor exertion.",
+				"4": "Health alert conditions. Everyone may experience serious health effects. Avoid all outdoor activities, especially exercise.",
+				"5": "Emergency conditions affecting entire population. Stay indoors with windows and doors closed. Avoid all outdoor activities."
+			},
+			"value": {
+				"0": "Good",
+				"1": "Moderate",
+				"2": "Unhealthy for sensitive groups",
+				"3": "Unhealthy",
+				"4": "Very unhealthy",
+				"5": "Hazardous"
+			}
+		},
+		"value": {
+			"0": "Good",
+			"1": "Moderate",
+			"2": "Unhealthy for sensitive groups",
+			"3": "Unhealthy",
+			"4": "Very unhealthy",
+			"5": "Hazardous"
+		}
+	},
+	"alerts": {
+		"area": "Area",
+		"description": "Description of the event",
+		"disclaimer": "Alerts are issued by local government agencies",
+		"expires": "Expires",
+		"instructions": "Instructions",
+		"modaltitle": "Weather alerts",
+		"severity": "Severity",
+		"title": "weather alert"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "In meteorology, cloud cover is measured by the percentage of the sky that is covered by clouds. Professional meteorologists use octas, but percentages or verbal descriptions are often used for easier reference.",
+			"title": "Percentage of cloud cover"
+		},
+		"title": "Clouds"
+	},
+	"compass": {
+		"button": {
+			"location": "Allow location access"
+		},
+		"text": "The compass feature is available only on supported Apple devices on iOS and iPadOS.\n\nMagnetometer needed for this feature is in all iPhones since 3GS and on iPad since Air 2. For iPad support varies for specific models.\n\nSince iOS 13 we must ask for your approval to use this specific hardware.",
+		"title": "Compass"
+	},
+	"condition": {
+		"1000": {
+			"day": "Sunny",
+			"night": "Clear"
+		},
+		"1003": "Partly cloudy",
+		"1006": "Cloudy",
+		"1009": "Overcast",
+		"1030": "Mist",
+		"1063": "Patchy rain",
+		"1066": "Patchy snow",
+		"1069": "Patchy sleet",
+		"1072": "Patchy freezing drizzle",
+		"1087": "Thundery outbreaks",
+		"1114": "Blowing snow",
+		"1117": "Blizzard",
+		"1135": "Fog",
+		"1147": "Freezing fog",
+		"1150": "Patchy light drizzle",
+		"1153": "Light drizzle",
+		"1168": "Freezing drizzle",
+		"1171": "Heavy freezing drizzle",
+		"1180": "Patchy light rain",
+		"1183": "Light rain",
+		"1186": "Moderate rain at times",
+		"1189": "Moderate rain",
+		"1192": "Heavy rain at times",
+		"1195": "Heavy rain",
+		"1198": "Light freezing rain",
+		"1201": "Heavy freezing rain",
+		"1204": "Patchy light snow",
+		"1207": "Heavy snow",
+		"1210": "Patchy light snow",
+		"1213": "Light snow",
+		"1216": "Patchy heavy snow",
+		"1219": "Moderate snow",
+		"1222": "Patchy heavy snow",
+		"1225": "Heavy snow",
+		"1237": "Ice pellets",
+		"1240": "Light rain storm",
+		"1243": "Heavy rain storm",
+		"1246": "Patchy snow storm",
+		"1249": "Heavy snow thunder",
+		"1252": "Freezing rain thunder",
+		"1255": "Patchy snow thunder",
+		"1258": "Heavy snow thunder",
+		"1261": "Patchy drizzle thunder",
+		"1264": "Freezing rain thunder",
+		"1273": "Patchy light rain with thunder",
+		"1276": "Heavy rain thunder",
+		"1279": "Patchy snow thunder",
+		"1282": "Moderate snow thunder"
+	},
+	"dailyforecast": {
+		"title": "Daily forecast",
+		"today": "today"
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Clear skies",
+			"1": "Partly cloudy",
+			"2": "Cloudy",
+			"3": "Overcast"
+		},
+		"humidity": {
+			"0": "Very dry",
+			"1": "Comfortable",
+			"2": "Humid",
+			"3": "Very humid",
+			"4": "Extremely humid"
+		},
+		"moon": {
+			"firstquarter": "First quarter",
+			"fullmoon": "Full moon",
+			"lastquarter": "Last quarter",
+			"newmoon": "New moon",
+			"waningcrescent": "Waning crescent",
+			"waninggibbous": "Waning gibbous",
+			"waxingcrescent": "Waxing crescent",
+			"waxinggibbous": "Waxing gibbous"
+		},
+		"precip": {
+			"rain": {
+				"0": "Light rain",
+				"1": "Moderate rain",
+				"2": "Heavy rain"
+			},
+			"snow": {
+				"0": "Light snow",
+				"1": "Moderate snow",
+				"2": "Heavy snowfall"
+			}
+		},
+		"pressure": {
+			"0": "Extremely low",
+			"1": "Very low",
+			"2": "Low",
+			"3": "Slightly decreased",
+			"4": "Normal",
+			"5": "Slightly increased",
+			"6": "High",
+			"7": "Very high",
+			"8": "Extremely high"
+		},
+		"rain": {
+			"chance": {
+				"0": "Not expected",
+				"1": "Slight chance",
+				"2": "Showers possible",
+				"3": "Likely",
+				"4": "Very likely",
+				"5": "Almost certain",
+				"6": "Certain"
+			}
+		},
+		"snow": {
+			"0": "Not expected",
+			"1": "Slight chance",
+			"2": "Moderate chance",
+			"3": "It will snow"
+		},
+		"uvindex": {
+			"0": "Minimal",
+			"1": "Moderate",
+			"2": "High",
+			"3": "Very high",
+			"4": "Extreme"
+		},
+		"visibility": {
+			"0": "Dense fog",
+			"1": "Mist",
+			"2": "Light fog",
+			"3": "Light haze",
+			"4": "Good",
+			"5": "Very good",
+			"6": "Exceptional"
+		},
+		"windspeed": {
+			"0": "Calm",
+			"1": "Light air",
+			"10": "Storm",
+			"11": "Violent storm",
+			"12": "Hurricane force",
+			"2": "Light breeze",
+			"3": "Gentle breeze",
+			"4": "Moderate breeze",
+			"5": "Fresh breeze",
+			"6": "Strong breeze",
+			"7": "Moderate gale",
+			"8": "Gale",
+			"9": "Strong gale"
+		}
+	},
+	"feelslike": "Feels like:",
+	"hourlyforecast": {
+		"now": "now",
+		"title": "Hourly forecast"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "The dew point is the temperature at which water vapor in the air begins to condense into dewdrops. The higher the dew point, the more moisture the air contains. The dew point describes how muggy it will be better than relative humidity.",
+			"title": "Dew point"
+		},
+		"relativehumidity": {
+			"text": "The relative air humidity indicates the amount of water vapor contained in the atmosphere and is an important factor in how we perceive the weather. It is measured in terms of relative humidity.",
+			"title": "Relative air humidity"
+		},
+		"title": "Humidity"
+	},
+	"localtime": "Local time",
+	"localweather": {
+		"button": {
+			"allow": "Allow permission",
+			"forbid": "Turn off the feature"
+		},
+		"error": {
+			"fetch": "Failed to fetch weather data for your location.",
+			"location": "Failed to get your location.",
+			"main": "We couldn't load your location.",
+			"permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu."
+		},
+		"loading": "Loading your location..",
+		"permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu.",
+		"title": "Local weather"
+	},
+	"maps": {
+		"layer": {
+			"0": "Temperature",
+			"1": "Precipitation",
+			"2": "Clouds"
+		},
+		"legend": {
+			"temperature": "Click on the map to show the current temperature.",
+			"title": "Legend"
+		},
+		"loading": "Maps are loading..",
+		"title": "Maps"
+	},
+	"moon": {
+		"description": "The moon goes through a regular cycle of eight phases, which lasts approximately 29.5 days. The phases occur as the moon orbits the Earth and the angle at which it is illuminated by the sun changes. Each phase represents a different amount of the moon's illuminated surface that we see from Earth. The phases of the moon affect the tides.",
+		"illumination": "Illumination:",
+		"moonrise": "Moonrise:",
+		"moonset": "Moonset:",
+		"now": "Current moon data",
+		"phase": {
+			"firstquarter": "First quarter",
+			"fullmoon": "Full moon",
+			"lastquarter": "Last quarter",
+			"newmoon": "New moon",
+			"waningcrescent": "Waning crescent",
+			"waninggibbous": "Waning gibbous",
+			"waxingcrescent": "Waxing crescent",
+			"waxinggibbous": "Waxing gibbous"
+		},
+		"phases": "Moon phases",
+		"text": {
+			"firstquarter": "The right half of the moon is illuminated",
+			"fullmoon": "The moon is fully illuminated and brightest",
+			"lastquarter": "The left half of the moon is illuminated",
+			"newmoon": "The moon is not visible, a new lunar cycle begins",
+			"waningcrescent": "A thin illuminated strip on the left side",
+			"waninggibbous": "More than half illuminated, but waning",
+			"waxingcrescent": "A thin illuminated strip on the right side",
+			"waxinggibbous": "More than half illuminated, approaching full moon"
+		},
+		"title": "Moon"
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "The barometric scale is a way of classifying atmospheric pressure according to its values and impact on the weather. The scale has 9 degrees, each corresponding to a specific pressure range and characteristic weather conditions.",
+			"title": "Barometric scale"
+		},
+		"text": {
+			"0": "Severe storms, heavy rain",
+			"1": "Unstable weather, frequent showers",
+			"2": "Cloudy skies, changeable weather",
+			"3": "Partly sunny with possible light",
+			"4": "Stable weather, pleasant conditions",
+			"5": "Mostly clear and calm weather",
+			"6": "Clear to partly sunny, light wind",
+			"7": "Very calm weather, possible fog",
+			"8": "Exceptionally stable and clear weather"
+		},
+		"title": "Pressure"
+	},
+	"rain": {
+		"chance": {
+			"description": "The percentage expresses the probability that it will rain in a given area during the forecast period. It does not indicate intensity, but rather the proportion of the territory where precipitation is expected.",
+			"text": {
+				"0": "It will hardly rain",
+				"1": "Isolated showers possible, most areas will remain dry",
+				"2": "Scattered precipitation likely, rain will appear in several places, but not everywhere",
+				"3": "Rainfall very likely, expected across most of the country",
+				"4": "Rain almost certain, precipitation will affect most of the territory",
+				"5": "Rainfall practically certain, probably across the entire territory"
+			},
+			"title": "Percentage chance"
+		},
+		"rainfall": "Rainfall:",
+		"title": "Rain"
+	},
+	"smartsummary": {
+		"title": "Smart summary"
+	},
+	"snow": {
+		"snowfall": "Snowfall:",
+		"title": "Snow"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "Dawn is the period of gradual brightening of the sky before sunrise. It signals the arrival of a new day and lasts, like dusk, 20–40 minutes, depending on the season and latitude.",
+			"title": "Dawn"
+		},
+		"modaltitle": "Sunrise",
+		"text": "Sunrise is the moment when the sun rises above the horizon and a new day begins. We see the first rays a few minutes before the sun actually rises above the horizon. The time of sunrise changes throughout the year. In winter, the sun rises later, and in summer, it rises earlier. It rises earliest around June 21 (summer solstice) and latest around December 21 (winter solstice).",
+		"title": "Sunrise"
+	},
+	"sunset": {
+		"modaltitle": "Sunset",
+		"text": "Sunset is the moment when the sun sets below the horizon and the day comes to an end. We see the last rays a few minutes after the sun actually sets below the horizon. The time of sunset changes throughout the year. In winter, the sun sets earlier, and in summer, it sets later. It sets latest around June 21 (summer solstice) and earliest around December 21 (winter solstice).",
+		"title": "Sunset",
+		"twilight": {
+			"text": "Twilight is the period of gradual darkening after sunset. During this time, the sun gradually disappears below the horizon and the sky turns warm colors. It usually lasts 20–40 minutes, depending on the season and latitude.",
+			"title": "Twilight"
+		}
+	},
+	"uvindex": {
+		"index": {
+			"description": "The UV Index is an international standard for measuring the intensity of ultraviolet radiation reaching the Earth's surface. This index helps people understand the risk of skin damage from sunlight and take appropriate protective measures.",
+			"title": "About index"
+		},
+		"radiation": {
+			"description": "Ultraviolet (UV) radiation is a type of electromagnetic radiation that is invisible to the human eye. It is naturally present in sunlight, but can also be produced artificially. Although it is beneficial to us in small amounts (e.g., it helps the body produce vitamin D), excessive exposure is harmful.",
+			"title": "Ultraviolet radiation"
+		},
+		"text": {
+			"0": "No protection from the sun is needed",
+			"1": "Wear a hat and protect yourself with SPF 15+ sunscreen, avoid the sun at midday",
+			"2": "Wear a hat and sunglasses. Protect yourself with SPF 30+ sunscreen, avoid the sun at midday and stay in shadows. You can burn yourself in 15 to 20 minutes.",
+			"3": "Wear a hat, sunglasses, and other protective gear. Protect yourself with SPF 50+ sunscreen and limit your time outdoors during midday. You will burn yourself in less then 15 minutes.",
+			"4": "Completely protect yourself from the sun, without any protection do not stay outside."
+		}
+	},
+	"visibility": {
+		"text": "Visibility indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Visibility is important for safety in transportation, aviation, and maritime navigation.",
+		"title": "Range"
+	},
+	"wind": {
+		"beaufortscale": "Beaufort scale",
+		"current": {
+			"direction": "Direction:",
+			"gust": "Gust:",
+			"speed": "Speed:",
+			"title": "Current wind data"
+		},
+		"description": "The Beaufort scale is a method of classifying wind strength based on its effects on the surrounding environment. It is used by meteorologists, sailors, and aviators around the world. It allows for quick and intuitive assessment of wind strength based on visible effects. The scale has 13 degrees (0-12), where each degree corresponds to a certain wind speed and characteristic conditions on land and at sea.",
+		"direction": {
+			"E": "E",
+			"ENE": "ENE",
+			"ESE": "ESE",
+			"main": "Direction:",
+			"N": "N",
+			"NE": "NE",
+			"NNE": "NNE",
+			"NNW": "NNW",
+			"NW": "NW",
+			"S": "S",
+			"SE": "SE",
+			"SSE": "SSE",
+			"SSW": "SSW",
+			"SW": "SW",
+			"W": "W",
+			"WNW": "WNW",
+			"WSW": "WSW"
+		},
+		"label": {
+			"east": "east",
+			"eastnortheast": "eastnortheast",
+			"eastsoutheast": "eastsoutheast",
+			"north": "north",
+			"northeast": "northeast",
+			"northnortheast": "northnortheast",
+			"northnorthwest": "northnorthwest",
+			"northwest": "northwest",
+			"south": "south",
+			"southeast": "southeast",
+			"southsoutheast": "southsoutheast",
+			"southsouthwest": "southsouthwest",
+			"southwest": "southwest",
+			"west": "west",
+			"westnorthwest": "westnorthwest",
+			"westsouthwest": "westsouthwest"
+		},
+		"title": "Wind"
+	}
 }

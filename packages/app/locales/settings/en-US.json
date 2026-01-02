@@ -1,40 +1,40 @@
 {
-  "airquality": {
-    "american": "American",
-    "european": "European",
-    "title": "Air quality",
-    "titleshort": "AQI"
-  },
-  "compass": {
-    "iosonly": "(only iOS)",
-    "title": "Compass"
-  },
-  "datasource": "Data sources",
-  "feedback": {
-    "button": "Send feedback",
-    "text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",
-    "title": "Send feedback"
-  },
-  "language": {
-    "czech": "Czech",
-    "deutsch": "German",
-    "english": "English",
-    "title": "Language"
-  },
-  "localweather": "Local weather",
-  "settings": "Settings",
-  "temperature": "Temperature",
-  "theme": {
-    "dark": "Dark mode",
-    "light": "Light mode",
-    "system": "System mode",
-    "title": "Theme"
-  },
-  "units": {
-    "imperial": "Imperial",
-    "metric": "Metric",
-    "title": "Units"
-  },
-  "version": "version",
-  "worldtime": "World time"
+	"airquality": {
+		"american": "American",
+		"european": "European",
+		"title": "Air quality",
+		"titleshort": "AQI"
+	},
+	"compass": {
+		"iosonly": "(only iOS)",
+		"title": "Compass"
+	},
+	"datasource": "Data sources",
+	"feedback": {
+		"button": "Send feedback",
+		"text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",
+		"title": "Send feedback"
+	},
+	"language": {
+		"czech": "Czech",
+		"deutsch": "German",
+		"english": "English",
+		"title": "Language"
+	},
+	"localweather": "Local weather",
+	"settings": "Settings",
+	"temperature": "Temperature",
+	"theme": {
+		"dark": "Dark mode",
+		"light": "Light mode",
+		"system": "System mode",
+		"title": "Theme"
+	},
+	"units": {
+		"imperial": "Imperial",
+		"metric": "Metric",
+		"title": "Units"
+	},
+	"version": "version",
+	"worldtime": "World time"
 }

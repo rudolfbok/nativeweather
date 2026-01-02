@@ -23,25 +23,29 @@ pnpm typecheck  # TypeScript type checking
 ## Key Features
 
 ### Cross-Platform Component Support
+
 The app uses React Native Web to share components with the mobile app. Both HTML elements and React Native components work seamlessly together:
 
 ```tsx
 export default function Page() {
-  return (
-    <div className="container">
-      <Button title="Shared Component" onPress={() => {}} />
-    </div>
-  );
+	return (
+		<div className="container">
+			<Button title="Shared Component" onPress={() => {}} />
+		</div>
+	);
 }
 ```
 
 ### Next.js Configuration
+
 The `next.config.ts` handles React Native Web integration:
+
 - Transpiles React Native packages
 - Aliases `react-native` to `react-native-web`
 - Supports platform-specific extensions (`.web.tsx`, `.web.ts`)
 
 ### NativeWind Styling
+
 Tailwind CSS classes work on both HTML elements and React Native components, enabling consistent styling across platforms.
 
 ## Structure
