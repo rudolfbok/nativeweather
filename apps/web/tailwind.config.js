@@ -2,6 +2,7 @@
 import nativewindPreset from "nativewind/preset";
 
 module.exports = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/**/*.{js,jsx,ts,tsx}",

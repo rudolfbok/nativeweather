@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root:has(.no-modal-scroll) {
+  overflow: hidden;
+}

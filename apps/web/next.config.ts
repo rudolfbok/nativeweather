@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
     "burnt",
     "app",
   ],
+  compiler: {
+    define: {
+      __DEV__: JSON.stringify(process.env.NODE_ENV !== "production"),
+    },
+  },
+  reactStrictMode: false, // reanimated doesn't support this on web
   webpack(config, { isServer }) {
     // Only for the client (browser) bundle
     if (!isServer) {

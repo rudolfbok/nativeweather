@@ -2,12 +2,17 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "../../../packages/app/components/common/Header.web";
+import { Header } from "app/components/common/Header.web";
 import { Toaster } from "burnt/web";
 import { TolgeeProvider } from "app/provider/TolgeeProvider";
+import { useStorageString } from "app/storage/useStorageString";
 import { ClientOnly } from "app/components/common/ClientOnly";
 import { useState, useEffect } from "react";
+import { Platform } from "react-native";
 import { clsx } from "clsx";
+import { useColorScheme } from "nativewind";
+import { initThemeFromStorage } from "app/storage/initTheme";
+import { initStorageDefaults } from "app/storage/initStorageDefaults";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +34,46 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const [mounted, setMounted] = useState(false);
+  // const [currentTheme] = useStorageString("currentTheme");
+
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
+
+  useEffect(() => {
+    initThemeFromStorage();
+  }, []);
+
+  useEffect(() => {
+    initStorageDefaults();
+  }, []);
+
+  // useEffect(() => {
+  //   // if (!mounted) return null;
+  //   if (Platform.OS === "web" && currentTheme === "system") {
+  //     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  //     const toggle = () => {
+  //       document.documentElement.classList.toggle("dark", mediaQuery.matches);
+  //     };
+
+  //     toggle();
+
+  //     mediaQuery.addEventListener("change", toggle);
+
+  //     return () => mediaQuery.removeEventListener("change", toggle);
+  //   }
+
+  //   // If user selects light/dark explicitly, force class
+  //   if (Platform.OS === "web" && currentTheme !== "system") {
+  //     document.documentElement.classList.toggle(
+  //       "dark",
+  //       currentTheme === "dark"
+  //     );
+  //   }
+  // }, [currentTheme]);
+  const NWTheme = useColorScheme();
   return (
     <html lang="en">
       <title>NativeWeather</title>
@@ -43,7 +88,7 @@ export default function RootLayout({
           <TolgeeProvider>
             <Header />
             {children}
-            <Toaster position="bottom-right" />
+            <Toaster theme={NWTheme.colorScheme} position="bottom-right" />
           </TolgeeProvider>
         </ClientOnly>
       </body>

@@ -1,13 +1,8 @@
-# Universal React Monorepo
+# NativeWeather - cross platform weather application for iOS & Web
 
-Write React components once, run them on web, iOS, and Android. A Turborepo + NativeWind template with shared UI out of the box.
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Duis viverra diam non justo. Fusce consectetuer risus a nunc. Integer pellentesque quam vel velit.
 
-Minor changes in structure compared to original
+## Features
 
-## Getting Started
-
-(https://www.gurselcakar.com/monorepo)
-
-## Author
-
-Built by [Gürsel Çakar](https://x.com/gurselcakar)
+- Feature number one
+- Feature number two

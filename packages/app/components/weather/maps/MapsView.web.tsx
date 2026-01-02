@@ -1,42 +1,50 @@
-import { useTranslate } from '@tolgee/react';
-import { clsx } from 'clsx';
-import { Map } from 'lucide-react-native';
-import { useState } from 'react';
-import { View } from 'react-native';
-import { CardHeader } from '../../common/CardHeader';
-import { RoundView } from '../../common/RoundView';
-import { StyledModal } from '../../common/StyledModal';
-import { StyledPressable } from '../../common/StyledPressable';
-import { MaximizeIcon } from '../../icons/MaximizeIcon';
-import { GoogleMapsView } from './GoogleMapsView';
-import { PlatformGoogleMaps } from './PlatformGoogleMaps.web';
+import { useTranslate } from "@tolgee/react";
+import { clsx } from "clsx";
+import { Map } from "lucide-react-native";
+import { useState } from "react";
+import { View } from "react-native";
+import { CardHeader } from "../../common/CardHeader";
+import { RoundView } from "../../common/RoundView";
+import { StyledModal } from "../../common/StyledModal";
+import { StyledPressable } from "../../common/StyledPressable";
+import { MaximizeIcon } from "../../icons/MaximizeIcon";
+import { GoogleMapsView } from "./GoogleMapsView";
+import { PlatformGoogleMaps } from "./PlatformGoogleMaps.web";
 
 export const MapsView = () => {
-	const { t } = useTranslate('weather');
-	const [showMapsModal, setShowMapsModal] = useState(false);
+  const { t } = useTranslate("weather");
+  const [showMapsModal, setShowMapsModal] = useState(false);
 
-	return (
-		<>
-			<RoundView className={clsx('w-full flex-grow flex-col px-4 pb-4 pt-3')}>
-				<View className={clsx('mb-2 flex flex-row items-center justify-between')}>
-					<CardHeader icon={<Map color="black" fill="#F2F2F7" />} header={t('maps.title')} />
-					<StyledPressable onPress={() => setShowMapsModal((prev) => !prev)} className={clsx('rounded-full p-1')}>
-						<MaximizeIcon />
-					</StyledPressable>
-				</View>
-				<PlatformGoogleMaps />
-			</RoundView>
-			{showMapsModal && (
-				<StyledModal
-					visible={showMapsModal}
-					onClose={() => setShowMapsModal(false)}
-					icon={<Map color="black" fill="#F2F2F7" />}
-					header={t('maps.title')}
-					mapsModal={true}
-				>
-					<PlatformGoogleMaps />
-				</StyledModal>
-			)}
-		</>
-	);
+  return (
+    <>
+      <RoundView className={clsx("w-full flex-grow flex-col px-4 pb-4 pt-3")}>
+        <View
+          className={clsx("mb-2 flex flex-row items-center justify-between")}
+        >
+          <CardHeader
+            icon={<Map color="black" fill="#F2F2F7" />}
+            header={t("maps.title")}
+          />
+          <StyledPressable
+            onPress={() => setShowMapsModal((prev) => !prev)}
+            className={clsx("rounded-full p-1")}
+          >
+            <MaximizeIcon />
+          </StyledPressable>
+        </View>
+        <GoogleMapsView />
+      </RoundView>
+      {showMapsModal && (
+        <StyledModal
+          visible={showMapsModal}
+          onClose={() => setShowMapsModal(false)}
+          icon={<Map color="black" fill="#F2F2F7" />}
+          header={t("maps.title")}
+          mapsModal={true}
+        >
+          <GoogleMapsView />
+        </StyledModal>
+      )}
+    </>
+  );
 };
