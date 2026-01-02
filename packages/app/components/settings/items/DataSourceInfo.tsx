@@ -65,7 +65,7 @@ export const DataSourceInfo = () => {
 	return (
 		<View
 			className={clsx(
-				'mt-2 w-full gap-4',
+				'mt-2 w-full flex-1 gap-4',
 				Platform.OS === 'web' ? 'grid grid-cols-1 place-self-center md:grid-cols-2 lg:w-2/3' : 'flex-col'
 			)}
 		>

@@ -43,7 +43,11 @@ export const SearchInput = ({
 			)}
 		>
 			<Pressable onPress={performSearch} className={clsx('cursor-pointer')}>
-				<Search size={22} color={isFocused ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'} />
+				<Search
+					size={22}
+					color={isFocused ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'}
+					style={{ pointerEvents: 'none' }}
+				/>
 			</Pressable>
 			<TextInput
 				// ref={ref}
@@ -68,7 +72,11 @@ export const SearchInput = ({
 					onHoverIn={() => setIsXHovered(true)}
 					onHoverOut={() => setIsXHovered(false)}
 				>
-					<X size={22} color={isXHovered ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'} />
+					<X
+						size={22}
+						color={isXHovered ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'}
+						style={{ pointerEvents: 'none' }}
+					/>
 				</Pressable>
 			)}
 		</RoundView>

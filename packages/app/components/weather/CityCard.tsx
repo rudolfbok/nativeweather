@@ -50,9 +50,9 @@ export const CityCard = ({
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx('web:flex-1 flex select-none flex-row items-center justify-between rounded-3xl p-4')}
+			className={clsx('flex flex-1 select-none flex-row items-center justify-between rounded-3xl p-4')}
 		>
-			<View className={clsx('flex-1')}>
+			<View>
 				<StyledText type="subtitle" className={clsx('truncate font-semibold')}>
 					{city}
 				</StyledText>

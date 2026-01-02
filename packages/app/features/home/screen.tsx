@@ -1,10 +1,12 @@
 import { Header } from 'app/components/common/Header';
+import { ReanimatedTest } from 'app/components/ReanimatedTest';
+import { ReanimatedTest2 } from 'app/components/ReanimatedTest2';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -15,7 +17,7 @@ export const HomeScreen = () => {
 	const favoriteCitiesHook = useFavoriteCities();
 
 	return (
-		<View className={clsx('flex-1')}>
+		<View className={clsx('w-full flex-1')}>
 			{Platform.OS === 'ios' && <Header />}
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"

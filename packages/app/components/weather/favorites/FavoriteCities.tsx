@@ -1,94 +1,91 @@
 import { useTranslate } from '@tolgee/react';
-import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
-import { useFocusEffect } from 'expo-router';
-import { Share, Trash } from 'lucide-react-native';
-import { useCallback } from 'react';
-import { Pressable, View } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import { SquarePen, Trash, X } from 'lucide-react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { Platform, Pressable, View } from 'react-native';
 import { RoundView } from '../../common/RoundView';
+import { StyledPressable } from '../../common/StyledPressable';
 import { StyledText } from '../../common/StyledText';
+// import { EditIcon } from '../../icons/EditIcon';
+import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
+import { useSearchController } from 'app/hooks/useSearchController';
 import { CityCard } from '../CityCard';
+import { useFocusEffect } from '@react-navigation/native';
 
-export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
-	const { t } = useTranslate('common');
-	const { favoritesData, handleRemoveCity, refreshFavoriteCities } = hook;
+export const FavoriteCities = ({ hook }: { hook: any }) => {
+	const { t } = useTranslate(['common']);
+	const [showDeleteCity, setShowDeleteCity] = useState<boolean>(false);
+	const { favoritesData, handleRemoveCity, loading, refreshFavoriteCities } = hook;
 	const { handleCityPress } = useSearchController();
 
-	useFocusEffect(
-		useCallback(() => {
+	if (Platform.OS === 'ios') {
+		useFocusEffect(
+			useCallback(() => {
+				refreshFavoriteCities({ displayToast: false });
+			}, [])
+		);
+	}
+
+	if (Platform.OS === 'web') {
+		useEffect(() => {
 			refreshFavoriteCities({ displayToast: false });
-		}, [])
-	);
+		}, []);
+	}
 
 	return (
 		<View>
-			<StyledText type="screentitle" className={clsx('mb-2 !text-2xl')}>
-				{t('favorites.title')}
-			</StyledText>
-			<View className={clsx('flex gap-4')}>
-				{favoritesData.length === 0 && (
-					<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
-						<StyledText type="body" className={clsx('text-center')}>
-							{t('favorites.nosaved')}
-						</StyledText>
-					</RoundView>
+			<View className={clsx('mb-3 flex min-h-6 flex-row items-center justify-between')}>
+				<StyledText type="screentitle" className="!text-2xl">
+					{t('favorites.title')}
+				</StyledText>
+				{favoritesData.length > 0 && (
+					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
+						{showDeleteCity ? (
+							<X color="#007AFF" style={{ pointerEvents: 'none' }} />
+						) : (
+							<SquarePen color="#007AFF" style={{ pointerEvents: 'none' }} />
+						)}
+					</StyledPressable>
 				)}
+			</View>
+			{loading && !favoritesData && <LoadingIndicator text={t('favorites.loading')} />}
+			{favoritesData.length === 0 && !loading && (
+				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
+					<StyledText type="body" className={clsx('text-center')}>
+						{t('favorites.nosaved')}
+					</StyledText>
+				</RoundView>
+			)}
+			<View
+				className={clsx(
+					Platform.OS === 'web' ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'gap-4'
+				)}
+			>
 				{favoritesData.map(({ city, weather }, index) => {
-					const leftSwipeActions = () => {
-						return (
-							<Pressable
-								className={clsx(
-									'bg-primaryblue -mr-5 items-center justify-center gap-2 rounded-3xl rounded-br-none rounded-tr-none pr-5'
-								)}
-							>
-								<Share color="white" />
-								<StyledText type="body" className={clsx('text-label_dark px-4 font-semibold')}>
-									{t('favorites.share')}
-								</StyledText>
-							</Pressable>
-						);
-					};
-
-					const rightSwipeActions = () => {
-						return (
-							<Pressable
-								onPress={() => handleRemoveCity(city)}
-								className={clsx(
-									'-ml-5 items-center justify-center gap-2 rounded-3xl rounded-bl-none rounded-tl-none bg-red-500 pl-5'
-								)}
-							>
-								<Trash color="white" />
-								<StyledText type="body" className={clsx('text-label_dark px-4 font-semibold')}>
-									{t('favorites.delete')}
-								</StyledText>
-							</Pressable>
-						);
-					};
 					return (
-						<GestureHandlerRootView key={index}>
-							<ReanimatedSwipeable
-								renderLeftActions={leftSwipeActions}
-								renderRightActions={rightSwipeActions}
-								overshootRight={false}
-								overshootLeft={false}
-								containerStyle={{ borderRadius: 16 }}
-							>
-								<CityCard
-									onPress={() => handleCityPress(city)}
-									city={city.name}
-									conditionCode={weather.current.condition.code}
-									isDay={weather.current.is_day}
-									tempC={weather.current.temp_c}
-									tempF={weather.current.temp_f}
-									displayTime={true}
-									timeZone={weather.location.tz_id}
-									region={city.region}
-								/>
-							</ReanimatedSwipeable>
-						</GestureHandlerRootView>
+						<View key={index} className={clsx('flex-row')}>
+							<CityCard
+								onPress={() => handleCityPress(city)}
+								city={city.name}
+								conditionCode={weather.current.condition.code}
+								isDay={weather.current.is_day}
+								tempC={weather.current.temp_c}
+								tempF={weather.current.temp_f}
+								displayTime={true}
+								timeZone={weather.location.tz_id}
+								region={city.region}
+							/>
+							{showDeleteCity && (
+								<Pressable
+									onPress={() => handleRemoveCity(city)}
+									className={clsx(
+										'absolute -top-1 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-700'
+									)}
+								>
+									<Trash color="white" size={22} style={{ pointerEvents: 'none' }} />
+								</Pressable>
+							)}
+						</View>
 					);
 				})}
 			</View>

@@ -35,7 +35,7 @@ export const ModalHeader = ({
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>
-							<ChevronLeft color="#007AFF" size={29} />
+							<ChevronLeft color="#007AFF" size={29} style={{ pointerEvents: 'none' }} />
 							<CardHeader icon={icon} header={header} underline={true} />
 						</Pressable>
 					) : (
@@ -44,7 +44,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')}>
-					<X color={switchColors} size={28} />
+					<X color={switchColors} size={28} style={{ pointerEvents: 'none' }} />
 				</StyledPressable>
 			</View>
 			{daysToggle}

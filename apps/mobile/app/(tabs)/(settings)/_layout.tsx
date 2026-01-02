@@ -73,6 +73,11 @@ export default function SettingsLayout() {
 					headerStyle: {
 						backgroundColor: 'transparent',
 					},
+					contentStyle: {
+						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+
+						paddingTop: headerHeight,
+					},
 				}}
 			/>
 			{/* 

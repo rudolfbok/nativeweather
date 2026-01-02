@@ -8,7 +8,7 @@ const textStyles = {
 	maintemp: 'text-5xl web:text-4xl',
 	country: 'text-2xl web:text-lg web:md:text-xl text-black/60 dark:text-white/60',
 	city: 'text-4xl web:text-2xl web:md:text-3xl font-medium',
-	title: 'text-lg font-semibold',
+	title: 'text-xl web:text-lg font-semibold',
 	data: 'text-3xl web:text-2xl font-light',
 	subtitle: 'text-lg web:text-base web:md:text-lg font-semibold',
 	body: 'text-lg web:text-base',

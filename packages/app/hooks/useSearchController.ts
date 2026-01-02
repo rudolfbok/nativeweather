@@ -1,10 +1,8 @@
 import { fetchSuggestions, fetchWeather } from 'app/api/fetchWeather';
-import { showToast } from 'app/utils/showToast';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
-import { WeatherData } from 'app/types/weatherData';
 import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
-import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
+import { showToast } from 'app/utils/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform, TextInput } from 'react-native';
 import { useRouter } from 'solito/navigation';
@@ -17,12 +15,10 @@ export const useSearchController = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const [suggestions, setSuggestions] = useState<City[]>([]);
 	const [loading, setLoading] = useState(false);
-	const inputRef = useRef<TextInput>(null);
+	// const inputRef = useRef<TextInput>(null);
 	const debounceTimerRef = useRef<number | null>(null);
 
 	const router = useRouter();
-
-	const removeAccents = (input: string) => input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 	const showRecentSearches =
 		Platform.OS === 'web'
@@ -32,13 +28,13 @@ export const useSearchController = () => {
 	const showSuggestions = isSearchBarFocused && suggestions.length > 0;
 
 	const handleCityPress = async (city: City) => {
-		try {
-			const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`);
+		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`);
+		if (weatherData) {
 			setWeatherData(weatherData);
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
-		} catch (error) {
-			console.error('Failed to fetch weather data for saved city', error);
+		} else {
+			console.error('Failed to fetch weather data for saved city');
 			showToast({
 				message: 'Error loading weather for the selected city. Please try again.',
 				type: 'error',
@@ -47,14 +43,14 @@ export const useSearchController = () => {
 	};
 
 	const handleInputSearch = async (query: string) => {
-		try {
-			const weatherData = await fetchWeather(query);
+		const weatherData = await fetchWeather(query);
+		if (weatherData) {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
-		} catch (error) {
+		} else {
 			showToast({ message: 'Bad input try again.', type: 'error' });
 			console.log('Failed to fetch weather data for searched city');
 		}
@@ -86,8 +82,6 @@ export const useSearchController = () => {
 	}, [searchValue]);
 
 	const addToRecentSearches = (city: City) => {
-		// const city = cityFromWeather(weatherData);
-
 		const newSearches = [
 			city,
 			...(recentSearches || []).filter(
@@ -97,27 +91,6 @@ export const useSearchController = () => {
 
 		setRecentSearches(newSearches);
 	};
-
-	// const performSearch = async (query: string) => {
-	// 	if (!query.trim()) {
-	// 		setError(true);
-	// 		setWeatherData(null);
-	// 		return;
-	// 	}
-
-	// 	const { weatherData } = await fetchWeather(query);
-
-	// 	if (weatherData) {
-	// 		setWeatherData(weatherData);
-	// 		const url = buildWeatherSlug(weatherData);
-	// 		router.push(url);
-	// 		addToRecentSearches(weatherData);
-	// 		setError(false);
-	// 	} else {
-	// 		setError(true);
-	// 		setWeatherData(null);
-	// 	}
-	// };
 
 	// const handleSearch = async (suggestionOrValue: string | City) => {
 	// 	let searchQuery: string;

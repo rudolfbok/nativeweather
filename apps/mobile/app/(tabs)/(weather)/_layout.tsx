@@ -32,7 +32,7 @@ export default function TabLayout() {
 				onPress={() => console.log('Share button was pressed!')}
 				className={clsx('h-fit w-10 items-center justify-center')}
 			>
-				<Share size={22} color={titleColor} />
+				<Share size={22} color={titleColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -43,7 +43,12 @@ export default function TabLayout() {
 				onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
 				className={clsx('h-10 w-10 items-center justify-center')}
 			>
-				<Star size={22} color={titleColor} fill={isFavorite ? titleColor : 'transparent'} />
+				<Star
+					size={22}
+					color={titleColor}
+					fill={isFavorite ? titleColor : 'transparent'}
+					style={{ pointerEvents: 'none' }}
+				/>
 			</Pressable>
 		);
 	};
