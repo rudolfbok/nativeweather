@@ -80,7 +80,7 @@ export default function RootLayout({
 			<title>NativeWeather</title>
 			<body
 				className={clsx(
-					'dark:bg-systemBackground_dark bg-secondarySystemBackground px-4',
+					'dark:bg-systemBackground_dark bg-secondarySystemBackground select-none px-4',
 					geistSans.variable,
 					geistMono.variable
 				)}

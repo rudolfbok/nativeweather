@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
-import { SquarePen, Trash, X } from 'lucide-react-native';
+import { Pencil, SquarePen, Trash, X } from 'lucide-react-native';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { RoundView } from '../../common/RoundView';
@@ -11,6 +11,7 @@ import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { CityCard } from '../CityCard';
 import { useFocusEffect } from '@react-navigation/native';
+import { EditIcon } from 'app/components/icons/EditIcon';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);
@@ -40,11 +41,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 				</StyledText>
 				{favoritesData.length > 0 && (
 					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
-						{showDeleteCity ? (
-							<X color="#007AFF" style={{ pointerEvents: 'none' }} />
-						) : (
-							<SquarePen color="#007AFF" style={{ pointerEvents: 'none' }} />
-						)}
+						{showDeleteCity ? <X size={26} color="#007AFF" style={{ pointerEvents: 'none' }} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>
@@ -79,10 +76,10 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								<Pressable
 									onPress={() => handleRemoveCity(city)}
 									className={clsx(
-										'absolute -top-1 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-700'
+										'absolute -top-1.5 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-800'
 									)}
 								>
-									<Trash color="white" size={22} style={{ pointerEvents: 'none' }} />
+									<Trash color="white" size={26} style={{ pointerEvents: 'none' }} />
 								</Pressable>
 							)}
 						</View>

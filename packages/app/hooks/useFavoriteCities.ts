@@ -74,7 +74,9 @@ export const useFavoriteCities = () => {
 		const success = removeFavoriteCity(city);
 		showToast({
 			message: `${city.name} ${t('toast.remove')}`,
-			type: 'done',
+			type: Platform.OS === 'web' ? 'error' : 'custom',
+			iosIcon: 'star.slash',
+			iosIconColor: '#FE9804',
 		});
 		if (!success) {
 			await refreshFavoriteCities();

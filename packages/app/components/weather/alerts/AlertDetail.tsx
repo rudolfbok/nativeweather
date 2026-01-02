@@ -79,7 +79,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 					</RoundView>
 				</View>
 			)}
-			{description && (
+			{description.length > 0 && (
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('alerts.description')}</StyledText>
 					<RoundView className={clsx('p-4')}>
@@ -91,7 +91,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 					</RoundView>
 				</View>
 			)}
-			{instructions && (
+			{instructions.length > 0 && (
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('alerts.instructions')}</StyledText>
 					<RoundView className={clsx('p-4')}>

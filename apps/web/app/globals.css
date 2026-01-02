@@ -5,3 +5,7 @@
 :root:has(.no-modal-scroll) {
 	overflow: hidden;
 }
+
+.gm-style-cc {
+	display: none !important;
+}

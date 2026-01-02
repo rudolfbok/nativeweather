@@ -14,7 +14,7 @@ import { TemperatureInfo } from './TemperatureInfo';
 import { RoundView } from 'app/components/common/RoundView';
 import { mapColorTheme } from './GoogleMapsTheme';
 
-export const GoogleMapsView = () => {
+export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const [lat, setLat] = useState(0);
@@ -127,7 +127,7 @@ export const GoogleMapsView = () => {
 	];
 
 	return (
-		<View className={clsx('relative flex w-full flex-1')}>
+		<View className={clsx('flex w-full', className)}>
 			<GoogleMap
 				mapContainerClassName="h-full w-full rounded-3xl"
 				center={mapCenter}

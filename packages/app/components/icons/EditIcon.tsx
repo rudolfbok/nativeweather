@@ -2,7 +2,7 @@ import Svg, { Path } from 'react-native-svg';
 
 export const EditIcon = () => {
 	return (
-		<Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
+		<Svg width={26} height={26} viewBox="0 0 26 26" fill="none" style={{ pointerEvents: 'none' }}>
 			<Path
 				d="M12.5 6H6.667A1.667 1.667 0 005 7.667v11.666A1.666 1.666 0 006.667 21h11.666A1.666 1.666 0 0020 19.333V13.5"
 				stroke="#007AFF"

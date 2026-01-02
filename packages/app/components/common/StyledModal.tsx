@@ -43,7 +43,7 @@ export const StyledModal = ({
 			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/30 backdrop-blur-sm')} />
 			<View
 				className={clsx(
-					'web:max-md:mt-10',
+					// 'web:max-md:mt-10',
 					'no-modal-scroll',
 					'absolute inset-0 m-auto',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
@@ -51,7 +51,8 @@ export const StyledModal = ({
 					'h-[100vh] w-full md:!h-fit md:max-h-[90vh] md:max-w-2xl lg:max-w-3xl',
 					'shadow-[0px_0px_2px] shadow-black/10 dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg xl:max-w-xl',
-					mapsModal && 'md:min-h-[90vh]'
+					mapsModal && 'md:min-h-[90vh] lg:!min-w-[60vw]'
+					// Platform.OS === 'web' && 'h-full max-sm:top-[90px]'
 				)}
 			>
 				<ModalHeader
@@ -65,9 +66,10 @@ export const StyledModal = ({
 				/>
 				<ScrollView
 					ref={ref}
-					contentContainerClassName={clsx('ios:pb-6 flex-grow px-4 pb-4')}
+					contentContainerClassName={clsx('ios:pb-8 px-4 pb-4')}
 					showsVerticalScrollIndicator={false}
-					className="flex-1 rounded-bl-3xl rounded-br-3xl"
+					contentInsetAdjustmentBehavior="automatic"
+					className="rounded-bl-3xl rounded-br-3xl"
 				>
 					{children}
 				</ScrollView>

@@ -17,14 +17,14 @@ export const MapsView = () => {
 
 	return (
 		<>
-			<RoundView className={clsx('w-full flex-grow flex-col px-4 pb-4 pt-3')}>
+			<RoundView className={clsx('w-full flex-grow flex-col px-4 pb-4 pt-3 max-md:h-[450px]')}>
 				<View className={clsx('mb-2 flex flex-row items-center justify-between')}>
 					<CardHeader icon={<Map color="black" fill="#F2F2F7" />} header={t('maps.title')} />
 					<StyledPressable onPress={() => setShowMapsModal((prev) => !prev)} className={clsx('rounded-full p-1')}>
 						<MaximizeIcon />
 					</StyledPressable>
 				</View>
-				<GoogleMapsView />
+				<GoogleMapsView className="flex-1" />
 			</RoundView>
 			{showMapsModal && (
 				<StyledModal
@@ -34,7 +34,9 @@ export const MapsView = () => {
 					header={t('maps.title')}
 					mapsModal={true}
 				>
-					<GoogleMapsView />
+					<View className="h-[80vh] !flex-grow">
+						<GoogleMapsView className="flex-grow" />
+					</View>
 				</StyledModal>
 			)}
 		</>

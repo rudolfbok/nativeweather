@@ -101,7 +101,7 @@ export const WeatherFeature = () => {
 
 	if (!weatherData)
 		return (
-			<View className={clsx('items-center justify-center')}>
+			<View className={clsx('flex-1 items-center justify-center')}>
 				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={StyleSheet.hairlineWidth} />
 				<StyledText type="subtitle">Current weather data will be displayed here.</StyledText>
 				<StyledText type="subtitle">Search or click from favorites.</StyledText>
