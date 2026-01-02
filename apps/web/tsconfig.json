@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./app/*"],
+      "app/*": ["../../packages/app/*"]
     },
     "jsxImportSource": "nativewind",
     "types": ["nativewind/types"]

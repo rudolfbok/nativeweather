@@ -26,7 +26,7 @@ export default function WeatherPage() {
       const city = slug.trim().toLowerCase().replace(/\s+/g, "-");
       const query = cr || r ? `${city}, ${r}, ${cr}` : city;
 
-      const { weatherData } = await fetchWeather(query);
+      const weatherData = await fetchWeather(query);
 
       const path = buildWeatherSlug(weatherData);
 

@@ -43,7 +43,7 @@ export const useFavoriteCities = () => {
     const cities = getFavoriteCities();
 
     if (showLocalWeather && localWeatherData) {
-      const { weatherData } = await fetchWeather(
+      const weatherData = await fetchWeather(
         `${localWeatherData.location.name}, ${localWeatherData.location.country}`
       );
       if (!weatherData) return null;
@@ -52,7 +52,7 @@ export const useFavoriteCities = () => {
 
     const results = await Promise.all(
       cities.map(async (city: City) => {
-        const { weatherData } = await fetchWeather(
+        const weatherData = await fetchWeather(
           `${city.name}, ${city.region}, ${city.country}`
         );
 
@@ -81,7 +81,10 @@ export const useFavoriteCities = () => {
     );
 
     const success = removeFavoriteCity(city);
-    showToast({ message: "City was successfully removed", type: "done" });
+    showToast({
+      message: `${city.name} ${t("toast.remove")}`,
+      type: "done",
+    });
     if (!success) {
       await refreshFavoriteCities();
     }

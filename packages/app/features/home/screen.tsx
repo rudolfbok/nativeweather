@@ -1,20 +1,47 @@
-"use client";
+import { Header } from "app/components/common/Header";
+import { FavoriteCities } from "app/components/weather/favorites/FavoriteCities";
+import { LocalWeather } from "app/components/weather/local/LocalWeather";
+import { useFavoriteCities } from "app/hooks/useFavoriteCities";
+import { useStorageBoolean } from "app/storage/useStorageBoolean";
+import { clsx } from "clsx";
+import { useState } from "react";
+import { Platform, RefreshControl, ScrollView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { View } from "react-native";
-import { StorageTest } from "app/components/common/StorageTest";
-import { useState, useEffect } from "react";
+export default function HomeScreen() {
+  const [showLocalWeather] = useStorageBoolean("showLocalWeather");
+  const insets = useSafeAreaInsets();
+  const [refreshing, setRefreshing] = useState(false);
 
-export const HomeScreen = () => {
-  const [isClient, setIsClient] = useState(false);
+  const favoriteCitiesHook = useFavoriteCities();
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) return null;
   return (
-    <View className="flex flex-1 h-screen items-center justify-center bg-yellow-200">
-      <StorageTest />
+    <View className={clsx("flex-1")}>
+      {Platform.OS === "ios" && <Header />}
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        // contentContainerStyle={{ paddingBottom: 16 }}
+        contentContainerClassName={clsx("px-4 pb-4")}
+        refreshControl={
+          <RefreshControl
+            tintColor="blue"
+            refreshing={refreshing}
+            onRefresh={() =>
+              favoriteCitiesHook.refreshFavoriteCities({
+                displayToast: true,
+                setRefreshing,
+              })
+            }
+            progressViewOffset={insets.top + 100}
+            style={{ zIndex: 100 }}
+          />
+        }
+      >
+        <View className={clsx("gap-4")}>
+          {showLocalWeather && <LocalWeather />}
+          <FavoriteCities hook={favoriteCitiesHook} />
+        </View>
+      </ScrollView>
     </View>
   );
-};
+}
