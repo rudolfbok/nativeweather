@@ -1,1 +1,5 @@
-export { ThemeSelect as default } from 'app/components/settings/selectors/ThemeSelect';
+import { ThemeSelect } from 'app/components/settings/selectors/ThemeSelect';
+
+export default function ThemeScreen() {
+	return <ThemeSelect />;
+}

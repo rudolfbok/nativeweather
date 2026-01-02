@@ -3,7 +3,7 @@ import { useTranslate } from '@tolgee/react';
 import { fetchLocation } from 'app/api/fetchWeather';
 import { useWeather } from 'app/hooks/useWeather';
 import { ReactNode, useEffect, useState } from 'react';
-import { StyledText } from '../../common/StyledText';
+import { StyledText } from 'app/components/common/StyledText';
 import { mapColorTheme } from './GoogleMapsTheme';
 import { Thermometer, CloudRain, InfoIcon, View, Sun } from 'lucide-react-native';
 import clsx from 'clsx';

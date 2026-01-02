@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { SettingsScreen } from 'app/features/settings/screen';
+import { SettingsFeature } from 'app/features/settings/screen';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
@@ -56,7 +56,7 @@ export const Header = () => {
 					<Hamburger toggled={openDrawer} size={22} color="#007AFF" onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
 				<ScrollView className={clsx('flex-1')} contentContainerClassName="pt-12">
-					<SettingsScreen title={t('settings')} />
+					<SettingsFeature title={t('settings')} />
 				</ScrollView>
 			</View>
 			{openDrawer && (

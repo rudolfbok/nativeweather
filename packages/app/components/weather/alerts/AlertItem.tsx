@@ -21,7 +21,7 @@ export const AlertItem = ({ title, severity, area, onPress }: AlertItemProps) =>
 						{severity}
 					</StyledText>
 				)}
-				{area && (
+				{area.length > 0 && (
 					<StyledText type="body" className={clsx('line-clamp-1')}>
 						{area}
 					</StyledText>

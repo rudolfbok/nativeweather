@@ -2,11 +2,11 @@
 
 import { useNavigation } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
-import { SettingsScreen } from 'app/features/settings/screen';
+import { SettingsFeature } from 'app/features/settings/screen';
 import { useEffect, useState } from 'react';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 
-export default function SettingsMobileScreen() {
+export default function SettingsScreen() {
 	const { t } = useTranslate('settings');
 	const [primaryTitle, setPrimaryTitle] = useState('');
 	const navigation = useNavigation();
@@ -39,7 +39,7 @@ export default function SettingsMobileScreen() {
 	}, [navigation, scrollY]);
 	return (
 		<Animated.ScrollView onScroll={scrollHandler}>
-			<SettingsScreen title={primaryTitle} />
+			<SettingsFeature title={primaryTitle} />
 		</Animated.ScrollView>
 	);
 }

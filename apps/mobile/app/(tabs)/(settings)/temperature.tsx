@@ -1,1 +1,5 @@
-export { TemperatureSelect as default } from 'app/components/settings/selectors/TemperatureSelect';
+import { TemperatureSelect } from 'app/components/settings/selectors/TemperatureSelect';
+
+export default function TemperatureSreen() {
+	return <TemperatureSelect />;
+}

@@ -1,16 +1,17 @@
+'use client';
+
 import { Header } from 'app/components/common/Header';
-import { ReanimatedTest } from 'app/components/ReanimatedTest';
-import { ReanimatedTest2 } from 'app/components/ReanimatedTest2';
+import { MotiExample } from 'app/components/MotiExample';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Platform, RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export const HomeScreen = () => {
+export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
@@ -34,6 +35,7 @@ export const HomeScreen = () => {
 				}
 			>
 				<View className={clsx('gap-4')}>
+					<MotiExample />
 					{showLocalWeather && <LocalWeather />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>

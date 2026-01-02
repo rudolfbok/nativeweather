@@ -3,11 +3,11 @@ import { clsx } from 'clsx';
 import { Map } from 'lucide-react-native';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { CardHeader } from '../../common/CardHeader';
-import { RoundView } from '../../common/RoundView';
-import { StyledModal } from '../../common/StyledModal';
-import { StyledPressable } from '../../common/StyledPressable';
-import { MaximizeIcon } from '../../icons/MaximizeIcon';
+import { CardHeader } from 'app/components/common/CardHeader';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledModal } from 'app/components/common/StyledModal';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { MaximizeIcon } from 'app/components/icons/MaximizeIcon';
 import { GoogleMapsView } from './GoogleMapsView';
 import { PlatformGoogleMaps } from './PlatformGoogleMaps.web';
 

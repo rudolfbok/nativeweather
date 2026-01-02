@@ -7,11 +7,11 @@ import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
 import { ReactNode, useEffect, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
-import { StyledPressable } from '../../common/StyledPressable';
-import { StyledText } from '../../common/StyledText';
-import { CloudsIcon } from '../../icons/CloudsIcon';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledText } from 'app/components/common/StyledText';
+import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { TemperatureInfo } from './TemperatureInfo';
-import { RoundView } from '../../common/RoundView';
+import { RoundView } from 'app/components/common/RoundView';
 import { mapColorTheme } from './GoogleMapsTheme';
 
 export const GoogleMapsView = () => {
@@ -77,19 +77,6 @@ export const GoogleMapsView = () => {
 
 	useEffect(() => {
 		if (!map) return;
-
-		// const layer = 'tmp2m'; // WeatherAPI layer
-		// const timestamp = '2025120101'; // must come from WeatherAPI /maps endpoint
-
-		// const weatherTile = new window.google.maps.ImageMapType({
-		// 	getTileUrl: (coord, zoom) =>
-		// 		`https://weathermaps.weatherapi.com/${layer}/tiles/${timestamp}/${zoom}/${coord.x}/${coord.y}.png`,
-		// 	tileSize: new window.google.maps.Size(256, 256),
-		// 	opacity: 0.5,
-		// 	name: 'Weather',
-		// 	maxZoom: 40,
-		// 	minZoom: 0,
-		// });
 
 		const weatherTile = new window.google.maps.ImageMapType({
 			getTileUrl: (coord, zoom) =>

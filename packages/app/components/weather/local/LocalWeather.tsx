@@ -58,9 +58,9 @@ export const LocalWeather = () => {
 
 			const { latitude, longitude } = currentLocation.coords;
 
-			const { weatherData, error } = await fetchWeather(`${latitude},${longitude}`);
+			const weatherData = await fetchWeather(`${latitude},${longitude}`);
 
-			if (error || !weatherData) {
+			if (!weatherData) {
 				setErrorMsg(t('localweather.error.fetch'));
 			} else {
 				setLocalWeatherData(weatherData);

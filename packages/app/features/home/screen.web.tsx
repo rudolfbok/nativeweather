@@ -1,5 +1,6 @@
 'use client';
 
+import { MotiExample } from 'app/components/MotiExample';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather.web';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -7,7 +8,7 @@ import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
 import { ScrollView, View } from 'react-native';
 
-export const HomeScreen = () => {
+export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 
 	const favoriteCitiesHook = useFavoriteCities();
@@ -20,6 +21,7 @@ export const HomeScreen = () => {
 				contentContainerStyle={{ paddingBottom: 16 }}
 			>
 				<View className={clsx('flex-1 gap-4')}>
+					<MotiExample />
 					{showLocalWeather && <LocalWeather />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>

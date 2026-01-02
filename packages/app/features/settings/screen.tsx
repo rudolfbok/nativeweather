@@ -13,7 +13,7 @@ import { WorldTimeToggle } from 'app/components/settings/items/WorldTimeToggle';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
-export function SettingsScreen({ title }: { title: string }) {
+export function SettingsFeature({ title }: { title: string }) {
 	return (
 		<View className={clsx('px-4 pb-4')}>
 			<StyledText type="screentitle" className={clsx('mb-3')}>

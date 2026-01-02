@@ -1,1 +1,5 @@
-export { LanguageSelect as default } from 'app/components/settings/selectors/LanguageSelect';
+import { LanguageSelect } from 'app/components/settings/selectors/LanguageSelect';
+
+export default function LanguageScreen() {
+	return <LanguageSelect />;
+}

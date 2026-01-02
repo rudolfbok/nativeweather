@@ -1,5 +1,6 @@
 'use client';
 
+import 'raf/polyfill';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from 'app/components/common/Header.web';

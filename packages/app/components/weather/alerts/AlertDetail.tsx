@@ -69,22 +69,24 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 					{getTime(expires)} - {formatDate(expires)}
 				</StyledText>
 			</View>
-			<View className={clsx('gap-2')}>
-				<StyledText type="subtitle">{t('alerts.area')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					<StyledText type="body" className={clsx('line-clamp-3')}>
-						{area}
-					</StyledText>
-				</RoundView>
-			</View>
+			{area.length > 0 && (
+				<View className={clsx('gap-2')}>
+					<StyledText type="subtitle">{t('alerts.area')}</StyledText>
+					<RoundView className={clsx('p-4')}>
+						<StyledText type="body" className={clsx('line-clamp-3')}>
+							{area}
+						</StyledText>
+					</RoundView>
+				</View>
+			)}
 			{description && (
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('alerts.description')}</StyledText>
 					<RoundView className={clsx('p-4')}>
 						<StyledText type="body">
 							{weatherData.location.country === 'United States of America'
-								? extractWhatAndImpacts(description)
-								: description}
+								? extractWhatAndImpacts(description.trim())
+								: description.trim()}
 						</StyledText>
 					</RoundView>
 				</View>

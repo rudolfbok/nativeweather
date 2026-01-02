@@ -1,7 +1,7 @@
 'use client';
 
-import { HomeScreen } from 'app/features/home/screen.web';
+import { HomeFeature } from 'app/features/home/screen';
 
 export default function HomePage() {
-	return <HomeScreen />;
+	return <HomeFeature />;
 }

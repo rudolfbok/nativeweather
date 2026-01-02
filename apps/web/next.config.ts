@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
 		'react-native-nitro-modules',
 		'nativewind',
 		'burnt',
+		'moti',
 		'app',
 	],
 	compiler: {
