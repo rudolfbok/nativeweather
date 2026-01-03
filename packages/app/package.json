@@ -27,6 +27,7 @@
 		"clsx": "^2.1.1",
 		"embla-carousel-react": "^8.6.0",
 		"expo-location": "^19.0.8",
+		"gsap": "^3.14.2",
 		"hamburger-react": "^2.5.2",
 		"lucide-react-native": "^0.562.0",
 		"luxon": "^3.7.2",

@@ -2,7 +2,7 @@ import { CelsiusIcon } from 'app/components/icons/settings/CelsiusIcon';
 import { FahrenheitIcon } from 'app/components/icons/settings/FahrenheitIcon';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { RoundView } from '../../common/RoundView';
+import { RoundView } from 'app/components/common/RoundView';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const TemperatureSelect = () => {

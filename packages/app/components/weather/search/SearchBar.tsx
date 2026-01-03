@@ -1,8 +1,8 @@
+import { AnimatedView } from 'app/components/common/AnimatedView';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { RecentSearchesList } from './RecentSearchesList';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';
-import { StyledText } from 'app/components/common/StyledText';
 
 export const SearchBar = () => {
 	const {
@@ -17,12 +17,7 @@ export const SearchBar = () => {
 		showSuggestions,
 		suggestions,
 		addToRecentSearches,
-		loading,
 	} = useSearchController();
-
-	// if (loading) {
-	// 	return <StyledText type="title">Search bar loading omg</StyledText>;
-	// }
 
 	return (
 		<>
@@ -38,16 +33,20 @@ export const SearchBar = () => {
 				}}
 			/>
 			{showRecentSearches && (
-				<RecentSearchesList recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
+				<AnimatedView transition={{ duration: 250 }} className={clsx('w-full')}>
+					<RecentSearchesList recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
+				</AnimatedView>
 			)}
 			{showSuggestions && (
-				<SuggestionsList
-					suggestions={suggestions}
-					onSelect={(item) => {
-						handleCityPress(item);
-						addToRecentSearches(item);
-					}}
-				/>
+				<AnimatedView transition={{ duration: 250 }} className={clsx('w-full')}>
+					<SuggestionsList
+						suggestions={suggestions}
+						onSelect={(item) => {
+							handleCityPress(item);
+							addToRecentSearches(item);
+						}}
+					/>
+				</AnimatedView>
 			)}
 		</>
 	);

@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { CompassIcon } from '../../icons/settings/CompassIcon';
+import { CompassIcon } from 'app/components/icons/settings/CompassIcon';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';
 

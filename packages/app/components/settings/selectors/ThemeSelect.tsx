@@ -3,7 +3,7 @@ import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
 import { Moon, Paintbrush, Sun } from 'lucide-react-native';
 import { colorScheme } from 'nativewind';
-import { RoundView } from '../../common/RoundView';
+import { RoundView } from 'app/components/common/RoundView';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const ThemeSelect = () => {

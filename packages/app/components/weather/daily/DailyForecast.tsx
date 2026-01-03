@@ -8,11 +8,11 @@ import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { CardHeader } from '../../common/CardHeader';
-import { RoundView } from '../../common/RoundView';
-import { StyledPressable } from '../../common/StyledPressable';
-import { StyledText } from '../../common/StyledText';
-import { Calendar } from '../../icons/CalendarIcon';
+import { CardHeader } from 'app/components/common/CardHeader';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledText } from 'app/components/common/StyledText';
+import { Calendar } from 'app/components/icons/CalendarIcon';
 import { DailyForecastModal } from './DailyForecastModal';
 
 export const DailyForecast = () => {

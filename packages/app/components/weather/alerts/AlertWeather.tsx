@@ -4,7 +4,7 @@ import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
 import { ChevronRight, CircleAlert } from 'lucide-react-native';
 import { useState } from 'react';
-import { CardHeader } from '../../common/CardHeader';
+import { CardHeader } from 'app/components/common/CardHeader';
 import { AlertModal } from './AlertModal';
 
 interface AlertWeatherProps {

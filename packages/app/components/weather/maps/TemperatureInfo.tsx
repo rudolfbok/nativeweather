@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { StyledText } from '../../common/StyledText';
+import { StyledText } from 'app/components/common/StyledText';
 
 export const TemperatureInfo = () => {
 	const [currentTemp] = useStorageString('currentTemp');

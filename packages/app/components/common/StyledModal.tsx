@@ -69,7 +69,7 @@ export const StyledModal = ({
 					contentContainerClassName={clsx('ios:pb-8 px-4 pb-4')}
 					showsVerticalScrollIndicator={false}
 					contentInsetAdjustmentBehavior="automatic"
-					className="rounded-bl-3xl rounded-br-3xl"
+					className={clsx('rounded-bl-3xl rounded-br-3xl')}
 				>
 					{children}
 				</ScrollView>

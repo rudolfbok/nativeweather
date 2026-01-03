@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { RoundView } from '../../common/RoundView';
-import { InchesIcon } from '../../icons/settings/InchesIcon';
-import { MillimetresIcon } from '../../icons/settings/MillimetresIcon';
+import { RoundView } from 'app/components/common/RoundView';
+import { InchesIcon } from 'app/components/icons/settings/InchesIcon';
+import { MillimetresIcon } from 'app/components/icons/settings/MillimetresIcon';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const UnitsSelect = () => {

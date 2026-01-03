@@ -6,10 +6,10 @@ import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { CardHeader } from '../common/CardHeader';
-import { RoundView } from '../common/RoundView';
-import { StyledText } from '../common/StyledText';
-import { SmartSummaryIcon } from '../icons/SmartSummaryIcon';
+import { CardHeader } from 'app/components/common/CardHeader';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledText } from 'app/components/common/StyledText';
+import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
 
 interface SmartSummaryProps {
 	maxTempC: number;

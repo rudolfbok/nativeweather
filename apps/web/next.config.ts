@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
 		'react-native-css-interop',
 		'react-native-mmkv',
 		'react-native-nitro-modules',
+		'react-native-worklets',
+		'react-native-svg',
 		'nativewind',
 		'burnt',
 		'moti',

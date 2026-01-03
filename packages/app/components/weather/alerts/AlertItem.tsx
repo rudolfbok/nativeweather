@@ -2,7 +2,7 @@ import { StyledPressable } from 'app/components/common/StyledPressable';
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
-import { StyledText } from '../../common/StyledText';
+import { StyledText } from 'app/components/common/StyledText';
 
 interface AlertItemProps {
 	title: string;

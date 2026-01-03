@@ -3,10 +3,10 @@ import { clsx } from 'clsx';
 import { Pencil, SquarePen, Trash, X } from 'lucide-react-native';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
-import { RoundView } from '../../common/RoundView';
-import { StyledPressable } from '../../common/StyledPressable';
-import { StyledText } from '../../common/StyledText';
-// import { EditIcon } from '../../icons/EditIcon';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledText } from 'app/components/common/StyledText';
+// import { EditIcon } from 'app/components/icons/EditIcon';
 import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { CityCard } from '../CityCard';
@@ -36,7 +36,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	return (
 		<View>
 			<View className={clsx('mb-3 flex min-h-6 flex-row items-center justify-between')}>
-				<StyledText type="screentitle" className="!text-2xl">
+				<StyledText type="screentitle" className={clsx('!text-2xl')}>
 					{t('favorites.title')}
 				</StyledText>
 				{favoritesData.length > 0 && (

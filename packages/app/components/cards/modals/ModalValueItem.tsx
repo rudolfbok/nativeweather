@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledText } from '../../common/StyledText';
+import { StyledText } from 'app/components/common/StyledText';
 
 interface ModalValueItemProps {
 	index?: number;

@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { RoundView } from '../../common/RoundView';
-import { EUFLag } from '../../icons/settings/EUFlag';
-import { USAFlag } from '../../icons/settings/USAFlag';
+import { RoundView } from 'app/components/common/RoundView';
+import { EUFLag } from 'app/components/icons/settings/EUFlag';
+import { USAFlag } from 'app/components/icons/settings/USAFlag';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const AQISelect = () => {

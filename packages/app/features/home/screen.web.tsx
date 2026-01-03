@@ -1,6 +1,5 @@
 'use client';
 
-import { MotiExample } from 'app/components/MotiExample';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather.web';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -21,7 +20,6 @@ export const HomeFeature = () => {
 				contentContainerStyle={{ paddingBottom: 16 }}
 			>
 				<View className={clsx('flex-1 gap-4')}>
-					<MotiExample />
 					{showLocalWeather && <LocalWeather />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>

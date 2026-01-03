@@ -7,7 +7,7 @@ import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { StyledText } from '../../common/StyledText';
+import { StyledText } from 'app/components/common/StyledText';
 import { CityCard } from '../CityCard';
 
 export const LocalWeather = () => {

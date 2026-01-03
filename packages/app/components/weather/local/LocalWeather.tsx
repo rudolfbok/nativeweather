@@ -7,9 +7,9 @@ import { clsx } from 'clsx';
 import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
 import { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
-import { RoundView } from '../../common/RoundView';
-import { StyledButton } from '../../common/StyledButton';
-import { StyledText } from '../../common/StyledText';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledButton } from 'app/components/common/StyledButton';
+import { StyledText } from 'app/components/common/StyledText';
 import { CityCard } from '../CityCard';
 
 export const LocalWeather = () => {

@@ -138,12 +138,12 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 		return (
 			<View>
 				<StyledText type="subtitle">{t('wind.current.title')}</StyledText>
-				<RoundView className="mt-2 w-full justify-between gap-4 p-4">
+				<RoundView className={clsx('mt-2 w-full justify-between gap-4 p-4')}>
 					{windData.map((item, index) => (
-						<View key={index} className="gap-4">
-							<View className="flex-row items-center">
-								<View className="mr-4 items-center justify-center rounded-lg bg-gray-500 p-1">{item.icon}</View>
-								<View className="flex-1 flex-row justify-between">
+						<View key={index} className={clsx('gap-4')}>
+							<View className={clsx('flex-row items-center')}>
+								<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>{item.icon}</View>
+								<View className={clsx('flex-1 flex-row justify-between')}>
 									<StyledText type="subtitle">{item.label} </StyledText>
 									<StyledText type="body">{item.value}</StyledText>
 								</View>

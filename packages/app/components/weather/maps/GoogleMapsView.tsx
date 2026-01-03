@@ -129,7 +129,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	return (
 		<View className={clsx('flex w-full', className)}>
 			<GoogleMap
-				mapContainerClassName="h-full w-full rounded-3xl"
+				mapContainerclassName={clsx('h-full w-full rounded-3xl')}
 				center={mapCenter}
 				zoom={7}
 				onLoad={setMap}

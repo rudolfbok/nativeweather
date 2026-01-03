@@ -9,19 +9,22 @@ export const StorageTest = () => {
 	const [username, setUsername] = useStorageString('user.name');
 
 	return (
-		<View className="gap-4 p-4">
+		<View className={clsx('gap-4 p-4')}>
 			<TextInput
 				value={value}
 				placeholder="Type anything"
 				onChangeText={setValue}
-				className="rounded-2xl border border-gray-400 p-4"
+				className={clsx('rounded-2xl border border-gray-400 p-4')}
 			/>
 
-			<Pressable onPress={() => setUsername(value)} className="items-center justify-center rounded-2xl bg-blue-500 p-4">
-				<Text className="text-xl font-semibold text-white">Save to Storage</Text>
+			<Pressable
+				onPress={() => setUsername(value)}
+				className={clsx('items-center justify-center rounded-2xl bg-blue-500 p-4')}
+			>
+				<Text className={clsx('text-xl font-semibold text-white')}>Save to Storage</Text>
 			</Pressable>
 
-			<Text className="mt-4 text-center text-xl font-semibold">Stored value: {username}</Text>
+			<Text className={clsx('mt-4 text-center text-xl font-semibold')}>Stored value: {username}</Text>
 		</View>
 	);
 };

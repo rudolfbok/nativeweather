@@ -5,11 +5,12 @@ import { SettingsFeature } from 'app/features/settings/screen';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { NativeWeatherLogo } from '../icons/logos/NativeWeatherLogo';
 import { SearchBar } from '../weather/search/SearchBar';
+import { AnimatedView } from './AnimatedView.web';
 
 export const Header = () => {
 	const { t } = useTranslate('settings');
@@ -55,15 +56,17 @@ export const Header = () => {
 				<View className={clsx('absolute right-0 z-50 mr-2 md:mt-2')}>
 					<Hamburger toggled={openDrawer} size={22} color="#007AFF" onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
-				<ScrollView className={clsx('flex-1')} contentContainerClassName="pt-12">
+				<ScrollView className={clsx('flex-1')} contentContainerclassName={clsx('pt-12')}>
 					<SettingsFeature title={t('settings')} />
 				</ScrollView>
 			</View>
 			{openDrawer && (
-				<Pressable
-					onPress={() => setOpenDrawer(false)}
-					className={clsx('inset-0 z-40 bg-black/30 transition-opacity max-md:hidden md:fixed dark:bg-black/60')}
-				/>
+				<AnimatedView
+					className={clsx('inset-0 z-40 bg-black/30 max-md:hidden md:fixed dark:bg-black/60')}
+					transition={{ duration: 300 }} // ms
+				>
+					<Pressable onPress={() => setOpenDrawer(false)} className={clsx('h-full w-full')} />
+				</AnimatedView>
 			)}
 		</>
 	);

@@ -4,7 +4,7 @@ import { useStorageString } from 'app/storage/useStorageString';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { AirQualitySettingsIcon } from '../../icons/settings/AirQualitySettingsIcon';
+import { AirQualitySettingsIcon } from 'app/components/icons/settings/AirQualitySettingsIcon';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';

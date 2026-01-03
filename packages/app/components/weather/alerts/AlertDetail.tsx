@@ -24,7 +24,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 
 		return date.toLocaleDateString(tolgee.getLanguage(), {
 			day: 'numeric',
-			month: 'numeric',
+			month: 'long',
 			year: 'numeric',
 		});
 	};

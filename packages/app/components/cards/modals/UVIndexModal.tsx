@@ -53,27 +53,27 @@ export const UVIndexModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Sun color="purple" size={26} />} header="UV Index" onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<View>
-					<StyledText type="subtitle">{t('uvindex.radiation.title')}</StyledText>
+				<StyledText type="subtitle">{t('uvindex.radiation.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('uvindex.radiation.description')}</StyledText>
-				</View>
-				<View>
-					<StyledText type="subtitle">{t('uvindex.index.title')}</StyledText>
-					<StyledText type="body">{t('uvindex.index.description')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('uvindex.index.title')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
-					{uvIndexValues.map(({ name, textcolor, value, description }, index) => (
-						<View key={index} className={clsx('gap-4')}>
-							<ModalValueItem
-								showItemIndex={false}
-								name={name}
-								textcolor={textcolor}
-								value={value}
-								description={description}
-							/>
-							{index < uvIndexValues.length - 1 && <Separator />}
-						</View>
-					))}
+					<StyledText type="body">{t('uvindex.index.description')}</StyledText>
+					<View className={clsx('gap-4')}>
+						{uvIndexValues.map(({ name, textcolor, value, description }, index) => (
+							<View key={index} className={clsx('gap-4')}>
+								<ModalValueItem
+									showItemIndex={false}
+									name={name}
+									textcolor={textcolor}
+									value={value}
+									description={description}
+								/>
+								{index < uvIndexValues.length - 1 && <Separator />}
+							</View>
+						))}
+					</View>
 				</RoundView>
 			</View>
 		</StyledModal>

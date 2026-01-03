@@ -10,7 +10,7 @@ import {
 } from 'app/storage/crudMMKVService';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { CityCardWeather } from 'app/types/cityCardWeather';
-import { showToast } from 'app/utils/showToast';
+import { showToast } from 'app/utils/helpers/showToast';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useLocalWeather } from './useLocalWeather';

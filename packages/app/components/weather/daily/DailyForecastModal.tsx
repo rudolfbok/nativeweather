@@ -5,13 +5,13 @@ import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from '../../cards';
-import { StyledModal } from '../../common/StyledModal';
+import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
+import { StyledModal } from 'app/components/common/StyledModal';
 import { DaysToggle } from './DaysToggle';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
-import { MainWeather } from '../MainWeather';
-import { SmartSummary } from '../SmartSummary';
+import { MainWeather } from '../main/MainWeather';
+import { SmartSummary } from '../smart/SmartSummary';
 
 interface DailyForecastModalProps {
 	visible: boolean;
@@ -35,17 +35,21 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 
 	if (!day) return null;
 
-	const formatDate = (date: string) =>
-		new Date(date).toLocaleDateString(tolgee.getLanguage(), {
+	const formatDate = (dateString: string) => {
+		const date = new Date(dateString);
+
+		return date.toLocaleDateString(tolgee.getLanguage(), {
 			day: 'numeric',
 			month: 'long',
 			year: 'numeric',
 		});
+	};
 
-	const getDayName = (date: string, short: boolean) =>
-		new Date(date).toLocaleString(tolgee.getLanguage(), {
+	const getDayName = (date: string, short: boolean) => {
+		return new Date(date).toLocaleString(tolgee.getLanguage(), {
 			weekday: short ? 'short' : 'long',
 		});
+	};
 
 	const getDisplayHourFromIndex = (hourIndex: number) => {
 		if (tolgee.getLanguage() === 'en') {

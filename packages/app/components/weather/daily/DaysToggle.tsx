@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledPressable } from '../../common/StyledPressable';
-import { StyledText } from '../../common/StyledText';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledText } from 'app/components/common/StyledText';
 import { WeatherData } from 'app/types/weatherData';
 import { useTolgee } from '@tolgee/react';
 

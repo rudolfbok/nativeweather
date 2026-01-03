@@ -2,11 +2,11 @@ import { useTranslate } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { ChevronLeft } from 'lucide-react-native';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback, useEffect, useState } from 'react';
-import { CardHeader } from '../../common/CardHeader';
-import { RoundView } from '../../common/RoundView';
-import { ClockIcon } from '../../icons/ClockIcon';
-import { RightCarouselArrow } from '../../icons/RightCarouselArrow';
+import { JSX, useCallback, useEffect, useState } from 'react';
+import { CardHeader } from 'app/components/common/CardHeader';
+import { RoundView } from 'app/components/common/RoundView';
+import { ClockIcon } from 'app/components/icons/ClockIcon';
+import { RightCarouselArrow } from 'app/components/icons/RightCarouselArrow';
 import { clsx } from 'clsx';
 
 interface CarouselProps<T> {
@@ -68,10 +68,10 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 	);
 
 	return (
-		<RoundView className="w-full py-4">
-			<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className="mb-4 px-4" />
+		<RoundView className={clsx('w-full py-4')}>
+			<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className={clsx('mb-4 px-4')} />
 
-			<div className="group flex flex-row px-1">
+			<div className={clsx('group flex flex-row px-1')}>
 				<LeftArrow />
 
 				<div
@@ -79,9 +79,9 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 					role="region"
 					aria-roledescription="carousel"
 					aria-label={t('hourlyforecast.title')}
-					className="w-full cursor-grab overflow-hidden active:cursor-grabbing"
+					className={clsx('w-full cursor-grab overflow-hidden active:cursor-grabbing')}
 				>
-					<div className="flex flex-row gap-2">{data.map((item, index) => renderItem(item, index))}</div>
+					<div className={clsx('flex flex-row gap-2')}>{data.map((item, index) => renderItem(item, index))}</div>
 				</div>
 
 				<RightArrow />

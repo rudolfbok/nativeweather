@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 
 export default function DataSourceScreen() {
 	return (
-		<ScrollView contentContainerClassName="pb-4 px-4">
+		<ScrollView contentContainerclassName={clsx('px-4 pb-4')}>
 			<DataSourceInfo />
 		</ScrollView>
 	);

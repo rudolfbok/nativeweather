@@ -1,7 +1,6 @@
 'use client';
 
 import { Header } from 'app/components/common/Header';
-import { MotiExample } from 'app/components/MotiExample';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -35,7 +34,6 @@ export const HomeFeature = () => {
 				}
 			>
 				<View className={clsx('gap-4')}>
-					<MotiExample />
 					{showLocalWeather && <LocalWeather />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
