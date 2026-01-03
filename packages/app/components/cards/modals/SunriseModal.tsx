@@ -4,6 +4,7 @@ import { useTranslate } from '@tolgee/react';
 import { Sunrise } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
 import { clsx } from 'clsx';
+import { RoundView } from 'app/components/common/RoundView';
 
 export const SunriseModal = ({
 	visible,
@@ -22,11 +23,13 @@ export const SunriseModal = ({
 			onClose={onClose}
 		>
 			<View className={clsx('gap-2')}>
-				<StyledText type="body">{t('sunrise.text')}</StyledText>
-				<View>
-					<StyledText type="subtitle">{t('sunrise.dawn.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
+					<StyledText type="body">{t('sunrise.text')}</StyledText>
+				</RoundView>
+				<StyledText type="subtitle">{t('sunrise.dawn.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('sunrise.dawn.text')}</StyledText>
-				</View>
+				</RoundView>
 			</View>
 		</StyledModal>
 	);

@@ -122,7 +122,7 @@ export const PlatformGoogleMaps = () => {
 
 	return (
 		<GoogleMap
-			mapContainerclassName={clsx('flex-grow rounded-3xl')}
+			mapContainerClassName={clsx('flex-grow rounded-3xl')}
 			// mapContainerStyle={{ width: '100%', height: '100%' }}
 			center={mapCenter}
 			zoom={7}

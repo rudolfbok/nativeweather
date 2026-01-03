@@ -23,6 +23,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 		const date = new Date(dateString);
 
 		return date.toLocaleDateString(tolgee.getLanguage(), {
+			weekday: 'long',
 			day: 'numeric',
 			month: 'long',
 			year: 'numeric',
@@ -35,7 +36,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 		return date.toLocaleTimeString(tolgee.getLanguage(), {
 			hour: '2-digit',
 			minute: '2-digit',
-			hour12: tolgee.getLanguage() === 'en',
+			hour12: tolgee.getLanguage() === 'en-US',
 		});
 	};
 	const removeDoubleSpaces = (text: string) => text.replace(/(?<!\n)\n(?!\n)/g, ' ');

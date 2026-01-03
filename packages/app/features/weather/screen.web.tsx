@@ -10,6 +10,8 @@ import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
 import { StyledText } from 'app/components/common/StyledText';
 import { AnimatedView } from 'app/components/common/AnimatedView'; // cross-platform GSAP/Reanimated
 import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
+import { View } from 'react-native';
+import clsx from 'clsx';
 
 export const WeatherFeature = () => {
 	const { weatherData, setWeatherData } = useWeather();
@@ -25,7 +27,7 @@ export const WeatherFeature = () => {
 			const slug = params.city;
 			if (!slug) return;
 
-			setLoading(true);
+			// setLoading(true);
 			setError(false);
 
 			const r = searchParams.get('r');
@@ -48,9 +50,10 @@ export const WeatherFeature = () => {
 				}
 			} catch {
 				setError(true);
-			} finally {
-				setLoading(false);
 			}
+			// } finally {
+			// 	setLoading(false);
+			// }
 		};
 
 		loadWeather();
@@ -67,18 +70,24 @@ export const WeatherFeature = () => {
 		};
 	}, [weatherData?.location]);
 
-	if (loading) {
-		return <LoadingIndicator text="Loading weather..." />;
-	}
+	// if (loading) {
+	// 	return <LoadingIndicator text="Loading weather..." />;
+	// }
 
-	if (error || !weatherData) {
+	if (!weatherData) return null;
+
+	if (error) {
 		return (
-			<StyledText type="title">Could not find the city you are looking for. Please repeat and be more smart</StyledText>
+			<View className={clsx('w-full items-center')}>
+				<StyledText type="title" className={clsx('text-center')}>
+					Could not find the city you are looking for. <br /> Please repeat and be more smart
+				</StyledText>
+			</View>
 		);
 	}
 
 	return (
-		<AnimatedView transition={{ duration: 500 }}>
+		<AnimatedView transition={{ duration: 300 }}>
 			<HeroWeather />
 		</AnimatedView>
 	);

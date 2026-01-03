@@ -47,11 +47,14 @@ export const USAQIDetail = () => {
 		},
 	];
 	return (
-		<View className={clsx('gap-4')}>
-			<StyledText type="body">{t('airquality.usaqi.main')}</StyledText>
-			<Pressable onPress={() => Linking.openURL('https://www.airnow.gov/')}>
-				<StyledText type="link">https://www.airnow.gov/</StyledText>
-			</Pressable>
+		<View className={clsx('gap-2')}>
+			<RoundView className={clsx('gap-4 p-4')}>
+				<StyledText type="body">{t('airquality.usaqi.main')}</StyledText>
+				<Pressable onPress={() => Linking.openURL('https://www.airnow.gov/')}>
+					<StyledText type="link">https://www.airnow.gov/</StyledText>
+				</Pressable>
+			</RoundView>
+			<StyledText type="subtitle">{t('airquality.index.values')}</StyledText>
 			<RoundView className={clsx('gap-4 p-4')}>
 				{USAQIValues.map(({ name, textcolor, value, description }, index) => (
 					<View key={index} className={clsx('gap-4')}>

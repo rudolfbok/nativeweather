@@ -1,4 +1,4 @@
-export function formatTimeByLang(timeStr: string, lang = 'en') {
+export function formatTimeByLang(timeStr: string, lang = 'en-US') {
 	const timeFormat = /^\d{1,2}:\d{2}\s?(AM|PM)$/i;
 	if (!timeFormat.test(timeStr)) {
 		return 'No data';
@@ -18,6 +18,6 @@ export function formatTimeByLang(timeStr: string, lang = 'en') {
 	return new Intl.DateTimeFormat(lang, {
 		hour: '2-digit',
 		minute: '2-digit',
-		hour12: lang === 'en' ? true : false,
+		hour12: lang === 'en-US' ? true : false,
 	}).format(date);
 }

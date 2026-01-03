@@ -53,10 +53,11 @@ export const RainModal = ({
 	return (
 		<StyledModal visible={visible} icon={<CloudRain color="#2793FF" />} header={t('rain.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<View>
-					<StyledText type="subtitle">{t('rain.chance.title')}</StyledText>
+				<StyledText type="subtitle">{t('rain.chance.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('rain.chance.description')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('rain.chance.values')}</StyledText>
 				<RoundView className={clsx('gap-2 p-4')}>
 					{rainPrecipValues.map(({ name, value, description }, index) => (
 						<View key={index} className={clsx('gap-4')}>

@@ -47,8 +47,11 @@ export const PM10Detail = () => {
 		},
 	];
 	return (
-		<View className={clsx('gap-4')}>
-			<StyledText type="body">{t('airquality.pm10.main')}</StyledText>
+		<View className={clsx('gap-2')}>
+			<RoundView className={clsx('p-4')}>
+				<StyledText type="body">{t('airquality.pm10.main')}</StyledText>
+			</RoundView>
+			<StyledText type="subtitle">{t('airquality.pollutant.values')}</StyledText>
 			<RoundView className={clsx('gap-4 p-4')}>
 				{PM10Values.map(({ name, textcolor, value, description }, index) => (
 					<View key={index} className={clsx('gap-4')}>

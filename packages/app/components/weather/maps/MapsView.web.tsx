@@ -24,7 +24,7 @@ export const MapsView = () => {
 						<MaximizeIcon />
 					</StyledPressable>
 				</View>
-				<GoogleMapsView className={clsx('flex-1')} />
+				<GoogleMapsView className="flex-1" />
 			</RoundView>
 			{showMapsModal && (
 				<StyledModal
@@ -34,8 +34,8 @@ export const MapsView = () => {
 					header={t('maps.title')}
 					mapsModal={true}
 				>
-					<View className={clsx('h-[80vh] !flex-grow')}>
-						<GoogleMapsView className={clsx('flex-grow')} />
+					<View className="h-[90vh] md:h-[80vh]">
+						<GoogleMapsView className="flex-grow" />
 					</View>
 				</StyledModal>
 			)}

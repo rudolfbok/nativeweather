@@ -3,6 +3,7 @@ import { useSearchController } from 'app/hooks/useSearchController';
 import { RecentSearchesList } from './RecentSearchesList';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';
+import clsx from 'clsx';
 
 export const SearchBar = () => {
 	const {

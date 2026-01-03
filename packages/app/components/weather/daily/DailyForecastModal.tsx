@@ -52,7 +52,7 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 	};
 
 	const getDisplayHourFromIndex = (hourIndex: number) => {
-		if (tolgee.getLanguage() === 'en') {
+		if (tolgee.getLanguage() === 'en-US') {
 			const hour12 = hourIndex % 12 || 12;
 			const period = hourIndex < 12 ? 'AM' : 'PM';
 

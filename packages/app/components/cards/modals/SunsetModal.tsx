@@ -1,4 +1,5 @@
 import { useTranslate } from '@tolgee/react';
+import { RoundView } from 'app/components/common/RoundView';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
 import { clsx } from 'clsx';
@@ -17,11 +18,13 @@ export const SunsetModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Sunset color="#F75B02" />} header={t('sunset.modaltitle')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<StyledText type="body">{t('sunset.text')}</StyledText>
-				<View>
-					<StyledText type="subtitle">{t('sunset.twilight.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
+					<StyledText type="body">{t('sunset.text')}</StyledText>
+				</RoundView>
+				<StyledText type="subtitle">{t('sunset.twilight.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('sunset.twilight.text')}</StyledText>
-				</View>
+				</RoundView>
 			</View>
 		</StyledModal>
 	);

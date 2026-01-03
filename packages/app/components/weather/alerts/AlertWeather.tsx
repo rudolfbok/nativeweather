@@ -31,7 +31,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 			>
 				<CardHeader
 					icon={<CircleAlert color="#007AFF" />}
-					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en' && alertsLength > 1 ? 's' : ''}`}
+					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
 				/>
 				<ChevronRight color="#007AFF" size={26} />
 			</StyledPressable>

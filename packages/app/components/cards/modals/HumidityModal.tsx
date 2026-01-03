@@ -43,11 +43,12 @@ export const HumidityModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Droplets color="#3DA443" />} header={t('humidity.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<View>
-					<StyledText type="subtitle">{t('humidity.relativehumidity.title')}</StyledText>
+				<StyledText type="subtitle">{t('humidity.relativehumidity.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('humidity.relativehumidity.text')}</StyledText>
-				</View>
-				<RoundView className={clsx('gap-4 p-4')}>
+				</RoundView>
+				<StyledText type="subtitle">{t('humidity.relativehumidity.values')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					{humidityScaleValues.map(({ name, value }, index) => (
 						<View key={index} className={clsx('gap-4')}>
 							<ModalValueItem showItemIndex={false} name={name} textcolor="!text-[#3DA443]" value={value} />
@@ -55,10 +56,10 @@ export const HumidityModal = ({
 						</View>
 					))}
 				</RoundView>
-				<View>
-					<StyledText type="subtitle">{t('humidity.dewpoint.title')}</StyledText>
+				<StyledText type="subtitle">{t('humidity.dewpoint.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('humidity.dewpoint.text')}</StyledText>
-				</View>
+				</RoundView>
 			</View>
 		</StyledModal>
 	);

@@ -39,10 +39,11 @@ export const CloudsModal = ({
 	return (
 		<StyledModal visible={visible} icon={<CloudsIcon />} header={t('cloudcover.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<View>
-					<StyledText type="subtitle">{t('cloudcover.percentage.title')}</StyledText>
+				<StyledText type="subtitle">{t('cloudcover.percentage.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('cloudcover.percentage.text')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('cloudcover.percentage.values')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
 					{cloudCoverValues.map(({ name, value }, index) => (
 						<View key={index} className={clsx('gap-4')}>

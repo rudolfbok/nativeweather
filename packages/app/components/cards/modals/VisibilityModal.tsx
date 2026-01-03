@@ -56,11 +56,14 @@ export const VisibilityModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Eye color="#39C1C7" />} header={t('visibility.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<StyledText type="body">{t('visibility.text')}</StyledText>
+				<RoundView className={clsx('p-4')}>
+					<StyledText type="body">{t('visibility.text')}</StyledText>
+				</RoundView>
+				<StyledText type="subtitle">{t('visibility.values')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
 					{visibilityValues.map(({ name, value }, index) => (
 						<View key={index} className={clsx('gap-4')}>
-							<ModalValueItem showItemIndex={false} textcolor="dark:text-blue-600" name={name} value={value} />
+							<ModalValueItem showItemIndex={false} textcolor="!text-[#39C1C7]" name={name} value={value} />
 							{index < visibilityValues.length - 1 && <Separator />}
 						</View>
 					))}

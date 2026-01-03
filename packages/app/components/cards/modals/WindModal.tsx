@@ -160,10 +160,11 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 		<StyledModal visible={visible} icon={<Wind color="gray" />} header={t('wind.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
 				<RenderCurrentWind />
-				<View>
-					<StyledText type="subtitle">{t('wind.beaufortscale')}</StyledText>
+				<StyledText type="subtitle">{t('wind.beaufortscale')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('wind.description')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('wind.values')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
 					{beaufortScaleValues.map(({ name, textcolor, value }, index) => (
 						<View key={index} className={clsx('gap-4')}>

@@ -19,7 +19,9 @@
 				"5": "Extremely Poor"
 			}
 		},
-		"indexvalues": "Index values:",
+		"index": {
+			"values": "Index values"
+		},
 		"item": {
 			"euaqi": "European index",
 			"no2": "Nitrogen Dioxide",
@@ -72,6 +74,9 @@
 				"5": "Emergency conditions. Everyone should avoid outdoor exposure. Health warnings in effect."
 			}
 		},
+		"pollutant": {
+			"values": "Concentration levels"
+		},
 		"provider": "Data provided by ",
 		"title": "Air quality",
 		"usaqi": {
@@ -115,7 +120,8 @@
 	"cloudcover": {
 		"percentage": {
 			"text": "In meteorology, cloud cover is measured by the percentage of the sky that is covered by clouds. Professional meteorologists use octas, but percentages or verbal descriptions are often used for easier reference.",
-			"title": "Percentage of cloud cover"
+			"title": "Percentage of cloud cover",
+			"values": "Coverage level"
 		},
 		"title": "Clouds"
 	},
@@ -291,7 +297,8 @@
 		},
 		"relativehumidity": {
 			"text": "The relative air humidity indicates the amount of water vapor contained in the atmosphere and is an important factor in how we perceive the weather. It is measured in terms of relative humidity.",
-			"title": "Relative air humidity"
+			"title": "Relative air humidity",
+			"values": "Percentage values"
 		},
 		"title": "Humidity"
 	},
@@ -325,22 +332,21 @@
 		"title": "Maps"
 	},
 	"moon": {
+		"cycle": "Moon cycle",
 		"description": "The moon goes through a regular cycle of eight phases, which lasts approximately 29.5 days. The phases occur as the moon orbits the Earth and the angle at which it is illuminated by the sun changes. Each phase represents a different amount of the moon's illuminated surface that we see from Earth. The phases of the moon affect the tides.",
 		"illumination": "Illumination:",
 		"moonrise": "Moonrise:",
 		"moonset": "Moonset:",
 		"now": "Current moon data",
-		"phase": {
-			"firstquarter": "First quarter",
-			"fullmoon": "Full moon",
-			"lastquarter": "Last quarter",
-			"newmoon": "New moon",
-			"waningcrescent": "Waning crescent",
-			"waninggibbous": "Waning gibbous",
-			"waxingcrescent": "Waxing crescent",
-			"waxinggibbous": "Waxing gibbous"
-		},
-		"phases": "Moon phases",
+		"phase": "Lunar phase",
+		"phase.firstquarter": "First quarter",
+		"phase.fullmoon": "Full moon",
+		"phase.lastquarter": "Last quarter",
+		"phase.newmoon": "New moon",
+		"phase.waningcrescent": "Waning crescent",
+		"phase.waninggibbous": "Waning gibbous",
+		"phase.waxingcrescent": "Waxing crescent",
+		"phase.waxinggibbous": "Waxing gibbous",
 		"text": {
 			"firstquarter": "The right half of the moon is illuminated",
 			"fullmoon": "The moon is fully illuminated and brightest",
@@ -356,7 +362,8 @@
 	"pressure": {
 		"barometricscale": {
 			"text": "The barometric scale is a way of classifying atmospheric pressure according to its values and impact on the weather. The scale has 9 degrees, each corresponding to a specific pressure range and characteristic weather conditions.",
-			"title": "Barometric scale"
+			"title": "Barometric scale",
+			"values": "Scale values"
 		},
 		"text": {
 			"0": "Severe storms, heavy rain",
@@ -382,7 +389,8 @@
 				"4": "Rain almost certain, precipitation will affect most of the territory",
 				"5": "Rainfall practically certain, probably across the entire territory"
 			},
-			"title": "Percentage chance"
+			"title": "Percentage chance",
+			"values": "Percentage chance"
 		},
 		"rainfall": "Rainfall:",
 		"title": "Rain"
@@ -415,7 +423,8 @@
 	"uvindex": {
 		"index": {
 			"description": "The UV Index is an international standard for measuring the intensity of ultraviolet radiation reaching the Earth's surface. This index helps people understand the risk of skin damage from sunlight and take appropriate protective measures.",
-			"title": "About index"
+			"title": "About index",
+			"values": "Index values"
 		},
 		"radiation": {
 			"description": "Ultraviolet (UV) radiation is a type of electromagnetic radiation that is invisible to the human eye. It is naturally present in sunlight, but can also be produced artificially. Although it is beneficial to us in small amounts (e.g., it helps the body produce vitamin D), excessive exposure is harmful.",
@@ -431,7 +440,8 @@
 	},
 	"visibility": {
 		"text": "Visibility indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Visibility is important for safety in transportation, aviation, and maritime navigation.",
-		"title": "Range"
+		"title": "Range",
+		"values": "Visibility scale"
 	},
 	"wind": {
 		"beaufortscale": "Beaufort scale",
@@ -479,6 +489,7 @@
 			"westnorthwest": "westnorthwest",
 			"westsouthwest": "westsouthwest"
 		},
-		"title": "Wind"
+		"title": "Wind",
+		"values": "Scale values"
 	}
 }

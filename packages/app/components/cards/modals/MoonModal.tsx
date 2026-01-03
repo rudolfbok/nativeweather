@@ -104,30 +104,35 @@ export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moo
 
 	return (
 		<StyledModal visible={visible} icon={<Moon color="#753A87" />} header={t('moon.title')} onClose={onClose}>
-			<View className={clsx('gap-4')}>
-				<View className={clsx('max-xl:hidden')}>
+			<View className={clsx('gap-2')}>
+				<View className={clsx('gap-2 max-xl:hidden')}>
 					<StyledText type="subtitle">{t('moon.now')}</StyledText>
-					<View className={clsx('mt-2 flex-row items-center gap-4')}>
-						{moonPhaseComponents[phase]}
-						<View>
-							<StyledText type="body">
-								{t('moon.illumination')} {illumination}%
-							</StyledText>
-							<StyledText type="body">
-								{isMoonUp === 0
-									? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
-									: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
-							</StyledText>
-							<StyledText type="subtitle">
-								{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moon_phase]}
-							</StyledText>
+					<RoundView className={clsx('p-4')}>
+						<View className={clsx('flex-row items-center gap-4')}>
+							{moonPhaseComponents[phase]}
+							<View className={clsx('gap-1')}>
+								<StyledText type="body">
+									{t('moon.illumination')} {illumination}%
+								</StyledText>
+								<StyledText type="body">
+									{isMoonUp === 0
+										? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
+										: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
+								</StyledText>
+								<StyledText type="subtitle">
+									{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moon_phase]}
+								</StyledText>
+							</View>
 						</View>
-					</View>
+					</RoundView>
 				</View>
-				<View>
-					<StyledText type="subtitle">{t('moon.phases')}</StyledText>
+				<StyledText type="subtitle" className={'max-xl:hidden'}>
+					{t('moon.cycle')}
+				</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('moon.description')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('moon.phase')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
 					{moonPhaseItems.map(({ moonPhase, name, description }, index) => (
 						<View key={index} className={clsx('gap-4')}>

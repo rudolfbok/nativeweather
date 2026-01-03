@@ -43,7 +43,7 @@ export const CityCard = ({
 		const lang = tolgee.getLanguage();
 		const localtime = DateTime.now()
 			.setZone(timezone)
-			.toFormat(lang === 'en' ? 'hh:mm a' : 'HH:mm');
+			.toFormat(lang === 'en-US' ? 'hh:mm a' : 'HH:mm');
 		return localtime;
 	};
 
@@ -52,7 +52,7 @@ export const CityCard = ({
 			onPress={onPress}
 			className={clsx('flex flex-1 select-none flex-row items-center justify-between rounded-3xl p-4')}
 		>
-			<View>
+			<View className="flex-1">
 				<StyledText type="subtitle" className={clsx('truncate font-semibold')}>
 					{city}
 				</StyledText>

@@ -25,7 +25,7 @@ export const HourlyForecast = () => {
 	const getDisplayHourFromEpoch = (epochTime: number, timezone: string) => {
 		const date = new Date(epochTime * 1000);
 
-		if (tolgeeLang === 'en') {
+		if (tolgeeLang === 'en-US') {
 			return new Intl.DateTimeFormat('en-US', {
 				hour: 'numeric',
 				hour12: true,

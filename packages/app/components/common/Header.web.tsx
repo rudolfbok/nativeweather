@@ -56,7 +56,7 @@ export const Header = () => {
 				<View className={clsx('absolute right-0 z-50 mr-2 md:mt-2')}>
 					<Hamburger toggled={openDrawer} size={22} color="#007AFF" onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
-				<ScrollView className={clsx('flex-1')} contentContainerclassName={clsx('pt-12')}>
+				<ScrollView className={clsx('flex-1')} contentContainerClassName={clsx('pt-12')}>
 					<SettingsFeature title={t('settings')} />
 				</ScrollView>
 			</View>

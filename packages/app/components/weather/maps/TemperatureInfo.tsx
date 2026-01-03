@@ -2,6 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
 import { StyledText } from 'app/components/common/StyledText';
+import { View } from 'react-native';
 
 export const TemperatureInfo = () => {
 	const [currentTemp] = useStorageString('currentTemp');
@@ -40,12 +41,12 @@ export const TemperatureInfo = () => {
 		.join(', ')})`;
 
 	return (
-		<div>
+		<View>
 			<StyledText type="body">{t('maps.legend.temperature')}</StyledText>
-			<div className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')} style={{ background: gradient }}>
-				<div className={clsx('relative ml-1 mr-6 h-full flex-1 flex-row items-center justify-between md:mr-7')}>
+			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')} style={{ background: gradient }}>
+				<View className={clsx('relative ml-1 mr-6 h-full flex-1 flex-row items-center justify-between md:mr-7')}>
 					{stops.map((stop, index) => (
-						<div
+						<View
 							key={index}
 							className={clsx('absolute flex flex-col items-center')}
 							style={{ left: `${(index / (stops.length - 1)) * 100}%` }}
@@ -53,11 +54,11 @@ export const TemperatureInfo = () => {
 							<StyledText type="bodysecondary" className={clsx('font-semibold !text-black')}>
 								{stop.temp}°
 							</StyledText>
-							<div className={clsx('h-4 w-[2px] bg-black')} />
-						</div>
+							<View className={clsx('h-4 w-[2px] bg-black')} />
+						</View>
 					))}
-				</div>
-			</div>
-		</div>
+				</View>
+			</View>
+		</View>
 	);
 };

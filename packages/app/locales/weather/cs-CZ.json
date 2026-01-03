@@ -19,7 +19,9 @@
 				"5": "Extrémně špatný"
 			}
 		},
-		"indexvalues": "Hodnoty indexu:",
+		"index": {
+			"values": "Hodnoty indexu"
+		},
 		"item": {
 			"euaqi": "Evropský index",
 			"no2": "Oxid dusičitý",
@@ -72,6 +74,9 @@
 				"5": "Nouzové situace. Každý by se měl vyhýbat pobytu venku. Platí zdravotní varování."
 			}
 		},
+		"pollutant": {
+			"values": "Hodnoty koncentrace"
+		},
 		"provider": "Data jsou poskytována",
 		"title": "Kvalita ovzduší",
 		"usaqi": {
@@ -115,7 +120,8 @@
 	"cloudcover": {
 		"percentage": {
 			"text": "Oblačnost se v meteorologii měří podle toho, kolik procent oblohy je pokryto mraky. Profesionální meteorologové používají osminy (oktas), ale pro snadnější orientaci se často uvádějí procenta nebo slovní vyjádření.",
-			"title": "Procentuální oblačnost"
+			"title": "Procentuální oblačnost",
+			"values": "Úroveň pokrytí"
 		},
 		"title": "Oblačnost"
 	},
@@ -290,8 +296,9 @@
 			"title": "Rosný bod"
 		},
 		"relativehumidity": {
-			"text": "Realativní vlhkost vzduchu udává množství vodní páry obsažené v atmosféře a je důležitým faktorem pro vnímání počasí. Měří se v procentech relativní vlhkosti.",
-			"title": "Relativní vlhkost vzduchu"
+			"text": "Relativní vlhkost vzduchu udává množství vodní páry obsažené v atmosféře a je důležitým faktorem pro vnímání počasí. Měří se v procentech relativní vlhkosti.",
+			"title": "Relativní vlhkost vzduchu",
+			"values": "Procentuální hodnoty"
 		},
 		"title": "Vlhkost"
 	},
@@ -325,23 +332,21 @@
 		"title": "Mapy"
 	},
 	"moon": {
+		"cycle": "Měsíční cyklus",
 		"description": "Měsíc prochází pravidelným cyklem osmi fází, který trvá přibližně 29,5 dne. Fáze vznikají, když Měsíc obíhá kolem Země a mění se úhel, pod kterým je osvětlen Sluncem. Každá fáze představuje jiné množství osvětlené části měsíce, kterou vidíme ze Země. Fáze měsíce ovlivňují mořský příliv a odliv",
 		"illumination": "Osvětlení:",
 		"moonrise": "Východ měsíce:",
 		"moonset": "Západ měsíce:",
 		"now": "Aktuální údaje o měsíci",
-		"phase": {
-			"firstquarter": "První čtvrť",
-			"fullmoon": "Úplněk",
-			"lastquarter": "Poslední čtvrť",
-			"newmoon": "Nov",
-			"title": "Fáze měsíce",
-			"waningcrescent": "Ubývající srpek",
-			"waninggibbous": "Ubývající měsíc",
-			"waxingcrescent": "Dorůstající srpek",
-			"waxinggibbous": "Dorůstající měsíc"
-		},
-		"phases": "Fáze měsíce",
+		"phase": "Fáze měsíce",
+		"phase.firstquarter": "První čtvrť",
+		"phase.fullmoon": "Úplněk",
+		"phase.lastquarter": "Poslední čtvrť",
+		"phase.newmoon": "Nov",
+		"phase.waningcrescent": "Ubývající srpek",
+		"phase.waninggibbous": "Ubývající měsíc",
+		"phase.waxingcrescent": "Dorůstající srpek",
+		"phase.waxinggibbous": "Dorůstající měsíc",
 		"text": {
 			"firstquarter": "Pravá polovina měsíce je osvětlena",
 			"fullmoon": "Měsíc je plně osvětlený a nejjasnější",
@@ -357,7 +362,8 @@
 	"pressure": {
 		"barometricscale": {
 			"text": "Barometrická škála je způsob klasifikace atmosférického tlaku podle jeho hodnot a dopadu na počasí. Škála obsahuje 9 stupňů, kde každý stupeň odpovídá určitému rozsahu tlaku a charakteristickým povětrovým podmínkám.",
-			"title": "Barometrická škála"
+			"title": "Barometrická škála",
+			"values": "Stupnice škály"
 		},
 		"text": {
 			"0": "Silné bouře, prudké srážky",
@@ -383,7 +389,8 @@
 				"4": "Déšť téměř jistě, srážky postihnou většinu území",
 				"5": "Srážky prakticky jisté, pravděpodobně na celém území"
 			},
-			"title": "Pravděpodobnost srážek"
+			"title": "Pravděpodobnost srážek",
+			"values": "Procentuální šance"
 		},
 		"rainfall": "Srážky:",
 		"title": "Déšť"
@@ -416,7 +423,8 @@
 	"uvindex": {
 		"index": {
 			"description": "UV Index je mezinárodní standard pro měření intenzity ultrafialového záření dopadającího na zemský povrch. Tento index pomáhá lidem pochopit riziko poškození kůže slunečním zářením a přijmout vhodná ochranná opatření.",
-			"title": "Podrobnosti o indexu"
+			"title": "Podrobnosti o indexu",
+			"values": "Hodnoty indexu"
 		},
 		"radiation": {
 			"description": "Ultrafialové (UV) záření je typ elektromagnetického záření, které lidské oko nevidí. Je přirozeně součástí slunečního světla, ale může být produkováno i uměle. Ačkoli je pro nás v malém množství užitečné (např. pomáhá tělu vytvářet vitamin D), jeho nadměrná expozice je škodlivá.",
@@ -432,7 +440,8 @@
 	},
 	"visibility": {
 		"text": "Dohlednost udává maximální vzdálenost, na kterou lze rozeznat objekty pouhým okem. Je ovlivněna mlhou, vlhkostí vzduchu, znečištěním a srážkami. Dohlednost je důležitá pro bezpečnost v dopravě, letectví a námořní plavbě.",
-		"title": "Dohled"
+		"title": "Dohled",
+		"values": "Stupnice dohlednosti"
 	},
 	"wind": {
 		"beaufortscale": "Beaufortova škála",
@@ -480,6 +489,7 @@
 			"westnorthwest": "západseverozápad",
 			"westsouthwest": "západjihozápad"
 		},
-		"title": "Vítr"
+		"title": "Vítr",
+		"values": "Hodnoty škály"
 	}
 }

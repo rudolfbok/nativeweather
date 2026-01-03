@@ -86,10 +86,11 @@ export const PressureModal = ({
 			onClose={onClose}
 		>
 			<View className={clsx('gap-2')}>
-				<View>
-					<StyledText type="subtitle">{t('pressure.barometricscale.title')}</StyledText>
+				<StyledText type="subtitle">{t('pressure.barometricscale.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
 					<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
-				</View>
+				</RoundView>
+				<StyledText type="subtitle">{t('pressure.barometricscale.values')}</StyledText>
 				<RoundView className={clsx('gap-4 p-4')}>
 					{barometricScaleValues.map(({ name, textcolor, value, description }, index) => (
 						<View key={index} className={clsx('gap-4')}>

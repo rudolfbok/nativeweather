@@ -65,7 +65,7 @@ export const MainWeather = ({
 		const lang = tolgee.getLanguage();
 		const localtime = DateTime.now()
 			.setZone(timezone)
-			.toFormat(lang === 'en' ? 'hh:mm a' : 'HH:mm');
+			.toFormat(lang === 'en-US' ? 'hh:mm a' : 'HH:mm');
 		return localtime;
 	};
 
