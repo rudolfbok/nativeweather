@@ -6,6 +6,7 @@ node_modules
 # Build outputs
 dist
 *.tsbuildinfo
+ios
 
 # Turbo
 .turbo
@@ -13,3 +14,6 @@ dist
 # Claude local
 .claude
 CLAUDE.md
+
+#DS_Store
+.DS_Store
