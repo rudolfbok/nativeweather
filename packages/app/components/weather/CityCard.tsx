@@ -53,12 +53,14 @@ export const CityCard = ({
 			className={clsx('flex flex-1 select-none flex-row items-center justify-between rounded-3xl p-4')}
 		>
 			<View className="flex-1">
-				<StyledText type="subtitle" className={clsx('truncate font-semibold')}>
+				<StyledText type="subtitle" className={clsx('truncate font-semibold')} numberOfLines={1} ellipsizeMode="tail">
 					{city}
 				</StyledText>
 				<StyledText
 					type="bodysecondary"
 					className={clsx('text-secondaryLabel dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold')}
+					numberOfLines={1}
+					ellipsizeMode="tail"
 				>
 					{region}
 				</StyledText>
@@ -69,7 +71,12 @@ export const CityCard = ({
 						currentTemp: currentTemperature,
 					})}
 				</StyledText>
-				<StyledText type="body" className={clsx('line-clamp-1 truncate font-semibold')}>
+				<StyledText
+					type="body"
+					className={clsx('line-clamp-1 truncate font-semibold')}
+					numberOfLines={1}
+					ellipsizeMode="tail"
+				>
 					{getWeatherByCode(conditionCode, isDay)}
 				</StyledText>
 			</View>

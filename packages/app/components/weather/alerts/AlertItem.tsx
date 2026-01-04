@@ -6,23 +6,17 @@ import { StyledText } from 'app/components/common/StyledText';
 
 interface AlertItemProps {
 	title: string;
-	severity: string;
 	area: string;
 	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
 }
 
-export const AlertItem = ({ title, severity, area, onPress }: AlertItemProps) => {
+export const AlertItem = ({ title, area, onPress }: AlertItemProps) => {
 	return (
 		<StyledPressable onPress={onPress} className={clsx('w-full flex-row items-center gap-2 rounded-3xl p-4')}>
 			<View className={clsx('flex-1')}>
 				<StyledText type="subtitle">{title}</StyledText>
-				{severity !== 'Unknown' && (
-					<StyledText type="body" className={clsx('line-clamp-1')}>
-						{severity}
-					</StyledText>
-				)}
 				{area.length > 0 && (
-					<StyledText type="body" className={clsx('line-clamp-1')}>
+					<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">
 						{area}
 					</StyledText>
 				)}

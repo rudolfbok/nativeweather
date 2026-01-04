@@ -115,6 +115,11 @@
 		"instructions": "Instrukce a pokyny",
 		"modaltitle": "Upozornění na počasí",
 		"severity": "Závažnost",
+		"severity.extreme": "Extrémní",
+		"severity.minor": "Nízká",
+		"severity.moderate": "Mírná",
+		"severity.severe": "Vážná",
+		"severity.unknown": "Neznámá",
 		"title": "upozornění na počasí"
 	},
 	"cloudcover": {
@@ -236,17 +241,6 @@
 			"7": "Velmi vysoký",
 			"8": "Extrémně vysoký"
 		},
-		"rain": {
-			"chance": {
-				"0": "Neočekává se",
-				"1": "Malá šance",
-				"2": "Přeháňky možné",
-				"3": "Pravděpodobný",
-				"4": "Velmi pravděpodobný",
-				"5": "Téměř jistý",
-				"6": "Jistý"
-			}
-		},
 		"snow": {
 			"0": "Neočekává se",
 			"1": "Malá šance",
@@ -359,6 +353,22 @@
 		},
 		"title": "Měsíc"
 	},
+	"precipitation": {
+		"chance": {
+			"0": "Neočekává se",
+			"1": "Malá šance",
+			"2": "Přeháňky možné",
+			"3": "Pravděpodobný",
+			"4": "Velmi pravděpodobný",
+			"5": "Téměř jistý",
+			"6": "Jistý"
+		},
+		"snow": {
+			"chance": {
+				"2": "Přeháňky možné"
+			}
+		}
+	},
 	"pressure": {
 		"barometricscale": {
 			"text": "Barometrická škála je způsob klasifikace atmosférického tlaku podle jeho hodnot a dopadu na počasí. Škála obsahuje 9 stupňů, kde každý stupeň odpovídá určitému rozsahu tlaku a charakteristickým povětrovým podmínkám.",
@@ -399,6 +409,19 @@
 		"title": "Chytrý přehled"
 	},
 	"snow": {
+		"chance": {
+			"description": "Procento vyjadřuje pravděpodobnost, že v dané oblasti během období předpovědi bude sněžit. Neudává intenzitu, ale podíl území, kde se srážky očekávají",
+			"text": {
+				"0": "Prakticky nebude sněžit",
+				"1": "Izolované přeháňky možné, většina území zůstane bez sněhu",
+				"2": "Rozptýlené srážky pravděpodobné, sníh se objeví na více místech, ale ne všude",
+				"3": "Srážky velmi pravděpodobné, očekávají se na většině území",
+				"4": "Sníh téměř jistý, srážky postihnou většinu území",
+				"5": "Srážky prakticky jisté, pravděpodobně na celém území"
+			},
+			"title": "Pravděpodobnost srážek",
+			"values": "Procentuální šance"
+		},
 		"snowfall": "Sníh:",
 		"title": "Sníh"
 	},

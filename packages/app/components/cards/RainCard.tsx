@@ -24,13 +24,13 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	});
 
 	const rainChanceRanges = [
-		{ max: 1, description: t('description.rain.chance.0') },
-		{ max: 10, description: t('description.rain.chance.1') },
-		{ max: 30, description: t('description.rain.chance.2') },
-		{ max: 50, description: t('description.rain.chance.3') },
-		{ max: 70, description: t('description.rain.chance.4') },
-		{ max: 90, description: t('description.rain.chance.5') },
-		{ max: Infinity, description: t('description.rain.chance.6') },
+		{ max: 1, description: t('precipitation.chance.0') },
+		{ max: 10, description: t('precipitation.chance.1') },
+		{ max: 30, description: t('precipitation.chance.2') },
+		{ max: 50, description: t('precipitation.chance.3') },
+		{ max: 70, description: t('precipitation.chance.4') },
+		{ max: 90, description: t('precipitation.chance.5') },
+		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 
 	const description = rainChanceRanges.find((range) => rainChance < range.max)?.description ?? '';
@@ -43,7 +43,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 			title={t('rain.title')}
 			description={description}
 			extraContent={
-				(rainPrecipMm >= 0.1 || rainPrecipIn >= 0.01) && (
+				(rainPrecipMm >= 0.1 || rainPrecipIn >= 0.1) && (
 					<StyledText type="body">
 						{t('rain.rainfall')} {display}
 					</StyledText>

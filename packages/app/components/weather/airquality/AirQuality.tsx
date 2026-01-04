@@ -1,5 +1,4 @@
 import { useTranslate } from '@tolgee/react';
-import { fetchAirQuality } from 'app/api/fetchAirQuality';
 import EUAQIScale from 'app/assets/euaqiscale.png';
 import USAQIScale from 'app/assets/usaqiscale.png';
 import { CardHeader } from 'app/components/common/CardHeader';
@@ -9,36 +8,27 @@ import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { AirQualityModal } from './AirQualityModal';
-import { AirQualityData } from 'app/types/airQualityData';
 
 export const AirQuality = ({ className }: { className?: string }) => {
-	const { weatherData } = useWeather();
+	const { airQualityData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [currentAQI] = useStorageString('currentAQI');
-	const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null);
 	const [showAirQualityModal, setShowAirQualityModal] = useState(false);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const aqdata = await fetchAirQuality(weatherData.location.lat, weatherData.location.lon);
-				setAirQualityData(aqdata);
-				console.log('Fetched AQI data', 'city:');
-			} catch (error) {
-				console.error('Error fetching air quality data:', error);
-			}
-		};
+	// if (!airQualityData) {
+	// 	return (
+	// 		<LoadingIndicator
+	// 			text="Loading air quality data.."
+	// 			className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
+	// 		/>
+	// 	);
+	// }
 
-		fetchData();
-	}, [weatherData]);
-
-	if (!airQualityData) {
-		return null;
-	}
+	const aq = airQualityData?.current;
 
 	const euAQIranges = [
 		{ min: 0, max: 20, band: t('airquality.euaqi.value.0') },
@@ -49,7 +39,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		{ min: 100, max: Infinity, band: t('airquality.euaqi.value.5') },
 	];
 
-	const euBanding = euAQIranges.find((range) => airQualityData!.current.european_aqi < range.max)?.band ?? '';
+	const euBanding = aq ? (euAQIranges.find((range) => aq.european_aqi < range.max)?.band ?? '') : '';
 
 	const usAQIranges = [
 		{ min: 0, max: 50, band: t('airquality.usaqi.value.0') },
@@ -60,7 +50,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		{ min: 300, max: Infinity, band: t('airquality.usaqi.value.5') },
 	];
 
-	const usBanding = usAQIranges.find((range) => airQualityData!.current.us_aqi < range.max)?.band ?? '';
+	const usBanding = aq ? (usAQIranges.find((range) => aq.us_aqi < range.max)?.band ?? '') : '';
 
 	return (
 		<>
@@ -73,7 +63,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					<Text
 						className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
 						style={{
-							left: `${Math.min(currentAQI === 'EU' ? airQualityData.current.european_aqi : (airQualityData.current.us_aqi / 300) * 100, 100)}%`,
+							left: aq ? `${Math.min(currentAQI === 'EU' ? aq.european_aqi : (aq.us_aqi / 300) * 100, 100)}%` : '0%',
 							zIndex: 20,
 						}}
 					>
@@ -91,8 +81,9 @@ export const AirQuality = ({ className }: { className?: string }) => {
 				</View>
 				<View className={clsx('flex-row items-center justify-between')}>
 					<StyledText type="subtitle">
-						{currentAQI === 'EU' ? airQualityData.current.european_aqi : airQualityData.current.us_aqi} -{' '}
-						{currentAQI === 'EU' ? euBanding : usBanding}
+						{aq
+							? `${currentAQI === 'EU' ? aq.european_aqi : aq.us_aqi} - ${currentAQI === 'EU' ? euBanding : usBanding}`
+							: 'Loading...'}
 					</StyledText>
 					<StyledText type="body">{currentAQI === 'EU' ? 'EUAQI' : 'USAQI'}</StyledText>
 				</View>

@@ -70,7 +70,7 @@ export const MainWeather = ({
 	};
 
 	return (
-		<View className={clsx('relative items-center rounded-3xl')}>
+		<View className={clsx('relative items-center')}>
 			<View className={clsx('flex-col items-center justify-center')}>
 				<View className={clsx('flex-col items-center')}>
 					<StyledText type="city" className={clsx('text-center')}>

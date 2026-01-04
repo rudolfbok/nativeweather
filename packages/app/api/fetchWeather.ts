@@ -42,29 +42,7 @@ export const fetchLocation = async (searchedLocation: string) => {
 			throw new Error('Cant fetch suggestions');
 		}
 
-		return { locationData };
-	} catch (error) {
-		console.error('Failed to fetch suggestions data:', error);
-		return { error: error.message || 'An unknown error occurred' };
-	}
-};
-
-export const fetchSuggestions = async (searchedCity: string) => {
-	const suggestionsUrl = `${BASE_URL}search.json?key=${API_KEY}&q=${searchedCity}`;
-	try {
-		const response = await fetch(suggestionsUrl);
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status}`);
-		}
-
-		const suggestionsData = await response.json();
-
-		if (!suggestionsData) {
-			throw new Error('Cant fetch suggestions');
-		}
-
-		return { suggestionsData };
+		return locationData;
 	} catch (error) {
 		console.error('Failed to fetch suggestions data:', error);
 		return { error: error.message || 'An unknown error occurred' };

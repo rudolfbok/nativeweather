@@ -115,6 +115,11 @@
 		"instructions": "Instructions",
 		"modaltitle": "Weather alerts",
 		"severity": "Severity",
+		"severity.extreme": "Extreme",
+		"severity.minor": "Minor",
+		"severity.moderate": "Moderate",
+		"severity.severe": "Severe",
+		"severity.unknown": "Unknown",
 		"title": "weather alert"
 	},
 	"cloudcover": {
@@ -236,17 +241,6 @@
 			"7": "Very high",
 			"8": "Extremely high"
 		},
-		"rain": {
-			"chance": {
-				"0": "Not expected",
-				"1": "Slight chance",
-				"2": "Showers possible",
-				"3": "Likely",
-				"4": "Very likely",
-				"5": "Almost certain",
-				"6": "Certain"
-			}
-		},
 		"snow": {
 			"0": "Not expected",
 			"1": "Slight chance",
@@ -359,6 +353,22 @@
 		},
 		"title": "Moon"
 	},
+	"precipitation": {
+		"chance": {
+			"0": "Not expected",
+			"1": "Slight chance",
+			"2": "Showers possible",
+			"3": "Likely",
+			"4": "Very likely",
+			"5": "Almost certain",
+			"6": "Certain"
+		},
+		"snow": {
+			"chance": {
+				"2": "Flurries possible"
+			}
+		}
+	},
 	"pressure": {
 		"barometricscale": {
 			"text": "The barometric scale is a way of classifying atmospheric pressure according to its values and impact on the weather. The scale has 9 degrees, each corresponding to a specific pressure range and characteristic weather conditions.",
@@ -389,7 +399,7 @@
 				"4": "Rain almost certain, precipitation will affect most of the territory",
 				"5": "Rainfall practically certain, probably across the entire territory"
 			},
-			"title": "Percentage chance",
+			"title": "Precipitation probability",
 			"values": "Percentage chance"
 		},
 		"rainfall": "Rainfall:",
@@ -399,6 +409,19 @@
 		"title": "Smart summary"
 	},
 	"snow": {
+		"chance": {
+			"description": "The percentage expresses the probability that it will snow in a given area during the forecast period. It does not indicate intensity, but rather the proportion of the territory where precipitation is expected.",
+			"text": {
+				"0": "It will hardly snow",
+				"1": "Isolated flurries possible, most areas will remain without snow",
+				"2": "Scattered precipitation likely, snow will appear in several places, but not everywhere",
+				"3": "Snowfall very likely, expected across most of the country",
+				"4": "Snow almost certain, precipitation will affect most of the territory",
+				"5": "Snowfall practically certain, probably across the entire territory"
+			},
+			"title": "Precipitation probability",
+			"values": "Percentage chance"
+		},
 		"snowfall": "Snowfall:",
 		"title": "Snow"
 	},

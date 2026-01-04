@@ -39,13 +39,7 @@ export const AlertModal = ({
 				{selectedAlert === null && (
 					<View className={clsx('gap-4')}>
 						{filteredAlerts.map((alert, index) => (
-							<AlertItem
-								onPress={() => onPress(alert)}
-								key={index}
-								title={alert.event}
-								severity={alert.severity}
-								area={alert.areas}
-							/>
+							<AlertItem key={index} onPress={() => onPress(alert)} title={alert.event} area={alert.areas} />
 						))}
 					</View>
 				)}

@@ -54,12 +54,29 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 		return extracted ? removeDoubleSpaces(extracted) : text;
 	};
 
+	const getLocaleSeverity = (severity: string) => {
+		switch (severity) {
+			case 'Unknown':
+				return t('alerts.severity.unknown');
+			case 'Minor':
+				return t('alerts.severity.minor');
+			case 'Moderate':
+				return t('alerts.severity.moderate');
+			case 'Severe':
+				return t('alerts.severity.severe');
+			case 'Extreme':
+				return t('alerts.severity.extreme');
+			default:
+				return null;
+		}
+	};
+
 	return (
 		<View className={clsx('w-full gap-2')}>
-			{severity !== 'Unknown' && (
+			{severity && (
 				<View>
 					<StyledText type="subtitle">{t('alerts.severity')}</StyledText>
-					<StyledText type="body">{severity}</StyledText>
+					<StyledText type="body">{getLocaleSeverity(severity)}</StyledText>
 				</View>
 			)}
 			<View>
@@ -74,9 +91,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('alerts.area')}</StyledText>
 					<RoundView className={clsx('p-4')}>
-						<StyledText type="body" className={clsx('line-clamp-3')}>
-							{area}
-						</StyledText>
+						<StyledText type="body">{area}</StyledText>
 					</RoundView>
 				</View>
 			)}

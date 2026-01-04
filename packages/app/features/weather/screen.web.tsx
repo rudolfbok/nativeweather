@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { fetchWeather } from 'app/api/fetchWeather';
+import { AnimatedView } from 'app/components/common/AnimatedView'; // cross-platform GSAP/Reanimated
+import { StyledText } from 'app/components/common/StyledText';
+import { HeroSkeleton } from 'app/components/weather/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
-import { countryNameToCode } from 'app/utils/helpers/contryNameToCode';
-import { fetchWeather } from 'app/api/fetchWeather';
 import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
-import { StyledText } from 'app/components/common/StyledText';
-import { AnimatedView } from 'app/components/common/AnimatedView'; // cross-platform GSAP/Reanimated
-import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
-import { View } from 'react-native';
+import { countryNameToCode } from 'app/utils/helpers/contryNameToCode';
 import clsx from 'clsx';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { View } from 'react-native';
 
 export const WeatherFeature = () => {
 	const { weatherData, setWeatherData } = useWeather();
@@ -27,7 +27,7 @@ export const WeatherFeature = () => {
 			const slug = params.city;
 			if (!slug) return;
 
-			// setLoading(true);
+			setLoading(true);
 			setError(false);
 
 			const r = searchParams.get('r');
@@ -50,10 +50,9 @@ export const WeatherFeature = () => {
 				}
 			} catch {
 				setError(true);
+			} finally {
+				setLoading(false);
 			}
-			// } finally {
-			// 	setLoading(false);
-			// }
 		};
 
 		loadWeather();
@@ -70,9 +69,9 @@ export const WeatherFeature = () => {
 		};
 	}, [weatherData?.location]);
 
-	// if (loading) {
-	// 	return <LoadingIndicator text="Loading weather..." />;
-	// }
+	if (loading) {
+		return <HeroSkeleton />;
+	}
 
 	if (!weatherData) return null;
 
@@ -87,7 +86,7 @@ export const WeatherFeature = () => {
 	}
 
 	return (
-		<AnimatedView transition={{ duration: 300 }}>
+		<AnimatedView transition={{ duration: 500 }}>
 			<HeroWeather />
 		</AnimatedView>
 	);

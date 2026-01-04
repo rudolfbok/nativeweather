@@ -12,6 +12,7 @@ import { useSearchController } from 'app/hooks/useSearchController';
 import { CityCard } from '../CityCard';
 import { useFocusEffect } from '@react-navigation/native';
 import { EditIcon } from 'app/components/icons/EditIcon';
+import { AnimatedView } from 'app/components/common/AnimatedView';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);
@@ -73,14 +74,16 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								region={city.region}
 							/>
 							{showDeleteCity && (
-								<Pressable
-									onPress={() => handleRemoveCity(city)}
-									className={clsx(
-										'absolute -top-1.5 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-800'
-									)}
-								>
-									<Trash color="white" size={26} style={{ pointerEvents: 'none' }} />
-								</Pressable>
+								<AnimatedView transition={{ duration: 500 }}>
+									<Pressable
+										onPress={() => handleRemoveCity(city)}
+										className={clsx(
+											'absolute -top-1.5 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-800'
+										)}
+									>
+										<Trash color="white" size={26} style={{ pointerEvents: 'none' }} />
+									</Pressable>
+								</AnimatedView>
 							)}
 						</View>
 					);

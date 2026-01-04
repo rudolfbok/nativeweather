@@ -1,4 +1,4 @@
-import { fetchSuggestions, fetchWeather } from 'app/api/fetchWeather';
+import { fetchLocation, fetchWeather } from 'app/api/fetchWeather';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
 import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
@@ -63,9 +63,9 @@ export const useSearchController = () => {
 				return;
 			}
 
-			const { suggestionsData, error } = await fetchSuggestions(searchValue);
+			const suggestionsData = await fetchLocation(searchValue);
 
-			if (suggestionsData && !error) {
+			if (suggestionsData) {
 				setSuggestions(suggestionsData);
 			} else {
 				setSuggestions([]);
@@ -135,7 +135,7 @@ export const useSearchController = () => {
 
 	// 	if (searchValue.trim()) {
 	// 		debounceTimerRef.current = setTimeout(async () => {
-	// 			const { suggestionsData, error } = await fetchSuggestions(searchValue);
+	// 			const { suggestionsData, error } = await fetchLocation(searchValue);
 	// 			if (suggestionsData && !error) {
 	// 				setSuggestions(suggestionsData);
 	// 				setShowSuggestions(true);

@@ -31,10 +31,13 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	});
 
 	const snowChanceRanges = [
-		{ max: 0, description: t('description.snow.0') },
-		{ max: 29, description: t('description.snow.1') },
-		{ max: 79, description: t('description.snow.2') },
-		{ max: Infinity, description: t('description.snow.3') },
+		{ max: 1, description: t('precipitation.chance.0') },
+		{ max: 10, description: t('precipitation.chance.1') },
+		{ max: 30, description: t('precipitation.chance.2') },
+		{ max: 50, description: t('precipitation.chance.3') },
+		{ max: 70, description: t('precipitation.chance.4') },
+		{ max: 90, description: t('precipitation.chance.5') },
+		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 
 	const description = snowChanceRanges.find((range) => snowChance < range.max)?.description ?? '';
@@ -47,7 +50,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 			title={t('snow.title')}
 			description={description}
 			extraContent={
-				(snowPrecipCm >= 0.01 || snowPrecipIn >= 0.01) && (
+				(snowPrecipCm >= 0.1 || snowPrecipIn >= 0.1) && (
 					<StyledText type="body">
 						{t('snow.snowfall')} {display}
 					</StyledText>

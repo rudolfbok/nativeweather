@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { Text } from 'react-native';
+import { Text, TextProps } from 'react-native';
 
 const textStyles = {
 	screentitle: 'text-4xl web:text-2xl font-bold',
@@ -17,12 +17,16 @@ const textStyles = {
 	localtime: 'text-base web:text-sm text-primaryblue dark:text-primaryblue',
 };
 
-interface StyledTextProps {
+interface StyledTextProps extends TextProps {
 	children: React.ReactNode;
 	className?: string;
 	type: keyof typeof textStyles;
 }
 
-export const StyledText = ({ children, type, className }: StyledTextProps) => {
-	return <Text className={clsx('text-label dark:text-label_dark', textStyles[type], className)}>{children}</Text>;
+export const StyledText = ({ children, type, className, ...rest }: StyledTextProps) => {
+	return (
+		<Text {...rest} className={clsx('text-label dark:text-label_dark', textStyles[type], className)}>
+			{children}
+		</Text>
+	);
 };

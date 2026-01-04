@@ -56,7 +56,7 @@ export const NO2Detail = () => {
 			<RoundView className={clsx('gap-4 p-4')}>
 				{NO2Values.map(({ name, textcolor, value, description }, index) => (
 					<View key={index} className={clsx('gap-4')}>
-						<AirQualityValue name={name} textcolor={textcolor} value={value + ' µg/m³'} description={description} />
+						<AirQualityValue name={name} textcolor={textcolor} value={value + 'µg/m³'} description={description} />
 						{index < NO2Values.length - 1 && <Separator />}
 					</View>
 				))}

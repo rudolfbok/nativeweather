@@ -55,7 +55,7 @@ export const PM25Detail = () => {
 			<RoundView className={clsx('gap-4 p-4')}>
 				{PM25Values.map(({ name, textcolor, value, description }, index) => (
 					<View key={index} className={clsx('gap-4')}>
-						<AirQualityValue name={name} textcolor={textcolor} value={value} description={description} />
+						<AirQualityValue name={name} textcolor={textcolor} value={value + 'µg/m³'} description={description} />
 						{index < PM25Values.length - 1 && <Separator />}
 					</View>
 				))}

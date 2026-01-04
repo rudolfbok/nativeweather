@@ -54,7 +54,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 		const trimmedLocation = removeAccents(location);
 
 		if (trimmedLocation) {
-			const { locationData } = await fetchLocation(trimmedLocation);
+			const locationData = await fetchLocation(trimmedLocation);
 
 			if (locationData) {
 				setLat(locationData[0].lat);

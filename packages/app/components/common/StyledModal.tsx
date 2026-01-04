@@ -44,6 +44,7 @@ export const StyledModal = ({
 			<View
 				className={clsx(
 					// 'web:max-md:mt-10',
+					'overflow-hidden',
 					'no-modal-scroll',
 					'absolute inset-0 m-auto',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
@@ -67,7 +68,7 @@ export const StyledModal = ({
 				<ScrollView
 					ref={ref}
 					contentContainerClassName={clsx('ios:pb-8 px-4 pb-4')}
-					showsVerticalScrollIndicator={false}
+					showsVerticalScrollIndicator={true}
 					contentInsetAdjustmentBehavior="automatic"
 					className={clsx('rounded-bl-3xl rounded-br-3xl')}
 				>

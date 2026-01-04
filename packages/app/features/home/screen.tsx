@@ -1,6 +1,8 @@
 'use client';
 
+import { Accordion } from 'app/components/common/Accordion';
 import { Header } from 'app/components/common/Header';
+import { StyledText } from 'app/components/common/StyledText';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -34,6 +36,17 @@ export const HomeFeature = () => {
 				}
 			>
 				<View className={clsx('gap-4')}>
+					<Accordion title="Native accordion">
+						<StyledText type="body">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula quis metus vitae vulputate.
+							Pellentesque quis accumsan dui. Ut vel odio scelerisque, laoreet neque eget, euismod nibh. Aenean faucibus
+							bibendum sollicitudin. Quisque scelerisque, libero eget pretium placerat, purus lorem porta purus, at
+							vehicula nisl justo nec dolor. Praesent dictum, augue a consectetur vestibulum, nunc magna gravida neque,
+							et dignissim quam nulla at lorem. Quisque eleifend massa leo, sed vulputate nisl varius at. Nunc
+							convallis, turpis vel aliquam dignissim, velit risus varius tellus, eu faucibus felis mauris in velit.
+							Nullam vehicula neque dapibus, suscipit eros eu, vehicula ligula. Cras et tincidunt felis.
+						</StyledText>
+					</Accordion>
 					{showLocalWeather && <LocalWeather />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>

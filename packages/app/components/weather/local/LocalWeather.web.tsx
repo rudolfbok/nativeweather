@@ -10,6 +10,8 @@ import { View } from 'react-native';
 import { StyledText } from 'app/components/common/StyledText';
 import { CityCard } from '../CityCard';
 
+type LocationError = 'not-supported' | 'permission-denied' | 'position-unavailable' | 'timeout' | 'unknown';
+
 export const LocalWeather = () => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData, setLocalWeatherData } = useLocalWeather();
@@ -17,38 +19,44 @@ export const LocalWeather = () => {
 	const [errorMsg, setErrorMsg] = useState<string | null>(null);
 	const { handleCityPress } = useSearchController();
 
-	useEffect(() => {
-		if (!('geolocation' in navigator)) {
-			setErrorMsg('not-supported');
-			return;
-		}
-
-		setLoading(true);
-
-		navigator.geolocation.getCurrentPosition(
-			async ({ coords }) => {
-				const lat = coords.latitude;
-				const lon = coords.longitude;
-				try {
-					const weatherData = await fetchWeather([lat, lon]);
-					console.log('Fetched local weather data:', weatherData);
-					setLocalWeatherData(weatherData);
-				} catch {
-					setErrorMsg('fetch-failed');
-				} finally {
-					setLoading(false);
-				}
-			},
-			() => {
-				setErrorMsg('permission-denied');
-				setLoading(false);
-			},
-			{
-				enableHighAccuracy: false,
-				timeout: 10_000,
+	const getWeather = () =>
+		new Promise(async (resolve, reject: (reason: LocationError) => void) => {
+			if (!navigator.geolocation) {
+				reject('not-supported');
+				return;
 			}
-		);
-	}, []);
+
+			navigator.geolocation.getCurrentPosition(
+				async ({ coords }) => {
+					try {
+						const result = await fetchWeather([coords.latitude, coords.longitude]);
+						resolve(result);
+					} catch {
+						reject('unknown');
+					}
+				},
+				(error) => {
+					switch (error.code) {
+						case error.PERMISSION_DENIED:
+							reject('permission-denied');
+							break;
+						case error.POSITION_UNAVAILABLE:
+							reject('position-unavailable'); // ← tvůj kCLErrorLocationUnknown
+							break;
+						case error.TIMEOUT:
+							reject('timeout');
+							break;
+						default:
+							reject('unknown');
+					}
+				},
+				{
+					enableHighAccuracy: false,
+					timeout: 10_000,
+					maximumAge: 60_000,
+				}
+			);
+		});
 
 	if (!localWeatherData) {
 		return null;
