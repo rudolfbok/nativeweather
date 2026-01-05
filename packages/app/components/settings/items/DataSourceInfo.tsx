@@ -18,7 +18,7 @@ interface DataSourceItemProps {
 
 const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) => {
 	return (
-		<RoundView className={'w-full items-center justify-center gap-2 p-4'}>
+		<RoundView className={'h-[220px] w-full items-center justify-center gap-2 p-4'}>
 			{logo}
 			<StyledText type="subtitle">{name}</StyledText>
 			<View className={clsx('items-center')}>

@@ -33,46 +33,49 @@ export const StyledModal = ({
 	children,
 }: StyledModalProps) => {
 	return (
-		<Modal
-			visible={visible}
-			presentationStyle={Platform.OS === 'web' ? 'fullScreen' : 'formSheet'}
-			transparent={Platform.OS === 'web' ? true : false}
-			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
-			onRequestClose={onClose}
-		>
-			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/30 backdrop-blur-sm')} />
-			<View
-				className={clsx(
-					'overflow-hidden',
-					'no-modal-scroll',
-					'web:max-md:mt-[5vh] absolute inset-0 bottom-0 m-auto',
-					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'web:rounded-tl-3xl web:rounded-tr-3xl web:md:rounded-3xl',
-					'h-[95vh] w-full md:!h-fit md:max-h-[90vh] md:max-w-2xl lg:max-w-3xl',
-					'shadow-[0px_0px_2px] shadow-black/10 dark:shadow-white/40',
-					settingsModal && 'md:max-w-md lg:max-w-lg xl:max-w-xl',
-					mapsModal && 'md:min-h-[90vh] lg:!min-w-[60vw]'
-				)}
+		<>
+			<Pressable onPress={onClose} className="fixed inset-0 bg-black/40 backdrop-blur-md" />
+			<Modal
+				visible={visible}
+				transparent={Platform.OS === 'web' ? true : false}
+				presentationStyle={Platform.OS === 'web' ? 'overFullScreen' : 'formSheet'}
+				animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
+				onRequestClose={onClose}
 			>
-				<ModalHeader
-					icon={icon}
-					header={header}
-					subHeader={subHeader}
-					showBack={goBackHeader}
-					onClose={onClose}
-					onBackPress={goBackOnPress}
-					daysToggle={daysToggle}
-				/>
-				<ScrollView
-					ref={ref}
-					contentContainerClassName={clsx('px-4')}
-					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
-					contentInsetAdjustmentBehavior="automatic"
-					className={clsx('rounded-bl-3xl rounded-br-3xl pb-4')}
+				<View
+					className={clsx(
+						'no-modal-scroll',
+						'flex flex-col overflow-hidden',
+						'bg-secondarySystemBackground dark:bg-systemBackground_dark',
+						'mt-auto w-full',
+						'ios:h-full web:h-[95dvh] web:md:h-fit',
+						'web:rounded-tl-3xl web:rounded-tr-3xl',
+						'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
+						'shadow-[0px_0px_2px] shadow-black/10 dark:shadow-white/40',
+						settingsModal && 'md:max-w-md lg:max-w-lg',
+						mapsModal && 'md:h-[90vh] lg:!min-w-[60vw]'
+					)}
 				>
-					{children}
-				</ScrollView>
-			</View>
-		</Modal>
+					<ModalHeader
+						icon={icon}
+						header={header}
+						subHeader={subHeader}
+						showBack={goBackHeader}
+						onClose={onClose}
+						onBackPress={goBackOnPress}
+						daysToggle={daysToggle}
+					/>
+
+					<ScrollView
+						ref={ref}
+						contentContainerClassName={clsx('px-4 pb-4')}
+						showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
+						className="flex-grow"
+					>
+						{children}
+					</ScrollView>
+				</View>
+			</Modal>
+		</>
 	);
 };
