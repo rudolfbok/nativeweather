@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { ChevronRight } from 'lucide-react-native';
-import { Children, ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { StyledText } from './StyledText';
 
 interface AccordionProps {

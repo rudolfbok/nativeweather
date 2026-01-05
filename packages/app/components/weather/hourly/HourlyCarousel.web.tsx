@@ -1,20 +1,20 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
-import { ChevronLeft } from 'lucide-react-native';
-import useEmblaCarousel from 'embla-carousel-react';
-import { JSX, useCallback, useEffect, useState } from 'react';
 import { CardHeader } from 'app/components/common/CardHeader';
 import { RoundView } from 'app/components/common/RoundView';
 import { ClockIcon } from 'app/components/icons/ClockIcon';
-import { RightCarouselArrow } from 'app/components/icons/RightCarouselArrow';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';
+import { JSX, useCallback, useEffect, useState } from 'react';
+import { View } from 'react-native';
 
-interface CarouselProps<T> {
+interface HourlyCarouselProps<T> {
 	data: T[];
 	renderItem: (item: T, index: number) => JSX.Element;
 }
 
-export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
+export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>) => {
 	const { t } = useTranslate('weather');
 
 	const [emblaRef, emblaApi] = useEmblaCarousel({ dragFree: true });
@@ -36,10 +36,15 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 
 	const switchColors = useSwitchColors('black', 'white');
 
-	const arrowBase =
-		'opacity-0 transition-opacity pointer-events-none ' +
-		'group-hover:opacity-100 group-hover:pointer-events-auto ' +
-		'focus-visible:opacity-100 focus-visible:pointer-events-auto';
+	const isTouchDevice = navigator.maxTouchPoints > 0;
+
+	const arrowBase = clsx(
+		isTouchDevice && 'group-hover:opacity-0',
+		'pointer-events-none opacity-0 transition-opacity',
+		'group-hover:pointer-events-auto group-hover:opacity-100',
+		'focus-visible:pointer-events-auto focus-visible:opacity-100',
+		'disabled:focus-visible:opacity-30'
+	);
 
 	const LeftArrow = () => (
 		<button
@@ -48,9 +53,9 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 			disabled={!canPrev}
 			aria-label={t('carousel.previous')}
 			aria-disabled={!canPrev}
-			className={clsx(arrowBase, 'disabled:opacity-30')}
+			className={clsx(arrowBase, !canPrev && 'group-hover:opacity-20')}
 		>
-			<ChevronLeft size={20} color={switchColors} />
+			<ChevronLeftCircle size={28} color={switchColors} />
 		</button>
 	);
 
@@ -61,19 +66,22 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 			disabled={!canNext}
 			aria-label={t('carousel.next')}
 			aria-disabled={!canNext}
-			className={clsx(arrowBase, 'disabled:opacity-30')}
+			className={clsx(arrowBase, !canNext && 'group-hover:opacity-20')}
 		>
-			<RightCarouselArrow />
+			<ChevronRightCircle size={28} color={switchColors} />
 		</button>
 	);
 
 	return (
-		<RoundView className={clsx('w-full py-4')}>
-			<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className={clsx('mb-4 px-4')} />
-
-			<div className={clsx('group flex flex-row px-1')}>
-				<LeftArrow />
-
+		<RoundView className={clsx('group w-full py-4')}>
+			<View className={clsx('mb-4 flex-row items-center justify-between px-4')}>
+				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} />
+				<View className={clsx('h-full w-[70px] flex-row gap-2')}>
+					<LeftArrow />
+					<RightArrow />
+				</View>
+			</View>
+			<div className={clsx('relative flex flex-row px-1')}>
 				<div
 					ref={emblaRef}
 					role="region"
@@ -83,8 +91,6 @@ export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
 				>
 					<div className={clsx('flex flex-row gap-2')}>{data.map((item, index) => renderItem(item, index))}</div>
 				</div>
-
-				<RightArrow />
 			</div>
 		</RoundView>
 	);

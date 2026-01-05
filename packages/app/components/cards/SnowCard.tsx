@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { Snowflake } from 'lucide-react-native';
-import { useState } from 'react';
-import { DataCard } from './DataCard';
-import { SnowModal } from './modals/SnowModal';
-import { StyledText } from '../common/StyledText';
 import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
+import { Snowflake } from 'lucide-react-native';
+import { useState } from 'react';
+import { StyledText } from '../common/StyledText';
+import { DataCard } from './DataCard';
+import { SnowModal } from './modals/SnowModal';
 
 interface SnowCardProps {
 	snowPrecipCm: number;
@@ -18,12 +18,6 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 
-	// const value = useSwitchMetrics({
-	// 	metric: Math.round(snowPrecipCm),
-	// 	imperial: Math.round(snowPrecipIn),
-	// 	currentUnits: currentUnits,
-	// });
-
 	const display = useSwitchMetrics({
 		metric: `${snowPrecipCm.toFixed(1)}cm`,
 		imperial: `${snowPrecipIn.toFixed(2)}in`,
@@ -31,12 +25,12 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	});
 
 	const snowChanceRanges = [
-		{ max: 1, description: t('precipitation.chance.0') },
-		{ max: 10, description: t('precipitation.chance.1') },
-		{ max: 30, description: t('precipitation.chance.2') },
-		{ max: 50, description: t('precipitation.chance.3') },
-		{ max: 70, description: t('precipitation.chance.4') },
-		{ max: 90, description: t('precipitation.chance.5') },
+		{ max: 10, description: t('precipitation.chance.0') },
+		{ max: 30, description: t('precipitation.chance.1') },
+		{ max: 50, description: t('precipitation.snow.chance.2') },
+		{ max: 70, description: t('precipitation.chance.3') },
+		{ max: 90, description: t('precipitation.chance.4') },
+		{ max: 100, description: t('precipitation.chance.5') },
 		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 

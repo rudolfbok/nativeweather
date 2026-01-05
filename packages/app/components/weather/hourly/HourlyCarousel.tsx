@@ -6,12 +6,12 @@ import { ClockIcon } from 'app/components/icons/ClockIcon';
 import { clsx } from 'clsx';
 import { JSX } from 'react';
 
-interface CarouselProps<T> {
+interface HourlyCarouselProps<T> {
 	data: T[];
 	renderItem: (item: T, index: number) => JSX.Element;
 }
 
-export const HourlyCarousel = <T,>({ data, renderItem }: CarouselProps<T>) => {
+export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>) => {
 	const { t } = useTranslate('weather');
 
 	return (

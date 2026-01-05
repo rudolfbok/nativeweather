@@ -35,7 +35,7 @@ export const StyledModal = ({
 	return (
 		<Modal
 			visible={visible}
-			presentationStyle={Platform.OS === 'web' ? 'overFullScreen' : 'formSheet'}
+			presentationStyle={Platform.OS === 'web' ? 'fullScreen' : 'formSheet'}
 			transparent={Platform.OS === 'web' ? true : false}
 			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
 			onRequestClose={onClose}
@@ -43,17 +43,15 @@ export const StyledModal = ({
 			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/30 backdrop-blur-sm')} />
 			<View
 				className={clsx(
-					// 'web:max-md:mt-10',
 					'overflow-hidden',
 					'no-modal-scroll',
-					'absolute inset-0 m-auto',
+					'absolute inset-0 m-auto mt-2',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'web:rounded-tl-3xl web:rounded-tr-3xl web:md:rounded-3xl',
 					'h-[100vh] w-full md:!h-fit md:max-h-[90vh] md:max-w-2xl lg:max-w-3xl',
 					'shadow-[0px_0px_2px] shadow-black/10 dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg xl:max-w-xl',
 					mapsModal && 'md:min-h-[90vh] lg:!min-w-[60vw]'
-					// Platform.OS === 'web' && 'h-full max-sm:top-[90px]'
 				)}
 			>
 				<ModalHeader
@@ -67,8 +65,8 @@ export const StyledModal = ({
 				/>
 				<ScrollView
 					ref={ref}
-					contentContainerClassName={clsx('ios:pb-8 px-4 pb-4')}
-					showsVerticalScrollIndicator={true}
+					contentContainerClassName={clsx('ios:pb-8 px-4 pb-20 md:pb-4')}
+					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
 					contentInsetAdjustmentBehavior="automatic"
 					className={clsx('rounded-bl-3xl rounded-br-3xl')}
 				>

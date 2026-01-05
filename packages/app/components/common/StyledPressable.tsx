@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {

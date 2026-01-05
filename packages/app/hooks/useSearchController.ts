@@ -4,11 +4,13 @@ import { useStorageObject } from 'app/storage/useStorageObject';
 import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
 import { showToast } from 'app/utils/helpers/showToast';
 import { useEffect, useRef, useState } from 'react';
-import { Platform, TextInput } from 'react-native';
+import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { useWeather } from './useWeather';
+import { useTranslate } from '@tolgee/react';
 
 export const useSearchController = () => {
+	const { t } = useTranslate('common');
 	const { setWeatherData } = useWeather();
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
@@ -34,11 +36,11 @@ export const useSearchController = () => {
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
 		} else {
-			console.error('Failed to fetch weather data for saved city');
 			showToast({
-				message: 'Error loading weather for the selected city. Please try again.',
+				message: t('search.city.error'),
 				type: 'error',
 			});
+			console.error('Failed to fetch weather data for saved city');
 		}
 	};
 
@@ -51,7 +53,7 @@ export const useSearchController = () => {
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
 		} else {
-			showToast({ message: 'Bad input try again.', type: 'error' });
+			showToast({ message: t('search.input.error'), type: 'error' });
 			console.log('Failed to fetch weather data for searched city');
 		}
 	};
@@ -91,69 +93,6 @@ export const useSearchController = () => {
 
 		setRecentSearches(newSearches);
 	};
-
-	// const handleSearch = async (suggestionOrValue: string | City) => {
-	// 	let searchQuery: string;
-
-	// 	if (typeof suggestionOrValue === 'string') {
-	// 		searchQuery = removeAccents(suggestionOrValue);
-	// 	} else {
-	// 		searchQuery = `${removeAccents(suggestionOrValue.name)}, ${suggestionOrValue.region}, ${suggestionOrValue.country}`;
-	// 	}
-
-	// 	await performSearch(searchQuery);
-
-	// 	console.log('What is searched:' + searchQuery);
-
-	// 	setSearchValue('');
-	// 	setSuggestions([]);
-	// 	// setShowSuggestions(false);
-	// };
-
-	// const handleRecentSearch = async (location: City) => {
-	// 	const searchQuery = `${removeAccents(location.name)}, ${location.region}, ${location.country}`;
-	// 	await performSearch(searchQuery);
-	// };
-
-	// const handleSelectSuggestion = (suggestion: City) => {
-	// 	handleSearch(suggestion);
-	// 	setSuggestions([]);
-	// 	setShowSuggestions(false);
-	// };
-
-	// const clearSearch = () => {
-	// 	setSearchValue('');
-	// 	setShowSuggestions(false);
-	// 	setIsXHovered(false);
-	// 	inputRef.current?.blur();
-	// };
-
-	// useEffect(() => {
-	// 	if (debounceTimerRef.current) {
-	// 		clearTimeout(debounceTimerRef.current);
-	// 	}
-
-	// 	if (searchValue.trim()) {
-	// 		debounceTimerRef.current = setTimeout(async () => {
-	// 			const { suggestionsData, error } = await fetchLocation(searchValue);
-	// 			if (suggestionsData && !error) {
-	// 				setSuggestions(suggestionsData);
-	// 				setShowSuggestions(true);
-	// 			} else {
-	// 				setSuggestions([]);
-	// 			}
-	// 		}, 300);
-	// 	} else {
-	// 		setSuggestions([]);
-	// 		setShowSuggestions(false);
-	// 	}
-
-	// 	return () => {
-	// 		if (debounceTimerRef.current) {
-	// 			clearTimeout(debounceTimerRef.current);
-	// 		}
-	// 	};
-	// }, [searchValue]);
 
 	useEffect(() => {
 		console.log(searchValue);

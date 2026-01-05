@@ -45,6 +45,7 @@ export const SearchBar = () => {
 						onSelect={(item) => {
 							handleCityPress(item);
 							addToRecentSearches(item);
+							setSearchValue('');
 						}}
 					/>
 				</AnimatedView>

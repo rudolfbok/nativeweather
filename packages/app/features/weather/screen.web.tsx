@@ -1,9 +1,9 @@
 'use client';
 
 import { fetchWeather } from 'app/api/fetchWeather';
-import { AnimatedView } from 'app/components/common/AnimatedView'; // cross-platform GSAP/Reanimated
+import { AnimatedView } from 'app/components/common/AnimatedView';
 import { StyledText } from 'app/components/common/StyledText';
-import { HeroSkeleton } from 'app/components/weather/HeroSkeleton';
+import { HeroSkeleton } from 'app/components/common/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
 import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';

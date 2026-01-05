@@ -12,7 +12,6 @@ interface AnimatedViewProps {
 export const AnimatedView = ({ children, transition, className }: AnimatedViewProps) => {
 	const opacity = useSharedValue(0);
 
-	// mount animation
 	useEffect(() => {
 		opacity.value = withTiming(1, { duration: transition?.duration ?? 200 });
 	}, []);

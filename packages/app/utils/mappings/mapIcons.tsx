@@ -36,7 +36,6 @@ interface MapWeatherIconsProps {
 	strokeWidth?: number;
 }
 
-// SOLUTION: Store component references, not JSX elements
 const dayIcons: Record<number, React.ComponentType<any>> = {
 	1000: ClearDay,
 	1003: PartCloudsDay,
@@ -141,8 +140,7 @@ const nightIcons: Record<number, React.ComponentType<any>> = {
 
 export const WeatherIcon = ({ isDay, code, width, height, strokeWidth }: MapWeatherIconsProps) => {
 	const icons = isDay === 1 ? dayIcons : nightIcons;
-	const IconComponent = icons[code] || OvercastDay; // Get component, not JSX element
+	const IconComponent = icons[code] || OvercastDay;
 
-	// SOLUTION: Render component directly so BaseIcon gets proper props for iOS shadows
 	return <IconComponent width={width} height={height} strokeWidth={strokeWidth!} />;
 };

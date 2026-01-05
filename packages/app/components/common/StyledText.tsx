@@ -25,7 +25,7 @@ interface StyledTextProps extends TextProps {
 
 export const StyledText = ({ children, type, className, ...rest }: StyledTextProps) => {
 	return (
-		<Text {...rest} className={clsx('text-label dark:text-label_dark', textStyles[type], className)}>
+		<Text className={clsx('text-label dark:text-label_dark', textStyles[type], className)} {...rest}>
 			{children}
 		</Text>
 	);

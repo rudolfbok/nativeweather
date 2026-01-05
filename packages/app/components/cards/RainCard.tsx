@@ -24,12 +24,12 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	});
 
 	const rainChanceRanges = [
-		{ max: 1, description: t('precipitation.chance.0') },
-		{ max: 10, description: t('precipitation.chance.1') },
-		{ max: 30, description: t('precipitation.chance.2') },
-		{ max: 50, description: t('precipitation.chance.3') },
-		{ max: 70, description: t('precipitation.chance.4') },
-		{ max: 90, description: t('precipitation.chance.5') },
+		{ max: 10, description: t('precipitation.chance.0') },
+		{ max: 30, description: t('precipitation.chance.1') },
+		{ max: 50, description: t('precipitation.chance.2') },
+		{ max: 70, description: t('precipitation.chance.3') },
+		{ max: 90, description: t('precipitation.chance.4') },
+		{ max: 100, description: t('precipitation.chance.5') },
 		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 

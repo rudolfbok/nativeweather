@@ -9,3 +9,10 @@
 .gm-style-cc {
 	display: none !important;
 }
+
+@media (hover: hover) and (pointer: fine) {
+	.group:hover .hover\\:opacity-100 {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}

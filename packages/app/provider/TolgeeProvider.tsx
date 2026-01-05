@@ -1,7 +1,6 @@
 'use client';
 
 import { Tolgee, TolgeeProvider as TolgeeReactProvider } from '@tolgee/react';
-import { StyledText } from 'app/components/common/StyledText';
 import CommonCS from 'app/locales/common/cs-CZ.json';
 import CommonEN from 'app/locales/common/en-US.json';
 import SettingsCS from 'app/locales/settings/cs-CZ.json';
@@ -37,7 +36,7 @@ export const TolgeeProvider = ({ children }: { children: ReactNode }) => {
 	}, [mounted, currentLang]);
 
 	if (!mounted || !tolgee) {
-		return null; // nebo splash
+		return null;
 	}
 
 	return <TolgeeReactProvider tolgee={tolgee}>{children}</TolgeeReactProvider>;

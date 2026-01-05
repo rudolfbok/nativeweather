@@ -5,7 +5,7 @@ import { SettingsFeature } from 'app/features/settings/screen';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { NativeWeatherLogo } from '../icons/logos/NativeWeatherLogo';

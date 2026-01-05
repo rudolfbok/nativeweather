@@ -23,8 +23,6 @@ export const SearchFeature = () => {
 	});
 
 	useEffect(() => {
-		// Run a Reanimated listener on scrollY
-		// const id = scrollY.value; // dummy read to avoid linter warning
 		const interval = setInterval(() => {
 			if (scrollY.value > 10) {
 				navigation.setOptions({
