@@ -8,6 +8,7 @@ import { GestureResponderEvent, View } from 'react-native';
 import { Separator } from 'app/components/common/Separator';
 import { ModalValueItem } from './ModalValueItem';
 import { Accordion } from 'app/components/common/Accordion';
+import { useStorageString } from 'app/storage/useStorageString';
 
 export const RainModal = ({
 	visible,
@@ -17,8 +18,10 @@ export const RainModal = ({
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
 }) => {
 	const { t } = useTranslate('weather');
+	const [currentUnits] = useStorageString('currentUnits');
+	const switchUnits = (mm: string, inches: string) => (currentUnits === 'metric' ? mm + 'mm' : inches + 'in');
 
-	const rainPrecipValues = [
+	const rainChanceValues = [
 		{
 			name: t('precipitation.chance.0'),
 			value: '0 - 10%',
@@ -51,6 +54,29 @@ export const RainModal = ({
 		},
 	];
 
+	const rainPrecipValues = [
+		{
+			name: t('precipitation.rainfall.0'),
+			value: switchUnits('0,1 - 2', '0.01 - 0.08'),
+		},
+		{
+			name: t('precipitation.rainfall.1'),
+			value: switchUnits('2 - 10', '0.08 - 0.40'),
+		},
+		{
+			name: t('precipitation.rainfall.2'),
+			value: switchUnits('10 - 30', '0.40 - 1.20'),
+		},
+		{
+			name: t('precipitation.rainfall.3'),
+			value: switchUnits('30 - 50', '1.20 - 2.00'),
+		},
+		{
+			name: t('precipitation.rainfall.4'),
+			value: switchUnits('> 50', '> 2.00'),
+		},
+	];
+
 	return (
 		<StyledModal visible={visible} icon={<CloudRain color="#2793FF" />} header={t('rain.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
@@ -60,7 +86,7 @@ export const RainModal = ({
 				</RoundView>
 				<Accordion title={t('rain.chance.values')}>
 					<RoundView className={clsx('gap-2 p-4')}>
-						{rainPrecipValues.map(({ name, value, description }, index) => (
+						{rainChanceValues.map(({ name, value, description }, index) => (
 							<View key={index} className={clsx('gap-4')}>
 								<ModalValueItem
 									showItemIndex={false}
@@ -69,6 +95,20 @@ export const RainModal = ({
 									value={value}
 									description={description}
 								/>
+								{index < rainChanceValues.length - 1 && <Separator />}
+							</View>
+						))}
+					</RoundView>
+				</Accordion>
+				<StyledText type="subtitle">{t('rain.rainfall.title')}</StyledText>
+				<RoundView className={clsx('p-4')}>
+					<StyledText type="body">{t('rain.rainfall.description')}</StyledText>
+				</RoundView>
+				<Accordion title={t('rain.rainfall.values')}>
+					<RoundView className={clsx('gap-2 p-4')}>
+						{rainPrecipValues.map(({ name, value }, index) => (
+							<View key={index} className={clsx('gap-4')}>
+								<ModalValueItem showItemIndex={false} name={name} textcolor="!text-primaryblue" value={value} />
 								{index < rainPrecipValues.length - 1 && <Separator />}
 							</View>
 						))}

@@ -1,19 +1,18 @@
 'use client';
 
-import 'raf/polyfill';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import { Header } from 'app/components/common/Header.web';
-import { Toaster } from 'burnt/web';
-import { TolgeeProvider } from 'app/provider/TolgeeProvider';
-import { useStorageString } from 'app/storage/useStorageString';
 import { ClientOnly } from 'app/components/common/ClientOnly';
-import { useState, useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Header } from 'app/components/common/Header.web';
+import { ThemeSync } from 'app/components/common/ThemeSync.web';
+import { TolgeeProvider } from 'app/provider/TolgeeProvider';
+import { initStorageDefaults } from 'app/storage/initStorageDefaults';
+import { initThemeFromStorage } from 'app/storage/initTheme';
+import { Toaster } from 'burnt/web';
 import { clsx } from 'clsx';
 import { useColorScheme } from 'nativewind';
-import { initThemeFromStorage } from 'app/storage/initTheme';
-import { initStorageDefaults } from 'app/storage/initStorageDefaults';
+import { Geist, Geist_Mono } from 'next/font/google';
+import 'raf/polyfill';
+import { useEffect } from 'react';
+import './globals.css';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -35,13 +34,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	// const [mounted, setMounted] = useState(false);
-	// const [currentTheme] = useStorageString("currentTheme");
-
-	// useEffect(() => {
-	//   setMounted(true);
-	// }, []);
-
 	useEffect(() => {
 		initThemeFromStorage();
 	}, []);
@@ -50,30 +42,6 @@ export default function RootLayout({
 		initStorageDefaults();
 	}, []);
 
-	// useEffect(() => {
-	//   // if (!mounted) return null;
-	//   if (Platform.OS === "web" && currentTheme === "system") {
-	//     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-	//     const toggle = () => {
-	//       document.documentElement.classList.toggle("dark", mediaQuery.matches);
-	//     };
-
-	//     toggle();
-
-	//     mediaQuery.addEventListener("change", toggle);
-
-	//     return () => mediaQuery.removeEventListener("change", toggle);
-	//   }
-
-	//   // If user selects light/dark explicitly, force class
-	//   if (Platform.OS === "web" && currentTheme !== "system") {
-	//     document.documentElement.classList.toggle(
-	//       "dark",
-	//       currentTheme === "dark"
-	//     );
-	//   }
-	// }, [currentTheme]);
 	const NWTheme = useColorScheme();
 	return (
 		<html lang="en">
@@ -87,6 +55,7 @@ export default function RootLayout({
 			>
 				<ClientOnly>
 					<TolgeeProvider>
+						<ThemeSync />
 						<Header />
 						{children}
 						<Toaster theme={NWTheme.colorScheme} position="bottom-right" />

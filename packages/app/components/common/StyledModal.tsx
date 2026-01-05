@@ -45,7 +45,7 @@ export const StyledModal = ({
 				className={clsx(
 					'overflow-hidden',
 					'no-modal-scroll',
-					'absolute inset-0 bottom-0 m-auto max-md:mt-[5vh]',
+					'web:max-md:mt-[5vh] absolute inset-0 bottom-0 m-auto',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'web:rounded-tl-3xl web:rounded-tr-3xl web:md:rounded-3xl',
 					'h-[95vh] w-full md:!h-fit md:max-h-[90vh] md:max-w-2xl lg:max-w-3xl',
@@ -66,8 +66,7 @@ export const StyledModal = ({
 				<ScrollView
 					ref={ref}
 					contentContainerClassName={clsx('ios:pb-8 px-4 pb-4')}
-					// showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
-					showsVerticalScrollIndicator={true}
+					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
 					contentInsetAdjustmentBehavior="automatic"
 					className={clsx('rounded-bl-3xl rounded-br-3xl')}
 				>

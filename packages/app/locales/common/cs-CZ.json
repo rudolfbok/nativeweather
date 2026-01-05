@@ -8,6 +8,12 @@
 		"title": "Oblíbené"
 	},
 	"search": {
+		"city": {
+			"error": "Chyba při načítání počasí pro vybrané město"
+		},
+		"input": {
+			"error": "Nepodařilo se načíst data o počasí pro hledané město"
+		},
 		"searchbar": "Zadejte město nebo souřadnice..",
 		"title": "Hledání"
 	},

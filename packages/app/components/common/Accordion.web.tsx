@@ -32,12 +32,12 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	}, [expanded]);
 
 	return (
-		<div className="flex flex-col gap-2">
+		<div className={clsx('flex flex-col', expanded && 'gap-2')}>
 			<div
-				className="group flex cursor-pointer flex-row items-center justify-between"
+				className={clsx('flex cursor-pointer flex-row items-center justify-between')}
 				onClick={() => setExpanded((prev) => !prev)}
 			>
-				<StyledText type="subtitle" className={clsx('group-hover:underline')}>
+				<StyledText type="subtitle" className={clsx('hover:underline')}>
 					{title}
 				</StyledText>
 				<div ref={arrowRef}>

@@ -363,10 +363,24 @@
 			"5": "Almost certain",
 			"6": "Certain"
 		},
+		"rainfall": {
+			"0": "Light rain",
+			"1": "Mild rain",
+			"2": "Strong rain",
+			"3": "Very strong rain",
+			"4": "Extreme rain"
+		},
 		"snow": {
 			"chance": {
 				"2": "Flurries possible"
 			}
+		},
+		"snowfall": {
+			"0": "Powder",
+			"1": "Light snowfall",
+			"2": "Heavy snowfall",
+			"3": "Very heavy snowfall",
+			"4": "Extreme snowfall"
 		}
 	},
 	"pressure": {
@@ -403,6 +417,9 @@
 			"values": "Percentage chance"
 		},
 		"rainfall": "Rainfall:",
+		"rainfall.description": "Precipitation (in millimeters) is the expected water level in millimeters per square meter. Unlike probability, this figure describes the intensity and amount of rain – that is, how much water will actually fall, not how much of an area will be affected by the precipitation.",
+		"rainfall.title": "Rainfall",
+		"rainfall.values": "Rainfall values",
 		"title": "Rain"
 	},
 	"smartsummary": {
@@ -423,6 +440,9 @@
 			"values": "Percentage chance"
 		},
 		"snowfall": "Snowfall:",
+		"snowfall.description": "Snowfall (in centimeters) is the expected snow depth in centimeters per square meter. Unlike probability, this figure describes the intensity and amount of snow – that is, how much snow will actually accumulate, not how much of an area will be affected by the precipitation.",
+		"snowfall.title": "Snowfall",
+		"snowfall.values": "Snowfall values",
 		"title": "Snow"
 	},
 	"sunrise": {

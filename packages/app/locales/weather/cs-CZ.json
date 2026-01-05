@@ -363,10 +363,24 @@
 			"5": "Téměř jistý",
 			"6": "Jistý"
 		},
+		"rainfall": {
+			"0": "Slabý déšť",
+			"1": "Mírný déšť",
+			"2": "Silný déšť",
+			"3": "Velmi silný déšť",
+			"4": "Extrémní déšť"
+		},
 		"snow": {
 			"chance": {
 				"2": "Přeháňky možné"
 			}
+		},
+		"snowfall": {
+			"0": "Poprašek",
+			"1": "Mírné sněžení",
+			"2": "Silné sněžení",
+			"3": "Velmi silné sněžení",
+			"4": "Extrémní sněžení"
 		}
 	},
 	"pressure": {
@@ -403,6 +417,9 @@
 			"values": "Procentuální šance"
 		},
 		"rainfall": "Srážky:",
+		"rainfall.description": "Množství srážek (uváděné v milimetrech) vyjadřuje očekávanou výšku vodní hladiny v milimetrech na jeden metr čtvereční. Na rozdíl od pravděpodobnosti tento údaj popisuje intenzitu a vydatnost deště – tedy kolik vody skutečně naprší, nikoliv jak velkou část území srážky zasáhnou.",
+		"rainfall.title": "Úhrn srážek",
+		"rainfall.values": "Hodnoty srážek",
 		"title": "Déšť"
 	},
 	"smartsummary": {
@@ -423,6 +440,9 @@
 			"values": "Procentuální šance"
 		},
 		"snowfall": "Sníh:",
+		"snowfall.description": "Sněhová pokrývka (v centimetrech) je předpokládaná výška sněhu v centimetrech na metr čtvereční. Na rozdíl od pravděpodobnosti tento údaj popisuje intenzitu a množství sněhu, tj. kolik sněhu se skutečně nahromadí, nikoli jak velká plocha bude zasažena srážkami.",
+		"snowfall.title": "Úhrn srážek",
+		"snowfall.values": "Hodnoty srážek",
 		"title": "Sníh"
 	},
 	"sunrise": {
