@@ -9,6 +9,7 @@ import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { DynamicColorIOS, Pressable } from 'react-native';
+import { shareLink } from 'app/utils/services/shareLink';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
@@ -28,10 +29,7 @@ export default function TabLayout() {
 
 	const LeftButton = () => {
 		return (
-			<Pressable
-				onPress={() => console.log('Share button was pressed!')}
-				className={clsx('h-fit w-10 items-center justify-center')}
-			>
+			<Pressable onPress={() => shareLink(weatherData)} className={clsx('h-fit w-10 items-center justify-center')}>
 				<Share size={22} color={titleColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);

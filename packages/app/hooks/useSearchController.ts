@@ -1,8 +1,8 @@
 import { fetchLocation, fetchWeather } from 'app/api/fetchWeather';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
-import { buildWeatherSlug } from 'app/utils/helpers/buildWeatherSlug';
-import { showToast } from 'app/utils/helpers/showToast';
+import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
+import { showToast } from 'app/utils/services/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';

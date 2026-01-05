@@ -35,8 +35,8 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	}
 
 	return (
-		<View>
-			<View className={clsx('mb-3 flex min-h-6 flex-row items-center justify-between')}>
+		<View className={clsx('gap-2')}>
+			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
 				<StyledText type="screentitle" className={clsx('!text-2xl')}>
 					{t('favorites.title')}
 				</StyledText>
@@ -78,10 +78,10 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 									<Pressable
 										onPress={() => handleRemoveCity(city)}
 										className={clsx(
-											'absolute -top-1.5 right-0 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1.5 hover:bg-red-800'
+											'absolute -top-1 right-1 h-fit w-fit justify-center rounded-3xl rounded-full bg-red-600 p-1 hover:bg-red-800'
 										)}
 									>
-										<Trash color="white" size={26} style={{ pointerEvents: 'none' }} />
+										<Trash color="white" size={22} style={{ pointerEvents: 'none' }} />
 									</Pressable>
 								</AnimatedView>
 							)}

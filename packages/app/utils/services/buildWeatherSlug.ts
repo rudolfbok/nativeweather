@@ -1,7 +1,7 @@
 import { WeatherData } from 'app/types/weatherData';
-import { countryNameToCode } from './contryNameToCode';
+import { countryNameToCode } from '../helpers/countryNameToCode';
 
-export const buildWeatherSlug = (weatherData: WeatherData) => {
+export const buildWeatherSlug = (weatherData: WeatherData): string => {
 	if (!weatherData) return null;
 
 	const citySlug = weatherData.location.name

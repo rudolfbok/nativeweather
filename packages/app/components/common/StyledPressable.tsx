@@ -3,7 +3,7 @@ import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
-	className: string;
+	className?: string;
 	children: React.ReactNode;
 }
 

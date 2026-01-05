@@ -1,15 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
-import { Platform } from 'react-native';
 import { useStorageString } from 'app/storage/useStorageString';
+import { useEffect } from 'react';
 
 export const ThemeSync = () => {
 	const [currentTheme] = useStorageString('currentTheme');
 
 	useEffect(() => {
-		if (Platform.OS !== 'web') return;
-
 		if (currentTheme === 'system') {
 			const mq = window.matchMedia('(prefers-color-scheme: dark)');
 

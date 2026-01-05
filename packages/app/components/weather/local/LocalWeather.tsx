@@ -1,103 +1,41 @@
+'use client';
+
 import { useTranslate } from '@tolgee/react';
-import { fetchWeather } from 'app/api/fetchWeather';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledText } from 'app/components/common/StyledText';
+import { useCurrentLocation } from 'app/hooks/useCurrentLocation';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useSearchController } from 'app/hooks/useSearchController';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
-import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
-import { useEffect, useState } from 'react';
-import { Pressable, View } from 'react-native';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledButton } from 'app/components/common/StyledButton';
-import { StyledText } from 'app/components/common/StyledText';
+import { useEffect } from 'react';
+import { View } from 'react-native';
 import { CityCard } from '../CityCard';
 
 export const LocalWeather = () => {
 	const { t } = useTranslate('weather');
-	const { localWeatherData, setLocalWeatherData } = useLocalWeather();
+	const { localWeatherData } = useLocalWeather();
+	const { getLocalWeather, error } = useCurrentLocation();
 	const { handleCityPress } = useSearchController();
-	const [showLocalWeather, setShowLocalWeather] = useStorageBoolean('showLocalWeather');
-	const [loading, setLoading] = useState(true);
-	const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
-	async function currentLocationClick() {
-		try {
-			setLoading(true);
-			setErrorMsg(null);
-
-			// This will always show the permission dialog
-			const { status } = await requestForegroundPermissionsAsync();
-
-			if (status === 'granted') {
-				await getCurrentLocationWeather();
-			} else {
-				setErrorMsg(t('localweather.error.permission'));
-				setLoading(false);
-			}
-		} catch (error) {
-			console.error('Error requesting location permission:', error);
-			setErrorMsg(t('localweather.error.location'));
-			setLoading(false);
-		}
-	}
-
-	const getCurrentLocationWeather = async () => {
-		try {
-			// Request location permission
-			const { status } = await requestForegroundPermissionsAsync();
-			if (status !== 'granted') {
-				setErrorMsg(t('localweather.error.permission'));
-				setLoading(false);
-				return;
-			}
-
-			// Get current position
-			const currentLocation = await getCurrentPositionAsync({
-				accuracy: Accuracy.Balanced,
-			});
-
-			const { latitude, longitude } = currentLocation.coords;
-
-			const weatherData = await fetchWeather(`${latitude},${longitude}`);
-
-			if (!weatherData) {
-				setErrorMsg(t('localweather.error.fetch'));
-			} else {
-				setLocalWeatherData(weatherData);
-				setErrorMsg(null);
-			}
-		} catch (error) {
-			console.error('Error getting location weather:', error);
-			setErrorMsg(t('localweather.error.location'));
-		} finally {
-			setLoading(false);
-		}
-	};
 
 	useEffect(() => {
-		getCurrentLocationWeather();
+		getLocalWeather();
 	}, []);
 
-	// if (loading) {
-	// 	return <LoadingIndicator text={t('localweather.loading')} />;
-	// }
-
-	if (errorMsg) {
+	if (error) {
 		return (
-			<View>
-				<StyledText type="screentitle" className={clsx('mb-2 !text-2xl')}>
+			<View className={clsx('gap-2')}>
+				<StyledText type="screentitle" className={clsx('!text-2xl')}>
 					{t('localweather.title')}
 				</StyledText>
-				<View className={clsx('w-full gap-4')}>
-					<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
-						<StyledText type="body" className={clsx('text-center')}>
-							{t('localweather.permission')}
+				<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+					<RoundView className={clsx('p-4 lg:w-fit')}>
+						<StyledText type="body" className="text-center font-semibold !text-red-500">
+							{t('localweather.error.notavailable')}
+						</StyledText>
+						<StyledText type="body" className="text-center">
+							{t('localweather.error.followup')}
 						</StyledText>
 					</RoundView>
-					<View className={clsx('flex w-full flex-col items-center justify-center gap-3 lg:flex-row')}>
-						<StyledButton onPress={() => currentLocationClick()} text={t('localweather.button.allow')} />
-						<StyledButton onPress={() => setShowLocalWeather(false)} text={t('localweather.button.forbid')} />
-					</View>
 				</View>
 			</View>
 		);
@@ -107,12 +45,12 @@ export const LocalWeather = () => {
 		return null;
 	}
 
-	if (localWeatherData) {
-		return (
-			<View>
-				<StyledText type="screentitle" className={clsx('mb-2 !text-2xl')}>
-					{t('localweather.title')}
-				</StyledText>
+	return (
+		<View className={clsx('gap-2')}>
+			<StyledText type="screentitle" className={clsx('!text-2xl')}>
+				{t('localweather.title')}
+			</StyledText>
+			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<CityCard
 					onPress={() => handleCityPress(localWeatherData.location)}
 					city={localWeatherData.location.name}
@@ -125,6 +63,6 @@ export const LocalWeather = () => {
 					region={localWeatherData.location.region}
 				/>
 			</View>
-		);
-	}
+		</View>
+	);
 };

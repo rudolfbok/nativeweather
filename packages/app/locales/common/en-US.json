@@ -17,6 +17,9 @@
 		"searchbar": "Search any city or coordinates..",
 		"title": "Search"
 	},
+	"share": {
+		"message": "Current weather in"
+	},
 	"tab": {
 		"home": "Home",
 		"maps": "Maps",

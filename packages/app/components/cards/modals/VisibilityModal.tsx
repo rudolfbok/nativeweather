@@ -49,7 +49,7 @@ export const VisibilityModal = ({
 		},
 		{
 			name: t('description.visibility.6'),
-			value: switchUnits('>50', '>30'),
+			value: switchUnits('> 50', '> 30'),
 		},
 	];
 

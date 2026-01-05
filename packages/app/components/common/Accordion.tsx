@@ -1,7 +1,7 @@
-import { ReactNode, useState } from 'react';
-import { Pressable, View, LayoutChangeEvent } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { ChevronRight } from 'lucide-react-native';
+import { ReactNode, useState } from 'react';
+import { Pressable } from 'react-native';
+import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyledText } from './StyledText';
 
 interface AccordionProps {
@@ -11,50 +11,28 @@ interface AccordionProps {
 
 export const Accordion = ({ title, children }: AccordionProps) => {
 	const [expanded, setExpanded] = useState(false);
-	const [measured, setMeasured] = useState(false);
-
-	const contentHeight = useSharedValue(0);
-	const animatedHeight = useSharedValue(0);
-	const rotate = useSharedValue(0);
-
-	const handleMeasure = (e: LayoutChangeEvent) => {
-		if (!measured) {
-			const height = e.nativeEvent.layout.height;
-			contentHeight.value = height;
-			setMeasured(true);
-		}
-	};
 
 	const toggle = () => {
-		const next = !expanded;
-		setExpanded(next);
-
-		animatedHeight.value = withTiming(next ? contentHeight.value : 0, { duration: 250 });
-
-		rotate.value = withTiming(next ? 90 : 0, { duration: 250 });
+		setExpanded((prev) => !prev);
 	};
 
-	const contentStyle = useAnimatedStyle(() => ({
-		height: animatedHeight.value,
-		overflow: 'hidden',
-	}));
-
 	const chevronStyle = useAnimatedStyle(() => ({
-		transform: [{ rotate: `${rotate.value}deg` }],
+		transform: [{ rotate: withTiming(expanded ? '90deg' : '0deg', { duration: 250 }) }],
 	}));
 
 	return (
-		<View>
-			<Pressable onPress={toggle} className="flex-row items-center justify-between py-2">
+		<Animated.View layout={LinearTransition} className="gap-2 overflow-hidden">
+			<Pressable onPress={toggle} className="flex-row items-center justify-between">
 				<StyledText type="subtitle">{title}</StyledText>
 				<Animated.View style={chevronStyle}>
 					<ChevronRight size={26} color="#007AFF" />
 				</Animated.View>
 			</Pressable>
-
-			<Animated.View style={contentStyle}>
-				<View onLayout={handleMeasure}>{children}</View>
-			</Animated.View>
-		</View>
+			{expanded && (
+				<Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(200)}>
+					{children}
+				</Animated.View>
+			)}
+		</Animated.View>
 	);
 };

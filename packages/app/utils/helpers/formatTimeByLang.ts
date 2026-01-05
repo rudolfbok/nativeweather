@@ -1,4 +1,4 @@
-export function formatTimeByLang(timeStr: string, lang = 'en-US') {
+export const formatTimeByLang = (timeStr: string, lang = 'en-US'): string => {
 	const timeFormat = /^\d{1,2}:\d{2}\s?(AM|PM)$/i;
 	if (!timeFormat.test(timeStr)) {
 		return 'No data';
@@ -20,4 +20,4 @@ export function formatTimeByLang(timeStr: string, lang = 'en-US') {
 		minute: '2-digit',
 		hour12: lang === 'en-US' ? true : false,
 	}).format(date);
-}
+};

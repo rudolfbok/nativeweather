@@ -17,6 +17,9 @@
 		"searchbar": "Zadejte město nebo souřadnice..",
 		"title": "Hledání"
 	},
+	"share": {
+		"message": "Aktuální počasí v"
+	},
 	"tab": {
 		"home": "Domů",
 		"maps": "Mapy",
