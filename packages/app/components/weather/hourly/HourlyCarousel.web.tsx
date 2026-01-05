@@ -39,7 +39,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 	const isTouchDevice = navigator.maxTouchPoints > 0;
 
 	const arrowBase = clsx(
-		isTouchDevice && 'group-hover:opacity-0',
+		isTouchDevice && '!opacity-0',
 		'pointer-events-none opacity-0 transition-opacity',
 		'group-hover:pointer-events-auto group-hover:opacity-100',
 		'focus-visible:pointer-events-auto focus-visible:opacity-100',
