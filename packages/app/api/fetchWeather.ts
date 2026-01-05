@@ -1,10 +1,9 @@
 import { WeatherData } from 'app/types/weatherData';
 
-const API_KEY = 'REDACTED_API_KEY';
-const BASE_URL = 'https://api.weatherapi.com/v1/';
+const BASE_URL = 'https://my-weather-proxy.rudolf-bok-account.workers.dev/';
 
 export const fetchWeather = async (query: string | number[]): Promise<WeatherData> => {
-	const weatherUrl = `${BASE_URL}forecast.json?key=${API_KEY}&q=${query}&days=7&aqi=no&alerts=yes`;
+	const weatherUrl = `${BASE_URL}forecast.json?&q=${query}&days=7&aqi=no&alerts=yes`;
 
 	try {
 		const response = await fetch(weatherUrl);
@@ -27,7 +26,7 @@ export const fetchWeather = async (query: string | number[]): Promise<WeatherDat
 };
 
 export const fetchLocation = async (searchedLocation: string) => {
-	const locationUrl = `${BASE_URL}search.json?key=${API_KEY}&q=${searchedLocation}`;
+	const locationUrl = `${BASE_URL}search.json?&q=${searchedLocation}`;
 
 	try {
 		const response = await fetch(locationUrl);

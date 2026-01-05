@@ -1,8 +1,10 @@
+// or 'react-native-linear-gradient'
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { StyledText } from 'app/components/common/StyledText';
+import { LinearGradient } from 'expo-linear-gradient';
 import { View } from 'react-native';
+import { StyledText } from 'app/components/common/StyledText';
 
 export const TemperatureInfo = () => {
 	const [currentTemp] = useStorageString('currentTemp');
@@ -31,33 +33,39 @@ export const TemperatureInfo = () => {
 	];
 
 	const stops = currentTemp === 'celsius' ? celsiusStops : fahrenheitStops;
-
-	// CSS linear-gradient string
-	const gradient = `linear-gradient(to right, ${stops
-		.map((stop, index) => {
-			const percent = (index / (stops.length - 1)) * 100;
-			return `${stop.color} ${percent}%`;
-		})
-		.join(', ')})`;
+	const locations = stops.map((_, index) => index / (stops.length - 1)) as unknown as readonly [
+		number,
+		number,
+		...number[],
+	];
+	const colors = stops.map((stop) => stop.color) as unknown as readonly [string, string, ...string[]];
 
 	return (
 		<View>
 			<StyledText type="body">{t('maps.legend.temperature')}</StyledText>
-			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')} style={{ background: gradient }}>
-				<View className={clsx('relative ml-1 mr-6 h-full flex-1 flex-row items-center justify-between md:mr-7')}>
-					{stops.map((stop, index) => (
-						<View
-							key={index}
-							className={clsx('absolute flex flex-col items-center')}
-							style={{ left: `${(index / (stops.length - 1)) * 100}%` }}
-						>
-							<StyledText type="bodysecondary" className={clsx('font-semibold !text-black')}>
-								{stop.temp}°
-							</StyledText>
-							<View className={clsx('h-4 w-[2px] bg-black')} />
-						</View>
-					))}
-				</View>
+			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')}>
+				<LinearGradient
+					colors={colors}
+					locations={locations}
+					style={{ flex: 1 }}
+					start={{ x: 0, y: 0 }}
+					end={{ x: 1, y: 0 }}
+				>
+					<View className={clsx('ml-1 mr-6 flex-1 flex-row items-center justify-between md:mr-7')}>
+						{stops.map((stop, index) => (
+							<View
+								key={index}
+								className={clsx('absolute items-center')}
+								style={{ left: `${(index / (stops.length - 1)) * 100}%` }}
+							>
+								<StyledText type="bodysecondary" className={clsx('font-semibold !text-black')}>
+									{stop.temp}°
+								</StyledText>
+								<View className={clsx('h-4 w-[2px] bg-black')} />
+							</View>
+						))}
+					</View>
+				</LinearGradient>
 			</View>
 		</View>
 	);

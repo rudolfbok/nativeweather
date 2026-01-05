@@ -31,6 +31,7 @@ import { Platform, Pressable, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { MapsView } from './maps/MapsView.web';
 import { HourlyForecast } from './hourly/HourlyForecast';
+import { HeroSkeleton } from '../common/HeroSkeleton';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
@@ -68,9 +69,11 @@ export const HeroWeather = () => {
 		10
 	);
 
-	if (!weatherData || !airQualityData) {
-		return <LoadingIndicator text="Weather is loading" />;
-	}
+	// if (!weatherData) {
+	// 	return <HeroSkeleton />;
+	// }
+
+	// if (!airQualityData) return null;
 
 	const currentIndex = weatherData.forecast.forecastday[0].hour.findIndex(
 		(hour) => getHour24FromEpoch(hour.time_epoch, tzId) === currentHour24
@@ -193,8 +196,8 @@ export const HeroWeather = () => {
 						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalsnow_cm}
 						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalsnow_cm * 0.393701).toFixed(2))}
 						cloudCover={weatherData.current.cloud}
-						airQualityEU={airQualityData.current.european_aqi}
-						airQualityUS={airQualityData.current.us_aqi}
+						airQualityEU={airQualityData?.current.european_aqi}
+						airQualityUS={airQualityData?.current.us_aqi}
 					/>
 					<HourlyForecast />
 					<AirQuality className={clsx('xl:hidden')} />

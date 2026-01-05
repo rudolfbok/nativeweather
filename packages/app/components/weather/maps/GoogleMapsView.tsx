@@ -12,6 +12,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { mapColorTheme } from './GoogleMapsTheme';
 import { TemperatureInfo } from './TemperatureInfo';
+import { AnimatedView } from 'app/components/common/AnimatedView';
 
 export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
@@ -24,7 +25,6 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const switchColors = useSwitchColors('black', 'white');
 
 	const GOOGLE_API_KEY = 'REDACTED_GOOGLE_MAPS_API_KEY'!;
-	const OPENWEATHER_API_KEY = 'REDACTED_OPENWEATHER_API_KEY';
 
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: GOOGLE_API_KEY,
@@ -66,7 +66,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 
 		const weatherTile = new window.google.maps.ImageMapType({
 			getTileUrl: (coord, zoom) =>
-				`https://tile.openweathermap.org/map/${layer}/${zoom}/${coord.x}/${coord.y}.png?appid=${OPENWEATHER_API_KEY}`,
+				`https://my-openweather-proxy.rudolf-bok-account.workers.dev/${layer}/${zoom}/${coord.x}/${coord.y}.png`,
 			tileSize: new window.google.maps.Size(256, 256),
 			opacity: 5,
 			name: 'Weather',
@@ -134,21 +134,23 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 				</View>
 			</View>
 			{showLegend && layer === 'temp_new' && (
-				<View className={clsx('absolute bottom-4 left-4 right-4')}>
-					<RoundView className={clsx('p-4')}>
-						<View className={clsx('flex w-full flex-row items-center justify-between')}>
-							<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
-							<Pressable
-								onPress={() => setShowLegend((prev) => !prev)}
-								className={clsx(
-									'hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark rounded-3xl p-1'
-								)}
-							>
-								<X color="#007AFF" />
-							</Pressable>
-						</View>
-						<TemperatureInfo />
-					</RoundView>
+				<View className={clsx('absolute bottom-4 right-4 max-lg:left-4')}>
+					<AnimatedView transition={{ duration: 300 }}>
+						<RoundView className={clsx('p-4')}>
+							<View className={clsx('flex w-full flex-row items-center justify-between')}>
+								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
+								<Pressable
+									onPress={() => setShowLegend((prev) => !prev)}
+									className={clsx(
+										'hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark rounded-3xl p-1'
+									)}
+								>
+									<X color="#007AFF" />
+								</Pressable>
+							</View>
+							<TemperatureInfo />
+						</RoundView>
+					</AnimatedView>
 				</View>
 			)}
 		</View>
