@@ -19,15 +19,6 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const [currentAQI] = useStorageString('currentAQI');
 	const [showAirQualityModal, setShowAirQualityModal] = useState(false);
 
-	// if (!airQualityData) {
-	// 	return (
-	// 		<LoadingIndicator
-	// 			text="Loading air quality data.."
-	// 			className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
-	// 		/>
-	// 	);
-	// }
-
 	const aq = airQualityData?.current;
 
 	const euAQIranges = [

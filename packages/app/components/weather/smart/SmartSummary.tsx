@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useTranslate } from '@tolgee/react';
 import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
@@ -21,6 +21,11 @@ interface SmartSummaryProps {
 	snowPrecipCm: number;
 	snowPrecipIn: number;
 	cloudCover?: number;
+	airQualityEU?: number;
+	airQualityUS?: number;
+	uvIndex?: number;
+	maxWindKph?: number;
+	avgVisibilityKm?: number;
 }
 
 export const SmartSummary = React.memo(function SmartSummary({
@@ -32,87 +37,100 @@ export const SmartSummary = React.memo(function SmartSummary({
 	rainPrecipIn,
 	snowPrecipCm,
 	snowPrecipIn,
-	cloudCover,
+	cloudCover = 0,
+	airQualityEU,
+	airQualityUS,
+	uvIndex,
+	maxWindKph,
+	avgVisibilityKm,
 }: SmartSummaryProps) {
-	const { t } = useTranslate('weather');
+	const { t } = useTranslate('summary');
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentUnits] = useStorageString('currentUnits');
+	const [currentAQI] = useStorageString('currentAQI');
 
-	const displayMinTemp = useSwitchTemp({
-		celsius: minTempC,
-		fahrenheit: minTempF,
-		currentTemp,
-	});
+	const displayMin = useSwitchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp });
+	const displayMax = useSwitchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
 
-	const displayMaxTemp = useSwitchTemp({
-		celsius: maxTempC,
-		fahrenheit: maxTempF,
-		currentTemp,
-	});
-
-	const displayRainPrecip = useSwitchMetrics({
+	const rain = useSwitchMetrics({
 		metric: `${rainPrecipMm.toFixed(1)}mm`,
 		imperial: `${rainPrecipIn.toFixed(2)}in`,
-		currentUnits: currentUnits,
+		currentUnits,
 	});
-
-	const displaySnowPrecip = useSwitchMetrics({
+	const snow = useSwitchMetrics({
 		metric: `${snowPrecipCm.toFixed(1)}cm`,
 		imperial: `${snowPrecipIn.toFixed(2)}in`,
-		currentUnits: currentUnits,
+		currentUnits,
 	});
 
-	const warmTemplates = [
-		`Expect a warm day with the highest temperature reaching ${displayMaxTemp} and lowest ${displayMinTemp}.`,
-		`Today will be warm with temperatures from ${displayMinTemp} to ${displayMaxTemp}.`,
-		`Expect a warm day with temperatures ranging from ${displayMinTemp} to ${displayMaxTemp}.`,
-		`A warm day ahead with highs of ${displayMaxTemp} and lows of ${displayMinTemp}.`,
-	];
+	const variant = useMemo(() => Math.floor(Math.random() * 3) + 1, [maxTempC, rainPrecipMm]);
 
-	const coldTemplates = [
-		`Expect chilly weather today with temperatures from ${displayMinTemp} to ${displayMaxTemp}.`,
-		`Today will be cold with temperatures from ${displayMinTemp} to ${displayMaxTemp}.`,
-		`Cold conditions expected, topping out at just ${displayMaxTemp} and dropping as low as ${displayMinTemp}.`,
-		`A cold day ahead with lows of ${displayMinTemp} and highs of ${displayMaxTemp}.`,
-	];
+	const getTempText = () => {
+		const type = maxTempC > 20 ? 'warm' : 'cold';
+		return t(`${type}_${variant}`, { min: displayMin, max: displayMax });
+	};
 
-	const cloudyTemplates = [
-		`Skies are overcast right now.`,
-		`The sun hides behind the clouds.`,
-		`Clouds keep things gloomy at the moment.`,
-		`It's cloudy currently - not much sunshine.`,
-	];
+	const getCloudText = () => {
+		let type = 'clear';
+		if (!cloudCover) return null;
+		if (cloudCover > 20 && cloudCover <= 70) type = 'partly';
+		if (cloudCover > 70) type = 'overcast';
+		return t(`cloud_${type}_${variant}`);
+	};
 
-	const clearTemplates = [
-		`Skies are clear and sunny now.`,
-		`It's bright and sunny at the moment.`,
-		`You enjoy beautiful clear skies right now.`,
-	];
+	const getPrecipText = () => {
+		if (rainPrecipMm > 0.1) return t(`rain_${variant}`, { amount: rain });
+		if (snowPrecipCm > 0.1) return t(`snow_${variant}`, { amount: snow });
+		return '';
+	};
 
-	const rainSummary = [
-		`There may be ${displayRainPrecip} of rainfall.`,
-		`Rain is likely, with ${displayRainPrecip} expected.`,
-		`There should be around ${displayRainPrecip} of rain today.`,
-	];
+	const getAQIText = () => {
+		if (!airQualityEU || !airQualityUS) return null;
+		const type = (currentAQI?.toLowerCase() || 'us') as 'eu' | 'us';
+		const value = type === 'eu' ? airQualityEU : airQualityUS;
 
-	const snowSummary = [
-		`There may be ${displaySnowPrecip} of snowfall.`,
-		`Snow is likely, with ${displaySnowPrecip} expected.`,
-		`There should be around ${displaySnowPrecip} of snow today.`,
-	];
+		if (value === undefined) return '';
 
-	const getRandomTemplate = (templates: string[]) => templates[Math.floor(Math.random() * templates.length)];
-	const tempSummary = getRandomTemplate(maxTempC > 20 ? warmTemplates : coldTemplates);
-	const skySummary = getRandomTemplate(cloudCover !== undefined && cloudCover > 20 ? cloudyTemplates : clearTemplates);
-	const precipSummary =
-		rainPrecipMm > 0 ? getRandomTemplate(rainSummary) : snowPrecipCm > 0 ? getRandomTemplate(snowSummary) : '';
+		let level = 1;
+		if (type === 'eu') {
+			if (value <= 20) level = 1;
+			else if (value <= 40) level = 2;
+			else if (value <= 60) level = 3;
+			else if (value <= 80) level = 4;
+			else if (value <= 100) level = 5;
+			else level = 6;
+		} else {
+			if (value <= 50) level = 1;
+			else if (value <= 100) level = 2;
+			else if (value <= 150) level = 3;
+			else if (value <= 200) level = 4;
+			else if (value <= 300) level = 5;
+			else level = 6;
+		}
+
+		return t(`aqi_${type}_${level}_${variant}`);
+	};
+
+	const getWindText = () => {
+		if (!maxWindKph || maxWindKph < 15) return '';
+		const type = maxWindKph > 40 ? 'strong' : 'moderate';
+		return t(`wind_${type}_${variant}`);
+	};
+
+	const getExtraText = () => {
+		if (uvIndex && uvIndex > 6) return t(`uv_high_${variant}`);
+		if (avgVisibilityKm && avgVisibilityKm < 5) return t(`visibility_low_${variant}`);
+		return '';
+	};
+
+	const sentences = [getTempText(), getCloudText(), getWindText(), getPrecipText(), getExtraText(), getAQIText()];
+
+	const combinedSummary = sentences.filter(Boolean).join(' ');
 
 	return (
 		<RoundView className={clsx('w-full gap-2 p-4')}>
-			<CardHeader icon={<SmartSummaryIcon />} header={t('smartsummary.title')} />
-			<StyledText type="body">
-				{tempSummary} {skySummary} {precipSummary}
-			</StyledText>
+			<CardHeader icon={<SmartSummaryIcon />} header={t('title')} />
+			<StyledText type="body">{combinedSummary}</StyledText>
 		</RoundView>
 	);
 });

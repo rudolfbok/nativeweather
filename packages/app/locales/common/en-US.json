@@ -1,4 +1,11 @@
 {
+	"datasource": {
+		"googlemaps": "Basic map background for interactive display of geographic data",
+		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
+		"openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
+		"title": "Data sources",
+		"weatherapi": "The main source of data for current weather and forecasts and astronomical data"
+	},
 	"favorites": {
 		"delete": "Delete",
 		"error": "There was an error loading your favorite cities. Please try again.",
@@ -15,7 +22,10 @@
 			"error": "Failed to fetch weather data for searched city"
 		},
 		"searchbar": "Search any city or coordinates..",
-		"title": "Search"
+		"title": "Search",
+		"url": {
+			"error": "We couldn't find the city you were looking for \nPlease check the spelling or add the country name and try again"
+		}
 	},
 	"share": {
 		"message": "Current weather in"

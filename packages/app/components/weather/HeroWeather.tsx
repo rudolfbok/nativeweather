@@ -33,7 +33,7 @@ import { MapsView } from './maps/MapsView.web';
 import { HourlyForecast } from './hourly/HourlyForecast';
 
 export const HeroWeather = () => {
-	const { weatherData } = useWeather();
+	const { weatherData, airQualityData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const getWeatherByCode = useWeatherConditions();
 
@@ -68,7 +68,7 @@ export const HeroWeather = () => {
 		10
 	);
 
-	if (!weatherData) {
+	if (!weatherData || !airQualityData) {
 		return <LoadingIndicator text="Weather is loading" />;
 	}
 
@@ -183,7 +183,6 @@ export const HeroWeather = () => {
 						desktop="hidden"
 						mobile="lg:hidden"
 					/>
-
 					<SmartSummary
 						minTempC={weatherData.forecast.forecastday[0].day.mintemp_c}
 						maxTempC={weatherData.forecast.forecastday[0].day.maxtemp_c}
@@ -194,6 +193,8 @@ export const HeroWeather = () => {
 						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalsnow_cm}
 						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalsnow_cm * 0.393701).toFixed(2))}
 						cloudCover={weatherData.current.cloud}
+						airQualityEU={airQualityData.current.european_aqi}
+						airQualityUS={airQualityData.current.us_aqi}
 					/>
 					<HourlyForecast />
 					<AirQuality className={clsx('xl:hidden')} />

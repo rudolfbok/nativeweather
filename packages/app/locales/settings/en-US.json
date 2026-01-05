@@ -9,7 +9,6 @@
 		"iosonly": "(only iOS)",
 		"title": "Compass"
 	},
-	"datasource": "Data sources",
 	"feedback": {
 		"button": "Send feedback",
 		"text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",

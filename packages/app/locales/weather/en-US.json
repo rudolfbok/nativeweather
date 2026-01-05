@@ -298,18 +298,10 @@
 	},
 	"localtime": "Local time",
 	"localweather": {
-		"button": {
-			"allow": "Allow permission",
-			"forbid": "Turn off the feature"
-		},
 		"error": {
-			"fetch": "Failed to fetch weather data for your location.",
-			"location": "Failed to get your location.",
-			"main": "We couldn't load your location.",
-			"permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu."
+			"followup": "Please check your location access and network connection\nLocal weather can be disabled in settings",
+			"notavailable": "Local weather is not available"
 		},
-		"loading": "Loading your location..",
-		"permission": "Permission to access location was denied. Allow the permission or turn off the feature in the menu.",
 		"title": "Local weather"
 	},
 	"maps": {

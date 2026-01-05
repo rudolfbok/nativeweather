@@ -23,12 +23,12 @@ export const AQISelect = () => {
 				border={true}
 			/>
 			<SettingsItem
-				onPress={() => setCurrentAQI('USA')}
+				onPress={() => setCurrentAQI('US')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<USAFlag />}
 				title={t('airquality.american')}
 				variant="check"
-				selected={currentAQI === 'USA'}
+				selected={currentAQI === 'US'}
 				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>

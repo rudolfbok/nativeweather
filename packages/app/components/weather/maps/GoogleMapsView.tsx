@@ -1,37 +1,27 @@
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { useTranslate } from '@tolgee/react';
-import { fetchLocation } from 'app/api/fetchWeather';
+import { RoundView } from 'app/components/common/RoundView';
+import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledText } from 'app/components/common/StyledText';
+import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
 import { ReactNode, useEffect, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
-import { StyledPressable } from 'app/components/common/StyledPressable';
-import { StyledText } from 'app/components/common/StyledText';
-import { CloudsIcon } from 'app/components/icons/CloudsIcon';
-import { TemperatureInfo } from './TemperatureInfo';
-import { RoundView } from 'app/components/common/RoundView';
 import { mapColorTheme } from './GoogleMapsTheme';
+import { TemperatureInfo } from './TemperatureInfo';
 
 export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
-	const [lat, setLat] = useState(0);
-	const [lon, setLon] = useState(0);
 	const [showLegend, setShowLegend] = useState(false);
 	const [map, setMap] = useState<google.maps.Map | null>(null);
 	const [layer, setLayer] = useState<string | null>('temp_new');
-	const [mapCenter, setMapCenter] = useState({ lat, lng: lon });
+	const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number } | null>(null);
 
 	const switchColors = useSwitchColors('black', 'white');
-
-	useEffect(() => {
-		if (map && mapCenter) {
-			map.setCenter(mapCenter);
-			map.setZoom(10);
-		}
-	}, [weatherData]);
 
 	const GOOGLE_API_KEY = 'REDACTED_GOOGLE_MAPS_API_KEY'!;
 	const OPENWEATHER_API_KEY = 'REDACTED_OPENWEATHER_API_KEY';
@@ -46,34 +36,30 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 		// gestureHandling: 'cooperative',
 	};
 
-	const handleLocationSearch = async (location: string) => {
-		function removeAccents(input: string) {
-			return input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-		}
+	useEffect(() => {
+		if (weatherData?.location) {
+			const newCenter = {
+				lat: weatherData.location.lat,
+				lng: weatherData.location.lon,
+			};
+			setMapCenter(newCenter);
 
-		const trimmedLocation = removeAccents(location);
-
-		if (trimmedLocation) {
-			const locationData = await fetchLocation(trimmedLocation);
-
-			if (locationData) {
-				setLat(locationData[0].lat);
-				setLon(locationData[0].lon);
-				setMapCenter({ lat: locationData[0].lat, lng: locationData[0].lon });
+			if (map) {
+				map.panTo(newCenter);
+				map.setZoom(10);
 			}
 		}
-	};
+	}, [weatherData, map]);
 
-	useEffect(() => {
-		if (weatherData?.location?.name) {
-			const locationString = [
-				weatherData.location.name,
-				weatherData.location.region,
-				weatherData.location.country,
-			].join(', ');
-			handleLocationSearch(locationString);
+	const handleOnLoad = (mapInstance: google.maps.Map) => {
+		setMap(mapInstance);
+		if (weatherData?.location) {
+			mapInstance.setCenter({
+				lat: weatherData.location.lat,
+				lng: weatherData.location.lon,
+			});
 		}
-	}, [weatherData!.location.name, weatherData?.location.region, weatherData?.location.country]);
+	};
 
 	useEffect(() => {
 		if (!map) return;
@@ -132,7 +118,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 				mapContainerClassName={clsx('h-full w-full rounded-3xl')}
 				center={mapCenter}
 				zoom={7}
-				onLoad={setMap}
+				onLoad={handleOnLoad}
 				options={mapOptions}
 			/>
 			<View className={clsx('absolute bottom-4 right-4 flex-row items-end gap-2')}>

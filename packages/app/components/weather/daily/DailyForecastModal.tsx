@@ -97,6 +97,9 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 					rainPrecipIn={day.day.totalprecip_in}
 					snowPrecipCm={day.day.totalsnow_cm}
 					snowPrecipIn={Number((day.day.totalsnow_cm * 0.393701).toFixed(2))}
+					maxWindKph={day.day.maxwind_kph}
+					uvIndex={day.day.uv}
+					avgVisibilityKm={day.day.avgvis_km}
 				/>
 				<HourlyCarousel
 					data={day.hour}

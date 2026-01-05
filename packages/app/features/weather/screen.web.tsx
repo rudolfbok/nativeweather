@@ -12,14 +12,17 @@ import clsx from 'clsx';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import { RoundView } from 'app/components/common/RoundView';
+import { useTranslate } from '@tolgee/react';
 
 export const WeatherFeature = () => {
+	const { t } = useTranslate('common');
 	const { weatherData, setWeatherData } = useWeather();
 	const router = useRouter();
 	const params = useParams<{ city: string }>();
 	const searchParams = useSearchParams();
 
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(null);
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
@@ -69,20 +72,22 @@ export const WeatherFeature = () => {
 		};
 	}, [weatherData?.location]);
 
-	if (loading) {
-		return <HeroSkeleton />;
-	}
-
 	if (!weatherData) return null;
 
 	if (error) {
 		return (
 			<View className={clsx('w-full items-center')}>
-				<StyledText type="title" className={clsx('text-center')}>
-					Could not find the city you are looking for. <br /> Please repeat and be more smart
-				</StyledText>
+				<RoundView className={clsx('p-4 max-md:w-full')}>
+					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
+						{t('search.url.error')}
+					</StyledText>
+				</RoundView>
 			</View>
 		);
+	}
+
+	if (loading || !weatherData) {
+		return <HeroSkeleton />;
 	}
 
 	return (

@@ -298,18 +298,10 @@
 	},
 	"localtime": "Místní čas",
 	"localweather": {
-		"button": {
-			"allow": "Povolit oprávnění",
-			"forbid": "Vypnout funkci"
-		},
 		"error": {
-			"fetch": "Nepodařilo se načíst údaje o počasí pro vaši polohu.",
-			"location": "Nepodařilo se zjistit vaši polohu.",
-			"main": "Nepodařilo se načíst vaší lokaci",
-			"permission": "Přístup k poloze byl zamítnut. Povolte přístup nebo tuto funkci vypněte v nabídce."
+			"followup": "Zkontrolujte prosím přístup k poloze a připojení k síti\nMístní počasí lze deaktivovat v nastavení",
+			"notavailable": "Předpověď počasí není k dispozici"
 		},
-		"loading": "Načítáme vaší lokaci..",
-		"permission": "Povolení k přístupu k poloze bylo zamítnuto. Povolte oprávnění nebo funkci vypněte v menu.",
 		"title": "Místní počasí"
 	},
 	"maps": {

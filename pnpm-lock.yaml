@@ -188,6 +188,9 @@ importers:
       '@react-google-maps/api':
         specifier: ^2.20.8
         version: 2.20.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@tolgee/format-icu':
+        specifier: ^6.2.7
+        version: 6.2.7
       '@tolgee/react':
         specifier: ^6.2.7
         version: 6.2.7(react@19.1.0)
@@ -1936,6 +1939,10 @@ packages:
   '@tolgee/core@6.2.7':
     resolution:
       { integrity: sha512-0Au+m9R23/gmeaLJY0X6lKcR2LSy9dW7hEFrpFvPdJoGvxc8XCNZpKlgnm1N534CwmtIBJ4rzOK6vOrSKbl45w== }
+
+  '@tolgee/format-icu@6.2.7':
+    resolution:
+      { integrity: sha512-rLa8EZZVX3pDYC3I6HLnLvTgwLr2PAyOw+7SanS7d7SXp9cvcxbX8O6nqHubv6K7YDqVblcj9FoFbvGBQ22PgQ== }
 
   '@tolgee/react@6.2.7':
     resolution:
@@ -8875,6 +8882,8 @@ snapshots:
       tslib: 2.8.1
 
   '@tolgee/core@6.2.7': {}
+
+  '@tolgee/format-icu@6.2.7': {}
 
   '@tolgee/react@6.2.7(react@19.1.0)':
     dependencies:

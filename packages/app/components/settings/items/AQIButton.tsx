@@ -18,7 +18,7 @@ export const AQIButton = () => {
 
 	const getLocale: Record<string, string> = {
 		EU: t('airquality.european'),
-		USA: t('airquality.american'),
+		US: t('airquality.american'),
 	};
 
 	return (

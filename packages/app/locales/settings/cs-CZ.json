@@ -9,7 +9,6 @@
 		"iosonly": "(pouze iOS)",
 		"title": "Kompas"
 	},
-	"datasource": "Zdroje dat",
 	"feedback": {
 		"button": "Poslat názor",
 		"text": "Každý názor je cenný. Pokud byste si proto našli chvilku času a poslali mi zprávu o tom, co se vám líbilo nebo nelíbilo, velmi bych to ocenil!",

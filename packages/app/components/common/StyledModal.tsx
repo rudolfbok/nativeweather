@@ -65,10 +65,10 @@ export const StyledModal = ({
 				/>
 				<ScrollView
 					ref={ref}
-					contentContainerClassName={clsx('web:pb-4 px-4')}
+					contentContainerClassName={clsx('px-4')}
 					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
 					contentInsetAdjustmentBehavior="automatic"
-					className={clsx('rounded-bl-3xl rounded-br-3xl')}
+					className={clsx('rounded-bl-3xl rounded-br-3xl pb-4')}
 				>
 					{children}
 				</ScrollView>

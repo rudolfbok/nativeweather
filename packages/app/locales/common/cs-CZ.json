@@ -1,4 +1,11 @@
 {
+	"datasource": {
+		"googlemaps": "Základní mapový podklad pro interaktivní zobrazení geografických dat",
+		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
+		"openweather": "Poskytuje vizualizaci vrstev meteorologických map pro teplotu, srážky a oblačnost",
+		"title": "Zdroje dat",
+		"weatherapi": "Hlavní zdroj dat pro aktuální počasí a předpovědi a astronomické údaje"
+	},
 	"favorites": {
 		"delete": "Smazat",
 		"error": "Nepodařilo se načíst uložená města",
@@ -15,7 +22,10 @@
 			"error": "Nepodařilo se načíst data o počasí pro hledané město"
 		},
 		"searchbar": "Zadejte město nebo souřadnice..",
-		"title": "Hledání"
+		"title": "Hledání",
+		"url": {
+			"error": "Nenašli jsme město, které jste hledali. \nZkontrolujte prosím pravopis nebo přidejte název země a zkuste to znovu."
+		}
 	},
 	"share": {
 		"message": "Aktuální počasí v"
