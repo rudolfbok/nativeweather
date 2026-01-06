@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'NativeWeather',
+	// title: 'NativeWeather',
 	description: 'React weather application',
 };
 
