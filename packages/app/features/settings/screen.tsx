@@ -11,13 +11,30 @@ import { ThemeButton } from 'app/components/settings/items/ThemeButton';
 import { UnitsButton } from 'app/components/settings/items/UnitsButton';
 import { WorldTimeToggle } from 'app/components/settings/items/WorldTimeToggle';
 import { clsx } from 'clsx';
-import { View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Platform, View } from 'react-native';
 
 export function SettingsFeature({ title }: { title: string }) {
+	const [alphaNumbers, setAplhaNumbers] = useState(0);
+	if (Platform.OS === 'web') {
+		useEffect(() => {
+			window.addEventListener(
+				'deviceorientationabsolute',
+				(e) => {
+					console.log('Sever (alpha):', e.alpha);
+					setAplhaNumbers(e.alpha);
+				},
+				true
+			);
+		}, [alphaNumbers]);
+	}
 	return (
 		<View className={clsx('px-4 pb-4')}>
 			<StyledText type="screentitle" className={clsx('mb-3')}>
 				{title}
+			</StyledText>
+			<StyledText type="screentitle" className={clsx('mb-3')}>
+				{alphaNumbers}
 			</StyledText>
 			<View className={clsx('gap-4')}>
 				<RoundView>
