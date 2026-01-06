@@ -8,7 +8,7 @@
 		"start": "next start --webpack",
 		"lint": "eslint",
 		"typecheck": "tsc --noEmit",
-		"pages-deploy": "pnpm dlx @cloudflare/next-on-pages && pnpm dlx wrangler pages deploy .vercel/output/static"
+		"pages-deploy": "pnpm turbo build && pnpm dlx @cloudflare/next-on-pages --skip-build && pnpm dlx wrangler pages deploy .vercel/output/static"
 	},
 	"dependencies": {
 		"app": "workspace:*",

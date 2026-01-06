@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	// title: 'NativeWeather',
+	title: 'NativeWeather',
 	description: 'React weather application',
 };
 
@@ -29,7 +29,6 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<title>NativeWeather</title>
 				<script
 					defer
 					src="https://cloud.umami.is/script.js"
