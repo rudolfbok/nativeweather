@@ -1,15 +1,14 @@
 import { useTranslate } from '@tolgee/react';
-import { clsx } from 'clsx';
-import { Map } from 'lucide-react-native';
-import { useState } from 'react';
-import { View } from 'react-native';
 import { CardHeader } from 'app/components/common/CardHeader';
 import { RoundView } from 'app/components/common/RoundView';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledPressable } from 'app/components/common/StyledPressable';
 import { MaximizeIcon } from 'app/components/icons/MaximizeIcon';
+import { clsx } from 'clsx';
+import { Map } from 'lucide-react-native';
+import { useState } from 'react';
+import { View } from 'react-native';
 import { GoogleMapsView } from './GoogleMapsView';
-import { PlatformGoogleMaps } from './PlatformGoogleMaps.web';
 
 export const MapsView = () => {
 	const { t } = useTranslate('weather');
@@ -34,8 +33,8 @@ export const MapsView = () => {
 					header={t('maps.title')}
 					mapsModal={true}
 				>
-					<View className="h-[90vh] md:h-[80vh]">
-						<GoogleMapsView className="flex-grow" />
+					<View className="h-[90vh] flex-grow md:h-[75vh]">
+						<GoogleMapsView className="flex-1" />
 					</View>
 				</StyledModal>
 			)}

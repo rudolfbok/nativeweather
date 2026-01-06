@@ -39,11 +39,9 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 	const isTouchDevice = navigator.maxTouchPoints > 0;
 
 	const arrowBase = clsx(
-		isTouchDevice && '!opacity-0',
-		'pointer-events-none opacity-0 transition-opacity',
-		'group-hover:pointer-events-auto group-hover:opacity-100',
-		'focus-visible:pointer-events-auto focus-visible:opacity-100',
-		'disabled:focus-visible:opacity-30'
+		'pointer-events-none opacity-100',
+		'group-hover:pointer-events-auto',
+		'focus-visible:pointer-events-auto focus-visible:opacity-100'
 	);
 
 	const LeftArrow = () => (
@@ -53,7 +51,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 			disabled={!canPrev}
 			aria-label={t('carousel.previous')}
 			aria-disabled={!canPrev}
-			className={clsx(arrowBase, !canPrev && 'group-hover:opacity-20')}
+			className={clsx(arrowBase, !canPrev && 'opacity-20')}
 		>
 			<ChevronLeftCircle size={28} color={switchColors} />
 		</button>
@@ -66,7 +64,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 			disabled={!canNext}
 			aria-label={t('carousel.next')}
 			aria-disabled={!canNext}
-			className={clsx(arrowBase, !canNext && 'group-hover:opacity-20')}
+			className={clsx(arrowBase, !canNext && 'opacity-20')}
 		>
 			<ChevronRightCircle size={28} color={switchColors} />
 		</button>
@@ -76,7 +74,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		<RoundView className={clsx('group w-full py-4')}>
 			<View className={clsx('mb-4 flex-row items-center justify-between px-4')}>
 				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} />
-				<View className={clsx('h-full w-[70px] flex-row gap-2')}>
+				<View className={clsx('h-full w-[70px] flex-row gap-2', isTouchDevice && 'hidden')}>
 					<LeftArrow />
 					<RightArrow />
 				</View>

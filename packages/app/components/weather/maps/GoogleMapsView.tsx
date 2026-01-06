@@ -24,7 +24,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 
 	const switchColors = useSwitchColors('black', 'white');
 
-	const GOOGLE_API_KEY = 'REDACTED_GOOGLE_MAPS_API_KEY'!;
+	const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!;
 
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: GOOGLE_API_KEY,
@@ -84,12 +84,20 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	}, [map, layer]);
 
 	if (!isLoaded) {
-		return <StyledText type="body">{t('maps.loading')}</StyledText>;
+		return (
+			<View className={clsx('h-full items-center justify-center')}>
+				<StyledText type="body">{t('maps.loading')}</StyledText>
+			</View>
+		);
 	}
 
 	if (!GOOGLE_API_KEY) {
 		console.error('Google Maps API key is missing!');
-		return <StyledText type="body">Maps unavailable - missing API key</StyledText>;
+		return (
+			<View className={clsx('h-full items-center justify-center')}>
+				<StyledText type="body">Maps unavailable - missing API key</StyledText>
+			</View>
+		);
 	}
 
 	const MapButton = ({

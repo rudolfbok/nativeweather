@@ -1,5 +1,7 @@
-export const fetchAirQuality = async (lat: number, lon: number) => {
-	const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,nitrogen_dioxide,birch_pollen,grass_pollen,carbon_monoxide`;
+import { AirQualityData } from 'app/types/airQualityData';
+
+export const fetchAirQuality = async (lat: number, lon: number): Promise<AirQualityData> => {
+	const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,nitrogen_dioxide`;
 
 	try {
 		const response = await fetch(airQualityUrl);
