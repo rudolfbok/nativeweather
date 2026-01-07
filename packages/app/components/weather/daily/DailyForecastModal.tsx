@@ -2,7 +2,7 @@ import { useTolgee } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { WeatherData } from 'app/types/weatherData';
 import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
@@ -83,7 +83,7 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 					code={day.day.condition.code}
 					condition={getWeatherByCode(day.day.condition.code, 1)}
 					arrowcolor={arrowColor}
-					textcolor="red"
+					textColor="red"
 					strokeWidth={StyleSheet.hairlineWidth}
 					displayTime={false}
 					feelslike={false}

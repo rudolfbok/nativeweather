@@ -3,6 +3,8 @@ import { ReactNode, useState } from 'react';
 import { Pressable } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyledText } from './StyledText';
+import { RoundView } from './RoundView';
+import clsx from 'clsx';
 
 interface AccordionProps {
 	title: string;
@@ -21,8 +23,8 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	}));
 
 	return (
-		<Animated.View layout={LinearTransition} className="gap-2 overflow-hidden">
-			<Pressable onPress={toggle} className="flex-row items-center justify-between">
+		<Animated.View layout={LinearTransition} className="overflow-hidden">
+			<Pressable onPress={toggle} className="flex-row items-center justify-between py-2">
 				<StyledText type="subtitle">{title}</StyledText>
 				<Animated.View style={chevronStyle}>
 					<ChevronRight size={26} color="#007AFF" />
@@ -30,7 +32,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			</Pressable>
 			{expanded && (
 				<Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(200)}>
-					{children}
+					<RoundView className={clsx('p-4')}>{children}</RoundView>
 				</Animated.View>
 			)}
 		</Animated.View>

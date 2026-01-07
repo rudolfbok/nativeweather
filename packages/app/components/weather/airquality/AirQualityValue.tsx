@@ -4,7 +4,7 @@ import { StyledText } from 'app/components/common/StyledText';
 
 interface AirQualityValueProps {
 	name: string;
-	textcolor: string;
+	textColor: string;
 	value: string;
 	description?: string;
 }
@@ -19,10 +19,10 @@ const colorMap = {
 	hazardous: '!text-hazardous',
 };
 
-export const AirQualityValue = ({ name, textcolor, value, description }: AirQualityValueProps) => {
+export const AirQualityValue = ({ name, textColor, value, description }: AirQualityValueProps) => {
 	return (
 		<View>
-			<StyledText type="body" className={clsx('font-semibold', colorMap[textcolor as keyof typeof colorMap])}>
+			<StyledText type="body" className={clsx('font-semibold', colorMap[textColor as keyof typeof colorMap])}>
 				{name}
 			</StyledText>
 			<StyledText type="body" className={clsx('mb-1 font-semibold')}>

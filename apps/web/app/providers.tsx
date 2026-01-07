@@ -9,7 +9,7 @@ import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import { Toaster } from 'burnt/web';
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export const Providers = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		initThemeFromStorage();
 	}, []);
@@ -26,4 +26,4 @@ export function Providers({ children }: { children: React.ReactNode }) {
 			<Toaster theme={NWTheme.colorScheme} position="bottom-right" />
 		</TolgeeProvider>
 	);
-}
+};

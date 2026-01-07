@@ -26,7 +26,7 @@ interface MainWeatherProps {
 	isDay: 0 | 1;
 	code: number;
 	condition: any;
-	textcolor: string;
+	textColor: string;
 	arrowcolor: string;
 	strokeWidth?: number;
 	conditionbg?: boolean;
@@ -48,7 +48,7 @@ export const MainWeather = ({
 	isDay,
 	code,
 	condition,
-	textcolor,
+	textColor,
 	arrowcolor,
 	strokeWidth,
 	conditionbg = true,

@@ -1,12 +1,11 @@
+import { useTranslate } from '@tolgee/react';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
-import { useTranslate } from '@tolgee/react';
+import { ValuesList } from 'app/components/common/ValuesList';
+import { clsx } from 'clsx';
 import { Droplets } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
-import { clsx } from 'clsx';
-import { RoundView } from 'app/components/common/RoundView';
-import { ModalValueItem } from './ModalValueItem';
-import { Separator } from 'app/components/common/Separator';
 
 export const HumidityModal = ({
 	visible,
@@ -43,23 +42,15 @@ export const HumidityModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Droplets color="#3DA443" />} header={t('humidity.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<StyledText type="subtitle">{t('humidity.relativehumidity.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
+				<ContentRow title={t('humidity.relativehumidity.title')}>
 					<StyledText type="body">{t('humidity.relativehumidity.text')}</StyledText>
-				</RoundView>
-				<StyledText type="subtitle">{t('humidity.relativehumidity.values')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					{humidityScaleValues.map(({ name, value }, index) => (
-						<View key={index} className={clsx('gap-4')}>
-							<ModalValueItem showItemIndex={false} name={name} textcolor="!text-[#3DA443]" value={value} />
-							{index < humidityScaleValues.length - 1 && <Separator />}
-						</View>
-					))}
-				</RoundView>
-				<StyledText type="subtitle">{t('humidity.dewpoint.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
+				</ContentRow>
+				<ContentRow title={t('humidity.relativehumidity.values')}>
+					<ValuesList values={humidityScaleValues} valueColor="!text-[#3DA443]" />
+				</ContentRow>
+				<ContentRow title={t('humidity.dewpoint.title')}>
 					<StyledText type="body">{t('humidity.dewpoint.text')}</StyledText>
-				</RoundView>
+				</ContentRow>
 			</View>
 		</StyledModal>
 	);

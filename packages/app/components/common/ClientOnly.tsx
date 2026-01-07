@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 
-export function ClientOnly({ children }: { children: ReactNode }) {
+export const ClientOnly = ({ children }: { children: ReactNode }) => {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
@@ -11,4 +11,4 @@ export function ClientOnly({ children }: { children: ReactNode }) {
 
 	if (!mounted) return null;
 	return <>{children}</>;
-}
+};

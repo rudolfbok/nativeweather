@@ -1,8 +1,9 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
+import { AnimatedView } from 'app/components/common/AnimatedView';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledText } from 'app/components/common/StyledText';
 import { useWeather } from 'app/hooks/useWeather';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 interface AlertDetailProps {
@@ -72,48 +73,35 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 	};
 
 	return (
-		<View className={clsx('w-full gap-2')}>
+		<View className={clsx('gap-2')}>
 			{severity && (
-				<View>
-					<StyledText type="subtitle">{t('alerts.severity')}</StyledText>
+				<ContentRow title={t('alerts.severity')}>
 					<StyledText type="body">{getLocaleSeverity(severity)}</StyledText>
-				</View>
+				</ContentRow>
 			)}
-			<View>
-				<StyledText type="body" className={clsx('font-semibold')}>
-					{t('alerts.expires')}
-				</StyledText>
+			<ContentRow title={t('alerts.expires')}>
 				<StyledText type="body">
 					{getTime(expires)} - {formatDate(expires)}
 				</StyledText>
-			</View>
+			</ContentRow>
 			{area.length > 0 && (
-				<View className={clsx('gap-2')}>
-					<StyledText type="subtitle">{t('alerts.area')}</StyledText>
-					<RoundView className={clsx('p-4')}>
-						<StyledText type="body">{area}</StyledText>
-					</RoundView>
-				</View>
+				<ContentRow title={t('alerts.area')}>
+					<StyledText type="body">{area}</StyledText>
+				</ContentRow>
 			)}
 			{description.length > 0 && (
-				<View className={clsx('gap-2')}>
-					<StyledText type="subtitle">{t('alerts.description')}</StyledText>
-					<RoundView className={clsx('p-4')}>
-						<StyledText type="body">
-							{weatherData.location.country === 'United States of America'
-								? extractWhatAndImpacts(description.trim())
-								: description.trim()}
-						</StyledText>
-					</RoundView>
-				</View>
+				<ContentRow title={t('alerts.description')}>
+					<StyledText type="body">
+						{weatherData.location.country === 'United States of America'
+							? extractWhatAndImpacts(description.trim())
+							: description.trim()}
+					</StyledText>
+				</ContentRow>
 			)}
 			{instructions.length > 0 && (
-				<View className={clsx('gap-2')}>
-					<StyledText type="subtitle">{t('alerts.instructions')}</StyledText>
-					<RoundView className={clsx('p-4')}>
-						<StyledText type="body">{removeDoubleSpaces(instructions.trim())}</StyledText>
-					</RoundView>
-				</View>
+				<ContentRow title={t('alerts.instructions')}>
+					<StyledText type="body">{removeDoubleSpaces(instructions.trim())}</StyledText>
+				</ContentRow>
 			)}
 		</View>
 	);

@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
+import { Accordion } from 'app/components/common/Accordion';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
+import { ValuesList } from 'app/components/common/ValuesList';
+import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
 import { Snowflake } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
-import { ModalValueItem } from './ModalValueItem';
-import { useStorageString } from 'app/storage/useStorageString';
-import { Accordion } from 'app/components/common/Accordion';
 
 export const SnowModal = ({
 	visible,
@@ -79,42 +79,18 @@ export const SnowModal = ({
 
 	return (
 		<StyledModal visible={visible} icon={<Snowflake color="#3796B8" />} header={t('snow.title')} onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<StyledText type="subtitle">{t('snow.chance.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					<StyledText type="body">{t('snow.chance.description')}</StyledText>
-				</RoundView>
-				<Accordion title={t('snow.chance.values')}>
-					<RoundView className={clsx('gap-2 p-4')}>
-						{snowChanceValues.map(({ name, value, description }, index) => (
-							<View key={index} className={clsx('gap-4')}>
-								<ModalValueItem
-									showItemIndex={false}
-									name={name}
-									textcolor="!text-[#3796B8]"
-									value={value}
-									description={description}
-								/>
-								{index < snowChanceValues.length - 1 && <Separator />}
-							</View>
-						))}
-					</RoundView>
-				</Accordion>
-				<StyledText type="subtitle">{t('snow.snowfall.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					<StyledText type="body">{t('snow.snowfall.description')}</StyledText>
-				</RoundView>
-				<Accordion title={t('snow.snowfall.values')}>
-					<RoundView className={clsx('gap-2 p-4')}>
-						{snowPrecipValues.map(({ name, value }, index) => (
-							<View key={index} className={clsx('gap-4')}>
-								<ModalValueItem showItemIndex={false} name={name} textcolor="!text-[#3796B8]" value={value} />
-								{index < snowPrecipValues.length - 1 && <Separator />}
-							</View>
-						))}
-					</RoundView>
-				</Accordion>
-			</View>
+			<ContentRow title={t('snow.chance.title')}>
+				<StyledText type="body">{t('snow.chance.description')}</StyledText>
+			</ContentRow>
+			<Accordion title={t('snow.chance.values')}>
+				<ValuesList values={snowChanceValues} valueColor="!text-[#3796B8]" showIndex={false} />
+			</Accordion>
+			<ContentRow title={t('snow.snowfall.title')}>
+				<StyledText type="body">{t('snow.snowfall.description')}</StyledText>
+			</ContentRow>
+			<Accordion title={t('snow.snowfall.values')}>
+				<ValuesList values={snowPrecipValues} valueColor="!text-[#3796B8]" showIndex={false} />
+			</Accordion>
 		</StyledModal>
 	);
 };

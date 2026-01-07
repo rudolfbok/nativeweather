@@ -1,68 +1,61 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
+import { ContentRow } from 'app/components/common/ContentRow';
+import { StyledText } from 'app/components/common/StyledText';
+import { ValuesList } from 'app/components/common/ValuesList';
 import { clsx } from 'clsx';
 import { Linking, Pressable, View } from 'react-native';
-import { StyledText } from 'app/components/common/StyledText';
-import { AirQualityValue } from './AirQualityValue';
 
 export const EUAQIDetail = () => {
 	const { t } = useTranslate('weather');
 	const EUAQIValues = [
 		{
 			name: t('airquality.euaqi.value.0'),
-			textcolor: 'good',
+			textColor: '!text-good',
 			value: '0 - 20',
 			description: t('airquality.euaqi.text.0'),
 		},
 		{
 			name: t('airquality.euaqi.value.1'),
-			textcolor: 'fair',
+			textColor: '!text-fair',
 			value: '20 - 40',
 			description: t('airquality.euaqi.text.1'),
 		},
 		{
 			name: t('airquality.euaqi.value.2'),
-			textcolor: 'moderate',
+			textColor: '!text-moderate',
 			value: '40 - 60',
 			description: t('airquality.euaqi.text.2'),
 		},
 		{
 			name: t('airquality.euaqi.value.3'),
-			textcolor: 'sensitive',
+			textColor: '!text-sensitive',
 			value: '60 - 80',
 			description: t('airquality.euaqi.text.3'),
 		},
 		{
 			name: t('airquality.euaqi.value.4'),
-			textcolor: 'unhealthy',
+			textColor: '!text-unhealthy',
 			value: '80 - 100',
 			description: t('airquality.euaqi.text.4'),
 		},
 		{
 			name: t('airquality.euaqi.value.5'),
-			textcolor: 'veryunhealthy',
+			textColor: '!text-veryunhealthy',
 			value: '100+',
 			description: t('airquality.euaqi.text.5'),
 		},
 	];
 	return (
 		<View className={clsx('gap-2')}>
-			<RoundView className={clsx('gap-4 p-4')}>
+			<ContentRow title={t('airquality.euaqi.about')}>
 				<StyledText type="body">{t('airquality.euaqi.main')}</StyledText>
 				<Pressable onPress={() => Linking.openURL('https://airindex.eea.europa.eu/AQI/')}>
 					<StyledText type="link">https://airindex.eea.europa.eu/AQI/</StyledText>
 				</Pressable>
-			</RoundView>
-			<StyledText type="subtitle">{t('airquality.index.values')}</StyledText>
-			<RoundView className={clsx('gap-4 p-4')}>
-				{EUAQIValues.map(({ name, textcolor, value, description }, index) => (
-					<View key={index} className={clsx('gap-4')}>
-						<AirQualityValue name={name} textcolor={textcolor} value={value} description={description} />
-						{index < EUAQIValues.length - 1 && <Separator />}
-					</View>
-				))}
-			</RoundView>
+			</ContentRow>
+			<ContentRow title={t('airquality.index.values')}>
+				<ValuesList values={EUAQIValues} />
+			</ContentRow>
 		</View>
 	);
 };

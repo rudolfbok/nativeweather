@@ -1,6 +1,6 @@
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { AlertDetail } from './AlertDetail';
 import { AlertItem } from './AlertItem';

@@ -22,7 +22,7 @@ interface MainWeatherProps {
 	isDay: 0 | 1;
 	code: number;
 	condition: any;
-	textcolor: string;
+	textColor: string;
 	arrowcolor: string;
 	strokeWidth?: number;
 	conditionbg?: boolean;
@@ -44,7 +44,7 @@ export const MainWeather = ({
 	isDay,
 	code,
 	condition,
-	textcolor,
+	textColor,
 	arrowcolor,
 	strokeWidth,
 	conditionbg = true,
@@ -60,7 +60,7 @@ export const MainWeather = ({
 					<WeatherIcon isDay={isDay} code={code} width={90} height={90} strokeWidth={strokeWidth} />
 				</View>
 				<View className={clsx('w-1/2 items-center')}>
-					<StyledText type="maintemp" className={clsx('pl-4', textcolor)}>
+					<StyledText type="maintemp" className={clsx('pl-4', textColor)}>
 						{useSwitchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -70,7 +70,7 @@ export const MainWeather = ({
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveDown size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textcolor)}>
+							<StyledText type="body" className={clsx(textColor)}>
 								{useSwitchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -80,7 +80,7 @@ export const MainWeather = ({
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveUp size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textcolor)}>
+							<StyledText type="body" className={clsx(textColor)}>
 								{useSwitchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -90,7 +90,7 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="subtitle" className={clsx('font-semibold', textcolor)}>
+						<StyledText type="subtitle" className={clsx('font-semibold', textColor)}>
 							{t('feelslike')}{' '}
 							{useSwitchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -106,7 +106,7 @@ export const MainWeather = ({
 					type="subtitle"
 					className={clsx(
 						'text-center text-xl font-bold',
-						textcolor,
+						textColor,
 						conditionbg && 'bg-systemBackground dark:bg-secondarySystemBackground_dark rounded-3xl px-5 py-1'
 					)}
 				>

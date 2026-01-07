@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { SearchResult } from './SearchResult';
 import { City } from 'app/storage/crudMMKVService';

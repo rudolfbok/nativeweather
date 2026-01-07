@@ -4,7 +4,7 @@ export const mapColorTheme = (layer: string) => {
 	const textColor = isCloudLayer ? '#ffffff' : '#000000';
 	const textStroke = isCloudLayer ? '#000000' : '#ffffff';
 	const waterColor = isCloudLayer ? '#333333' : '#dddddd';
-	const waterTextColor = isCloudLayer ? '#ffffff' : '#333333';
+	const watertextColor = isCloudLayer ? '#ffffff' : '#333333';
 
 	return [
 		{ elementType: 'geometry', stylers: [{ color: backgroundColor }] },
@@ -71,6 +71,6 @@ export const mapColorTheme = (layer: string) => {
 		},
 		{ featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: textColor }] },
 		{ featureType: 'water', elementType: 'geometry', stylers: [{ color: waterColor }] },
-		{ featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: waterTextColor }] },
+		{ featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: watertextColor }] },
 	];
 };

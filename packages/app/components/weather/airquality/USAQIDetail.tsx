@@ -1,68 +1,61 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledText } from 'app/components/common/StyledText';
+import { ValuesList } from 'app/components/common/ValuesList';
 import { clsx } from 'clsx';
 import { Linking, Pressable, View } from 'react-native';
-import { AirQualityValue } from './AirQualityValue';
 
 export const USAQIDetail = () => {
 	const { t } = useTranslate('weather');
 	const USAQIValues = [
 		{
 			name: t('airquality.usaqi.value.0'),
-			textcolor: 'fair',
+			textColor: '!text-fair',
 			value: '0 - 50',
 			description: t('airquality.usaqi.text.0'),
 		},
 		{
 			name: t('airquality.usaqi.value.1'),
-			textcolor: 'moderate',
+			textColor: '!text-moderate',
 			value: '50 - 100',
 			description: t('airquality.usaqi.text.1'),
 		},
 		{
 			name: t('airquality.usaqi.value.2'),
-			textcolor: 'sensitive',
+			textColor: '!text-sensitive',
 			value: '100 - 150',
 			description: t('airquality.usaqi.text.2'),
 		},
 		{
 			name: t('airquality.usaqi.value.3'),
-			textcolor: 'unhealthy',
+			textColor: '!text-unhealthy',
 			value: '150 - 200',
 			description: t('airquality.usaqi.text.3'),
 		},
 		{
 			name: t('airquality.usaqi.value.4'),
-			textcolor: 'veryunhealthy',
+			textColor: '!text-veryunhealthy',
 			value: '200 - 300',
 			description: t('airquality.usaqi.text.4'),
 		},
 		{
 			name: t('airquality.usaqi.value.5'),
-			textcolor: 'hazardous',
+			textColor: '!text-hazardous',
 			value: '300 - 500',
 			description: t('airquality.usaqi.text.5'),
 		},
 	];
 	return (
 		<View className={clsx('gap-2')}>
-			<RoundView className={clsx('gap-4 p-4')}>
+			<ContentRow title={t('airquality.usaqi.about')}>
 				<StyledText type="body">{t('airquality.usaqi.main')}</StyledText>
 				<Pressable onPress={() => Linking.openURL('https://www.airnow.gov/')}>
 					<StyledText type="link">https://www.airnow.gov/</StyledText>
 				</Pressable>
-			</RoundView>
-			<StyledText type="subtitle">{t('airquality.index.values')}</StyledText>
-			<RoundView className={clsx('gap-4 p-4')}>
-				{USAQIValues.map(({ name, textcolor, value, description }, index) => (
-					<View key={index} className={clsx('gap-4')}>
-						<AirQualityValue name={name} textcolor={textcolor} value={value} description={description} />
-						{index < USAQIValues.length - 1 && <Separator />}
-					</View>
-				))}
-			</RoundView>
+			</ContentRow>
+			<ContentRow title={t('airquality.index.values')}>
+				<ValuesList values={USAQIValues} />
+			</ContentRow>
 		</View>
 	);
 };

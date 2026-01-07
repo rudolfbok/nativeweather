@@ -1,6 +1,6 @@
 'use client';
 
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { ReactNode, useEffect, useRef } from 'react';
 
 interface AnimatedViewProps {

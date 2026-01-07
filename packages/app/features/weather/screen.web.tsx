@@ -8,7 +8,7 @@ import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';

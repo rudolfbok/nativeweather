@@ -7,6 +7,8 @@ import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 import { ModalValueItem } from './ModalValueItem';
+import { ContentRow } from 'app/components/common/ContentRow';
+import { ValuesList } from 'app/components/common/ValuesList';
 
 export const CloudsModal = ({
 	visible,
@@ -39,19 +41,12 @@ export const CloudsModal = ({
 	return (
 		<StyledModal visible={visible} icon={<CloudsIcon />} header={t('cloudcover.title')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<StyledText type="subtitle">{t('cloudcover.percentage.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
+				<ContentRow title={t('cloudcover.percentage.title')}>
 					<StyledText type="body">{t('cloudcover.percentage.text')}</StyledText>
-				</RoundView>
-				<StyledText type="subtitle">{t('cloudcover.percentage.values')}</StyledText>
-				<RoundView className={clsx('gap-4 p-4')}>
-					{cloudCoverValues.map(({ name, value }, index) => (
-						<View key={index} className={clsx('gap-4')}>
-							<ModalValueItem showItemIndex={false} name={name} value={value} />
-							{index < cloudCoverValues.length - 1 && <Separator />}
-						</View>
-					))}
-				</RoundView>
+				</ContentRow>
+				<ContentRow title={t('cloudcover.percentage.values')}>
+					<ValuesList values={cloudCoverValues} />
+				</ContentRow>
 			</View>
 		</StyledModal>
 	);

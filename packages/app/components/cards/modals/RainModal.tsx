@@ -1,14 +1,12 @@
-import { RoundView } from 'app/components/common/RoundView';
+import { useTranslate } from '@tolgee/react';
+import { Accordion } from 'app/components/common/Accordion';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
-import { useTranslate } from '@tolgee/react';
-import { clsx } from 'clsx';
-import { CloudRain } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
-import { Separator } from 'app/components/common/Separator';
-import { ModalValueItem } from './ModalValueItem';
-import { Accordion } from 'app/components/common/Accordion';
+import { ValuesList } from 'app/components/common/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
+import { CloudRain } from 'lucide-react-native';
+import { GestureResponderEvent } from 'react-native';
 
 export const RainModal = ({
 	visible,
@@ -79,42 +77,18 @@ export const RainModal = ({
 
 	return (
 		<StyledModal visible={visible} icon={<CloudRain color="#2793FF" />} header={t('rain.title')} onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<StyledText type="subtitle">{t('rain.chance.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					<StyledText type="body">{t('rain.chance.description')}</StyledText>
-				</RoundView>
-				<Accordion title={t('rain.chance.values')}>
-					<RoundView className={clsx('gap-2 p-4')}>
-						{rainChanceValues.map(({ name, value, description }, index) => (
-							<View key={index} className={clsx('gap-4')}>
-								<ModalValueItem
-									showItemIndex={false}
-									name={name}
-									textcolor="!text-primaryblue"
-									value={value}
-									description={description}
-								/>
-								{index < rainChanceValues.length - 1 && <Separator />}
-							</View>
-						))}
-					</RoundView>
-				</Accordion>
-				<StyledText type="subtitle">{t('rain.rainfall.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
-					<StyledText type="body">{t('rain.rainfall.description')}</StyledText>
-				</RoundView>
-				<Accordion title={t('rain.rainfall.values')}>
-					<RoundView className={clsx('gap-2 p-4')}>
-						{rainPrecipValues.map(({ name, value }, index) => (
-							<View key={index} className={clsx('gap-4')}>
-								<ModalValueItem showItemIndex={false} name={name} textcolor="!text-primaryblue" value={value} />
-								{index < rainPrecipValues.length - 1 && <Separator />}
-							</View>
-						))}
-					</RoundView>
-				</Accordion>
-			</View>
+			<ContentRow title={t('rain.chance.title')}>
+				<StyledText type="body">{t('rain.chance.description')}</StyledText>
+			</ContentRow>
+			<Accordion title={t('rain.chance.values')}>
+				<ValuesList values={rainChanceValues} valueColor="!text-[#2793FF]" showIndex={false} />
+			</Accordion>
+			<ContentRow title={t('rain.rainfall.title')}>
+				<StyledText type="body">{t('rain.rainfall.description')}</StyledText>
+			</ContentRow>
+			<Accordion title={t('rain.rainfall.values')}>
+				<ValuesList values={rainPrecipValues} valueColor="!text-[#2793FF]" showIndex={false} />
+			</Accordion>
 		</StyledModal>
 	);
 };

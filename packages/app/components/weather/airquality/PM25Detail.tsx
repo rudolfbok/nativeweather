@@ -1,65 +1,58 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledText } from 'app/components/common/StyledText';
+import { ValuesList } from 'app/components/common/ValuesList';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { AirQualityValue } from './AirQualityValue';
 
 export const PM25Detail = () => {
 	const { t } = useTranslate('weather');
 	const PM25Values = [
 		{
 			name: t('airquality.value.0'),
-			textcolor: 'fair',
+			textColor: '!text-fair',
 			value: '0 - 15',
 			description: t('airquality.pm25.text.0'),
 		},
 		{
 			name: t('airquality.value.1'),
-			textcolor: 'moderate',
+			textColor: '!text-moderate',
 			value: '15 - 25',
 			description: t('airquality.pm25.text.1'),
 		},
 		{
 			name: t('airquality.value.2'),
-			textcolor: 'sensitive',
+			textColor: '!text-sensitive',
 			value: '25 - 40',
 			description: t('airquality.pm25.text.2'),
 		},
 		{
 			name: t('airquality.value.3'),
-			textcolor: 'unhealthy',
+			textColor: '!text-unhealthy',
 			value: '40 - 65',
 			description: t('airquality.pm25.text.3'),
 		},
 		{
 			name: t('airquality.value.4'),
-			textcolor: 'veryunhealthy',
+			textColor: '!text-veryunhealthy',
 			value: '65 - 100',
 			description: t('airquality.pm25.text.4'),
 		},
 		{
 			name: t('airquality.value.5'),
-			textcolor: 'hazardous',
+			textColor: '!text-hazardous',
 			value: '100+',
 			description: t('airquality.pm25.text.5'),
 		},
 	];
 	return (
 		<View className={clsx('gap-2')}>
-			<RoundView className={clsx('p-4')}>
-				<StyledText type="body">{t('airquality.pm25.main')}</StyledText>
-			</RoundView>
-			<StyledText type="subtitle">{t('airquality.pollutant.values')}</StyledText>
-			<RoundView className={clsx('gap-4 p-4')}>
-				{PM25Values.map(({ name, textcolor, value, description }, index) => (
-					<View key={index} className={clsx('gap-4')}>
-						<AirQualityValue name={name} textcolor={textcolor} value={value + 'µg/m³'} description={description} />
-						{index < PM25Values.length - 1 && <Separator />}
-					</View>
-				))}
-			</RoundView>
+			<ContentRow title={t('airquality.o3.about')}>
+				<StyledText type="body">{t('airquality.o3.main')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('airquality.pollutant.values')}>
+				<ValuesList values={PM25Values} />
+			</ContentRow>
 		</View>
 	);
 };

@@ -12,7 +12,6 @@ import {
 	VisibilityCard,
 	WindCard,
 } from 'app/components/cards';
-import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { AlertWeather } from 'app/components/weather/alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
@@ -29,9 +28,8 @@ import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
-import { MapsView } from './maps/MapsView.web';
 import { HourlyForecast } from './hourly/HourlyForecast';
-import { HeroSkeleton } from '../common/HeroSkeleton';
+import { MapsView } from './maps/MapsView.web';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
@@ -68,12 +66,6 @@ export const HeroWeather = () => {
 		}).format(now),
 		10
 	);
-
-	// if (!weatherData) {
-	// 	return <HeroSkeleton />;
-	// }
-
-	// if (!airQualityData) return null;
 
 	const currentIndex = weatherData.forecast.forecastday[0].hour.findIndex(
 		(hour) => getHour24FromEpoch(hour.time_epoch, tzId) === currentHour24
@@ -161,7 +153,7 @@ export const HeroWeather = () => {
 								feelslike={true}
 								condition={getWeatherByCode(weatherData.current.condition.code, weatherData.current.is_day)}
 								conditionbg={false}
-								textcolor="!text-white"
+								textColor="!text-white"
 								arrowcolor="white"
 								displayTime={true}
 								strokeWidth={0}
@@ -208,14 +200,15 @@ export const HeroWeather = () => {
 				</View>
 				<View
 					className={clsx(
-						'web:grid web:h-fit web:grid-cols-2 web:md:hidden web:xl:grid web:xl:grid-cols-3 flex flex-row flex-wrap justify-between gap-4'
+						'flex flex-row flex-wrap justify-between gap-4',
+						'web:grid web:h-fit web:grid-cols-2 web:md:hidden web:xl:grid web:xl:grid-cols-3 '
 					)}
 				>
 					<AirQuality className={clsx('max-xl:hidden')} />
 					<DataCardGrid />
 				</View>
 			</View>
-			<View className={clsx('ios:hidden web:hidden mt-4 h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
+			<View className={clsx('ios:hidden', 'mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
 				<DataCardGrid />
 			</View>
 		</View>

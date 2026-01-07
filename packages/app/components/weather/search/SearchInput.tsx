@@ -1,16 +1,10 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/RoundView';
-import clsx from 'clsx';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { clsx } from 'clsx';
 import { Search, X } from 'lucide-react-native';
 import { useState } from 'react';
-import {
-	GestureResponderEvent,
-	NativeSyntheticEvent,
-	Pressable,
-	TargetedEvent,
-	TextInput,
-	useColorScheme,
-} from 'react-native';
+import { GestureResponderEvent, NativeSyntheticEvent, Pressable, TargetedEvent, TextInput } from 'react-native';
 
 interface SearchInputProps {
 	searchValue: string;
@@ -32,8 +26,9 @@ export const SearchInput = ({
 	onBlur,
 }: SearchInputProps) => {
 	const { t } = useTranslate('common');
-	const currentColorScheme = useColorScheme();
 	const [isXHovered, setIsXHovered] = useState(false);
+
+	const switchColors = useSwitchColors('#98989F', '#7F7F84');
 
 	return (
 		<RoundView
@@ -43,11 +38,7 @@ export const SearchInput = ({
 			)}
 		>
 			<Pressable onPress={performSearch} className={clsx('cursor-pointer')}>
-				<Search
-					size={22}
-					color={isFocused ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'}
-					style={{ pointerEvents: 'none' }}
-				/>
+				<Search size={22} color={isFocused ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 			<TextInput
 				// ref={ref}
@@ -57,7 +48,7 @@ export const SearchInput = ({
 				returnKeyType="search"
 				autoComplete="off"
 				placeholder={isFocused ? '' : t('search.searchbar')}
-				placeholderTextColor={currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'}
+				placeholderTextColor={switchColors}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				className={clsx(
@@ -72,11 +63,7 @@ export const SearchInput = ({
 					onHoverIn={() => setIsXHovered(true)}
 					onHoverOut={() => setIsXHovered(false)}
 				>
-					<X
-						size={22}
-						color={isXHovered ? '#007AFF' : currentColorScheme === 'dark' ? '#98989F' : '#7F7F84'}
-						style={{ pointerEvents: 'none' }}
-					/>
+					<X size={22} color={isXHovered ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />
 				</Pressable>
 			)}
 		</RoundView>

@@ -5,6 +5,7 @@ import { Sunrise } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
 import { clsx } from 'clsx';
 import { RoundView } from 'app/components/common/RoundView';
+import { ContentRow } from 'app/components/common/ContentRow';
 
 export const SunriseModal = ({
 	visible,
@@ -23,13 +24,12 @@ export const SunriseModal = ({
 			onClose={onClose}
 		>
 			<View className={clsx('gap-2')}>
-				<RoundView className={clsx('p-4')}>
+				<ContentRow title={t('sunrise.about')}>
 					<StyledText type="body">{t('sunrise.text')}</StyledText>
-				</RoundView>
-				<StyledText type="subtitle">{t('sunrise.dawn.title')}</StyledText>
-				<RoundView className={clsx('p-4')}>
+				</ContentRow>
+				<ContentRow title={t('sunrise.dawn.title')}>
 					<StyledText type="body">{t('sunrise.dawn.text')}</StyledText>
-				</RoundView>
+				</ContentRow>
 			</View>
 		</StyledModal>
 	);

@@ -1,18 +1,17 @@
+import { useFocusEffect } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
-import { clsx } from 'clsx';
-import { Pencil, SquarePen, Trash, X } from 'lucide-react-native';
-import { useCallback, useEffect, useState } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { AnimatedView } from 'app/components/common/AnimatedView';
+import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
 import { RoundView } from 'app/components/common/RoundView';
 import { StyledPressable } from 'app/components/common/StyledPressable';
 import { StyledText } from 'app/components/common/StyledText';
-// import { EditIcon } from 'app/components/icons/EditIcon';
-import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
-import { useSearchController } from 'app/hooks/useSearchController';
-import { CityCard } from '../CityCard';
-import { useFocusEffect } from '@react-navigation/native';
 import { EditIcon } from 'app/components/icons/EditIcon';
-import { AnimatedView } from 'app/components/common/AnimatedView';
+import { useSearchController } from 'app/hooks/useSearchController';
+import { clsx } from 'clsx';
+import { Trash, X } from 'lucide-react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { Platform, Pressable, View } from 'react-native';
+import { CityCard } from '../CityCard';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);

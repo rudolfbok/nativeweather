@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { ChevronLeft, X } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { CardHeader } from './CardHeader';
@@ -31,7 +31,7 @@ export const ModalHeader = ({
 			<View className={clsx('web:hidden my-2 w-full items-center')}>
 				<View className={clsx('h-1 w-12 rounded-full bg-zinc-600/40')} />
 			</View>
-			<View className={clsx('web:pt-4 flex-row items-center justify-between px-4 pb-2', daysToggle && '!items-start')}>
+			<View className={clsx('web:pt-2 flex-row items-center justify-between px-4 pb-2', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>

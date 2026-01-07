@@ -1,5 +1,5 @@
 {
-	"name": "nativeweather-turbo",
+	"name": "nativeweather",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -8,11 +8,12 @@
 		"build": "turbo build",
 		"lint": "turbo lint",
 		"format": "prettier --write .",
-		"typecheck": "turbo typecheck"
+		"typecheck": "turbo typecheck",
+		"web": "cd apps/web && turbo dev",
+		"mobile": "cd apps/mobile && turbo dev"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "MIT",
 	"packageManager": "pnpm@10.26.2",
 	"devDependencies": {
 		"turbo": "^2.7.2"

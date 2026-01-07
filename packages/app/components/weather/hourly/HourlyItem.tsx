@@ -1,5 +1,5 @@
 import { WeatherIcon } from 'app/utils/mappings/mapIcons';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
 import { StyledText } from 'app/components/common/StyledText';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';

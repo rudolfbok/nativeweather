@@ -11,7 +11,7 @@ import {
 	PM25IndicatorColor,
 	USAQIIndicatorColor,
 } from 'app/utils/mappings/mapAirQualityIndicators';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { Linking, Pressable, View } from 'react-native';
 import { AirQualityItem } from './AirQualityItem';

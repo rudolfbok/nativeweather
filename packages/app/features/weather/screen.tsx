@@ -45,7 +45,6 @@ export const WeatherFeature = () => {
 	}, [weatherData]);
 
 	useEffect(() => {
-		const id = scrollY.value;
 		if (weatherData) {
 			const interval = setInterval(() => {
 				if (scrollY.value < 20) {

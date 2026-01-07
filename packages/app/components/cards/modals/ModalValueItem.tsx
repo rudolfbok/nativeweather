@@ -1,31 +1,28 @@
+import { StyledText } from 'app/components/common/StyledText';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledText } from 'app/components/common/StyledText';
 
 interface ModalValueItemProps {
 	index?: number;
-	textcolor?: string;
+	textColor?: string;
 	name: string;
 	value?: string;
 	description?: string;
-	moonModal?: boolean;
 	moonPhase?: React.ReactNode;
 	showItemIndex?: boolean;
 }
 
 export const ModalValueItem = ({
 	index,
-	textcolor,
+	textColor,
 	name,
 	value,
 	description,
 	moonPhase,
-	moonModal = false,
 	showItemIndex = true,
 }: ModalValueItemProps) => {
 	const RenderIndex = () => {
-		if (!showItemIndex) return null;
-		if (moonModal) return moonPhase;
+		if (!showItemIndex) return moonPhase;
 
 		return (
 			<View className={clsx('w-8')}>
@@ -46,7 +43,7 @@ export const ModalValueItem = ({
 		<View className={clsx('w-full flex-row items-center gap-4')}>
 			<RenderIndex />
 			<View className={clsx('flex-1')}>
-				<StyledText type="body" className={clsx('font-semibold', textcolor)}>
+				<StyledText type="body" className={clsx('font-semibold', textColor)}>
 					{name}
 				</StyledText>
 				{value && (

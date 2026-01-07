@@ -1,5 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { useWeather } from 'app/hooks/useWeather';
+import { useStorageString } from 'app/storage/useStorageString';
+import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
+import { clsx } from 'clsx';
 import { Moon } from 'lucide-react-native';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';
@@ -14,9 +16,6 @@ import { WaxingCrescent } from '../icons/moonphases/WaxingCrescent';
 import { WaxingGibbous } from '../icons/moonphases/WaxingGibbous';
 import { DataCard } from './DataCard';
 import { MoonModal } from './modals/MoonModal';
-import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
-import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 
 interface MoonCardProps {
 	phase: string;
@@ -27,7 +26,6 @@ interface MoonCardProps {
 }
 
 export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: MoonCardProps) => {
-	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
 	const [currentLanguage] = useStorageString('currentLang');

@@ -1,7 +1,6 @@
 import { ClientOnly } from 'app/components/common/ClientOnly';
 import { clsx } from 'clsx';
 import { Geist, Geist_Mono } from 'next/font/google';
-import 'raf/polyfill';
 import './globals.css';
 import { Providers } from './providers';
 import { Metadata } from 'next';

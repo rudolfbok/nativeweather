@@ -1,5 +1,5 @@
 import { StyledText } from 'app/components/common/StyledText';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { View, Pressable, GestureResponderEvent } from 'react-native';
 
 interface SearchResultProps {

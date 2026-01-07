@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import gsap from 'gsap';
+import { clsx } from 'clsx';
+import { gsap } from 'gsap';
 import { ChevronRight } from 'lucide-react-native';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { StyledText } from './StyledText';
@@ -32,9 +32,9 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	}, [expanded]);
 
 	return (
-		<div className={clsx('flex flex-col', expanded && 'gap-2')}>
+		<div className={clsx('flex flex-col')}>
 			<div
-				className={clsx('flex cursor-pointer flex-row items-center justify-between')}
+				className={clsx('flex cursor-pointer flex-row items-center justify-between py-2')}
 				onClick={() => setExpanded((prev) => !prev)}
 			>
 				<StyledText type="subtitle" className={clsx('hover:underline')}>
@@ -44,8 +44,13 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 					<ChevronRight size={26} color="#007AFF" />
 				</div>
 			</div>
-			<div ref={contentRef} className={clsx('h-0 overflow-hidden opacity-0')}>
-				{children}
+			<div
+				ref={contentRef}
+				className={clsx(
+					'bg-systemBackground dark:bg-secondarySystemBackground_dark h-0 overflow-hidden rounded-3xl	opacity-0'
+				)}
+			>
+				<div className={clsx('p-4')}>{children}</div>
 			</div>
 		</div>
 	);
