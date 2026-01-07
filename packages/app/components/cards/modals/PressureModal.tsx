@@ -4,9 +4,8 @@ import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
 import { ValuesList } from 'app/components/common/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { CircleGauge } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
+import { GestureResponderEvent } from 'react-native';
 
 export const PressureModal = ({
 	visible,

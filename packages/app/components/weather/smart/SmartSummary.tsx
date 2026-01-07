@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
-import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { CardHeader } from 'app/components/common/CardHeader';
 import { RoundView } from 'app/components/common/RoundView';
 import { StyledText } from 'app/components/common/StyledText';
 import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
+import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
+import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useStorageString } from 'app/storage/useStorageString';
+import { clsx } from 'clsx';
+import React, { useMemo } from 'react';
 
 interface SmartSummaryProps {
 	maxTempC: number;

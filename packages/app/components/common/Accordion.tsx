@@ -4,7 +4,7 @@ import { Pressable } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyledText } from './StyledText';
 import { RoundView } from './RoundView';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 interface AccordionProps {
 	title: string;

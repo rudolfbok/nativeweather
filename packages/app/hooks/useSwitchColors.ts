@@ -1,7 +1,5 @@
 import { useColorScheme } from 'nativewind';
 
-interface SwitchColorsProps {}
-
 export const useSwitchColors = (light: string, dark: string): string => {
 	const { colorScheme: currentTheme } = useColorScheme();
 

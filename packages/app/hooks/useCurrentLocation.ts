@@ -7,8 +7,6 @@ export const useCurrentLocation = () => {
 	const { setLocalWeatherData } = useLocalWeather();
 	const [error, setError] = useState<boolean>(false);
 
-	void error;
-
 	const getLocalWeather = async () => {
 		setError(false);
 

@@ -1,6 +1,5 @@
 import { useTranslate } from '@tolgee/react';
 import { ContentRow } from 'app/components/common/ContentRow';
-import { RoundView } from 'app/components/common/RoundView';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
 import { clsx } from 'clsx';

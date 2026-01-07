@@ -1,14 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
+import { ValuesList } from 'app/components/common/ValuesList';
 import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
-import { ModalValueItem } from './ModalValueItem';
-import { ContentRow } from 'app/components/common/ContentRow';
-import { ValuesList } from 'app/components/common/ValuesList';
 
 export const CloudsModal = ({
 	visible,

@@ -1,15 +1,12 @@
+import { useTranslate } from '@tolgee/react';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
-import { useTranslate } from '@tolgee/react';
+import { ValuesList } from 'app/components/common/ValuesList';
+import { useStorageString } from 'app/storage/useStorageString';
+import { clsx } from 'clsx';
 import { Eye } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
-import { useStorageString } from 'app/storage/useStorageString';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
-import { clsx } from 'clsx';
-import { ModalValueItem } from './ModalValueItem';
-import { ContentRow } from 'app/components/common/ContentRow';
-import { ValuesList } from 'app/components/common/ValuesList';
 
 export const VisibilityModal = ({
 	visible,

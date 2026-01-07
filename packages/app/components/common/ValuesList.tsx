@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { ModalValueItem } from '../cards/modals/ModalValueItem';
 import { Separator } from './Separator';

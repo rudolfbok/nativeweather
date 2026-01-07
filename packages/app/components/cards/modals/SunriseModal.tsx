@@ -1,11 +1,10 @@
+import { useTranslate } from '@tolgee/react';
+import { ContentRow } from 'app/components/common/ContentRow';
 import { StyledModal } from 'app/components/common/StyledModal';
 import { StyledText } from 'app/components/common/StyledText';
-import { useTranslate } from '@tolgee/react';
+import { clsx } from 'clsx';
 import { Sunrise } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
-import { clsx } from 'clsx';
-import { RoundView } from 'app/components/common/RoundView';
-import { ContentRow } from 'app/components/common/ContentRow';
 
 export const SunriseModal = ({
 	visible,
