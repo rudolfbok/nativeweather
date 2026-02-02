@@ -11,6 +11,7 @@
 		"pages-deploy": "pnpm dlx vercel build && pnpm dlx @cloudflare/next-on-pages --skip-build && pnpm dlx wrangler pages deploy .vercel/output/static"
 	},
 	"dependencies": {
+		"@opennextjs/cloudflare": "^1.16.2",
 		"app": "workspace:*",
 		"next": "16.1.0",
 		"react": "19.1.0",
@@ -18,7 +19,6 @@
 		"react-native-web": "~0.21.1"
 	},
 	"devDependencies": {
-		"@cloudflare/next-on-pages": "^1.13.16",
 		"@eslint/eslintrc": "^3",
 		"@types/node": "^20",
 		"@types/react": "^19",
