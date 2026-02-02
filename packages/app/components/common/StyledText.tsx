@@ -9,7 +9,7 @@ const textStyles = {
 	country: 'text-2xl web:text-lg web:md:text-xl text-black/60 dark:text-white/60',
 	city: 'text-4xl web:text-2xl web:md:text-3xl font-medium',
 	title: 'text-xl web:text-lg font-semibold',
-	data: 'text-3xl web:text-2xl font-light',
+	data: 'text-3xl web:text-2xl font-normal',
 	subtitle: 'text-lg web:text-base web:md:text-lg font-semibold ios:font-bold',
 	body: 'text-lg web:text-base',
 	bodysecondary: 'text-base web:text-sm',

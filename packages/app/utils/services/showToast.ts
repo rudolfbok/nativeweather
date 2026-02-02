@@ -2,17 +2,14 @@ import * as Burnt from 'burnt';
 
 interface ShowToastProps {
 	message: string;
-	type: 'error' | 'done' | 'custom';
-	iosIcon?: string;
-	iosIconColor?: string;
+	preset: 'error' | 'done';
 }
 
-export const showToast = ({ message, type, iosIcon, iosIconColor }: ShowToastProps) => {
+export const showToast = ({ message, preset }: ShowToastProps) => {
 	Burnt.toast({
-		preset: type,
+		preset: preset,
 		title: message,
 		from: 'bottom',
-		icon: type === 'custom' ? { ios: { name: iosIcon, color: iosIconColor } } : undefined,
 	});
 
 	return null;

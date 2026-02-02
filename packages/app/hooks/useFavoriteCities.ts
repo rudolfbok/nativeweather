@@ -10,9 +10,9 @@ import {
 } from 'app/storage/crudMMKVService';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { CityCardWeather } from 'app/types/cityCardWeather';
+import { showFavoriteToast } from 'app/utils/services/showFavoriteToast';
 import { showToast } from 'app/utils/services/showToast';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useLocalWeather } from './useLocalWeather';
 
 export interface FavoriteCity {
@@ -51,13 +51,13 @@ export const useFavoriteCities = () => {
 
 				if (!weatherData) {
 					if (displayToast) {
-						showToast({ message: t('toast.notrefreshed'), type: 'error' });
+						showToast({ message: t('toast.notrefreshed'), preset: 'error' });
 					}
 
 					return null;
 				}
 				if (displayToast) {
-					showToast({ message: t('toast.refreshed'), type: 'done' });
+					showToast({ message: t('toast.refreshed'), preset: 'done' });
 				}
 				return { city, weather: weatherData };
 			})
@@ -72,12 +72,7 @@ export const useFavoriteCities = () => {
 		setFavoritesData((prev) => prev.filter((item) => !isSameCity(item.city, city)));
 
 		const success = removeFavoriteCity(city);
-		showToast({
-			message: `${city.name} ${t('toast.remove')}`,
-			type: Platform.OS === 'web' ? 'error' : 'custom',
-			iosIcon: 'star.slash',
-			iosIconColor: '#FE9804',
-		});
+		showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
 		if (!success) {
 			await refreshFavoriteCities();
 		}
@@ -89,21 +84,11 @@ export const useFavoriteCities = () => {
 		if (isAlreadyFavorite) {
 			removeFavoriteCity(city);
 			setIsFavorite(false);
-			showToast({
-				message: `${city.name} ${t('toast.remove')}`,
-				type: Platform.OS === 'web' ? 'error' : 'custom',
-				iosIcon: 'star.slash',
-				iosIconColor: '#FE9804',
-			});
+			showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
 		} else {
 			addFavoriteCity(city);
 			setIsFavorite(true);
-			showToast({
-				message: `${city.name} ${t('toast.add')}`,
-				type: Platform.OS === 'web' ? 'done' : 'custom',
-				iosIcon: 'star.fill',
-				iosIconColor: '#FE9804',
-			});
+			showFavoriteToast({ message: `${city.name} ${t('toast.add')}`, type: 'add' });
 		}
 	};
 

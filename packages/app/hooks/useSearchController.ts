@@ -1,3 +1,4 @@
+import { useTranslate } from '@tolgee/react';
 import { fetchLocation, fetchWeather } from 'app/api/fetchWeather';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
@@ -7,7 +8,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { useWeather } from './useWeather';
-import { useTranslate } from '@tolgee/react';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
@@ -38,7 +38,7 @@ export const useSearchController = () => {
 		} else {
 			showToast({
 				message: t('search.city.error'),
-				type: 'error',
+				preset: 'error',
 			});
 			console.error('Failed to fetch weather data for saved city');
 		}
@@ -53,7 +53,7 @@ export const useSearchController = () => {
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
 		} else {
-			showToast({ message: t('search.input.error'), type: 'error' });
+			showToast({ message: t('search.input.error'), preset: 'error' });
 			console.log('Failed to fetch weather data for searched city');
 		}
 	};

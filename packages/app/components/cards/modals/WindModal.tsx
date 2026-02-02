@@ -164,7 +164,7 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 					<StyledText type="body">{t('wind.description')}</StyledText>
 				</ContentRow>
 				<ContentRow title={t('wind.values')}>
-					<ValuesList values={beaufortScaleValues} textColor={beaufortScaleValues} showIndex={true} />
+					<ValuesList values={beaufortScaleValues} showIndex={true} />
 				</ContentRow>
 			</View>
 		</StyledModal>
