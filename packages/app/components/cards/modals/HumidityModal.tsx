@@ -9,7 +9,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const HumidityModal = ({
 	visible,
-	onClose
+	onClose,
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -19,24 +19,24 @@ export const HumidityModal = ({
 	const humidityScaleValues = [
 		{
 			name: t('description.humidity.0'),
-			value: '0 - 20%'
+			value: '0 - 20%',
 		},
 		{
 			name: t('description.humidity.1'),
-			value: '20 - 40%'
+			value: '20 - 40%',
 		},
 		{
 			name: t('description.humidity.2'),
-			value: '40 - 60%'
+			value: '40 - 60%',
 		},
 		{
 			name: t('description.humidity.3'),
-			value: '60 - 80%'
+			value: '60 - 80%',
 		},
 		{
 			name: t('description.humidity.4'),
-			value: '80 - 100%'
-		}
+			value: '80 - 100%',
+		},
 	];
 
 	return (

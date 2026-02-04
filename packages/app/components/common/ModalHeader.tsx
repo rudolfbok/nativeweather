@@ -23,7 +23,7 @@ export const ModalHeader = ({
 	daysToggle,
 	showBack,
 	onBackPress,
-	onClose
+	onClose,
 }: ModalHeaderProps) => {
 	const switchColors = useSwitchColors('black', 'white');
 

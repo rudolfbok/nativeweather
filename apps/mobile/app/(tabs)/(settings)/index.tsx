@@ -16,7 +16,7 @@ export default function SettingsScreen() {
 	const scrollHandler = useAnimatedScrollHandler({
 		onScroll: (event) => {
 			scrollY.value = event.contentOffset.y;
-		}
+		},
 	});
 
 	useEffect(() => {
@@ -25,12 +25,12 @@ export default function SettingsScreen() {
 		const interval = setInterval(() => {
 			if (scrollY.value > 5) {
 				(navigation.setOptions({
-					headerTitle: t('settings')
+					headerTitle: t('settings'),
 				}),
 					setPrimaryTitle(''));
 			} else {
 				(navigation.setOptions({
-					headerTitle: ''
+					headerTitle: '',
 				}),
 					setPrimaryTitle(t('settings')));
 			}

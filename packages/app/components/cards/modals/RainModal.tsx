@@ -10,7 +10,7 @@ import { GestureResponderEvent } from 'react-native';
 
 export const RainModal = ({
 	visible,
-	onClose
+	onClose,
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -23,56 +23,56 @@ export const RainModal = ({
 		{
 			name: t('precipitation.chance.0'),
 			value: '0 - 10%',
-			description: t('rain.chance.text.0')
+			description: t('rain.chance.text.0'),
 		},
 		{
 			name: t('precipitation.chance.1'),
 			value: '10 - 30%',
-			description: t('rain.chance.text.1')
+			description: t('rain.chance.text.1'),
 		},
 		{
 			name: t('precipitation.chance.2'),
 			value: '30 - 50%',
-			description: t('rain.chance.text.2')
+			description: t('rain.chance.text.2'),
 		},
 		{
 			name: t('precipitation.chance.3'),
 			value: '50 - 70%',
-			description: t('rain.chance.text.3')
+			description: t('rain.chance.text.3'),
 		},
 		{
 			name: t('precipitation.chance.4'),
 			value: '70 - 90%',
-			description: t('rain.chance.text.4')
+			description: t('rain.chance.text.4'),
 		},
 		{
 			name: t('precipitation.chance.5'),
 			value: '90 - 100%',
-			description: t('rain.chance.text.5')
-		}
+			description: t('rain.chance.text.5'),
+		},
 	];
 
 	const rainPrecipValues = [
 		{
 			name: t('precipitation.rainfall.0'),
-			value: switchUnits('0,1 - 2', '0.01 - 0.08')
+			value: switchUnits('0,1 - 2', '0.01 - 0.08'),
 		},
 		{
 			name: t('precipitation.rainfall.1'),
-			value: switchUnits('2 - 10', '0.08 - 0.40')
+			value: switchUnits('2 - 10', '0.08 - 0.40'),
 		},
 		{
 			name: t('precipitation.rainfall.2'),
-			value: switchUnits('10 - 30', '0.40 - 1.20')
+			value: switchUnits('10 - 30', '0.40 - 1.20'),
 		},
 		{
 			name: t('precipitation.rainfall.3'),
-			value: switchUnits('30 - 50', '1.20 - 2.00')
+			value: switchUnits('30 - 50', '1.20 - 2.00'),
 		},
 		{
 			name: t('precipitation.rainfall.4'),
-			value: switchUnits('> 50', '> 2.00')
-		}
+			value: switchUnits('> 50', '> 2.00'),
+		},
 	];
 
 	return (

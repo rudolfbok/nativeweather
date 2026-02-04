@@ -23,7 +23,7 @@ export const SearchInput = ({
 	performSearch,
 	onFocus,
 	onChangeText,
-	onBlur
+	onBlur,
 }: SearchInputProps) => {
 	const { t } = useTranslate('common');
 	const [isXHovered, setIsXHovered] = useState(false);

@@ -12,12 +12,12 @@ const nextConfig: NextConfig = {
 		'nativewind',
 		'burnt',
 		'moti',
-		'app'
+		'app',
 	],
 	compiler: {
 		define: {
-			__DEV__: JSON.stringify(process.env.NODE_ENV !== 'production')
-		}
+			__DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
+		},
 	},
 	reactStrictMode: false, // reanimated doesn't support this on web
 	webpack: (config, { isServer }) => {
@@ -33,11 +33,11 @@ const nextConfig: NextConfig = {
 			...(config.resolve.alias || {}),
 			app: '../../packages/app',
 			// "react-native-mmkv": false,
-			'react-native$': 'react-native-web'
+			'react-native$': 'react-native-web',
 		};
 		config.resolve.extensions = ['.web.ts', '.web.tsx', '.web.js', ...config.resolve.extensions];
 		return config;
-	}
+	},
 };
 
 export default nextConfig;

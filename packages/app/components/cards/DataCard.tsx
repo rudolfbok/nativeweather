@@ -23,7 +23,7 @@ export const DataCard = ({
 	data,
 	extraContent,
 	className,
-	modal
+	modal,
 }: DataCardProps) => {
 	return (
 		<>

@@ -7,9 +7,9 @@ export default function TabLayout() {
 			screenOptions={{
 				headerTintColor: useSwitchColors('black', 'white'),
 				contentStyle: {
-					backgroundColor: useSwitchColors('#F2F2F7', '#000')
+					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 					// paddingHorizontal: 16,
-				}
+				},
 			}}
 		>
 			<Stack.Screen name="index" />

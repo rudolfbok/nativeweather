@@ -23,7 +23,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 		? useSwitchTemp({
 				celsius: Math.round(dewPointC ?? 0),
 				fahrenheit: Math.round(dewPointF ?? 0),
-				currentTemp: currentTemp
+				currentTemp: currentTemp,
 			})
 		: null;
 
@@ -32,7 +32,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 		{ max: 40, description: t('description.humidity.1') },
 		{ max: 60, description: t('description.humidity.2') },
 		{ max: 80, description: t('description.humidity.3') },
-		{ max: Infinity, description: t('description.humidity.4') }
+		{ max: Infinity, description: t('description.humidity.4') },
 	];
 
 	const description = humidityRanges.find((range) => data < range.max)?.description ?? '';

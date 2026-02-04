@@ -10,7 +10,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const VisibilityModal = ({
 	visible,
-	onClose
+	onClose,
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -24,32 +24,32 @@ export const VisibilityModal = ({
 	const visibilityValues = [
 		{
 			name: t('description.visibility.0'),
-			value: switchUnits('0 - 1', '0 - 1')
+			value: switchUnits('0 - 1', '0 - 1'),
 		},
 		{
 			name: t('description.visibility.1'),
-			value: switchUnits('1 - 2', '1 - 2')
+			value: switchUnits('1 - 2', '1 - 2'),
 		},
 		{
 			name: t('description.visibility.2'),
-			value: switchUnits('2 - 4', '2 - 3')
+			value: switchUnits('2 - 4', '2 - 3'),
 		},
 		{
 			name: t('description.visibility.3'),
-			value: switchUnits('4 - 10', '3 - 6')
+			value: switchUnits('4 - 10', '3 - 6'),
 		},
 		{
 			name: t('description.visibility.4'),
-			value: switchUnits('10 - 20', '6 - 12')
+			value: switchUnits('10 - 20', '6 - 12'),
 		},
 		{
 			name: t('description.visibility.5'),
-			value: switchUnits('20 - 50', '12 - 30')
+			value: switchUnits('20 - 50', '12 - 30'),
 		},
 		{
 			name: t('description.visibility.6'),
-			value: switchUnits('> 50', '> 30')
-		}
+			value: switchUnits('> 50', '> 30'),
+		},
 	];
 
 	return (

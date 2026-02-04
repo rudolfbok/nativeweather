@@ -18,7 +18,7 @@ export const LanguageButton = () => {
 
 	const getLocale: Record<string, string> = {
 		'cs-CZ': t('language.czech'),
-		'en-US': t('language.english')
+		'en-US': t('language.english'),
 	};
 
 	return (

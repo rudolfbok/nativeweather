@@ -14,63 +14,63 @@ export const mapColorTheme = (layer: string) => {
 		{
 			featureType: 'administrative',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }]
+			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }],
 		},
 		{
 			featureType: 'administrative.country',
 			elementType: 'geometry.stroke',
-			stylers: [{ color: isCloudLayer ? '#666666' : '#999999' }, { weight: 1 }]
+			stylers: [{ color: isCloudLayer ? '#666666' : '#999999' }, { weight: 1 }],
 		},
 		{
 			featureType: 'administrative.province',
 			elementType: 'geometry.stroke',
-			stylers: [{ color: isCloudLayer ? '#555555' : '#bbbbbb' }, { weight: 0.5 }]
+			stylers: [{ color: isCloudLayer ? '#555555' : '#bbbbbb' }, { weight: 0.5 }],
 		},
 		{
 			featureType: 'administrative.locality',
 			elementType: 'geometry.stroke',
-			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }]
+			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }],
 		},
 		{
 			featureType: 'poi',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#222222' : '#f5f5f5' }]
+			stylers: [{ color: isCloudLayer ? '#222222' : '#f5f5f5' }],
 		},
 		{
 			featureType: 'poi',
 			elementType: 'labels.text.fill',
-			stylers: [{ color: isCloudLayer ? '#cccccc' : '#333333' }]
+			stylers: [{ color: isCloudLayer ? '#cccccc' : '#333333' }],
 		},
 		{
 			featureType: 'poi.park',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#333333' : '#e8e8e8' }]
+			stylers: [{ color: isCloudLayer ? '#333333' : '#e8e8e8' }],
 		},
 		{
 			featureType: 'road',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }]
+			stylers: [{ color: isCloudLayer ? '#444444' : '#cccccc' }],
 		},
 		{ featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: textColor }] },
 		{ featureType: 'road', elementType: 'labels.text.stroke', stylers: [{ color: textStroke }] },
 		{
 			featureType: 'road.highway',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#666666' : '#aaaaaa' }]
+			stylers: [{ color: isCloudLayer ? '#666666' : '#aaaaaa' }],
 		},
 		{ featureType: 'road.highway', elementType: 'labels.text.fill', stylers: [{ color: textColor }] },
 		{
 			featureType: 'road.local',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#333333' : '#dddddd' }]
+			stylers: [{ color: isCloudLayer ? '#333333' : '#dddddd' }],
 		},
 		{
 			featureType: 'transit',
 			elementType: 'geometry',
-			stylers: [{ color: isCloudLayer ? '#333333' : '#e0e0e0' }]
+			stylers: [{ color: isCloudLayer ? '#333333' : '#e0e0e0' }],
 		},
 		{ featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: textColor }] },
 		{ featureType: 'water', elementType: 'geometry', stylers: [{ color: waterColor }] },
-		{ featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: watertextColor }] }
+		{ featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: watertextColor }] },
 	];
 };

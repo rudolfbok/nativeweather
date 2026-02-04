@@ -30,7 +30,7 @@ export const StyledModal = ({
 	goBackOnPress,
 	settingsModal = false,
 	mapsModal = false,
-	children
+	children,
 }: StyledModalProps) => {
 	return (
 		<Modal

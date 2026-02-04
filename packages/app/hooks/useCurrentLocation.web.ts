@@ -14,7 +14,7 @@ const getCoordinates = (): Promise<GeolocationPosition | null> => {
 			{
 				enableHighAccuracy: false,
 				timeout: 10_000,
-				maximumAge: 60_000
+				maximumAge: 60_000,
 			}
 		);
 	});

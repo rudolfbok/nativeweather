@@ -21,7 +21,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const display = useSwitchMetrics({
 		metric: `${snowPrecipCm.toFixed(1)}cm`,
 		imperial: `${snowPrecipIn.toFixed(2)}in`,
-		currentUnits: currentUnits
+		currentUnits: currentUnits,
 	});
 
 	const snowChanceRanges = [
@@ -31,7 +31,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 		{ max: 70, description: t('precipitation.chance.3') },
 		{ max: 90, description: t('precipitation.chance.4') },
 		{ max: 100, description: t('precipitation.chance.5') },
-		{ max: Infinity, description: t('precipitation.chance.6') }
+		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 
 	const description = snowChanceRanges.find((range) => snowChance < range.max)?.description ?? '';

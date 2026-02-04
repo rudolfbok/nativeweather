@@ -25,11 +25,11 @@ module.exports = {
 				sensitive: '#FF6F00',
 				unhealthy: '#FF0000',
 				veryunhealthy: '#990099',
-				hazardous: '#84212F'
+				hazardous: '#84212F',
 				// tertiaryLabel: "#8E8E93",
 				// tertiaryLabel_dark: "#636366",
-			}
-		}
+			},
+		},
 	},
-	plugins: []
+	plugins: [],
 };

@@ -6,7 +6,7 @@ import {
 	getFavoriteCities,
 	isCityInFavorites,
 	isSameCity,
-	removeFavoriteCity
+	removeFavoriteCity,
 } from 'app/storage/crudMMKVService';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { CityCardWeather } from 'app/types/cityCardWeather';
@@ -99,7 +99,7 @@ export const useFavoriteCities = () => {
 		handleRemoveCity,
 		handleFavoriteToggle,
 		isFavorite,
-		setIsFavorite
+		setIsFavorite,
 		// refreshing,
 	};
 };

@@ -15,11 +15,11 @@ export default function SettingsLayout() {
 				contentStyle: {
 					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 					paddingHorizontal: 16,
-					paddingTop: headerHeight
+					paddingTop: headerHeight,
 				},
 				headerStyle: {
-					backgroundColor: useSwitchColors('#F2F2F7', '#000')
-				}
+					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+				},
 			}}
 		>
 			<Stack.Screen
@@ -27,42 +27,42 @@ export default function SettingsLayout() {
 				options={{
 					contentStyle: {
 						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-						paddingHorizontal: 0
+						paddingHorizontal: 0,
 					},
 					headerTransparent: true,
 					headerStyle: {
-						backgroundColor: 'transparent'
-					}
+						backgroundColor: 'transparent',
+					},
 				}}
 			/>
 			<Stack.Screen
 				name="theme"
 				options={{
-					headerTitle: t('theme.title')
+					headerTitle: t('theme.title'),
 				}}
 			/>
 			<Stack.Screen
 				name="language"
 				options={{
-					headerTitle: t('language.title')
+					headerTitle: t('language.title'),
 				}}
 			/>
 			<Stack.Screen
 				name="temperature"
 				options={{
-					headerTitle: t('temperature')
+					headerTitle: t('temperature'),
 				}}
 			/>
 			<Stack.Screen
 				name="units"
 				options={{
-					headerTitle: t('units.title')
+					headerTitle: t('units.title'),
 				}}
 			/>
 			<Stack.Screen
 				name="aqi"
 				options={{
-					headerTitle: t('airquality.title')
+					headerTitle: t('airquality.title'),
 				}}
 			/>
 			<Stack.Screen
@@ -71,13 +71,13 @@ export default function SettingsLayout() {
 					headerTitle: t('datasource'),
 					headerTransparent: true,
 					headerStyle: {
-						backgroundColor: 'transparent'
+						backgroundColor: 'transparent',
 					},
 					contentStyle: {
 						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 
-						paddingTop: headerHeight
-					}
+						paddingTop: headerHeight,
+					},
 				}}
 			/>
 			{/* 

@@ -52,7 +52,7 @@ export const MainWeather = ({
 	arrowcolor,
 	strokeWidth,
 	conditionbg = true,
-	displayTime = true
+	displayTime = true,
 }: MainWeatherProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
@@ -86,7 +86,7 @@ export const MainWeather = ({
 						{useSwitchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
-							currentTemp: currentTemperature
+							currentTemp: currentTemperature,
 						})}
 					</StyledText>
 					<View className={clsx('flex flex-row items-center gap-1')}>
@@ -96,7 +96,7 @@ export const MainWeather = ({
 								{useSwitchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
-									currentTemp: currentTemperature
+									currentTemp: currentTemperature,
 								})}
 							</StyledText>
 						</View>
@@ -106,7 +106,7 @@ export const MainWeather = ({
 								{useSwitchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
-									currentTemp: currentTemperature
+									currentTemp: currentTemperature,
 								})}
 							</StyledText>
 						</View>
@@ -117,7 +117,7 @@ export const MainWeather = ({
 							{useSwitchTemp({
 								celsius: feelsLikeC ?? 0,
 								fahrenheit: feelsLikeF ?? 0,
-								currentTemp: currentTemperature
+								currentTemp: currentTemperature,
 							})}
 						</StyledText>
 					)}

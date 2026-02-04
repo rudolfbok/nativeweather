@@ -8,7 +8,7 @@ export const shareLink = async (weatherData: WeatherData) => {
 	try {
 		await Share.share({
 			url, // místo message
-			title: `Weather in ${weatherData.location.name}`
+			title: `Weather in ${weatherData.location.name}`,
 		});
 	} catch (error) {
 		console.error('Error sharing:', error);

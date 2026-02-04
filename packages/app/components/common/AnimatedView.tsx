@@ -17,7 +17,7 @@ export const AnimatedView = ({ children, duration, className }: AnimatedViewProp
 	}, []);
 
 	const animatedStyle = useAnimatedStyle(() => ({
-		opacity: opacity.value
+		opacity: opacity.value,
 	}));
 
 	return (

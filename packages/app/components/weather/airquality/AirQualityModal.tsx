@@ -9,7 +9,7 @@ import {
 	OzoneIndicatorColor,
 	PM10IndicatorColor,
 	PM25IndicatorColor,
-	USAQIIndicatorColor
+	USAQIIndicatorColor,
 } from 'app/utils/mappings/mapAirQualityIndicators';
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
@@ -40,43 +40,43 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 			description: t('airquality.item.euaqi'),
 			data: airQualityData!.current.european_aqi,
 			colorIndicator: EUAQIIndicatorColor(airQualityData!.current.european_aqi),
-			units: ''
+			units: '',
 		},
 		{
 			name: 'US AQI',
 			description: t('airquality.item.usaqi'),
 			data: airQualityData!.current.us_aqi,
 			colorIndicator: USAQIIndicatorColor(airQualityData!.current.us_aqi),
-			units: ''
+			units: '',
 		},
 		{
 			name: 'PM2.5',
 			description: t('airquality.item.pm25'),
 			data: airQualityData!.current.pm2_5,
 			colorIndicator: PM25IndicatorColor(airQualityData!.current.pm2_5),
-			units: 'μg/m³'
+			units: 'μg/m³',
 		},
 		{
 			name: 'PM10',
 			description: t('airquality.item.pm10'),
 			data: airQualityData!.current.pm10,
 			colorIndicator: PM10IndicatorColor(airQualityData!.current.pm10),
-			units: 'μg/m³'
+			units: 'μg/m³',
 		},
 		{
 			name: 'O3',
 			description: t('airquality.item.ozone'),
 			data: airQualityData!.current.ozone,
 			colorIndicator: OzoneIndicatorColor(airQualityData!.current.ozone),
-			units: 'μg/m³'
+			units: 'μg/m³',
 		},
 		{
 			name: 'NO2',
 			description: t('airquality.item.no2'),
 			data: airQualityData!.current.nitrogen_dioxide,
 			colorIndicator: NO2IndicatorColor(airQualityData!.current.nitrogen_dioxide),
-			units: 'μg/m³'
-		}
+			units: 'μg/m³',
+		},
 	];
 
 	const detailComponents: Record<string, JSX.Element> = {
@@ -85,7 +85,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 		'PM2.5': <PM25Detail />,
 		PM10: <PM10Detail />,
 		O3: <O3Detail />,
-		NO2: <NO2Detail />
+		NO2: <NO2Detail />,
 	};
 
 	return (

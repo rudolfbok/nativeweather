@@ -22,7 +22,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 		{ max: 5, description: t('description.uvindex.1') },
 		{ max: 7, description: t('description.uvindex.2') },
 		{ max: 10, description: t('description.uvindex.3') },
-		{ max: Infinity, description: t('description.uvindex.4') }
+		{ max: Infinity, description: t('description.uvindex.4') },
 	];
 
 	const description = uvRanges.find((range) => data < range.max)?.description ?? '';
@@ -40,7 +40,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 						<Text
 							className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
 							style={{
-								left: `${scaleUV}%`
+								left: `${scaleUV}%`,
 							}}
 						>
 							|

@@ -20,7 +20,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	const display = useSwitchMetrics({
 		metric: `${rainPrecipMm.toFixed(1)}mm`,
 		imperial: `${rainPrecipIn.toFixed(2)}in`,
-		currentUnits: currentUnits
+		currentUnits: currentUnits,
 	});
 
 	const rainChanceRanges = [
@@ -30,7 +30,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 		{ max: 70, description: t('precipitation.chance.3') },
 		{ max: 90, description: t('precipitation.chance.4') },
 		{ max: 100, description: t('precipitation.chance.5') },
-		{ max: Infinity, description: t('precipitation.chance.6') }
+		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 
 	const description = rainChanceRanges.find((range) => rainChance < range.max)?.description ?? '';

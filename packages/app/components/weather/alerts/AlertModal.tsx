@@ -23,7 +23,7 @@ export const AlertModal = ({
 	onPress,
 	goBackOnPress,
 	filteredAlerts,
-	selectedAlert
+	selectedAlert,
 }: AlertModalProps) => {
 	const { t } = useTranslate('weather');
 	return (

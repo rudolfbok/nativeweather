@@ -23,7 +23,7 @@ export const useWeather = create<WeatherState>((set, get) => ({
 
 		set({
 			weatherData: data,
-			airQualityData: null
+			airQualityData: null,
 		});
 
 		if (!data) return;
@@ -35,5 +35,5 @@ export const useWeather = create<WeatherState>((set, get) => ({
 		} catch (e) {
 			console.error('AQI fetch failed', e);
 		}
-	}
+	},
 }));

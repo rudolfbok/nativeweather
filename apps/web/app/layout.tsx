@@ -7,21 +7,21 @@ import { Metadata } from 'next';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
-	subsets: ['latin']
+	subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
-	subsets: ['latin']
+	subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
 	title: 'NativeWeather',
-	description: 'React weather application'
+	description: 'React weather application',
 };
 
 export default function RootLayout({
-	children
+	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {

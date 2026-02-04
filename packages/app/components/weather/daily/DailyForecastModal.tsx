@@ -41,13 +41,13 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 		return date.toLocaleDateString(tolgee.getLanguage(), {
 			day: 'numeric',
 			month: 'long',
-			year: 'numeric'
+			year: 'numeric',
 		});
 	};
 
 	const getDayName = (date: string, short: boolean) => {
 		return new Date(date).toLocaleString(tolgee.getLanguage(), {
-			weekday: short ? 'short' : 'long'
+			weekday: short ? 'short' : 'long',
 		});
 	};
 

@@ -8,7 +8,7 @@ export const useWeatherConditions = () => {
 		() => ({
 			1000: {
 				day: t('condition.1000.day'),
-				night: t('condition.1000.night')
+				night: t('condition.1000.night'),
 			},
 			1003: t('condition.1003'),
 			1006: t('condition.1006'),
@@ -56,7 +56,7 @@ export const useWeatherConditions = () => {
 			1273: t('condition.1273'),
 			1276: t('condition.1276'),
 			1279: t('condition.1279'),
-			1282: t('condition.1282')
+			1282: t('condition.1282'),
 		}),
 		[t]
 	);

@@ -8,7 +8,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const SunriseModal = ({
 	visible,
-	onClose
+	onClose,
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;

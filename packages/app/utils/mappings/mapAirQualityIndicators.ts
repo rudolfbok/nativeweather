@@ -5,7 +5,7 @@ export const EUAQIIndicatorColor = (value: number): string => {
 		{ min: 40, max: 60, color: '#FFC100' },
 		{ min: 60, max: 80, color: '#FF9900' },
 		{ min: 80, max: 100, color: '#FF0000' },
-		{ min: 100, max: Infinity, color: '#990099' }
+		{ min: 100, max: Infinity, color: '#990099' },
 	];
 
 	for (const range of euAQIranges) {
@@ -23,7 +23,7 @@ export const USAQIIndicatorColor = (value: number): string => {
 		{ min: 100, max: 150, color: '#FF6F00' },
 		{ min: 150, max: 200, color: '#FF0000' },
 		{ min: 200, max: 300, color: '#960132' },
-		{ min: 300, max: Infinity, color: '#990099' }
+		{ min: 300, max: Infinity, color: '#990099' },
 	];
 
 	for (const range of usAQIranges) {
@@ -41,7 +41,7 @@ export const PM25IndicatorColor = (value: number): string => {
 		{ min: 25, max: 40, color: '#FF6F00' },
 		{ min: 40, max: 65, color: '#FF0000' },
 		{ min: 65, max: 100, color: '#990099' },
-		{ min: 100, max: Infinity, color: '#960132' }
+		{ min: 100, max: Infinity, color: '#960132' },
 	];
 
 	for (const range of PM25ranges) {
@@ -59,7 +59,7 @@ export const PM10IndicatorColor = (value: number): string => {
 		{ min: 50, max: 80, color: '#FF6F00' },
 		{ min: 80, max: 120, color: '#FF0000' },
 		{ min: 120, max: 200, color: '#990099' },
-		{ min: 200, max: Infinity, color: '#960132' }
+		{ min: 200, max: Infinity, color: '#960132' },
 	];
 
 	for (const range of PM10ranges) {
@@ -77,7 +77,7 @@ export const OzoneIndicatorColor = (value: number): string => {
 		{ min: 160, max: 240, color: '#FF6F00' },
 		{ min: 240, max: 320, color: '#FF0000' },
 		{ min: 320, max: 440, color: '#960132' },
-		{ min: 440, max: Infinity, color: '#990099' }
+		{ min: 440, max: Infinity, color: '#990099' },
 	];
 
 	for (const range of OzoneRanges) {
@@ -95,7 +95,7 @@ export const NO2IndicatorColor = (value: number): string => {
 		{ min: 80, max: 150, color: '#FF6F00' },
 		{ min: 150, max: 250, color: '#FF0000' },
 		{ min: 250, max: 400, color: '#960132' },
-		{ min: 400, max: Infinity, color: '#990099' }
+		{ min: 400, max: Infinity, color: '#990099' },
 	];
 
 	for (const range of NO2Ranges) {

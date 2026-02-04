@@ -17,7 +17,7 @@ export const SearchBar = () => {
 		showRecentSearches,
 		showSuggestions,
 		suggestions,
-		addToRecentSearches
+		addToRecentSearches,
 	} = useSearchController();
 
 	return (
@@ -34,12 +34,12 @@ export const SearchBar = () => {
 				}}
 			/>
 			{showRecentSearches && (
-				<AnimatedView duration={250} className={clsx('w-full')}>
+				<AnimatedView duration={100} className={clsx('w-full')}>
 					<RecentSearchesList recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
 				</AnimatedView>
 			)}
 			{showSuggestions && (
-				<AnimatedView duration={250} className={clsx('w-full')}>
+				<AnimatedView duration={100} className={clsx('w-full')}>
 					<SuggestionsList
 						suggestions={suggestions}
 						onSelect={(item) => {

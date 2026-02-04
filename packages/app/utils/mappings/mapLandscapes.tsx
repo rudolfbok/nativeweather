@@ -60,7 +60,7 @@ const dayLandscapes: Record<number, React.ComponentType<any>> = {
 	1273: ThunderDayLandscape,
 	1276: ThunderDayLandscape,
 	1279: ThunderDayLandscape,
-	1282: ThunderDayLandscape
+	1282: ThunderDayLandscape,
 };
 
 const nightLandscapes: Record<number, React.ComponentType<any>> = {
@@ -111,7 +111,7 @@ const nightLandscapes: Record<number, React.ComponentType<any>> = {
 	1273: ThunderNightLandscape,
 	1276: ThunderNightLandscape,
 	1279: ThunderNightLandscape,
-	1282: ThunderNightLandscape
+	1282: ThunderNightLandscape,
 };
 
 export const WeatherLandscape = ({ isDay, code }: { isDay: 0 | 1; code: number }) => {

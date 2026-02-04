@@ -31,7 +31,7 @@ export const CityCard = ({
 	tempF,
 	timeZone,
 	displayTime = true,
-	region
+	region,
 }: CityCardProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
@@ -68,7 +68,7 @@ export const CityCard = ({
 					{useSwitchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
-						currentTemp: currentTemperature
+						currentTemp: currentTemperature,
 					})}
 				</StyledText>
 				<StyledText

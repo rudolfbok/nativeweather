@@ -10,7 +10,7 @@ import {
 	SunsetCard,
 	UVIndexCard,
 	VisibilityCard,
-	WindCard
+	WindCard,
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { AlertWeather } from 'app/components/weather/alerts/AlertWeather';
@@ -49,7 +49,7 @@ export const HeroWeather = () => {
 			new Intl.DateTimeFormat('en-US', {
 				hour: '2-digit',
 				hour12: false,
-				timeZone: timezone
+				timeZone: timezone,
 			}).format(date),
 			10
 		);
@@ -62,7 +62,7 @@ export const HeroWeather = () => {
 		new Intl.DateTimeFormat('en-US', {
 			hour: '2-digit',
 			hour12: false,
-			timeZone: tzId
+			timeZone: tzId,
 		}).format(now),
 		10
 	);

@@ -41,26 +41,26 @@ export const DataSourceInfo = () => {
 			name: 'Weather API',
 			logo: <WeatherAPILogo />,
 			description: t('datasource.weatherapi'),
-			url: 'https://www.weatherapi.com/'
+			url: 'https://www.weatherapi.com/',
 		},
 		{
 			name: 'OpenMeteo API',
 			logo: <OpenMeteoLogo />,
 			description: t('datasource.openmeteo'),
-			url: 'https://open-meteo.com/'
+			url: 'https://open-meteo.com/',
 		},
 		{
 			name: 'OpenWeather API',
 			logo: <OpenWeatherLogo />,
 			description: t('datasource.openweather'),
-			url: 'https://openweathermap.org/'
+			url: 'https://openweathermap.org/',
 		},
 		{
 			name: 'Google Maps Platform API',
 			logo: <GoogleMapsPlatformLogo />,
 			description: t('datasource.googlemaps'),
-			url: 'https://mapsplatform.google.com/'
-		}
+			url: 'https://mapsplatform.google.com/',
+		},
 	];
 
 	return (

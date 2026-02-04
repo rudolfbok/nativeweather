@@ -29,13 +29,13 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 	const displaySpeed = useSwitchMetrics({
 		metric: `${Math.round(windKm)}km/h`,
 		imperial: `${Math.round(windMil)}mph`,
-		currentUnits: currentUnits
+		currentUnits: currentUnits,
 	});
 
 	const displayGust = useSwitchMetrics({
 		metric: `${Math.round(gustKm ?? 0)}km/h`,
 		imperial: `${Math.round(gustMil ?? 0)}mph`,
-		currentUnits: currentUnits
+		currentUnits: currentUnits,
 	});
 
 	const windSpeedRanges = [
@@ -51,7 +51,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 		{ max_kmh: 88, max_mph: 54, description: t('description.windspeed.9') },
 		{ max_kmh: 102, max_mph: 63, description: t('description.windspeed.10') },
 		{ max_kmh: 117, max_mph: 72, description: t('description.windspeed.11') },
-		{ max_kmh: Infinity, max_mph: Infinity, description: t('description.windspeed.12') }
+		{ max_kmh: Infinity, max_mph: Infinity, description: t('description.windspeed.12') },
 	];
 
 	const description =

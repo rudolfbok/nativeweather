@@ -40,43 +40,43 @@ export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moo
 		{
 			moonPhase: <NewMoon />,
 			name: t('moon.phase.newmoon'),
-			description: t('moon.text.newmoon')
+			description: t('moon.text.newmoon'),
 		},
 		{
 			moonPhase: <WaxingCrescent />,
 			name: t('moon.phase.waxingcrescent'),
-			description: t('moon.text.waxingcrescent')
+			description: t('moon.text.waxingcrescent'),
 		},
 		{
 			moonPhase: <FirstQuarter />,
 			name: t('moon.phase.firstquarter'),
-			description: t('moon.text.firstquarter')
+			description: t('moon.text.firstquarter'),
 		},
 		{
 			moonPhase: <WaxingGibbous />,
 			name: t('moon.phase.waxinggibbous'),
-			description: t('moon.text.waxinggibbous')
+			description: t('moon.text.waxinggibbous'),
 		},
 		{
 			moonPhase: <FullMoon />,
 			name: t('moon.phase.fullmoon'),
-			description: t('moon.text.fullmoon')
+			description: t('moon.text.fullmoon'),
 		},
 		{
 			moonPhase: <WaningGibbous />,
 			name: t('moon.phase.waninggibbous'),
-			description: t('moon.text.waninggibbous')
+			description: t('moon.text.waninggibbous'),
 		},
 		{
 			moonPhase: <LastQuarter />,
 			name: t('moon.phase.lastquarter'),
-			description: t('moon.text.lastquarter')
+			description: t('moon.text.lastquarter'),
 		},
 		{
 			moonPhase: <WaningCrescent />,
 			name: t('moon.phase.waningcrescent'),
-			description: t('moon.text.waningcrescent')
-		}
+			description: t('moon.text.waningcrescent'),
+		},
 	];
 
 	const moonPhaseComponents: Record<string, JSX.Element> = {
@@ -87,7 +87,7 @@ export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moo
 		'Full Moon': <FullMoon />,
 		'Waning Gibbous': <WaningGibbous />,
 		'Last Quarter': <LastQuarter />,
-		'Waning Crescent': <WaningCrescent />
+		'Waning Crescent': <WaningCrescent />,
 	};
 
 	const getLocalePhase: Record<string, string> = {
@@ -98,7 +98,7 @@ export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moo
 		'Full Moon': t('moon.phase.fullmoon'),
 		'Waning Gibbous': t('moon.phase.waninggibbous'),
 		'Last Quarter': t('moon.phase.lastquarter'),
-		'Waning Crescent': t('moon.phase.waningcrescent')
+		'Waning Crescent': t('moon.phase.waningcrescent'),
 	};
 
 	return (

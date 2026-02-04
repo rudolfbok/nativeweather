@@ -17,7 +17,7 @@ export const useCurrentLocation = () => {
 			}
 
 			const { coords } = await getCurrentPositionAsync({
-				accuracy: Accuracy.Balanced
+				accuracy: Accuracy.Balanced,
 			});
 
 			const result = await fetchWeather(`${coords.latitude},${coords.longitude}`);

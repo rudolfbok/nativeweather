@@ -19,7 +19,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 	const display = useSwitchMetrics({
 		metric: `${Math.round(visKm)}km`,
 		imperial: `${Math.round(visMiles)}mil`,
-		currentUnits: currentUnits
+		currentUnits: currentUnits,
 	});
 
 	const visibilityRanges = [
@@ -29,7 +29,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 		{ max_km: 10, max_mil: 6, description: t('description.visibility.3') },
 		{ max_km: 20, max_mil: 12, description: t('description.visibility.4') },
 		{ max_km: 50, max_mil: 30, description: t('description.visibility.5') },
-		{ max_km: Infinity, max_mil: Infinity, description: t('description.visibility.6') }
+		{ max_km: Infinity, max_mil: Infinity, description: t('description.visibility.6') },
 	];
 
 	const description =

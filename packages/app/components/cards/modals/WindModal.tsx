@@ -32,68 +32,68 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 		{
 			name: t('description.windspeed.0'),
 			textColor: '',
-			value: switchUnits('< 1', '< 1')
+			value: switchUnits('< 1', '< 1'),
 		},
 		{
 			name: t('description.windspeed.1'),
 			textColor: '!text-[#0891B2]',
-			value: switchUnits('1 - 5', '0 - 2')
+			value: switchUnits('1 - 5', '0 - 2'),
 		},
 		{
 			name: t('description.windspeed.2'),
 			textColor: '!text-[#059669]',
-			value: switchUnits('6 - 11', '4 - 7')
+			value: switchUnits('6 - 11', '4 - 7'),
 		},
 		{
 			name: t('description.windspeed.3'),
 			textColor: '!text-[#16A34A]',
-			value: switchUnits('12 - 19', '8 - 12')
+			value: switchUnits('12 - 19', '8 - 12'),
 		},
 		{
 			name: t('description.windspeed.4'),
 			textColor: '!text-[#22C55E]',
-			value: switchUnits('20 - 28', '13 - 18')
+			value: switchUnits('20 - 28', '13 - 18'),
 		},
 		{
 			name: t('description.windspeed.5'),
 			textColor: '!text-[#65A30D]',
-			value: switchUnits('29 - 38', '19 - 24')
+			value: switchUnits('29 - 38', '19 - 24'),
 		},
 		{
 			name: t('description.windspeed.6'),
 			textColor: '!text-[#84CC16]',
-			value: switchUnits('39 - 49', '25 - 31')
+			value: switchUnits('39 - 49', '25 - 31'),
 		},
 		{
 			name: t('description.windspeed.7'),
 			textColor: '!text-[#A3A300]',
-			value: switchUnits('50 - 61', '32 - 38')
+			value: switchUnits('50 - 61', '32 - 38'),
 		},
 		{
 			name: t('description.windspeed.8'),
 			textColor: '!text-[#CA8A04]',
-			value: switchUnits('62 - 74', '39 - 46')
+			value: switchUnits('62 - 74', '39 - 46'),
 		},
 		{
 			name: t('description.windspeed.9'),
 			textColor: '!text-[#EA580C]',
-			value: switchUnits('75 - 88', '47 - 54')
+			value: switchUnits('75 - 88', '47 - 54'),
 		},
 		{
 			name: t('description.windspeed.10'),
 			textColor: '!text-[#DC2626]',
-			value: switchUnits('89 - 102', '55 - 63')
+			value: switchUnits('89 - 102', '55 - 63'),
 		},
 		{
 			name: t('description.windspeed.11'),
 			textColor: '!text-[#B91C1C]',
-			value: switchUnits('103 - 117', '64 - 72')
+			value: switchUnits('103 - 117', '64 - 72'),
 		},
 		{
 			name: t('description.windspeed.12'),
 			textColor: '!text-[#991B1B]',
-			value: switchUnits('> 118', '> 73')
-		}
+			value: switchUnits('> 118', '> 73'),
+		},
 	];
 
 	const getWindLabel: Record<string, string> = {
@@ -112,7 +112,7 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 		W: t('wind.label.west'),
 		WNW: t('wind.label.westnorthwest'),
 		NW: t('wind.label.northwest'),
-		NNW: t('wind.label.northnorthwest')
+		NNW: t('wind.label.northnorthwest'),
 	};
 
 	const RenderCurrentWind = () => {
@@ -122,18 +122,18 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 			{
 				icon: <Gauge color="white" />,
 				label: t('wind.current.speed'),
-				value: speed
+				value: speed,
 			},
 			{
 				icon: <Wind color="white" />,
 				label: t('wind.current.gust'),
-				value: gust
+				value: gust,
 			},
 			{
 				icon: <WindDirectionIcon />,
 				label: t('wind.current.direction'),
-				value: `${getWindLabel[dir]} / ${degree}°`
-			}
+				value: `${getWindLabel[dir]} / ${degree}°`,
+			},
 		];
 
 		return (

@@ -33,7 +33,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 				{useSwitchTemp({
 					celsius: tempC,
 					fahrenheit: tempF,
-					currentTemp: currentTemp
+					currentTemp: currentTemp,
 				})}
 			</StyledText>
 		</View>

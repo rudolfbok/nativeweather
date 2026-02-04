@@ -14,7 +14,7 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 	const tolgee = useTolgee();
 	const getDayName = (date: string, short: boolean) =>
 		new Date(date).toLocaleString(tolgee.getLanguage(), {
-			weekday: short ? 'short' : 'long'
+			weekday: short ? 'short' : 'long',
 		});
 
 	return (

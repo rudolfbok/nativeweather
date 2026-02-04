@@ -38,7 +38,7 @@ export const useSearchController = () => {
 		} else {
 			showToast({
 				message: t('search.city.error'),
-				preset: 'error'
+				preset: 'error',
 			});
 			console.error('Failed to fetch weather data for saved city');
 		}
@@ -88,7 +88,7 @@ export const useSearchController = () => {
 			city,
 			...(recentSearches || []).filter(
 				(item) => !(item.name === city.name && item.region === city.region && item.country === city.country)
-			)
+			),
 		].slice(0, 10);
 
 		setRecentSearches(newSearches);
@@ -110,6 +110,6 @@ export const useSearchController = () => {
 		showSuggestions,
 		suggestions,
 		addToRecentSearches,
-		loading
+		loading,
 	};
 };
