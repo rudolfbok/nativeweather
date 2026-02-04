@@ -18,3 +18,7 @@ CLAUDE.md
 #DS_Store
 .DS_Store
 .vercel
+
+# Open Next
+.open-next
+wrangler.jsonc
