@@ -8,7 +8,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const SunsetModal = ({
 	visible,
-	onClose,
+	onClose
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -18,7 +18,7 @@ export const SunsetModal = ({
 	return (
 		<StyledModal visible={visible} icon={<Sunset color="#F75B02" />} header={t('sunset.modaltitle')} onClose={onClose}>
 			<View className={clsx('gap-2')}>
-				<ContentRow title={t('sunset.about')}>
+				<ContentRow title={t('modal.description')}>
 					<StyledText type="body">{t('sunset.text')}</StyledText>
 				</ContentRow>
 				<ContentRow title={t('sunset.twilight.title')}>

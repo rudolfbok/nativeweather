@@ -84,7 +84,7 @@ const dayIcons: Record<number, React.ComponentType<any>> = {
 	1273: ThunderDay,
 	1276: ThunderDay,
 	1279: FreezingThunderDay,
-	1282: FreezingThunderDay,
+	1282: FreezingThunderDay
 };
 
 const nightIcons: Record<number, React.ComponentType<any>> = {
@@ -135,7 +135,7 @@ const nightIcons: Record<number, React.ComponentType<any>> = {
 	1273: ThunderNight,
 	1276: ThunderNight,
 	1279: FreezingThunderNight,
-	1282: FreezingThunderNight,
+	1282: FreezingThunderNight
 };
 
 export const WeatherIcon = ({ isDay, code, width, height, strokeWidth }: MapWeatherIconsProps) => {

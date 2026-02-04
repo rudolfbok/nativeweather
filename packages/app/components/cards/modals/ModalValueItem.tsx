@@ -19,7 +19,7 @@ export const ModalValueItem = ({
 	value,
 	description,
 	moonPhase,
-	showItemIndex = true,
+	showItemIndex = true
 }: ModalValueItemProps) => {
 	const RenderIndex = () => {
 		if (!showItemIndex) return moonPhase;

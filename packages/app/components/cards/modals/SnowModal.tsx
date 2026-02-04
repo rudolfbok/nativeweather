@@ -10,7 +10,7 @@ import { GestureResponderEvent } from 'react-native';
 
 export const SnowModal = ({
 	visible,
-	onClose,
+	onClose
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -23,56 +23,56 @@ export const SnowModal = ({
 		{
 			name: t('precipitation.chance.0'),
 			value: '0 - 10%',
-			description: t('snow.chance.text.0'),
+			description: t('snow.chance.text.0')
 		},
 		{
 			name: t('precipitation.chance.1'),
 			value: '10 - 30%',
-			description: t('snow.chance.text.1'),
+			description: t('snow.chance.text.1')
 		},
 		{
 			name: t('precipitation.snow.chance.2'),
 			value: '30 - 50%',
-			description: t('snow.chance.text.2'),
+			description: t('snow.chance.text.2')
 		},
 		{
 			name: t('precipitation.chance.3'),
 			value: '50 - 70%',
-			description: t('snow.chance.text.3'),
+			description: t('snow.chance.text.3')
 		},
 		{
 			name: t('precipitation.chance.4'),
 			value: '70 - 90%',
-			description: t('snow.chance.text.4'),
+			description: t('snow.chance.text.4')
 		},
 		{
 			name: t('precipitation.chance.5'),
 			value: '90 - 100%',
-			description: t('snow.chance.text.5'),
-		},
+			description: t('snow.chance.text.5')
+		}
 	];
 
 	const snowPrecipValues = [
 		{
 			name: t('precipitation.snowfall.0'),
-			value: switchUnits('1 - 2', '0.4 - 0.8'),
+			value: switchUnits('1 - 2', '0.4 - 0.8')
 		},
 		{
 			name: t('precipitation.snowfall.1'),
-			value: switchUnits('2 - 10', '0.8 - 4.0'),
+			value: switchUnits('2 - 10', '0.8 - 4.0')
 		},
 		{
 			name: t('precipitation.snowfall.2'),
-			value: switchUnits('10 - 30', '4.0 - 12.0'),
+			value: switchUnits('10 - 30', '4.0 - 12.0')
 		},
 		{
 			name: t('precipitation.snowfall.3'),
-			value: switchUnits('30 - 50', '12.0 - 20.0'),
+			value: switchUnits('30 - 50', '12.0 - 20.0')
 		},
 		{
 			name: t('precipitation.snowfall.4'),
-			value: switchUnits('> 50', '> 20.0'),
-		},
+			value: switchUnits('> 50', '> 20.0')
+		}
 	];
 
 	return (

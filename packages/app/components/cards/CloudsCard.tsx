@@ -13,7 +13,7 @@ export const CloudsCard = ({ data }: { data: number }) => {
 		{ max: 13, description: t('description.cloudcover.0') },
 		{ max: 50, description: t('description.cloudcover.1') },
 		{ max: 75, description: t('description.cloudcover.2') },
-		{ max: Infinity, description: t('description.cloudcover.3') },
+		{ max: Infinity, description: t('description.cloudcover.3') }
 	];
 
 	const description = cloudCoverRanges.find((range) => data < range.max)?.description ?? '';

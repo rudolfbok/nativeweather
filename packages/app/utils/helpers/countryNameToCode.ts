@@ -194,7 +194,7 @@ export const countryNameToCode = (name: string): string => {
 		Vietnam: 'vn',
 		Yemen: 'ye',
 		Zambia: 'zm',
-		Zimbabwe: 'zw',
+		Zimbabwe: 'zw'
 	};
 
 	return countries[name] || 'Unknown country';

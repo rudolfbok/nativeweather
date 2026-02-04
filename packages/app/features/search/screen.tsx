@@ -19,21 +19,21 @@ export const SearchFeature = () => {
 	const scrollHandler = useAnimatedScrollHandler({
 		onScroll: (event) => {
 			scrollY.value = event.contentOffset.y;
-		},
+		}
 	});
 
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (scrollY.value > 10) {
 				navigation.setOptions({
-					headerTitle: t('search.title'),
+					headerTitle: t('search.title')
 				});
 				setPrimaryTitle('');
 			} else {
 				navigation.setOptions({
 					headerTransparent: true,
 					headerTitle: '',
-					headerBackground: undefined,
+					headerBackground: undefined
 				});
 				setPrimaryTitle(t('search.title'));
 			}

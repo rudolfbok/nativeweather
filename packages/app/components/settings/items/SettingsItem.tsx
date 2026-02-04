@@ -30,7 +30,7 @@ export const SettingsItem = ({
 	border,
 	toggle,
 	selected,
-	variant,
+	variant
 }: SettingsItemProps) => {
 	const RightElement = () => {
 		switch (variant) {

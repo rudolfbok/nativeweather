@@ -317,6 +317,9 @@
 		"loading": "Mapy se načítají..",
 		"title": "Mapy"
 	},
+	"modal": {
+		"description": "Popis"
+	},
 	"moon": {
 		"cycle": "Měsíční cyklus",
 		"description": "Měsíc prochází pravidelným cyklem osmi fází, který trvá přibližně 29,5 dne. Fáze vznikají, když Měsíc obíhá kolem Země a mění se úhel, pod kterým je osvětlen Sluncem. Každá fáze představuje jiné množství osvětlené části měsíce, kterou vidíme ze Země. Fáze měsíce ovlivňují mořský příliv a odliv",
@@ -474,6 +477,7 @@
 		}
 	},
 	"visibility": {
+		"about": "Definice",
 		"text": "Dohlednost udává maximální vzdálenost, na kterou lze rozeznat objekty pouhým okem. Je ovlivněna mlhou, vlhkostí vzduchu, znečištěním a srážkami. Dohlednost je důležitá pro bezpečnost v dopravě, letectví a námořní plavbě.",
 		"title": "Dohled",
 		"values": "Stupnice dohlednosti"

@@ -14,7 +14,7 @@ const textStyles = {
 	body: 'text-lg web:text-base',
 	bodysecondary: 'text-base web:text-sm',
 	rainchance: 'text-sm web:text-xs text-primaryblue font-semibold',
-	localtime: 'text-base web:text-sm text-primaryblue dark:text-primaryblue',
+	localtime: 'text-base web:text-sm text-primaryblue dark:text-primaryblue'
 };
 
 interface StyledTextProps extends TextProps {

@@ -5,19 +5,19 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 
 interface AnimatedViewProps {
 	children: ReactNode;
-	transition?: { duration?: number };
+	duration: number;
 	className?: string;
 }
 
-export const AnimatedView = ({ children, transition, className }: AnimatedViewProps) => {
+export const AnimatedView = ({ children, duration, className }: AnimatedViewProps) => {
 	const opacity = useSharedValue(0);
 
 	useEffect(() => {
-		opacity.value = withTiming(1, { duration: transition?.duration ?? 200 });
+		opacity.value = withTiming(1, { duration: duration });
 	}, []);
 
 	const animatedStyle = useAnimatedStyle(() => ({
-		opacity: opacity.value,
+		opacity: opacity.value
 	}));
 
 	return (

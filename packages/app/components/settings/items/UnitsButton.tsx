@@ -15,7 +15,7 @@ export const UnitsButton = () => {
 
 	const getUpperCaseUnits: Record<string, string> = {
 		metric: t('units.metric'),
-		imperial: t('units.imperial'),
+		imperial: t('units.imperial')
 	};
 
 	return (

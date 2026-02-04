@@ -19,7 +19,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	const display = useSwitchMetrics({
 		metric: `${Math.round(pressureMb)}hPa`,
 		imperial: `${pressureIn.toFixed(1)}inHg`,
-		currentUnits: currentUnits,
+		currentUnits: currentUnits
 	});
 
 	const pressureRanges = [
@@ -31,7 +31,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 		{ max_hpa: 1025, max_inhg: 30.27, description: t('description.pressure.5') },
 		{ max_hpa: 1035, max_inhg: 30.56, description: t('description.pressure.6') },
 		{ max_hpa: 1045, max_inhg: 30.86, description: t('description.pressure.7') },
-		{ max_hpa: Infinity, max_inhg: Infinity, description: t('description.pressure.8') },
+		{ max_hpa: Infinity, max_inhg: Infinity, description: t('description.pressure.8') }
 	];
 
 	const description =

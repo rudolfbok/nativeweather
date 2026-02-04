@@ -5,21 +5,16 @@ import { ReactNode, useEffect, useRef } from 'react';
 
 interface AnimatedViewProps {
 	children: ReactNode;
-	transition?: { duration?: number; ease?: string };
+	duration: number;
 	className?: string;
 }
 
-export const AnimatedView = ({ children, className, transition }: AnimatedViewProps) => {
+export const AnimatedView = ({ children, className, duration }: AnimatedViewProps) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (ref.current) {
-			const durationSeconds = (transition?.duration ?? 200) / 1000;
-			gsap.fromTo(
-				ref.current,
-				{ opacity: 0 },
-				{ opacity: 1, duration: durationSeconds, ease: transition?.ease ?? 'power1.out' }
-			);
+			gsap.fromTo(ref.current, { opacity: 0 }, { opacity: 1, duration: duration / 100, ease: 'power1.out' });
 		}
 	}, []);
 

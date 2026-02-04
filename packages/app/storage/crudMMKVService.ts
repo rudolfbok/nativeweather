@@ -100,7 +100,7 @@ export const getFavoritesStorageInfo = () => {
 		return {
 			keys: allKeys,
 			size: storage.size,
-			hasFavorites: storage.contains('favoriteCities'),
+			hasFavorites: storage.contains('favoriteCities')
 		};
 	} catch (error) {
 		console.error('Error getting storage info:', error);

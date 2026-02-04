@@ -4,14 +4,15 @@ import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/AnimatedView';
 import { StyledText } from 'app/components/common/StyledText';
 import { HeroSkeleton } from 'app/components/common/HeroSkeleton';
+import { useFocusEffect } from '@react-navigation/native';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
 import { clsx } from 'clsx';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { Platform, View } from 'react-native';
 import { RoundView } from 'app/components/common/RoundView';
 import { useTranslate } from '@tolgee/react';
 
@@ -61,16 +62,15 @@ export const WeatherFeature = () => {
 		loadWeather();
 	}, [params.city]);
 
-	useEffect(() => {
-		document.title = 'NativeWeather';
-		if (weatherData?.location) {
-			const countryCode = countryNameToCode(weatherData.location.country)?.toUpperCase();
-			document.title = `NativeWeather | ${weatherData.location.name} (${countryCode})`;
-		}
-		return () => {
+	useEffect(
+		useCallback(() => {
 			document.title = 'NativeWeather';
-		};
-	}, [weatherData?.location]);
+			if (weatherData?.location) {
+				const countryCode = countryNameToCode(weatherData.location.country)?.toUpperCase();
+				document.title = `NativeWeather | ${weatherData.location.name} (${countryCode})`;
+			}
+		}, [weatherData?.location])
+	);
 
 	if (!weatherData) return null;
 
@@ -86,12 +86,12 @@ export const WeatherFeature = () => {
 		);
 	}
 
-	if (loading || !weatherData) {
-		return <HeroSkeleton />;
-	}
+	// if (loading || !weatherData) {
+	// 	return <HeroSkeleton />;
+	// }
 
 	return (
-		<AnimatedView transition={{ duration: 500 }}>
+		<AnimatedView duration={100}>
 			<HeroWeather />
 		</AnimatedView>
 	);

@@ -73,7 +73,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								region={city.region}
 							/>
 							{showDeleteCity && (
-								<AnimatedView transition={{ duration: 500 }}>
+								<AnimatedView duration={100}>
 									<Pressable
 										onPress={() => handleRemoveCity(city)}
 										className={clsx(

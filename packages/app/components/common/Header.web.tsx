@@ -63,7 +63,7 @@ export const Header = () => {
 			{openDrawer && (
 				<AnimatedView
 					className={clsx('inset-0 z-40 bg-black/30 max-md:hidden md:fixed dark:bg-black/60')}
-					transition={{ duration: 300 }} // ms
+					duration={100}
 				>
 					<Pressable onPress={() => setOpenDrawer(false)} className={clsx('h-full w-full')} />
 				</AnimatedView>

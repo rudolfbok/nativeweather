@@ -19,7 +19,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	};
 
 	const chevronStyle = useAnimatedStyle(() => ({
-		transform: [{ rotate: withTiming(expanded ? '90deg' : '0deg', { duration: 250 }) }],
+		transform: [{ rotate: withTiming(expanded ? '90deg' : '0deg', { duration: 250 }) }]
 	}));
 
 	return (

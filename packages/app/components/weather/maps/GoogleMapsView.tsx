@@ -27,12 +27,12 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!;
 
 	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: GOOGLE_API_KEY,
+		googleMapsApiKey: GOOGLE_API_KEY
 	});
 
 	const mapOptions = {
 		disableDefaultUI: true,
-		styles: mapColorTheme(layer),
+		styles: mapColorTheme(layer)
 		// gestureHandling: 'cooperative',
 	};
 
@@ -40,7 +40,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 		if (weatherData?.location) {
 			const newCenter = {
 				lat: weatherData.location.lat,
-				lng: weatherData.location.lon,
+				lng: weatherData.location.lon
 			};
 			setMapCenter(newCenter);
 
@@ -56,7 +56,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 		if (weatherData?.location) {
 			mapInstance.setCenter({
 				lat: weatherData.location.lat,
-				lng: weatherData.location.lon,
+				lng: weatherData.location.lon
 			});
 		}
 	};
@@ -71,7 +71,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 			opacity: 5,
 			name: 'Weather',
 			maxZoom: 19,
-			minZoom: 0,
+			minZoom: 0
 		});
 
 		map.overlayMapTypes.clear();
@@ -102,7 +102,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 
 	const MapButton = ({
 		onPress,
-		icon,
+		icon
 	}: {
 		onPress: (event: GestureResponderEvent) => void | Promise<void>;
 		icon: ReactNode;
@@ -117,7 +117,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const layerButtons = [
 		{ layer: 'temp_new', icon: <Thermometer color="#FF7000" /> },
 		{ layer: 'precipitation_new', icon: <CloudRain color="#2793FF" /> },
-		{ layer: 'clouds_new', icon: <CloudsIcon /> },
+		{ layer: 'clouds_new', icon: <CloudsIcon /> }
 	];
 
 	return (
@@ -143,7 +143,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 			</View>
 			{showLegend && layer === 'temp_new' && (
 				<View className={clsx('absolute bottom-4 right-4 max-lg:left-4')}>
-					<AnimatedView transition={{ duration: 300 }}>
+					<AnimatedView duration={300}>
 						<RoundView className={clsx('p-4')}>
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>
 								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>

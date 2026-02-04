@@ -8,5 +8,5 @@ interface LocalWeatherState {
 
 export const useLocalWeather = create<LocalWeatherState>((set) => ({
 	localWeatherData: null,
-	setLocalWeatherData: (data) => set({ localWeatherData: data }),
+	setLocalWeatherData: (data) => set({ localWeatherData: data })
 }));

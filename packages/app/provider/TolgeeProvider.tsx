@@ -37,8 +37,8 @@ export const TolgeeProvider = ({ children }: { children: ReactNode }) => {
 					'en-US:weather': WeatherEN,
 					'cs-CZ:weather': WeatherCS,
 					'en-US:settings': SettingsEN,
-					'cs-CZ:settings': SettingsCS,
-				},
+					'cs-CZ:settings': SettingsCS
+				}
 			});
 	}, [mounted, currentLang]);
 

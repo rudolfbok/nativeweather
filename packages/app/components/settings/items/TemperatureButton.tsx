@@ -16,7 +16,7 @@ export const TemperatureButton = () => {
 
 	const getUpperCaseTemp: Record<string, string> = {
 		celsius: 'Celsius',
-		fahrenheit: 'Fahrenheit',
+		fahrenheit: 'Fahrenheit'
 	};
 
 	return (

@@ -25,7 +25,7 @@ export const WeatherFeature = () => {
 	const scrollHandler = useAnimatedScrollHandler({
 		onScroll: (event) => {
 			scrollY.value = event.contentOffset.y;
-		},
+		}
 	});
 
 	const headerTint = useSwitchColors('white', 'white');
@@ -35,11 +35,11 @@ export const WeatherFeature = () => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: headerTint,
+				headerTintColor: headerTint
 			});
 		} else {
 			navigation.setOptions({
-				headerTitle: t('tab.weather'),
+				headerTitle: t('tab.weather')
 			});
 		}
 	}, [weatherData]);
@@ -49,12 +49,12 @@ export const WeatherFeature = () => {
 			const interval = setInterval(() => {
 				if (scrollY.value < 20) {
 					navigation.setOptions({
-						headerTintColor: headerTint,
+						headerTintColor: headerTint
 					});
 				} else {
 					navigation.setOptions({
 						headerTintColor: headerTintafterScroll,
-						headerBackground: () => undefined,
+						headerBackground: () => undefined
 					});
 				}
 			}, 16);
@@ -82,7 +82,7 @@ export const WeatherFeature = () => {
 			Burnt.toast({
 				preset: 'done',
 				title: t('toast.refreshed'),
-				from: 'bottom',
+				from: 'bottom'
 			});
 		} catch (error) {
 			console.error('Error fetching weather:', error);
@@ -90,7 +90,7 @@ export const WeatherFeature = () => {
 			Burnt.toast({
 				preset: 'error',
 				title: t('toast.notrefreshed'),
-				from: 'bottom',
+				from: 'bottom'
 			});
 		} finally {
 			setRefreshing(false);
@@ -130,7 +130,7 @@ export const WeatherFeature = () => {
 					left: 0,
 					right: 0,
 					position: 'absolute',
-					zIndex: -1,
+					zIndex: -1
 				}}
 			>
 				<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.is_day} />

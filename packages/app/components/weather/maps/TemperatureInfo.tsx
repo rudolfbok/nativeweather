@@ -18,7 +18,7 @@ export const TemperatureInfo = () => {
 		{ temp: 10, color: 'rgba(194, 255, 40, 1)' },
 		{ temp: 20, color: 'rgba(255, 240, 40, 1)' },
 		{ temp: 25, color: 'rgba(255, 194, 40, 1)' },
-		{ temp: 30, color: 'rgba(252, 128, 20, 1)' },
+		{ temp: 30, color: 'rgba(252, 128, 20, 1)' }
 	];
 
 	const fahrenheitStops = [
@@ -29,14 +29,14 @@ export const TemperatureInfo = () => {
 		{ temp: 50, color: 'rgba(194, 255, 40, 1)' },
 		{ temp: 68, color: 'rgba(255, 240, 40, 1)' },
 		{ temp: 77, color: 'rgba(255, 194, 40, 1)' },
-		{ temp: 86, color: 'rgba(252, 128, 20, 1)' },
+		{ temp: 86, color: 'rgba(252, 128, 20, 1)' }
 	];
 
 	const stops = currentTemp === 'celsius' ? celsiusStops : fahrenheitStops;
 	const locations = stops.map((_, index) => index / (stops.length - 1)) as unknown as readonly [
 		number,
 		number,
-		...number[],
+		...number[]
 	];
 	const colors = stops.map((stop) => stop.color) as unknown as readonly [string, string, ...string[]];
 

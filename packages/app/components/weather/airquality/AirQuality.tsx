@@ -27,7 +27,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		{ min: 40, max: 60, band: t('airquality.euaqi.value.2') },
 		{ min: 60, max: 80, band: t('airquality.euaqi.value.3') },
 		{ min: 80, max: 100, band: t('airquality.euaqi.value.4') },
-		{ min: 100, max: Infinity, band: t('airquality.euaqi.value.5') },
+		{ min: 100, max: Infinity, band: t('airquality.euaqi.value.5') }
 	];
 
 	const euBanding = aq ? (euAQIranges.find((range) => aq.european_aqi < range.max)?.band ?? '') : '';
@@ -38,7 +38,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		{ min: 100, max: 150, band: t('airquality.usaqi.value.2') },
 		{ min: 150, max: 200, band: t('airquality.usaqi.value.3') },
 		{ min: 200, max: 300, band: t('airquality.usaqi.value.4') },
-		{ min: 300, max: Infinity, band: t('airquality.usaqi.value.5') },
+		{ min: 300, max: Infinity, band: t('airquality.usaqi.value.5') }
 	];
 
 	const usBanding = aq ? (usAQIranges.find((range) => aq.us_aqi < range.max)?.band ?? '') : '';
@@ -55,7 +55,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 						className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
 						style={{
 							left: aq ? `${Math.min(currentAQI === 'EU' ? aq.european_aqi : (aq.us_aqi / 300) * 100, 100)}%` : '0%',
-							zIndex: 20,
+							zIndex: 20
 						}}
 					>
 						|

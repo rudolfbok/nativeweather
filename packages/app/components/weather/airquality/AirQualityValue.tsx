@@ -16,7 +16,7 @@ const colorMap = {
 	sensitive: '!text-sensitive',
 	unhealthy: '!text-unhealthy',
 	veryunhealthy: '!text-veryunhealthy',
-	hazardous: '!text-hazardous',
+	hazardous: '!text-hazardous'
 };
 
 export const AirQualityValue = ({ name, textColor, value, description }: AirQualityValueProps) => {

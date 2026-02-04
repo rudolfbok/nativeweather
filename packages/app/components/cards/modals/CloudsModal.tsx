@@ -9,7 +9,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const CloudsModal = ({
 	visible,
-	onClose,
+	onClose
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -19,20 +19,20 @@ export const CloudsModal = ({
 	const cloudCoverValues = [
 		{
 			name: t('description.cloudcover.0'),
-			value: '0 - 12%',
+			value: '0 - 12%'
 		},
 		{
 			name: t('description.cloudcover.1'),
-			value: '12 - 50%',
+			value: '12 - 50%'
 		},
 		{
 			name: t('description.cloudcover.2'),
-			value: '50 - 75%',
+			value: '50 - 75%'
 		},
 		{
 			name: t('description.cloudcover.3'),
-			value: '75 - 10%',
-		},
+			value: '75 - 10%'
+		}
 	];
 
 	return (

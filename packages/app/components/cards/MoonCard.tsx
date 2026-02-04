@@ -38,7 +38,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 		'Full Moon': <FullMoon />,
 		'Waning Gibbous': <WaningGibbous />,
 		'Last Quarter': <LastQuarter />,
-		'Waning Crescent': <WaningCrescent />,
+		'Waning Crescent': <WaningCrescent />
 	};
 
 	const getLocalePhase: Record<string, string> = {
@@ -49,7 +49,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 		'Full Moon': t('moon.phase.fullmoon'),
 		'Waning Gibbous': t('moon.phase.waninggibbous'),
 		'Last Quarter': t('moon.phase.lastquarter'),
-		'Waning Crescent': t('moon.phase.waningcrescent'),
+		'Waning Crescent': t('moon.phase.waningcrescent')
 	};
 
 	return (

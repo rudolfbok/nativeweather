@@ -71,7 +71,7 @@ export const DailyForecast = () => {
 									{useSwitchTemp({
 										celsius: day.day.mintemp_c,
 										fahrenheit: day.day.mintemp_f,
-										currentTemp: currentTemp,
+										currentTemp: currentTemp
 									})}
 								</StyledText>
 								<View className={clsx('w-22 items-center justify-center')}>
@@ -87,7 +87,7 @@ export const DailyForecast = () => {
 									{useSwitchTemp({
 										celsius: day.day.maxtemp_c,
 										fahrenheit: day.day.maxtemp_f,
-										currentTemp: currentTemp,
+										currentTemp: currentTemp
 									})}
 								</StyledText>
 							</View>

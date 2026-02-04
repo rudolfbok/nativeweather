@@ -42,7 +42,7 @@ export const SmartSummary = React.memo(function SmartSummary({
 	airQualityUS,
 	uvIndex,
 	maxWindKph,
-	avgVisibilityKm,
+	avgVisibilityKm
 }: SmartSummaryProps) {
 	const { t } = useTranslate('summary');
 	const [currentTemp] = useStorageString('currentTemp');
@@ -55,12 +55,12 @@ export const SmartSummary = React.memo(function SmartSummary({
 	const rain = useSwitchMetrics({
 		metric: `${rainPrecipMm.toFixed(1)}mm`,
 		imperial: `${rainPrecipIn.toFixed(2)}in`,
-		currentUnits,
+		currentUnits
 	});
 	const snow = useSwitchMetrics({
 		metric: `${snowPrecipCm.toFixed(1)}cm`,
 		imperial: `${snowPrecipIn.toFixed(2)}in`,
-		currentUnits,
+		currentUnits
 	});
 
 	const variant = useMemo(() => Math.floor(Math.random() * 3) + 1, [maxTempC, rainPrecipMm]);

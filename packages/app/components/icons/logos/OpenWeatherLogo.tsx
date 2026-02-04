@@ -11,7 +11,7 @@ export const OpenWeatherLogo = () => {
 			<Mask
 				id="a"
 				style={{
-					maskType: 'luminance',
+					maskType: 'luminance'
 				}}
 				maskUnits="userSpaceOnUse"
 				x={7}

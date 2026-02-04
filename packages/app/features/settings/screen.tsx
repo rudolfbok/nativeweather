@@ -42,7 +42,7 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 				</RoundView>
 				<View className={clsx('flex items-center')}>
 					<StyledText type="bodysecondary">NativeWeather</StyledText>
-					<StyledText type="bodysecondary">Version: 1.0.0</StyledText>
+					<StyledText type="bodysecondary">Version: 1.0.1</StyledText>
 					<StyledText type="bodysecondary">© 2026</StyledText>
 				</View>
 			</View>

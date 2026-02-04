@@ -8,7 +8,7 @@ import { GestureResponderEvent, View } from 'react-native';
 
 export const SunriseModal = ({
 	visible,
-	onClose,
+	onClose
 }: {
 	visible: boolean;
 	onClose: (event: GestureResponderEvent) => void | Promise<void>;
@@ -23,7 +23,7 @@ export const SunriseModal = ({
 			onClose={onClose}
 		>
 			<View className={clsx('gap-2')}>
-				<ContentRow title={t('sunrise.about')}>
+				<ContentRow title={t('modal.description')}>
 					<StyledText type="body">{t('sunrise.text')}</StyledText>
 				</ContentRow>
 				<ContentRow title={t('sunrise.dawn.title')}>

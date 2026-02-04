@@ -16,7 +16,7 @@ export const HourlyForecast = () => {
 			new Intl.DateTimeFormat('en-US', {
 				hour: '2-digit',
 				hour12: false,
-				timeZone: timezone,
+				timeZone: timezone
 			}).format(date),
 			10
 		);
@@ -29,14 +29,14 @@ export const HourlyForecast = () => {
 			return new Intl.DateTimeFormat('en-US', {
 				hour: 'numeric',
 				hour12: true,
-				timeZone: timezone,
+				timeZone: timezone
 			}).format(date);
 		} else {
 			const hour24 = parseInt(
 				new Intl.DateTimeFormat('cs-CZ', {
 					hour: '2-digit',
 					hour12: false,
-					timeZone: timezone,
+					timeZone: timezone
 				}).format(date),
 				10
 			);
@@ -51,7 +51,7 @@ export const HourlyForecast = () => {
 		new Intl.DateTimeFormat('en-US', {
 			hour: '2-digit',
 			hour12: false,
-			timeZone: tzId,
+			timeZone: tzId
 		}).format(now),
 		10
 	);
@@ -75,7 +75,7 @@ export const HourlyForecast = () => {
 		code: hour.condition.code,
 		isDay: hour.is_day,
 		timeEpoch: hour.time_epoch,
-		hourLabel: index === 0 ? t('hourlyforecast.now') : getDisplayHourFromEpoch(hour.time_epoch, tzId),
+		hourLabel: index === 0 ? t('hourlyforecast.now') : getDisplayHourFromEpoch(hour.time_epoch, tzId)
 	}));
 
 	return (

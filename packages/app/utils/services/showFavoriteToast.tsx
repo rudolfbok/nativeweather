@@ -15,7 +15,7 @@ export const showFavoriteToast = ({ message, type }: ShowFavoriteToastProps) => 
 		preset: 'custom',
 		title: message,
 		from: 'bottom',
-		icon: { ios: { name: iosStarIconName, color: '#FE9804' }, web: starIcon },
+		icon: { ios: { name: iosStarIconName, color: '#FE9804' }, web: starIcon }
 	});
 
 	return null;

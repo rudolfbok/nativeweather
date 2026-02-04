@@ -317,6 +317,9 @@
 		"loading": "Maps are loading..",
 		"title": "Maps"
 	},
+	"modal": {
+		"description": "Description"
+	},
 	"moon": {
 		"cycle": "Moon cycle",
 		"description": "The moon goes through a regular cycle of eight phases, which lasts approximately 29.5 days. The phases occur as the moon orbits the Earth and the angle at which it is illuminated by the sun changes. Each phase represents a different amount of the moon's illuminated surface that we see from Earth. The phases of the moon affect the tides.",
@@ -474,6 +477,7 @@
 		}
 	},
 	"visibility": {
+		"about": "Definition",
 		"text": "Visibility indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Visibility is important for safety in transportation, aviation, and maritime navigation.",
 		"title": "Range",
 		"values": "Visibility scale"

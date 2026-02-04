@@ -65,7 +65,7 @@ export default function Compass() {
 								key={i}
 								className="absolute left-[100px] top-[119px] h-0.5 w-[41px] border border-dotted border-black dark:border-white"
 								style={{
-									transform: `rotate(${i * 15}deg) translateX(100px)`,
+									transform: `rotate(${i * 15}deg) translateX(100px)`
 								}}
 							/>
 						))}
@@ -80,7 +80,7 @@ export default function Compass() {
 							<div
 								className="absolute left-1/2 h-20 w-0.5 origin-bottom -translate-x-1/2 bg-red-600"
 								style={{
-									transform: `rotate(${direction ?? 0}deg)`,
+									transform: `rotate(${direction ?? 0}deg)`
 								}}
 							/>
 							<div className="absolute left-[81px] top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600" />

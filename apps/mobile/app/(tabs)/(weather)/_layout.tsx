@@ -64,8 +64,8 @@ export default function TabLayout() {
 					headerTransparent: true,
 					contentStyle: {
 						backgroundColor: backgroundColor,
-						paddingHorizontal: 0,
-					},
+						paddingHorizontal: 0
+					}
 				}}
 			/>
 		</Stack>

@@ -14,7 +14,7 @@ export const HomeFeature = () => {
 	const favoriteCitiesHook = useFavoriteCities();
 
 	return (
-		<AnimatedView transition={{ duration: 500 }}>
+		<AnimatedView duration={100}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}

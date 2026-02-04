@@ -7,14 +7,14 @@ export default function HomeLayout() {
 			screenOptions={{
 				headerTintColor: useSwitchColors('black', 'white'),
 				contentStyle: {
-					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-				},
+					backgroundColor: useSwitchColors('#F2F2F7', '#000')
+				}
 			}}
 		>
 			<Stack.Screen
 				name="index"
 				options={{
-					headerShown: false,
+					headerShown: false
 				}}
 			/>
 		</Stack>
