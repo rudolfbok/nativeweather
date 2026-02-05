@@ -3,7 +3,7 @@ import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { CloudRain } from 'lucide-react-native';
 import { useState } from 'react';
-import { StyledText } from '../common/StyledText';
+import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { RainModal } from './modals/RainModal';
 

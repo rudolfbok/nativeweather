@@ -1,8 +1,8 @@
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledPressable } from 'app/components/common/StyledPressable';
-import { StyledText } from 'app/components/common/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
@@ -12,7 +12,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { mapColorTheme } from './GoogleMapsTheme';
 import { TemperatureInfo } from './TemperatureInfo';
-import { AnimatedView } from 'app/components/common/AnimatedView';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 
 export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
@@ -143,7 +143,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 			</View>
 			{showLegend && layer === 'temp_new' && (
 				<View className={clsx('absolute bottom-4 right-4 max-lg:left-4')}>
-					<AnimatedView duration={300}>
+					<AnimatedView duration={30}>
 						<RoundView className={clsx('p-4')}>
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>
 								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>

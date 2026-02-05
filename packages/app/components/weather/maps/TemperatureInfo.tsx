@@ -4,7 +4,7 @@ import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
 import { LinearGradient } from 'expo-linear-gradient';
 import { View } from 'react-native';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 
 export const TemperatureInfo = () => {
 	const [currentTemp] = useStorageString('currentTemp');

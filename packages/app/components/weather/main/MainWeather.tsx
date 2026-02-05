@@ -5,7 +5,7 @@ import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 
 interface MainWeatherProps {
 	name?: string;

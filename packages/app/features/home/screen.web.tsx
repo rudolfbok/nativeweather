@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatedView } from 'app/components/common/AnimatedView.web';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -14,7 +14,7 @@ export const HomeFeature = () => {
 	const favoriteCitiesHook = useFavoriteCities();
 
 	return (
-		<AnimatedView duration={100}>
+		<AnimatedView duration={30}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}

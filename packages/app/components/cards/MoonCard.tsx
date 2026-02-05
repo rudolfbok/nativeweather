@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import { Moon } from 'lucide-react-native';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';
-import { StyledText } from '../common/StyledText';
+import { StyledText } from '../common/styled/StyledText';
 import { FirstQuarter } from '../icons/moonphases/FirstQuarter';
 import { FullMoon } from '../icons/moonphases/FullMoon';
 import { LastQuarter } from '../icons/moonphases/LastQuarter';

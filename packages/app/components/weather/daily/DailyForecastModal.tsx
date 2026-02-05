@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
-import { StyledModal } from 'app/components/common/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { DaysToggle } from './DaysToggle';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';

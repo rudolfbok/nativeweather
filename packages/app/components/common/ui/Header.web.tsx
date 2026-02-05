@@ -8,9 +8,9 @@ import { Squash as Hamburger } from 'hamburger-react';
 import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { NativeWeatherLogo } from '../icons/logos/NativeWeatherLogo';
-import { SearchBar } from '../weather/search/SearchBar';
-import { AnimatedView } from './AnimatedView.web';
+import { NativeWeatherLogo } from '../../icons/logos/NativeWeatherLogo';
+import { SearchBar } from '../../weather/search/SearchBar';
+import { AnimatedView } from '../animated/AnimatedView.web';
 
 export const Header = () => {
 	const { t } = useTranslate('settings');
@@ -63,7 +63,7 @@ export const Header = () => {
 			{openDrawer && (
 				<AnimatedView
 					className={clsx('inset-0 z-40 bg-black/30 max-md:hidden md:fixed dark:bg-black/60')}
-					duration={100}
+					duration={30}
 				>
 					<Pressable onPress={() => setOpenDrawer(false)} className={clsx('h-full w-full')} />
 				</AnimatedView>

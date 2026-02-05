@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { Text, TextProps } from 'react-native';
 
 const textStyles = {
-	screentitle: 'text-4xl web:text-2xl font-bold',
+	screentitle: 'text-4xl web:text-xl font-bold',
 	link: 'text-primaryblue dark:text-primaryblue text-lg web:text-base font-semibold hover:underline',
 
 	maintemp: 'text-5xl web:text-4xl',

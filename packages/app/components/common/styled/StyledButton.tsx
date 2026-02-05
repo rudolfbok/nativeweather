@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { GestureResponderEvent } from 'react-native';
-import { StyledPressable } from './StyledPressable';
-import { StyledText } from './StyledText';
+import { StyledPressable } from '../StyledPressable';
+import { StyledText } from '../StyledText';
 
 interface StyledButtonProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;

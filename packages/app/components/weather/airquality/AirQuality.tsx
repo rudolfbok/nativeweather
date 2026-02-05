@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import EUAQIScale from 'app/assets/euaqiscale.png';
 import USAQIScale from 'app/assets/usaqiscale.png';
-import { CardHeader } from 'app/components/common/CardHeader';
-import { StyledPressable } from 'app/components/common/StyledPressable';
-import { StyledText } from 'app/components/common/StyledText';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';

@@ -1,9 +1,9 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from 'app/components/common/CardHeader';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledText } from 'app/components/common/StyledText';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
 import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';

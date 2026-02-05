@@ -22,5 +22,4 @@ export const initStorageDefaults = () => {
 	if (storage.getString('currentAQI') === undefined) {
 		storage.set('currentAQI', 'EU');
 	}
-	console.log('Initialized MMKV defaults');
 };

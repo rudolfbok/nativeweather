@@ -5,7 +5,7 @@ import { useRouter } from 'solito/navigation';
 import { SettingsItem } from './SettingsItem';
 import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';
-import { StyledModal } from 'app/components/common/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 
 export const UnitsButton = () => {
 	const { t } = useTranslate('settings');

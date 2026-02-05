@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ContentRow';
-import { RoundView } from 'app/components/common/RoundView';
-import { Separator } from 'app/components/common/Separator';
-import { StyledModal } from 'app/components/common/StyledModal';
-import { StyledText } from 'app/components/common/StyledText';
-import { ValuesList } from 'app/components/common/ValuesList';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { Separator } from 'app/components/common/ui/Separator';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { WindDirectionIcon } from 'app/components/icons/WindDirectionIcon';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';

@@ -1,5 +1,5 @@
-import { StyledPressable } from 'app/components/common/StyledPressable';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { Check, ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';

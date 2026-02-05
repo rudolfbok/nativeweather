@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 
 interface AirQualityValueProps {
 	name: string;

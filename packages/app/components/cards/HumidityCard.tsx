@@ -3,7 +3,7 @@ import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
 import { Droplets } from 'lucide-react-native';
 import { useState } from 'react';
-import { StyledText } from '../common/StyledText';
+import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { HumidityModal } from './modals/HumidityModal';
 

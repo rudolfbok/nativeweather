@@ -7,8 +7,8 @@ import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
 import { GestureResponderEvent, View } from 'react-native';
-import { StyledPressable } from '../common/StyledPressable';
-import { StyledText } from '../common/StyledText';
+import { StyledPressable } from '../common/styled/StyledPressable';
+import { StyledText } from '../common/styled/StyledText';
 
 interface CityCardProps {
 	onPress: (event?: GestureResponderEvent) => void;

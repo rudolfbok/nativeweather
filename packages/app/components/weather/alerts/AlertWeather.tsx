@@ -1,10 +1,10 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledPressable } from 'app/components/common/StyledPressable';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
 import { ChevronRight, CircleAlert } from 'lucide-react-native';
 import { useState } from 'react';
-import { CardHeader } from 'app/components/common/CardHeader';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AlertModal } from './AlertModal';
 
 interface AlertWeatherProps {

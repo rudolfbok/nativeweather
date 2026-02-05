@@ -2,8 +2,8 @@ import { clsx } from 'clsx';
 import { ChevronLeft, X } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { CardHeader } from './CardHeader';
-import { StyledPressable } from './StyledPressable';
-import { StyledText } from './StyledText';
+import { StyledPressable } from '../styled/StyledPressable';
+import { StyledText } from '../styled/StyledText';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 
 interface ModalHeaderProps {

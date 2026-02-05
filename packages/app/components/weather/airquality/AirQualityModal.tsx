@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/StyledModal';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useWeather } from 'app/hooks/useWeather';
 import {

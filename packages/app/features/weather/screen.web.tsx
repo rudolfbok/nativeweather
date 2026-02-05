@@ -1,20 +1,19 @@
 'use client';
 
+import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
-import { AnimatedView } from 'app/components/common/AnimatedView';
-import { StyledText } from 'app/components/common/StyledText';
-import { HeroSkeleton } from 'app/components/common/HeroSkeleton';
-import { useFocusEffect } from '@react-navigation/native';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
-import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
+import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { clsx } from 'clsx';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { Platform, View } from 'react-native';
-import { RoundView } from 'app/components/common/RoundView';
-import { useTranslate } from '@tolgee/react';
+import { View } from 'react-native';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -86,12 +85,12 @@ export const WeatherFeature = () => {
 		);
 	}
 
-	// if (loading || !weatherData) {
-	// 	return <HeroSkeleton />;
-	// }
+	if (loading || !weatherData) {
+		return <HeroSkeleton />;
+	}
 
 	return (
-		<AnimatedView duration={100}>
+		<AnimatedView duration={30}>
 			<HeroWeather />
 		</AnimatedView>
 	);

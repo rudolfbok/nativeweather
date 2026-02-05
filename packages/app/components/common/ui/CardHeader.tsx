@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledText } from './StyledText';
+import { StyledText } from '../styled/StyledText';
 
 interface CardHeaderProps {
 	header: string;

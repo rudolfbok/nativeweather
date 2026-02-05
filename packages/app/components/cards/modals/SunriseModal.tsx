@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ContentRow';
-import { StyledModal } from 'app/components/common/StyledModal';
-import { StyledText } from 'app/components/common/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { Sunrise } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';

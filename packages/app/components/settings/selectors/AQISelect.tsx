@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { RoundView } from 'app/components/common/RoundView';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { EUFLag } from 'app/components/icons/settings/EUFlag';
 import { USAFlag } from 'app/components/icons/settings/USAFlag';
 import { SettingsItem } from '../items/SettingsItem';

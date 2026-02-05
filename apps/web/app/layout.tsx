@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import { Metadata } from 'next';
+import { Header } from 'app/components/common/ui/Header.web';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -36,13 +37,16 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					'dark:bg-systemBackground_dark bg-secondarySystemBackground select-none px-4',
+					'dark:bg-systemBackground_dark bg-secondarySystemBackground select-none px-4 min-[2200px]:px-80',
 					geistSans.variable,
 					geistMono.variable
 				)}
 			>
 				<ClientOnly>
-					<Providers>{children}</Providers>
+					<Providers>
+						<Header />
+						{children}
+					</Providers>
 				</ClientOnly>
 			</body>
 		</html>

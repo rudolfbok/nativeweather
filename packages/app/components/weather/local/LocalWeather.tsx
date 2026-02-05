@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledText } from 'app/components/common/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { useCurrentLocation } from 'app/hooks/useCurrentLocation';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useSearchController } from 'app/hooks/useSearchController';
@@ -24,9 +24,7 @@ export const LocalWeather = () => {
 	if (error) {
 		return (
 			<View className={clsx('gap-2')}>
-				<StyledText type="screentitle" className={clsx('!text-2xl')}>
-					{t('localweather.title')}
-				</StyledText>
+				<StyledText type="screentitle">{t('localweather.title')}</StyledText>
 				<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 					<RoundView className={clsx('p-4 lg:w-fit')}>
 						<StyledText type="body" className="text-center font-semibold !text-red-500">
@@ -47,9 +45,7 @@ export const LocalWeather = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
-			<StyledText type="screentitle" className={clsx('!text-2xl')}>
-				{t('localweather.title')}
-			</StyledText>
+			<StyledText type="screentitle">{t('localweather.title')}</StyledText>
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<CityCard
 					onPress={() => handleCityPress(localWeatherData.location)}

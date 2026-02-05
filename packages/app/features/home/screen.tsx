@@ -1,6 +1,6 @@
 'use client';
 
-import { Header } from 'app/components/common/Header';
+import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo.web';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -18,7 +18,12 @@ export const HomeFeature = () => {
 
 	return (
 		<View className={clsx('w-full flex-1')}>
-			<Header />
+			<View
+				className={clsx('bg-secondarySystemBackground dark:bg-systemBackground_dark px-4 pb-4')}
+				style={{ paddingTop: insets.top + 8 }}
+			>
+				<NativeWeatherLogo />
+			</View>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				contentContainerClassName={clsx('px-4 pb-4')}

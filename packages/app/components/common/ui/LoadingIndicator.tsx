@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { ActivityIndicator } from 'react-native';
 import { RoundView } from './RoundView';
-import { StyledText } from './StyledText';
+import { StyledText } from '../styled/StyledText';
 
 interface LoadingIndicatorProps {
 	className?: string;

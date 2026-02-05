@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { useStorageString } from 'app/storage/useStorageString';
 import { useState } from 'react';
 import { Platform } from 'react-native';

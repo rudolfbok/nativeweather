@@ -1,6 +1,6 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
-import { RoundView } from 'app/components/common/RoundView';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { CzechFlag } from 'app/components/icons/settings/CzechFlag';
 import { EnglishFlag } from 'app/components/icons/settings/EnglishFlag';
 import { SettingsItem } from '../items/SettingsItem';

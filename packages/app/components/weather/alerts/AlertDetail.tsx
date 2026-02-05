@@ -1,7 +1,7 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { AnimatedView } from 'app/components/common/AnimatedView';
-import { ContentRow } from 'app/components/common/ContentRow';
-import { StyledText } from 'app/components/common/StyledText';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

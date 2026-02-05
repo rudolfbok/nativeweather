@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from 'app/components/common/CardHeader';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledModal } from 'app/components/common/StyledModal';
-import { StyledPressable } from 'app/components/common/StyledPressable';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { MaximizeIcon } from 'app/components/icons/MaximizeIcon';
 import { clsx } from 'clsx';
 import { Map } from 'lucide-react-native';

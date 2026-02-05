@@ -4,7 +4,7 @@ import { useRouter } from 'solito/navigation';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { StyledModal } from 'app/components/common/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { DataSourceInfo } from './DataSourceInfo';
 
 export const DataSourceButton = () => {

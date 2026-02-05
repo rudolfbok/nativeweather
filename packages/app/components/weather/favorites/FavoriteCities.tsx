@@ -1,10 +1,10 @@
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
-import { AnimatedView } from 'app/components/common/AnimatedView';
-import { LoadingIndicator } from 'app/components/common/LoadingIndicator';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledPressable } from 'app/components/common/StyledPressable';
-import { StyledText } from 'app/components/common/StyledText';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
+import { LoadingIndicator } from 'app/components/common/ui/LoadingIndicator';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { EditIcon } from 'app/components/icons/EditIcon';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
@@ -36,9 +36,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	return (
 		<View className={clsx('gap-2')}>
 			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
-				<StyledText type="screentitle" className={clsx('!text-2xl')}>
-					{t('favorites.title')}
-				</StyledText>
+				<StyledText type="screentitle">{t('favorites.title')}</StyledText>
 				{favoritesData.length > 0 && (
 					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
 						{showDeleteCity ? <X size={26} color="#007AFF" style={{ pointerEvents: 'none' }} /> : <EditIcon />}
@@ -73,7 +71,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								region={city.region}
 							/>
 							{showDeleteCity && (
-								<AnimatedView duration={100}>
+								<AnimatedView duration={30}>
 									<Pressable
 										onPress={() => handleRemoveCity(city)}
 										className={clsx(

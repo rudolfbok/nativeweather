@@ -1,4 +1,4 @@
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { View, Pressable, GestureResponderEvent } from 'react-native';
 

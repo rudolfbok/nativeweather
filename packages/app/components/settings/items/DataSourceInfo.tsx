@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/RoundView';
-import { StyledText } from 'app/components/common/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { GoogleMapsPlatformLogo } from 'app/components/icons/logos/GoogleMapsPlatformLogo';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { OpenWeatherLogo } from 'app/components/icons/logos/OpenWeatherLogo';

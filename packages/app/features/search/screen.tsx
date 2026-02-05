@@ -2,7 +2,7 @@
 
 import { useNavigation } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { SearchBar } from 'app/components/weather/search/SearchBar';
 import { useEffect, useState } from 'react';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';

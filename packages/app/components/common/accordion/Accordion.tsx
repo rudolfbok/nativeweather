@@ -2,8 +2,8 @@ import { ChevronRight } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { Pressable } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { StyledText } from './StyledText';
-import { RoundView } from './RoundView';
+import { StyledText } from '../styled/StyledText';
+import { RoundView } from '../ui/RoundView';
 import { clsx } from 'clsx';
 
 interface AccordionProps {

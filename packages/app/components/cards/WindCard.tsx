@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { StyledText } from '../common/StyledText';
+import { StyledText } from '../common/styled/StyledText';
 import { WindArrowIcon } from '../icons/WindArrowIcon';
 import { DataCard } from './DataCard';
 import { WindModal } from './modals/WindModal';

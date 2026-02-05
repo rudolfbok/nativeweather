@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { Sunrise } from 'lucide-react-native';
 import { useState } from 'react';
-import { StyledText } from '../common/StyledText';
+import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { SunriseModal } from './modals/SunriseModal';
 import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';

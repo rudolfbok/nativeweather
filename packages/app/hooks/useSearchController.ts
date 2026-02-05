@@ -54,7 +54,6 @@ export const useSearchController = () => {
 			router.push(path);
 		} else {
 			showToast({ message: t('search.input.error'), preset: 'error' });
-			console.log('Failed to fetch weather data for searched city');
 		}
 	};
 
@@ -93,10 +92,6 @@ export const useSearchController = () => {
 
 		setRecentSearches(newSearches);
 	};
-
-	useEffect(() => {
-		console.log(searchValue);
-	}, [searchValue]);
 
 	return {
 		searchValue,

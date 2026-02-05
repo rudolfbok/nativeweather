@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
-import { StyledText } from 'app/components/common/StyledText';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';

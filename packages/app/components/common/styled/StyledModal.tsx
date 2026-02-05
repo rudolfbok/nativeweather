@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { Ref } from 'react';
 import { GestureResponderEvent, Modal, Platform, Pressable, ScrollView, View } from 'react-native';
-import { ModalHeader } from './ModalHeader';
+import { ModalHeader } from '../ui/ModalHeader';
 
 interface StyledModalProps {
 	visible: boolean;

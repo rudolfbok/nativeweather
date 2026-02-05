@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { StyledText } from './StyledText';
+import { StyledText } from './styled/StyledText';
 import { View } from 'react-native';
 
 export const Typography = () => {

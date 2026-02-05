@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { RoundView } from './RoundView';
-import { StyledText } from './StyledText';
+import { StyledText } from '../styled/StyledText';
 
 interface ContentRowProps {
 	title: string;
