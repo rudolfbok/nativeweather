@@ -23,42 +23,44 @@ export const LocalWeather = () => {
 
 	if (error) {
 		return (
-			<View className={clsx('gap-2')}>
-				<StyledText type="screentitle">{t('localweather.title')}</StyledText>
-				<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
-					<RoundView className={clsx('p-4 lg:w-fit')}>
-						<StyledText type="body" className="text-center font-semibold !text-red-500">
-							{t('localweather.error.notavailable')}
-						</StyledText>
-						<StyledText type="body" className="text-center">
-							{t('localweather.error.followup')}
-						</StyledText>
-					</RoundView>
-				</View>
+			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+				<RoundView className={clsx('p-4 lg:w-fit')}>
+					<StyledText type="body" className="text-center font-semibold !text-red-500">
+						{t('localweather.error.notavailable')}
+					</StyledText>
+					<StyledText type="body" className="text-center">
+						{t('localweather.error.followup')}
+					</StyledText>
+				</RoundView>
 			</View>
 		);
 	}
 
 	if (!localWeatherData) {
-		return null;
+		return (
+			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+				<View
+					className={clsx(
+						'bg-systemBackground dark:bg-secondarySystemBackground_dark h-28 w-full animate-pulse rounded-3xl'
+					)}
+				/>
+			</View>
+		);
 	}
 
 	return (
-		<View className={clsx('gap-2')}>
-			<StyledText type="screentitle">{t('localweather.title')}</StyledText>
-			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
-				<CityCard
-					onPress={() => handleCityPress(localWeatherData.location)}
-					city={localWeatherData.location.name}
-					conditionCode={localWeatherData.current.condition.code}
-					isDay={localWeatherData.current.is_day}
-					tempC={localWeatherData.current.temp_c}
-					tempF={localWeatherData.current.temp_f}
-					displayTime={true}
-					timeZone={localWeatherData.location.tz_id}
-					region={localWeatherData.location.region}
-				/>
-			</View>
+		<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+			<CityCard
+				onPress={() => handleCityPress(localWeatherData.location)}
+				city={localWeatherData.location.name}
+				conditionCode={localWeatherData.current.condition.code}
+				isDay={localWeatherData.current.is_day}
+				tempC={localWeatherData.current.temp_c}
+				tempF={localWeatherData.current.temp_f}
+				displayTime={true}
+				timeZone={localWeatherData.location.tz_id}
+				region={localWeatherData.location.region}
+			/>
 		</View>
 	);
 };

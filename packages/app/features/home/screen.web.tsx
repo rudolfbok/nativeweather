@@ -1,6 +1,8 @@
 'use client';
 
+import { useTranslate } from '@tolgee/react';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
@@ -10,18 +12,23 @@ import { ScrollView, View } from 'react-native';
 
 export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
-
+	const { t } = useTranslate('weather');
 	const favoriteCitiesHook = useFavoriteCities();
 
 	return (
-		<AnimatedView duration={30}>
+		<AnimatedView duration={25}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
 				contentContainerStyle={{ paddingBottom: 16 }}
 			>
 				<View className={clsx('gap-2')}>
-					{showLocalWeather && <LocalWeather />}
+					{showLocalWeather && (
+						<View className={clsx('gap-2')}>
+							<StyledText type="screentitle">{t('localweather.title')}</StyledText>
+							<LocalWeather />
+						</View>
+					)}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
 			</ScrollView>

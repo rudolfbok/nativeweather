@@ -90,7 +90,7 @@ export const WeatherFeature = () => {
 	}
 
 	return (
-		<AnimatedView duration={30}>
+		<AnimatedView duration={25}>
 			<HeroWeather />
 		</AnimatedView>
 	);
