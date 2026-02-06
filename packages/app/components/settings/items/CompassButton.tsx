@@ -2,9 +2,13 @@ import { useTranslate } from '@tolgee/react';
 import { CompassIcon } from 'app/components/icons/settings/CompassIcon';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';
+import { useRouter } from 'next/navigation';
+import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
 
 export const CompassButton = () => {
 	const { t } = useTranslate('settings');
+	const router = useRouter();
+	const { setOpenDrawer } = useOpenDrawer();
 
 	return (
 		<SettingsItem
@@ -13,6 +17,10 @@ export const CompassButton = () => {
 			title={`${t('compass.title')} ${t('compass.iosonly')}`}
 			variant="link"
 			className={clsx('rounded-3xl')}
+			onPress={() => {
+				setOpenDrawer(false);
+				router.push('/compass');
+			}}
 		/>
 	);
 };

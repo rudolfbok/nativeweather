@@ -7,6 +7,11 @@
 			"inputs": ["$TURBO_DEFAULTS$", ".env*"],
 			"outputs": [".next/**", "!.next/cache/**", "dist/**"]
 		},
+		"web#build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULTS$", ".env*"],
+			"outputs": [".next/**", "!.next/cache/**", "dist/**", ".open-next/**"]
+		},
 		"typecheck": {
 			"dependsOn": ["^typecheck"]
 		},

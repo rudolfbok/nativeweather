@@ -5,7 +5,8 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
 import { CircleGauge } from 'lucide-react-native';
-import { GestureResponderEvent } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
+import { clsx } from 'clsx';
 
 export const PressureModal = ({
 	visible,
@@ -83,12 +84,14 @@ export const PressureModal = ({
 			header={t('pressure.title')}
 			onClose={onClose}
 		>
-			<ContentRow title={t('pressure.barometricscale.title')}>
-				<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
-			</ContentRow>
-			<ContentRow title={t('pressure.barometricscale.values')}>
-				<ValuesList values={barometricScaleValues} showIndex={true} />
-			</ContentRow>
+			<View className={clsx('gap-2')}>
+				<ContentRow title={t('pressure.barometricscale.title')}>
+					<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
+				</ContentRow>
+				<ContentRow title={t('pressure.barometricscale.values')}>
+					<ValuesList values={barometricScaleValues} showIndex={true} />
+				</ContentRow>
+			</View>
 		</StyledModal>
 	);
 };

@@ -2,10 +2,10 @@
 
 import { useTranslate } from '@tolgee/react';
 import { SettingsFeature } from 'app/features/settings/screen';
+import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
-import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { NativeWeatherLogo } from '../../icons/logos/NativeWeatherLogo';
@@ -15,7 +15,7 @@ import { AnimatedView } from '../animated/AnimatedView.web';
 export const Header = () => {
 	const { t } = useTranslate('settings');
 	const router = useRouter();
-	const [openDrawer, setOpenDrawer] = useState(false);
+	const { openDrawer, setOpenDrawer } = useOpenDrawer();
 
 	return (
 		<>

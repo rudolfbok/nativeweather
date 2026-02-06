@@ -10,7 +10,8 @@
 		"format": "prettier --write .",
 		"typecheck": "turbo typecheck",
 		"web": "cd apps/web && turbo dev",
-		"mobile": "cd apps/mobile && turbo dev"
+		"mobile": "cd apps/mobile && turbo dev",
+		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
 	},
 	"keywords": [],
 	"author": "",
