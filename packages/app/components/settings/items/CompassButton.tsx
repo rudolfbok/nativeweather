@@ -18,8 +18,8 @@ export const CompassButton = () => {
 			variant="link"
 			className={clsx('rounded-3xl')}
 			onPress={() => {
-				setOpenDrawer(false);
 				router.push('/compass');
+				setOpenDrawer(false);
 			}}
 		/>
 	);

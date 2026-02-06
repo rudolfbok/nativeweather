@@ -1,10 +1,9 @@
 import { ClientOnly } from 'app/components/common/ClientOnly';
+import { Header } from 'app/components/common/ui/Header.web';
 import { clsx } from 'clsx';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import { Metadata } from 'next';
-import { Header } from 'app/components/common/ui/Header.web';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -15,11 +14,6 @@ const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
 });
-
-export const metadata: Metadata = {
-	title: 'NativeWeather',
-	description: 'React weather application',
-};
 
 export default function RootLayout({
 	children,
