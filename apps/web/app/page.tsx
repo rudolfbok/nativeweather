@@ -2,11 +2,11 @@ import { HomeFeature } from 'app/features/home/screen';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'NativeWeather | Home',
+	title: 'NativeWeather',
 	description: 'Cross-platform weather application',
 	twitter: {
 		card: 'summary',
-		title: 'NativeWeather | Home',
+		title: 'NativeWeather',
 		description: 'Cross-platform weather application',
 		// siteId: '1467726470533754880',
 		// creator: '@nextjs',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: 'website',
 		description: 'Cross-platform weather application',
-		title: 'NativeWeather | Home',
+		title: 'NativeWeather',
 		url: 'https://nativeweather.app',
 		siteName: 'NativeWeather',
 		images: [
