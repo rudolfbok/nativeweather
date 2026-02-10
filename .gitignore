@@ -20,5 +20,4 @@ CLAUDE.md
 .vercel
 
 # Open Next
-.open-next
-wrangler.jsonc
+**/.open-next/
