@@ -12,6 +12,7 @@ import { UnitsButton } from 'app/components/settings/items/UnitsButton';
 import { WorldTimeToggle } from 'app/components/settings/items/WorldTimeToggle';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
+import { SourceButton } from 'app/components/settings/items/SourceButton';
 
 export const SettingsFeature = ({ title }: { title: string }) => {
 	return (
@@ -23,6 +24,9 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 				<RoundView>
 					<ThemeButton />
 					<LanguageButton />
+				</RoundView>
+				<RoundView>
+					<SourceButton />
 				</RoundView>
 				<RoundView>
 					<TemperatureButton />

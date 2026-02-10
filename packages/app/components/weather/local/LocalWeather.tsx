@@ -41,7 +41,7 @@ export const LocalWeather = () => {
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<View
 					className={clsx(
-						'bg-systemBackground dark:bg-secondarySystemBackground_dark h-28 w-full animate-pulse rounded-3xl'
+						'bg-systemBackground dark:bg-secondarySystemBackground_dark h-[132px] w-full animate-pulse rounded-3xl'
 					)}
 				/>
 			</View>

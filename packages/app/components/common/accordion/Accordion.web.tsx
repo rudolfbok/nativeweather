@@ -47,7 +47,8 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			<div
 				ref={contentRef}
 				className={clsx(
-					'bg-systemBackground dark:bg-secondarySystemBackground_dark h-0 overflow-hidden rounded-3xl	opacity-0'
+					'bg-systemBackground dark:bg-secondarySystemBackground_dark h-0 overflow-hidden rounded-3xl opacity-0',
+					expanded && 'mb-2'
 				)}
 			>
 				<div className={clsx('p-4')}>{children}</div>

@@ -15,6 +15,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		initStorageDefaults();
 	}, []);
+
 	const NWTheme = useColorScheme();
 
 	return (

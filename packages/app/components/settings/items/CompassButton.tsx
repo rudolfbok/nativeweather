@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { CompassIcon } from 'app/components/icons/settings/CompassIcon';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'solito/navigation';
 import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
 
 export const CompassButton = () => {

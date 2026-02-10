@@ -6,13 +6,12 @@ import { View } from 'react-native';
 import { CompassIcon } from '../icons/settings/CompassIcon';
 import { StyledButton } from './styled/StyledButton';
 import { StyledText } from './styled/StyledText';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 
 export default function Compass() {
 	const { t } = useTranslate('weather');
 	const [compassRotation, setCompassRotation] = useState(0);
 	const [heading, setHeading] = useState<number | null>(null);
-	const [permissionGranted, setPermissionGranted] = useStorageBoolean('compassPermission');
+	const [permissionGranted, setPermissionGranted] = useState(false);
 
 	const requestPermission = async () => {
 		const DeviceOrientationEventWithPermission = DeviceOrientationEvent as any;
