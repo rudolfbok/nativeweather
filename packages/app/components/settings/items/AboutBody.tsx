@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { GoogleMapsPlatformLogo } from 'app/components/icons/logos/GoogleMapsPlatformLogo';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { OpenWeatherLogo } from 'app/components/icons/logos/OpenWeatherLogo';
@@ -33,8 +33,8 @@ const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) =
 	);
 };
 
-export const DataSourceInfo = () => {
-	const { t } = useTranslate('common');
+export const AboutBody = () => {
+	const { t } = useTranslate('settings');
 
 	const dataSourceItemValues = [
 		{
@@ -64,15 +64,21 @@ export const DataSourceInfo = () => {
 	];
 
 	return (
-		<View
-			className={clsx(
-				'mt-2 w-full flex-1 gap-4',
-				Platform.OS === 'web' ? 'grid grid-cols-1 place-self-center md:grid-cols-2' : 'flex-col'
-			)}
-		>
-			{dataSourceItemValues.map(({ name, logo, description, url }, index) => (
-				<DataSourceItem key={index} name={name} logo={logo} description={description} url={url} />
-			))}
+		<View className={clsx('gap-2')}>
+			<RoundView className={clsx('p-4')}>
+				<StyledText type="body">{t('about.description')}</StyledText>
+			</RoundView>
+			<StyledText type="title">{t('datasource.title')}</StyledText>
+			<View
+				className={clsx(
+					'mt-2 w-full flex-1 gap-4',
+					Platform.OS === 'web' ? 'grid grid-cols-1 place-self-center md:grid-cols-2' : 'flex-col'
+				)}
+			>
+				{dataSourceItemValues.map(({ name, logo, description, url }, index) => (
+					<DataSourceItem key={index} name={name} logo={logo} description={description} url={url} />
+				))}
+			</View>
 		</View>
 	);
 };

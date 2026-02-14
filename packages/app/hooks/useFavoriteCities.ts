@@ -12,8 +12,9 @@ import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { CityCardWeather } from 'app/types/cityCardWeather';
 import { showFavoriteToast } from 'app/utils/services/showFavoriteToast';
 import { showToast } from 'app/utils/services/showToast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocalWeather } from './useLocalWeather';
+import { useStorageString } from 'app/storage/useStorageString';
 
 export interface FavoriteCity {
 	city: City;
@@ -27,6 +28,7 @@ interface RefreshFavoritesProps {
 
 export const useFavoriteCities = () => {
 	const { t } = useTranslate('common');
+	const [currentSource] = useStorageString('currentSource');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { localWeatherData, setLocalWeatherData } = useLocalWeather();
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
@@ -40,14 +42,17 @@ export const useFavoriteCities = () => {
 		const cities = getFavoriteCities();
 
 		if (showLocalWeather && localWeatherData) {
-			const weatherData = await fetchWeather(`${localWeatherData.location.name}, ${localWeatherData.location.country}`);
+			const weatherData = await fetchWeather(
+				`${localWeatherData.location.name}, ${localWeatherData.location.country}`,
+				currentSource
+			);
 			if (!weatherData) return null;
 			setLocalWeatherData(weatherData);
 		}
 
 		const results = await Promise.all(
 			cities.map(async (city: City) => {
-				const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`);
+				const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 
 				if (!weatherData) {
 					if (displayToast) {
@@ -91,6 +96,10 @@ export const useFavoriteCities = () => {
 			showFavoriteToast({ message: `${city.name} ${t('toast.add')}`, type: 'add' });
 		}
 	};
+
+	useEffect(() => {
+		refreshFavoriteCities({ displayToast: false });
+	}, [currentSource]);
 
 	return {
 		favoritesData,

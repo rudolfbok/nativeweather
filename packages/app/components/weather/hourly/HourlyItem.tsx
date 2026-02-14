@@ -25,7 +25,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 				<WeatherIcon isDay={isDay} code={code} width={40} height={40} strokeWidth={StyleSheet.hairlineWidth} />
 				{rainChance > 0 && (
 					<StyledText type="rainchance" className={clsx('!text-primaryblue')}>
-						{rainChance}%
+						{Math.round(rainChance)}%
 					</StyledText>
 				)}
 			</View>

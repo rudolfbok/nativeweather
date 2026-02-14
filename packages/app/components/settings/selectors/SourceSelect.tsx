@@ -1,11 +1,10 @@
 import { RoundView } from 'app/components/common/ui/RoundView';
+import { OpenMeteoIcon } from 'app/components/icons/settings/OpenMeteoIcon';
 import { OpenWeatherIcon } from 'app/components/icons/settings/OpenWeatherIcon';
 import { WeatherAPIIcon } from 'app/components/icons/settings/WeatherAPIIcon';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { Paintbrush } from 'lucide-react-native';
 import { SettingsItem } from '../items/SettingsItem';
-import { OpenMeteoIcon } from 'app/components/icons/settings/OpenMeteoIcon';
 
 export const SourceSelect = () => {
 	const [currentSource, setCurrentSource] = useStorageString('currentSource');

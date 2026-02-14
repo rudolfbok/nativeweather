@@ -4,6 +4,7 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
+import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
 import * as Burnt from 'burnt';
@@ -16,6 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
+	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
@@ -70,7 +72,8 @@ export const WeatherFeature = () => {
 
 		try {
 			const rereshedData = await fetchWeather(
-				`${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`
+				`${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`,
+				currentSource
 			);
 
 			if (!rereshedData) {
@@ -133,7 +136,7 @@ export const WeatherFeature = () => {
 					zIndex: -1,
 				}}
 			>
-				<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.is_day} />
+				<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
 			</View>
 			<HeroWeather />
 		</Animated.ScrollView>

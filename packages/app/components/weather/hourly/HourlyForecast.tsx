@@ -44,7 +44,7 @@ export const HourlyForecast = () => {
 		}
 	};
 
-	const tzId = weatherData?.location?.tz_id ?? 'UTC';
+	const tzId = weatherData?.location?.tzId ?? 'UTC';
 
 	const now = new Date();
 	const currentHour24 = parseInt(
@@ -57,7 +57,7 @@ export const HourlyForecast = () => {
 	);
 
 	const currentIndex = weatherData!.forecast.forecastday[0]!.hour.findIndex(
-		(hour) => getHour24FromEpoch(hour.time_epoch, tzId) === currentHour24
+		(hour) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
 	);
 
 	if (currentIndex === -1) {
@@ -69,13 +69,13 @@ export const HourlyForecast = () => {
 	const combinedHours = [...todayHours, ...nextDayHours];
 
 	const hourlyData = combinedHours.map((hour, index) => ({
-		tempC: hour.temp_c,
-		tempF: hour.temp_f,
-		chanceOfRain: hour.chance_of_rain,
+		tempC: hour.tempC,
+		tempF: hour.tempF,
+		chanceOfRain: hour.chanceOfRain,
 		code: hour.condition.code,
-		isDay: hour.is_day,
-		timeEpoch: hour.time_epoch,
-		hourLabel: index === 0 ? t('hourlyforecast.now') : getDisplayHourFromEpoch(hour.time_epoch, tzId),
+		isDay: hour.isDay,
+		timeEpoch: hour.timeEpoch,
+		hourLabel: index === 0 ? t('hourlyforecast.now') : getDisplayHourFromEpoch(hour.timeEpoch, tzId),
 	}));
 
 	return (

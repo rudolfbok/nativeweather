@@ -1,6 +1,6 @@
 import { useTolgee } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
-import { WeatherData } from 'app/types/weatherData';
+import { NormalizedWeather } from 'app/types/normalizedWeather';
 import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
@@ -15,9 +15,9 @@ import { SmartSummary } from '../smart/SmartSummary';
 
 interface DailyForecastModalProps {
 	visible: boolean;
-	day: WeatherData['forecast']['forecastday'][0] | null;
-	days: WeatherData['forecast']['forecastday'];
-	onSelectDay: (day: WeatherData['forecast']['forecastday'][0]) => void;
+	day: NormalizedWeather['forecast']['forecastday'][0] | null;
+	days: NormalizedWeather['forecast']['forecastday'];
+	onSelectDay: (day: NormalizedWeather['forecast']['forecastday'][0]) => void;
 	onClose: () => void;
 }
 
@@ -73,12 +73,12 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 		>
 			<View className={clsx('w-full gap-4')}>
 				<MainWeather
-					currentTempC={day.day.maxtemp_c}
-					currentTempF={day.day.maxtemp_f}
-					minTempC={day.day.mintemp_c}
-					minTempF={day.day.mintemp_f}
-					maxTempC={day.day.maxtemp_c}
-					maxTempF={day.day.maxtemp_f}
+					currentTempC={day.day.maxTempC}
+					currentTempF={day.day.maxTempF}
+					minTempC={day.day.minTempC}
+					minTempF={day.day.minTempF}
+					maxTempC={day.day.maxTempC}
+					maxTempF={day.day.maxTempF}
 					isDay={1}
 					code={day.day.condition.code}
 					condition={getWeatherByCode(day.day.condition.code, 1)}
@@ -89,56 +89,58 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 					feelslike={false}
 				/>
 				<SmartSummary
-					minTempC={day.day.mintemp_c}
-					maxTempC={day.day.maxtemp_c}
-					minTempF={day.day.mintemp_f}
-					maxTempF={day.day.maxtemp_f}
-					rainPrecipMm={day.day.totalprecip_mm}
-					rainPrecipIn={day.day.totalprecip_in}
-					snowPrecipCm={day.day.totalsnow_cm}
-					snowPrecipIn={Number((day.day.totalsnow_cm * 0.393701).toFixed(2))}
-					maxWindKph={day.day.maxwind_kph}
+					minTempC={day.day.minTempC}
+					maxTempC={day.day.maxTempC}
+					minTempF={day.day.minTempF}
+					maxTempF={day.day.maxTempF}
+					rainPrecipMm={day.day.totalPrecipMm}
+					rainPrecipIn={day.day.totalPrecipIn}
+					snowPrecipCm={day.day.totalSnowCm}
+					snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
+					maxWindKph={day.day.maxWindKph}
 					uvIndex={day.day.uv}
-					avgVisibilityKm={day.day.avgvis_km}
+					avgVisibilityKm={day.day.avgVisKm}
 				/>
-				<HourlyCarousel
-					data={day.hour}
-					renderItem={(hour, index) => (
-						<HourlyItem
-							key={index}
-							hour={getDisplayHourFromIndex(index)}
-							rainChance={hour.chance_of_rain}
-							isDay={hour.is_day}
-							code={hour.condition.code}
-							tempC={hour.temp_c}
-							tempF={hour.temp_f}
-						/>
-					)}
-				/>
+				{!day.hour || day.hour.length === 0 ? null : (
+					<HourlyCarousel
+						data={day.hour}
+						renderItem={(hour, index) => (
+							<HourlyItem
+								key={index}
+								hour={getDisplayHourFromIndex(index)}
+								rainChance={hour.chanceOfRain}
+								isDay={hour.isDay}
+								code={hour.condition.code}
+								tempC={hour.tempC}
+								tempF={hour.tempF}
+							/>
+						)}
+					/>
+				)}
 				<View
 					className={clsx(
 						'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 flex w-full flex-row flex-wrap justify-between gap-4'
 					)}
 				>
-					{day.day.daily_chance_of_snow > day.day.daily_chance_of_rain ? (
+					{day.day.dailySnowChance > day.day.dailyRainChance ? (
 						<SnowCard
-							snowChance={day.day.daily_chance_of_snow}
-							snowPrecipCm={day.day.totalsnow_cm}
-							snowPrecipIn={Number((day.day.totalsnow_cm * 0.393701).toFixed(2))}
+							snowChance={day.day.dailySnowChance}
+							snowPrecipCm={day.day.totalSnowCm}
+							snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
 						/>
 					) : (
 						<RainCard
-							rainChance={day.day.daily_chance_of_rain}
-							rainPrecipMm={day.day.totalprecip_mm}
-							rainPrecipIn={day.day.totalprecip_in}
+							rainChance={day.day.dailyRainChance}
+							rainPrecipMm={day.day.totalPrecipMm}
+							rainPrecipIn={day.day.totalPrecipIn}
 						/>
 					)}
 
 					<UVIndexCard data={day.day.uv} />
-					<VisibilityCard visKm={day.day.avgvis_km} visMiles={day.day.avgvis_miles} />
+					<VisibilityCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
 					<WindCard
-						windKm={Math.round(day.day.maxwind_kph)}
-						windMil={Math.round(day.day.maxwind_mph)}
+						windKm={Math.round(day.day.maxWindKph)}
+						windMil={Math.round(day.day.maxWindMph)}
 						details={false}
 						currentWind={false}
 					/>

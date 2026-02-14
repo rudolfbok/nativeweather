@@ -61,12 +61,12 @@ export const useWeatherConditions = () => {
 		[t]
 	);
 
-	const getWeatherByCode = (code: number, is_day: 0 | 1): string => {
+	const getWeatherByCode = (code: number, isDay: 0 | 1): string => {
 		const condition = conditions[code];
 
 		if (condition) {
 			if (typeof condition === 'object') {
-				return is_day === 1 ? condition.day : condition.night;
+				return isDay === 1 ? condition.day : condition.night;
 			}
 			return condition;
 		}

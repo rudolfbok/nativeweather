@@ -1,48 +1,27 @@
-import { WeatherData } from 'app/types/weatherData';
+import { fetchOpenWeatherAPI } from './fetchOpenWeatherAPI';
+import { fetchWeatherAPI } from './fetchWeatherAPI';
+import { mapOpenWeatherApi } from './mapOpenWeatherAPI';
+import { mapWeatherApi } from './mapWeatherAPI';
 
-const BASE_URL = 'https://my-weather-proxy.rudolf-bok-account.workers.dev';
-
-export const fetchWeather = async (query: string | number[]): Promise<WeatherData> => {
-	const weatherUrl = `${BASE_URL}/forecast.json?&q=${query}&days=7&aqi=no&alerts=yes`;
-
-	try {
-		const response = await fetch(weatherUrl);
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status}`);
+export const fetchWeather = async (query: any, source: string) => {
+	if (source === 'weatherapi') {
+		const weatherData = await fetchWeatherAPI(query);
+		if (!weatherData) {
+			throw new Error('City not found');
 		}
+		const normalizedData = mapWeatherApi(weatherData);
+		return normalizedData;
+	}
 
-		const weatherData = await response.json();
-
+	if (source === 'openweather') {
+		const weatherData = await fetchOpenWeatherAPI(query);
 		if (!weatherData) {
 			throw new Error('City not found');
 		}
 
-		return weatherData;
-	} catch (error) {
-		console.error('Failed to fetch weather data:', error);
+		const normalizedData = mapOpenWeatherApi(weatherData);
+		return normalizedData;
 	}
-};
 
-export const fetchLocation = async (searchedLocation: string) => {
-	const locationUrl = `${BASE_URL}/search.json?&q=${searchedLocation}`;
-
-	try {
-		const response = await fetch(locationUrl);
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status}`);
-		}
-
-		const locationData = await response.json();
-
-		if (!locationData) {
-			throw new Error('Cant fetch suggestions');
-		}
-
-		return locationData;
-	} catch (error) {
-		console.error('Failed to fetch suggestions data:', error);
-		return { error: error.message || 'An unknown error occurred' };
-	}
+	throw new Error('Unknown weather source');
 };

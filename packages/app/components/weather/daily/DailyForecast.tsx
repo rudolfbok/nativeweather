@@ -1,18 +1,18 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { Calendar } from 'app/components/icons/CalendarIcon';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherData } from 'app/types/weatherData';
+import { NormalizedWeather } from 'app/types/normalizedWeather';
 import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
-import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { Calendar } from 'app/components/icons/CalendarIcon';
 import { DailyForecastModal } from './DailyForecastModal';
 
 export const DailyForecast = () => {
@@ -20,7 +20,7 @@ export const DailyForecast = () => {
 	const { weatherData } = useWeather();
 	const [currentTemp] = useStorageString('currentTemp');
 	const getWeatherByCode = useWeatherConditions();
-	const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
+	const [selectedDay, setSelectedDay] = useState<NormalizedWeather['forecast']['forecastday'][0] | null>(null);
 	const scrollRef = useRef<ScrollView>(null);
 
 	useEffect(() => {
@@ -69,8 +69,8 @@ export const DailyForecast = () => {
 							<View className={clsx('w-fit flex-row items-center justify-between')}>
 								<StyledText type="body" className={clsx('w-10 text-center')}>
 									{useSwitchTemp({
-										celsius: day.day.mintemp_c,
-										fahrenheit: day.day.mintemp_f,
+										celsius: day.day.minTempC,
+										fahrenheit: day.day.minTempF,
 										currentTemp: currentTemp,
 									})}
 								</StyledText>
@@ -85,8 +85,8 @@ export const DailyForecast = () => {
 								</View>
 								<StyledText type="body" className={clsx('w-10 text-center font-semibold')}>
 									{useSwitchTemp({
-										celsius: day.day.maxtemp_c,
-										fahrenheit: day.day.maxtemp_f,
+										celsius: day.day.maxTempC,
+										fahrenheit: day.day.maxTempF,
 										currentTemp: currentTemp,
 									})}
 								</StyledText>

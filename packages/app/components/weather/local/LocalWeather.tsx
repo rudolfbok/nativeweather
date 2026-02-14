@@ -54,11 +54,11 @@ export const LocalWeather = () => {
 				onPress={() => handleCityPress(localWeatherData.location)}
 				city={localWeatherData.location.name}
 				conditionCode={localWeatherData.current.condition.code}
-				isDay={localWeatherData.current.is_day}
-				tempC={localWeatherData.current.temp_c}
-				tempF={localWeatherData.current.temp_f}
+				isDay={localWeatherData.current.isDay}
+				tempC={localWeatherData.current.tempC}
+				tempF={localWeatherData.current.tempF}
 				displayTime={true}
-				timeZone={localWeatherData.location.tz_id}
+				timeZone={localWeatherData.location.tzId}
 				region={localWeatherData.location.region}
 			/>
 		</View>

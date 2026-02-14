@@ -1,4 +1,11 @@
 {
+	"about": {
+		"googlemaps": "Základní mapový podklad pro interaktivní zobrazení geografických dat",
+		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
+		"openweather": "Poskytuje vizualizaci vrstev meteorologických map pro teplotu, srážky a oblačnost",
+		"title": "O aplikaci",
+		"weatherapi": "Hlavní zdroj dat pro aktuální počasí a předpovědi a astronomické údaje"
+	},
 	"airquality": {
 		"american": "Americký",
 		"european": "Evropský",
@@ -8,6 +15,9 @@
 	"compass": {
 		"iosonly": "(pouze iOS)",
 		"title": "Kompas"
+	},
+	"datasource": {
+		"title": "Zdroje dat"
 	},
 	"feedback": {
 		"button": "Poslat názor",
@@ -22,6 +32,9 @@
 	},
 	"localweather": "Místní počasí",
 	"settings": "Nastavení",
+	"source": {
+		"title": "Zdroj dat"
+	},
 	"temperature": "Teplota",
 	"theme": {
 		"dark": "Tmavý režim",

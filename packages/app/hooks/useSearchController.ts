@@ -1,5 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { fetchLocation, fetchWeather } from 'app/api/fetchWeather';
+import { fetchWeather } from 'app/api/fetchWeather';
+import { fetchLocation } from 'app/api/fetchWeatherAPI';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
@@ -8,10 +9,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { useWeather } from './useWeather';
+import { useStorageString } from 'app/storage/useStorageString';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
 	const { setWeatherData } = useWeather();
+	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
@@ -30,7 +33,7 @@ export const useSearchController = () => {
 	const showSuggestions = isSearchBarFocused && suggestions.length > 0;
 
 	const handleCityPress = async (city: City) => {
-		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`);
+		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 		if (weatherData) {
 			setWeatherData(weatherData);
 			const path = buildWeatherSlug(weatherData);
@@ -45,7 +48,7 @@ export const useSearchController = () => {
 	};
 
 	const handleInputSearch = async (query: string) => {
-		const weatherData = await fetchWeather(query);
+		const weatherData = await fetchWeather(query, currentSource);
 		if (weatherData) {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);

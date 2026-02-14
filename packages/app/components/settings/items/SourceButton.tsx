@@ -1,13 +1,15 @@
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
-import { HardDrive } from 'lucide-react-native';
+import { DatabaseZap } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
 import { SourceSelect } from '../selectors/SourceSelect';
 import { SettingsItem } from './SettingsItem';
+import { useTranslate } from '@tolgee/react';
 
 export const SourceButton = () => {
+	const { t } = useTranslate('settings');
 	const [showModal, setShowModal] = useState(false);
 	const [currentSource] = useStorageString('currentSource');
 
@@ -22,9 +24,9 @@ export const SourceButton = () => {
 	return (
 		<>
 			<SettingsItem
-				icon={<HardDrive size={20} color="white" />}
+				icon={<DatabaseZap size={20} color="white" />}
 				iconbg="bg-orange-600"
-				title="Source"
+				title={t('source.title')}
 				variant="value"
 				onPress={() => router.push('/source')}
 				showModal={() => setShowModal(true)}
@@ -32,7 +34,12 @@ export const SourceButton = () => {
 				className={clsx('rounded-3xl')}
 			/>
 			{showModal && (
-				<StyledModal visible={showModal} onClose={() => setShowModal(false)} header="Source" settingsModal={true}>
+				<StyledModal
+					visible={showModal}
+					onClose={() => setShowModal(false)}
+					header={t('source.title')}
+					settingsModal={true}
+				>
 					<SourceSelect />
 				</StyledModal>
 			)}

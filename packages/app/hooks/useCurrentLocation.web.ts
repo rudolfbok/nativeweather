@@ -1,5 +1,6 @@
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
+import { useStorageString } from 'app/storage/useStorageString';
 import { useState } from 'react';
 
 const getCoordinates = (): Promise<GeolocationPosition | null> => {
@@ -21,6 +22,7 @@ const getCoordinates = (): Promise<GeolocationPosition | null> => {
 };
 
 export const useCurrentLocation = () => {
+	const [currentSource] = useStorageString('currentSource');
 	const { setLocalWeatherData } = useLocalWeather();
 	const [error, setError] = useState<boolean>(false);
 
@@ -30,7 +32,7 @@ export const useCurrentLocation = () => {
 		setError(false);
 		try {
 			const { coords } = await getCoordinates();
-			const result = await fetchWeather([coords.latitude, coords.longitude]);
+			const result = await fetchWeather([coords.latitude, coords.longitude], currentSource);
 			setLocalWeatherData(result);
 			return result;
 		} catch (error) {

@@ -1,6 +1,9 @@
 import { storage } from 'app/storage/storage';
 
 export const initStorageDefaults = () => {
+	if (storage.getString('currentSource') === undefined) {
+		storage.set('currentSource', 'weatherapi');
+	}
 	if (storage.getString('currentLang') === undefined) {
 		storage.set('currentLang', 'en-US');
 	}

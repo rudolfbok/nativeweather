@@ -16,7 +16,6 @@ import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { AlertWeather } from 'app/components/weather/alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
-import { SmartSummary } from 'app/components/weather/smart/SmartSummary';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
@@ -30,6 +29,7 @@ import { Platform, Pressable, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
+import { SmartSummary } from './smart/SmartSummary';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
@@ -55,7 +55,7 @@ export const HeroWeather = () => {
 		);
 	};
 
-	const tzId = weatherData.location.tz_id || 'UTC';
+	const tzId = weatherData.location.tzId || 'UTC';
 
 	const now = new Date();
 	const currentHour24 = parseInt(
@@ -68,12 +68,12 @@ export const HeroWeather = () => {
 	);
 
 	const currentIndex = weatherData.forecast.forecastday[0].hour.findIndex(
-		(hour) => getHour24FromEpoch(hour.time_epoch, tzId) === currentHour24
+		(hour: any) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
 	);
 
-	const currentRainChance = weatherData.forecast.forecastday[0].hour[currentIndex].chance_of_rain;
-	const currentSnowChance = weatherData.forecast.forecastday[0].hour[currentIndex].chance_of_snow;
-	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snow_cm;
+	const currentRainChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfRain;
+	const currentSnowChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfSnow;
+	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snowCm;
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 
 	const filteredAlerts: WeatherAlert[] = weatherData.alerts.alert.filter(
@@ -94,38 +94,38 @@ export const HeroWeather = () => {
 				) : (
 					<RainCard
 						rainChance={currentRainChance}
-						rainPrecipMm={weatherData.current.precip_mm}
-						rainPrecipIn={weatherData.current.precip_in}
+						rainPrecipMm={weatherData.current.precipMm}
+						rainPrecipIn={weatherData.current.precipIn}
 					/>
 				)}
 				<WindCard
-					windKm={Math.round(weatherData.current.wind_kph)}
-					windMil={Math.round(weatherData.current.wind_mph)}
-					gustKm={Math.round(weatherData.current.gust_kph)}
-					gustMil={Math.round(weatherData.current.gust_mph)}
-					dir={weatherData.current.wind_dir}
-					degree={weatherData.current.wind_degree}
+					windKm={Math.round(weatherData.current.windKph)}
+					windMil={Math.round(weatherData.current.windMph)}
+					gustKm={Math.round(weatherData.current.gustKph)}
+					gustMil={Math.round(weatherData.current.gustMph)}
+					dir={weatherData.current.windDir}
+					degree={weatherData.current.windDegree}
 					details={true}
 					currentWind={true}
 				/>
 				<UVIndexCard data={weatherData.current.uv} />
-				<VisibilityCard visKm={weatherData.current.vis_km} visMiles={weatherData.current.vis_miles} />
+				<VisibilityCard visKm={weatherData.current.visibilityKm} visMiles={weatherData.current.visibilityMiles} />
 				<HumidityCard
 					data={weatherData.current.humidity}
 					dewPoint={true}
-					dewPointC={weatherData.current.dewpoint_c}
-					dewPointF={weatherData.current.dewpoint_f}
+					dewPointC={weatherData.current.dewPointC}
+					dewPointF={weatherData.current.dewPointF}
 				/>
-				<PressureCard pressureMb={weatherData.current.pressure_mb} pressureIn={weatherData.current.pressure_in} />
+				<PressureCard pressureMb={weatherData.current.pressureMb} pressureIn={weatherData.current.pressureInHg} />
 				<SunriseCard data={weatherData.forecast.forecastday[0]?.astro.sunrise} />
 				<SunsetCard data={weatherData.forecast.forecastday[0]?.astro.sunset} />
-				<CloudsCard data={weatherData.current.cloud} />
+				<CloudsCard data={weatherData.current.cloudCover} />
 				<MoonCard
-					phase={weatherData.forecast.forecastday[0].astro.moon_phase}
-					illumination={weatherData.forecast.forecastday[0].astro.moon_illumination}
-					isMoonUp={weatherData.forecast.forecastday[0].astro.is_moon_up}
-					moonrise={weatherData.forecast.forecastday[0].astro.moonrise ?? ''}
-					moonset={weatherData.forecast.forecastday[0].astro.moonset ?? ''}
+					phase={weatherData.forecast.forecastday[0].astro.moonPhase}
+					illumination={weatherData.forecast.forecastday[0].astro.moonIllumunation}
+					isMoonUp={weatherData.forecast.forecastday[0].astro.isMoonUp}
+					moonrise={weatherData.forecast.forecastday[0].astro.moonRise ?? ''}
+					moonset={weatherData.forecast.forecastday[0].astro.moonSet ?? ''}
 				/>
 			</>
 		);
@@ -140,18 +140,18 @@ export const HeroWeather = () => {
 							<MainWeather
 								name={weatherData.location.name}
 								country={weatherData.location.country}
-								currentTempC={weatherData.current.temp_c}
-								currentTempF={weatherData.current.temp_f}
-								feelsLikeC={weatherData.current.feelslike_c}
-								feelsLikeF={weatherData.current.feelslike_f}
-								maxTempC={weatherData.forecast.forecastday[0]?.day.maxtemp_c}
-								maxTempF={weatherData.forecast.forecastday[0]?.day.maxtemp_f}
-								minTempC={weatherData.forecast.forecastday[0]?.day.mintemp_c}
-								minTempF={weatherData.forecast.forecastday[0]?.day.mintemp_f}
-								isDay={weatherData.current.is_day}
+								currentTempC={weatherData.current.tempC}
+								currentTempF={weatherData.current.tempF}
+								feelsLikeC={weatherData.current.feelsLikeC}
+								feelsLikeF={weatherData.current.feelsLikeF}
+								maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
+								maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
+								minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
+								minTempF={weatherData.forecast.forecastday[0]?.day.minTHempF}
+								isDay={weatherData.current.isDay}
 								code={weatherData.current.condition.code}
 								feelslike={true}
-								condition={getWeatherByCode(weatherData.current.condition.code, weatherData.current.is_day)}
+								condition={getWeatherByCode(weatherData.current.condition.code, weatherData.current.isDay)}
 								conditionbg={false}
 								textColor="!text-white"
 								arrowcolor="white"
@@ -179,15 +179,15 @@ export const HeroWeather = () => {
 						mobile="lg:hidden"
 					/>
 					<SmartSummary
-						minTempC={weatherData.forecast.forecastday[0].day.mintemp_c}
-						maxTempC={weatherData.forecast.forecastday[0].day.maxtemp_c}
-						minTempF={weatherData.forecast.forecastday[0].day.mintemp_f}
-						maxTempF={weatherData.forecast.forecastday[0].day.maxtemp_f}
-						rainPrecipMm={weatherData.forecast.forecastday[0].day.totalprecip_mm}
-						rainPrecipIn={weatherData.forecast.forecastday[0].day.totalprecip_in}
-						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalsnow_cm}
-						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalsnow_cm * 0.393701).toFixed(2))}
-						cloudCover={weatherData.current.cloud}
+						minTempC={weatherData.forecast.forecastday[0].day.minTempC}
+						maxTempC={weatherData.forecast.forecastday[0].day.maxTempC}
+						minTempF={weatherData.forecast.forecastday[0].day.minTempF}
+						maxTempF={weatherData.forecast.forecastday[0].day.maxTempF}
+						rainPrecipMm={weatherData.forecast.forecastday[0].day.totalPrecipMm}
+						rainPrecipIn={weatherData.forecast.forecastday[0].day.totalPrecipIn}
+						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalSnowCm}
+						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalSnowCm * 0.393701).toFixed(2))}
+						cloudCover={weatherData.current.cloudCover}
 						airQualityEU={airQualityData?.current.european_aqi}
 						airQualityUS={airQualityData?.current.us_aqi}
 					/>

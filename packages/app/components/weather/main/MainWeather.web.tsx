@@ -133,7 +133,7 @@ export const MainWeather = ({
 			{showWorldTime && displayTime && (
 				<View className={clsx('mt-1 flex flex-row items-center justify-center')}>
 					<StyledText type="localtime" className={clsx('font-semibold')}>
-						{useLocalTimeNow(weatherData!.location.tz_id)}
+						{useLocalTimeNow(weatherData!.location.tzId)}
 					</StyledText>
 				</View>
 			)}

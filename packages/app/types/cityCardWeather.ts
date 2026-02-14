@@ -5,13 +5,13 @@ export interface CityCardWeather {
 		country: string;
 		lat: number;
 		lon: number;
-		localtime_epoch: number;
-		tz_id: string;
+		localtimeEpoch: number;
+		tzId: string;
 	};
 	current: {
-		temp_c: number;
-		temp_f: number;
-		is_day: 0 | 1;
+		tempC: number;
+		tempF: number;
+		isDay: 0 | 1;
 		condition: {
 			text: string;
 			code: number;

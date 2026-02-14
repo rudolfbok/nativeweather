@@ -1,11 +1,11 @@
-import { DataSourceInfo } from 'app/components/settings/items/DataSourceInfo';
+import { SourceSelect } from 'app/components/settings/selectors/SourceSelect';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';
 
-export default function DataSourceScreen() {
+export default function SourceScreen() {
 	return (
 		<ScrollView contentContainerClassName={clsx('px-4 pb-4')}>
-			<DataSourceInfo />
+			<SourceSelect />
 		</ScrollView>
 	);
 }

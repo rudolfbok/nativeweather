@@ -1,11 +1,4 @@
 {
-	"datasource": {
-		"googlemaps": "Basic map background for interactive display of geographic data",
-		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
-		"openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
-		"title": "Data sources",
-		"weatherapi": "The main source of data for current weather and forecasts and astronomical data"
-	},
 	"favorites": {
 		"delete": "Delete",
 		"error": "There was an error loading your favorite cities. Please try again.",
@@ -13,6 +6,9 @@
 		"nosaved": "There are no favorite cities saved",
 		"share": "Share",
 		"title": "Favorites"
+	},
+	"modal": {
+		"description": "Description"
 	},
 	"search": {
 		"city": {

@@ -1,0 +1,97 @@
+import { NormalizedWeather } from 'app/types/normalizedWeather';
+
+export const mapWeatherApi = (data: any): NormalizedWeather => {
+	return {
+		location: {
+			name: data.location.name,
+			region: data.location.region,
+			country: data.location.country,
+			lat: data.location.lat,
+			lon: data.location.lon,
+			localtimeEpoch: data.location.localtime_epoch,
+			tzId: data.location.tz_id,
+		},
+		current: {
+			tempC: data.current.temp_c,
+			tempF: data.current.temp_f,
+			feelsLikeC: data.current.feelslike_c,
+			feelsLikeF: data.current.feelslike_f,
+			dewPointC: data.current.dewpoint_c,
+			dewPointF: data.current.dewpoint_f,
+			humidity: data.current.humidity,
+			precipIn: data.current.precip_in,
+			precipMm: data.current.precip_mm,
+			pressureInHg: data.current.pressure_in,
+			pressureMb: data.current.pressure_mb,
+			uv: data.current.uv,
+			visibilityKm: data.current.vis_km,
+			visibilityMiles: data.current.vis_mil,
+			windDegree: data.current.wind_degree,
+			windDir: data.current.wind_dir,
+			windKph: data.current.wind_kph,
+			windMph: data.current.wind_mph,
+			gustKph: data.current.gust_kph,
+			gustMph: data.current.gust_mph,
+			cloudCover: data.current.cloud,
+			isDay: data.current.isDay,
+			condition: {
+				text: data.current.condition.text,
+				code: data.current.condition.code,
+			},
+		},
+		forecast: {
+			forecastday: data.forecast.forecastday.map((day: any) => ({
+				date: day.date,
+				date_epoch: day.date_epoch,
+				day: {
+					maxTempC: day.day.maxtemp_c,
+					maxTempF: day.day.maxtemp_f,
+					minTempC: day.day.mintemp_c,
+					minTempF: day.day.mintemp_f,
+					maxWindKph: day.day.maxwind_kph,
+					maxWindMph: day.day.maxwind_mph,
+					dailyRainChance: day.day.daily_chance_of_rain,
+					dailySnowChance: day.day.daily_chance_of_snow,
+					dailyWillItSnow: day.day.daily_will_it_snow,
+					uv: day.day.uv,
+					avgVisKm: day.day.avgvisibilityKm,
+					avgVisMiles: day.day.avgvisibilityMileses,
+					avgHumidity: day.day.avghumidity,
+					totalPrecipMm: day.day.totalprecipMm,
+					totalPrecipIn: day.day.totalprecipIn,
+					totalSnowCm: day.day.totalsnow_cm,
+					condition: {
+						text: day.day.condition.text,
+						code: day.day.condition.code,
+					},
+				},
+
+				hour: day.hour.map((hour: any) => ({
+					timeEpoch: hour.time_epoch,
+					tempC: hour.temp_c,
+					tempF: hour.temp_f,
+					isDay: hour.is_day,
+					uv: hour.uv,
+					chanceOfRain: hour.chance_of_rain,
+					chanceOfSnow: hour.chance_of_snow,
+					snowCm: hour.snow_cm,
+					condition: {
+						code: hour.condition.code,
+					},
+				})),
+				astro: {
+					sunrise: day.astro.sunrise,
+					sunset: day.astro.sunset,
+					moonPhase: day.astro.moon_phase,
+					moonIllumunation: day.astro.moon_illumination,
+					moonRise: day.astro.moonrise,
+					moonSet: day.astro.moonset,
+					isMoonUp: day.astro.is_moon_up,
+				},
+			})),
+		},
+		alerts: {
+			alert: data.alerts?.alert ?? [],
+		},
+	};
+};

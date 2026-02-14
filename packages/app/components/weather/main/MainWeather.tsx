@@ -114,7 +114,7 @@ export const MainWeather = ({
 				</StyledText>
 				{/* {showWorldTime && displayTime && (
 					<View className={clsx('mt-1 flex flex-row items-center justify-center')}>
-						<StyledText type="localtime">{useLocalTimeNow(weatherData!.location.tz_id)}</StyledText>
+						<StyledText type="localtime">{useLocalTimeNow(weatherData!.location.tzId)}</StyledText>
 					</View>
 				)} */}
 			</View>

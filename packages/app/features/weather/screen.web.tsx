@@ -8,6 +8,7 @@ import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useWeather } from 'app/hooks/useWeather';
+import { useStorageString } from 'app/storage/useStorageString';
 import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { clsx } from 'clsx';
@@ -17,6 +18,7 @@ import { View } from 'react-native';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
+	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const router = useRouter();
 	const params = useParams<{ city: string }>();
@@ -34,13 +36,13 @@ export const WeatherFeature = () => {
 			setError(false);
 
 			const r = searchParams.get('r');
-			const cr = searchParams.get('cr');
+			const cr = 'NO';
 
 			const city = slug.trim().toLowerCase().replace(/\s+/g, '-');
 			const query = cr || r ? `${city}, ${r}, ${cr}` : city;
 
 			try {
-				const data = await fetchWeather(query);
+				const data = await fetchWeather(query, currentSource);
 
 				if (data) {
 					const path = buildWeatherSlug(data);
@@ -59,7 +61,7 @@ export const WeatherFeature = () => {
 		};
 
 		loadWeather();
-	}, [params.city]);
+	}, [params.city, currentSource]);
 
 	useEffect(
 		useCallback(() => {
@@ -73,17 +75,17 @@ export const WeatherFeature = () => {
 
 	if (!weatherData) return null;
 
-	if (error) {
-		return (
-			<View className={clsx('w-full items-center')}>
-				<RoundView className={clsx('p-4 max-md:w-full')}>
-					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
-						{t('search.url.error')}
-					</StyledText>
-				</RoundView>
-			</View>
-		);
-	}
+	// if (error) {
+	// 	return (
+	// 		<View className={clsx('w-full items-center')}>
+	// 			<RoundView className={clsx('p-4 max-md:w-full')}>
+	// 				<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
+	// 					{t('search.url.error')}
+	// 				</StyledText>
+	// 			</RoundView>
+	// 		</View>
+	// 	);
+	// }
 
 	if (loading || !weatherData) {
 		return <HeroSkeleton />;

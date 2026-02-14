@@ -4,6 +4,7 @@ coverage
 node_modules
 dist
 ios
+android
 .next
 .vercel
 .open-next

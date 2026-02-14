@@ -63,11 +63,11 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								onPress={() => handleCityPress(city)}
 								city={city.name}
 								conditionCode={weather.current.condition.code}
-								isDay={weather.current.is_day}
-								tempC={weather.current.temp_c}
-								tempF={weather.current.temp_f}
+								isDay={weather.current.isDay}
+								tempC={weather.current.tempC}
+								tempF={weather.current.tempF}
 								displayTime={true}
-								timeZone={weather.location.tz_id}
+								timeZone={weather.location.tzId}
 								region={city.region}
 							/>
 							{showDeleteCity && (

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
+import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
@@ -8,6 +9,7 @@ import { LocalWeather } from 'app/components/weather/local/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
+import { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 
 export const HomeFeature = () => {

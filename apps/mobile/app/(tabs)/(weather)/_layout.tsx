@@ -16,7 +16,7 @@ export default function TabLayout() {
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 
-	const titleColor = DynamicColorIOS({ light: 'black', dark: 'white' });
+	const titleColor = 'black';
 	const headerTintColor = useSwitchColors('black', 'white');
 	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
 

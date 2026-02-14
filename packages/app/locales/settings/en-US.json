@@ -1,4 +1,11 @@
 {
+	"about": {
+		"googlemaps": "Basic map background for interactive display of geographic data",
+		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
+		"openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
+		"title": "About",
+		"weatherapi": "The main source of data for current weather and forecasts and astronomical data"
+	},
 	"airquality": {
 		"american": "American",
 		"european": "European",
@@ -8,6 +15,9 @@
 	"compass": {
 		"iosonly": "(only iOS)",
 		"title": "Compass"
+	},
+	"datasource": {
+		"title": "Data sources"
 	},
 	"feedback": {
 		"button": "Send feedback",
@@ -22,6 +32,9 @@
 	},
 	"localweather": "Local weather",
 	"settings": "Settings",
+	"source": {
+		"title": "Data source"
+	},
 	"temperature": "Temperature",
 	"theme": {
 		"dark": "Dark mode",

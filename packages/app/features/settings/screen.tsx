@@ -2,7 +2,7 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AQIButton } from 'app/components/settings/items/AQIButton';
 import { CompassButton } from 'app/components/settings/items/CompassButton';
-import { DataSourceButton } from 'app/components/settings/items/DataSourceButton';
+import { AboutButton } from 'app/components/settings/items/AboutButton';
 import { LanguageButton } from 'app/components/settings/items/LanguageButton';
 import { LocalWeatherToggle } from 'app/components/settings/items/LocalWeatherToggle';
 import { SendFeedbackButton } from 'app/components/settings/items/SendFeedbackButton';
@@ -41,7 +41,7 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 					<CompassButton />
 				</RoundView>
 				<RoundView>
-					<DataSourceButton />
+					<AboutButton />
 					<SendFeedbackButton />
 				</RoundView>
 				<View className={clsx('flex items-center')}>
