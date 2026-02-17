@@ -66,16 +66,29 @@ export default function SettingsLayout() {
 				}}
 			/>
 			<Stack.Screen
-				name="datasource"
+				name="source"
 				options={{
-					headerTitle: t('datasource'),
+					headerTitle: t('source.title'),
+					// headerTransparent: true,
+					// headerStyle: {
+					// 	backgroundColor: 'transparent',
+					// },
+					// contentStyle: {
+					// 	backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+					// 	paddingTop: headerHeight,
+					// },
+				}}
+			/>
+			<Stack.Screen
+				name="about"
+				options={{
+					headerTitle: t('about.title'),
 					headerTransparent: true,
 					headerStyle: {
 						backgroundColor: 'transparent',
 					},
 					contentStyle: {
 						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-
 						paddingTop: headerHeight,
 					},
 				}}

@@ -9,7 +9,7 @@ import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { View } from 'react-native';
-import { CityCard } from '../CityCard';
+import { CityCard } from './CityCard';
 
 export const LocalWeather = () => {
 	const { t } = useTranslate('weather');
@@ -41,7 +41,7 @@ export const LocalWeather = () => {
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<View
 					className={clsx(
-						'bg-systemBackground dark:bg-secondarySystemBackground_dark h-[132px] w-full animate-pulse rounded-3xl'
+						'bg-systemBackground dark:bg-secondarySystemBackground_dark web:animate-pulse h-[132px] w-full rounded-3xl'
 					)}
 				/>
 			</View>

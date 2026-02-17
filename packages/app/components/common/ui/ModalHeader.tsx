@@ -32,9 +32,7 @@ export const ModalHeader = ({
 			<View className={clsx('web:hidden my-2 w-full items-center')}>
 				<View className={clsx('h-1.5 w-12 rounded-full bg-zinc-600/40')} />
 			</View>
-			<View
-				className={clsx('flex-row items-center justify-between px-4 pb-2 pt-2 md:pt-4', daysToggle && '!items-start')}
-			>
+			<View className={clsx('flex-row items-center justify-between px-4 pb-2 md:pt-4', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>

@@ -1,9 +1,12 @@
+'use client';
+
 import { TolgeeProvider } from 'app/provider/TolgeeProvider';
 import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { initStorageDefaults } from 'app/storage/initStorageDefaults';
 import '../global.css';
 
 export const unstable_settings = {
@@ -12,6 +15,10 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
+	useEffect(() => {
+		initStorageDefaults();
+	}, []);
+
 	return (
 		<TolgeeProvider>
 			<GestureHandlerRootView>

@@ -33,7 +33,7 @@
 	"localweather": "Local weather",
 	"settings": "Settings",
 	"source": {
-		"title": "Data source"
+		"title": "Source"
 	},
 	"temperature": "Temperature",
 	"theme": {

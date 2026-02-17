@@ -3,14 +3,14 @@ import { Platform, View } from 'react-native';
 import { SearchResult } from './SearchResult';
 import { City } from 'app/storage/crudMMKVService';
 
-interface RecentSearchesListProps {
+interface RecentSearchesProps {
 	recentSearches: City[];
 	onSelect: (item: City) => void;
 }
 
 const recentSearchesCount = Platform.OS === 'web' ? 5 : 10;
 
-export const RecentSearchesList = ({ recentSearches, onSelect }: RecentSearchesListProps) => {
+export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps) => {
 	return (
 		<View className={clsx('web:px-6 w-full items-center')}>
 			<View

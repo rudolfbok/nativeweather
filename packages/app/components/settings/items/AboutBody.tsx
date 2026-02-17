@@ -18,7 +18,7 @@ interface DataSourceItemProps {
 
 const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) => {
 	return (
-		<RoundView className={'h-[220px] w-full items-center justify-center gap-2 p-4'}>
+		<RoundView className={'h-fit w-full items-center justify-center gap-2 p-4'}>
 			{logo}
 			<StyledText type="subtitle">{name}</StyledText>
 			<View className={clsx('items-center')}>
@@ -71,7 +71,7 @@ export const AboutBody = () => {
 			<StyledText type="title">{t('datasource.title')}</StyledText>
 			<View
 				className={clsx(
-					'mt-2 w-full flex-1 gap-4',
+					'w-full flex-1 gap-4',
 					Platform.OS === 'web' ? 'grid grid-cols-1 place-self-center md:grid-cols-2' : 'flex-col'
 				)}
 			>

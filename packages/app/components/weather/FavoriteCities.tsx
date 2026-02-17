@@ -11,7 +11,7 @@ import { clsx } from 'clsx';
 import { Trash, X } from 'lucide-react-native';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
-import { CityCard } from '../CityCard';
+import { CityCard } from './CityCard';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);
@@ -19,7 +19,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { favoritesData, handleRemoveCity, loading, refreshFavoriteCities } = hook;
 	const { handleCityPress } = useSearchController();
 
-	if (Platform.OS === 'ios') {
+	if (Platform.OS === 'ios' && favoritesData.length > 1) {
 		useFocusEffect(
 			useCallback(() => {
 				refreshFavoriteCities({ displayToast: false });
@@ -36,7 +36,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	return (
 		<View className={clsx('gap-2')}>
 			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
-				<StyledText type="screentitle">{t('favorites.title')}</StyledText>
+				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
 				{favoritesData.length > 0 && (
 					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
 						{showDeleteCity ? <X size={26} color="#007AFF" style={{ pointerEvents: 'none' }} /> : <EditIcon />}

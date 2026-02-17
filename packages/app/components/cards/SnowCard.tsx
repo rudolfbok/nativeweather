@@ -19,8 +19,8 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const [showModal, setShowModal] = useState(false);
 
 	const display = useSwitchMetrics({
-		metric: `${snowPrecipCm.toFixed(1)}cm`,
-		imperial: `${snowPrecipIn.toFixed(2)}in`,
+		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
+		imperial: `${snowPrecipIn ?? (0).toFixed(2)}in`,
 		currentUnits: currentUnits,
 	});
 

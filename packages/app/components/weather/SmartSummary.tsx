@@ -53,7 +53,7 @@ export const SmartSummary = React.memo(function SmartSummary({
 	const displayMax = useSwitchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
 
 	const rain = useSwitchMetrics({
-		metric: `${rainPrecipMm ?? (0).toFixed(1)}mm`,
+		metric: `${Math.round(rainPrecipMm ?? 0)}mm`,
 		imperial: `${rainPrecipIn ?? (0).toFixed(2)}in`,
 		currentUnits,
 	});

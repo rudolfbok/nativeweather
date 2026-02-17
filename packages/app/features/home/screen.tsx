@@ -1,8 +1,10 @@
 'use client';
 
+import { useTranslate } from '@tolgee/react';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo.web';
-import { FavoriteCities } from 'app/components/weather/favorites/FavoriteCities';
-import { LocalWeather } from 'app/components/weather/local/LocalWeather';
+import { FavoriteCities } from 'app/components/weather/FavoriteCities';
+import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
@@ -11,6 +13,7 @@ import { RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const HomeFeature = () => {
+	const { t } = useTranslate('weather');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
@@ -38,7 +41,12 @@ export const HomeFeature = () => {
 				}
 			>
 				<View className={clsx('gap-2')}>
-					{showLocalWeather && <LocalWeather />}
+					{showLocalWeather && (
+						<View className={clsx('gap-2')}>
+							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
+							<LocalWeather />
+						</View>
+					)}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
 			</ScrollView>

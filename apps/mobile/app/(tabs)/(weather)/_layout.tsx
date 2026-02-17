@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { DynamicColorIOS, Pressable } from 'react-native';
+import { DynamicColorIOS, Platform, Pressable } from 'react-native';
 import { shareLink } from 'app/utils/services/shareLink';
 
 export default function TabLayout() {
@@ -16,7 +16,7 @@ export default function TabLayout() {
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 
-	const titleColor = 'black';
+	const titleColor = Platform.OS === 'ios' ? DynamicColorIOS({ light: 'black', dark: 'white' }) : 'black';
 	const headerTintColor = useSwitchColors('black', 'white');
 	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
 

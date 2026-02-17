@@ -14,7 +14,7 @@ export const FeedbackFeature = () => {
 			<View className="bg-primaryblue rounded-xl p-2">
 				<MessageCircle size={40} color="white" />
 			</View>
-			<StyledText type="screentitle" className="text-center">
+			<StyledText type="maintitle" className="text-center">
 				{t('feedback.title')}
 			</StyledText>
 			<StyledText type="body" className="text-center">

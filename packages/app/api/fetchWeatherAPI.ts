@@ -22,7 +22,7 @@ export const fetchWeatherAPI = async (query: string | number[]) => {
 	}
 };
 
-export const fetchLocation = async (searchedLocation: string) => {
+export const fetchLocation = async (searchedLocation: string | number[]) => {
 	const locationUrl = `${BASE_URL}/search.json?&q=${searchedLocation}`;
 
 	try {

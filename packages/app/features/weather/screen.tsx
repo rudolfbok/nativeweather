@@ -1,6 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
@@ -101,7 +102,11 @@ export const WeatherFeature = () => {
 		}
 	};
 
-	if (!weatherData)
+	// if (!weatherData) {
+	// 	return <HeroSkeleton />;
+	// }
+
+	if (!weatherData) {
 		return (
 			<View className={clsx('flex-1 items-center justify-center')}>
 				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={StyleSheet.hairlineWidth} />
@@ -109,20 +114,19 @@ export const WeatherFeature = () => {
 				<StyledText type="subtitle">Search or click from favorites.</StyledText>
 			</View>
 		);
+	}
 
 	return (
 		<Animated.ScrollView
 			onScroll={scrollHandler}
 			contentInsetAdjustmentBehavior="automatic"
 			refreshControl={
-				<View style={{ zIndex: 100 }}>
-					<RefreshControl
-						tintColor="blue"
-						refreshing={refreshing}
-						onRefresh={onRefresh}
-						progressViewOffset={insets.top + 100}
-					/>
-				</View>
+				<RefreshControl
+					tintColor="blue"
+					refreshing={refreshing}
+					onRefresh={onRefresh}
+					progressViewOffset={insets.top + 100}
+				/>
 			}
 		>
 			<View

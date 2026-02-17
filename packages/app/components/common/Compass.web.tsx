@@ -169,7 +169,7 @@ export default function Compass() {
 					<View className="rounded-xl bg-[#FF0000] p-2">
 						<CompassIcon width={40} height={40} />
 					</View>
-					<StyledText type="screentitle" className="text-center">
+					<StyledText type="maintitle" className="text-center">
 						{t('compass.title')}
 					</StyledText>
 					<StyledText type="body" className="text-center">

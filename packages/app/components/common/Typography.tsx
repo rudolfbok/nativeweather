@@ -6,6 +6,7 @@ export const Typography = () => {
 	return (
 		<View className={clsx('gap-2')}>
 			<StyledText type="screentitle">Screen title</StyledText>
+			<StyledText type="maintitle">Screen title</StyledText>
 			<StyledText type="maintemp">Main temp</StyledText>
 			<StyledText type="country">Country</StyledText>
 			<StyledText type="city">City</StyledText>

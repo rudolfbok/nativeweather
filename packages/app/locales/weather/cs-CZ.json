@@ -279,7 +279,7 @@
 			"9": "Bouřlivý vítr"
 		}
 	},
-	"feelslike": "Pocitově",
+	"feelslike": "Pocitově:",
 	"hourlyforecast": {
 		"now": "nyní",
 		"title": "Hodinová předpověď"

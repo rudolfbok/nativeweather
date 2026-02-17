@@ -11,7 +11,7 @@ import { DaysToggle } from './DaysToggle';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
-import { SmartSummary } from '../smart/SmartSummary';
+import { SmartSummary } from '../SmartSummary';
 
 interface DailyForecastModalProps {
 	visible: boolean;

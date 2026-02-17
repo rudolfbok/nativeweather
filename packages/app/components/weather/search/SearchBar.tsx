@@ -1,6 +1,6 @@
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { useSearchController } from 'app/hooks/useSearchController';
-import { RecentSearchesList } from './RecentSearchesList';
+import { RecentSearches } from './RecentSearches';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';
 import { clsx } from 'clsx';
@@ -35,7 +35,7 @@ export const SearchBar = () => {
 			/>
 			{showRecentSearches && (
 				<AnimatedView duration={20} className={clsx('w-full')}>
-					<RecentSearchesList recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
+					<RecentSearches recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
 				</AnimatedView>
 			)}
 			{showSuggestions && (
