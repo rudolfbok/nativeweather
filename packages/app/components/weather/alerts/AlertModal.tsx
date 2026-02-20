@@ -35,7 +35,7 @@ export const AlertModal = ({
 			goBackOnPress={goBackOnPress}
 			onClose={onClose}
 		>
-			<View className={clsx('mt-2')}>
+			<View>
 				{selectedAlert === null && (
 					<View className={clsx('gap-4')}>
 						{filteredAlerts.map((alert, index) => (

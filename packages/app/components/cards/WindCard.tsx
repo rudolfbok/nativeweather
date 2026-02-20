@@ -1,6 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
+import { getDirection } from 'app/utils/mappings/mapDirections';
 import { clsx } from 'clsx';
 import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
@@ -75,7 +76,6 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 						degree={degree ?? 0}
 						speed={displaySpeed}
 						gust={displayGust}
-						dir={dir}
 					/>
 				)
 			}
@@ -86,7 +86,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 				details && (
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<StyledText type="body">{t('wind.direction.main')}</StyledText>
-						<StyledText type="body">{t(`wind.direction.${dir ?? 'N'}`)}</StyledText>
+						<StyledText type="body">{getDirection(degree, 'short')}</StyledText>
 						<WindArrowIcon degree={degree ?? 0} />
 					</View>
 				)

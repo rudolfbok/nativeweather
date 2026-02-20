@@ -44,13 +44,14 @@ export const StyledModal = ({
 			<View
 				className={clsx(
 					'no-modal-scroll',
-					'flex flex-col overflow-hidden',
+					// 'flex flex-col overflow-hidden',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'mt-auto w-full',
+					'w-full',
 					'ios:h-full web:h-[100dvh] web:md:h-fit',
 					'web:md:rounded-tl-3xl web:md:rounded-tr-3xl',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					'shadow-[0px_0px_2px] shadow-black/10 dark:shadow-white/40',
+					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
+					'px-4 pt-4 max-md:pt-2',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					mapsModal && 'md:h-[90vh] lg:!min-w-[60vw]'
 				)}
@@ -64,12 +65,10 @@ export const StyledModal = ({
 					onBackPress={goBackOnPress}
 					daysToggle={daysToggle}
 				/>
-
 				<ScrollView
 					ref={ref}
-					contentContainerClassName={clsx('px-4 pb-4')}
 					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
-					className="flex-grow"
+					className="flex-grow pb-4"
 				>
 					{children}
 				</ScrollView>

@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { StyledSwitch } from 'app/components/common/styled/StyledSwitch';
 import { ClockFadingIcon } from 'app/components/icons/settings/ClockFadingIcon';
-import { SettingsItem } from './SettingsItem';
+import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
+import { SettingsItem } from './SettingsItem';
 
 export const WorldTimeToggle = () => {
 	const { t } = useTranslate('settings');
@@ -11,7 +11,7 @@ export const WorldTimeToggle = () => {
 
 	return (
 		<SettingsItem
-			icon={<ClockFadingIcon stroke="white" />}
+			icon={<ClockFadingIcon />}
 			iconbg="bg-primaryblue"
 			title={t('worldtime')}
 			variant="toggle"

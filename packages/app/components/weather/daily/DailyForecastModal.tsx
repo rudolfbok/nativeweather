@@ -1,6 +1,6 @@
 import { useTolgee } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
-import { NormalizedWeather } from 'app/types/normalizedWeather';
+import { WeatherData } from 'app/types/weatherData';
 import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
@@ -15,9 +15,9 @@ import { SmartSummary } from '../SmartSummary';
 
 interface DailyForecastModalProps {
 	visible: boolean;
-	day: NormalizedWeather['forecast']['forecastday'][0] | null;
-	days: NormalizedWeather['forecast']['forecastday'];
-	onSelectDay: (day: NormalizedWeather['forecast']['forecastday'][0]) => void;
+	day: WeatherData['forecast']['forecastday'][0] | null;
+	days: WeatherData['forecast']['forecastday'];
+	onSelectDay: (day: WeatherData['forecast']['forecastday'][0]) => void;
 	onClose: () => void;
 }
 

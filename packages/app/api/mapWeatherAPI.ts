@@ -1,6 +1,6 @@
-import { NormalizedWeather } from 'app/types/normalizedWeather';
+import { WeatherData } from 'app/types/weatherData';
 
-export const mapWeatherApi = (data: any): NormalizedWeather => {
+export const mapWeatherApi = (data: any): WeatherData => {
 	return {
 		location: {
 			name: data.location.name,
@@ -25,7 +25,7 @@ export const mapWeatherApi = (data: any): NormalizedWeather => {
 			pressureMb: data.current.pressure_mb,
 			uv: data.current.uv,
 			visibilityKm: data.current.vis_km,
-			visibilityMiles: data.current.vis_mil,
+			visibilityMiles: data.current.vis_miles,
 			windDegree: data.current.wind_degree,
 			windDir: data.current.wind_dir,
 			windKph: data.current.wind_kph,
@@ -65,7 +65,6 @@ export const mapWeatherApi = (data: any): NormalizedWeather => {
 						code: day.day.condition.code,
 					},
 				},
-
 				hour: day.hour.map((hour: any) => ({
 					timeEpoch: hour.time_epoch,
 					tempC: hour.temp_c,

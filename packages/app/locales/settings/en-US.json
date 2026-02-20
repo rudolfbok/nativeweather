@@ -1,52 +1,51 @@
 {
-	"about": {
-		"googlemaps": "Basic map background for interactive display of geographic data",
-		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
-		"openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
-		"title": "About",
-		"weatherapi": "The main source of data for current weather and forecasts and astronomical data"
-	},
-	"airquality": {
-		"american": "American",
-		"european": "European",
-		"title": "Air quality",
-		"titleshort": "AQI"
-	},
-	"compass": {
-		"iosonly": "(only iOS)",
-		"title": "Compass"
-	},
-	"datasource": {
-		"title": "Data sources"
-	},
-	"feedback": {
-		"button": "Send feedback",
-		"text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",
-		"title": "Send feedback"
-	},
-	"language": {
-		"czech": "Czech",
-		"deutsch": "German",
-		"english": "English",
-		"title": "Language"
-	},
-	"localweather": "Local weather",
-	"settings": "Settings",
-	"source": {
-		"title": "Source"
-	},
-	"temperature": "Temperature",
-	"theme": {
-		"dark": "Dark mode",
-		"light": "Light mode",
-		"system": "System mode",
-		"title": "Theme"
-	},
-	"units": {
-		"imperial": "Imperial",
-		"metric": "Metric",
-		"title": "Units"
-	},
-	"version": "version",
-	"worldtime": "World time"
+  "about": {
+    "googlemaps": "Basic map background for interactive display of geographic data",
+    "openmeteo": "Specialized data for air quality index (AQI) and pollution",
+    "openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
+    "title": "About",
+    "weatherapi": "The main source of data for current weather and forecasts and astronomical data"
+  },
+  "airquality": {
+    "american": "American",
+    "european": "European",
+    "title": "Air quality",
+    "titleshort": "AQI"
+  },
+  "compass": {
+    "title": "Compass"
+  },
+  "datasource": {
+    "title": "Data sources"
+  },
+  "feedback": {
+    "button": "Send feedback",
+    "text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",
+    "title": "Send feedback"
+  },
+  "language": {
+    "czech": "Czech",
+    "deutsch": "German",
+    "english": "English",
+    "title": "Language"
+  },
+  "localweather": "Local weather",
+  "settings": "Settings",
+  "source": {
+    "title": "Source"
+  },
+  "temperature": "Temperature",
+  "theme": {
+    "dark": "Dark mode",
+    "light": "Light mode",
+    "system": "System mode",
+    "title": "Theme"
+  },
+  "units": {
+    "imperial": "Imperial",
+    "metric": "Metric",
+    "title": "Units"
+  },
+  "version": "version",
+  "worldtime": "World time"
 }

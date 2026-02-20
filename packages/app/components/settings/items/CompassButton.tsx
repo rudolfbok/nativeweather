@@ -14,7 +14,7 @@ export const CompassButton = () => {
 		<SettingsItem
 			icon={<CompassIcon />}
 			iconbg="bg-[#FF0000]"
-			title={`${t('compass.title')} ${t('compass.iosonly')}`}
+			title={t('compass.title')}
 			variant="link"
 			className={clsx('rounded-3xl')}
 			onPress={() => {

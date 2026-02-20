@@ -1,5 +1,5 @@
 export const EUAQIIndicatorColor = (value: number): string => {
-	const euAQIranges = [
+	const euAQIRanges = [
 		{ min: 0, max: 20, color: '#4FF0E6' },
 		{ min: 20, max: 40, color: '#009900' },
 		{ min: 40, max: 60, color: '#FFC100' },
@@ -8,7 +8,7 @@ export const EUAQIIndicatorColor = (value: number): string => {
 		{ min: 100, max: Infinity, color: '#990099' },
 	];
 
-	for (const range of euAQIranges) {
+	for (const range of euAQIRanges) {
 		if (value >= range.min && value < range.max) {
 			return range.color;
 		}
@@ -17,7 +17,7 @@ export const EUAQIIndicatorColor = (value: number): string => {
 };
 
 export const USAQIIndicatorColor = (value: number): string => {
-	const usAQIranges = [
+	const usAQIRanges = [
 		{ min: 0, max: 50, color: '#009900' },
 		{ min: 50, max: 100, color: '#FFC100' },
 		{ min: 100, max: 150, color: '#FF6F00' },
@@ -26,7 +26,7 @@ export const USAQIIndicatorColor = (value: number): string => {
 		{ min: 300, max: Infinity, color: '#990099' },
 	];
 
-	for (const range of usAQIranges) {
+	for (const range of usAQIRanges) {
 		if (value >= range.min && value < range.max) {
 			return range.color;
 		}
@@ -35,7 +35,7 @@ export const USAQIIndicatorColor = (value: number): string => {
 };
 
 export const PM25IndicatorColor = (value: number): string => {
-	const PM25ranges = [
+	const pm25Ranges = [
 		{ min: 0, max: 15, color: '#009900' },
 		{ min: 15, max: 25, color: '#FFC100' },
 		{ min: 25, max: 40, color: '#FF6F00' },
@@ -44,7 +44,7 @@ export const PM25IndicatorColor = (value: number): string => {
 		{ min: 100, max: Infinity, color: '#960132' },
 	];
 
-	for (const range of PM25ranges) {
+	for (const range of pm25Ranges) {
 		if (value >= range.min && value < range.max) {
 			return range.color;
 		}
@@ -71,7 +71,7 @@ export const PM10IndicatorColor = (value: number): string => {
 };
 
 export const OzoneIndicatorColor = (value: number): string => {
-	const OzoneRanges = [
+	const ozoneRanges = [
 		{ min: 0, max: 120, color: '#009900' },
 		{ min: 120, max: 160, color: '#FFC100' },
 		{ min: 160, max: 240, color: '#FF6F00' },
@@ -80,7 +80,7 @@ export const OzoneIndicatorColor = (value: number): string => {
 		{ min: 440, max: Infinity, color: '#990099' },
 	];
 
-	for (const range of OzoneRanges) {
+	for (const range of ozoneRanges) {
 		if (value >= range.min && value < range.max) {
 			return range.color;
 		}
@@ -89,7 +89,7 @@ export const OzoneIndicatorColor = (value: number): string => {
 };
 
 export const NO2IndicatorColor = (value: number): string => {
-	const NO2Ranges = [
+	const no2Ranges = [
 		{ min: 0, max: 40, color: '#009900' },
 		{ min: 40, max: 80, color: '#FFC100' },
 		{ min: 80, max: 150, color: '#FF6F00' },
@@ -98,7 +98,7 @@ export const NO2IndicatorColor = (value: number): string => {
 		{ min: 400, max: Infinity, color: '#990099' },
 	];
 
-	for (const range of NO2Ranges) {
+	for (const range of no2Ranges) {
 		if (value >= range.min && value < range.max) {
 			return range.color;
 		}

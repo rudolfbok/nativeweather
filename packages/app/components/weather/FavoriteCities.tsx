@@ -19,13 +19,13 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { favoritesData, handleRemoveCity, loading, refreshFavoriteCities } = hook;
 	const { handleCityPress } = useSearchController();
 
-	if (Platform.OS === 'ios' && favoritesData.length > 1) {
-		useFocusEffect(
-			useCallback(() => {
-				refreshFavoriteCities({ displayToast: false });
-			}, [])
-		);
-	}
+	// if (Platform.OS === 'ios' && favoritesData.length > 1) {
+	// 	useFocusEffect(
+	// 		useCallback(() => {
+	// 			refreshFavoriteCities({ displayToast: false });
+	// 		}, [])
+	// 	);
+	// }
 
 	if (Platform.OS === 'web') {
 		useEffect(() => {

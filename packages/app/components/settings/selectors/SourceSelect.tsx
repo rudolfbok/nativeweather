@@ -10,7 +10,7 @@ export const SourceSelect = () => {
 	const [currentSource, setCurrentSource] = useStorageString('currentSource');
 
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				icon={<WeatherAPIIcon />}
 				iconbg="bg-black/20 dark:bg-black/60"

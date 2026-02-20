@@ -33,7 +33,7 @@ export const SearchInput = ({
 	return (
 		<RoundView
 			className={clsx(
-				'ios:bg-systemBackground bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark ios:mb-4 w-full flex-row items-center justify-center border border-transparent px-4',
+				'ios:bg-systemBackground bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark native:mb-4 w-full flex-row items-center justify-center border border-transparent px-4',
 				isFocused && '!border-primaryblue'
 			)}
 		>

@@ -11,7 +11,7 @@ export const AQISelect = () => {
 	const [currentAQI, setCurrentAQI] = useStorageString('currentAQI');
 
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				onPress={() => setCurrentAQI('EU')}
 				iconbg="bg-black/20 dark:bg-black/60"

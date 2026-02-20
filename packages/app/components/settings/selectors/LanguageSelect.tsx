@@ -17,7 +17,7 @@ export const LanguageSelect = () => {
 	};
 
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				onPress={() => handleLanguageChange('en-US')}
 				iconbg="bg-black/20 dark:bg-black/60"

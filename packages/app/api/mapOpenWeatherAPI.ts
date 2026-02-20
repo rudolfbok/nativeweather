@@ -1,4 +1,4 @@
-import { NormalizedWeather } from 'app/types/normalizedWeather';
+import { WeatherData } from 'app/types/weatherData';
 
 const kphFromMs = (ms: number) => ms * 3.6;
 const mphFromMs = (ms: number) => ms * 2.23694;
@@ -6,7 +6,7 @@ const milesFromMeters = (m: number) => m / 1609.34;
 const inchesFromMm = (mm: number) => mm / 25.4;
 const inHgFromHpa = (hpa: number) => hpa * 0.02953;
 
-export const mapOpenWeatherApi = (data: any): NormalizedWeather => {
+export const mapOpenWeatherApi = (data: any): WeatherData => {
 	const locationInfo = data.location;
 	const weatherData = data.weatherData;
 	const latlon = data.latlon || { lat: 0, lng: 0 };

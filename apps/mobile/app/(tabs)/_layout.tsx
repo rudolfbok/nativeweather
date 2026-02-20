@@ -1,13 +1,15 @@
 import { useTranslate } from '@tolgee/react';
 import { Icon, Label, NativeTabs } from 'expo-router/unstable-native-tabs';
+import { House } from 'lucide-react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
+
 	return (
 		<NativeTabs>
 			<NativeTabs.Trigger name="(home)">
 				<Label>{t('tab.home')}</Label>
-				<Icon sf="house" selectedColor="#007AFF" />
+				<Icon sf="house" androidSrc={<House color="red" size={24} />} selectedColor="#007AFF" />
 			</NativeTabs.Trigger>
 			<NativeTabs.Trigger name="(weather)">
 				<Label>{t('tab.weather')}</Label>

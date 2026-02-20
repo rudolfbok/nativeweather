@@ -17,7 +17,7 @@ export const ThemeSelect = () => {
 	};
 
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				icon={<Sun color="white" size={20} />}
 				iconbg="bg-[#007AFF]"

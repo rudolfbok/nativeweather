@@ -1,6 +1,6 @@
 import { WeatherAlert } from './weatherAlert';
 
-export interface NormalizedWeather {
+export interface WeatherData {
 	location: {
 		name: string;
 		region: string;

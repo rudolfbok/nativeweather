@@ -7,7 +7,7 @@ import { Calendar } from 'app/components/icons/CalendarIcon';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { NormalizedWeather } from 'app/types/normalizedWeather';
+import { WeatherData } from 'app/types/weatherData';
 import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { WeatherIcon } from 'app/utils/mappings/mapIcons';
 import { clsx } from 'clsx';
@@ -20,7 +20,7 @@ export const DailyForecast = () => {
 	const { weatherData } = useWeather();
 	const [currentTemp] = useStorageString('currentTemp');
 	const getWeatherByCode = useWeatherConditions();
-	const [selectedDay, setSelectedDay] = useState<NormalizedWeather['forecast']['forecastday'][0] | null>(null);
+	const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
 	const scrollRef = useRef<ScrollView>(null);
 
 	useEffect(() => {

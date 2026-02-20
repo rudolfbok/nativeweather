@@ -1,12 +1,13 @@
 import { useTranslate } from '@tolgee/react';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { Separator } from 'app/components/common/ui/Separator';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { WindDirectionIcon } from 'app/components/icons/WindDirectionIcon';
 import { useStorageString } from 'app/storage/useStorageString';
+import { getDirection } from 'app/utils/mappings/mapDirections';
 import { clsx } from 'clsx';
 import { Gauge, Wind } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
@@ -18,10 +19,9 @@ interface WindModalProps {
 	degree: number;
 	speed: number | string;
 	gust: number | string;
-	dir: string;
 }
 
-export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, dir }: WindModalProps) => {
+export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust }: WindModalProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 
@@ -96,25 +96,6 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 		},
 	];
 
-	const getWindLabel: Record<string, string> = {
-		N: t('wind.label.north'),
-		NNE: t('wind.label.northnortheast'),
-		NE: t('wind.label.northeast'),
-		ENE: t('wind.label.eastnortheast'),
-		E: t('wind.label.east'),
-		ESE: t('wind.label.eastsoutheast'),
-		SE: t('wind.label.southeast'),
-		SSE: t('wind.label.southsoutheast'),
-		S: t('wind.label.south'),
-		SSW: t('wind.label.southsouthwest'),
-		SW: t('wind.label.southwest'),
-		WSW: t('wind.label.westsouthwest'),
-		W: t('wind.label.west'),
-		WNW: t('wind.label.westnorthwest'),
-		NW: t('wind.label.northwest'),
-		NNW: t('wind.label.northnorthwest'),
-	};
-
 	const RenderCurrentWind = () => {
 		if (!currentWind) return null;
 
@@ -132,7 +113,7 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust, 
 			{
 				icon: <WindDirectionIcon />,
 				label: t('wind.current.direction'),
-				value: `${getWindLabel[dir]} / ${degree}°`,
+				value: `${getDirection(degree, 'long')} / ${degree}°`,
 			},
 		];
 

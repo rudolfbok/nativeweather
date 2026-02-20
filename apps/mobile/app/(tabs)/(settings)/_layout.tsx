@@ -2,6 +2,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { useTranslate } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { Stack } from 'expo-router';
+import { Platform } from 'react-native';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
@@ -28,6 +29,7 @@ export default function SettingsLayout() {
 					contentStyle: {
 						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 						paddingHorizontal: 0,
+						paddingTop: Platform.OS === 'android' ? 110 : 0,
 					},
 					headerTransparent: true,
 					headerStyle: {

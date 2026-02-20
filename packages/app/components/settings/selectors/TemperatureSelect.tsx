@@ -8,7 +8,7 @@ import { SettingsItem } from '../items/SettingsItem';
 export const TemperatureSelect = () => {
 	const [currentTemperature, setCurrentTemperature] = useStorageString('currentTemp');
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				icon={<CelsiusIcon />}
 				iconbg="bg-primaryblue"

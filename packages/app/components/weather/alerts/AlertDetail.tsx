@@ -1,7 +1,6 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { AnimatedView } from 'app/components/common/animated/AnimatedView';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
@@ -27,7 +26,6 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 			weekday: 'long',
 			day: 'numeric',
 			month: 'long',
-			year: 'numeric',
 		});
 	};
 

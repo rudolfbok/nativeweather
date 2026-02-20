@@ -147,7 +147,7 @@ export const HeroWeather = () => {
 								maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
 								maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
 								minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
-								minTempF={weatherData.forecast.forecastday[0]?.day.minTHempF}
+								minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
 								isDay={weatherData.current.isDay}
 								code={weatherData.current.condition.code}
 								feelslike={true}

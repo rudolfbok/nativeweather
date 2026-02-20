@@ -15,6 +15,8 @@ import { View } from 'react-native';
 import { SourceButton } from 'app/components/settings/items/SourceButton';
 
 export const SettingsFeature = ({ title }: { title: string }) => {
+	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
 	return (
 		<View className={clsx('px-4 pb-4')}>
 			<StyledText type="screentitle" className={clsx('mb-3')}>
@@ -37,9 +39,11 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 					<LocalWeatherToggle />
 					<WorldTimeToggle />
 				</RoundView>
-				<RoundView>
-					<CompassButton />
-				</RoundView>
+				{isIOS && (
+					<RoundView>
+						<CompassButton />
+					</RoundView>
+				)}
 				<RoundView>
 					<AboutButton />
 					<SendFeedbackButton />

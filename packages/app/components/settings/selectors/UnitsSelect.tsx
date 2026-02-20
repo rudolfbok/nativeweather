@@ -10,7 +10,7 @@ export const UnitsSelect = () => {
 	const [currentUnits, setCurrentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('settings');
 	return (
-		<RoundView className={clsx('mt-2')}>
+		<RoundView>
 			<SettingsItem
 				icon={<MillimetresIcon />}
 				iconbg="bg-primaryblue"

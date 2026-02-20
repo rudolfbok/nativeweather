@@ -3,13 +3,13 @@ import { fetchWeather } from 'app/api/fetchWeather';
 import { fetchLocation } from 'app/api/fetchWeatherAPI';
 import { City } from 'app/storage/crudMMKVService';
 import { useStorageObject } from 'app/storage/useStorageObject';
+import { useStorageString } from 'app/storage/useStorageString';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
 import { showToast } from 'app/utils/services/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { useWeather } from './useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
@@ -61,7 +61,7 @@ export const useSearchController = () => {
 	};
 
 	useEffect(() => {
-		const run = async () => {
+		const getSuggestions = async () => {
 			if (!searchValue.trim()) {
 				setSuggestions([]);
 				return;
@@ -76,7 +76,7 @@ export const useSearchController = () => {
 			}
 		};
 
-		run();
+		getSuggestions();
 
 		return () => {
 			if (debounceTimerRef.current) {

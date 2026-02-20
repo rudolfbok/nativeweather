@@ -103,7 +103,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 		>
 			{showAirQualityMetric === null && (
 				<View>
-					<View className={clsx('ios:flex-row ios:flex-wrap mt-2 grid grid-cols-2 gap-4 sm:grid-cols-3')}>
+					<View className={clsx('ios:flex-row ios:flex-wrap grid grid-cols-2 gap-4 sm:grid-cols-3')}>
 						{airQualityItemsList.map(({ name, description, data, colorIndicator, units }, index) => (
 							<AirQualityItem
 								key={index}

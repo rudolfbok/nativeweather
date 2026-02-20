@@ -1,3 +1,4 @@
+import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
@@ -6,7 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
 import { SourceSelect } from '../selectors/SourceSelect';
 import { SettingsItem } from './SettingsItem';
-import { useTranslate } from '@tolgee/react';
 
 export const SourceButton = () => {
 	const { t } = useTranslate('settings');
