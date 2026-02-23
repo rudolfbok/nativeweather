@@ -54,7 +54,7 @@ export const SmartSummary = React.memo(function SmartSummary({
 
 	const rain = useSwitchMetrics({
 		metric: `${Math.round(rainPrecipMm ?? 0)}mm`,
-		imperial: `${rainPrecipIn ?? (0).toFixed(2)}in`,
+		imperial: `${rainPrecipIn.toFixed(2) ?? 0}in`,
 		currentUnits,
 	});
 	const snow = useSwitchMetrics({

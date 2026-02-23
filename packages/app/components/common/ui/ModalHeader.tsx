@@ -33,10 +33,7 @@ export const ModalHeader = ({
 				<View className={clsx('h-1.5 w-12 rounded-full bg-zinc-600/40')} />
 			</View>
 			<View
-				className={clsx(
-					'web:pb-4 web:max-md:pb-2 flex-row items-center justify-between pb-2',
-					daysToggle && '!items-start'
-				)}
+				className={clsx('web:pb-4 web:max-md:pb-2 flex-row items-center justify-between', daysToggle && '!items-start')}
 			>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (

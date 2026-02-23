@@ -11,6 +11,17 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 	const weatherData = data.weatherData;
 	const latlon = data.latlon || { lat: 0, lng: 0 };
 
+	const getMoonPhaseName = (phase: number): string => {
+		if (phase === 0 || phase === 1) return 'New Moon';
+		if (phase < 0.25) return 'Waxing Crescent';
+		if (phase === 0.25) return 'First Quarter';
+		if (phase < 0.5) return 'Waxing Gibbous';
+		if (phase === 0.5) return 'Full Moon';
+		if (phase < 0.75) return 'Waning Gibbous';
+		if (phase === 0.75) return 'Last Quarter';
+		return 'Waning Crescent';
+	};
+
 	return {
 		location: {
 			name: locationInfo.city,
@@ -18,35 +29,35 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 			country: locationInfo.country,
 			lat: latlon.lat,
 			lon: latlon.lng,
-			localtimeEpoch: Math.floor(Date.now() / 1000) + (weatherData.timezone_offset ?? 0),
+			localtimeEpoch: Math.floor(Date.now() / 1000) + weatherData.timezone_offset,
 			tzId: weatherData.timezone ?? 'UTC',
 		},
 		current: {
-			tempC: weatherData.current?.temp ?? 0,
-			tempF: (weatherData.current?.temp ?? 0) * 1.8 + 32,
-			feelsLikeC: weatherData.current?.feels_like ?? 0,
-			feelsLikeF: (weatherData.current?.feels_like ?? 0) * 1.8 + 32,
-			dewPointC: weatherData.current?.dew_point ?? 0,
-			dewPointF: (weatherData.current?.dew_point ?? 0) * 1.8 + 32,
-			humidity: weatherData.current?.humidity ?? 0,
-			precipMm: weatherData.current?.rain?.['1h'] ?? weatherData.current?.snow?.['1h'] ?? 0,
-			precipIn: inchesFromMm(weatherData.current?.rain?.['1h'] ?? weatherData.current?.snow?.['1h'] ?? 0),
-			pressureMb: weatherData.current?.pressure ?? 0,
-			pressureInHg: inHgFromHpa(weatherData.current?.pressure ?? 0),
-			uv: weatherData.current?.uvi ?? 0,
-			visibilityKm: (weatherData.current?.visibility ?? 0) / 1000,
-			visibilityMiles: milesFromMeters(weatherData.current?.visibility ?? 0),
-			windDegree: weatherData.current?.wind_deg ?? 0,
+			tempC: weatherData.current.temp,
+			tempF: weatherData.current.temp * 1.8 + 32,
+			feelsLikeC: weatherData.current.feels_like,
+			feelsLikeF: weatherData.current.feels_like * 1.8 + 32,
+			dewPointC: weatherData.current.dew_point,
+			dewPointF: weatherData.current.dew_point * 1.8 + 32,
+			humidity: weatherData.current.humidity,
+			precipMm: weatherData.current.rain?.['1h'] ?? 0,
+			precipIn: inchesFromMm(weatherData.current.rain?.['1h'] ?? weatherData.current.snow?.['1h']),
+			pressureMb: weatherData.current.pressure,
+			pressureInHg: inHgFromHpa(weatherData.current.pressure),
+			uv: weatherData.current.uvi,
+			visibilityKm: weatherData.current.visibility / 1000,
+			visibilityMiles: milesFromMeters(weatherData.current.visibility),
+			windDegree: weatherData.current.wind_deg,
 			windDir: '',
-			windKph: kphFromMs(weatherData.current?.wind_speed ?? 0),
-			windMph: mphFromMs(weatherData.current?.wind_speed ?? 0),
-			gustKph: weatherData.current?.wind_gust ? kphFromMs(weatherData.current.wind_gust) : 0,
-			gustMph: weatherData.current?.wind_gust ? mphFromMs(weatherData.current.wind_gust) : 0,
-			cloudCover: weatherData.current?.clouds ?? 0,
-			isDay: weatherData.current?.weather?.[0]?.icon?.endsWith('d') ? 1 : 0,
+			windKph: kphFromMs(weatherData.current.wind_speed),
+			windMph: mphFromMs(weatherData.current.wind_speed),
+			gustKph: weatherData.current.wind_gust ? kphFromMs(weatherData.current.wind_gust) : 0,
+			gustMph: weatherData.current.wind_gust ? mphFromMs(weatherData.current.wind_gust) : 0,
+			cloudCover: weatherData.current.clouds,
+			isDay: weatherData.current.weather?.[0].icon.endsWith('d') ? 1 : 0,
 			condition: {
-				text: weatherData.current?.weather?.[0]?.description ?? 'Unknown',
-				code: weatherData.current?.weather?.[0]?.id ?? 0,
+				text: weatherData.current.weather?.[0].description,
+				code: weatherData.current.weather?.[0].id,
 			},
 		},
 		forecast: {
@@ -54,40 +65,40 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 				date: new Date(day.dt * 1000).toISOString().split('T')[0],
 				date_epoch: day.dt,
 				day: {
-					maxTempC: day.temp?.max ?? 0,
-					maxTempF: (day.temp?.max ?? 0) * 1.8 + 32,
-					minTempC: day.temp?.min ?? 0,
-					minTempF: (day.temp?.min ?? 0) * 1.8 + 32,
-					maxWindKph: kphFromMs(day.wind_speed ?? 0),
-					maxWindMph: mphFromMs(day.wind_speed ?? 0),
-					dailyRainChance: (day.pop ?? 0) * 100,
+					maxTempC: day.temp.max,
+					maxTempF: day.temp.max * 1.8 + 32,
+					minTempC: day.temp.min,
+					minTempF: day.temp.min * 1.8 + 32,
+					maxWindKph: kphFromMs(day.wind_speed),
+					maxWindMph: mphFromMs(day.wind_speed),
+					dailyRainChance: day.pop * 100,
 					dailySnowChance: day.snow ? 100 : 0,
 					dailyWillItSnow: day.snow ? 1 : 0,
-					uv: day.uvi ?? 0,
+					uv: day.uvi,
 					avgVisKm: 0,
 					avgVisMiles: 0,
-					avgHumidity: day.humidity ?? 0,
-					totalPrecipMm: day.rain ?? day.snow ?? 0,
-					totalPrecipIn: inchesFromMm(day.rain ?? day.snow ?? 0),
+					avgHumidity: day.humidity,
+					totalPrecipMm: day.rain ?? day.snow,
+					totalPrecipIn: inchesFromMm(day.rain ?? day.snow),
 					totalSnowCm: day.snow ?? 0,
 					condition: {
-						text: day.weather?.[0]?.description ?? 'Unknown',
-						code: day.weather?.[0]?.id ?? 0,
+						text: day.weather?.[0].description,
+						code: day.weather?.[0].id,
 					},
 				},
 				hour: (weatherData.hourly ?? [])
 					.filter((h: any) => new Date(h.dt * 1000).getDate() === new Date(day.dt * 1000).getDate())
 					.map((hourData: any) => ({
 						timeEpoch: hourData.dt,
-						tempC: hourData.temp ?? 0,
-						tempF: (hourData.temp ?? 0) * 1.8 + 32,
-						isDay: hourData.weather?.[0]?.icon?.endsWith('d') ? 1 : 0,
-						uv: hourData.uvi ?? 0,
-						chanceOfRain: (hourData.pop ?? 0) * 100,
+						tempC: hourData.temp,
+						tempF: hourData.temp * 1.8 + 32,
+						isDay: hourData.weather?.[0].icon.endsWith('d') ? 1 : 0,
+						uv: hourData.uvi,
+						chanceOfRain: hourData.pop * 100,
 						chanceOfSnow: hourData.snow ? 100 : 0,
-						snowCm: hourData.snow ?? 0,
+						snowCm: hourData.snow,
 						condition: {
-							code: hourData.weather?.[0]?.id ?? 0,
+							code: hourData.weather?.[0].id,
 						},
 					})),
 				astro: {
@@ -103,8 +114,8 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 						hour12: true,
 						timeZone: weatherData.timezone,
 					}),
-					moonPhase: getMoonPhaseName(day.moon_phase ?? 0),
-					moonIllumunation: Math.round((day.moon_phase ?? 0) * 100),
+					moonPhase: getMoonPhaseName(day.moon_phase),
+					moonIllumunation: Math.round(day.moon_phase * 100),
 					moonRise: new Date(day.moonrise * 1000).toLocaleTimeString('en-US', {
 						hour: '2-digit',
 						minute: '2-digit',
@@ -126,14 +137,3 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 		},
 	};
 };
-
-function getMoonPhaseName(phase: number): string {
-	if (phase === 0 || phase === 1) return 'New Moon';
-	if (phase < 0.25) return 'Waxing Crescent';
-	if (phase === 0.25) return 'First Quarter';
-	if (phase < 0.5) return 'Waxing Gibbous';
-	if (phase === 0.5) return 'Full Moon';
-	if (phase < 0.75) return 'Waning Gibbous';
-	if (phase === 0.75) return 'Last Quarter';
-	return 'Waning Crescent';
-}

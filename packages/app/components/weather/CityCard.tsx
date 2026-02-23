@@ -2,8 +2,8 @@ import { useTolgee } from '@tolgee/react';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
-import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
-import { WeatherIcon } from 'app/utils/mappings/mapIcons';
+import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
 import { GestureResponderEvent, View } from 'react-native';
@@ -35,7 +35,8 @@ export const CityCard = ({
 }: CityCardProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
-	const getWeatherByCode = useWeatherConditions();
+	const [currentSource] = useStorageString('currentSource');
+	const mapConditions = useMapConditions();
 
 	const tolgee = useTolgee();
 
@@ -77,11 +78,18 @@ export const CityCard = ({
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
-					{getWeatherByCode(conditionCode, isDay)}
+					{mapConditions(conditionCode, isDay, currentSource)}
 				</StyledText>
 			</View>
 			<View className={clsx('items-center')}>
-				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0.5} />
+				<WeatherIcon
+					isDay={isDay}
+					code={conditionCode}
+					width={80}
+					height={80}
+					strokeWidth={0.5}
+					source={currentSource}
+				/>
 				{showWorldTime && displayTime && (
 					<StyledText type="localtime" className={clsx('text-secondaryLabel dark:text-secondaryLabel_dark')}>
 						{useLocalTimeNow(timeZone)}

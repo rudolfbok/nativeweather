@@ -1,7 +1,6 @@
 import { useTolgee } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { WeatherData } from 'app/types/weatherData';
-import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -12,6 +11,8 @@ import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
+import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { useStorageString } from 'app/storage/useStorageString';
 
 interface DailyForecastModalProps {
 	visible: boolean;
@@ -23,9 +24,10 @@ interface DailyForecastModalProps {
 
 export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }: DailyForecastModalProps) => {
 	const scrollRef = useRef<ScrollView>(null);
+	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();
-	const getWeatherByCode = useWeatherConditions();
 	const arrowColor = useSwitchColors('black', 'white');
+	const mapConditions = useMapConditions();
 
 	useEffect(() => {
 		if (day && scrollRef.current) {
@@ -81,7 +83,7 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 					maxTempF={day.day.maxTempF}
 					isDay={1}
 					code={day.day.condition.code}
-					condition={getWeatherByCode(day.day.condition.code, 1)}
+					condition={mapConditions(day.day.condition.code, 1, currentSource)}
 					arrowcolor={arrowColor}
 					textColor="red"
 					strokeWidth={StyleSheet.hairlineWidth}

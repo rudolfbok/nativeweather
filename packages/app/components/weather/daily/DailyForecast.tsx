@@ -8,20 +8,21 @@ import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherData } from 'app/types/weatherData';
-import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
-import { WeatherIcon } from 'app/utils/mappings/mapIcons';
+import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastModal } from './DailyForecastModal';
+import { useMapConditions } from 'app/utils/mappings/mapConditions';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const [currentTemp] = useStorageString('currentTemp');
-	const getWeatherByCode = useWeatherConditions();
+	const [currentSource] = useStorageString('currentSource');
 	const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
 	const scrollRef = useRef<ScrollView>(null);
+	const mapConditions = useMapConditions();
 
 	useEffect(() => {
 		if (scrollRef.current) {
@@ -63,7 +64,7 @@ export const DailyForecast = () => {
 							</View>
 							<View className={clsx('flex flex-1 items-center text-center')}>
 								<StyledText type="bodysecondary" className={clsx('text-center')}>
-									{getWeatherByCode(day.day.condition.code, 1).toLowerCase()}
+									{mapConditions(day.day.condition.code, 1, currentSource).toLowerCase()}
 								</StyledText>
 							</View>
 							<View className={clsx('w-fit flex-row items-center justify-between')}>
@@ -81,6 +82,7 @@ export const DailyForecast = () => {
 										width={35}
 										height={35}
 										strokeWidth={StyleSheet.hairlineWidth}
+										source={currentSource}
 									/>
 								</View>
 								<StyledText type="body" className={clsx('w-10 text-center font-semibold')}>

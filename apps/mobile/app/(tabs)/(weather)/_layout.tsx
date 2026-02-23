@@ -57,7 +57,7 @@ export default function TabLayout() {
 				name="[city]"
 				options={{
 					title: t('tab.weather'),
-					headerTintColor: headerTintColor,
+
 					headerLeft: () => weatherData && <LeftButton />,
 					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,

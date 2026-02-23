@@ -91,7 +91,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 				<ContentRow title={t('alerts.description')}>
 					<StyledText type="body">
 						{weatherData.location.country === 'United States of America'
-							? extractWhatAndImpacts(description.trim())
+							? extractWhatAndImpacts(description.trim().replace(/\n/g, ' '))
 							: description.trim()}
 					</StyledText>
 				</ContentRow>

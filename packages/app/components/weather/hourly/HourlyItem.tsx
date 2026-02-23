@@ -1,4 +1,4 @@
-import { WeatherIcon } from 'app/utils/mappings/mapIcons';
+import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
 import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
@@ -16,13 +16,21 @@ interface HourlyItemProps {
 
 export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: HourlyItemProps) => {
 	const [currentTemp] = useStorageString('currentTemp');
+	const [currentSource] = useStorageString('currentSource');
 	return (
 		<View className={clsx('min-h-[130px] w-14 select-none items-center justify-center gap-2')}>
 			<StyledText type="body" className={clsx('font-medium')}>
 				{hour}
 			</StyledText>
 			<View className={clsx('flex-1 items-center justify-center gap-1')}>
-				<WeatherIcon isDay={isDay} code={code} width={40} height={40} strokeWidth={StyleSheet.hairlineWidth} />
+				<WeatherIcon
+					isDay={isDay}
+					code={code}
+					width={40}
+					height={40}
+					strokeWidth={StyleSheet.hairlineWidth}
+					source={currentSource}
+				/>
 				{rainChance > 0 && (
 					<StyledText type="rainchance" className={clsx('!text-primaryblue')}>
 						{Math.round(rainChance)}%

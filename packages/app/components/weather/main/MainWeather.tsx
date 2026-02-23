@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/utils/mappings/mapIcons';
+import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
@@ -52,12 +52,20 @@ export const MainWeather = ({
 }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
+	const [currentSource] = useStorageString('currentSource');
 
 	return (
 		<View className={clsx('relative mt-2 items-center gap-2')}>
 			<View className={clsx('w-[80%] flex-row items-center')}>
 				<View className={clsx('w-1/2 items-center')}>
-					<WeatherIcon isDay={isDay} code={code} width={90} height={90} strokeWidth={strokeWidth} />
+					<WeatherIcon
+						isDay={isDay}
+						code={code}
+						width={90}
+						height={90}
+						strokeWidth={strokeWidth}
+						source={currentSource}
+					/>
 				</View>
 				<View className={clsx('w-1/2 items-center')}>
 					<StyledText type="maintemp" className={clsx('pl-4', textColor)}>

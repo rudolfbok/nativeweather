@@ -4,7 +4,7 @@ import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/utils/mappings/mapIcons';
+import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { DateTime } from 'luxon';
@@ -58,6 +58,7 @@ export const MainWeather = ({
 	const { t } = useTranslate('weather');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
 	const [currentTemperature] = useStorageString('currentTemp');
+	const [currentSource] = useStorageString('currentSource');
 	const arrowColor = useSwitchColors('black', 'white');
 	const tolgee = useTolgee();
 
@@ -80,7 +81,7 @@ export const MainWeather = ({
 						{country}
 					</StyledText>
 				</View>
-				<WeatherIcon isDay={isDay} code={code} width={120} height={120} strokeWidth={0.5} />
+				<WeatherIcon isDay={isDay} code={code} width={120} height={120} strokeWidth={0.5} source={currentSource} />
 				<View className={clsx('items-center')}>
 					<StyledText type="maintemp" className={clsx('pl-3')}>
 						{useSwitchTemp({

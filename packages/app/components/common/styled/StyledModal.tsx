@@ -40,18 +40,16 @@ export const StyledModal = ({
 			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
 			onRequestClose={onClose}
 		>
-			<Pressable onPress={onClose} className="absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden" />
+			<Pressable onPress={onClose} className="web:backdrop-blur-md absolute inset-0 bg-black/40 max-md:hidden" />
 			<View
 				className={clsx(
-					'no-modal-scroll',
-					// 'flex flex-col overflow-hidden',
+					'no-modal-scroll overflow-hidden',
+					'px-4 pt-4 max-md:pt-2',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'w-full',
-					'ios:h-full web:h-[100dvh] web:md:h-fit',
+					'ios:h-full web:h-[100dvh] web:md:h-fit w-full',
 					'web:md:rounded-tl-3xl web:md:rounded-tr-3xl',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
-					'px-4 pt-4 max-md:pt-2',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					mapsModal && 'md:h-[90vh] lg:!min-w-[60vw]'
 				)}

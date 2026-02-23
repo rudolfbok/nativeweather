@@ -7,8 +7,8 @@ import { MillimetresIcon } from 'app/components/icons/settings/MillimetresIcon';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const UnitsSelect = () => {
-	const [currentUnits, setCurrentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('settings');
+	const [currentUnits, setCurrentUnits] = useStorageString('currentUnits');
 	return (
 		<RoundView>
 			<SettingsItem

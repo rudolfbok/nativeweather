@@ -21,7 +21,6 @@ import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
-import { useWeatherConditions } from 'app/utils/mappings/mapConditions';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
@@ -30,11 +29,14 @@ import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
 import { SmartSummary } from './SmartSummary';
+import { useStorageString } from 'app/storage/useStorageString';
+import { useMapConditions } from 'app/utils/mappings/mapConditions';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
-	const getWeatherByCode = useWeatherConditions();
+	const mapConditions = useMapConditions();
+	const [currentSource] = useStorageString('currentSource');
 
 	useEffect(() => {
 		if (!weatherData) return;
@@ -81,6 +83,8 @@ export const HeroWeather = () => {
 	);
 
 	const alertsLength = filteredAlerts.length ?? 0;
+
+	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource);
 
 	const DataCardGrid = () => {
 		return (
@@ -151,7 +155,7 @@ export const HeroWeather = () => {
 								isDay={weatherData.current.isDay}
 								code={weatherData.current.condition.code}
 								feelslike={true}
-								condition={getWeatherByCode(weatherData.current.condition.code, weatherData.current.isDay)}
+								condition={conditionLabel}
 								conditionbg={false}
 								textColor="!text-white"
 								arrowcolor="white"
