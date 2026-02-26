@@ -28,8 +28,7 @@ export const TemperatureButton = () => {
 				variant="value"
 				onPress={() => router.push('/temperature')}
 				showModal={() => setShowModal(true)}
-				currentValue={getUpperCaseTemp[currentTemperature ?? 'celsius']}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
+				currentValue={getUpperCaseTemp[currentTemperature]}
 				border={true}
 			/>
 			{showModal && (

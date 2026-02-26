@@ -1,13 +1,12 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { AirQualitySettingsIcon } from 'app/components/icons/settings/AirQualitySettingsIcon';
 import { useStorageString } from 'app/storage/useStorageString';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { AirQualitySettingsIcon } from 'app/components/icons/settings/AirQualitySettingsIcon';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
-import { clsx } from 'clsx';
 
 export const AQIButton = () => {
 	const { t } = useTranslate('settings');
@@ -31,7 +30,6 @@ export const AQIButton = () => {
 				showModal={() => setShowModal(true)}
 				onPress={() => router.push('/aqi')}
 				currentValue={getLocale[currentAQI ?? 'EU']}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 			{showModal && (
 				<StyledModal

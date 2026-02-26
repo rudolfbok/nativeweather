@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import Svg, { G, Mask, Path } from 'react-native-svg';
 
 export const OpenWeatherLogo = () => {

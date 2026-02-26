@@ -36,7 +36,7 @@ export const WeatherFeature = () => {
 			setError(false);
 
 			const r = searchParams.get('r');
-			const cr = 'NO';
+			const cr = searchParams.get('cr');
 
 			const city = slug.trim().toLowerCase().replace(/\s+/g, '-');
 			const query = cr || r ? `${city}, ${r}, ${cr}` : city;

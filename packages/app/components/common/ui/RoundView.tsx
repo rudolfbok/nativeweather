@@ -9,7 +9,12 @@ interface RoundViewProps {
 
 export const RoundView = ({ className, children }: RoundViewProps) => {
 	return (
-		<View className={clsx('bg-systemBackground dark:bg-secondarySystemBackground_dark flex rounded-3xl', className)}>
+		<View
+			className={clsx(
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark flex overflow-hidden rounded-3xl',
+				className
+			)}
+		>
 			{children}
 		</View>
 	);

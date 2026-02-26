@@ -19,7 +19,7 @@ import { FreezingRainDay } from 'app/components/icons/weather/freezingrain/Freez
 import { LightRainNight } from 'app/components/icons/weather/lightrain/LightRainNight';
 import { FreezingRainNight } from 'app/components/icons/weather/freezingrain/FreezingRainNight';
 
-interface MapWeatherIconsProps {
+interface OpenWeatherMainIcon {
 	isDay: 0 | 1;
 	code: number;
 	width: number;
@@ -143,7 +143,7 @@ const nightIcons: Record<number, React.ComponentType<any>> = {
 	804: OvercastNight,
 };
 
-export const MapOpenWeatherIcons = ({ isDay, code, width, height, strokeWidth }: MapWeatherIconsProps) => {
+export const OpenWeatherMainIcon = ({ isDay, code, width, height, strokeWidth }: OpenWeatherMainIcon) => {
 	const icons = isDay === 1 ? dayIcons : nightIcons;
 	const IconComponent = icons[code] || OvercastDay;
 

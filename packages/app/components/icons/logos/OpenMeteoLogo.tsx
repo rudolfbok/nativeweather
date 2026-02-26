@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
 
 export const OpenMeteoLogo = () => {

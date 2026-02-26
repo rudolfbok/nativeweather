@@ -27,7 +27,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 			{/* Mobile version */}
 			<StyledPressable
 				onPress={() => setShowAlertModal(true)}
-				className={clsx('ios:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
+				className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
 			>
 				<CardHeader
 					icon={<CircleAlert color="#007AFF" />}

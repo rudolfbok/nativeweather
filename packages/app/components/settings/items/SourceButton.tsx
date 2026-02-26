@@ -1,7 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { DatabaseZap } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
@@ -31,7 +30,6 @@ export const SourceButton = () => {
 				onPress={() => router.push('/source')}
 				showModal={() => setShowModal(true)}
 				currentValue={getName[currentSource]}
-				className={clsx('rounded-3xl')}
 			/>
 			{showModal && (
 				<StyledModal

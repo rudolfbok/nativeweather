@@ -1,7 +1,7 @@
 import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useState } from 'react';
-import { useLocalWeather } from './useLocalWeather';
+import { useLocalWeather } from '../useLocalWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 
 export const useCurrentLocation = () => {

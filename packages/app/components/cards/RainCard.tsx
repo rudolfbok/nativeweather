@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/useSwitchMetrics';
+import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { CloudRain } from 'lucide-react-native';
 import { useState } from 'react';
@@ -49,7 +49,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 					</StyledText>
 				)
 			}
-			data={rainChance + '%'}
+			data={Math.round(rainChance) + '%'}
 		/>
 	);
 };

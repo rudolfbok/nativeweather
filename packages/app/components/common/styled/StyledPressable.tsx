@@ -12,8 +12,8 @@ export const StyledPressable = ({ onPress, className, children }: StyledPressabl
 		<Pressable
 			onPress={onPress}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground active:ios:bg-tertiarySystemBackground',
-				'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:ios:bg-tertiarySystemBackground_dark',
+				'bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
+				'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',
 				className
 			)}
 		>

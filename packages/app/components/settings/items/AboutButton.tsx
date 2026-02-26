@@ -1,11 +1,10 @@
 import { useTranslate } from '@tolgee/react';
-import { DatabaseZap, Info } from 'lucide-react-native';
-import { useRouter } from 'solito/navigation';
-import { SettingsItem } from './SettingsItem';
-import { clsx } from 'clsx';
-import { useState } from 'react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { Info } from 'lucide-react-native';
+import { useState } from 'react';
+import { useRouter } from 'solito/navigation';
 import { AboutBody } from './AboutBody';
+import { SettingsItem } from './SettingsItem';
 
 export const AboutButton = () => {
 	const { t } = useTranslate('settings');
@@ -21,7 +20,6 @@ export const AboutButton = () => {
 				variant="value"
 				showModal={() => setShowModal(true)}
 				onPress={() => router.push('/about')}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			{showModal && (

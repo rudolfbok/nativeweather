@@ -35,19 +35,25 @@ export const StyledModal = ({
 	return (
 		<Modal
 			visible={visible}
-			transparent={Platform.OS === 'web' ? true : false}
-			presentationStyle={Platform.OS === 'web' ? 'overFullScreen' : 'formSheet'}
+			transparent={true}
+			presentationStyle={Platform.OS === 'ios' ? 'formSheet' : 'overFullScreen'}
 			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
 			onRequestClose={onClose}
+			navigationBarTranslucent={true}
+			statusBarTranslucent={true}
 		>
-			<Pressable onPress={onClose} className="web:backdrop-blur-md absolute inset-0 bg-black/40 max-md:hidden" />
+			<Pressable
+				onPress={onClose}
+				className="web:backdrop-blur-md android:hidden absolute inset-0 bg-black/40 max-md:hidden"
+			/>
 			<View
 				className={clsx(
+					'android:rounded-tl-3xl native:mt-16 android:rounded-tr-3xl',
 					'no-modal-scroll overflow-hidden',
 					'px-4 pt-4 max-md:pt-2',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'ios:h-full web:h-[100dvh] web:md:h-fit w-full',
-					'web:md:rounded-tl-3xl web:md:rounded-tr-3xl',
+					'native:h-full web:h-[100dvh] web:md:h-fit w-full',
+					'rounded-tl-3xl rounded-tr-3xl',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg',

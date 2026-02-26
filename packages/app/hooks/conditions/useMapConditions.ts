@@ -1,5 +1,5 @@
-import { useWeatherAPIConditions } from './mapWeatherAPIConditions';
-import { useOpenWeatherConditions } from './mapOpenWeatherConditions';
+import { useWeatherAPIConditions } from './useWeatherAPIConditions';
+import { useOpenWeatherConditions } from './useOpenWeatherConditions';
 
 export const useMapConditions = () => {
 	const getWeatherAPICondition = useWeatherAPIConditions();

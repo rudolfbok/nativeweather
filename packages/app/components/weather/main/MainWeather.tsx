@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';

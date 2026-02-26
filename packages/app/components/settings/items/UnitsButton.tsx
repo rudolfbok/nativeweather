@@ -27,7 +27,7 @@ export const UnitsButton = () => {
 				variant="value"
 				onPress={() => router.push('/units')}
 				showModal={() => setShowModal(true)}
-				currentValue={getUpperCaseUnits[currentUnits ?? 'metric']}
+				currentValue={getUpperCaseUnits[currentUnits]}
 				border={true}
 			/>
 			{showModal && (

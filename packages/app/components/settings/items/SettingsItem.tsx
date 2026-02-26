@@ -6,7 +6,6 @@ import { ReactNode } from 'react';
 import { GestureResponderEvent, Platform, View, StyleSheet } from 'react-native';
 
 interface SettingsItemProps {
-	className?: string;
 	icon: ReactNode;
 	title: string;
 	showModal?: (event: GestureResponderEvent) => void | Promise<void>;
@@ -20,7 +19,6 @@ interface SettingsItemProps {
 }
 
 export const SettingsItem = ({
-	className,
 	icon,
 	title,
 	showModal,
@@ -55,7 +53,7 @@ export const SettingsItem = ({
 	return (
 		<StyledPressable
 			onPress={Platform.OS === 'web' ? (variant === 'check' || variant === 'link' ? onPress : showModal) : onPress}
-			className={clsx('select-none px-4 pt-4', className)}
+			className={clsx('select-none px-4 pt-4')}
 		>
 			<View
 				className={clsx(

@@ -50,7 +50,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 				className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
-				<View className={clsx('ios:my-2 w-full')}>
+				<View className={clsx('native:my-2 w-full')}>
 					<Text
 						className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
 						style={{

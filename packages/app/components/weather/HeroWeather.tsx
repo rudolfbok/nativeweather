@@ -30,7 +30,7 @@ import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
 import { SmartSummary } from './SmartSummary';
 import { useStorageString } from 'app/storage/useStorageString';
-import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
@@ -136,7 +136,7 @@ export const HeroWeather = () => {
 	};
 
 	return (
-		<View className={clsx('ios:px-4 pb-4')}>
+		<View className={clsx('native:px-4 pb-4')}>
 			<View className={clsx('grid select-none grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3')}>
 				<View className={clsx('flex-col gap-4')}>
 					<View>
@@ -164,7 +164,7 @@ export const HeroWeather = () => {
 							/>
 							<Pressable
 								onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
-								className={clsx('ios:hidden absolute bottom-0 right-0 lg:p-2')}
+								className={clsx('native:hidden absolute bottom-0 right-0 lg:p-2')}
 							>
 								<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
 							</Pressable>
@@ -212,7 +212,7 @@ export const HeroWeather = () => {
 					<DataCardGrid />
 				</View>
 			</View>
-			<View className={clsx('ios:hidden', 'mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
+			<View className={clsx('native:hidden', 'mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
 				<DataCardGrid />
 			</View>
 		</View>

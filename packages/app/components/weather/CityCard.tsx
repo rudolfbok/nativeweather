@@ -1,9 +1,9 @@
 import { useTolgee } from '@tolgee/react';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
-import { useMapConditions } from 'app/utils/mappings/mapConditions';
-import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
 import { GestureResponderEvent, View } from 'react-native';

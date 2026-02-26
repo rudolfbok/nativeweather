@@ -1,10 +1,10 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { DateTime } from 'luxon';

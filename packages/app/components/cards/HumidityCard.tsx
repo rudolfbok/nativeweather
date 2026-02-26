@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
 import { Droplets } from 'lucide-react-native';
 import { useState } from 'react';

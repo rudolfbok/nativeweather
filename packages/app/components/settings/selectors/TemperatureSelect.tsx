@@ -1,8 +1,7 @@
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { CelsiusIcon } from 'app/components/icons/settings/CelsiusIcon';
 import { FahrenheitIcon } from 'app/components/icons/settings/FahrenheitIcon';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const TemperatureSelect = () => {
@@ -16,7 +15,6 @@ export const TemperatureSelect = () => {
 				variant="check"
 				onPress={() => setCurrentTemperature('celsius')}
 				selected={currentTemperature === 'celsius'}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -26,7 +24,6 @@ export const TemperatureSelect = () => {
 				variant="check"
 				onPress={() => setCurrentTemperature('fahrenheit')}
 				selected={currentTemperature === 'fahrenheit'}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

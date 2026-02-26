@@ -25,12 +25,12 @@ export const HomeFeature = () => {
 				contentContainerStyle={{ paddingBottom: 16 }}
 			>
 				<View className={clsx('gap-2')}>
-					{/* {showLocalWeather && (
+					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
 							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
 							<LocalWeather />
 						</View>
-					)} */}
+					)}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
 			</ScrollView>

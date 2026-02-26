@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useCurrentLocation } from 'app/hooks/useCurrentLocation';
+import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';

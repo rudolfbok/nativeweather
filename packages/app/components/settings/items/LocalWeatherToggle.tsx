@@ -3,7 +3,6 @@ import { StyledSwitch } from 'app/components/common/styled/StyledSwitch';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { MapPinHouse } from 'lucide-react-native';
 import { SettingsItem } from './SettingsItem';
-import { clsx } from 'clsx';
 
 export const LocalWeatherToggle = () => {
 	const { t } = useTranslate('settings');
@@ -16,7 +15,6 @@ export const LocalWeatherToggle = () => {
 			title={t('localweather')}
 			variant="toggle"
 			toggle={<StyledSwitch value={showLocalWeather} onValueChange={setShowLocalWeather} />}
-			className={clsx('rounded-tl-3xl rounded-tr-3xl hover:!bg-transparent active:!bg-transparent')}
 			border={true}
 		/>
 	);

@@ -1,9 +1,8 @@
 import { useTranslate } from '@tolgee/react';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { Moon, Paintbrush, Sun } from 'lucide-react-native';
 import { colorScheme } from 'nativewind';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const ThemeSelect = () => {
@@ -25,7 +24,6 @@ export const ThemeSelect = () => {
 				variant="check"
 				selected={currentTheme === 'light'}
 				onPress={() => handleColorChange('light')}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -44,7 +42,6 @@ export const ThemeSelect = () => {
 				variant="check"
 				selected={currentTheme === 'system'}
 				onPress={() => handleColorChange('system')}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

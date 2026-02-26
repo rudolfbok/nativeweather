@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { clsx } from 'clsx';
 import { Search, X } from 'lucide-react-native';
 import { useState } from 'react';
@@ -33,7 +33,7 @@ export const SearchInput = ({
 	return (
 		<RoundView
 			className={clsx(
-				'ios:bg-systemBackground bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark native:mb-4 w-full flex-row items-center justify-center border border-transparent px-4',
+				'native:bg-systemBackground bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark native:mb-4 w-full flex-row items-center justify-center border border-transparent px-4',
 				isFocused && '!border-primaryblue'
 			)}
 		>

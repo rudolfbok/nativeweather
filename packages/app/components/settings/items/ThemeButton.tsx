@@ -38,7 +38,6 @@ export const ThemeButton = () => {
 				onPress={() => router.push('/theme')}
 				showModal={() => setShowModal(true)}
 				currentValue={getLocaleMode(currentTheme ?? 'system')}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			{showModal && (

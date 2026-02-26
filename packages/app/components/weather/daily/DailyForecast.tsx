@@ -4,16 +4,16 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { Calendar } from 'app/components/icons/CalendarIcon';
-import { useSwitchTemp } from 'app/hooks/useSwitchTemp';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherData } from 'app/types/weatherData';
-import { WeatherIcon } from 'app/utils/mappings/WeatherIcon';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastModal } from './DailyForecastModal';
-import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');

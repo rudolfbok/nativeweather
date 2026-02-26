@@ -1,9 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { EUFLag } from 'app/components/icons/settings/EUFlag';
 import { USAFlag } from 'app/components/icons/settings/USAFlag';
+import { useStorageString } from 'app/storage/useStorageString';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const AQISelect = () => {
@@ -19,7 +18,6 @@ export const AQISelect = () => {
 				title={t('airquality.european')}
 				variant="check"
 				selected={currentAQI === 'EU'}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -29,7 +27,6 @@ export const AQISelect = () => {
 				title={t('airquality.american')}
 				variant="check"
 				selected={currentAQI === 'US'}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

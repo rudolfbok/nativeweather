@@ -27,9 +27,9 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 					<ThemeButton />
 					<LanguageButton />
 				</RoundView>
-				<RoundView>
+				{/* <RoundView>
 					<SourceButton />
-				</RoundView>
+				</RoundView> */}
 				<RoundView>
 					<TemperatureButton />
 					<UnitsButton />

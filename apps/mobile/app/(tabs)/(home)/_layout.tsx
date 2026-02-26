@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { Stack } from 'expo-router';
 
 export default function HomeLayout() {

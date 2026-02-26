@@ -3,7 +3,6 @@ import { OpenMeteoIcon } from 'app/components/icons/settings/OpenMeteoIcon';
 import { OpenWeatherIcon } from 'app/components/icons/settings/OpenWeatherIcon';
 import { WeatherAPIIcon } from 'app/components/icons/settings/WeatherAPIIcon';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const SourceSelect = () => {
@@ -18,7 +17,6 @@ export const SourceSelect = () => {
 				variant="check"
 				selected={currentSource === 'weatherapi'}
 				onPress={() => setCurrentSource('weatherapi')}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -37,7 +35,6 @@ export const SourceSelect = () => {
 				variant="check"
 				selected={currentSource === 'openmeteo'}
 				onPress={() => setCurrentSource('openmeteo')}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

@@ -12,7 +12,7 @@ import { Trash, X } from 'lucide-react-native';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CityCard } from './CityCard';
-import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);

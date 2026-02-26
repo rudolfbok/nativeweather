@@ -1,5 +1,5 @@
 import { useTolgee } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { WeatherData } from 'app/types/weatherData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
@@ -11,7 +11,7 @@ import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
-import { useMapConditions } from 'app/utils/mappings/mapConditions';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useStorageString } from 'app/storage/useStorageString';
 
 interface DailyForecastModalProps {

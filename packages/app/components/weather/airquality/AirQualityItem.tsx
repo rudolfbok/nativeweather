@@ -17,7 +17,7 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx('ios:w-[48%] aspect-square justify-between rounded-3xl p-4 md:aspect-auto md:h-40')}
+			className={clsx('native:w-[48%] aspect-square justify-between rounded-3xl p-4 md:aspect-auto md:h-40')}
 		>
 			<View>
 				<StyledText type="title">{item}</StyledText>

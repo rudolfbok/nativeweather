@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { Stack } from 'expo-router';
 import { Platform } from 'react-native';
 
@@ -9,7 +9,7 @@ export default function TabLayout() {
 				headerTintColor: useSwitchColors('black', 'white'),
 				contentStyle: {
 					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-					paddingTop: Platform.OS === 'android' ? 60 : 0,
+					paddingTop: Platform.OS === 'android' ? 110 : 0,
 				},
 			}}
 		>

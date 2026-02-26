@@ -1,12 +1,16 @@
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { Stack } from 'expo-router';
 import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
 	const headerHeight = useHeaderHeight();
+	// const paddingBottom = useSafeAreaInsets().bottom;
+	// const bottomTabBarHeight = useBottomTabBarHeight();
 
 	return (
 		<Stack

@@ -1,6 +1,5 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
-import { clsx } from 'clsx';
 import { Languages as LanguagesIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
@@ -31,7 +30,6 @@ export const LanguageButton = () => {
 				onPress={() => router.push('/language')}
 				showModal={() => setShowModal(true)}
 				currentValue={getLocale[lang]}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 			{showModal && (
 				<StyledModal

@@ -1,10 +1,9 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { CzechFlag } from 'app/components/icons/settings/CzechFlag';
 import { EnglishFlag } from 'app/components/icons/settings/EnglishFlag';
+import { useStorageString } from 'app/storage/useStorageString';
 import { SettingsItem } from '../items/SettingsItem';
-import { clsx } from 'clsx';
 
 export const LanguageSelect = () => {
 	const tolgee = useTolgee();
@@ -25,7 +24,6 @@ export const LanguageSelect = () => {
 				title={t('language.english')}
 				variant="check"
 				selected={currentLanguage === 'en-US'}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -35,7 +33,6 @@ export const LanguageSelect = () => {
 				title={t('language.czech')}
 				variant="check"
 				selected={currentLanguage === 'cs-CZ'}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

@@ -1,9 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { InchesIcon } from 'app/components/icons/settings/InchesIcon';
 import { MillimetresIcon } from 'app/components/icons/settings/MillimetresIcon';
+import { useStorageString } from 'app/storage/useStorageString';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const UnitsSelect = () => {
@@ -18,7 +17,6 @@ export const UnitsSelect = () => {
 				variant="check"
 				onPress={() => setCurrentUnits('metric')}
 				selected={currentUnits === 'metric'}
-				className={clsx('rounded-tl-3xl rounded-tr-3xl')}
 				border={true}
 			/>
 			<SettingsItem
@@ -28,7 +26,6 @@ export const UnitsSelect = () => {
 				variant="check"
 				onPress={() => setCurrentUnits('imperial')}
 				selected={currentUnits === 'imperial'}
-				className={clsx('rounded-bl-3xl rounded-br-3xl')}
 			/>
 		</RoundView>
 	);

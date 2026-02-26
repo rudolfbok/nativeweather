@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { ClockIcon } from 'app/components/icons/ClockIcon';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { clsx } from 'clsx';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';

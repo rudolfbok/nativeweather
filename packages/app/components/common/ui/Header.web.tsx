@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { SettingsFeature } from 'app/features/settings/screen';
 import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
 import { Pressable, ScrollView, View } from 'react-native';

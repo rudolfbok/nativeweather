@@ -4,7 +4,7 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CloudsIcon } from 'app/components/icons/CloudsIcon';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';

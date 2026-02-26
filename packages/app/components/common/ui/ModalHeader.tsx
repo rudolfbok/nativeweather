@@ -4,7 +4,7 @@ import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { CardHeader } from './CardHeader';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -32,9 +32,7 @@ export const ModalHeader = ({
 			<View className={clsx('web:hidden my-2 w-full items-center')}>
 				<View className={clsx('h-1.5 w-12 rounded-full bg-zinc-600/40')} />
 			</View>
-			<View
-				className={clsx('web:pb-4 web:max-md:pb-2 flex-row items-center justify-between', daysToggle && '!items-start')}
-			>
+			<View className={clsx('web:pb-4 flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>
