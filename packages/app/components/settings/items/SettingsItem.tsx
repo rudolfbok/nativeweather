@@ -3,7 +3,7 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { Check, ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';
-import { GestureResponderEvent, Platform, View, StyleSheet } from 'react-native';
+import { GestureResponderEvent, Platform, View, StyleSheet, Pressable } from 'react-native';
 
 interface SettingsItemProps {
 	icon: ReactNode;
@@ -51,9 +51,13 @@ export const SettingsItem = ({
 	};
 
 	return (
-		<StyledPressable
+		<Pressable
 			onPress={Platform.OS === 'web' ? (variant === 'check' || variant === 'link' ? onPress : showModal) : onPress}
-			className={clsx('select-none px-4 pt-4')}
+			className={clsx(
+				'select-none px-4 pt-4',
+				'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
+				'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark'
+			)}
 		>
 			<View
 				className={clsx(
@@ -70,6 +74,6 @@ export const SettingsItem = ({
 				</View>
 				<RightElement />
 			</View>
-		</StyledPressable>
+		</Pressable>
 	);
 };

@@ -33,9 +33,16 @@ export const SearchInput = ({
 	return (
 		<RoundView
 			className={clsx(
-				'native:bg-systemBackground bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark native:mb-4 w-full flex-row items-center justify-center border border-transparent px-4',
+				'bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark w-full flex-row items-center justify-center border border-transparent px-4',
 				isFocused && '!border-primaryblue'
 			)}
+			style={{
+				marginBottom: 16,
+				flexDirection: 'row',
+				alignItems: 'center',
+				justifyContent: 'center',
+				paddingHorizontal: 16,
+			}}
 		>
 			<Pressable onPress={performSearch} className={clsx('cursor-pointer')}>
 				<Search size={22} color={isFocused ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />

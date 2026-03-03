@@ -10,6 +10,7 @@ import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import { CityCard } from './CityCard';
+import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 
 export const LocalWeather = () => {
 	const { t } = useTranslate('weather');
@@ -60,6 +61,10 @@ export const LocalWeather = () => {
 				displayTime={true}
 				timeZone={localWeatherData.location.tzId}
 				region={localWeatherData.location.region}
+				tintColor={weatherLandscapeBg({
+					isDay: localWeatherData.current.isDay,
+					code: localWeatherData.current.condition.code,
+				})}
 			/>
 		</View>
 	);

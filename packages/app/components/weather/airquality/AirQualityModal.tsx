@@ -22,6 +22,7 @@ import { PM10Detail } from './PM10Detail';
 import { PM25Detail } from './PM25Detail';
 import { USAQIDetail } from './USAQIDetail';
 import { AirQualityData } from 'app/types/airQualityData';
+import { ExampleBlur } from 'app/components/common/ExampleBlur';
 
 interface AirQualityModalProps {
 	visible: boolean;
@@ -101,6 +102,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 			}
 			onClose={onClose}
 		>
+			{/* <ExampleBlur /> */}
 			{showAirQualityMetric === null && (
 				<View>
 					<View className={clsx('native:flex-row native:flex-wrap grid grid-cols-2 gap-4 sm:grid-cols-3')}>

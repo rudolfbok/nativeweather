@@ -35,7 +35,7 @@ export const StyledModal = ({
 	return (
 		<Modal
 			visible={visible}
-			transparent={true}
+			transparent={Platform.OS === 'web' ? true : false}
 			presentationStyle={Platform.OS === 'ios' ? 'formSheet' : 'overFullScreen'}
 			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
 			onRequestClose={onClose}
@@ -48,12 +48,11 @@ export const StyledModal = ({
 			/>
 			<View
 				className={clsx(
-					'android:rounded-tl-3xl native:mt-16 android:rounded-tr-3xl',
+					'native:rounded-tl-3xl native:rounded-tr-3xl',
 					'no-modal-scroll overflow-hidden',
-					'px-4 pt-4 max-md:pt-2',
+					'web:px-4 pt-4 max-md:pt-2',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'native:h-full web:h-[100dvh] web:md:h-fit w-full',
-					'rounded-tl-3xl rounded-tr-3xl',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
@@ -72,7 +71,8 @@ export const StyledModal = ({
 				<ScrollView
 					ref={ref}
 					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
-					className="flex-grow pb-4"
+					className="ios:px-4 flex-grow pb-4"
+					contentContainerClassName="ios:pb-6"
 				>
 					{children}
 				</ScrollView>

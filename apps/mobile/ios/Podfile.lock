@@ -38,6 +38,8 @@ PODS:
     - ExpoModulesCore
   - ExpoFont (14.0.10):
     - ExpoModulesCore
+  - ExpoGlassEffect (55.0.7):
+    - ExpoModulesCore
   - ExpoHaptics (15.0.8):
     - ExpoModulesCore
   - ExpoHead (6.0.21):
@@ -2138,9 +2140,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - SDWebImage (5.21.3):
-    - SDWebImage/Core (= 5.21.3)
-  - SDWebImage/Core (5.21.3)
+  - SDWebImage (5.21.5):
+    - SDWebImage/Core (= 5.21.5)
+  - SDWebImage/Core (5.21.5)
   - SDWebImageAVIFCoder (0.11.1):
     - libavif/core (>= 0.11.0)
     - SDWebImage (~> 5.10)
@@ -2161,6 +2163,7 @@ DEPENDENCIES:
   - ExpoBlur (from `../../../node_modules/expo-blur/ios`)
   - ExpoFileSystem (from `../../../node_modules/expo-file-system/ios`)
   - ExpoFont (from `../../../node_modules/expo-font/ios`)
+  - ExpoGlassEffect (from `../../../node_modules/expo-glass-effect/ios`)
   - ExpoHaptics (from `../../../node_modules/expo-haptics/ios`)
   - ExpoHead (from `../../../node_modules/expo-router/ios`)
   - ExpoImage (from `../../../node_modules/expo-image/ios`)
@@ -2279,6 +2282,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-file-system/ios"
   ExpoFont:
     :path: "../../../node_modules/expo-font/ios"
+  ExpoGlassEffect:
+    :path: "../../../node_modules/expo-glass-effect/ios"
   ExpoHaptics:
     :path: "../../../node_modules/expo-haptics/ios"
   ExpoHead:
@@ -2465,6 +2470,7 @@ SPEC CHECKSUMS:
   ExpoBlur: b90747a3f22a8b6ceffd9cb0dc41a4184efdc656
   ExpoFileSystem: 858a44267a3e6e9057e0888ad7c7cfbf55d52063
   ExpoFont: 35ac6191ed86bbf56b3ebd2d9154eda9fad5b509
+  ExpoGlassEffect: b11cb2bf51bf6d4dc6309c421ca8cec086b4b9db
   ExpoHaptics: d3a6375d8dcc3a1083d003bc2298ff654fafb536
   ExpoHead: 9719a74953454fac328e90f34eea55ebbb3bbbf9
   ExpoImage: 686f972bff29525733aa13357f6691dc90aa03d8
@@ -2556,7 +2562,7 @@ SPEC CHECKSUMS:
   RNScreens: d8d6f1792f6e7ac12b0190d33d8d390efc0c1845
   RNSVG: cf9ae78f2edf2988242c71a6392d15ff7dd62522
   RNWorklets: 28c00d83c8869fe000d9995c8caa2ff02ba30b81
-  SDWebImage: 16309af6d214ba3f77a7c6f6fdda888cb313a50a
+  SDWebImage: e9c98383c7572d713c1a0d7dd2783b10599b9838
   SDWebImageAVIFCoder: afe194a084e851f70228e4be35ef651df0fc5c57
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
@@ -2564,6 +2570,6 @@ SPEC CHECKSUMS:
   SPIndicator: 93e0a4fb23de51294ac48e874c0f081a5e293e4f
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
-PODFILE CHECKSUM: 8240fa09b2ad7dcddb757701bdcc9e9705240ef0
+PODFILE CHECKSUM: 8ae5ca88b1f3b959a8cc96a510b9892f0af01441
 
 COCOAPODS: 1.16.2

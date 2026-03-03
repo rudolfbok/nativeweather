@@ -48,6 +48,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 			<StyledPressable
 				onPress={() => setShowAirQualityModal((prev) => !prev)}
 				className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
+				style={{ padding: 16, gap: 8, display: 'flex' }}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>

@@ -14,6 +14,8 @@ export const ContentRow = ({ title, children, className }: ContentRowProps) => (
 		<StyledText type="subtitle" className={clsx('pb-2')}>
 			{title}
 		</StyledText>
-		<RoundView className="p-4">{children}</RoundView>
+		<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark flex overflow-hidden rounded-3xl p-4">
+			{children}
+		</View>
 	</View>
 );

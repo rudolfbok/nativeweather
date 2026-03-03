@@ -29,8 +29,8 @@ interface MainWeatherProps {
 	textColor: string;
 	arrowcolor: string;
 	strokeWidth?: number;
-	conditionbg?: boolean;
 	displayTime: boolean;
+	colorScheme?: any;
 }
 
 export const MainWeather = ({
@@ -48,10 +48,6 @@ export const MainWeather = ({
 	isDay,
 	code,
 	condition,
-	textColor,
-	arrowcolor,
-	strokeWidth,
-	conditionbg = true,
 	displayTime = true,
 }: MainWeatherProps) => {
 	const { weatherData } = useWeather();
@@ -124,11 +120,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View
-				className={clsx(
-					conditionbg && 'bg-systemBackground dark:bg-secondarySystemBackground_dark mt-2 rounded-3xl px-5 py-1'
-				)}
-			>
+			<View className={clsx('bg-systemBackground dark:bg-secondarySystemBackground_dark mt-2 rounded-3xl px-5 py-1')}>
 				<StyledText type="title">{condition}</StyledText>
 			</View>
 			{showWorldTime && displayTime && (

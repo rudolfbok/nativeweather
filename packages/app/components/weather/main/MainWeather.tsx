@@ -1,11 +1,12 @@
 import { useTranslate } from '@tolgee/react';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
-import { StyledText } from 'app/components/common/styled/StyledText';
 
 interface MainWeatherProps {
 	name?: string;
@@ -25,13 +26,12 @@ interface MainWeatherProps {
 	textColor: string;
 	arrowcolor: string;
 	strokeWidth?: number;
-	conditionbg?: boolean;
+	conditionText?: string;
 	displayTime: boolean;
+	colorScheme?: any;
 }
 
 export const MainWeather = ({
-	name,
-	country,
 	minTempC,
 	minTempF,
 	currentTempC,
@@ -47,8 +47,8 @@ export const MainWeather = ({
 	textColor,
 	arrowcolor,
 	strokeWidth,
-	conditionbg = true,
-	displayTime = true,
+	conditionText,
+	colorScheme,
 }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
@@ -109,23 +109,17 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('items-center')}>
-				<StyledText
-					type="subtitle"
-					className={clsx(
-						'text-center text-xl font-bold',
-						textColor,
-						conditionbg && 'bg-systemBackground dark:bg-secondarySystemBackground_dark rounded-3xl px-5 py-1'
-					)}
-				>
+
+			<RoundView style={{ paddingHorizontal: 16, paddingVertical: 8 }} colorScheme={colorScheme}>
+				<StyledText type="subtitle" className={clsx('text-center text-xl font-bold', conditionText)}>
 					{condition}
 				</StyledText>
-				{/* {showWorldTime && displayTime && (
+			</RoundView>
+			{/* {showWorldTime && displayTime && (
 					<View className={clsx('mt-1 flex flex-row items-center justify-center')}>
 						<StyledText type="localtime">{useLocalTimeNow(weatherData!.location.tzId)}</StyledText>
 					</View>
 				)} */}
-			</View>
 		</View>
 	);
 };

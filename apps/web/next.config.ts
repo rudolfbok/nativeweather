@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
 		'react-native-svg',
 		'nativewind',
 		'burnt',
-		'moti',
+		'expo-modules-core',
 		'app',
 	],
 	compiler: {

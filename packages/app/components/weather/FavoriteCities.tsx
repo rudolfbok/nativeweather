@@ -13,6 +13,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CityCard } from './CityCard';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
+import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
 	const { t } = useTranslate(['common']);
@@ -39,14 +40,18 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
 				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
 				{favoritesData.length > 0 && (
-					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
+					<StyledPressable
+						onPress={() => setShowDeleteCity((prev) => !prev)}
+						className={clsx('rounded-3xl p-1.5')}
+						style={{ padding: 6 }}
+					>
 						{showDeleteCity ? <X size={26} color="#007AFF" style={{ pointerEvents: 'none' }} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>
 			{loading && !favoritesData && <LoadingIndicator text={t('favorites.loading')} />}
 			{favoritesData.length === 0 && !loading && (
-				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
+				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')} style={{ padding: 16 }}>
 					<StyledText type="body" className={clsx('text-center')}>
 						{t('favorites.nosaved')}
 					</StyledText>
@@ -58,6 +63,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 				)}
 			>
 				{favoritesData.map(({ city, weather }, index) => {
+					const tintColor = weatherLandscapeBg({ isDay: weather.current.isDay, code: weather.current.condition.code });
 					return (
 						<View key={index} className={clsx('flex-row')}>
 							<CityCard
@@ -70,6 +76,9 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								displayTime={true}
 								timeZone={weather.location.tzId}
 								region={city.region}
+								tintColor={tintColor}
+								glassEffectStyle="regular"
+								colorScheme="auto"
 							/>
 							{showDeleteCity && (
 								<AnimatedView duration={30}>

@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
@@ -22,7 +23,7 @@ export const WeatherFeature = () => {
 	const { weatherData, setWeatherData } = useWeather();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
-	const scrollY = useSharedValue(0);
+	const scrollY = useSharedValue(80);
 	const navigation = useNavigation();
 
 	const scrollHandler = useAnimatedScrollHandler({
@@ -47,29 +48,10 @@ export const WeatherFeature = () => {
 		}
 	}, [weatherData]);
 
-	useEffect(() => {
-		if (weatherData) {
-			const interval = setInterval(() => {
-				if (scrollY.value < 20) {
-					navigation.setOptions({
-						headerTintColor: headerTint,
-					});
-				} else {
-					navigation.setOptions({
-						headerTintColor: headerTintafterScroll,
-						headerBackground: () => undefined,
-					});
-				}
-			}, 16);
-			return () => clearInterval(interval);
-		}
-	}, [headerTintafterScroll, scrollY]);
-
 	const onRefresh = async () => {
 		if (!weatherData) return;
 
 		setRefreshing(true);
-		console.log('Refresh started');
 
 		try {
 			const rereshedData = await fetchWeather(
@@ -77,9 +59,7 @@ export const WeatherFeature = () => {
 				currentSource
 			);
 
-			if (!rereshedData) {
-				throw new Error('No fresh weather data');
-			}
+			if (!rereshedData) throw new Error('No fresh weather data');
 
 			setWeatherData(rereshedData);
 
@@ -89,8 +69,6 @@ export const WeatherFeature = () => {
 				from: 'bottom',
 			});
 		} catch (error) {
-			console.error('Error fetching weather:', error);
-
 			Burnt.toast({
 				preset: 'error',
 				title: t('toast.notrefreshed'),
@@ -98,13 +76,8 @@ export const WeatherFeature = () => {
 			});
 		} finally {
 			setRefreshing(false);
-			console.log('Refresh ended');
 		}
 	};
-
-	// if (!weatherData) {
-	// 	return <HeroSkeleton />;
-	// }
 
 	if (!weatherData) {
 		return (
@@ -124,32 +97,30 @@ export const WeatherFeature = () => {
 	}
 
 	return (
-		<Animated.ScrollView
-			onScroll={scrollHandler}
-			contentInsetAdjustmentBehavior="automatic"
-			refreshControl={
-				<RefreshControl
-					tintColor="blue"
-					refreshing={refreshing}
-					onRefresh={onRefresh}
-					progressViewOffset={insets.top + 100}
-				/>
-			}
+		<LinearGradient
+			colors={['#3397BE', '#7ED0DD', '#83D6DF']} // gradient colors
+			start={{ x: 0, y: 0 }}
+			end={{ x: 0, y: 1 }}
+			style={{ flex: 1 }}
 		>
-			<View
-				className={clsx('w-full')}
-				style={{
-					height: 1000,
-					top: -540,
-					left: 0,
-					right: 0,
-					position: 'absolute',
-					zIndex: -1,
-				}}
+			<Animated.ScrollView
+				onScroll={scrollHandler}
+				contentInsetAdjustmentBehavior="automatic"
+				refreshControl={
+					<RefreshControl
+						tintColor="blue"
+						refreshing={refreshing}
+						onRefresh={onRefresh}
+						progressViewOffset={insets.top + 100}
+					/>
+				}
 			>
-				<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
-			</View>
-			<HeroWeather />
-		</Animated.ScrollView>
+				<HeroWeather />
+				{/* Optional: add WeatherLandscape absolutely behind if needed */}
+				{/* <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1000, zIndex: -1 }}>
+          <WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
+        </View> */}
+			</Animated.ScrollView>
+		</LinearGradient>
 	);
 };

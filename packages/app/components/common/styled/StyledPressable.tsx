@@ -1,10 +1,15 @@
 import { clsx } from 'clsx';
+import { GlassColorScheme, GlassStyle } from 'expo-glass-effect';
 import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {
-	onPress: (event: GestureResponderEvent) => void | Promise<void>;
+	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	className?: string;
 	children: React.ReactNode;
+	style?: any;
+	tintColor?: string;
+	glassEffectStyle?: GlassStyle;
+	colorScheme?: GlassColorScheme;
 }
 
 export const StyledPressable = ({ onPress, className, children }: StyledPressableProps) => {

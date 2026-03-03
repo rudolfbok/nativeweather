@@ -1,6 +1,8 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
+import { ExampleModal } from 'app/components/common/ExampleModal';
+import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo.web';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
@@ -18,6 +20,8 @@ export const HomeFeature = () => {
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
+
+	const [openModal, setOpenModal] = useState(false);
 
 	return (
 		<View className={clsx('w-full flex-1')}>
@@ -41,6 +45,10 @@ export const HomeFeature = () => {
 				}
 			>
 				<View className={clsx('gap-2')}>
+					<StyledButton onPress={() => setOpenModal(true)}>Open modal</StyledButton>
+					<ExampleModal visible={openModal} onClose={() => setOpenModal(false)}>
+						<StyledText type="title">Example text</StyledText>
+					</ExampleModal>
 					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
 							<StyledText type="maintitle">{t('localweather.title')}</StyledText>

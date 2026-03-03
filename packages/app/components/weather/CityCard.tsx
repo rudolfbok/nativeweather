@@ -9,6 +9,7 @@ import { DateTime } from 'luxon';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
+import { GlassColorScheme } from 'expo-glass-effect';
 
 interface CityCardProps {
 	onPress: (event?: GestureResponderEvent) => void;
@@ -20,6 +21,9 @@ interface CityCardProps {
 	timeZone?: string;
 	displayTime: boolean;
 	region: string;
+	tintColor?: string;
+	glassEffectStyle?: any;
+	colorScheme?: GlassColorScheme;
 }
 
 export const CityCard = ({
@@ -32,6 +36,9 @@ export const CityCard = ({
 	timeZone,
 	displayTime = true,
 	region,
+	tintColor,
+	glassEffectStyle,
+	colorScheme,
 }: CityCardProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
@@ -52,8 +59,20 @@ export const CityCard = ({
 		<StyledPressable
 			onPress={onPress}
 			className={clsx('flex flex-1 select-none flex-row items-center justify-between rounded-3xl p-4')}
+			style={{
+				display: 'flex',
+				width: '100%',
+				flexDirection: 'row',
+				alignItems: 'center',
+				justifyContent: 'space-between',
+				borderRadius: 24,
+				padding: 16,
+			}}
+			tintColor={`${tintColor}4D`}
+			glassEffectStyle={glassEffectStyle}
+			colorScheme={colorScheme}
 		>
-			<View className="flex-1">
+			<View className="flex-grow">
 				<StyledText type="subtitle" className={clsx('truncate font-semibold')} numberOfLines={1} ellipsizeMode="tail">
 					{city}
 				</StyledText>

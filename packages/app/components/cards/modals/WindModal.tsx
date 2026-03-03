@@ -119,7 +119,7 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust }
 
 		return (
 			<ContentRow title={t('wind.current.title')}>
-				<RoundView className={clsx('w-full justify-between gap-4')}>
+				<View className={clsx('w-full justify-between gap-4')}>
 					{windData.map((item, index) => (
 						<View key={index} className={clsx('gap-4')}>
 							<View className={clsx('flex-row items-center')}>
@@ -132,7 +132,7 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust }
 							{index < windData.length - 1 && <Separator />}
 						</View>
 					))}
-				</RoundView>
+				</View>
 			</ContentRow>
 		);
 	};

@@ -1,7 +1,7 @@
+import { City } from 'app/storage/crudMMKVService';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { SearchResult } from './SearchResult';
-import { City } from 'app/storage/crudMMKVService';
 
 interface SuggestionsListProps {
 	suggestions: City[];
@@ -13,7 +13,7 @@ export const SuggestionsList = ({ suggestions, onSelect }: SuggestionsListProps)
 		<View className={clsx('web:px-6 w-full items-center')}>
 			<View
 				className={clsx(
-					'native:bg-systemBackground native:shadow-none bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark absolute w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/10'
+					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/10'
 				)}
 			>
 				{suggestions.map((item, index) => (

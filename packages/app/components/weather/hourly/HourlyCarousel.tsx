@@ -15,7 +15,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 	const { t } = useTranslate('weather');
 
 	return (
-		<RoundView className={clsx('flex-1 py-4')}>
+		<RoundView style={{ paddingVertical: 16 }}>
 			<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className={clsx('mb-4 px-4')} />
 			<ScrollView
 				horizontal

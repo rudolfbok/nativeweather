@@ -1,7 +1,7 @@
+import { City } from 'app/storage/crudMMKVService';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { SearchResult } from './SearchResult';
-import { City } from 'app/storage/crudMMKVService';
 
 interface RecentSearchesProps {
 	recentSearches: City[];
@@ -15,7 +15,7 @@ export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps
 		<View className={clsx('web:px-6 w-full items-center')}>
 			<View
 				className={clsx(
-					'native:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/10'
+					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/10'
 				)}
 			>
 				{(recentSearches || []).slice(0, recentSearchesCount).map((item, index) => (

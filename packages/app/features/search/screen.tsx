@@ -7,8 +7,33 @@ import { SearchBar } from 'app/components/weather/search/SearchBar';
 import { useEffect, useState } from 'react';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { clsx } from 'clsx';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
+import { RecentSearches } from 'app/components/weather/search/RecentSearches';
+import { SuggestionsList } from 'app/components/weather/search/SuggestionsList';
+import { useSearchController } from 'app/hooks/useSearchController';
+import {
+	NativeEventSubscription,
+	NativeSyntheticEvent,
+	TextInputChangeEvent,
+	TextInputChangeEventData,
+	View,
+} from 'react-native';
 
 export const SearchFeature = () => {
+	const {
+		searchValue,
+		setSearchValue,
+		isSearchBarFocused,
+		setIsSearchBarFocused,
+		recentSearches,
+		handleCityPress,
+		handleInputSearch,
+		showRecentSearches,
+		showSuggestions,
+		suggestions,
+		addToRecentSearches,
+	} = useSearchController();
+
 	const { t } = useTranslate('common');
 	const navigation = useNavigation();
 
@@ -26,7 +51,7 @@ export const SearchFeature = () => {
 		const interval = setInterval(() => {
 			if (scrollY.value > 10) {
 				navigation.setOptions({
-					headerTitle: t('search.title'),
+					headerTitle: t('title'),
 				});
 				setPrimaryTitle('');
 			} else {
@@ -41,6 +66,18 @@ export const SearchFeature = () => {
 		return () => clearInterval(interval);
 	}, [navigation, scrollY]);
 
+	useEffect(() => {
+		navigation.setOptions({
+			headerSearchBarOptions: {
+				placeholder: 'Search any city or coordinates..',
+				onChangeText: (event) => setSearchValue(event.nativeEvent.text),
+				onSearchButtonPress: () => handleInputSearch(searchValue),
+				onFocus: () => setIsSearchBarFocused(true),
+				onBlur: () => setIsSearchBarFocused(false),
+			},
+		});
+	}, [navigation, searchValue]);
+
 	return (
 		<Animated.ScrollView
 			onScroll={scrollHandler}
@@ -51,7 +88,23 @@ export const SearchFeature = () => {
 			<StyledText type="screentitle" className={clsx('mb-3')}>
 				{primaryTitle}
 			</StyledText>
-			<SearchBar />
+			{showRecentSearches && (
+				<View className={clsx('w-full')}>
+					<RecentSearches recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
+				</View>
+			)}
+			{showSuggestions && (
+				<View className={clsx('w-full')}>
+					<SuggestionsList
+						suggestions={suggestions}
+						onSelect={(item) => {
+							handleCityPress(item);
+							addToRecentSearches(item);
+							setSearchValue('');
+						}}
+					/>
+				</View>
+			)}
 		</Animated.ScrollView>
 	);
 };

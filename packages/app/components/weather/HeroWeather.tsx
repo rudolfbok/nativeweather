@@ -16,9 +16,11 @@ import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { AlertWeather } from 'app/components/weather/alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
+import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
 import { clsx } from 'clsx';
@@ -29,8 +31,6 @@ import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
 import { SmartSummary } from './SmartSummary';
-import { useStorageString } from 'app/storage/useStorageString';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 
 export const HeroWeather = () => {
 	const { weatherData, airQualityData } = useWeather();
@@ -136,45 +136,44 @@ export const HeroWeather = () => {
 	};
 
 	return (
-		<View className={clsx('native:px-4 pb-4')}>
+		<View className={clsx('pb-4')}>
 			<View className={clsx('grid select-none grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3')}>
-				<View className={clsx('flex-col gap-4')}>
+				<View className={clsx('native:px-4 flex-col gap-4')}>
 					<View>
-						<View>
-							<MainWeather
-								name={weatherData.location.name}
-								country={weatherData.location.country}
-								currentTempC={weatherData.current.tempC}
-								currentTempF={weatherData.current.tempF}
-								feelsLikeC={weatherData.current.feelsLikeC}
-								feelsLikeF={weatherData.current.feelsLikeF}
-								maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
-								maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
-								minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
-								minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
-								isDay={weatherData.current.isDay}
-								code={weatherData.current.condition.code}
-								feelslike={true}
-								condition={conditionLabel}
-								conditionbg={false}
-								textColor="!text-white"
-								arrowcolor="white"
-								displayTime={true}
-								strokeWidth={0}
-							/>
-							<Pressable
-								onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
-								className={clsx('native:hidden absolute bottom-0 right-0 lg:p-2')}
-							>
-								<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
-							</Pressable>
-							<AlertWeather
-								filteredAlerts={filteredAlerts}
-								alertsLength={alertsLength}
-								desktop="max-lg:hidden"
-								mobile="hidden"
-							/>
-						</View>
+						<MainWeather
+							name={weatherData.location.name}
+							country={weatherData.location.country}
+							currentTempC={weatherData.current.tempC}
+							currentTempF={weatherData.current.tempF}
+							feelsLikeC={weatherData.current.feelsLikeC}
+							feelsLikeF={weatherData.current.feelsLikeF}
+							maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
+							maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
+							minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
+							minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
+							isDay={weatherData.current.isDay}
+							code={weatherData.current.condition.code}
+							feelslike={true}
+							condition={conditionLabel}
+							textColor="!text-white"
+							conditionText={weatherData.current.isDay === 1 ? '!text-black' : '!text-white'}
+							colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
+							arrowcolor="white"
+							displayTime={true}
+							strokeWidth={0}
+						/>
+						<Pressable
+							onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
+							className={clsx('native:hidden absolute bottom-0 right-0 lg:p-2')}
+						>
+							<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
+						</Pressable>
+						<AlertWeather
+							filteredAlerts={filteredAlerts}
+							alertsLength={alertsLength}
+							desktop="max-lg:hidden"
+							mobile="hidden"
+						/>
 					</View>
 					<AlertWeather
 						filteredAlerts={filteredAlerts}
@@ -198,17 +197,17 @@ export const HeroWeather = () => {
 					<HourlyForecast />
 					<AirQuality className={clsx('xl:hidden')} />
 				</View>
-				<View className={clsx('gap-4')}>
+				<View className={clsx('native:px-4 gap-4')}>
 					<DailyForecast />
 					{Platform.OS === 'web' && <MapsView />}
 				</View>
 				<View
 					className={clsx(
-						'flex flex-row flex-wrap justify-between gap-4',
-						'web:grid web:h-fit web:grid-cols-2 web:md:hidden web:xl:grid web:xl:grid-cols-3 '
+						'native:px-4 flex flex-row flex-wrap items-center justify-between gap-4',
+						'web:grid web:h-fit web:grid-cols-2 web:md:hidden web:xl:grid web:xl:grid-cols-3'
 					)}
 				>
-					<AirQuality className={clsx('max-xl:hidden')} />
+					{Platform.OS === 'web' && <AirQuality className={clsx('max-xl:hidden')} />}
 					<DataCardGrid />
 				</View>
 			</View>

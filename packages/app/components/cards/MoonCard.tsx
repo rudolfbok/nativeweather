@@ -74,6 +74,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 			className={clsx(
 				'native:!aspect-auto native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto'
 			)}
+			style={{ width: '100%', height: '100%', aspectRatio: 2 }}
 			extraContent={
 				<View className={clsx('mt-6 flex-row items-center gap-4 xl:hidden')}>
 					{moonPhaseComponents[phase]}

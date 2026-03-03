@@ -5,6 +5,8 @@ import { View } from 'react-native';
 interface RoundViewProps {
 	className?: string;
 	children: React.ReactNode;
+	style?: any;
+	colorScheme?: any;
 }
 
 export const RoundView = ({ className, children }: RoundViewProps) => {

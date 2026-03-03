@@ -1,9 +1,9 @@
 import { ChevronRight } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyledText } from '../styled/StyledText';
-import { RoundView } from '../ui/RoundView';
+import { RoundView } from '../ui/RoundView.ios';
 import { clsx } from 'clsx';
 
 interface AccordionProps {
@@ -32,7 +32,13 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			</Pressable>
 			{expanded && (
 				<Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(200)}>
-					<RoundView className={clsx('p-4')}>{children}</RoundView>
+					<View
+						className={clsx(
+							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex overflow-hidden rounded-3xl p-4'
+						)}
+					>
+						{children}
+					</View>
 				</Animated.View>
 			)}
 		</Animated.View>

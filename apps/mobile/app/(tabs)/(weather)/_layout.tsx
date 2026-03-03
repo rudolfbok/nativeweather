@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { DynamicColorIOS, Platform, Pressable } from 'react-native';
 import { shareLink } from 'app/utils/services/shareLink';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
@@ -66,11 +67,15 @@ export default function TabLayout() {
 					headerLeft: () => weatherData && <LeftButton />,
 					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,
-					headerStyle: { backgroundColor: 'red' },
+					headerTransparent: true,
+					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
 					headerTitleAlign: 'center',
-					// headerTitleStyle: { color: 'red' },
+					headerTitleStyle: { color: titleColor as string },
+					// headerBackground: () => (
+					// 	<WeatherLandscape code={weatherData?.current.condition.code} isDay={weatherData?.current.isDay} />
+					// ),
 					contentStyle: {
-						backgroundColor: backgroundColor,
+						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 						// marginTop: Platform.OS === 'android' ? 110 : 0,
 						paddingHorizontal: 0,
 					},

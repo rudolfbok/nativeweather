@@ -5,6 +5,7 @@ import { CardHeader } from './CardHeader';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { BlurView } from 'expo-blur';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -28,11 +29,13 @@ export const ModalHeader = ({
 	const switchColors = useSwitchColors('black', 'white');
 
 	return (
-		<>
-			<View className={clsx('web:hidden my-2 w-full items-center')}>
+		<BlurView intensity={1} tint="light">
+			<View className={clsx('web:hidden mt-2 w-full items-center')}>
 				<View className={clsx('h-1.5 w-12 rounded-full bg-zinc-600/40')} />
 			</View>
-			<View className={clsx('web:pb-4 flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
+			<View
+				className={clsx('web:pb-4 ios:px-4 flex-row items-center justify-between pb-4', daysToggle && '!items-start')}
+			>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>
@@ -44,11 +47,11 @@ export const ModalHeader = ({
 					)}
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
-				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')}>
+				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')} style={{ padding: 4 }}>
 					<X color={switchColors} size={28} style={{ pointerEvents: 'none' }} />
 				</StyledPressable>
 			</View>
 			{daysToggle}
-		</>
+		</BlurView>
 	);
 };

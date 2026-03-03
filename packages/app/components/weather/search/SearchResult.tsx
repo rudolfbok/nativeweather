@@ -17,7 +17,7 @@ export const SearchResult = ({ index, onPress, city, region, country, isLast }: 
 			key={index}
 			onPress={onPress}
 			className={clsx(
-				'native:dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark active:bg-tertiarySystemBackground dark:active:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4',
+				'native:dark:bg-transparent dark:hover:bg-tertiarySystemBackground_dark active:bg-tertiarySystemBackground dark:active:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4',
 				index === 0 && 'rounded-t-3xl',
 				!isLast && 'rounded-b-3xl'
 			)}

@@ -11,7 +11,7 @@ import { WeatherData } from 'app/types/weatherData';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastModal } from './DailyForecastModal';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 
@@ -39,20 +39,29 @@ export const DailyForecast = () => {
 
 	return (
 		<>
-			<RoundView className={clsx('flex w-full pt-4')}>
-				<CardHeader icon={<Calendar />} header={t('dailyforecast.title')} className={clsx('mb-1 px-4')} />
+			<RoundView className={clsx('flex w-full')}>
+				<CardHeader icon={<Calendar />} header={t('dailyforecast.title')} className={clsx('web:px-4 mb-1 px-4 pt-4')} />
+
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
-					<StyledPressable
+					<Pressable
 						key={index}
 						onPress={() => setSelectedDay(day)}
 						className={clsx(
-							'!cursor-pointer items-center justify-center px-4 pt-2',
+							'!cursor-pointer items-center justify-center px-4',
+							'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
+							'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',
 							index === items.length - 1 && 'rounded-bl-3xl rounded-br-3xl'
 						)}
+						style={{
+							// paddingVertical: 6,
+							alignItems: 'center',
+							justifyContent: 'center',
+						}}
+						// glassEffectStyle="none"
 					>
 						<View
 							className={clsx(
-								'w-full flex-row items-center justify-between pb-2',
+								'w-full flex-row items-center justify-between py-2',
 								index !== items.length - 1 && 'border-b border-gray-200 dark:border-zinc-800'
 							)}
 							style={index !== items.length - 1 ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined} /// THIS
@@ -94,7 +103,7 @@ export const DailyForecast = () => {
 								</StyledText>
 							</View>
 						</View>
-					</StyledPressable>
+					</Pressable>
 				))}
 			</RoundView>
 			{selectedDay && (

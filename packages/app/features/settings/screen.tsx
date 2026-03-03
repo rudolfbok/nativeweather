@@ -11,8 +11,10 @@ import { ThemeButton } from 'app/components/settings/items/ThemeButton';
 import { UnitsButton } from 'app/components/settings/items/UnitsButton';
 import { WorldTimeToggle } from 'app/components/settings/items/WorldTimeToggle';
 import { clsx } from 'clsx';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { SourceButton } from 'app/components/settings/items/SourceButton';
+import pkg from '../../../../apps/web/package.json';
+import Constants from 'expo-constants';
 
 export const SettingsFeature = ({ title }: { title: string }) => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -50,7 +52,9 @@ export const SettingsFeature = ({ title }: { title: string }) => {
 				</RoundView>
 				<View className={clsx('flex items-center')}>
 					<StyledText type="bodysecondary">NativeWeather</StyledText>
-					<StyledText type="bodysecondary">Version: 1.0</StyledText>
+					<StyledText type="bodysecondary">
+						Version: {Platform.OS === 'web' ? pkg.version : Constants.expoConfig?.version}
+					</StyledText>
 					<StyledText type="bodysecondary">© {new Date().getFullYear()}</StyledText>
 				</View>
 			</View>
