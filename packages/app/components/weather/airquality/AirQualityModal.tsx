@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
-import { useWeather } from 'app/hooks/useWeather';
+import { AirQualityData } from 'app/types/airQualityData';
 import {
 	EUAQIIndicatorColor,
 	NO2IndicatorColor,
@@ -12,8 +12,9 @@ import {
 	USAQIIndicatorColor,
 } from 'app/utils/mappings/mapAirQualityIndicators';
 import { clsx } from 'clsx';
-import { JSX, useState } from 'react';
-import { Linking, Pressable, View } from 'react-native';
+import { JSX, ReactNode, useState } from 'react';
+import { Linking, Platform, Pressable, View } from 'react-native';
+import { useRouter } from 'solito/navigation';
 import { AirQualityItem } from './AirQualityItem';
 import { EUAQIDetail } from './EUAQIDetail';
 import { NO2Detail } from './NO2Detail';
@@ -21,58 +22,56 @@ import { O3Detail } from './O3Detail';
 import { PM10Detail } from './PM10Detail';
 import { PM25Detail } from './PM25Detail';
 import { USAQIDetail } from './USAQIDetail';
-import { AirQualityData } from 'app/types/airQualityData';
-import { ExampleBlur } from 'app/components/common/ExampleBlur';
 
 interface AirQualityModalProps {
-	visible: boolean;
-	onClose: () => void;
+	visible?: boolean;
+	onClose?: () => void;
 	airQualityData: AirQualityData;
 }
 
 export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQualityModalProps) => {
 	const { t } = useTranslate('weather');
-	const { weatherData } = useWeather();
 	const [showAirQualityMetric, setShowAirQualityMetric] = useState<string | null>(null);
+	const router = useRouter();
 
 	const airQualityItemsList = [
 		{
-			name: 'EU AQI',
+			name: 'euaqi',
 			description: t('airquality.item.euaqi'),
 			data: airQualityData!.current.european_aqi,
 			colorIndicator: EUAQIIndicatorColor(airQualityData!.current.european_aqi),
 			units: '',
 		},
 		{
-			name: 'US AQI',
+			name: 'usaqi',
 			description: t('airquality.item.usaqi'),
 			data: airQualityData!.current.us_aqi,
 			colorIndicator: USAQIIndicatorColor(airQualityData!.current.us_aqi),
 			units: '',
 		},
 		{
-			name: 'PM2.5',
+			name: 'pm25',
 			description: t('airquality.item.pm25'),
 			data: airQualityData!.current.pm2_5,
 			colorIndicator: PM25IndicatorColor(airQualityData!.current.pm2_5),
 			units: 'μg/m³',
 		},
 		{
-			name: 'PM10',
+			name: 'pm10',
 			description: t('airquality.item.pm10'),
 			data: airQualityData!.current.pm10,
 			colorIndicator: PM10IndicatorColor(airQualityData!.current.pm10),
 			units: 'μg/m³',
 		},
 		{
-			name: 'O3',
+			name: 'o3',
 			description: t('airquality.item.ozone'),
 			data: airQualityData!.current.ozone,
 			colorIndicator: OzoneIndicatorColor(airQualityData!.current.ozone),
 			units: 'μg/m³',
 		},
 		{
-			name: 'NO2',
+			name: 'no2',
 			description: t('airquality.item.no2'),
 			data: airQualityData!.current.nitrogen_dioxide,
 			colorIndicator: NO2IndicatorColor(airQualityData!.current.nitrogen_dioxide),
@@ -81,36 +80,60 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 	];
 
 	const detailComponents: Record<string, JSX.Element> = {
-		'EU AQI': <EUAQIDetail />,
-		'US AQI': <USAQIDetail />,
-		'PM2.5': <PM25Detail />,
-		PM10: <PM10Detail />,
-		O3: <O3Detail />,
-		NO2: <NO2Detail />,
+		euaqi: <EUAQIDetail />,
+		usaqi: <USAQIDetail />,
+		pm25: <PM25Detail />,
+		pm10: <PM10Detail />,
+		o3: <O3Detail />,
+		no2: <NO2Detail />,
+	};
+
+	const nameFormat: Record<string, string> = {
+		euaqi: 'EU AQI',
+		usaqi: 'US AQI',
+		pm25: 'PM2.5',
+		pm10: 'PM10',
+		o3: 'O3',
+		no2: 'NO2',
+	};
+
+	const Wrapper = ({ children }: { children: ReactNode }) => {
+		if (Platform.OS === 'ios') {
+			return <>{children}</>;
+		}
+
+		return (
+			<StyledModal
+				visible={visible}
+				goBackHeader={showAirQualityMetric ? true : false}
+				goBackOnPress={() => setShowAirQualityMetric(null)}
+				icon={showAirQualityMetric ? undefined : <AirQualityIcon />}
+				header={
+					showAirQualityMetric === null
+						? t('airquality.title')
+						: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '')
+				}
+				onClose={onClose}
+			>
+				{children}
+			</StyledModal>
+		);
 	};
 
 	return (
-		<StyledModal
-			visible={visible}
-			goBackHeader={showAirQualityMetric ? true : false}
-			goBackOnPress={() => setShowAirQualityMetric(null)}
-			icon={showAirQualityMetric ? undefined : <AirQualityIcon />}
-			header={
-				showAirQualityMetric === null
-					? `${t('airquality.title')} ${weatherData?.location.name}`
-					: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '')
-			}
-			onClose={onClose}
-		>
-			{/* <ExampleBlur /> */}
+		<Wrapper>
 			{showAirQualityMetric === null && (
 				<View>
 					<View className={clsx('native:flex-row native:flex-wrap grid grid-cols-2 gap-4 sm:grid-cols-3')}>
 						{airQualityItemsList.map(({ name, description, data, colorIndicator, units }, index) => (
 							<AirQualityItem
 								key={index}
-								onPress={() => setShowAirQualityMetric(name)}
-								item={name}
+								onPress={
+									Platform.OS === 'ios'
+										? () => router.push(`/modals/airquality/${name}`)
+										: () => setShowAirQualityMetric(name)
+								}
+								item={nameFormat[name]}
 								description={description}
 								colorIndicator={colorIndicator}
 								data={data}
@@ -129,6 +152,6 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 				</View>
 			)}
 			{detailComponents[showAirQualityMetric ?? ''] ?? null}
-		</StyledModal>
+		</Wrapper>
 	);
 };

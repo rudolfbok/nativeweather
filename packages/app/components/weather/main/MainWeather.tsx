@@ -54,6 +54,12 @@ export const MainWeather = ({
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
 
+	const textShadowStyle = {
+		textShadowColor: 'rgba(0,0,0,0.5)',
+		textShadowOffset: { width: 2, height: 2 },
+		textShadowRadius: 4,
+	};
+
 	return (
 		<View className={clsx('relative mt-2 items-center gap-2')}>
 			<View className={clsx('w-[80%] flex-row items-center')}>
@@ -68,7 +74,7 @@ export const MainWeather = ({
 					/>
 				</View>
 				<View className={clsx('w-1/2 items-center')}>
-					<StyledText type="maintemp" className={clsx('pl-4', textColor)}>
+					<StyledText type="maintemp" className={clsx('pl-4 text-yellow-400', textColor)} style={textShadowStyle}>
 						{useSwitchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -78,7 +84,7 @@ export const MainWeather = ({
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveDown size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textColor)}>
+							<StyledText type="body" className={clsx(textColor)} style={textShadowStyle}>
 								{useSwitchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -88,7 +94,7 @@ export const MainWeather = ({
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveUp size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textColor)}>
+							<StyledText type="body" className={clsx(textColor)} style={textShadowStyle}>
 								{useSwitchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -98,7 +104,7 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="subtitle" className={clsx('font-semibold', textColor)}>
+						<StyledText type="subtitle" className={clsx('font-semibold', textColor)} style={textShadowStyle}>
 							{t('feelslike')}{' '}
 							{useSwitchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -110,8 +116,17 @@ export const MainWeather = ({
 				</View>
 			</View>
 
-			<RoundView style={{ paddingHorizontal: 16, paddingVertical: 8 }} colorScheme={colorScheme}>
-				<StyledText type="subtitle" className={clsx('text-center text-xl font-bold', conditionText)}>
+			<RoundView
+				style={{ paddingHorizontal: 16, paddingVertical: 8 }}
+				liquidGlass={true}
+				colorScheme={colorScheme}
+				glassEffectStyle="clear"
+			>
+				<StyledText
+					type="subtitle"
+					className={clsx('text-center text-xl font-bold !text-white', conditionText)}
+					style={textShadowStyle}
+				>
 					{condition}
 				</StyledText>
 			</RoundView>

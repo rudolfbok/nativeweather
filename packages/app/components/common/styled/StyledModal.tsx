@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { Ref } from 'react';
-import { GestureResponderEvent, Modal, Platform, Pressable, ScrollView, View } from 'react-native';
+import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
 import { ModalHeader } from '../ui/ModalHeader';
 
 interface StyledModalProps {
@@ -35,24 +35,20 @@ export const StyledModal = ({
 	return (
 		<Modal
 			visible={visible}
-			transparent={Platform.OS === 'web' ? true : false}
-			presentationStyle={Platform.OS === 'ios' ? 'formSheet' : 'overFullScreen'}
-			animationType={Platform.OS === 'web' ? 'fade' : 'slide'}
+			transparent={true}
+			presentationStyle="overFullScreen"
+			animationType="none"
 			onRequestClose={onClose}
 			navigationBarTranslucent={true}
 			statusBarTranslucent={true}
 		>
-			<Pressable
-				onPress={onClose}
-				className="web:backdrop-blur-md android:hidden absolute inset-0 bg-black/40 max-md:hidden"
-			/>
+			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden')} />
 			<View
 				className={clsx(
-					'native:rounded-tl-3xl native:rounded-tr-3xl',
 					'no-modal-scroll overflow-hidden',
-					'web:px-4 pt-4 max-md:pt-2',
+					'px-4 pt-4 max-md:pt-2',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'native:h-full web:h-[100dvh] web:md:h-fit w-full',
+					'h-[100dvh] w-full md:h-fit',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
@@ -68,14 +64,13 @@ export const StyledModal = ({
 					onBackPress={goBackOnPress}
 					daysToggle={daysToggle}
 				/>
-				<ScrollView
-					ref={ref}
-					showsVerticalScrollIndicator={Platform.OS === 'web' ? false : true}
-					className="ios:px-4 flex-grow pb-4"
-					contentContainerClassName="ios:pb-6"
-				>
-					{children}
-				</ScrollView>
+				{mapsModal ? (
+					<View className={clsx('flex-1 pb-4')}>{children}</View>
+				) : (
+					<ScrollView ref={ref} showsVerticalScrollIndicator={false} className={clsx('flex-grow pb-4')}>
+						{children}
+					</ScrollView>
+				)}
 			</View>
 		</Modal>
 	);

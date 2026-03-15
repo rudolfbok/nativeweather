@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { GlassColorScheme, GlassStyle } from 'expo-glass-effect';
+import { GlassColorScheme } from 'expo-glass-effect';
 import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {
@@ -8,8 +8,8 @@ interface StyledPressableProps {
 	children: React.ReactNode;
 	style?: any;
 	tintColor?: string;
-	glassEffectStyle?: GlassStyle;
 	colorScheme?: GlassColorScheme;
+	liquidGlass?: any;
 }
 
 export const StyledPressable = ({ onPress, className, children }: StyledPressableProps) => {

@@ -3,6 +3,9 @@ import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { CloudRain } from 'lucide-react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { RainModal } from './modals/RainModal';
@@ -17,6 +20,8 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
+
 	const display = useSwitchMetrics({
 		metric: `${rainPrecipMm.toFixed(1)}mm`,
 		imperial: `${rainPrecipIn.toFixed(2)}in`,
@@ -37,8 +42,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <RainModal visible={showModal} onClose={() => setShowModal(false)} />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/rain') : () => setShowModal(true)}
 			icon={<CloudRain color="#2793FF" />}
 			title={t('rain.title')}
 			description={description}
@@ -50,6 +54,18 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 				)
 			}
 			data={Math.round(rainChance) + '%'}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<CloudRain color="#2793FF" />}
+						header={t('rain.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<RainModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

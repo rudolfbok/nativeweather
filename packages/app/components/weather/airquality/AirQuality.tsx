@@ -1,16 +1,17 @@
 import { useTranslate } from '@tolgee/react';
 import EUAQIScale from 'app/assets/euaqiscale.png';
 import USAQIScale from 'app/assets/usaqiscale.png';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
+import { useRouter } from 'solito/navigation';
 import { AirQualityModal } from './AirQualityModal';
 
 export const AirQuality = ({ className }: { className?: string }) => {
@@ -18,6 +19,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
 	const [currentAQI] = useStorageString('currentAQI');
 	const [showAirQualityModal, setShowAirQualityModal] = useState(false);
+	const router = useRouter();
 
 	const aq = airQualityData?.current;
 
@@ -46,9 +48,14 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	return (
 		<>
 			<StyledPressable
-				onPress={() => setShowAirQualityModal((prev) => !prev)}
+				onPress={
+					Platform.OS === 'ios'
+						? () => router.push('/modals/airquality')
+						: () => setShowAirQualityModal((prev) => !prev)
+				}
 				className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
 				style={{ padding: 16, gap: 8, display: 'flex' }}
+				liquidGlass={true}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>

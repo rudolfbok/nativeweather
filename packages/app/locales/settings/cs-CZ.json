@@ -1,5 +1,6 @@
 {
 	"about": {
+		"aboutapp": "NativeWeather je aplikace pro zobrazení aktuálního počasí a předpovědi. Kromě toho zobrazuje i aktuální hodnoty znečištění vzduchu a mapové podklady pro celý svět. ",
 		"googlemaps": "Základní mapový podklad pro interaktivní zobrazení geografických dat",
 		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
 		"openweather": "Poskytuje vizualizaci vrstev meteorologických map pro teplotu, srážky a oblačnost",
@@ -19,9 +20,20 @@
 		"title": "Zdroje dat"
 	},
 	"feedback": {
+		"bug": "Chyba",
 		"button": "Poslat názor",
-		"text": "Každý názor je cenný. Pokud byste si proto našli chvilku času a poslali mi zprávu o tom, co se vám líbilo nebo nelíbilo, velmi bych to ocenil!",
-		"title": "Poslat názor"
+		"feature": "Funkce",
+		"feedback": "Názor",
+		"message": "Zpráva",
+		"placeholder": "Sem napište zprávu..",
+		"sending": "Zpráva se posílá",
+		"text": "Každý názor je cenný. Pokud byste si proto našli chvilku času a poslali mi zprávu o tom, co se vám líbilo nebo co zlepšit, velmi bych to ocenil!",
+		"title": "Poslat názor",
+		"toast": {
+			"error": "Chyba při posílání",
+			"sent": "Zprávy byla poslaná!"
+		},
+		"type": "Typ"
 	},
 	"language": {
 		"czech": "Čeština",

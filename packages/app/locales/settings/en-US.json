@@ -1,5 +1,6 @@
 {
 	"about": {
+		"aboutapp": "NativeWeather is an application for displaying current weather and forecasts. It also displays current air pollution values and maps for the whole world.",
 		"googlemaps": "Basic map background for interactive display of geographic data",
 		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
 		"openweather": "Provides visualization of meteorological map layers for temperature, precipitation, and cloud cover",
@@ -19,9 +20,20 @@
 		"title": "Data sources"
 	},
 	"feedback": {
+		"bug": "Bug",
 		"button": "Send feedback",
-		"text": "Every opinion is valuable. Therefore if you took a moment off your day and sent me a message about what you liked or not, I would really appreciate it!",
-		"title": "Send feedback"
+		"feature": "Feature",
+		"feedback": "Feedback",
+		"message": "Message",
+		"placeholder": "Write your message here..",
+		"sending": "Sending the message",
+		"text": "Every opinion is valuable. If you take a moment to send me a message about what you liked or what to improve, I would really appreciate it!",
+		"title": "Send feedback",
+		"toast": {
+			"error": "Error while sending",
+			"sent": "Message was sent!"
+		},
+		"type": "Type"
 	},
 	"language": {
 		"czech": "Czech",

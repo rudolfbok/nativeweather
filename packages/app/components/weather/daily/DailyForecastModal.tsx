@@ -1,28 +1,22 @@
 import { useTolgee } from '@tolgee/react';
+import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherData } from 'app/types/weatherData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
-import { DaysToggle } from './DaysToggle';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useStorageString } from 'app/storage/useStorageString';
 
 interface DailyForecastModalProps {
-	visible: boolean;
 	day: WeatherData['forecast']['forecastday'][0] | null;
-	days: WeatherData['forecast']['forecastday'];
-	onSelectDay: (day: WeatherData['forecast']['forecastday'][0]) => void;
-	onClose: () => void;
 }
 
-export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }: DailyForecastModalProps) => {
+export const DailyForecastModal = ({ day }: DailyForecastModalProps) => {
 	const scrollRef = useRef<ScrollView>(null);
 	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();
@@ -37,22 +31,6 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 
 	if (!day) return null;
 
-	const formatDate = (dateString: string) => {
-		const date = new Date(dateString);
-
-		return date.toLocaleDateString(tolgee.getLanguage(), {
-			day: 'numeric',
-			month: 'long',
-			year: 'numeric',
-		});
-	};
-
-	const getDayName = (date: string, short: boolean) => {
-		return new Date(date).toLocaleString(tolgee.getLanguage(), {
-			weekday: short ? 'short' : 'long',
-		});
-	};
-
 	const getDisplayHourFromIndex = (hourIndex: number) => {
 		if (tolgee.getLanguage() === 'en-US') {
 			const hour12 = hourIndex % 12 || 12;
@@ -65,89 +43,80 @@ export const DailyForecastModal = ({ visible, day, days, onClose, onSelectDay }:
 	};
 
 	return (
-		<StyledModal
-			visible={visible}
-			ref={scrollRef}
-			header={getDayName(day.date, false)}
-			subHeader={formatDate(day.date)}
-			onClose={onClose}
-			daysToggle={<DaysToggle days={days} onSelectDay={onSelectDay} />}
-		>
-			<View className={clsx('w-full gap-4')}>
-				<MainWeather
-					currentTempC={day.day.maxTempC}
-					currentTempF={day.day.maxTempF}
-					minTempC={day.day.minTempC}
-					minTempF={day.day.minTempF}
-					maxTempC={day.day.maxTempC}
-					maxTempF={day.day.maxTempF}
-					isDay={1}
-					code={day.day.condition.code}
-					condition={mapConditions(day.day.condition.code, 1, currentSource)}
-					arrowcolor={arrowColor}
-					textColor="red"
-					strokeWidth={StyleSheet.hairlineWidth}
-					displayTime={false}
-					feelslike={false}
+		<View className={clsx('w-full gap-4')}>
+			<MainWeather
+				currentTempC={day.day.maxTempC}
+				currentTempF={day.day.maxTempF}
+				minTempC={day.day.minTempC}
+				minTempF={day.day.minTempF}
+				maxTempC={day.day.maxTempC}
+				maxTempF={day.day.maxTempF}
+				isDay={1}
+				code={day.day.condition.code}
+				condition={mapConditions(day.day.condition.code, 1, currentSource)}
+				arrowcolor={arrowColor}
+				textColor="red"
+				strokeWidth={StyleSheet.hairlineWidth}
+				displayTime={false}
+				feelslike={false}
+			/>
+			<SmartSummary
+				minTempC={day.day.minTempC}
+				maxTempC={day.day.maxTempC}
+				minTempF={day.day.minTempF}
+				maxTempF={day.day.maxTempF}
+				rainPrecipMm={day.day.totalPrecipMm}
+				rainPrecipIn={day.day.totalPrecipIn}
+				snowPrecipCm={day.day.totalSnowCm}
+				snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
+				maxWindKph={day.day.maxWindKph}
+				uvIndex={day.day.uv}
+				avgVisibilityKm={day.day.avgVisKm}
+			/>
+			{!day.hour || day.hour.length === 0 ? null : (
+				<HourlyCarousel
+					data={day.hour}
+					renderItem={(hour, index) => (
+						<HourlyItem
+							key={index}
+							hour={getDisplayHourFromIndex(index)}
+							rainChance={hour.chanceOfRain}
+							isDay={hour.isDay}
+							code={hour.condition.code}
+							tempC={hour.tempC}
+							tempF={hour.tempF}
+						/>
+					)}
 				/>
-				<SmartSummary
-					minTempC={day.day.minTempC}
-					maxTempC={day.day.maxTempC}
-					minTempF={day.day.minTempF}
-					maxTempF={day.day.maxTempF}
-					rainPrecipMm={day.day.totalPrecipMm}
-					rainPrecipIn={day.day.totalPrecipIn}
-					snowPrecipCm={day.day.totalSnowCm}
-					snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
-					maxWindKph={day.day.maxWindKph}
-					uvIndex={day.day.uv}
-					avgVisibilityKm={day.day.avgVisKm}
-				/>
-				{!day.hour || day.hour.length === 0 ? null : (
-					<HourlyCarousel
-						data={day.hour}
-						renderItem={(hour, index) => (
-							<HourlyItem
-								key={index}
-								hour={getDisplayHourFromIndex(index)}
-								rainChance={hour.chanceOfRain}
-								isDay={hour.isDay}
-								code={hour.condition.code}
-								tempC={hour.tempC}
-								tempF={hour.tempF}
-							/>
-						)}
+			)}
+			<View
+				className={clsx(
+					'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 flex w-full flex-row flex-wrap justify-between gap-4'
+				)}
+			>
+				{day.day.dailySnowChance > day.day.dailyRainChance ? (
+					<SnowCard
+						snowChance={day.day.dailySnowChance}
+						snowPrecipCm={day.day.totalSnowCm}
+						snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
+					/>
+				) : (
+					<RainCard
+						rainChance={day.day.dailyRainChance}
+						rainPrecipMm={day.day.totalPrecipMm}
+						rainPrecipIn={day.day.totalPrecipIn}
 					/>
 				)}
-				<View
-					className={clsx(
-						'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 flex w-full flex-row flex-wrap justify-between gap-4'
-					)}
-				>
-					{day.day.dailySnowChance > day.day.dailyRainChance ? (
-						<SnowCard
-							snowChance={day.day.dailySnowChance}
-							snowPrecipCm={day.day.totalSnowCm}
-							snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
-						/>
-					) : (
-						<RainCard
-							rainChance={day.day.dailyRainChance}
-							rainPrecipMm={day.day.totalPrecipMm}
-							rainPrecipIn={day.day.totalPrecipIn}
-						/>
-					)}
 
-					<UVIndexCard data={day.day.uv} />
-					<VisibilityCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
-					<WindCard
-						windKm={Math.round(day.day.maxWindKph)}
-						windMil={Math.round(day.day.maxWindMph)}
-						details={false}
-						currentWind={false}
-					/>
-				</View>
+				<UVIndexCard data={day.day.uv} />
+				<VisibilityCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
+				<WindCard
+					windKm={Math.round(day.day.maxWindKph)}
+					windMil={Math.round(day.day.maxWindMph)}
+					details={false}
+					currentWind={false}
+				/>
 			</View>
-		</StyledModal>
+		</View>
 	);
 };

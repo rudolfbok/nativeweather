@@ -25,18 +25,18 @@ import { WeatherAlert } from 'app/types/weatherAlert';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
-import { useEffect } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Platform, Pressable, ScrollView, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
 import { SmartSummary } from './SmartSummary';
 
 export const HeroWeather = () => {
+	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const mapConditions = useMapConditions();
-	const [currentSource] = useStorageString('currentSource');
 
 	useEffect(() => {
 		if (!weatherData) return;
@@ -107,7 +107,6 @@ export const HeroWeather = () => {
 					windMil={Math.round(weatherData.current.windMph)}
 					gustKm={Math.round(weatherData.current.gustKph)}
 					gustMil={Math.round(weatherData.current.gustMph)}
-					dir={weatherData.current.windDir}
 					degree={weatherData.current.windDegree}
 					details={true}
 					currentWind={true}

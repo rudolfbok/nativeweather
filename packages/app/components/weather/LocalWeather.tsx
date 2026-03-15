@@ -26,10 +26,10 @@ export const LocalWeather = () => {
 		return (
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<RoundView className={clsx('p-4 lg:w-fit')}>
-					<StyledText type="body" className="text-center font-semibold !text-red-500">
+					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t('localweather.error.notavailable')}
 					</StyledText>
-					<StyledText type="body" className="text-center">
+					<StyledText type="body" className={clsx('text-center')}>
 						{t('localweather.error.followup')}
 					</StyledText>
 				</RoundView>

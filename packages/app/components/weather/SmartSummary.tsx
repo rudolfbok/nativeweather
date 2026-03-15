@@ -128,7 +128,12 @@ export const SmartSummary = React.memo(function SmartSummary({
 	const combinedSummary = sentences.filter(Boolean).join(' ');
 
 	return (
-		<RoundView className={clsx('w-full gap-2 p-4')} style={{ gap: 8, padding: 16 }}>
+		<RoundView
+			className={clsx('w-full gap-2 p-4')}
+			style={{ gap: 8, padding: 16 }}
+			liquidGlass={true}
+			glassEffectStyle="regular"
+		>
 			<CardHeader icon={<SmartSummaryIcon />} header={t('title')} />
 			<StyledText type="body">{combinedSummary}</StyledText>
 		</RoundView>

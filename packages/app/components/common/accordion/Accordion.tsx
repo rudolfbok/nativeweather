@@ -23,8 +23,8 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	}));
 
 	return (
-		<Animated.View layout={LinearTransition} className="overflow-hidden">
-			<Pressable onPress={toggle} className="flex-row items-center justify-between py-2">
+		<Animated.View layout={LinearTransition} className={clsx('overflow-hidden')}>
+			<Pressable onPress={toggle} className={clsx('flex-row items-center justify-between py-2')}>
 				<StyledText type="subtitle">{title}</StyledText>
 				<Animated.View style={chevronStyle}>
 					<ChevronRight size={26} color="#007AFF" />

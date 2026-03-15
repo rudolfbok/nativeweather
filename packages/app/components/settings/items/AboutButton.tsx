@@ -3,7 +3,7 @@ import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { Info } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
-import { AboutBody } from './AboutBody';
+import { AboutBody } from '../AboutBody';
 import { SettingsItem } from './SettingsItem';
 
 export const AboutButton = () => {

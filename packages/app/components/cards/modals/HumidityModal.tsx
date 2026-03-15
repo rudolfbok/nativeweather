@@ -1,19 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { clsx } from 'clsx';
-import { Droplets } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
+import { GestureResponderEvent, ScrollView, View } from 'react-native';
 
-export const HumidityModal = ({
-	visible,
-	onClose,
-}: {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-}) => {
+export const HumidityModal = () => {
 	const { t } = useTranslate('weather');
 
 	const humidityScaleValues = [
@@ -40,18 +32,16 @@ export const HumidityModal = ({
 	];
 
 	return (
-		<StyledModal visible={visible} icon={<Droplets color="#3DA443" />} header={t('humidity.title')} onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<ContentRow title={t('humidity.relativehumidity.title')}>
-					<StyledText type="body">{t('humidity.relativehumidity.text')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('humidity.relativehumidity.values')}>
-					<ValuesList values={humidityScaleValues} valueColor="!text-[#3DA443]" />
-				</ContentRow>
-				<ContentRow title={t('humidity.dewpoint.title')}>
-					<StyledText type="body">{t('humidity.dewpoint.text')}</StyledText>
-				</ContentRow>
-			</View>
-		</StyledModal>
+		<View className={clsx('gap-2')}>
+			<ContentRow title={t('humidity.relativehumidity.title')}>
+				<StyledText type="body">{t('humidity.relativehumidity.text')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('humidity.relativehumidity.values')}>
+				<ValuesList values={humidityScaleValues} valueColor="!text-[#3DA443]" />
+			</ContentRow>
+			<ContentRow title={t('humidity.dewpoint.title')}>
+				<StyledText type="body">{t('humidity.dewpoint.text')}</StyledText>
+			</ContentRow>
+		</View>
 	);
 };

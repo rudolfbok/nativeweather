@@ -1,22 +1,18 @@
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useTranslate } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { Stack } from 'expo-router';
-import { Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
 	const headerHeight = useHeaderHeight();
-	// const paddingBottom = useSafeAreaInsets().bottom;
-	// const bottomTabBarHeight = useBottomTabBarHeight();
 
 	return (
 		<Stack
 			screenOptions={{
 				headerShadowVisible: false,
 				headerTintColor: useSwitchColors('black', 'white'),
+				headerBackButtonDisplayMode: 'minimal',
 				contentStyle: {
 					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
 					paddingHorizontal: 16,
@@ -32,10 +28,10 @@ export default function SettingsLayout() {
 				options={{
 					contentStyle: {
 						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-						paddingHorizontal: 0,
-						paddingTop: Platform.OS === 'android' ? 110 : 0,
 					},
 					headerTransparent: true,
+					headerLargeTitle: true,
+					title: t('settings'),
 					headerStyle: {
 						backgroundColor: 'transparent',
 					},

@@ -18,6 +18,7 @@
 			"error": "Failed to fetch weather data for searched city"
 		},
 		"searchbar": "Search any city or coordinates..",
+		"searchbar.native": "Search..",
 		"title": "Search",
 		"url": {
 			"error": "We couldn't find the city you were looking for \nPlease check the spelling or add the country name and try again"

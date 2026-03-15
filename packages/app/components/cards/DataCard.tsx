@@ -41,7 +41,7 @@ export const DataCard = ({
 					padding: 16,
 					...style,
 				}}
-				// glassEffectStyle="clear"
+				liquidGlass={true}
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>

@@ -4,10 +4,14 @@ import { CloudsIcon } from '../icons/CloudsIcon';
 import { DataCard } from './DataCard';
 import { CloudsModal } from './modals/CloudsModal';
 import { clsx } from 'clsx';
+import { StyledModal } from '../common/styled/StyledModal';
+import { useRouter } from 'solito/navigation';
+import { Platform } from 'react-native';
 
 export const CloudsCard = ({ data }: { data: number }) => {
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
 
 	const cloudCoverRanges = [
 		{ max: 13, description: t('description.cloudcover.0') },
@@ -20,8 +24,7 @@ export const CloudsCard = ({ data }: { data: number }) => {
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <CloudsModal visible={showModal} onClose={() => setShowModal(false)} />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/clouds') : () => setShowModal(true)}
 			icon={<CloudsIcon />}
 			title={t('cloudcover.title')}
 			description={description}
@@ -30,6 +33,18 @@ export const CloudsCard = ({ data }: { data: number }) => {
 				'native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto web:xl:hidden native:!aspect-auto min-w-full gap-6 md:h-full'
 			)}
 			style={{ width: '100%', height: '100%', aspectRatio: 2 }}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<CloudsIcon />}
+						header={t('cloudcover.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<CloudsModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

@@ -1,11 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
-import { Droplets } from 'lucide-react-native';
+import { Droplets, Sunrise } from 'lucide-react-native';
 import { useState } from 'react';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { HumidityModal } from './modals/HumidityModal';
+import { StyledModal } from '../common/styled/StyledModal';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
 
 interface HumidityCardProps {
 	data: number;
@@ -18,6 +21,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	const { t } = useTranslate('weather');
 	const [currentTemp] = useStorageString('currentTemp');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
 
 	const dewPointValue = dewPoint
 		? useSwitchTemp({
@@ -39,9 +43,8 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <HumidityModal visible={showModal} onClose={() => setShowModal(false)} />}
-			icon={<Droplets color="#3DA443" />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/humidity') : () => setShowModal(true)}
+			icon={<Droplets color="#29C632" />}
 			title={t('humidity.title')}
 			description={description}
 			extraContent={
@@ -52,6 +55,18 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 				)
 			}
 			data={data + '%'}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Droplets color="#29C632" />}
+						header={t('humidity.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<HumidityModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

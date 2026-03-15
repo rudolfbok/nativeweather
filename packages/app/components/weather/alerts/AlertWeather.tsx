@@ -1,11 +1,14 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
 import { ChevronRight, CircleAlert } from 'lucide-react-native';
 import { useState } from 'react';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AlertModal } from './AlertModal';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
 
 interface AlertWeatherProps {
 	filteredAlerts: WeatherAlert[];
@@ -19,14 +22,14 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 	const tolgee = useTolgee();
 	const [showAlertModal, setShowAlertModal] = useState(false);
 	const [selectedAlert, setSelectedAlert] = useState(null);
+	const router = useRouter();
 
 	if (alertsLength === 0) return null;
 
 	return (
 		<>
-			{/* Mobile version */}
 			<StyledPressable
-				onPress={() => setShowAlertModal(true)}
+				onPress={Platform.OS === 'ios' ? () => router.push('/modals/alerts') : () => setShowAlertModal(true)}
 				className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
 			>
 				<CardHeader
@@ -36,7 +39,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 				<ChevronRight color="#007AFF" size={26} />
 			</StyledPressable>
 
-			{/* Desktop version */}
 			<StyledPressable
 				onPress={() => setShowAlertModal(true)}
 				className={clsx(
@@ -48,17 +50,34 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 			</StyledPressable>
 
 			{showAlertModal && (
-				<AlertModal
+				<StyledModal
 					visible={showAlertModal}
+					icon={selectedAlert ? undefined : <CircleAlert color="#007AFF" />}
+					header={selectedAlert === null ? t('alerts.modaltitle') : selectedAlert.event}
+					goBackHeader={selectedAlert ? true : false}
+					goBackOnPress={() => setSelectedAlert(null)}
 					onClose={() => {
 						setShowAlertModal(false);
 						setSelectedAlert(null);
 					}}
-					goBackOnPress={() => setSelectedAlert(null)}
-					filteredAlerts={filteredAlerts}
-					selectedAlert={selectedAlert}
-					onPress={(alert) => setSelectedAlert(alert)}
-				/>
+				>
+					<AlertModal
+						onPress={(alert) => setSelectedAlert(alert)}
+						filteredAlerts={filteredAlerts}
+						selectedAlert={selectedAlert}
+					/>
+				</StyledModal>
+				// <AlertModal
+				// 	visible={showAlertModal}
+				// 	onClose={() => {
+				// 		setShowAlertModal(false);
+				// 		setSelectedAlert(null);
+				// 	}}
+				// 	goBackOnPress={() => setSelectedAlert(null)}
+				// 	filteredAlerts={filteredAlerts}
+				// 	selectedAlert={selectedAlert}
+				// 	onPress={(alert) => setSelectedAlert(alert)}
+				// />
 			)}
 		</>
 	);

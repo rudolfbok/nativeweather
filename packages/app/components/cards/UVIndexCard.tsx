@@ -2,10 +2,12 @@ import { useTranslate } from '@tolgee/react';
 import UVScale from 'app/assets/uvscale.png';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
-import { Sun } from 'lucide-react-native';
+import { Droplets, Sun } from 'lucide-react-native';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { DataCard } from './DataCard';
 import { UVIndexModal } from './modals/UVIndexModal';
 
@@ -13,6 +15,8 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
+
 	const MAX_UV = 15;
 	const roundUV = weatherData ? Math.round(data) : 0;
 	const scaleUV = Math.min((roundUV / MAX_UV) * 100, 100);
@@ -29,8 +33,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <UVIndexModal visible={showModal} onClose={() => setShowModal(false)} />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/uvindex') : () => setShowModal(true)}
 			icon={<Sun color="purple" />}
 			title="UV"
 			description={description}
@@ -52,6 +55,18 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 				</View>
 			}
 			data={Math.round(data)}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Sun color="purple" />}
+						header="UV Index"
+						onClose={() => setShowModal(false)}
+					>
+						<UVIndexModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

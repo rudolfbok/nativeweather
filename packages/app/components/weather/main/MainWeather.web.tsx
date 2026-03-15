@@ -120,11 +120,11 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('bg-systemBackground dark:bg-secondarySystemBackground_dark mt-2 rounded-3xl px-5 py-1')}>
+			<View className={clsx('my-1')}>
 				<StyledText type="title">{condition}</StyledText>
 			</View>
 			{showWorldTime && displayTime && (
-				<View className={clsx('mt-1 flex flex-row items-center justify-center')}>
+				<View className={clsx('flex flex-row items-center justify-center')}>
 					<StyledText type="localtime" className={clsx('font-semibold')}>
 						{useLocalTimeNow(weatherData!.location.tzId)}
 					</StyledText>

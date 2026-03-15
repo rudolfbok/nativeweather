@@ -1,12 +1,13 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 export const NO2Detail = () => {
 	const { t } = useTranslate('weather');
+
 	const NO2Values = [
 		{
 			name: t('airquality.value.0'),

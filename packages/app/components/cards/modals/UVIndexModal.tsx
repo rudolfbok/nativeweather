@@ -1,19 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { clsx } from 'clsx';
-import { Sun } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
+import { View } from 'react-native';
 
-export const UVIndexModal = ({
-	visible,
-	onClose,
-}: {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-}) => {
+export const UVIndexModal = () => {
 	const { t } = useTranslate('weather');
 
 	const uvIndexValues = [
@@ -50,18 +42,16 @@ export const UVIndexModal = ({
 	];
 
 	return (
-		<StyledModal visible={visible} icon={<Sun color="purple" size={26} />} header="UV Index" onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<ContentRow title={t('uvindex.radiation.title')}>
-					<StyledText type="body">{t('uvindex.radiation.description')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('uvindex.index.title')}>
-					<StyledText type="body">{t('uvindex.index.description')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('uvindex.index.values')}>
-					<ValuesList values={uvIndexValues} />
-				</ContentRow>
-			</View>
-		</StyledModal>
+		<View className={clsx('gap-2')}>
+			<ContentRow title={t('uvindex.radiation.title')}>
+				<StyledText type="body">{t('uvindex.radiation.description')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('uvindex.index.title')}>
+				<StyledText type="body">{t('uvindex.index.description')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('uvindex.index.values')}>
+				<ValuesList values={uvIndexValues} />
+			</ContentRow>
+		</View>
 	);
 };

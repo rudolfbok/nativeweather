@@ -51,12 +51,12 @@ export const SettingsItem = ({
 	};
 
 	return (
-		<Pressable
+		<StyledPressable
 			onPress={Platform.OS === 'web' ? (variant === 'check' || variant === 'link' ? onPress : showModal) : onPress}
 			className={clsx(
 				'select-none px-4 pt-4',
-				'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
-				'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark'
+
+				variant === 'toggle' && 'hover:!bg-transparent active:!bg-transparent'
 			)}
 		>
 			<View
@@ -74,6 +74,6 @@ export const SettingsItem = ({
 				</View>
 				<RightElement />
 			</View>
-		</Pressable>
+		</StyledPressable>
 	);
 };

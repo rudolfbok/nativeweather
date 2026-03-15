@@ -1,20 +1,13 @@
 import { useTranslate } from '@tolgee/react';
 import { Accordion } from 'app/components/common/accordion/Accordion';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
-import { Snowflake } from 'lucide-react-native';
-import { GestureResponderEvent } from 'react-native';
+import clsx from 'clsx';
+import { View } from 'react-native';
 
-export const SnowModal = ({
-	visible,
-	onClose,
-}: {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-}) => {
+export const SnowModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const switchUnits = (cm: string, inches: string) => (currentUnits === 'metric' ? cm + 'cm' : inches + 'in');
@@ -76,7 +69,7 @@ export const SnowModal = ({
 	];
 
 	return (
-		<StyledModal visible={visible} icon={<Snowflake color="#3796B8" />} header={t('snow.title')} onClose={onClose}>
+		<View className={clsx('gap-2')}>
 			<ContentRow title={t('snow.chance.title')}>
 				<StyledText type="body">{t('snow.chance.description')}</StyledText>
 			</ContentRow>
@@ -89,6 +82,6 @@ export const SnowModal = ({
 			<Accordion title={t('snow.snowfall.values')}>
 				<ValuesList values={snowPrecipValues} valueColor="!text-[#3796B8]" showIndex={false} />
 			</Accordion>
-		</StyledModal>
+		</View>
 	);
 };

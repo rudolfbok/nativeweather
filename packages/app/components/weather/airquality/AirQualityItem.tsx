@@ -19,6 +19,7 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 			onPress={onPress}
 			className={clsx('native:w-[48%] aspect-square justify-between rounded-3xl p-4 md:aspect-auto md:h-40')}
 			style={{ height: 170, aspectRatio: 1, padding: 16, flexBasis: '48%', justifyContent: 'space-between' }}
+			liquidGlass={true}
 		>
 			<View>
 				<StyledText type="title">{item}</StyledText>

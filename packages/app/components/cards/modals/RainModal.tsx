@@ -1,20 +1,13 @@
 import { useTranslate } from '@tolgee/react';
 import { Accordion } from 'app/components/common/accordion/Accordion';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
-import { CloudRain } from 'lucide-react-native';
-import { GestureResponderEvent } from 'react-native';
+import clsx from 'clsx';
+import { View } from 'react-native';
 
-export const RainModal = ({
-	visible,
-	onClose,
-}: {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-}) => {
+export const RainModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const switchUnits = (mm: string, inches: string) => (currentUnits === 'metric' ? mm + 'mm' : inches + 'in');
@@ -76,7 +69,7 @@ export const RainModal = ({
 	];
 
 	return (
-		<StyledModal visible={visible} icon={<CloudRain color="#2793FF" />} header={t('rain.title')} onClose={onClose}>
+		<View className={clsx('gap-2')}>
 			<ContentRow title={t('rain.chance.title')}>
 				<StyledText type="body">{t('rain.chance.description')}</StyledText>
 			</ContentRow>
@@ -89,6 +82,6 @@ export const RainModal = ({
 			<Accordion title={t('rain.rainfall.values')}>
 				<ValuesList values={rainPrecipValues} valueColor="!text-[#2793FF]" showIndex={false} />
 			</Accordion>
-		</StyledModal>
+		</View>
 	);
 };

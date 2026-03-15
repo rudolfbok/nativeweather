@@ -1,20 +1,12 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { useStorageString } from 'app/storage/useStorageString';
-import { CircleGauge } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
 import { clsx } from 'clsx';
+import { View } from 'react-native';
 
-export const PressureModal = ({
-	visible,
-	onClose,
-}: {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-}) => {
+export const PressureModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const switchUnits = (hectopascals: string, inchesofmercury: string) =>
@@ -78,20 +70,13 @@ export const PressureModal = ({
 	];
 
 	return (
-		<StyledModal
-			visible={visible}
-			icon={<CircleGauge color="#5D7987" size={26} />}
-			header={t('pressure.title')}
-			onClose={onClose}
-		>
-			<View className={clsx('gap-2')}>
-				<ContentRow title={t('pressure.barometricscale.title')}>
-					<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('pressure.barometricscale.values')}>
-					<ValuesList values={barometricScaleValues} showIndex={true} />
-				</ContentRow>
-			</View>
-		</StyledModal>
+		<View className={clsx('gap-2')}>
+			<ContentRow title={t('pressure.barometricscale.title')}>
+				<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('pressure.barometricscale.values')}>
+				<ValuesList values={barometricScaleValues} showIndex={true} />
+			</ContentRow>
+		</View>
 	);
 };

@@ -1,4 +1,5 @@
-import { GlassColorScheme, GlassStyle, GlassView } from 'expo-glass-effect';
+import clsx from 'clsx';
+import { GlassColorScheme, GlassView } from 'expo-glass-effect';
 import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {
@@ -7,29 +8,44 @@ interface StyledPressableProps {
 	tintColor?: string;
 	children: React.ReactNode;
 	className?: string;
-	glassEffectStyle?: GlassStyle;
 	colorScheme?: GlassColorScheme;
+	liquidGlass?: boolean;
 }
 
 export const StyledPressable = ({
 	colorScheme,
-	glassEffectStyle,
 	tintColor,
 	style,
+	className,
 	onPress,
 	children,
+	liquidGlass = false,
 }: StyledPressableProps) => {
-	return (
-		<Pressable onPress={onPress}>
-			<GlassView
-				style={{ borderRadius: 24, ...style }}
-				isInteractive={true}
-				tintColor={tintColor}
-				glassEffectStyle={glassEffectStyle}
-				colorScheme={colorScheme}
+	if (liquidGlass) {
+		return (
+			<Pressable onPress={onPress}>
+				<GlassView
+					style={{ borderRadius: 24, ...style }}
+					isInteractive={true}
+					tintColor={tintColor}
+					colorScheme={colorScheme}
+				>
+					{children}
+				</GlassView>
+			</Pressable>
+		);
+	} else {
+		return (
+			<Pressable
+				onPress={onPress}
+				className={clsx(
+					'bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
+					'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',
+					className
+				)}
 			>
 				{children}
-			</GlassView>
-		</Pressable>
-	);
+			</Pressable>
+		);
+	}
 };

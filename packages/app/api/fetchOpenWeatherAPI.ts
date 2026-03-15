@@ -1,7 +1,6 @@
 import { fetchLocation } from './fetchWeatherAPI';
 
-const API_KEY = 'REDACTED_API_KEY';
-const BASE_URL = 'https://api.openweathermap.org';
+const BASE_URL = 'https://my-fetch-openweather-proxy.rudolf-bok-account.workers.dev';
 
 export const fetchOpenWeatherAPI = async (query: string | number[]) => {
 	try {
@@ -17,7 +16,7 @@ export const fetchOpenWeatherAPI = async (query: string | number[]) => {
 
 		const { name, region, country, lat, lon } = locationData[0];
 
-		const weatherUrl = `${BASE_URL}/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&exclude=minutely&lang=en`;
+		const weatherUrl = `${BASE_URL}/?lat=${lat}&lon=${lon}`;
 		const weatherResponse = await fetch(weatherUrl);
 
 		if (!weatherResponse.ok) {

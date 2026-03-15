@@ -21,6 +21,7 @@
 		"react-native": "0.81.5"
 	},
 	"dependencies": {
+		"@emailjs/react-native": "^5.1.0",
 		"@react-google-maps/api": "^2.20.8",
 		"@tolgee/format-icu": "^6.2.7",
 		"@tolgee/react": "^6.2.7",

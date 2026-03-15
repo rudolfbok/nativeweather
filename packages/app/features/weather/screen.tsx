@@ -97,30 +97,22 @@ export const WeatherFeature = () => {
 	}
 
 	return (
-		<LinearGradient
-			colors={['#3397BE', '#7ED0DD', '#83D6DF']} // gradient colors
-			start={{ x: 0, y: 0 }}
-			end={{ x: 0, y: 1 }}
-			style={{ flex: 1 }}
+		<Animated.ScrollView
+			onScroll={scrollHandler}
+			contentInsetAdjustmentBehavior="automatic"
+			refreshControl={
+				<RefreshControl
+					tintColor="blue"
+					refreshing={refreshing}
+					onRefresh={onRefresh}
+					progressViewOffset={insets.top + 100}
+				/>
+			}
 		>
-			<Animated.ScrollView
-				onScroll={scrollHandler}
-				contentInsetAdjustmentBehavior="automatic"
-				refreshControl={
-					<RefreshControl
-						tintColor="blue"
-						refreshing={refreshing}
-						onRefresh={onRefresh}
-						progressViewOffset={insets.top + 100}
-					/>
-				}
-			>
-				<HeroWeather />
-				{/* Optional: add WeatherLandscape absolutely behind if needed */}
-				{/* <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1000, zIndex: -1 }}>
-          <WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
-        </View> */}
-			</Animated.ScrollView>
-		</LinearGradient>
+			<View style={{ position: 'absolute', top: -540, left: 0, right: 0, height: 1000, zIndex: -1 }}>
+				<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
+			</View>
+			<HeroWeather />
+		</Animated.ScrollView>
 	);
 };

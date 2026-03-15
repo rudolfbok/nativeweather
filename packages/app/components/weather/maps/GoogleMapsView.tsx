@@ -14,7 +14,7 @@ import { mapColorTheme } from './GoogleMapsTheme';
 import { TemperatureInfo } from './TemperatureInfo';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 
-export const GoogleMapsView = ({ className }: { className?: string }) => {
+export const GoogleMapsView = ({ className, gestureHandling }: { className?: string; gestureHandling?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const [showLegend, setShowLegend] = useState(false);
@@ -33,7 +33,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 	const mapOptions = {
 		disableDefaultUI: true,
 		styles: mapColorTheme(layer),
-		// gestureHandling: 'cooperative',
+		gestureHandling: gestureHandling,
 	};
 
 	useEffect(() => {
@@ -76,7 +76,7 @@ export const GoogleMapsView = ({ className }: { className?: string }) => {
 
 		map.overlayMapTypes.clear();
 		map.overlayMapTypes.insertAt(0, weatherTile);
-		map.setOptions({ gestureHandling: 'cooperative' });
+		// map.setOptions({ gestureHandling: 'cooperative' });
 
 		return () => {
 			map.overlayMapTypes.clear();

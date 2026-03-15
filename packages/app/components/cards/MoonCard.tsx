@@ -4,7 +4,9 @@ import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
 import { clsx } from 'clsx';
 import { Moon } from 'lucide-react-native';
 import { JSX, useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { FirstQuarter } from '../icons/moonphases/FirstQuarter';
 import { FullMoon } from '../icons/moonphases/FullMoon';
@@ -29,6 +31,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
 	const [currentLanguage] = useStorageString('currentLang');
+	const router = useRouter();
 
 	const moonPhaseComponents: Record<string, JSX.Element> = {
 		'New Moon': <NewMoon />,
@@ -54,20 +57,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={
-				showModal && (
-					<MoonModal
-						visible={showModal}
-						onClose={() => setShowModal(false)}
-						phase={phase}
-						illumination={illumination}
-						isMoonUp={isMoonUp}
-						moonrise={moonrise}
-						moonset={moonset}
-					/>
-				)
-			}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/moon') : () => setShowModal(true)}
 			icon={<Moon color="#753A87" />}
 			title={t('moon.title')}
 			data={getLocalePhase[phase]}
@@ -89,6 +79,24 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 						</StyledText>
 					</View>
 				</View>
+			}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Moon color="#753A87" />}
+						header={t('moon.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<MoonModal
+							phase={phase}
+							illumination={illumination}
+							isMoonUp={isMoonUp}
+							moonrise={moonrise}
+							moonset={moonset}
+						/>
+					</StyledModal>
+				)
 			}
 		/>
 	);

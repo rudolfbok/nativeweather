@@ -29,7 +29,7 @@ The app uses React Native Web to share components with the mobile app. Both HTML
 ```tsx
 export default function Page() {
 	return (
-		<div className="container">
+		<div className={clsx('container')}>
 			<Button title="Shared Component" onPress={() => {}} />
 		</div>
 	);

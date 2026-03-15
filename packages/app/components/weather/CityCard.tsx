@@ -69,10 +69,10 @@ export const CityCard = ({
 				padding: 16,
 			}}
 			tintColor={`${tintColor}4D`}
-			glassEffectStyle={glassEffectStyle}
+			liquidGlass={true}
 			colorScheme={colorScheme}
 		>
-			<View className="flex-grow">
+			<View className={clsx('flex-grow')}>
 				<StyledText type="subtitle" className={clsx('truncate font-semibold')} numberOfLines={1} ellipsizeMode="tail">
 					{city}
 				</StyledText>

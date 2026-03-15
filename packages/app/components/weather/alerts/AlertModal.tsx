@@ -1,48 +1,38 @@
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { AlertDetail } from './AlertDetail';
 import { AlertItem } from './AlertItem';
-import { CircleAlert } from 'lucide-react-native';
-import { useTranslate } from '@tolgee/react';
-import { WeatherAlert } from 'app/types/weatherAlert';
+import { useRouter } from 'solito/navigation';
 
 interface AlertModalProps {
-	visible: boolean;
-	onClose: () => void;
-	goBackOnPress: () => void;
 	onPress: (alert: WeatherAlert) => void;
-	filteredAlerts: WeatherAlert[];
-	selectedAlert: WeatherAlert | null;
+	filteredAlerts?: WeatherAlert[];
+	selectedAlert?: WeatherAlert | null;
 }
 
-export const AlertModal = ({
-	visible,
-	onClose,
-	onPress,
-	goBackOnPress,
-	filteredAlerts,
-	selectedAlert,
-}: AlertModalProps) => {
+export const AlertModal = ({ onPress, filteredAlerts, selectedAlert }: AlertModalProps) => {
 	const { t } = useTranslate('weather');
+	const router = useRouter();
+
 	return (
-		<StyledModal
-			visible={visible}
-			icon={selectedAlert ? undefined : <CircleAlert color="#007AFF" />}
-			header={selectedAlert === null ? t('alerts.modaltitle') : selectedAlert.event}
-			goBackHeader={selectedAlert ? true : false}
-			goBackOnPress={goBackOnPress}
-			onClose={onClose}
-		>
+		<>
 			<View>
 				{selectedAlert === null && (
 					<View className={clsx('gap-4')}>
 						{filteredAlerts.map((alert, index) => (
-							<AlertItem key={index} onPress={() => onPress(alert)} title={alert.event} area={alert.areas} />
+							<AlertItem
+								key={index}
+								onPress={Platform.OS === 'ios' ? () => router.push('/modals/alerts/detail') : () => onPress(alert)}
+								title={alert.event}
+								area={alert.areas}
+							/>
 						))}
 					</View>
 				)}
+
 				{selectedAlert && (
 					<AlertDetail
 						severity={selectedAlert.severity}
@@ -56,6 +46,6 @@ export const AlertModal = ({
 			<StyledText type="bodysecondary" className={clsx('mt-4 text-center')}>
 				{t('alerts.disclaimer')}
 			</StyledText>
-		</StyledModal>
+		</>
 	);
 };

@@ -1,8 +1,9 @@
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
+import { AboutButton } from 'app/components/settings/items/AboutButton';
 import { AQIButton } from 'app/components/settings/items/AQIButton';
 import { CompassButton } from 'app/components/settings/items/CompassButton';
-import { AboutButton } from 'app/components/settings/items/AboutButton';
 import { LanguageButton } from 'app/components/settings/items/LanguageButton';
 import { LocalWeatherToggle } from 'app/components/settings/items/LocalWeatherToggle';
 import { SendFeedbackButton } from 'app/components/settings/items/SendFeedbackButton';
@@ -11,27 +12,24 @@ import { ThemeButton } from 'app/components/settings/items/ThemeButton';
 import { UnitsButton } from 'app/components/settings/items/UnitsButton';
 import { WorldTimeToggle } from 'app/components/settings/items/WorldTimeToggle';
 import { clsx } from 'clsx';
-import { Platform, View } from 'react-native';
-import { SourceButton } from 'app/components/settings/items/SourceButton';
-import pkg from '../../../../apps/web/package.json';
 import Constants from 'expo-constants';
+import { Platform, View } from 'react-native';
+import pkg from '../../../../apps/web/package.json';
 
-export const SettingsFeature = ({ title }: { title: string }) => {
+export const SettingsFeature = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+	const { t } = useTranslate('settings');
 
 	return (
 		<View className={clsx('px-4 pb-4')}>
-			<StyledText type="screentitle" className={clsx('mb-3')}>
-				{title}
+			<StyledText type="screentitle" className={clsx('native:hidden mb-3')}>
+				{t('settings')}
 			</StyledText>
 			<View className={clsx('gap-4')}>
 				<RoundView>
 					<ThemeButton />
 					<LanguageButton />
 				</RoundView>
-				{/* <RoundView>
-					<SourceButton />
-				</RoundView> */}
 				<RoundView>
 					<TemperatureButton />
 					<UnitsButton />

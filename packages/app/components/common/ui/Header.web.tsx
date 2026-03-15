@@ -62,7 +62,7 @@ export const Header = () => {
 					/>
 				</View>
 				<ScrollView className={clsx('flex-1')} contentContainerClassName={clsx('pt-10')}>
-					<SettingsFeature title={t('settings')} />
+					<SettingsFeature />
 				</ScrollView>
 			</View>
 			{openDrawer && (

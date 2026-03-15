@@ -14,6 +14,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastModal } from './DailyForecastModal';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { DaysToggle } from './DaysToggle';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -37,11 +39,26 @@ export const DailyForecast = () => {
 		return date.toLocaleString(tolgee.getLanguage(), { weekday: length });
 	};
 
+	const formatDate = (dateString: string) => {
+		const date = new Date(dateString);
+
+		return date.toLocaleDateString(tolgee.getLanguage(), {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+		});
+	};
+
+	const getDayNameSecond = (date: string, short: boolean) => {
+		return new Date(date).toLocaleString(tolgee.getLanguage(), {
+			weekday: short ? 'short' : 'long',
+		});
+	};
+
 	return (
 		<>
-			<RoundView className={clsx('flex w-full')}>
+			<RoundView className={clsx('flex w-full')} liquidGlass={true}>
 				<CardHeader icon={<Calendar />} header={t('dailyforecast.title')} className={clsx('web:px-4 mb-1 px-4 pt-4')} />
-
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 					<Pressable
 						key={index}
@@ -53,11 +70,9 @@ export const DailyForecast = () => {
 							index === items.length - 1 && 'rounded-bl-3xl rounded-br-3xl'
 						)}
 						style={{
-							// paddingVertical: 6,
 							alignItems: 'center',
 							justifyContent: 'center',
 						}}
-						// glassEffectStyle="none"
 					>
 						<View
 							className={clsx(
@@ -105,16 +120,21 @@ export const DailyForecast = () => {
 						</View>
 					</Pressable>
 				))}
+				{selectedDay && (
+					<StyledModal
+						visible={Boolean(selectedDay)}
+						ref={scrollRef}
+						header={getDayNameSecond(selectedDay.date, false)}
+						subHeader={formatDate(selectedDay.date)}
+						onClose={() => setSelectedDay(null)}
+						daysToggle={
+							<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={(day) => setSelectedDay(day)} />
+						}
+					>
+						<DailyForecastModal day={selectedDay} />
+					</StyledModal>
+				)}
 			</RoundView>
-			{selectedDay && (
-				<DailyForecastModal
-					visible={Boolean(selectedDay)}
-					day={selectedDay}
-					days={weatherData.forecast.forecastday}
-					onSelectDay={setSelectedDay}
-					onClose={() => setSelectedDay(null)}
-				/>
-			)}
 		</>
 	);
 };

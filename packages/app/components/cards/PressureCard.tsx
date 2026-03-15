@@ -3,6 +3,9 @@ import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { CircleGauge } from 'lucide-react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { DataCard } from './DataCard';
 import { PressureModal } from './modals/PressureModal';
 
@@ -15,6 +18,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	const [currentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
 
 	const display = useSwitchMetrics({
 		metric: `${Math.round(pressureMb)}hPa`,
@@ -45,12 +49,23 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <PressureModal visible={showModal} onClose={() => setShowModal(false)} />}
-			icon={<CircleGauge color="#5D7987" />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/pressure') : () => setShowModal(true)}
+			icon={<CircleGauge color="#737373" />}
 			title={t('pressure.title')}
 			description={description}
 			data={display}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<CircleGauge color="#737373" />}
+						header={t('pressure.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<PressureModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

@@ -3,6 +3,9 @@ import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { Eye } from 'lucide-react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { DataCard } from './DataCard';
 import { VisibilityModal } from './modals/VisibilityModal';
 
@@ -15,6 +18,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
 
 	const display = useSwitchMetrics({
 		metric: `${Math.round(visKm)}km`,
@@ -43,12 +47,23 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={showModal && <VisibilityModal visible={showModal} onClose={() => setShowModal(false)} />}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/visibility') : () => setShowModal(true)}
 			icon={<Eye color="#39C1C7" />}
 			title={t('visibility.title')}
 			description={description}
 			data={display}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Eye color="#39C1C7" />}
+						header={t('visibility.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<VisibilityModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

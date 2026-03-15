@@ -7,6 +7,8 @@ interface RoundViewProps {
 	children: React.ReactNode;
 	style?: any;
 	colorScheme?: any;
+	liquidGlass?: boolean;
+	glassEffectStyle?: any;
 }
 
 export const RoundView = ({ className, children }: RoundViewProps) => {

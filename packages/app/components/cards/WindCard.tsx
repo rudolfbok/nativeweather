@@ -5,7 +5,9 @@ import { getDirection } from 'app/utils/mappings/mapDirections';
 import { clsx } from 'clsx';
 import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { WindArrowIcon } from '../icons/WindArrowIcon';
 import { DataCard } from './DataCard';
@@ -16,16 +18,16 @@ interface WindCardProps {
 	windMil: number;
 	gustKm?: number;
 	gustMil?: number;
-	dir?: string;
 	degree?: number;
 	details: boolean;
 	currentWind: boolean;
 }
 
-export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, details, currentWind }: WindCardProps) => {
+export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, currentWind }: WindCardProps) => {
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 	const { t } = useTranslate('weather');
+	const router = useRouter();
 
 	const displaySpeed = useSwitchMetrics({
 		metric: `${Math.round(windKm)}km/h`,
@@ -66,19 +68,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
-			modal={
-				showModal && (
-					<WindModal
-						visible={showModal}
-						currentWind={currentWind}
-						onClose={() => setShowModal(false)}
-						degree={degree ?? 0}
-						speed={displaySpeed}
-						gust={displayGust}
-					/>
-				)
-			}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/wind') : () => setShowModal(true)}
 			icon={<Wind color="gray" />}
 			title={t('wind.title')}
 			description={description}
@@ -92,6 +82,18 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, dir, degree, detail
 				)
 			}
 			data={displaySpeed}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Wind color="gray" />}
+						header={t('wind.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<WindModal currentWind={currentWind} degree={degree ?? 0} speed={displaySpeed} gust={displayGust} />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

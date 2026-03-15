@@ -24,13 +24,14 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 					<StyledPressable
 						key={day.date}
 						onPress={() => onSelectDay(day)}
-						className={clsx('flex-1 items-center justify-center rounded-2xl py-2')}
+						className={clsx('flex-1 items-center justify-center rounded-3xl py-2')}
 						style={{
 							paddingVertical: 8,
 							display: 'flex',
 							alignItems: 'center',
 							width: 45,
 						}}
+						liquidGlass={true}
 					>
 						<StyledText type="body" className={clsx('font-semibold')}>
 							{getDayName(day.date, true)}

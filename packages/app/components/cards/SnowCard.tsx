@@ -3,6 +3,9 @@ import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { Snowflake } from 'lucide-react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { SnowModal } from './modals/SnowModal';
@@ -17,6 +20,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
 
 	const display = useSwitchMetrics({
 		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
@@ -38,9 +42,8 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 
 	return (
 		<DataCard
-			onPress={() => setShowModal(true)}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/snow') : () => setShowModal(true)}
 			icon={<Snowflake color="#3796B8" />}
-			modal={showModal && <SnowModal visible={showModal} onClose={() => setShowModal(false)} />}
 			title={t('snow.title')}
 			description={description}
 			extraContent={
@@ -51,6 +54,18 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 				)
 			}
 			data={snowChance + '%'}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<Snowflake color="#3796B8" />}
+						header={t('snow.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<SnowModal />
+					</StyledModal>
+				)
+			}
 		/>
 	);
 };

@@ -25,6 +25,7 @@ export default function RootLayout() {
 				<View className={clsx('absolute inset-0')}>
 					<Stack>
 						<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+						<Stack.Screen name="modals" options={{ headerShown: false, presentation: 'modal' }} />
 					</Stack>
 				</View>
 			</GestureHandlerRootView>

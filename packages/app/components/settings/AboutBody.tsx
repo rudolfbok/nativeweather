@@ -9,8 +9,6 @@ import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { Linking, Platform, Pressable, View } from 'react-native';
 
-import { GlassView } from 'expo-glass-effect';
-
 interface DataSourceItemProps {
 	name: string;
 	logo: ReactNode;
@@ -71,7 +69,7 @@ export const AboutBody = () => {
 	return (
 		<View className={clsx('gap-2')}>
 			<RoundView className={clsx('p-4')} style={{ padding: 16 }}>
-				<StyledText type="body">{t('about.description')}</StyledText>
+				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</RoundView>
 			<StyledText type="title">{t('datasource.title')}</StyledText>
 			<View

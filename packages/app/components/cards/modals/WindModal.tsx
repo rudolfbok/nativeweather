@@ -1,8 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { Separator } from 'app/components/common/ui/Separator';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { WindDirectionIcon } from 'app/components/icons/WindDirectionIcon';
@@ -10,18 +8,16 @@ import { useStorageString } from 'app/storage/useStorageString';
 import { getDirection } from 'app/utils/mappings/mapDirections';
 import { clsx } from 'clsx';
 import { Gauge, Wind } from 'lucide-react-native';
-import { GestureResponderEvent, View } from 'react-native';
+import { View } from 'react-native';
 
 interface WindModalProps {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-	currentWind: boolean;
-	degree: number;
-	speed: number | string;
-	gust: number | string;
+	currentWind?: boolean;
+	degree?: number;
+	speed?: number | string;
+	gust?: number | string;
 }
 
-export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust }: WindModalProps) => {
+export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 
@@ -138,16 +134,14 @@ export const WindModal = ({ visible, onClose, currentWind, degree, speed, gust }
 	};
 
 	return (
-		<StyledModal visible={visible} icon={<Wind color="gray" />} header={t('wind.title')} onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<RenderCurrentWind />
-				<ContentRow title={t('wind.beaufortscale')}>
-					<StyledText type="body">{t('wind.description')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('wind.values')}>
-					<ValuesList values={beaufortScaleValues} showIndex={true} />
-				</ContentRow>
-			</View>
-		</StyledModal>
+		<View className={clsx('gap-2')}>
+			<RenderCurrentWind />
+			<ContentRow title={t('wind.beaufortscale')}>
+				<StyledText type="body">{t('wind.description')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('wind.values')}>
+				<ValuesList values={beaufortScaleValues} showIndex={true} />
+			</ContentRow>
+		</View>
 	);
 };

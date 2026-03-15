@@ -1,7 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { ValuesList } from 'app/components/common/ui/ValuesList';
 import { FirstQuarter } from 'app/components/icons/moonphases/FirstQuarter';
 import { FullMoon } from 'app/components/icons/moonphases/FullMoon';
@@ -15,21 +14,18 @@ import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
 import { clsx } from 'clsx';
-import { Moon } from 'lucide-react-native';
 import { JSX } from 'react';
-import { GestureResponderEvent, View } from 'react-native';
+import { View } from 'react-native';
 
 interface MoonModalProps {
-	visible: boolean;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-	phase: string;
-	illumination: number;
-	isMoonUp: 0 | 1;
-	moonrise: string;
-	moonset: string;
+	phase?: string;
+	illumination?: number;
+	isMoonUp?: 0 | 1;
+	moonrise?: string;
+	moonset?: string;
 }
 
-export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moonrise, moonset }: MoonModalProps) => {
+export const MoonModal = ({ phase, illumination, isMoonUp, moonrise, moonset }: MoonModalProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [currentLanguage] = useStorageString('currentLang');
@@ -102,33 +98,31 @@ export const MoonModal = ({ visible, onClose, phase, illumination, isMoonUp, moo
 	};
 
 	return (
-		<StyledModal visible={visible} icon={<Moon color="#753A87" />} header={t('moon.title')} onClose={onClose}>
-			<View className={clsx('gap-2')}>
-				<ContentRow title={t('moon.now')} className={clsx('max-xl:hidden')}>
-					<View className={clsx('flex-row items-center gap-4')}>
-						{moonPhaseComponents[phase]}
-						<View className={clsx('gap-1')}>
-							<StyledText type="body">
-								{t('moon.illumination')} {illumination}%
-							</StyledText>
-							<StyledText type="body">
-								{isMoonUp === 0
-									? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
-									: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
-							</StyledText>
-							<StyledText type="subtitle">
-								{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moonPhase]}
-							</StyledText>
-						</View>
+		<View className={clsx('gap-2')}>
+			<ContentRow title={t('moon.now')} className={clsx('max-xl:hidden')}>
+				<View className={clsx('flex-row items-center gap-4')}>
+					{moonPhaseComponents[phase]}
+					<View className={clsx('gap-1')}>
+						<StyledText type="body">
+							{t('moon.illumination')} {illumination}%
+						</StyledText>
+						<StyledText type="body">
+							{isMoonUp === 0
+								? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
+								: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
+						</StyledText>
+						<StyledText type="subtitle">
+							{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moonPhase]}
+						</StyledText>
 					</View>
-				</ContentRow>
-				<ContentRow title={t('moon.cycle')}>
-					<StyledText type="body">{t('moon.description')}</StyledText>
-				</ContentRow>
-				<ContentRow title={t('moon.phase')}>
-					<ValuesList values={moonPhaseItems} showIndex={null} />
-				</ContentRow>
-			</View>
-		</StyledModal>
+				</View>
+			</ContentRow>
+			<ContentRow title={t('moon.cycle')}>
+				<StyledText type="body">{t('moon.description')}</StyledText>
+			</ContentRow>
+			<ContentRow title={t('moon.phase')}>
+				<ValuesList values={moonPhaseItems} showIndex={null} />
+			</ContentRow>
+		</View>
 	);
 };

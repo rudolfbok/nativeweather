@@ -18,6 +18,7 @@
 			"error": "Nepodařilo se načíst data o počasí pro hledané město"
 		},
 		"searchbar": "Zadejte město nebo souřadnice..",
+		"searchbar.native": "Hledat..",
 		"title": "Hledání",
 		"url": {
 			"error": "Nenašli jsme město, které jste hledali. \nZkontrolujte prosím pravopis nebo přidejte název země a zkuste to znovu."
