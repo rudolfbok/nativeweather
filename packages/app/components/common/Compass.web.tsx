@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import { CompassIcon } from '../icons/settings/CompassIcon';
 import { StyledButton } from './styled/StyledButton';
 import { StyledText } from './styled/StyledText';
+import { clsx } from 'clsx';
 
 export default function Compass() {
 	const { t } = useTranslate('weather');
@@ -75,7 +76,9 @@ export default function Compass() {
 							{Array.from({ length: 24 }).map((_, i) => (
 								<div
 									key={i}
-									className={clsx('absolute left-[100px] top-[119px] h-0.5 w-[41px] border border-dotted border-black dark:border-white')}
+									className={clsx(
+										'absolute left-[100px] top-[119px] h-0.5 w-[41px] border border-dotted border-black dark:border-white'
+									)}
 									style={{
 										transform: `rotate(${i * 15}deg) translateX(100px)`,
 									}}
@@ -83,7 +86,9 @@ export default function Compass() {
 							))}
 
 							<span
-								className={clsx('bg-background absolute left-1/2 top-[2px] -translate-x-1/2 text-lg dark:bg-black dark:text-white')}
+								className={clsx(
+									'bg-background absolute left-1/2 top-[2px] -translate-x-1/2 text-lg dark:bg-black dark:text-white'
+								)}
 								style={{
 									transform: `translateX(-50%) rotate(${-compassRotation}deg)`,
 								}}
@@ -91,7 +96,9 @@ export default function Compass() {
 								0
 							</span>
 							<span
-								className={clsx('bg-background absolute bottom-[3px] left-1/2 -translate-x-1/2 text-lg dark:bg-black dark:text-white')}
+								className={clsx(
+									'bg-background absolute bottom-[3px] left-1/2 -translate-x-1/2 text-lg dark:bg-black dark:text-white'
+								)}
 								style={{
 									transform: `translateX(-50%) rotate(${-compassRotation}deg)`,
 								}}
@@ -99,7 +106,9 @@ export default function Compass() {
 								180
 							</span>
 							<span
-								className={clsx('bg-background absolute left-[3px] top-1/2 -translate-y-1/2 text-lg dark:bg-black dark:text-white')}
+								className={clsx(
+									'bg-background absolute left-[3px] top-1/2 -translate-y-1/2 text-lg dark:bg-black dark:text-white'
+								)}
 								style={{
 									transform: `translateY(-50%) rotate(${-compassRotation}deg)`,
 								}}
@@ -107,7 +116,9 @@ export default function Compass() {
 								270
 							</span>
 							<span
-								className={clsx('bg-background absolute right-[10px] top-1/2 -translate-y-1/2 text-lg dark:bg-black dark:text-white')}
+								className={clsx(
+									'bg-background absolute right-[10px] top-1/2 -translate-y-1/2 text-lg dark:bg-black dark:text-white'
+								)}
 								style={{
 									transform: `translateY(-50%) rotate(${-compassRotation}deg)`,
 								}}
@@ -121,8 +132,16 @@ export default function Compass() {
 										transform: `rotate(${heading ?? 0}deg)`,
 									}}
 								/>
-								<div className={clsx('absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600')} />
-								<div className={clsx('absolute inset-0 h-full w-full rounded-full border border-black bg-zinc-500/10 font-serif text-xl font-bold text-black dark:border-white')}>
+								<div
+									className={clsx(
+										'absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600'
+									)}
+								/>
+								<div
+									className={clsx(
+										'absolute inset-0 h-full w-full rounded-full border border-black bg-zinc-500/10 font-serif text-xl font-bold text-black dark:border-white'
+									)}
+								>
 									<span
 										className={clsx('absolute left-1/2 top-0 -translate-x-1/2 dark:text-white')}
 										style={{

@@ -43,25 +43,25 @@ export const AboutBody = () => {
 		{
 			name: 'Weather API',
 			logo: <WeatherAPILogo />,
-			description: t('datasource.weatherapi'),
+			description: t('about.weatherapi'),
 			url: 'https://www.weatherapi.com/',
 		},
 		{
 			name: 'OpenMeteo API',
 			logo: <OpenMeteoLogo />,
-			description: t('datasource.openmeteo'),
+			description: t('about.openmeteo'),
 			url: 'https://open-meteo.com/',
 		},
 		{
 			name: 'OpenWeather API',
 			logo: <OpenWeatherLogo />,
-			description: t('datasource.openweather'),
+			description: t('about.openweather'),
 			url: 'https://openweathermap.org/',
 		},
 		{
 			name: 'Google Maps Platform API',
 			logo: <GoogleMapsPlatformLogo />,
-			description: t('datasource.googlemaps'),
+			description: t('about.googlemaps'),
 			url: 'https://mapsplatform.google.com/',
 		},
 	];

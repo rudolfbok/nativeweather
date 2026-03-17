@@ -3,6 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SendEmail } from 'app/components/settings/SendEmail';
+import clsx from 'clsx';
 import { MessageCircle } from 'lucide-react-native';
 import { View } from 'react-native';
 
