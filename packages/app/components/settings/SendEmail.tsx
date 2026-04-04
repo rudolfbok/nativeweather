@@ -86,7 +86,7 @@ export const SendEmail = () => {
 				/>
 			</View>
 			<View className={clsx('w-full items-center justify-center')}>
-				<StyledButton onPress={handleSubmit} className="" loading={loading}>
+				<StyledButton onPress={handleSubmit} loading={loading}>
 					{loading ? t('feedback.sending') : t('feedback.button')}
 				</StyledButton>
 			</View>
