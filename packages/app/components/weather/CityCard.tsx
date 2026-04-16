@@ -22,7 +22,6 @@ interface CityCardProps {
 	displayTime: boolean;
 	region: string;
 	tintColor?: string;
-	glassEffectStyle?: any;
 	colorScheme?: GlassColorScheme;
 }
 
@@ -37,7 +36,6 @@ export const CityCard = ({
 	displayTime = true,
 	region,
 	tintColor,
-	glassEffectStyle,
 	colorScheme,
 }: CityCardProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');

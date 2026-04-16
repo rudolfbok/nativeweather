@@ -10,7 +10,7 @@
 		"ios": {
 			"icon": "./assets/images/icon.png",
 			"supportsTablet": true,
-			"bundleIdentifier": "com.anonymous.mobile",
+			"bundleIdentifier": "com.rudyxsides.nativeweather",
 			"infoPlist": {
 				"NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast."
 			}
@@ -20,7 +20,7 @@
 				"foregroundImage": "./assets/images/icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.anonymous.mobile"
+			"package": "com.rudyxsides.nativeweather"
 		},
 		"plugins": [
 			"expo-router",
@@ -33,11 +33,28 @@
 					"backgroundColor": "#007AFF"
 				}
 			],
+			[
+				"expo-widgets",
+				{
+					"bundleIdentifier": "com.rudyxsides.nativeweather",
+					"groupIdentifier": "group.com.rudyxsides.nativeweather",
+					"widgets": [
+						{
+							"name": "NativeWeatherLocalWidget",
+							"displayName": "Local weather",
+							"description": "Home screen widget",
+							"supportedFamilies": ["systemMedium"]
+						}
+					]
+				}
+			],
 			"expo-font",
-			"expo-web-browser"
+			"expo-web-browser",
+			"expo-widgets",
+			"expo-build-properties"
 		],
 		"experiments": {
-			"typedRoutes": true
+			"typedRoutes": false
 		},
 		"extra": {
 			"router": {},

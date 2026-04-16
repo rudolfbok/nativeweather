@@ -19,6 +19,7 @@ export const fetchWeatherAPI = async (query: string | number[]) => {
 		return weatherData;
 	} catch (error) {
 		console.error('Failed to fetch weather data:', error);
+		return { error: error.message || 'An unknown error occurred' };
 	}
 };
 
@@ -35,7 +36,7 @@ export const fetchLocation = async (searchedLocation: string | number[]) => {
 		const locationData = await response.json();
 
 		if (!locationData) {
-			throw new Error('Cant fetch suggestions');
+			throw new Error("Can't fetch suggestions");
 		}
 
 		return locationData;

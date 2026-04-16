@@ -77,7 +77,6 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 								timeZone={weather.location.tzId}
 								region={city.region}
 								tintColor={tintColor}
-								glassEffectStyle="regular"
 								colorScheme="auto"
 							/>
 							{showDeleteCity && (

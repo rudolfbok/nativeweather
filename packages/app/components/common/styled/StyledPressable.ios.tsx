@@ -26,7 +26,7 @@ export const StyledPressable = ({
 			<Pressable onPress={onPress}>
 				<GlassView
 					style={{ borderRadius: 24, ...style }}
-					isInteractive={true}
+					isInteractive={false}
 					tintColor={tintColor}
 					colorScheme={colorScheme}
 				>

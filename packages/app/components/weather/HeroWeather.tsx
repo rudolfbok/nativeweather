@@ -167,12 +167,14 @@ export const HeroWeather = () => {
 						>
 							<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
 						</Pressable>
-						<AlertWeather
-							filteredAlerts={filteredAlerts}
-							alertsLength={alertsLength}
-							desktop="max-lg:hidden"
-							mobile="hidden"
-						/>
+						{Platform.OS === 'web' && (
+							<AlertWeather
+								filteredAlerts={filteredAlerts}
+								alertsLength={alertsLength}
+								desktop="max-lg:hidden"
+								mobile="hidden"
+							/>
+						)}
 					</View>
 					<AlertWeather
 						filteredAlerts={filteredAlerts}

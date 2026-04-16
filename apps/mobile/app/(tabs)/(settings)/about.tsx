@@ -1,4 +1,4 @@
-import { AboutBody } from 'app/components/settings/items/AboutBody';
+import { AboutBody } from 'app/components/settings/AboutBody';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';
 
