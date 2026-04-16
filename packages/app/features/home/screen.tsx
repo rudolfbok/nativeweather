@@ -11,15 +11,44 @@ import { clsx } from 'clsx';
 import { useState } from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import 'app/components/weather/widgets/NativeWeatherLocalWidget';
+import NativeWeatherLocalWidget from 'app/components/weather/widgets/NativeWeatherLocalWidget';
+import { useLocalWeather } from 'app/hooks/useLocalWeather';
+import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
+import { useStorageString } from 'app/storage/useStorageString';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
+import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 
 export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
+	const { localWeatherData } = useLocalWeather();
+	const [currentTemp] = useStorageString('currentTemp');
+	const [currentSource] = useStorageString('currentSource');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
+	const mapConditions = useMapConditions();
 
-	const [openModal, setOpenModal] = useState(false);
+	const localTemp = useSwitchTemp({
+		celsius: localWeatherData.current.tempC,
+		fahrenheit: localWeatherData.current.tempF,
+		currentTemp: currentTemp,
+	});
+
+	NativeWeatherLocalWidget.updateSnapshot({
+		bgColor: weatherLandscapeBg({
+			isDay: localWeatherData.current.isDay,
+			code: localWeatherData.current.condition.code,
+		}),
+		city: localWeatherData.location.name,
+		region: localWeatherData.location.region,
+		temperature: localTemp,
+		condition: mapConditions(localWeatherData.current.condition.code, localWeatherData.current.isDay, currentSource),
+		isDay: localWeatherData.current.isDay,
+		code: localWeatherData.current.condition.code,
+		currentSource: currentSource,
+	});
 
 	return (
 		<View className={clsx('w-full flex-1')}>

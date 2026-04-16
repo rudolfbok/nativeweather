@@ -1,39 +1,42 @@
 {
-	"name": "nativeweather",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"dev": "turbo dev",
-		"build": "turbo build",
-		"lint": "turbo lint",
-		"format": "prettier --write .",
-		"typecheck": "turbo typecheck",
-		"web": "cd apps/web && turbo dev",
-		"mobile": "cd apps/mobile && turbo dev",
-		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
-	},
-	"keywords": [],
-	"author": "",
-	"packageManager": "pnpm@10.26.2",
-	"devDependencies": {
-		"turbo": "^2.7.2"
-	},
-	"pnpm": {
-		"overrides": {
-			"react": "19.2.0",
-			"react-dom": "19.2.0",
-			"react-native": "0.83.4",
-			"react-native-web": "0.21.1",
-			"tailwindcss": "3.4.18"
-		},
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"sharp",
-			"unrs-resolver"
-		]
-	},
-	"dependencies": {
-		"prettier": "^3.7.4"
-	}
+  "name": "nativeweather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "prettier --write .",
+    "typecheck": "turbo typecheck",
+    "web": "cd apps/web && turbo dev",
+    "mobile": "cd apps/mobile && turbo dev",
+    "deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "packageManager": "pnpm@10.26.2",
+  "devDependencies": {
+    "turbo": "^2.7.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.2.0",
+      "react-dom": "19.2.0",
+      "react-native": "0.83.4",
+      "react-native-web": "0.21.1",
+      "tailwindcss": "3.4.18"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
+  "dependencies": {
+    "prettier": "^3.7.4",
+    "expo": "~55.0.15",
+    "react": "19.2.0",
+    "react-native": "0.83.4"
+  }
 }

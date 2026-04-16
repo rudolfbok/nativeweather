@@ -36,7 +36,7 @@
 			[
 				"expo-widgets",
 				{
-					"bundleIdentifier": "com.rudyxsides.nativeweather",
+					"bundleIdentifier": "com.rudyxsides.nativeweather.ExpoWidgetsTarget",
 					"groupIdentifier": "group.com.rudyxsides.nativeweather",
 					"widgets": [
 						{
@@ -50,7 +50,6 @@
 			],
 			"expo-font",
 			"expo-web-browser",
-			"expo-widgets",
 			"expo-build-properties"
 		],
 		"experiments": {

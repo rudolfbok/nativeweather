@@ -2516,7 +2516,7 @@ DEPENDENCIES:
   - ExpoKeepAwake (from `../../../node_modules/expo-keep-awake/ios`)
   - ExpoLinearGradient (from `../../../node_modules/expo-linear-gradient/ios`)
   - ExpoLinking (from `../../../node_modules/expo-linking/ios`)
-  - ExpoLocation (from `../node_modules/expo-location/ios`)
+  - ExpoLocation (from `../../../node_modules/expo-location/ios`)
   - "ExpoLogBox (from `../../../node_modules/@expo/log-box`)"
   - ExpoModulesCore (from `../../../node_modules/expo-modules-core`)
   - ExpoModulesJSI (from `../../../node_modules/expo-modules-core`)
@@ -2531,7 +2531,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - hermes-engine (from `../../../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - NitroMmkv (from `../../../node_modules/react-native-mmkv`)
-  - NitroModules (from `../node_modules/react-native-nitro-modules`)
+  - NitroModules (from `../../../node_modules/react-native-nitro-modules`)
   - RCTDeprecation (from `../../../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
   - RCTRequired (from `../../../node_modules/react-native/Libraries/Required`)
   - RCTSwiftUI (from `../../../node_modules/react-native/ReactApple/RCTSwiftUI`)
@@ -2668,7 +2668,7 @@ EXTERNAL SOURCES:
   ExpoLinking:
     :path: "../../../node_modules/expo-linking/ios"
   ExpoLocation:
-    :path: "../node_modules/expo-location/ios"
+    :path: "../../../node_modules/expo-location/ios"
   ExpoLogBox:
     :path: "../../../node_modules/@expo/log-box"
   ExpoModulesCore:
@@ -2699,7 +2699,7 @@ EXTERNAL SOURCES:
   NitroMmkv:
     :path: "../../../node_modules/react-native-mmkv"
   NitroModules:
-    :path: "../node_modules/react-native-nitro-modules"
+    :path: "../../../node_modules/react-native-nitro-modules"
   RCTDeprecation:
     :path: "../../../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation"
   RCTRequired:
