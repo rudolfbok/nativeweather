@@ -23,6 +23,7 @@ export default function ModalsLayout() {
 	return (
 		<Stack
 			screenOptions={{
+				headerBackButtonDisplayMode: 'minimal',
 				headerTransparent: true,
 				headerTitleStyle: {
 					color: textColor,

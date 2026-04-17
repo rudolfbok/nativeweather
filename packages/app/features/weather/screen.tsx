@@ -1,19 +1,17 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Platform, RefreshControl, StyleSheet, View } from 'react-native';
+import { RefreshControl, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 

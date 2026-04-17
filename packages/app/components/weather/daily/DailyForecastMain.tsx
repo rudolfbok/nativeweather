@@ -12,11 +12,11 @@ import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
 
-interface DailyForecastModalProps {
+interface DailyForecastMainProps {
 	day: WeatherData['forecast']['forecastday'][0] | null;
 }
 
-export const DailyForecastModal = ({ day }: DailyForecastModalProps) => {
+export const DailyForecastMain = ({ day }: DailyForecastMainProps) => {
 	const scrollRef = useRef<ScrollView>(null);
 	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();

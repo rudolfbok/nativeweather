@@ -18,7 +18,7 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 		});
 
 	return (
-		<View className={clsx('ios:px-4 my-2 flex-row justify-between gap-2 border-blue-400')}>
+		<View className={clsx('my-2 flex-row justify-between gap-2 border-blue-400')}>
 			{days.slice(0, 7).map((day) => {
 				return (
 					<StyledPressable

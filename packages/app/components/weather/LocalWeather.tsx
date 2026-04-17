@@ -1,26 +1,23 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useSearchController } from 'app/hooks/useSearchController';
-import { clsx } from 'clsx';
-import { useEffect } from 'react';
-import { View } from 'react-native';
-import { CityCard } from './CityCard';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
+import { clsx } from 'clsx';
+import { Platform, View } from 'react-native';
+import { CityCard } from './CityCard';
 
 export const LocalWeather = () => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData } = useLocalWeather();
-	const { getLocalWeather, error } = useCurrentLocation();
+	const { error } = useCurrentLocation();
 	const { handleCityPress } = useSearchController();
 
-	useEffect(() => {
-		getLocalWeather();
-	}, []);
+	// if (Platform.OS === "ios") {}
 
 	if (error) {
 		return (

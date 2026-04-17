@@ -1,30 +1,33 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { Calendar } from 'app/components/icons/CalendarIcon';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { WeatherData } from 'app/types/weatherData';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import { DailyForecastModal } from './DailyForecastModal';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
+import { useSelectedDay } from 'app/hooks/useSelectedDay';
+import { useRouter } from 'solito/navigation';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
+	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
-	const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
+	// const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
+	const router = useRouter();
 
 	useEffect(() => {
 		if (scrollRef.current) {
@@ -62,7 +65,10 @@ export const DailyForecast = () => {
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 					<Pressable
 						key={index}
-						onPress={() => setSelectedDay(day)}
+						onPress={() => {
+							setSelectedDay(day);
+							Platform.OS === 'ios' && router.push('/modals/forecast');
+						}}
 						className={clsx(
 							'!cursor-pointer items-center justify-center px-4',
 							'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
@@ -120,7 +126,7 @@ export const DailyForecast = () => {
 						</View>
 					</Pressable>
 				))}
-				{selectedDay && (
+				{Platform.OS === 'web' && selectedDay && (
 					<StyledModal
 						visible={Boolean(selectedDay)}
 						ref={scrollRef}
@@ -131,7 +137,7 @@ export const DailyForecast = () => {
 							<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={(day) => setSelectedDay(day)} />
 						}
 					>
-						<DailyForecastModal day={selectedDay} />
+						<DailyForecastMain day={selectedDay} />
 					</StyledModal>
 				)}
 			</RoundView>
