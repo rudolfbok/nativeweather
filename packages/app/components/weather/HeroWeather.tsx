@@ -155,7 +155,7 @@ export const HeroWeather = () => {
 							feelslike={true}
 							condition={conditionLabel}
 							textColor="!text-white"
-							conditionText={weatherData.current.isDay === 1 ? '!text-black' : '!text-white'}
+							conditionText="!text-white"
 							colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
 							arrowcolor="white"
 							displayTime={true}

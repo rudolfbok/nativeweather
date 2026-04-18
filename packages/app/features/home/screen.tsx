@@ -46,6 +46,24 @@ export const HomeFeature = () => {
 		currentTemp,
 	});
 
+	const localTempMin = useSwitchTemp({
+		celsius: localWeatherData?.forecast.forecastday[0].day.minTempC,
+		fahrenheit: localWeatherData?.forecast.forecastday[0].day.minTempF,
+		currentTemp,
+	});
+
+	const localTempMax = useSwitchTemp({
+		celsius: localWeatherData?.forecast.forecastday[0].day.maxTempC,
+		fahrenheit: localWeatherData?.forecast.forecastday[0].day.maxTempF,
+		currentTemp,
+	});
+
+	const feelsLikeTemperature = useSwitchTemp({
+		celsius: localWeatherData?.current.feelsLikeC,
+		fahrenheit: localWeatherData?.current.feelsLikeF,
+		currentTemp,
+	});
+
 	useEffect(() => {
 		let cancelled = false;
 
@@ -91,6 +109,9 @@ export const HomeFeature = () => {
 			city: localWeatherData.location.name,
 			region: localWeatherData.location.region,
 			temperature: localTemp,
+			minTemperature: localTempMin,
+			maxTemperature: localTempMax,
+			feelsLikeTemperature: feelsLikeTemperature,
 			condition: mapConditions(localWeatherData.current.condition.code, localWeatherData.current.isDay, currentSource),
 			isDay: localWeatherData.current.isDay,
 			code: localWeatherData.current.condition.code,

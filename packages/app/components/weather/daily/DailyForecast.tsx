@@ -7,16 +7,15 @@ import { Calendar } from 'app/components/icons/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
+import { useSelectedDay } from 'app/hooks/useSelectedDay';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherData } from 'app/types/weatherData';
 import { clsx } from 'clsx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { useRouter } from 'solito/navigation';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
-import { useSelectedDay } from 'app/hooks/useSelectedDay';
-import { useRouter } from 'solito/navigation';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -24,7 +23,6 @@ export const DailyForecast = () => {
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
-	// const [selectedDay, setSelectedDay] = useState<WeatherData['forecast']['forecastday'][0] | null>(null);
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
 	const router = useRouter();
@@ -72,8 +70,7 @@ export const DailyForecast = () => {
 						className={clsx(
 							'!cursor-pointer items-center justify-center px-4',
 							'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
-							'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',
-							index === items.length - 1 && 'rounded-bl-3xl rounded-br-3xl'
+							'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark'
 						)}
 						style={{
 							alignItems: 'center',

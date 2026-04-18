@@ -29,6 +29,8 @@ interface MainWeatherProps {
 	conditionText?: string;
 	displayTime: boolean;
 	colorScheme?: any;
+	displayShadow?: boolean;
+	conditionStyle?: string;
 }
 
 export const MainWeather = ({
@@ -49,6 +51,7 @@ export const MainWeather = ({
 	strokeWidth,
 	conditionText,
 	colorScheme,
+	displayShadow = true,
 }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
@@ -74,7 +77,7 @@ export const MainWeather = ({
 					/>
 				</View>
 				<View className={clsx('w-1/2 items-center')}>
-					<StyledText type="maintemp" className={clsx('pl-4 text-yellow-400', textColor)} style={textShadowStyle}>
+					<StyledText type="maintemp" className={clsx('pl-4', textColor)} style={displayShadow && textShadowStyle}>
 						{useSwitchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -84,7 +87,7 @@ export const MainWeather = ({
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveDown size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textColor)} style={textShadowStyle}>
+							<StyledText type="body" className={clsx(textColor)} style={displayShadow && textShadowStyle}>
 								{useSwitchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -94,7 +97,7 @@ export const MainWeather = ({
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveUp size={18} color={arrowcolor} />
-							<StyledText type="body" className={clsx(textColor)} style={textShadowStyle}>
+							<StyledText type="body" className={clsx(textColor)} style={displayShadow && textShadowStyle}>
 								{useSwitchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -104,7 +107,11 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="subtitle" className={clsx('font-semibold', textColor)} style={textShadowStyle}>
+						<StyledText
+							type="subtitle"
+							className={clsx('font-semibold', textColor)}
+							style={displayShadow && textShadowStyle}
+						>
 							{t('feelslike')}{' '}
 							{useSwitchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -124,8 +131,8 @@ export const MainWeather = ({
 			>
 				<StyledText
 					type="subtitle"
-					className={clsx('text-center text-xl font-bold !text-white', conditionText)}
-					style={textShadowStyle}
+					className={clsx('text-center text-xl font-bold', conditionText)}
+					style={displayShadow && textShadowStyle}
 				>
 					{condition}
 				</StyledText>

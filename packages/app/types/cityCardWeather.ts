@@ -11,10 +11,22 @@ export interface CityCardWeather {
 	current: {
 		tempC: number;
 		tempF: number;
+		feelsLikeC: number;
+		feelsLikeF: number;
 		isDay: 0 | 1;
 		condition: {
 			text: string;
 			code: number;
 		};
+	};
+	forecast: {
+		forecastday: {
+			day: {
+				minTempC: number;
+				minTempF: number;
+				maxTempC: number;
+				maxTempF: number;
+			};
+		}[];
 	};
 }

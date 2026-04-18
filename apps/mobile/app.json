@@ -43,6 +43,7 @@
 							"name": "NativeWeatherLocalWidget",
 							"displayName": "Local weather",
 							"description": "Home screen widget",
+							"contentMarginsDisabled": true,
 							"supportedFamilies": ["systemMedium"]
 						}
 					]

@@ -10,6 +10,7 @@ import { MoveDown, MoveUp } from 'lucide-react-native';
 import { DateTime } from 'luxon';
 import { View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
 
 interface MainWeatherProps {
 	name?: string;
@@ -31,6 +32,8 @@ interface MainWeatherProps {
 	strokeWidth?: number;
 	displayTime: boolean;
 	colorScheme?: any;
+	displayShadow?: boolean;
+	conditionStyle?: string;
 }
 
 export const MainWeather = ({
@@ -49,6 +52,7 @@ export const MainWeather = ({
 	code,
 	condition,
 	displayTime = true,
+	conditionStyle = '!bg-transparent',
 }: MainWeatherProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
@@ -120,9 +124,9 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('my-1')}>
+			<RoundView className={clsx('my-1', conditionStyle)}>
 				<StyledText type="title">{condition}</StyledText>
-			</View>
+			</RoundView>
 			{showWorldTime && displayTime && (
 				<View className={clsx('flex flex-row items-center justify-center')}>
 					<StyledText type="localtime" className={clsx('font-semibold')}>

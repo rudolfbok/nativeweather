@@ -66,23 +66,28 @@ export const CityCard = ({
 				borderRadius: 24,
 				padding: 16,
 			}}
-			tintColor={`${tintColor}4D`}
+			tintColor={`${tintColor}E6`}
 			liquidGlass={true}
 			colorScheme={colorScheme}
 		>
 			<View className={clsx('flex-grow')}>
-				<StyledText type="subtitle" className={clsx('truncate font-semibold')} numberOfLines={1} ellipsizeMode="tail">
+				<StyledText
+					type="subtitle"
+					className={clsx('truncate font-semibold !text-white')}
+					numberOfLines={1}
+					ellipsizeMode="tail"
+				>
 					{city}
 				</StyledText>
 				<StyledText
 					type="bodysecondary"
-					className={clsx('text-secondaryLabel dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold')}
+					className={clsx('dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold text-[#CACCD9]')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
 					{region}
 				</StyledText>
-				<StyledText type="title" className={clsx('!text-xl font-semibold')}>
+				<StyledText type="title" className={clsx('!text-xl !font-bold !text-white')}>
 					{useSwitchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
@@ -91,7 +96,7 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="body"
-					className={clsx('line-clamp-1 truncate font-semibold')}
+					className={clsx('line-clamp-1 truncate font-semibold !text-white')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -108,7 +113,7 @@ export const CityCard = ({
 					source={currentSource}
 				/>
 				{showWorldTime && displayTime && (
-					<StyledText type="localtime" className={clsx('text-secondaryLabel dark:text-secondaryLabel_dark')}>
+					<StyledText type="localtime" className={clsx('dark:text-secondaryLabel_dark text-[#CACCD9]')}>
 						{useLocalTimeNow(timeZone)}
 					</StyledText>
 				)}

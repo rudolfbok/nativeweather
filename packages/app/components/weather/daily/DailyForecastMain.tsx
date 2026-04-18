@@ -59,6 +59,8 @@ export const DailyForecastMain = ({ day }: DailyForecastMainProps) => {
 				strokeWidth={StyleSheet.hairlineWidth}
 				displayTime={false}
 				feelslike={false}
+				displayShadow={false}
+				conditionStyle="mt-4 py-2 px-4"
 			/>
 			<SmartSummary
 				minTempC={day.day.minTempC}
