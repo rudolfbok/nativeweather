@@ -59,7 +59,7 @@ export default function TabLayout() {
 	};
 
 	return (
-		<Stack>
+		<Stack nativeContainerStyle={{ backgroundColor }}>
 			<Stack.Screen
 				name="[city]"
 				options={{
@@ -70,12 +70,12 @@ export default function TabLayout() {
 					headerTransparent: true,
 					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
 					headerTitleAlign: 'center',
-					headerTitleStyle: { color: titleColor as string },
+					headerTitleStyle: { color: 'white', fontSize: 18 },
 					// headerBackground: () => (
 					// 	<WeatherLandscape code={weatherData?.current.condition.code} isDay={weatherData?.current.isDay} />
 					// ),
 					contentStyle: {
-						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+						backgroundColor,
 						// marginTop: Platform.OS === 'android' ? 110 : 0,
 						paddingHorizontal: 0,
 					},

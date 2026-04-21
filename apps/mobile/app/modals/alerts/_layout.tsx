@@ -8,7 +8,7 @@ import { View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { textColor } = useThemeColors();
+	const { bodyBackground, textColor } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -21,8 +21,12 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
+			nativeContainerStyle={{ backgroundColor: bodyBackground }}
 			screenOptions={{
 				headerTransparent: true,
+				contentStyle: {
+					backgroundColor: bodyBackground,
+				},
 				headerTitleStyle: {
 					color: textColor,
 				},

@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.anonymous.nativeweather"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.nativeweather"
+  }
+}

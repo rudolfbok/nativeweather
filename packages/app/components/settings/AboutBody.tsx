@@ -68,7 +68,7 @@ export const AboutBody = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
-			<RoundView className={clsx('p-4')} style={{ padding: 16 }}>
+			<RoundView className={clsx('p-4')}>
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</RoundView>
 			<StyledText type="title">{t('datasource.title')}</StyledText>

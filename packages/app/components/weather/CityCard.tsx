@@ -81,7 +81,7 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="bodysecondary"
-					className={clsx('dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold text-[#CACCD9]')}
+					className={clsx('line-clamp-1 truncate font-semibold !text-white/80')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -104,16 +104,9 @@ export const CityCard = ({
 				</StyledText>
 			</View>
 			<View className={clsx('items-center')}>
-				<WeatherIcon
-					isDay={isDay}
-					code={conditionCode}
-					width={80}
-					height={80}
-					strokeWidth={0.5}
-					source={currentSource}
-				/>
+				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
 				{showWorldTime && displayTime && (
-					<StyledText type="localtime" className={clsx('dark:text-secondaryLabel_dark text-[#CACCD9]')}>
+					<StyledText type="localtime" className={clsx('!text-white/80')}>
 						{useLocalTimeNow(timeZone)}
 					</StyledText>
 				)}

@@ -6,20 +6,22 @@ import { Stack } from 'expo-router';
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
 	const headerHeight = useHeaderHeight();
+	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
 
 	return (
 		<Stack
+			nativeContainerStyle={{ backgroundColor }}
 			screenOptions={{
 				headerShadowVisible: false,
 				headerTintColor: useSwitchColors('black', 'white'),
 				headerBackButtonDisplayMode: 'minimal',
 				contentStyle: {
-					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+					backgroundColor,
 					paddingHorizontal: 16,
 					paddingTop: headerHeight,
 				},
 				headerStyle: {
-					backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+					backgroundColor,
 				},
 			}}
 		>
@@ -27,7 +29,7 @@ export default function SettingsLayout() {
 				name="index"
 				options={{
 					contentStyle: {
-						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+						backgroundColor,
 					},
 					headerTransparent: true,
 					headerLargeTitle: true,
@@ -71,14 +73,6 @@ export default function SettingsLayout() {
 				name="source"
 				options={{
 					headerTitle: t('source.title'),
-					// headerTransparent: true,
-					// headerStyle: {
-					// 	backgroundColor: 'transparent',
-					// },
-					// contentStyle: {
-					// 	backgroundColor: useSwitchColors('#F2F2F7', '#000'),
-					// 	paddingTop: headerHeight,
-					// },
 				}}
 			/>
 			<Stack.Screen
@@ -90,26 +84,17 @@ export default function SettingsLayout() {
 						backgroundColor: 'transparent',
 					},
 					contentStyle: {
-						backgroundColor: useSwitchColors('#F2F2F7', '#000'),
+						backgroundColor,
 						paddingTop: headerHeight,
 					},
-				}}
-			/>
-			{/* 
-			<Stack.Screen
-				name="compass"
-				options={{
-					headerShown: Platform.OS === 'web' ? false : true,
-					title: t('settings.compass'),
 				}}
 			/>
 			<Stack.Screen
 				name="feedback"
 				options={{
-					headerShown: Platform.OS === 'web' ? false : true,
-					title: t('settings.feedback'),
+					title: t('feedback.title'),
 				}}
-			/> */}
+			/>
 		</Stack>
 	);
 }

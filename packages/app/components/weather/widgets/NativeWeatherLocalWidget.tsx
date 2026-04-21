@@ -42,11 +42,11 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
 						</Text>
 					</HStack>
 					<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
-						<Image systemName="arrow.down" size={14} />
+						<Image systemName="arrow.down" size={14} color="white" />
 						<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 							{props.minTemperature}
 						</Text>
-						<Image systemName="arrow.up" size={14} />
+						<Image systemName="arrow.up" size={14} color="white" />
 						<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 							{props.maxTemperature}
 						</Text>
