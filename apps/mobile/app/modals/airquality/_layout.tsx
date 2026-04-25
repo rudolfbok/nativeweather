@@ -2,15 +2,15 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useThemeColors } from 'app/hooks/useThemeColors';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { X } from 'lucide-react-native';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { bodyBackground, textColor } = useThemeColors();
+	const { modalBackground, textColor } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -23,42 +23,22 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: bodyBackground }}
 			screenOptions={{
 				headerTransparent: true,
-				contentStyle: {
-					backgroundColor: bodyBackground,
-				},
-				headerTitleStyle: {
-					color: textColor,
-				},
-				headerBackButtonMenuEnabled: true,
 				headerBackButtonDisplayMode: 'minimal',
 				headerRight: () => (
 					<Pressable
 						onPress={() => router.replace('/(tabs)/(weather)/[city]')}
 						className={clsx('h-10 w-10 items-center justify-center')}
-						// style={{ pointerEvents: 'none' }}
 					>
 						<X color={textColor} />
 					</Pressable>
 				),
-				// headerRight: () => (
-				// 	<Pressable
-				// 		onPress={() => console.log('X Pressed!')}
-				// 		className={clsx('bg-red-400')}
-				// 		style={{
-				// 			width: 35,
-				// 			height: 20,
-				// 			alignItems: 'center',
-				// 			justifyContent: 'center',
-				// 		}}
-				// 		// hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} // <--- VERY IMPORTANT
-				// 	>
-				// 		<X color={textColor} />
-				// 	</Pressable>
-				// ),
+				contentStyle: {
+					backgroundColor: modalBackground,
+				},
 			}}
+			nativeContainerStyle={{ backgroundColor: modalBackground }}
 		>
 			<Stack.Screen
 				name="index"

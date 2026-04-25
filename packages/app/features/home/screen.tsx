@@ -19,7 +19,7 @@ import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { getWeatherIconUri } from 'app/utils/getWeatherIconUri';
-import 'app/components/weather/widgets/NativeWeatherLocalWidget';
+import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
 
 export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
@@ -127,15 +127,12 @@ export const HomeFeature = () => {
 			>
 				<NativeWeatherLogo />
 			</View>
-			<ScrollView
-				contentInsetAdjustmentBehavior="automatic"
-				contentContainerClassName={clsx('px-4 pb-4')}
+			<ScreenWrapper
 				refreshControl={
 					<RefreshControl
 						tintColor="#007AFF"
 						refreshing={refreshing}
 						onRefresh={() => favoriteCitiesHook.refreshFavoriteCities({ displayToast: true, setRefreshing })}
-						// progressViewOffset={insets.top + 100}
 						style={{ zIndex: 100 }}
 					/>
 				}
@@ -149,7 +146,7 @@ export const HomeFeature = () => {
 					)}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
-			</ScrollView>
+			</ScreenWrapper>
 		</View>
 	);
 };

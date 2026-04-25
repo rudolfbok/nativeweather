@@ -3,7 +3,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { showToast } from '../../utils/services/showToast';

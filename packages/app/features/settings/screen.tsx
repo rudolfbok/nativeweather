@@ -21,7 +21,7 @@ export const SettingsFeature = () => {
 	const { t } = useTranslate('settings');
 
 	return (
-		<View className={clsx('px-4 pb-4')}>
+		<View className={clsx('web:px-4 web:pb-4')}>
 			<StyledText type="screentitle" className={clsx('native:hidden mb-3')}>
 				{t('settings')}
 			</StyledText>

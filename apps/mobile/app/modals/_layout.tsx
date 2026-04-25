@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { useThemeColors } from 'app/hooks/useThemeColors';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { Cloud, CloudRain, Droplets, Eye, GaugeCircle, Moon, Sun, Sunrise, Sunset, Wind, X } from 'lucide-react-native';
 import { ReactNode } from 'react';
@@ -9,7 +9,7 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { bodyBackground, textColor } = useThemeColors();
+	const { modalBackground, textColor } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -22,22 +22,15 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: bodyBackground }}
+			nativeContainerStyle={{ backgroundColor: modalBackground }}
 			screenOptions={{
 				headerBackButtonDisplayMode: 'minimal',
 				headerTransparent: true,
-				contentStyle: {
-					backgroundColor: bodyBackground,
-				},
 				headerTitleStyle: {
 					color: textColor,
 				},
 				headerRight: () => (
-					<Pressable
-						onPress={() => router.back()}
-						className={clsx('h-10 w-10 items-center justify-center')}
-						// style={{ pointerEvents: 'none' }}
-					>
+					<Pressable onPress={() => router.back()} className={clsx('h-10 w-10 items-center justify-center')}>
 						<X color={textColor} />
 					</Pressable>
 				),

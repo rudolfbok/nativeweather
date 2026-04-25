@@ -1,12 +1,12 @@
 'use client';
 
+import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
 import { SettingsFeature } from 'app/features/settings/screen';
-import Animated from 'react-native-reanimated';
 
 export default function SettingsScreen() {
 	return (
-		<Animated.ScrollView>
+		<ScreenWrapper>
 			<SettingsFeature />
-		</Animated.ScrollView>
+		</ScreenWrapper>
 	);
 }

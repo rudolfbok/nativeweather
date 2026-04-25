@@ -1,25 +1,20 @@
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function HomeLayout() {
-	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
+	const { backgroundColor } = useThemeColors();
 
 	return (
 		<Stack
 			nativeContainerStyle={{ backgroundColor }}
 			screenOptions={{
-				headerTintColor: useSwitchColors('black', 'white'),
+				headerShown: false,
 				contentStyle: {
 					backgroundColor,
 				},
 			}}
 		>
-			<Stack.Screen
-				name="index"
-				options={{
-					headerShown: false,
-				}}
-			/>
+			<Stack.Screen name="index" />
 		</Stack>
 	);
 }

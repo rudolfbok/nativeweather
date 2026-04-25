@@ -1,28 +1,23 @@
 import { useTranslate } from '@tolgee/react';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
+import { shareLink } from 'app/utils/services/shareLink';
 import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { DynamicColorIOS, Platform, Pressable } from 'react-native';
-import { shareLink } from 'app/utils/services/shareLink';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
+import { Platform, Pressable } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
+	const { backgroundColor, textColor } = useThemeColors();
 
-	const titleColor = Platform.OS === 'ios' ? DynamicColorIOS({ light: 'black', dark: 'white' }) : 'black';
-	const headerTintColor = useSwitchColors('black', 'white');
-	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
-
-	const insets = useSafeAreaInsets();
+	// const titleColor = Platform.OS === 'ios' ? DynamicColorIOS({ light: 'black', dark: 'white' }) : 'black';
 
 	useEffect(() => {
 		if (!weatherData) return;
@@ -37,7 +32,7 @@ export default function TabLayout() {
 				onPress={() => shareLink(weatherData)}
 				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
 			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color={titleColor} style={{ pointerEvents: 'none' }} />
+				<Share size={Platform.OS === 'ios' ? 22 : 28} color={textColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -50,8 +45,8 @@ export default function TabLayout() {
 			>
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
-					color={titleColor}
-					fill={isFavorite ? titleColor : 'transparent'}
+					color={textColor}
+					fill={isFavorite ? textColor : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
 			</Pressable>
@@ -70,7 +65,7 @@ export default function TabLayout() {
 					headerTransparent: true,
 					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
 					headerTitleAlign: 'center',
-					headerTitleStyle: { color: 'white', fontSize: 18 },
+					headerTitleStyle: { color: !weatherData ? textColor : 'white' },
 					// headerBackground: () => (
 					// 	<WeatherLandscape code={weatherData?.current.condition.code} isDay={weatherData?.current.isDay} />
 					// ),

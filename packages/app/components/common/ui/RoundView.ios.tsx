@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { GlassView } from 'expo-glass-effect';
 import React from 'react';
 import { View } from 'react-native';

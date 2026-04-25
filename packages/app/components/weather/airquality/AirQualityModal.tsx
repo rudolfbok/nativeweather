@@ -124,7 +124,11 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 		<Wrapper>
 			{showAirQualityMetric === null && (
 				<View>
-					<View className={clsx('native:flex-row native:flex-wrap grid grid-cols-2 gap-4 sm:grid-cols-3')}>
+					<View
+						className={clsx(
+							'native:flex-row native:flex-wrap native:justify-center grid grid-cols-2 gap-4 sm:grid-cols-3'
+						)}
+					>
 						{airQualityItemsList.map(({ name, description, data, colorIndicator, units }, index) => (
 							<AirQualityItem
 								key={index}

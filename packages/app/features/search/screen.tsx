@@ -35,6 +35,7 @@ export const SearchFeature = () => {
 				onSearchButtonPress: () => handleInputSearch(searchValue),
 				onFocus: () => setIsSearchBarFocused(true),
 				onBlur: () => setIsSearchBarFocused(false),
+				// hideNavigationBar: false,
 			},
 		});
 	}, [navigation, searchValue]);

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { GlassColorScheme, GlassView } from 'expo-glass-effect';
 import { GestureResponderEvent, Pressable } from 'react-native';
 

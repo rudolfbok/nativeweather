@@ -1,26 +1,19 @@
-import { useHeaderHeight } from '@react-navigation/elements';
 import { useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
-	const headerHeight = useHeaderHeight();
-	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
+	const { backgroundColor, textColor } = useThemeColors();
 
 	return (
 		<Stack
 			nativeContainerStyle={{ backgroundColor }}
 			screenOptions={{
-				headerShadowVisible: false,
-				headerTintColor: useSwitchColors('black', 'white'),
+				headerTransparent: true,
+				headerTintColor: textColor,
 				headerBackButtonDisplayMode: 'minimal',
 				contentStyle: {
-					backgroundColor,
-					paddingHorizontal: 16,
-					paddingTop: headerHeight,
-				},
-				headerStyle: {
 					backgroundColor,
 				},
 			}}
@@ -28,12 +21,8 @@ export default function SettingsLayout() {
 			<Stack.Screen
 				name="index"
 				options={{
-					contentStyle: {
-						backgroundColor,
-					},
-					headerTransparent: true,
-					headerLargeTitle: true,
-					title: t('settings'),
+					headerLargeTitleEnabled: true,
+					headerTitle: t('settings'),
 					headerStyle: {
 						backgroundColor: 'transparent',
 					},
@@ -79,20 +68,14 @@ export default function SettingsLayout() {
 				name="about"
 				options={{
 					headerTitle: t('about.title'),
-					headerTransparent: true,
-					headerStyle: {
-						backgroundColor: 'transparent',
-					},
-					contentStyle: {
-						backgroundColor,
-						paddingTop: headerHeight,
-					},
+					headerLargeTitleEnabled: true,
 				}}
 			/>
 			<Stack.Screen
 				name="feedback"
 				options={{
 					title: t('feedback.title'),
+					headerLargeTitleEnabled: true,
 				}}
 			/>
 		</Stack>

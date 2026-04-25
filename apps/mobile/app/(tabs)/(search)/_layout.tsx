@@ -1,13 +1,13 @@
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useTranslate } from '@tolgee/react';
 import { useSearchController } from 'app/hooks/useSearchController';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 import { useEffect } from 'react';
-import { useTranslate } from '@tolgee/react';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { searchValue } = useSearchController();
-	const backgroundColor = useSwitchColors('#F2F2F7', '#000');
+	const { backgroundColor, textColor } = useThemeColors();
 
 	useEffect(() => console.log(searchValue), [searchValue]);
 
@@ -16,12 +16,12 @@ export default function TabLayout() {
 			<Stack.Screen
 				name="index"
 				options={{
+					title: t('search.title'),
 					headerTitle: t('search.title'),
-					headerTintColor: useSwitchColors('black', 'white'),
+					headerTintColor: textColor,
 					headerTransparent: true,
 					headerShown: true,
 					headerLargeTitle: true,
-					headerShadowVisible: true,
 					contentStyle: {
 						backgroundColor,
 					},

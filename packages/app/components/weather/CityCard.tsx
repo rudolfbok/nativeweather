@@ -73,7 +73,7 @@ export const CityCard = ({
 			<View className={clsx('flex-grow')}>
 				<StyledText
 					type="subtitle"
-					className={clsx('truncate font-semibold !text-white')}
+					className={clsx('native:!text-white truncate font-semibold')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -81,13 +81,15 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="bodysecondary"
-					className={clsx('line-clamp-1 truncate font-semibold !text-white/80')}
+					className={clsx(
+						'native:!text-white/80 web:text-secondaryLabel dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold'
+					)}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
 					{region}
 				</StyledText>
-				<StyledText type="title" className={clsx('!text-xl !font-bold !text-white')}>
+				<StyledText type="title" className={clsx('native:!text-white !text-xl !font-bold')}>
 					{useSwitchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
@@ -96,7 +98,7 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="body"
-					className={clsx('line-clamp-1 truncate font-semibold !text-white')}
+					className={clsx('native:!text-white line-clamp-1 truncate font-semibold')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -106,7 +108,10 @@ export const CityCard = ({
 			<View className={clsx('items-center')}>
 				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
 				{showWorldTime && displayTime && (
-					<StyledText type="localtime" className={clsx('!text-white/80')}>
+					<StyledText
+						type="localtime"
+						className={clsx('native:!text-white/80 web:text-secondaryLabel dark:text-secondaryLabel_dark')}
+					>
 						{useLocalTimeNow(timeZone)}
 					</StyledText>
 				)}

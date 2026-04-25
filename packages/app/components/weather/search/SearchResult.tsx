@@ -1,3 +1,4 @@
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { View, Pressable, GestureResponderEvent } from 'react-native';
@@ -13,13 +14,11 @@ interface SearchResultProps {
 
 export const SearchResult = ({ index, onPress, city, region, country, isLast }: SearchResultProps) => {
 	return (
-		<Pressable
+		<StyledPressable
 			key={index}
 			onPress={onPress}
 			className={clsx(
-				'native:dark:bg-transparent dark:hover:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4',
-				index === 0 && 'rounded-t-3xl',
-				!isLast && 'rounded-b-3xl'
+				'web:bg-secondarySystemBackground dark:hover:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4'
 			)}
 		>
 			<View className={clsx('pb-4', isLast && 'border-b border-gray-200 dark:border-zinc-800')}>
@@ -29,6 +28,6 @@ export const SearchResult = ({ index, onPress, city, region, country, isLast }: 
 				</StyledText>
 				<StyledText type="body">{country}</StyledText>
 			</View>
-		</Pressable>
+		</StyledPressable>
 	);
 };
