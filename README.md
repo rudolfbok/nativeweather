@@ -26,9 +26,11 @@
 <img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 3" width="200" />
 &nbsp;
 <!-- <img src="packages/app/assets/readme/ios_1.png" alt="iOS screeshot no. 1" width="200" /> -->
-<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 2" width="200" />
+<img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="200" />
 &nbsp;
-<img src="packages/app/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="200" />
+<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 2" width="200" />
+<!-- &nbsp;
+<img src="packages/app/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="200" /> -->
 </div>
 
 <!-- <br/><br/>
