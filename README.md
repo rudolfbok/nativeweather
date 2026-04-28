@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="packages/app/assets/logo.png" alt="NativeWeather logo" width="200" />
+  <img src="packages/app/assets/readme/logo.png" alt="NativeWeather logo" width="200" />
 </p>
 
 <div align="center">
 
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/)
 
-[![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/)
+<!-- [![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/) -->
 
 <!-- [![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#) [![iOS](https://img.shields.io/badge/iOS-<26-000000?&logo=apple&logoColor=white)](#) -->
 
@@ -15,6 +15,14 @@
 [![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://react.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
 
 [![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](https://pnpm.io/) [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
+
+</div>
+
+<div align="center">
+
+<img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 3" width="200" />
+<!-- <img src="packages/app/assets/readme/ios_1.png" alt="iOS screeshot no. 1" width="200" /> -->
+<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 2" width="200" />
 
 </div>
 
@@ -67,12 +75,9 @@ This started as my first long-term project and has grown into a real weather pro
 - React 19
 - React Native
 - React Native Web
-- Expo Router
 - NativeWind
 - React Native MMKV
 - Tolgee
-- OpenNext for Cloudflare
-- TypeScript
 
 ## Monorepo Structure
 
