@@ -92,6 +92,12 @@ This started as my first long-term project and has grown into a real weather pro
 
 ## Monorepo Structure
 
+This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS and Expo frameworks with a shared code from packages/app folder
+
+Many thanks to gurselcakar and his guide - https://www.gurselcakar.com/monorepo
+<br/>
+Universal React Monorepo template - https://github.com/gurselcakar/universal-react-monorepo
+
 ```txt
 nativeweather/
 ├── apps/
@@ -115,15 +121,24 @@ Prerequisites
 
 This project uses pnpm:
 
-- pnpm install
+```txt
+pnpm install
+```
 
-Development
 Run all development tasks through Turborepo:
+
+```txt
 pnpm dev
+```
+
 Run the web app:
-pnpm --dir apps/web dev
-Run the mobile app:
-pnpm --dir apps/mobile dev
-You can also use the root scripts:
+
+```txt
 pnpm web
+```
+
+Run the mobile app:
+
+```txt
 pnpm mobile
+```
