@@ -6,7 +6,9 @@ import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
+import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
+import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
@@ -16,6 +18,14 @@ export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { t } = useTranslate('weather');
 	const favoriteCitiesHook = useFavoriteCities();
+	const { getLocalWeather } = useCurrentLocation();
+	const { localWeatherData } = useLocalWeather();
+
+	useEffect(() => {
+		if (!localWeatherData) {
+			getLocalWeather();
+		}
+	}, [localWeatherData, getLocalWeather]);
 
 	return (
 		<AnimatedView duration={25}>
