@@ -65,7 +65,7 @@ export default function TabLayout() {
 					headerTransparent: true,
 					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
 					headerTitleAlign: 'center',
-					headerTitleStyle: { color: !weatherData ? textColor : 'white' },
+					// headerTitleStyle: { color: !weatherData ? textColor : 'white' },
 					// headerBackground: () => (
 					// 	<WeatherLandscape code={weatherData?.current.condition.code} isDay={weatherData?.current.isDay} />
 					// ),

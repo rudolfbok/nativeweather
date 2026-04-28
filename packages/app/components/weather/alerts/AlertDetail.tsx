@@ -73,19 +73,24 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 	return (
 		<View className={clsx('gap-2')}>
 			{severity && (
-				<ContentRow title={t('alerts.severity')}>
+				<View>
+					<StyledText type="subtitle">{t('alerts.severity')}</StyledText>
 					<StyledText type="body">{getLocaleSeverity(severity)}</StyledText>
-				</ContentRow>
+				</View>
 			)}
-			<ContentRow title={t('alerts.expires')}>
+
+			<View>
+				<StyledText type="subtitle">{t('alerts.expires')}</StyledText>
 				<StyledText type="body">
 					{getTime(expires)} - {formatDate(expires)}
 				</StyledText>
-			</ContentRow>
+			</View>
+
 			{area.length > 0 && (
-				<ContentRow title={t('alerts.area')}>
+				<View>
+					<StyledText type="subtitle">{t('alerts.area')}</StyledText>
 					<StyledText type="body">{area}</StyledText>
-				</ContentRow>
+				</View>
 			)}
 			{description.length > 0 && (
 				<ContentRow title={t('alerts.description')}>

@@ -49,7 +49,7 @@ export const EUAQIDetail = () => {
 		<View className={clsx('gap-2')}>
 			<ContentRow title={t('modal.description')}>
 				<StyledText type="body">{t('airquality.euaqi.main')}</StyledText>
-				<Pressable onPress={() => Linking.openURL('https://airindex.eea.europa.eu/AQI/')} className='mt-4'>
+				<Pressable onPress={() => Linking.openURL('https://airindex.eea.europa.eu/AQI/')} className="mt-4">
 					<StyledText type="link">https://airindex.eea.europa.eu/AQI/</StyledText>
 				</Pressable>
 			</ContentRow>

@@ -23,7 +23,7 @@ export const useCurrentLocation = () => {
 			});
 
 			const result = await fetchWeather(`${coords.latitude},${coords.longitude}`, currentSource);
-			setLocalWeatherData(result);
+			await setLocalWeatherData(result);
 		} catch (error) {
 			setError(true);
 		}

@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { ActivityIndicator, GestureResponderEvent } from 'react-native';
 import { StyledPressable } from './StyledPressable';
 import { StyledText } from './StyledText';
+import { ChevronRight } from 'lucide-react-native';
 
 interface StyledButtonProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -15,12 +16,12 @@ export const StyledButton = ({ onPress, className, children, loading }: StyledBu
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark w-full select-none flex-row items-center justify-center rounded-3xl p-4 md:w-fit',
+				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark w-fit select-none flex-row items-center justify-center rounded-3xl p-4',
 				className
 			)}
 		>
-			{loading && <ActivityIndicator size="small" className={clsx('mr-2')} />}
-			<StyledText type="body" className={clsx('text-center font-semibold')}>
+			{loading && <ActivityIndicator size="small" className="mr-2" />}
+			<StyledText type="subtitle" className={clsx('text-center')}>
 				{children}
 			</StyledText>
 		</StyledPressable>

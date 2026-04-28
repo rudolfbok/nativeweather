@@ -1,10 +1,12 @@
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
@@ -12,14 +14,13 @@ import { ReactNode, useEffect, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { mapColorTheme } from './GoogleMapsTheme';
 import { TemperatureInfo } from './TemperatureInfo';
-import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 
 export const GoogleMapsView = ({ className, gestureHandling }: { className?: string; gestureHandling?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const [showLegend, setShowLegend] = useState(false);
 	const [map, setMap] = useState<google.maps.Map | null>(null);
-	const [layer, setLayer] = useState<string | null>('temp_new');
+	const { layer, setLayer } = useMapLayer();
 	const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number } | null>(null);
 
 	const switchColors = useSwitchColors('black', 'white');

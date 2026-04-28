@@ -82,7 +82,7 @@ export const mapWeatherApi = (data: any): WeatherData => {
 					sunrise: day.astro.sunrise,
 					sunset: day.astro.sunset,
 					moonPhase: day.astro.moon_phase,
-					moonIllumunation: day.astro.moon_illumination,
+					moonIllumination: day.astro.moon_illumination,
 					moonRise: day.astro.moonrise,
 					moonSet: day.astro.moonset,
 					isMoonUp: day.astro.is_moon_up,

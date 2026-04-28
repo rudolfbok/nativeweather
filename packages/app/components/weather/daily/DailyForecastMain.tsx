@@ -74,6 +74,8 @@ export const DailyForecastMain = ({ day }: DailyForecastMainProps) => {
 				maxWindKph={day.day.maxWindKph}
 				uvIndex={day.day.uv}
 				avgVisibilityKm={day.day.avgVisKm}
+				avgVisibilityMiles={day.day.avgVisMiles}
+				dateEpoch={day.date_epoch}
 			/>
 			{!day.hour || day.hour.length === 0 ? null : (
 				<HourlyCarousel

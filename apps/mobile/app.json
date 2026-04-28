@@ -40,9 +40,30 @@
 					"groupIdentifier": "group.com.rudyxsides.nativeweather",
 					"widgets": [
 						{
-							"name": "NativeWeatherLocalWidget",
-							"displayName": "Local weather",
-							"description": "Home screen widget",
+							"name": "SmallLocal",
+							"displayName": "Curret temperature",
+							"description": "See how is the weather right now",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemSmall"]
+						},
+						{
+							"name": "MediumLocal",
+							"displayName": "Local widget",
+							"description": "Local weather with hourly forecast",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemMedium"]
+						},
+						{
+							"name": "SmallAQI",
+							"displayName": "Current air quality",
+							"description": "Local air quality index",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemSmall"]
+						},
+						{
+							"name": "MediumAQI",
+							"displayName": "Local air quality",
+							"description": "Local air quality metrics",
 							"contentMarginsDisabled": true,
 							"supportedFamilies": ["systemMedium"]
 						}

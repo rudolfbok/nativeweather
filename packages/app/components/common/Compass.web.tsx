@@ -7,6 +7,7 @@ import { CompassIcon } from '../icons/settings/CompassIcon';
 import { StyledButton } from './styled/StyledButton';
 import { StyledText } from './styled/StyledText';
 import { clsx } from 'clsx';
+import { RoundView } from './ui/RoundView';
 
 export default function Compass() {
 	const { t } = useTranslate('weather');
@@ -184,19 +185,19 @@ export default function Compass() {
 					</div>
 				</div>
 			) : (
-				<View className={clsx('flex items-center gap-2')}>
-					<View className={clsx('rounded-xl bg-[#FF0000] p-2')}>
-						<CompassIcon width={40} height={40} />
-					</View>
-					<StyledText type="maintitle" className={clsx('text-center')}>
-						{t('compass.title')}
-					</StyledText>
-					<StyledText type="body" className={clsx('text-center')}>
-						{t('compass.text')}
-					</StyledText>
-					<StyledButton onPress={requestPermission} className={clsx('mt-4')}>
-						{t('compass.button.location')}
-					</StyledButton>
+				<View className={clsx('flex items-center gap-4')}>
+					<RoundView className="items-center gap-2 p-4">
+						<View className={clsx('w-fit rounded-xl bg-[#FF0000] p-2')}>
+							<CompassIcon width={40} height={40} />
+						</View>
+						<StyledText type="maintitle" className={clsx('text-center')}>
+							{t('compass.title')}
+						</StyledText>
+						<StyledText type="body" className={clsx('text-center')}>
+							{t('compass.text')}
+						</StyledText>
+					</RoundView>
+					<StyledButton onPress={requestPermission}>{t('compass.button.location')}</StyledButton>
 				</View>
 			)}
 		</div>

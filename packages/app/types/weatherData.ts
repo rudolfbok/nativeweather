@@ -81,7 +81,7 @@ export interface WeatherData {
 				sunrise: string;
 				sunset: string;
 				moonPhase: string;
-				moonIllumunation: number;
+				moonIllumination: number;
 				moonRise: string;
 				moonSet: string;
 				isMoonUp: 0 | 1;

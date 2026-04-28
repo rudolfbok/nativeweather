@@ -17,6 +17,7 @@ export const SendEmail = () => {
 
 	const handleSubmit = async () => {
 		if (loading) return;
+		if (message.trim().length === 0) return showToast({ message: t('feedback.toast.error'), preset: 'error' });
 		setLoading(true);
 
 		try {
@@ -49,7 +50,7 @@ export const SendEmail = () => {
 			<StyledPressable
 				onPress={() => setType(variant)}
 				className={clsx(
-					'items-center rounded-3xl border border-transparent p-4 max-md:flex-1',
+					'items-center rounded-3xl border border-transparent px-4 py-2 max-md:flex-1',
 					type === variant && '!border-primaryblue'
 				)}
 			>
@@ -59,7 +60,7 @@ export const SendEmail = () => {
 	};
 
 	return (
-		<View className={clsx('w-full gap-4 pb-4')}>
+		<View className={clsx('w-full gap-4 pb-4 md:w-1/2 lg:w-[40%]')}>
 			<View className={clsx('gap-2')}>
 				<StyledText type="subtitle">{t('feedback.type')}</StyledText>
 				<View className={clsx('flex-row items-center gap-4 max-md:justify-center')}>
@@ -80,8 +81,7 @@ export const SendEmail = () => {
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
 					className={clsx(
-						'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl border border-transparent p-4 text-base outline-none',
-						isFocused && '!border-primaryblue'
+						'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl border border-transparent p-4 text-base outline-none'
 					)}
 				/>
 			</View>

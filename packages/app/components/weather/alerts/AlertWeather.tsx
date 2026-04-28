@@ -22,20 +22,17 @@ export const AlertWeather = ({ alertsLength, mobile }: AlertWeatherProps) => {
 	if (alertsLength === 0) return null;
 
 	return (
-		
-			<StyledPressable
-				onPress={() => router.push('/modals/alerts')}
-				// className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
-				liquidGlass={true}
-				style={{ padding: 16, display: "flex", flexDirection: "row", justifyContent: "space-between" }}
-				
-			>
-				<CardHeader
-					icon={<CircleAlert color="#007AFF" />}
-					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
-				/>
-				<ChevronRight color="#007AFF" size={26} />
-			</StyledPressable>
-		
+		<StyledPressable
+			onPress={() => router.push('/modals/alerts')}
+			// className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
+			liquidGlass={true}
+			style={{ padding: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
+		>
+			<CardHeader
+				icon={<CircleAlert color="#007AFF" />}
+				header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
+			/>
+			<ChevronRight color="#007AFF" size={26} />
+		</StyledPressable>
 	);
 };

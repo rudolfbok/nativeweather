@@ -61,7 +61,11 @@ export const Header = () => {
 						onToggle={() => setOpenDrawer(!openDrawer)}
 					/>
 				</View>
-				<ScrollView className={clsx('flex-1')} contentContainerClassName={clsx('pt-10')}>
+				<ScrollView
+					className={clsx('flex-1')}
+					showsVerticalScrollIndicator={false}
+					contentContainerClassName={clsx('pt-10')}
+				>
 					<SettingsFeature />
 				</ScrollView>
 			</View>

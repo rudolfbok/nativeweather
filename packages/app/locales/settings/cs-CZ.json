@@ -4,7 +4,7 @@
 		"googlemaps": "Základní mapový podklad pro interaktivní zobrazení geografických dat",
 		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
 		"openweather": "Poskytuje vizualizaci vrstev meteorologických map pro teplotu, srážky a oblačnost",
-		"title": "O aplikaci",
+		"title": "Informace",
 		"weatherapi": "Hlavní zdroj dat pro aktuální počasí a předpovědi a astronomické údaje"
 	},
 	"airquality": {
@@ -23,7 +23,7 @@
 		"bug": "Chyba",
 		"button": "Poslat názor",
 		"feature": "Funkce",
-		"feedback": "Názor",
+		"feedback": "Zpráva",
 		"message": "Zpráva",
 		"placeholder": "Sem napište zprávu..",
 		"sending": "Zpráva se posílá",

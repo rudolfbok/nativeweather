@@ -6,7 +6,7 @@ import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
-import { GestureResponderEvent, View } from 'react-native';
+import { GestureResponderEvent, Platform, View } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
 import { GlassColorScheme } from 'expo-glass-effect';
@@ -106,7 +106,14 @@ export const CityCard = ({
 				</StyledText>
 			</View>
 			<View className={clsx('items-center')}>
-				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
+				<WeatherIcon
+					isDay={isDay}
+					code={conditionCode}
+					width={80}
+					height={80}
+					strokeWidth={Platform.OS === 'web' ? 0.5 : 0}
+					source={currentSource}
+				/>
 				{showWorldTime && displayTime && (
 					<StyledText
 						type="localtime"

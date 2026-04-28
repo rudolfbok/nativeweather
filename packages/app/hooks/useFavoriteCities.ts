@@ -47,7 +47,7 @@ export const useFavoriteCities = () => {
 				currentSource
 			);
 			if (!weatherData) return null;
-			setLocalWeatherData(weatherData);
+			await setLocalWeatherData(weatherData);
 		}
 
 		const results = await Promise.all(

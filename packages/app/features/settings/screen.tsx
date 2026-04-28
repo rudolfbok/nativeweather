@@ -15,6 +15,8 @@ import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import pkg from '../../../../apps/web/package.json';
+import { SourceSelect } from 'app/components/settings/selectors/SourceSelect';
+import { SourceButton } from 'app/components/settings/items/SourceButton';
 
 export const SettingsFeature = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -30,6 +32,9 @@ export const SettingsFeature = () => {
 					<ThemeButton />
 					<LanguageButton />
 				</RoundView>
+				{/* <RoundView>
+					<SourceButton />
+				</RoundView> */}
 				<RoundView>
 					<TemperatureButton />
 					<UnitsButton />

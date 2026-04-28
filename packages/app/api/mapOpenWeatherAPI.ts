@@ -115,7 +115,7 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 						timeZone: weatherData.timezone,
 					}),
 					moonPhase: getMoonPhaseName(day.moon_phase),
-					moonIllumunation: Math.round(day.moon_phase * 100),
+					moonIllumination: Math.round(day.moon_phase * 100),
 					moonRise: new Date(day.moonrise * 1000).toLocaleTimeString('en-US', {
 						hour: '2-digit',
 						minute: '2-digit',

@@ -11,6 +11,31 @@ index 3d9c4a1513649e3c0316462b72fd3546439410b0..350c1cc02ebf4abe44b0bed6bf3618e6
  @end
  
  @interface RNSScreenStackManager : RCTViewManager <RCTInvalidating>
+diff --git a/android/src/main/java/com/swmansion/rnscreens/ScreenStackViewManager.kt b/android/src/main/java/com/swmansion/rnscreens/ScreenStackViewManager.kt
+index d1d6440d7f5e79f1ad83a726f0a5427974227738..1c318b8d88fc785f54f607561cf954c4d3f86ee5 100644
+--- a/android/src/main/java/com/swmansion/rnscreens/ScreenStackViewManager.kt
++++ b/android/src/main/java/com/swmansion/rnscreens/ScreenStackViewManager.kt
+@@ -6,6 +6,7 @@ import com.facebook.react.module.annotations.ReactModule
+ import com.facebook.react.uimanager.LayoutShadowNode
+ import com.facebook.react.uimanager.ThemedReactContext
+ import com.facebook.react.uimanager.ViewGroupManager
++import com.facebook.react.uimanager.annotations.ReactProp
+ import com.facebook.react.uimanager.ViewManagerDelegate
+ import com.facebook.react.viewmanagers.RNSScreenStackManagerDelegate
+ import com.facebook.react.viewmanagers.RNSScreenStackManagerInterface
+@@ -79,6 +80,12 @@ class ScreenStackViewManager :
+         value: Boolean,
+     ) = Unit
+ 
++    @ReactProp(name = "nativeContainerBackgroundColor", customType = "Color")
++    override fun setNativeContainerBackgroundColor(
++        view: ScreenStack,
++        value: Int?,
++    ) = Unit
++
+     companion object {
+         const val REACT_CLASS = "RNSScreenStack"
+     }
 diff --git a/ios/RNSScreenStack.mm b/ios/RNSScreenStack.mm
 index e37e40ab0aa83d46709a75b0fc0f7234da63cdd3..052b890af4d8f6cc1aab68fa67d20b407960e339 100644
 --- a/ios/RNSScreenStack.mm

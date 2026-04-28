@@ -125,7 +125,7 @@ export const HeroWeather = () => {
 				<CloudsCard data={weatherData.current.cloudCover} />
 				<MoonCard
 					phase={weatherData.forecast.forecastday[0].astro.moonPhase}
-					illumination={weatherData.forecast.forecastday[0].astro.moonIllumunation}
+					illumination={weatherData.forecast.forecastday[0].astro.moonIllumination}
 					isMoonUp={weatherData.forecast.forecastday[0].astro.isMoonUp}
 					moonrise={weatherData.forecast.forecastday[0].astro.moonRise ?? ''}
 					moonset={weatherData.forecast.forecastday[0].astro.moonSet ?? ''}
@@ -194,6 +194,11 @@ export const HeroWeather = () => {
 						cloudCover={weatherData.current.cloudCover}
 						airQualityEU={airQualityData?.current.european_aqi}
 						airQualityUS={airQualityData?.current.us_aqi}
+						uvIndex={weatherData.current.uv}
+						maxWindKph={weatherData.forecast.forecastday[0].day.maxWindKph}
+						avgVisibilityKm={weatherData.current.visibilityKm}
+						avgVisibilityMiles={weatherData.current.visibilityMiles}
+						dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
 					/>
 					<HourlyForecast />
 					<AirQuality className={clsx('xl:hidden')} />

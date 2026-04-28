@@ -8,8 +8,19 @@ import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
 import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
-import { clsx } from 'clsx';
 import React, { useMemo } from 'react';
+
+const CARD_STYLE = { gap: 8, padding: 16 };
+const SUMMARY_ICON = <SmartSummaryIcon />;
+
+type Variant = 1 | 2 | 3;
+type AQIType = 'eu' | 'us';
+
+interface SummaryCandidate {
+	order: number;
+	priority: number;
+	text: string;
+}
 
 interface SmartSummaryProps {
 	maxTempC: number;
@@ -26,7 +37,60 @@ interface SmartSummaryProps {
 	uvIndex?: number;
 	maxWindKph?: number;
 	avgVisibilityKm?: number;
+	avgVisibilityMiles?: number;
+	dateEpoch?: number;
 }
+
+const getVariant = (...values: Array<number | undefined>): Variant => {
+	const seed = values.reduce<number>((total, value, index) => {
+		if (value == null || !Number.isFinite(value)) return total;
+		return total + Math.abs(Math.round(value * 10)) * (index + 1);
+	}, 0);
+
+	return ((seed % 3) + 1) as Variant;
+};
+
+const getTempBucket = (minTempC: number, maxTempC: number) => {
+	if (maxTempC <= 0 || minTempC <= -3) return 'freezing';
+	if (maxTempC < 10) return 'cold';
+	if (maxTempC < 18) return 'cool';
+	if (maxTempC < 24) return 'mild';
+	if (maxTempC < 30) return 'warm';
+	return 'hot';
+};
+
+const getCloudBucket = (cloudCover?: number) => {
+	if (cloudCover == null) return null;
+	if (cloudCover <= 12) return 'clear';
+	if (cloudCover <= 50) return 'partly';
+	if (cloudCover <= 75) return 'mostly';
+	return 'overcast';
+};
+
+const getAQILevel = (value: number, type: AQIType) => {
+	if (type === 'eu') {
+		if (value <= 20) return 1;
+		if (value <= 40) return 2;
+		if (value <= 60) return 3;
+		if (value <= 80) return 4;
+		if (value <= 100) return 5;
+		return 6;
+	}
+
+	if (value <= 50) return 1;
+	if (value <= 100) return 2;
+	if (value <= 150) return 3;
+	if (value <= 200) return 4;
+	if (value <= 300) return 5;
+	return 6;
+};
+
+const getAQIPriority = (level: number) => {
+	if (level >= 5) return 12;
+	if (level === 4) return 18;
+	if (level === 3) return 35;
+	return 70;
+};
 
 export const SmartSummary = React.memo(function SmartSummary({
 	maxTempC,
@@ -37,12 +101,14 @@ export const SmartSummary = React.memo(function SmartSummary({
 	rainPrecipIn,
 	snowPrecipCm,
 	snowPrecipIn,
-	cloudCover = 0,
+	cloudCover,
 	airQualityEU,
 	airQualityUS,
 	uvIndex,
 	maxWindKph,
 	avgVisibilityKm,
+	avgVisibilityMiles,
+	dateEpoch,
 }: SmartSummaryProps) {
 	const { t } = useTranslate('summary');
 	const [currentTemp] = useStorageString('currentTemp');
@@ -53,88 +119,136 @@ export const SmartSummary = React.memo(function SmartSummary({
 	const displayMax = useSwitchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
 
 	const rain = useSwitchMetrics({
-		metric: `${Math.round(rainPrecipMm ?? 0)}mm`,
-		imperial: `${rainPrecipIn.toFixed(2) ?? 0}in`,
+		metric: `${Math.round(rainPrecipMm ?? 0)} mm`,
+		imperial: `${(rainPrecipIn ?? 0).toFixed(2)} in`,
 		currentUnits,
 	});
 	const snow = useSwitchMetrics({
-		metric: `${snowPrecipCm.toFixed(1)}cm`,
-		imperial: `${snowPrecipIn.toFixed(2)}in`,
+		metric: `${(snowPrecipCm ?? 0).toFixed(1)} cm`,
+		imperial: `${(snowPrecipIn ?? 0).toFixed(2)} in`,
+		currentUnits,
+	});
+	const visibility = useSwitchMetrics({
+		metric: `${Math.round(avgVisibilityKm ?? 0)} km`,
+		imperial: `${Math.round(avgVisibilityMiles ?? 0)} mi`,
 		currentUnits,
 	});
 
-	const variant = useMemo(() => Math.floor(Math.random() * 3) + 1, [maxTempC, rainPrecipMm]);
+	const combinedSummary = useMemo(() => {
+		const variant = getVariant(dateEpoch, maxTempC, minTempC, rainPrecipMm, snowPrecipCm, cloudCover);
+		const tempBucket = getTempBucket(minTempC, maxTempC);
+		const tempText = t(`temp_${tempBucket}_${variant}`, { min: displayMin, max: displayMax });
+		const candidates: SummaryCandidate[] = [];
+		const rainMm = rainPrecipMm ?? 0;
+		const snowCm = snowPrecipCm ?? 0;
 
-	const getTempText = () => {
-		const type = maxTempC > 20 ? 'warm' : 'cold';
-		return t(`${type}_${variant}`, { min: displayMin, max: displayMax });
-	};
-
-	const getCloudText = () => {
-		let type = 'clear';
-		if (!cloudCover) return null;
-		if (cloudCover > 20 && cloudCover <= 70) type = 'partly';
-		if (cloudCover > 70) type = 'overcast';
-		return t(`cloud_${type}_${variant}`);
-	};
-
-	const getPrecipText = () => {
-		if (rainPrecipMm > 0.1) return t(`rain_${variant}`, { amount: rain });
-		if (snowPrecipCm > 0.1) return t(`snow_${variant}`, { amount: snow });
-		return '';
-	};
-
-	const getAQIText = () => {
-		if (!airQualityEU || !airQualityUS) return null;
-		const type = (currentAQI?.toLowerCase() || 'us') as 'eu' | 'us';
-		const value = type === 'eu' ? airQualityEU : airQualityUS;
-
-		if (value === undefined) return '';
-
-		let level = 1;
-		if (type === 'eu') {
-			if (value <= 20) level = 1;
-			else if (value <= 40) level = 2;
-			else if (value <= 60) level = 3;
-			else if (value <= 80) level = 4;
-			else if (value <= 100) level = 5;
-			else level = 6;
-		} else {
-			if (value <= 50) level = 1;
-			else if (value <= 100) level = 2;
-			else if (value <= 150) level = 3;
-			else if (value <= 200) level = 4;
-			else if (value <= 300) level = 5;
-			else level = 6;
+		if (rainMm > 0.1 && snowCm > 0.1) {
+			candidates.push({
+				order: 1,
+				priority: 10,
+				text: t(`precip_mixed_${variant}`, { rain, snow }),
+			});
+		} else if (snowCm > 0.1) {
+			candidates.push({
+				order: 1,
+				priority: 11,
+				text: t(`precip_snow_${variant}`, { amount: snow }),
+			});
+		} else if (rainMm > 0.1) {
+			candidates.push({
+				order: 1,
+				priority: rainMm >= 5 ? 12 : 28,
+				text: t(`precip_rain_${variant}`, { amount: rain }),
+			});
 		}
 
-		return t(`aqi_${type}_${level}_${variant}`);
-	};
+		const cloudBucket = getCloudBucket(cloudCover);
+		if (cloudBucket) {
+			candidates.push({
+				order: 2,
+				priority: cloudBucket === 'overcast' ? 34 : 55,
+				text: t(`cloud_${cloudBucket}_${variant}`),
+			});
+		}
 
-	const getWindText = () => {
-		if (!maxWindKph || maxWindKph < 15) return '';
-		const type = maxWindKph > 40 ? 'strong' : 'moderate';
-		return t(`wind_${type}_${variant}`);
-	};
+		if (maxWindKph != null && maxWindKph >= 20) {
+			const windBucket = maxWindKph >= 40 ? 'strong' : 'breezy';
+			candidates.push({
+				order: 3,
+				priority: windBucket === 'strong' ? 16 : 42,
+				text: t(`wind_${windBucket}_${variant}`),
+			});
+		}
 
-	const getExtraText = () => {
-		if (uvIndex && uvIndex > 6) return t(`uv_high_${variant}`);
-		if (avgVisibilityKm && avgVisibilityKm < 5) return t(`visibility_low_${variant}`);
-		return '';
-	};
+		if (uvIndex != null && uvIndex > 5) {
+			const uvBucket = uvIndex >= 8 ? 'very_high' : 'high';
+			candidates.push({
+				order: 4,
+				priority: uvBucket === 'very_high' ? 14 : 32,
+				text: t(`uv_${uvBucket}_${variant}`),
+			});
+		}
 
-	const sentences = [getTempText(), getCloudText(), getWindText(), getPrecipText(), getExtraText(), getAQIText()];
+		if (avgVisibilityKm != null && avgVisibilityKm > 0 && avgVisibilityKm < 5) {
+			candidates.push({
+				order: 5,
+				priority: avgVisibilityKm < 2 ? 13 : 24,
+				text: t(`visibility_low_${variant}`, { amount: visibility }),
+			});
+		}
 
-	const combinedSummary = sentences.filter(Boolean).join(' ');
+		const preferredAQIType: AQIType = currentAQI === 'EU' ? 'eu' : 'us';
+		const fallbackAQIType: AQIType = preferredAQIType === 'eu' ? 'us' : 'eu';
+		const selectedAQIType =
+			preferredAQIType === 'eu'
+				? airQualityEU == null
+					? fallbackAQIType
+					: preferredAQIType
+				: airQualityUS == null
+					? fallbackAQIType
+					: preferredAQIType;
+		const selectedAQIValue = selectedAQIType === 'eu' ? airQualityEU : airQualityUS;
+
+		if (selectedAQIValue != null) {
+			const level = getAQILevel(selectedAQIValue, selectedAQIType);
+			candidates.push({
+				order: 6,
+				priority: getAQIPriority(level),
+				text: t(`aqi_${selectedAQIType}_${level}_${variant}`, { value: selectedAQIValue }),
+			});
+		}
+
+		const selected = candidates
+			.sort((a, b) => a.priority - b.priority)
+			.slice(0, 3)
+			.sort((a, b) => a.order - b.order)
+			.map(({ text }) => text);
+
+		return [tempText, ...selected].join(' ');
+	}, [
+		airQualityEU,
+		airQualityUS,
+		avgVisibilityKm,
+		cloudCover,
+		currentAQI,
+		dateEpoch,
+		displayMax,
+		displayMin,
+		maxTempC,
+		maxWindKph,
+		minTempC,
+		rain,
+		rainPrecipMm,
+		snow,
+		snowPrecipCm,
+		t,
+		uvIndex,
+		visibility,
+	]);
 
 	return (
-		<RoundView
-			className={clsx('w-full gap-2 p-4')}
-			style={{ gap: 8, padding: 16 }}
-			liquidGlass={true}
-			
-		>
-			<CardHeader icon={<SmartSummaryIcon />} header={t('title')} />
+		<RoundView className="w-full gap-2 p-4" style={CARD_STYLE} liquidGlass>
+			<CardHeader icon={SUMMARY_ICON} header={t('title')} />
 			<StyledText type="body">{combinedSummary}</StyledText>
 		</RoundView>
 	);
