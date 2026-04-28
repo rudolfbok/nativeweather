@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/logo_light.png" width="250">
-    <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/logo_dark.png" width="250">
-    <img alt="nativeweather logo" src="packages/app/assets/readme/logo_light.png" width="250">
+    <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/logo_dark.png" width="200">
+    <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/logo_light.png" width="200">
+    <img alt="nativeweather logo" src="packages/app/assets/readme/logo_light.png" width="200">
   </picture>
 
 </p>
