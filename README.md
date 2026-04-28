@@ -4,38 +4,59 @@
 
 <div align="center">
 
-[![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](#) ![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=visualstudiocode&logoColor=whit#e)
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/)
 
-[![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](##) [![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](##) [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](##) [![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](##) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](##) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/)
 
-[![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#) [![iOS](https://img.shields.io/badge/iOS-000000?&logo=apple&logoColor=white)](#)
+<!-- [![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#) [![iOS](https://img.shields.io/badge/iOS-<26-000000?&logo=apple&logoColor=white)](#) -->
+
+<!-- [![Expo](https://img.shields.io/badge/Expo-55.0.15-000020?logo=expo&logoColor=fff&labelColor=000)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-16.1.0-black?logo=next.js&logoColor=white&labelColor=000)](https://nextjs.org/)  -->
+
+[![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://react.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+
+[![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](https://pnpm.io/) [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
 
 </div>
+
+<!-- <br/><br/>
+
+<div align="center">
+
+[![App Store](https://img.shields.io/badge/App%20Store-coming%20soon-0D96F6?logo=app-store&logoColor=white)](#)
+[![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/)
+
+[![iOS](https://img.shields.io/badge/iOS-26+-000000?logo=apple&logoColor=white)](#)
+[![Expo](https://img.shields.io/badge/Expo-SDK%2055-000020?logo=expo&logoColor=white)](https://expo.dev/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-deployed-FF4A03?logo=cloudflareworkers&logoColor=white)](https://nativeweather.app/)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![VS Code](https://custom-icon-badges.demolab.com/badge/VS%20Code-0078D7.svg?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
+
+</div> -->
+
+<div align="center">
 
 NativeWeather is a cross-platform weather app for Web and iOS, built with a Turborepo monorepo, Next.js, Expo, React Native, React Native Web, NativeWind, and shared app code.
 
 This started as my first long-term project and has grown into a real weather product with forecasts, air quality, maps, alerts, favorites, local weather, settings, localization, and iOS widgets.
+
+</div>
 
 ## Features
 
 - Current weather with condition-based visuals
 - 7-day forecast and hourly forecast
 - Smart weather summary
-- Weather alerts
-- Air quality data with EU AQI and US AQI support
-- Rain, snow, wind, humidity, UV, pressure, visibility, sunrise, sunset, moon, and cloud cards
-- Search with suggestions and recent searches
 - Favorite cities
-- Local weather using device location
-- Multiple weather data sources
+- Air quality data with EU AQI and US AQI support
+- Weather alerts
 - Light, dark, and system theme support
-- Metric and imperial unit support
-- Celsius and Fahrenheit support
 - English and Czech localization with Tolgee
-- Web support through Next.js and React Native Web
-- iOS support through Expo Router
 - iOS widgets with Expo Widgets
-- Shared UI and business logic through `packages/app`
 
 ## Tech Stack
 
@@ -48,8 +69,6 @@ This started as my first long-term project and has grown into a real weather pro
 - React Native Web
 - Expo Router
 - NativeWind
-- Tailwind CSS
-- Zustand
 - React Native MMKV
 - Tolgee
 - OpenNext for Cloudflare
