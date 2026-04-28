@@ -1,5 +1,15 @@
 <p align="center">
-  <img src="packages/app/assets/readme/logo.png" alt="NativeWeather logo" width="200" />
+
+  <picture>
+
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/logo-dark.png">
+
+    <source media="(prefers-color-scheme: light)" srcset="./assets/logo-light.png">
+
+    <img alt="nativeweather logo" src="./assets/logo-light.png" width="320">
+
+  </picture>
+
 </p>
 
 <div align="center">
