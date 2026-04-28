@@ -3,7 +3,14 @@ import nativewindPreset from 'nativewind/preset';
 
 module.exports = {
 	darkMode: 'class',
-	content: ['./app/**/*.{js,ts,jsx,tsx,mdx}', '../../packages/**/*.{js,jsx,ts,tsx}'],
+	content: {
+		relative: true,
+		files: [
+			'./app/**/*.{js,ts,jsx,tsx,mdx}',
+			'../../packages/app/components/**/*.{js,jsx,ts,tsx}',
+			'../../packages/app/features/**/*.{js,jsx,ts,tsx}',
+		],
+	},
 	presets: [nativewindPreset],
 	theme: {
 		extend: {
