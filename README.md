@@ -4,7 +4,6 @@
     <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/logo_light.png" width="200">
     <img alt="nativeweather logo" src="packages/app/assets/readme/logo_light.png" width="200">
   </picture>
-
 </p>
 
 <div align="center">
@@ -17,7 +16,7 @@
 
 <!-- [![Expo](https://img.shields.io/badge/Expo-55.0.15-000020?logo=expo&logoColor=fff&labelColor=000)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-16.1.0-black?logo=next.js&logoColor=white&labelColor=000)](https://nextjs.org/)  -->
 
-[![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-149ECA.svg?logo=react&logoColor=fff)](https://react.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](https://expo.dev/) [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-149ECA.svg?logo=react&logoColor=fff)](https://react.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](https://www.typescriptlang.org/)
 
 [![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](https://pnpm.io/) [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
 
@@ -26,6 +25,7 @@
 <div align="center">
 
 <img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 3" width="200" />
+&nbsp;
 <!-- <img src="packages/app/assets/readme/ios_1.png" alt="iOS screeshot no. 1" width="200" /> -->
 <img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 2" width="200" />
 
