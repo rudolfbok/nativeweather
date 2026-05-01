@@ -6,8 +6,8 @@ import { useStorageString } from 'app/storage/useStorageString';
 
 export const useCurrentLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
-	const { setLocalWeatherData } = useLocalWeather();
 	const [error, setError] = useState<boolean>(false);
+	const { setLocalWeatherData } = useLocalWeather();
 
 	const getLocalWeather = async () => {
 		setError(false);

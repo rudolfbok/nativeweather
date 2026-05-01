@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';

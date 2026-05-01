@@ -59,7 +59,7 @@
 
 <div align="center">
 
-NativeWeather is a cross-platform weather app for Web, iOS, and Android
+NativeWeather is a cross-platform weather application for Web, iOS, and Android
 <br/><br/>
 Built with Turborepo, Next.js, Expo, React Native Web, NativeWind, and shared app code in a monorepo PNPM workspace.
 
@@ -101,8 +101,9 @@ This started as my first long-term project and has grown into a real weather pro
 This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS and Expo frameworks with a shared code from packages/app folder
 
 Many thanks to gurselcakar and his guide - https://www.gurselcakar.com/monorepo
-<br/>
-Universal React Monorepo template - https://github.com/gurselcakar/universal-react-monorepo
+
+<!-- <br/>
+Universal React Monorepo template - https://github.com/gurselcakar/universal-react-monorepo -->
 
 ```txt
 nativeweather/
@@ -131,11 +132,13 @@ This project uses pnpm:
 pnpm install
 ```
 
-Run all development tasks through Turborepo:
+Run both web and mobile application with TUI terminal:
 
 ```txt
 pnpm dev
 ```
+
+Alternatively you can run web or mobile only
 
 Run the web app:
 
