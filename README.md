@@ -122,7 +122,7 @@ nativeweather/
 Prerequisites
 
 - Node.js
-- pnpm
+- PNPM
 - Xcode for iOS development
 - Expo tooling for mobile development
 
