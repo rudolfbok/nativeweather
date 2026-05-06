@@ -5,10 +5,11 @@ import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 import { ReactNode } from 'react';
 import { View } from 'react-native';
+import { clsx } from 'clsx';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { bodyBackground, textColor } = useThemeColors();
+	const { modalBackground, textColor } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -21,11 +22,11 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: bodyBackground }}
+			nativeContainerStyle={{ backgroundColor: modalBackground }}
 			screenOptions={{
 				headerTransparent: true,
 				contentStyle: {
-					backgroundColor: bodyBackground,
+					backgroundColor: modalBackground,
 				},
 				headerTitleStyle: {
 					color: textColor,
@@ -37,7 +38,7 @@ export default function ModalsLayout() {
 			<Stack.Screen
 				name="index"
 				options={{
-					headerTitle: () => <ModalHeader icon={<CircleAlert color="#007AFF" />} title="Weather alerts" />,
+					headerTitle: () => <ModalHeader icon={<CircleAlert color="#007AFF" />} title={t('alerts.modaltitle')} />,
 				}}
 			/>
 			<Stack.Screen

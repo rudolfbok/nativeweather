@@ -21,12 +21,12 @@ import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherAlert } from 'app/types/weatherAlert';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
+import { getActiveWeatherAlerts } from 'app/utils/helpers/getActiveWeatherAlerts';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
-import { useEffect, useRef } from 'react';
-import { Platform, Pressable, ScrollView, View } from 'react-native';
+import { useEffect } from 'react';
+import { Platform, Pressable, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView.web';
@@ -43,7 +43,9 @@ export const HeroWeather = () => {
 
 		const city = cityFromWeather(weatherData);
 		setIsFavorite(isCityInFavorites(city));
-	}, [weatherData]);
+	}, [setIsFavorite, weatherData]);
+
+	if (!weatherData) return null;
 
 	const getHour24FromEpoch = (epochTime: number, timezone: string) => {
 		const date = new Date(epochTime * 1000);
@@ -78,13 +80,11 @@ export const HeroWeather = () => {
 	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snowCm;
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 
-	const filteredAlerts: WeatherAlert[] = weatherData.alerts.alert.filter(
-		(alert, index, self) => index === self.findIndex((a) => a.msgtype === 'Alert')
-	);
+	const filteredAlerts = getActiveWeatherAlerts(weatherData.alerts.alert);
 
 	const alertsLength = filteredAlerts.length ?? 0;
 
-	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource);
+	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource!);
 
 	const DataCardGrid = () => {
 		return (

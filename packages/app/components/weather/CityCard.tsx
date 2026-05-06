@@ -1,15 +1,15 @@
 import { useTolgee } from '@tolgee/react';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
+import { GlassColorScheme } from 'expo-glass-effect';
 import { DateTime } from 'luxon';
 import { GestureResponderEvent, Platform, View } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
-import { GlassColorScheme } from 'expo-glass-effect';
 
 interface CityCardProps {
 	onPress: (event?: GestureResponderEvent) => void;

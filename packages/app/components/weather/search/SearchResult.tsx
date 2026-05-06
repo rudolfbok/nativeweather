@@ -1,7 +1,7 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
-import { View, Pressable, GestureResponderEvent } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 
 interface SearchResultProps {
 	index: number;

@@ -8,6 +8,12 @@ import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
 
+const textShadowStyle = {
+	textShadowColor: 'rgba(0,0,0,0.5)',
+	textShadowOffset: { width: 2, height: 2 },
+	textShadowRadius: 4,
+};
+
 interface MainWeatherProps {
 	name?: string;
 	country?: string;
@@ -56,12 +62,6 @@ export const MainWeather = ({
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
-
-	const textShadowStyle = {
-		textShadowColor: 'rgba(0,0,0,0.5)',
-		textShadowOffset: { width: 2, height: 2 },
-		textShadowRadius: 4,
-	};
 
 	return (
 		<View className={clsx('relative mt-2 items-center gap-2')}>

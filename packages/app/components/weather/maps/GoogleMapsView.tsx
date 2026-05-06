@@ -10,18 +10,39 @@ import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { mapColorTheme } from './GoogleMapsTheme';
 import { TemperatureInfo } from './TemperatureInfo';
 
+const layerButtons = [
+	{ layer: 'temp_new', icon: <Thermometer color="#FF7000" /> },
+	{ layer: 'precipitation_new', icon: <CloudRain color="#2793FF" /> },
+	{ layer: 'clouds_new', icon: <CloudsIcon /> },
+];
+
+const MapButton = ({
+	onPress,
+	icon,
+}: {
+	onPress: (event: GestureResponderEvent) => void | Promise<void>;
+	icon: ReactNode;
+}) => {
+	return (
+		<StyledPressable onPress={onPress} className={clsx('rounded-3xl border border-transparent p-2')}>
+			{icon}
+		</StyledPressable>
+	);
+};
+
 export const GoogleMapsView = ({ className, gestureHandling }: { className?: string; gestureHandling?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
+	const { layer, setLayer } = useMapLayer();
 	const [showLegend, setShowLegend] = useState(false);
 	const [map, setMap] = useState<google.maps.Map | null>(null);
-	const { layer, setLayer } = useMapLayer();
 	const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number } | null>(null);
+	const mapRef = useRef<GoogleMap | null>(null);
 
 	const switchColors = useSwitchColors('black', 'white');
 
@@ -60,6 +81,15 @@ export const GoogleMapsView = ({ className, gestureHandling }: { className?: str
 				lng: weatherData.location.lon,
 			});
 		}
+	};
+
+	const handleDragEnd = (mapInstance: google.maps.Map) => {
+		const currentCoordinates = mapRef.current.props.center;
+		mapInstance.setCenter({
+			lat: Number(currentCoordinates.lat),
+			lng: Number(currentCoordinates.lng),
+		});
+		console.log('Drag was ended!');
 	};
 
 	useEffect(() => {
@@ -101,31 +131,13 @@ export const GoogleMapsView = ({ className, gestureHandling }: { className?: str
 		);
 	}
 
-	const MapButton = ({
-		onPress,
-		icon,
-	}: {
-		onPress: (event: GestureResponderEvent) => void | Promise<void>;
-		icon: ReactNode;
-	}) => {
-		return (
-			<StyledPressable onPress={onPress} className={clsx('rounded-3xl border border-transparent p-2')}>
-				{icon}
-			</StyledPressable>
-		);
-	};
-
-	const layerButtons = [
-		{ layer: 'temp_new', icon: <Thermometer color="#FF7000" /> },
-		{ layer: 'precipitation_new', icon: <CloudRain color="#2793FF" /> },
-		{ layer: 'clouds_new', icon: <CloudsIcon /> },
-	];
-
 	return (
 		<View className={clsx('flex w-full', className)}>
 			<GoogleMap
+				ref={mapRef}
 				mapContainerClassName={clsx('h-full w-full rounded-3xl')}
 				center={mapCenter}
+				onDragEnd={() => handleDragEnd}
 				zoom={7}
 				onLoad={handleOnLoad}
 				options={mapOptions}

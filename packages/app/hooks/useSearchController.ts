@@ -13,13 +13,13 @@ import { useWeather } from './useWeather';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
-	const { setWeatherData } = useWeather();
+	const { weatherData, setWeatherData } = useWeather();
 	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
 	const [suggestions, setSuggestions] = useState<City[]>([]);
-	const [loading, setLoading] = useState(false);
+	const [weatherLoading, setWeatherLoading] = useState(false);
 	// const inputRef = useRef<TextInput>(null);
 	const debounceTimerRef = useRef<number | null>(null);
 
@@ -33,10 +33,14 @@ export const useSearchController = () => {
 	const showSuggestions = isSearchBarFocused && suggestions.length > 0;
 
 	const handleCityPress = async (city: City) => {
-		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
+		setWeatherLoading(true);
 		if (weatherData) {
-			setWeatherData(weatherData);
-			const path = buildWeatherSlug(weatherData);
+			setWeatherData(null);
+		}
+		const newWeatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
+		if (newWeatherData) {
+			setWeatherData(newWeatherData);
+			const path = buildWeatherSlug(newWeatherData);
 			router.push(path);
 		} else {
 			showToast({
@@ -45,6 +49,7 @@ export const useSearchController = () => {
 			});
 			console.error('Failed to fetch weather data for saved city');
 		}
+		setWeatherLoading(false);
 	};
 
 	const handleInputSearch = async (query: string) => {
@@ -108,6 +113,6 @@ export const useSearchController = () => {
 		showSuggestions,
 		suggestions,
 		addToRecentSearches,
-		loading,
+		weatherLoading,
 	};
 };

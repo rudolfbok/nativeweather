@@ -3,28 +3,26 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
-import { RoundView } from 'app/components/common/ui/RoundView';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
+// import { useSearchController } from 'app/hooks/useSearchController';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
 import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
-import { clsx } from 'clsx';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
+	// const { weatherLoading } = useSearchController();
 	const router = useRouter();
 	const params = useParams<{ city: string }>();
 	const searchParams = useSearchParams();
 
-	const [loading, setLoading] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
@@ -87,12 +85,12 @@ export const WeatherFeature = () => {
 	// 	);
 	// }
 
-	if (loading || !weatherData) {
+	if (loading && !weatherData) {
 		return <HeroSkeleton />;
 	}
 
 	return (
-		<AnimatedView duration={25}>
+		<AnimatedView duration={20}>
 			<HeroWeather />
 		</AnimatedView>
 	);

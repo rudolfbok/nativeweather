@@ -48,7 +48,6 @@ export const SearchInput = ({
 				<Search size={22} color={isFocused ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 			<TextInput
-				// ref={ref}
 				value={searchValue}
 				onChangeText={onChangeText}
 				onSubmitEditing={performSearch}
@@ -62,7 +61,6 @@ export const SearchInput = ({
 					'text-label web:h-11 dark:text-label_dark mx-2 flex h-14 flex-1 flex-row truncate text-[16px] leading-[20px] outline-none'
 				)}
 			/>
-
 			{searchValue.length > 0 && (
 				<Pressable
 					onPress={clearSearch}

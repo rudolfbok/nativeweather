@@ -8,12 +8,12 @@ import { AlertItem } from './AlertItem';
 import { useRouter } from 'solito/navigation';
 
 interface AlertModalProps {
-	onPress: (alert: WeatherAlert) => void;
+	onPress?: (alert: WeatherAlert) => void;
 	filteredAlerts?: WeatherAlert[];
 	selectedAlert?: WeatherAlert | null;
 }
 
-export const AlertModal = ({ onPress, filteredAlerts, selectedAlert }: AlertModalProps) => {
+export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null }: AlertModalProps) => {
 	const { t } = useTranslate('weather');
 	const router = useRouter();
 
@@ -24,8 +24,12 @@ export const AlertModal = ({ onPress, filteredAlerts, selectedAlert }: AlertModa
 					<View className={clsx('gap-4')}>
 						{filteredAlerts.map((alert, index) => (
 							<AlertItem
-								key={index}
-								onPress={Platform.OS === 'ios' ? () => router.push('/modals/alerts/detail') : () => onPress(alert)}
+								key={alert.identifier || index}
+								onPress={
+									Platform.OS === 'web'
+										? () => onPress?.(alert)
+										: () => router.push(`/modals/alerts/detail?alert=${index}`)
+								}
 								title={alert.event}
 								area={alert.areas}
 							/>
