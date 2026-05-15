@@ -1,7 +1,8 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
-import { GestureResponderEvent, View } from 'react-native';
+import { useRef } from 'react';
+import { GestureResponderEvent, Platform, View } from 'react-native';
 
 interface SearchResultProps {
 	index: number;
@@ -13,10 +14,29 @@ interface SearchResultProps {
 }
 
 export const SearchResult = ({ index, onPress, city, region, country, isLast }: SearchResultProps) => {
+	const handledPressInRef = useRef(false);
+
+	const handlePressIn = (event: GestureResponderEvent) => {
+		if (Platform.OS !== 'web') return;
+
+		handledPressInRef.current = true;
+		onPress(event);
+	};
+
+	const handlePress = (event: GestureResponderEvent) => {
+		if (Platform.OS === 'web' && handledPressInRef.current) {
+			handledPressInRef.current = false;
+			return;
+		}
+
+		onPress(event);
+	};
+
 	return (
 		<StyledPressable
 			key={index}
-			onPress={onPress}
+			onPress={handlePress}
+			onPressIn={handlePressIn}
 			className={clsx(
 				'web:bg-secondarySystemBackground dark:hover:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4'
 			)}

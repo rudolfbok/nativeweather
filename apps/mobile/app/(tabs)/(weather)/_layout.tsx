@@ -63,6 +63,7 @@ export default function TabLayout() {
 					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,
 					headerTransparent: true,
+					// headerTintColor: textColor,
 					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
 					headerTitleAlign: 'center',
 					// headerTitleStyle: { color: !weatherData ? textColor : 'white' },

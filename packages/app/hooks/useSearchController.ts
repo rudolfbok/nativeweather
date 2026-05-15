@@ -13,7 +13,7 @@ import { useWeather } from './useWeather';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
-	const { weatherData, setWeatherData } = useWeather();
+	const { setWeatherData } = useWeather();
 	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
@@ -34,13 +34,10 @@ export const useSearchController = () => {
 
 	const handleCityPress = async (city: City) => {
 		setWeatherLoading(true);
+		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 		if (weatherData) {
-			setWeatherData(null);
-		}
-		const newWeatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
-		if (newWeatherData) {
-			setWeatherData(newWeatherData);
-			const path = buildWeatherSlug(newWeatherData);
+			setWeatherData(weatherData);
+			const path = buildWeatherSlug(weatherData);
 			router.push(path);
 		} else {
 			showToast({
@@ -54,6 +51,7 @@ export const useSearchController = () => {
 
 	const handleInputSearch = async (query: string) => {
 		const weatherData = await fetchWeather(query, currentSource);
+		if (weatherData) showToast({ message: 'Bad query search', preset: 'error' });
 		if (weatherData) {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);

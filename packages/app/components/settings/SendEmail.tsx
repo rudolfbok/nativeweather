@@ -17,7 +17,9 @@ export const SendEmail = () => {
 
 	const handleSubmit = async () => {
 		if (loading) return;
-		if (message.trim().length === 0) return showToast({ message: t('feedback.toast.error'), preset: 'error' });
+		if (message.trim().length === 0 || type === null) {
+			return showToast({ message: t('feedback.toast.error'), preset: 'error' });
+		} /// CHECK THIS OUT
 		setLoading(true);
 
 		try {

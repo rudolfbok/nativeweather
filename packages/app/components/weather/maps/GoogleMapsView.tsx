@@ -46,7 +46,7 @@ export const GoogleMapsView = ({ className, gestureHandling }: { className?: str
 
 	const switchColors = useSwitchColors('black', 'white');
 
-	const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!;
+	const GOOGLE_API_KEY = 'REDACTED_GOOGLE_MAPS_API_KEY';
 
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: GOOGLE_API_KEY,

@@ -27,22 +27,22 @@ interface MoonCardProps {
 	moonset: string;
 }
 
+const moonPhaseComponents: Record<string, JSX.Element> = {
+	'New Moon': <NewMoon />,
+	'Waxing Crescent': <WaxingCrescent />,
+	'First Quarter': <FirstQuarter />,
+	'Waxing Gibbous': <WaxingGibbous />,
+	'Full Moon': <FullMoon />,
+	'Waning Gibbous': <WaningGibbous />,
+	'Last Quarter': <LastQuarter />,
+	'Waning Crescent': <WaningCrescent />,
+};
+
 export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: MoonCardProps) => {
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
 	const [currentLanguage] = useStorageString('currentLang');
 	const router = useRouter();
-
-	const moonPhaseComponents: Record<string, JSX.Element> = {
-		'New Moon': <NewMoon />,
-		'Waxing Crescent': <WaxingCrescent />,
-		'First Quarter': <FirstQuarter />,
-		'Waxing Gibbous': <WaxingGibbous />,
-		'Full Moon': <FullMoon />,
-		'Waning Gibbous': <WaningGibbous />,
-		'Last Quarter': <LastQuarter />,
-		'Waning Crescent': <WaningCrescent />,
-	};
 
 	const getLocalePhase: Record<string, string> = {
 		'New Moon': t('moon.phase.newmoon'),
