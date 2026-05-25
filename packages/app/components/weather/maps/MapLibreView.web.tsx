@@ -16,12 +16,18 @@ import { TemperatureInfo } from './TemperatureInfo';
 
 const WEATHER_SOURCE_ID = 'weatherapi';
 const WEATHER_LAYER_ID = 'weatherapi-layer';
-const OPENSTREETMAP_VECTOR_STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
+const OPENFREEMAP_LIBERTY = 'https://tiles.openfreemap.org/styles/liberty';
+const OPENFREEMAP_POSITRON = 'https://tiles.openfreemap.org/styles/positron';
 
 const layerButtons = [
 	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
 	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
 	{ layer: 'wind', icon: <CloudsIcon /> },
+];
+
+const tileButtons = [
+	{ style: OPENFREEMAP_LIBERTY, label: 'Liberty' },
+	{ style: OPENFREEMAP_POSITRON, label: 'Positron' },
 ];
 
 const getWeatherApiMapPeriod = () => {
@@ -82,19 +88,26 @@ export const MapLibreView = () => {
 	const { weatherData } = useWeather();
 	const { layer, setLayer } = useMapLayer();
 	const [showLegend, setShowLegend] = useState(false);
+	const [tileStyle, setTileStyle] = useState(OPENFREEMAP_POSITRON);
 	const [mapLoading, setMapLoading] = useState(false);
 	const [map, setMap] = useState<MapLibreMap | null>(null);
 	const mapContainerRef = useRef<HTMLDivElement | null>(null);
+	const activeTileStyleRef = useRef(OPENFREEMAP_POSITRON);
+	const currentLayerRef = useRef(layer);
 	const switchColors = useSwitchColors('black', 'white');
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
+
+	useEffect(() => {
+		currentLayerRef.current = layer;
+	}, [layer]);
 
 	useEffect(() => {
 		if (!mapContainerRef.current) return;
 
 		const mapInstance = new maplibregl.Map({
 			container: mapContainerRef.current,
-			style: OPENSTREETMAP_VECTOR_STYLE_URL,
+			style: OPENFREEMAP_POSITRON,
 			center: [0, 0],
 			zoom: 2,
 			attributionControl: false,
@@ -121,13 +134,32 @@ export const MapLibreView = () => {
 		if (map.isStyleLoaded()) {
 			updateLayer();
 		} else {
-			map.once('load', updateLayer);
+			map.once('style.load', updateLayer);
 		}
 
 		return () => {
-			map.off('load', updateLayer);
+			map.off('style.load', updateLayer);
 		};
 	}, [layer, map]);
+
+	useEffect(() => {
+		if (!map || activeTileStyleRef.current === tileStyle) return;
+
+		activeTileStyleRef.current = tileStyle;
+		setMapLoading(false);
+
+		const updateLayer = () => {
+			setMapLoading(true);
+			setWeatherLayer(map, currentLayerRef.current);
+		};
+
+		map.once('style.load', updateLayer);
+		map.setStyle(tileStyle);
+
+		return () => {
+			map.off('style.load', updateLayer);
+		};
+	}, [map, tileStyle]);
 
 	useEffect(() => {
 		if (!map || mapLatitude == null || mapLongitude == null) return;
@@ -153,6 +185,23 @@ export const MapLibreView = () => {
 	return (
 		<View className={clsx('relative flex w-full flex-1 overflow-hidden rounded-3xl')}>
 			<div ref={mapContainerRef} className={clsx('h-full w-full rounded-3xl')} />
+			<View className={clsx('absolute left-4 top-4 flex-row gap-2')}>
+				{tileButtons.map(({ style, label }) => {
+					const selected = tileStyle === style;
+
+					return (
+						<StyledPressable
+							key={style}
+							onPress={() => setTileStyle(style)}
+							className={clsx('rounded-3xl px-3 py-2', selected && '!bg-primaryblue')}
+						>
+							<StyledText type="bodysecondary" className={clsx('font-semibold', selected && '!text-white')}>
+								{label}
+							</StyledText>
+						</StyledPressable>
+					);
+				})}
+			</View>
 			{!mapLoading && (
 				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
 					<ActivityIndicator size="small" color="#007AFF" />
