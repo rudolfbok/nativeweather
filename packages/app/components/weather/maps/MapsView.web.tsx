@@ -33,9 +33,7 @@ export const MapsView = () => {
 					header={t('maps.title')}
 					mapsModal={true}
 				>
-					<View className={clsx('h-[90vh] flex-grow md:h-[75vh]')}>
-						<MapLibreView />
-					</View>
+					<MapLibreView />
 				</StyledModal>
 			)}
 		</>
