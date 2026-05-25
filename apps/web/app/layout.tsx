@@ -2,6 +2,7 @@ import { ClientOnly } from 'app/components/common/ClientOnly';
 import { Header } from 'app/components/common/ui/Header.web';
 import { clsx } from 'clsx';
 import { Geist, Geist_Mono } from 'next/font/google';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import './globals.css';
 import { Providers } from './providers';
 

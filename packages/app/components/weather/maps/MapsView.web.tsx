@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { Map } from 'lucide-react-native';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { GoogleMapsView } from './GoogleMapsView';
+import { MapLibreView } from './MapLibreView.web';
 
 export const MapsView = () => {
 	const { t } = useTranslate('weather');
@@ -23,7 +23,7 @@ export const MapsView = () => {
 						<MaximizeIcon />
 					</StyledPressable>
 				</View>
-				<GoogleMapsView className={clsx('flex-1')} gestureHandling="cooperative" />
+				<MapLibreView />
 			</RoundView>
 			{showMapsModal && (
 				<StyledModal
@@ -34,7 +34,7 @@ export const MapsView = () => {
 					mapsModal={true}
 				>
 					<View className={clsx('h-[90vh] flex-grow md:h-[75vh]')}>
-						<GoogleMapsView className={clsx('flex-1')} gestureHandling="greedy" />
+						<MapLibreView />
 					</View>
 				</StyledModal>
 			)}

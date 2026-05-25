@@ -29,7 +29,7 @@ import { useEffect } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
-import { MapsView } from './maps/MapsView.web';
+import { MapsView } from './maps/MapsView';
 import { SmartSummary } from './SmartSummary';
 
 export const HeroWeather = () => {

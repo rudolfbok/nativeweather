@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { GoogleMapsPlatformLogo } from 'app/components/icons/logos/GoogleMapsPlatformLogo';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
+import { OpenStreetMapLogo } from 'app/components/icons/logos/OpenStreetMapLogo';
 import { OpenWeatherLogo } from 'app/components/icons/logos/OpenWeatherLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
 import { clsx } from 'clsx';
@@ -59,10 +59,10 @@ export const AboutBody = () => {
 			url: 'https://openweathermap.org/',
 		},
 		{
-			name: 'Google Maps Platform API',
-			logo: <GoogleMapsPlatformLogo />,
-			description: t('about.googlemaps'),
-			url: 'https://mapsplatform.google.com/',
+			name: 'OpenStreetMap',
+			logo: <OpenStreetMapLogo />,
+			description: t('about.openstreetmap'),
+			url: 'https://www.openstreetmap.org/',
 		},
 	];
 

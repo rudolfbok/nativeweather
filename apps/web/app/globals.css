@@ -6,8 +6,9 @@
 	overflow: hidden;
 }
 
-.gm-style-cc {
-	display: none !important;
+.maplibregl-ctrl-attrib {
+	border-top-left-radius: 0.75rem !important;
+	font-size: 10px !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
