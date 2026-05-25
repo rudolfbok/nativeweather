@@ -1,29 +1,29 @@
 import { clsx } from 'clsx';
-import { ActivityIndicator, GestureResponderEvent } from 'react-native';
+import { ReactNode } from 'react';
+import { GestureResponderEvent } from 'react-native';
 import { StyledPressable } from './StyledPressable';
 import { StyledText } from './StyledText';
-import { ChevronRight } from 'lucide-react-native';
 
 interface StyledButtonProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
-	children: string;
+	icon?: ReactNode;
 	className?: string;
-	loading?: boolean;
+	text: string;
 }
 
-export const StyledButton = ({ onPress, className, children, loading }: StyledButtonProps) => {
+export const StyledButton = ({ onPress, icon, className, text }: StyledButtonProps) => {
 	return (
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark w-fit select-none flex-row items-center justify-center rounded-3xl p-4',
+				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark select-none flex-row items-center justify-center gap-2 rounded-3xl p-3',
 				className
 			)}
 		>
-			{loading && <ActivityIndicator size="small" className="mr-2" />}
 			<StyledText type="subtitle" className={clsx('text-center')}>
-				{children}
+				{text}
 			</StyledText>
+			{icon}
 		</StyledPressable>
 	);
 };

@@ -6,6 +6,6 @@ interface LayerState {
 }
 
 export const useMapLayer = create<LayerState>((set) => ({
-	layer: 'temp_new',
+	layer: 'tmp2m',
 	setLayer: (layer) => set({ layer }),
 }));

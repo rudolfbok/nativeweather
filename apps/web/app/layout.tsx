@@ -1,4 +1,4 @@
-import { ClientOnly } from 'app/components/common/ClientOnly';
+import { ClientOnly } from 'app/components/common/ui/ClientOnly';
 import { Header } from 'app/components/common/ui/Header.web';
 import { clsx } from 'clsx';
 import { Geist, Geist_Mono } from 'next/font/google';

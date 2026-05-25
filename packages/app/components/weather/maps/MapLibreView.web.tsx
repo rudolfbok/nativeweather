@@ -11,18 +11,28 @@ import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
 import maplibregl, { Map as MapLibreMap } from 'maplibre-gl';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { GestureResponderEvent, Pressable, View } from 'react-native';
+import { ActivityIndicator, GestureResponderEvent, Pressable, View } from 'react-native';
 import { TemperatureInfo } from './TemperatureInfo';
 
-const WEATHER_SOURCE_ID = 'openweather';
-const WEATHER_LAYER_ID = 'openweather-layer';
+const WEATHER_SOURCE_ID = 'weatherapi';
+const WEATHER_LAYER_ID = 'weatherapi-layer';
 const OPENSTREETMAP_VECTOR_STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
 
 const layerButtons = [
-	{ layer: 'temp_new', icon: <Thermometer color="#FF7000" /> },
-	{ layer: 'precipitation_new', icon: <CloudRain color="#2793FF" /> },
-	{ layer: 'clouds_new', icon: <CloudsIcon /> },
+	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
+	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
+	{ layer: 'wind', icon: <CloudsIcon /> },
 ];
+
+const getWeatherApiMapPeriod = () => {
+	const now = new Date();
+	const year = now.getUTCFullYear();
+	const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+	const day = String(now.getUTCDate()).padStart(2, '0');
+	const hour = String(now.getUTCHours()).padStart(2, '0');
+
+	return `${year}${month}${day}${hour}`;
+};
 
 const setWeatherLayer = (map: MapLibreMap, layer: string) => {
 	if (map.getLayer(WEATHER_LAYER_ID)) {
@@ -35,15 +45,21 @@ const setWeatherLayer = (map: MapLibreMap, layer: string) => {
 
 	map.addSource(WEATHER_SOURCE_ID, {
 		type: 'raster',
-		tiles: [`https://my-openweather-proxy.rudolf-bok-account.workers.dev/${layer}/{z}/{x}/{y}.png`],
+		tiles: [`https://weathermaps.weatherapi.com/${layer}/tiles/${getWeatherApiMapPeriod()}/{z}/{x}/{y}.png`],
 		tileSize: 256,
-		maxzoom: 19,
+		minzoom: 0,
+		maxzoom: 6,
 	});
 
 	map.addLayer({
 		id: WEATHER_LAYER_ID,
 		type: 'raster',
 		source: WEATHER_SOURCE_ID,
+		paint: {
+			'raster-fade-duration': 300,
+			'raster-opacity': 0.6,
+			'raster-resampling': 'linear',
+		},
 	});
 };
 
@@ -66,7 +82,7 @@ export const MapLibreView = () => {
 	const { weatherData } = useWeather();
 	const { layer, setLayer } = useMapLayer();
 	const [showLegend, setShowLegend] = useState(false);
-	const [isMapReady, setIsMapReady] = useState(false);
+	const [mapLoading, setMapLoading] = useState(false);
 	const [map, setMap] = useState<MapLibreMap | null>(null);
 	const mapContainerRef = useRef<HTMLDivElement | null>(null);
 	const switchColors = useSwitchColors('black', 'white');
@@ -87,7 +103,7 @@ export const MapLibreView = () => {
 			scrollZoom: true,
 		});
 
-		const handleLoad = () => setIsMapReady(true);
+		const handleLoad = () => setMapLoading(true);
 		mapInstance.on('load', handleLoad);
 		setMap(mapInstance);
 
@@ -137,13 +153,14 @@ export const MapLibreView = () => {
 	return (
 		<View className={clsx('relative flex w-full flex-1 overflow-hidden rounded-3xl')}>
 			<div ref={mapContainerRef} className={clsx('h-full w-full rounded-3xl')} />
-			{!isMapReady && (
-				<View className={clsx('absolute inset-0 items-center justify-center')}>
+			{!mapLoading && (
+				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
+					<ActivityIndicator size="small" color="#007AFF" />
 					<StyledText type="body">{t('maps.loading')}</StyledText>
 				</View>
 			)}
 			<View className={clsx('absolute bottom-4 right-4 flex-row items-end gap-2')}>
-				{!showLegend && layer === 'temp_new' && (
+				{!showLegend && layer === 'tmp2m' && (
 					<StyledPressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('h-fit rounded-3xl p-2')}>
 						<InfoIcon color={switchColors} />
 					</StyledPressable>
@@ -154,7 +171,7 @@ export const MapLibreView = () => {
 					))}
 				</View>
 			</View>
-			{showLegend && layer === 'temp_new' && (
+			{showLegend && layer === 'tmp2m' && (
 				<View className={clsx('absolute bottom-4 right-4 max-lg:left-4')}>
 					<AnimatedView duration={30}>
 						<RoundView className={clsx('p-4')}>

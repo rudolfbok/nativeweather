@@ -6,7 +6,7 @@ import { AQIButton } from 'app/components/settings/items/AQIButton';
 import { CompassButton } from 'app/components/settings/items/CompassButton';
 import { LanguageButton } from 'app/components/settings/items/LanguageButton';
 import { LocalWeatherToggle } from 'app/components/settings/items/LocalWeatherToggle';
-import { SendFeedbackButton } from 'app/components/settings/items/SendFeedbackButton';
+import { FeedbackButton } from 'app/components/settings/items/FeedbackButton';
 import { TemperatureButton } from 'app/components/settings/items/TemperatureButton';
 import { ThemeButton } from 'app/components/settings/items/ThemeButton';
 import { UnitsButton } from 'app/components/settings/items/UnitsButton';
@@ -51,7 +51,7 @@ export const SettingsFeature = () => {
 				)}
 				<RoundView>
 					<AboutButton />
-					<SendFeedbackButton />
+					<FeedbackButton />
 				</RoundView>
 				<View className={clsx('flex items-center')}>
 					<StyledText type="bodysecondary">NativeWeather</StyledText>

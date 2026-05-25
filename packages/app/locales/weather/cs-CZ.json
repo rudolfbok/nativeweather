@@ -274,7 +274,7 @@
 		"layer": {
 			"0": "Teplota",
 			"1": "Srážky",
-			"2": "Mraky"
+			"2": "Vítr"
 		},
 		"legend": {
 			"temperature": "Klikněte na mapu pro zobrazení teploty.",

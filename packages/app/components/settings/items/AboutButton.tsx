@@ -3,8 +3,9 @@ import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { Info } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
-import { AboutBody } from '../AboutBody';
+
 import { SettingsItem } from './SettingsItem';
+import { AboutFeature } from 'app/features/about/screen';
 
 export const AboutButton = () => {
 	const { t } = useTranslate('settings');
@@ -24,7 +25,7 @@ export const AboutButton = () => {
 			/>
 			{showModal && (
 				<StyledModal visible={showModal} onClose={() => setShowModal(false)} header={t('about.title')}>
-					<AboutBody />
+					<AboutFeature />
 				</StyledModal>
 			)}
 		</>

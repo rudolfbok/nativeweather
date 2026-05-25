@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeSync } from 'app/components/common/ThemeSync.web';
+import { ThemeSync } from 'app/components/common/ui/ThemeSync.web';
 import { TolgeeProvider } from 'app/provider/TolgeeProvider';
 import { initStorageDefaults } from 'app/storage/initStorageDefaults';
 import { initThemeFromStorage } from 'app/storage/initTheme';

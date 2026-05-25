@@ -1,10 +1,10 @@
 import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
-import { AboutBody } from 'app/components/settings/AboutBody';
+import { AboutFeature } from 'app/features/about/screen';
 
 export default function AboutScreen() {
 	return (
 		<ScreenWrapper>
-			<AboutBody />
+			<AboutFeature />
 		</ScreenWrapper>
 	);
 }

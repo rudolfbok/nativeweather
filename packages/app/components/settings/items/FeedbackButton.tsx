@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react-native';
 import { useRouter } from 'solito/navigation';
 import { SettingsItem } from './SettingsItem';
 
-export const SendFeedbackButton = () => {
+export const FeedbackButton = () => {
 	const { t } = useTranslate('settings');
 	const { setOpenDrawer } = useOpenDrawer();
 	const router = useRouter();

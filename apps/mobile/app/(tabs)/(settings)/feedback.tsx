@@ -1,10 +1,10 @@
 import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
-import { SendEmail } from 'app/components/settings/SendEmail';
+import { SendFeedback } from 'app/components/settings/SendFeedback';
 
 export default function FeedbackScreen() {
 	return (
 		<ScreenWrapper>
-			<SendEmail />
+			<SendFeedback />
 		</ScreenWrapper>
 	);
 }

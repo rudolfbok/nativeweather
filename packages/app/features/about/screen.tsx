@@ -3,11 +3,12 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { OpenStreetMapLogo } from 'app/components/icons/logos/OpenStreetMapLogo';
-import { OpenWeatherLogo } from 'app/components/icons/logos/OpenWeatherLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
-import { Linking, Platform, Pressable, View } from 'react-native';
+import { Linking, Pressable, View } from 'react-native';
+import { Separator } from 'app/components/common/ui/Separator';
+import { ContentRow } from 'app/components/common/ui/ContentRow';
 
 interface DataSourceItemProps {
 	name: string;
@@ -18,25 +19,20 @@ interface DataSourceItemProps {
 
 const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) => {
 	return (
-		<RoundView
-			className={'h-fit w-full items-center justify-center gap-2 p-4'}
-			style={{ padding: 16, gap: 8, alignItems: 'center', justifyContent: 'center' }}
-		>
+		<View className={clsx('gap-2')}>
 			{logo}
-			<StyledText type="subtitle">{name}</StyledText>
-			<View className={clsx('items-center')}>
-				<StyledText type="body" className={clsx('mb-1 text-center')}>
-					{description}
-				</StyledText>
-				<Pressable onPress={() => Linking.openURL(url)}>
-					<StyledText type="link">{url}</StyledText>
-				</Pressable>
+			<View>
+				<StyledText type="subtitle">{name}</StyledText>
+				<StyledText type="body">{description}</StyledText>
 			</View>
-		</RoundView>
+			<Pressable onPress={() => Linking.openURL(url)}>
+				<StyledText type="link">{url}</StyledText>
+			</Pressable>
+		</View>
 	);
 };
 
-export const AboutBody = () => {
+export const AboutFeature = () => {
 	const { t } = useTranslate('settings');
 
 	const dataSourceItemValues = [
@@ -53,12 +49,6 @@ export const AboutBody = () => {
 			url: 'https://open-meteo.com/',
 		},
 		{
-			name: 'OpenWeather API',
-			logo: <OpenWeatherLogo />,
-			description: t('about.openweather'),
-			url: 'https://openweathermap.org/',
-		},
-		{
 			name: 'OpenStreetMap',
 			logo: <OpenStreetMapLogo />,
 			description: t('about.openstreetmap'),
@@ -71,17 +61,16 @@ export const AboutBody = () => {
 			<RoundView className={clsx('p-4')}>
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</RoundView>
-			<StyledText type="title">{t('datasource.title')}</StyledText>
-			<View
-				className={clsx(
-					'w-full flex-1 gap-4',
-					Platform.OS === 'web' ? 'grid grid-cols-1 place-self-center md:grid-cols-2' : 'flex-col'
-				)}
-			>
-				{dataSourceItemValues.map(({ name, logo, description, url }, index) => (
-					<DataSourceItem key={index} name={name} logo={logo} description={description} url={url} />
-				))}
-			</View>
+			<ContentRow title={t('datasource.title')}>
+				<View className="gap-4">
+					{dataSourceItemValues.map(({ name, logo, description, url }, index) => (
+						<View key={name} className="gap-4">
+							<DataSourceItem name={name} logo={logo} description={description} url={url} />
+							{index < dataSourceItemValues.length - 1 && <Separator />}
+						</View>
+					))}
+				</View>
+			</ContentRow>
 		</View>
 	);
 };

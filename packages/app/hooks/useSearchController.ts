@@ -51,7 +51,6 @@ export const useSearchController = () => {
 
 	const handleInputSearch = async (query: string) => {
 		const weatherData = await fetchWeather(query, currentSource);
-		if (weatherData) showToast({ message: 'Bad query search', preset: 'error' });
 		if (weatherData) {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);

@@ -274,7 +274,7 @@
 		"layer": {
 			"0": "Temperature",
 			"1": "Precipitation",
-			"2": "Clouds"
+			"2": "Wind"
 		},
 		"legend": {
 			"temperature": "Click on the map to show the current temperature.",

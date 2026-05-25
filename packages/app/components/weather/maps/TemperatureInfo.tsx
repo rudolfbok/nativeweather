@@ -6,25 +6,23 @@ import { View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
 
 const celsiusStops = [
-	{ temp: -30, color: 'rgba(130, 87, 219, 1)' },
-	{ temp: -20, color: 'rgba(32, 140, 236, 1)' },
-	{ temp: -10, color: 'rgba(32, 196, 232, 1)' },
-	{ temp: 0, color: 'rgba(35, 221, 221, 1)' },
-	{ temp: 10, color: 'rgba(194, 255, 40, 1)' },
-	{ temp: 20, color: 'rgba(255, 240, 40, 1)' },
-	{ temp: 25, color: 'rgba(255, 194, 40, 1)' },
-	{ temp: 30, color: 'rgba(252, 128, 20, 1)' },
+	{ temp: -50, color: '#000082' },
+	{ temp: -20, color: '#0078ff' },
+	{ temp: 0, color: '#96fffe' },
+	{ temp: 10, color: '#79ff77' },
+	{ temp: 20, color: '#ffff00' },
+	{ temp: 30, color: '#ff9600' },
+	{ temp: 40, color: '#ff0000' },
 ];
 
 const fahrenheitStops = [
-	{ temp: -22, color: 'rgba(130, 87, 219, 1)' },
-	{ temp: -4, color: 'rgba(32, 140, 236, 1)' },
-	{ temp: 14, color: 'rgba(32, 196, 232, 1)' },
-	{ temp: 32, color: 'rgba(35, 221, 221, 1)' },
-	{ temp: 50, color: 'rgba(194, 255, 40, 1)' },
-	{ temp: 68, color: 'rgba(255, 240, 40, 1)' },
-	{ temp: 77, color: 'rgba(255, 194, 40, 1)' },
-	{ temp: 86, color: 'rgba(252, 128, 20, 1)' },
+	{ temp: -58, color: '#000082' },
+	{ temp: -4, color: '#0078ff' },
+	{ temp: 32, color: '#96fffe' },
+	{ temp: 50, color: '#79ff77' },
+	{ temp: 68, color: '#ffff00' },
+	{ temp: 86, color: '#ff9600' },
+	{ temp: 104, color: '#ff0000' },
 ];
 
 export const TemperatureInfo = () => {
@@ -32,7 +30,10 @@ export const TemperatureInfo = () => {
 	const { t } = useTranslate('weather');
 
 	const stops = currentTemp === 'celsius' ? celsiusStops : fahrenheitStops;
-	const locations = stops.map((_, index) => index / (stops.length - 1)) as unknown as readonly [
+	const minTemp = stops[0].temp;
+	const maxTemp = stops[stops.length - 1].temp;
+	const getStopLocation = (temp: number) => (temp - minTemp) / (maxTemp - minTemp);
+	const locations = stops.map((stop) => getStopLocation(stop.temp)) as unknown as readonly [
 		number,
 		number,
 		...number[],
@@ -55,7 +56,7 @@ export const TemperatureInfo = () => {
 							<View
 								key={index}
 								className={clsx('absolute items-center')}
-								style={{ left: `${(index / (stops.length - 1)) * 100}%` }}
+								style={{ left: `${getStopLocation(stop.temp) * 100}%` }}
 							>
 								<StyledText type="bodysecondary" className={clsx('font-semibold !text-black')}>
 									{stop.temp}°
