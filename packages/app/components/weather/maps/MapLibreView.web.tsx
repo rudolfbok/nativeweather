@@ -9,36 +9,14 @@ import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, X } from 'lucide-react-native';
-import maplibregl, { Map as MapLibreMap, StyleSpecification } from 'maplibre-gl';
+import maplibregl, { Map as MapLibreMap } from 'maplibre-gl';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { TemperatureInfo } from './TemperatureInfo';
 
 const WEATHER_SOURCE_ID = 'openweather';
 const WEATHER_LAYER_ID = 'openweather-layer';
-
-const openStreetMapStyle: StyleSpecification = {
-	version: 8,
-	sources: {
-		openstreetmap: {
-			type: 'raster',
-			tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-			tileSize: 256,
-			maxzoom: 19,
-			attribution:
-				'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors',
-		},
-	},
-	layers: [
-		{
-			id: 'openstreetmap',
-			type: 'raster',
-			source: 'openstreetmap',
-			minzoom: 0,
-			maxzoom: 19,
-		},
-	],
-};
+const OPENSTREETMAP_VECTOR_STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
 
 const layerButtons = [
 	{ layer: 'temp_new', icon: <Thermometer color="#FF7000" /> },
@@ -60,16 +38,12 @@ const setWeatherLayer = (map: MapLibreMap, layer: string) => {
 		tiles: [`https://my-openweather-proxy.rudolf-bok-account.workers.dev/${layer}/{z}/{x}/{y}.png`],
 		tileSize: 256,
 		maxzoom: 19,
-		attribution: '&copy; <a href="https://openweathermap.org/" target="_blank" rel="noreferrer">OpenWeather</a>',
 	});
 
 	map.addLayer({
 		id: WEATHER_LAYER_ID,
 		type: 'raster',
 		source: WEATHER_SOURCE_ID,
-		paint: {
-			'raster-opacity': layer === 'clouds_new' ? 0.75 : 0.85,
-		},
 	});
 };
 
@@ -104,18 +78,16 @@ export const MapLibreView = () => {
 
 		const mapInstance = new maplibregl.Map({
 			container: mapContainerRef.current,
-			style: openStreetMapStyle,
+			style: OPENSTREETMAP_VECTOR_STYLE_URL,
 			center: [0, 0],
 			zoom: 2,
-			attributionControl: { compact: true },
+			attributionControl: false,
 			dragRotate: false,
 			pitchWithRotate: false,
 			scrollZoom: true,
 		});
 
 		const handleLoad = () => setIsMapReady(true);
-
-		// mapInstance.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'none');
 		mapInstance.on('load', handleLoad);
 		setMap(mapInstance);
 
