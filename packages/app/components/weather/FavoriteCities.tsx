@@ -1,4 +1,3 @@
-import { useFocusEffect } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { LoadingIndicator } from 'app/components/common/ui/LoadingIndicator';
@@ -9,10 +8,9 @@ import { EditIcon } from 'app/components/icons/EditIcon';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
 import { Trash, X } from 'lucide-react-native';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CityCard } from './CityCard';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 
 export const FavoriteCities = ({ hook }: { hook: any }) => {
@@ -29,11 +27,11 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 	// 	);
 	// }
 
-	if (Platform.OS === 'web') {
-		useEffect(() => {
+	useEffect(() => {
+		if (Platform.OS === 'web') {
 			refreshFavoriteCities({ displayToast: false });
-		}, []);
-	}
+		}
+	}, []);
 
 	return (
 		<View className={clsx('gap-2')}>

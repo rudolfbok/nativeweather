@@ -34,6 +34,7 @@ const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) =
 
 export const AboutFeature = () => {
 	const { t } = useTranslate('settings');
+	const { t: commonT } = useTranslate('common');
 
 	const dataSourceItemValues = [
 		{
@@ -58,7 +59,7 @@ export const AboutFeature = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
-			<ContentRow title={t('aboutapp.title')}>
+			<ContentRow title={commonT('modal.description')}>
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</ContentRow>
 			<ContentRow title={t('datasource.title')}>

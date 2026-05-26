@@ -47,7 +47,7 @@ export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null 
 					/>
 				)}
 			</View>
-			<StyledText type="bodysecondary" className={clsx('mt-4 text-center')}>
+			<StyledText type="bodysecondary" className={clsx('mt-4 text-center opacity-70')}>
 				{t('alerts.disclaimer')}
 			</StyledText>
 		</>

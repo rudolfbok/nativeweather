@@ -23,7 +23,7 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 		>
 			<View>
 				<StyledText type="title">{item}</StyledText>
-				<StyledText type="bodysecondary" className={clsx('text-secondaryLabel dark:text-secondaryLabel_dark')}>
+				<StyledText type="bodysecondary" className={clsx('opacity-70')}>
 					{description}
 				</StyledText>
 			</View>

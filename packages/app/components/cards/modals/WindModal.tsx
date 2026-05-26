@@ -109,7 +109,7 @@ export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) 
 			{
 				icon: <WindDirectionIcon />,
 				label: t('wind.current.direction'),
-				value: `${getDirection(degree, 'long')} / ${degree}°`,
+				value: `${getDirection(degree, 'long', t)} / ${degree}°`,
 			},
 		];
 

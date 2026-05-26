@@ -2,8 +2,8 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
@@ -78,7 +78,7 @@ export const MainWeather = ({
 				</View>
 				<View className={clsx('w-1/2 items-center')}>
 					<StyledText type="maintemp" className={clsx('pl-4', textColor)} style={displayShadow && textShadowStyle}>
-						{useSwitchTemp({
+						{switchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
 							currentTemp: currentTemperature,
@@ -88,7 +88,7 @@ export const MainWeather = ({
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveDown size={18} color={arrowcolor} />
 							<StyledText type="body" className={clsx(textColor)} style={displayShadow && textShadowStyle}>
-								{useSwitchTemp({
+								{switchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
 									currentTemp: currentTemperature,
@@ -98,7 +98,7 @@ export const MainWeather = ({
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveUp size={18} color={arrowcolor} />
 							<StyledText type="body" className={clsx(textColor)} style={displayShadow && textShadowStyle}>
-								{useSwitchTemp({
+								{switchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
 									currentTemp: currentTemperature,
@@ -113,7 +113,7 @@ export const MainWeather = ({
 							style={displayShadow && textShadowStyle}
 						>
 							{t('feelslike')}{' '}
-							{useSwitchTemp({
+							{switchTemp({
 								celsius: feelsLikeC ?? 0,
 								fahrenheit: feelsLikeF ?? 0,
 								currentTemp: currentTemperature,
@@ -139,7 +139,7 @@ export const MainWeather = ({
 			</RoundView>
 			{/* {showWorldTime && displayTime && (
 					<View className={clsx('mt-1 flex flex-row items-center justify-center')}>
-						<StyledText type="localtime">{useLocalTimeNow(weatherData!.location.tzId)}</StyledText>
+					<StyledText type="localtime">{getLocalTimeNow(weatherData!.location.tzId)}</StyledText>
 					</View>
 				)} */}
 		</View>

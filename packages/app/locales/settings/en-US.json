@@ -11,10 +11,8 @@
 		"american": "American",
 		"european": "European",
 		"title": "Air quality",
+		"titlefull": "Air quality index",
 		"titleshort": "AQI"
-	},
-	"aboutapp": {
-		"title": "Info"
 	},
 	"compass": {
 		"title": "Compass"

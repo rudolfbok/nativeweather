@@ -1,10 +1,10 @@
 interface SwitchMetricsProps {
-	metric: number | string;
-	imperial: number | string;
+	metric: string;
+	imperial: string;
 	currentUnits: string | undefined;
 }
 
-export const useSwitchMetrics = ({ metric, imperial, currentUnits }: SwitchMetricsProps) => {
+export const switchMetrics = ({ metric, imperial, currentUnits }: SwitchMetricsProps) => {
 	const value = currentUnits === 'metric' ? metric : imperial;
 	return value;
 };

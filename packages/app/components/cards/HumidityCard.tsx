@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { Droplets, Sunrise } from 'lucide-react-native';
 import { useState } from 'react';
 import { StyledText } from '../common/styled/StyledText';
@@ -24,7 +24,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	const router = useRouter();
 
 	const dewPointValue = dewPoint
-		? useSwitchTemp({
+		? switchTemp({
 				celsius: Math.round(dewPointC ?? 0),
 				fahrenheit: Math.round(dewPointF ?? 0),
 				currentTemp: currentTemp,

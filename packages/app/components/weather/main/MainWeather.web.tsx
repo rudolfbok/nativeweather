@@ -1,9 +1,9 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';
@@ -62,7 +62,7 @@ export const MainWeather = ({
 	const arrowColor = useSwitchColors('black', 'white');
 	const tolgee = useTolgee();
 
-	const useLocalTimeNow = (timezone: string): string => {
+	const getLocalTimeNow = (timezone: string): string => {
 		const lang = tolgee.getLanguage();
 		const localtime = DateTime.now()
 			.setZone(timezone)
@@ -84,7 +84,7 @@ export const MainWeather = ({
 				<WeatherIcon isDay={isDay} code={code} width={120} height={120} strokeWidth={0.5} source={currentSource} />
 				<View className={clsx('items-center')}>
 					<StyledText type="maintemp" className={clsx('pl-3')}>
-						{useSwitchTemp({
+						{switchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
 							currentTemp: currentTemperature,
@@ -94,7 +94,7 @@ export const MainWeather = ({
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveDown size={18} color={arrowColor} />
 							<StyledText type="body">
-								{useSwitchTemp({
+								{switchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
 									currentTemp: currentTemperature,
@@ -104,7 +104,7 @@ export const MainWeather = ({
 						<View className={clsx('flex flex-row items-center')}>
 							<MoveUp size={18} color={arrowColor} />
 							<StyledText type="body">
-								{useSwitchTemp({
+								{switchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
 									currentTemp: currentTemperature,
@@ -115,7 +115,7 @@ export const MainWeather = ({
 					{feelslike && (
 						<StyledText type="body">
 							{t('feelslike')}{' '}
-							{useSwitchTemp({
+							{switchTemp({
 								celsius: feelsLikeC ?? 0,
 								fahrenheit: feelsLikeF ?? 0,
 								currentTemp: currentTemperature,
@@ -130,7 +130,7 @@ export const MainWeather = ({
 			{showWorldTime && displayTime && (
 				<View className={clsx('flex flex-row items-center justify-center')}>
 					<StyledText type="localtime" className={clsx('font-semibold')}>
-						{useLocalTimeNow(weatherData!.location.tzId)}
+						{getLocalTimeNow(weatherData!.location.tzId)}
 					</StyledText>
 				</View>
 			)}

@@ -80,7 +80,7 @@ export const HeroWeather = () => {
 	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snowCm;
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 
-	const filteredAlerts = getActiveWeatherAlerts(weatherData.alerts.alert);
+	const filteredAlerts = getActiveWeatherAlerts(weatherData.alerts.alert, weatherData.location);
 
 	const alertsLength = filteredAlerts.length ?? 0;
 

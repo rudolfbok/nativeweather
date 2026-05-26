@@ -6,10 +6,10 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { Calendar } from 'app/components/icons/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useSelectedDay } from 'app/hooks/useSelectedDay';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
@@ -96,7 +96,7 @@ export const DailyForecast = () => {
 							</View>
 							<View className={clsx('w-fit flex-row items-center justify-between')}>
 								<StyledText type="body" className={clsx('w-10 text-center')}>
-									{useSwitchTemp({
+									{switchTemp({
 										celsius: day.day.minTempC,
 										fahrenheit: day.day.minTempF,
 										currentTemp: currentTemp,
@@ -113,7 +113,7 @@ export const DailyForecast = () => {
 									/>
 								</View>
 								<StyledText type="body" className={clsx('w-10 text-center font-semibold')}>
-									{useSwitchTemp({
+									{switchTemp({
 										celsius: day.day.maxTempC,
 										fahrenheit: day.day.maxTempF,
 										currentTemp: currentTemp,

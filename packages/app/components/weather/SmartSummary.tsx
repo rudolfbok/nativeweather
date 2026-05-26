@@ -5,9 +5,9 @@ import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
-import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import React, { useMemo } from 'react';
 
 const CARD_STYLE = { gap: 8, padding: 16 };
@@ -115,20 +115,20 @@ export const SmartSummary = React.memo(function SmartSummary({
 	const [currentUnits] = useStorageString('currentUnits');
 	const [currentAQI] = useStorageString('currentAQI');
 
-	const displayMin = useSwitchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp });
-	const displayMax = useSwitchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
+	const displayMin = switchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp });
+	const displayMax = switchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
 
-	const rain = useSwitchMetrics({
+	const rain = switchMetrics({
 		metric: `${Math.round(rainPrecipMm ?? 0)} mm`,
 		imperial: `${(rainPrecipIn ?? 0).toFixed(2)} in`,
 		currentUnits,
 	});
-	const snow = useSwitchMetrics({
+	const snow = switchMetrics({
 		metric: `${(snowPrecipCm ?? 0).toFixed(1)} cm`,
 		imperial: `${(snowPrecipIn ?? 0).toFixed(2)} in`,
 		currentUnits,
 	});
-	const visibility = useSwitchMetrics({
+	const visibility = switchMetrics({
 		metric: `${Math.round(avgVisibilityKm ?? 0)} km`,
 		imperial: `${Math.round(avgVisibilityMiles ?? 0)} mi`,
 		currentUnits,

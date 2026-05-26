@@ -1,7 +1,5 @@
-import { useTranslate } from '@tolgee/react';
-
-export const getDirection = (angle: number | null, type: 'short' | 'long') => {
-	const { t } = useTranslate('weather');
+export const getDirection = (angle: number | null | undefined, type: 'short' | 'long', t: (key: string) => string) => {
+	if (angle == null) return null;
 
 	const DIRECTIONS = [
 		t(`wind.label.${type}.N`),
@@ -21,8 +19,6 @@ export const getDirection = (angle: number | null, type: 'short' | 'long') => {
 		t(`wind.label.${type}.NW`),
 		t(`wind.label.${type}.NNW`),
 	] as const;
-
-	if (angle === null) return null;
 
 	const index = Math.round(angle / 22.5) % 16;
 	return DIRECTIONS[index];

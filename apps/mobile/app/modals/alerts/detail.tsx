@@ -7,7 +7,7 @@ import { useLocalSearchParams } from 'expo-router';
 export default function AlertDetailScreen() {
 	const { alert } = useLocalSearchParams<{ alert?: string }>();
 	const { weatherData } = useWeather();
-	const filteredAlerts = getActiveWeatherAlerts(weatherData?.alerts.alert);
+	const filteredAlerts = getActiveWeatherAlerts(weatherData?.alerts.alert, weatherData?.location);
 	const selectedAlert = filteredAlerts[Number(alert)];
 
 	if (!selectedAlert) return null;

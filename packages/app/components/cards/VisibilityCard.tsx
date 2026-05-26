@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { Eye } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
@@ -20,7 +20,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 	const [showModal, setShowModal] = useState(false);
 	const router = useRouter();
 
-	const display = useSwitchMetrics({
+	const display = switchMetrics({
 		metric: `${Math.round(visKm)}km`,
 		imperial: `${Math.round(visMiles)}mil`,
 		currentUnits: currentUnits,

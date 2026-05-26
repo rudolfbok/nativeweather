@@ -1,9 +1,54 @@
-import { WeatherAlert } from 'app/types/weatherAlert';
+import type { WeatherData } from 'app/types/weatherData';
+import type { WeatherAlert } from 'app/types/weatherAlert';
 
-const getAlertKey = (alert: WeatherAlert) => alert.identifier || `${alert.event}|${alert.areas}|${alert.effective}|${alert.expires}`;
+type AlertLocation = Pick<WeatherData['location'], 'name' | 'region'>;
 
-export const getActiveWeatherAlerts = (alerts: WeatherAlert[] = []) =>
-	alerts.filter(
+const getAlertKey = (alert: WeatherAlert) =>
+	alert.identifier || `${alert.event}|${alert.areas}|${alert.effective}|${alert.expires}`;
+
+const normalizeArea = (value = '') =>
+	value
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, ' ')
+		.trim();
+
+const getAreaCandidates = (value = '') => {
+	const candidates = [value, ...value.split(/[(),;/]/)].map(normalizeArea).filter((candidate) => candidate.length >= 4);
+
+	return Array.from(new Set(candidates));
+};
+
+const getLocationAreaCandidates = (location?: AlertLocation) => {
+	if (!location) return [];
+
+	const regionCandidates = getAreaCandidates(location.region);
+
+	if (regionCandidates.length > 0) return Array.from(new Set(regionCandidates));
+
+	return getAreaCandidates(location.name);
+};
+
+const matchesLocationArea = (alert: WeatherAlert, locationAreaCandidates: string[]) => {
+	if (!alert.areas) return true;
+
+	const alertAreas = normalizeArea(alert.areas);
+
+	return locationAreaCandidates.some((candidate) => alertAreas.includes(candidate));
+};
+
+export const getActiveWeatherAlerts = (alerts: WeatherAlert[] = [], location?: AlertLocation) => {
+	const activeAlerts = alerts.filter(
 		(alert, index, self) =>
-			alert.msgtype === 'Alert' && index === self.findIndex((candidate) => getAlertKey(candidate) === getAlertKey(alert))
+			alert.msgtype === 'Alert' &&
+			index === self.findIndex((candidate) => getAlertKey(candidate) === getAlertKey(alert))
 	);
+	const locationAreaCandidates = getLocationAreaCandidates(location);
+
+	if (locationAreaCandidates.length === 0) return activeAlerts;
+
+	const locationAlerts = activeAlerts.filter((alert) => matchesLocationArea(alert, locationAreaCandidates));
+
+	return locationAlerts.length > 0 ? locationAlerts : activeAlerts;
+};

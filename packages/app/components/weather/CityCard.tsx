@@ -1,9 +1,9 @@
 import { useTolgee } from '@tolgee/react';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { GlassColorScheme } from 'expo-glass-effect';
 import { DateTime } from 'luxon';
@@ -45,7 +45,7 @@ export const CityCard = ({
 
 	const tolgee = useTolgee();
 
-	const useLocalTimeNow = (timezone: string): string => {
+	const getLocalTimeNow = (timezone: string): string => {
 		const lang = tolgee.getLanguage();
 		const localtime = DateTime.now()
 			.setZone(timezone)
@@ -90,7 +90,7 @@ export const CityCard = ({
 					{region}
 				</StyledText>
 				<StyledText type="title" className={clsx('native:!text-white !text-xl !font-bold')}>
-					{useSwitchTemp({
+					{switchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
 						currentTemp: currentTemperature,
@@ -119,7 +119,7 @@ export const CityCard = ({
 						type="localtime"
 						className={clsx('native:!text-white/80 web:text-secondaryLabel dark:text-secondaryLabel_dark')}
 					>
-						{useLocalTimeNow(timeZone)}
+						{getLocalTimeNow(timeZone)}
 					</StyledText>
 				)}
 			</View>

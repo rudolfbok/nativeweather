@@ -9,6 +9,8 @@ import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { CloudRain, InfoIcon, Thermometer, Wind, X } from 'lucide-react-native';
 import maplibregl, { type Map as MapLibreMap, type MapMouseEvent } from 'maplibre-gl';
@@ -70,14 +72,6 @@ const getWeatherApiMapPeriod = () => {
 	return `${year}${month}${day}${hour}`;
 };
 
-const formatTemperature = (tempC: number, tempF: number, currentTemp: string | undefined) => {
-	const isFahrenheit = currentTemp === 'fahrenheit';
-	const value = isFahrenheit ? tempF : tempC;
-	const unit = isFahrenheit ? 'F' : 'C';
-
-	return `${Math.round(value)}°${unit}`;
-};
-
 const formatWeatherMarker = (
 	layer: string,
 	current: WeatherApiCurrent,
@@ -89,21 +83,30 @@ const formatWeatherMarker = (
 		if (current.precip_mm == null || current.precip_in == null) return null;
 
 		return {
-			value: currentUnits === 'imperial' ? `${current.precip_in.toFixed(2)} in` : `${current.precip_mm.toFixed(1)} mm`,
+			value: switchMetrics({
+				metric: `${current.precip_mm.toFixed(1)} mm`,
+				imperial: `${current.precip_in.toFixed(2)} in`,
+				currentUnits,
+			}),
 		};
 	}
 
 	if (layer === 'wind') {
 		if (current.wind_kph == null || current.wind_mph == null) return null;
 
-		const value =
-			currentUnits === 'imperial' ? `${Math.round(current.wind_mph)} mph` : `${Math.round(current.wind_kph)} km/h`;
+		const value = switchMetrics({
+			metric: `${Math.round(current.wind_kph)} km/h`,
+			imperial: `${Math.round(current.wind_mph)} mph`,
+			currentUnits,
+		});
 		const gust =
 			current.gust_kph == null || current.gust_mph == null
 				? null
-				: currentUnits === 'imperial'
-					? `${gustLabel} ${Math.round(current.gust_mph)} mph`
-					: `${gustLabel} ${Math.round(current.gust_kph)} km/h`;
+				: `${gustLabel} ${switchMetrics({
+						metric: `${Math.round(current.gust_kph)} km/h`,
+						imperial: `${Math.round(current.gust_mph)} mph`,
+						currentUnits,
+					})}`;
 		const detail = [current.wind_dir, gust].filter(Boolean).join(' - ');
 
 		return { value, detail };
@@ -111,7 +114,14 @@ const formatWeatherMarker = (
 
 	if (current.temp_c == null || current.temp_f == null) return null;
 
-	return { value: formatTemperature(current.temp_c, current.temp_f, currentTemp) };
+	return {
+		value: switchTemp({
+			celsius: current.temp_c,
+			fahrenheit: current.temp_f,
+			currentTemp,
+			includeUnit: true,
+		}),
+	};
 };
 
 const getTemperatureCardPoint = (map: MapLibreMap, point: { x: number; y: number }) => {
@@ -181,11 +191,11 @@ export const MapLibreView = () => {
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showLegend, setShowLegend] = useState(false);
-	const [tileStyle, setTileStyle] = useState(OPENFREEMAP_POSITRON);
+	const [tileStyle, setTileStyle] = useState(OPENFREEMAP_LIBERTY);
 	const [mapLoading, setMapLoading] = useState(false);
 	const [map, setMap] = useState<MapLibreMap | null>(null);
 	const mapContainerRef = useRef<HTMLDivElement | null>(null);
-	const activeTileStyleRef = useRef(OPENFREEMAP_POSITRON);
+	const activeTileStyleRef = useRef(OPENFREEMAP_LIBERTY);
 	const currentLayerRef = useRef(layer);
 	const temperatureRequestRef = useRef(0);
 	const [weatherMarker, setWeatherMarker] = useState<WeatherMarker | null>(null);
@@ -214,7 +224,7 @@ export const MapLibreView = () => {
 
 		const mapInstance = new maplibregl.Map({
 			container: mapContainerRef.current,
-			style: OPENFREEMAP_POSITRON,
+			style: OPENFREEMAP_LIBERTY,
 			center: [0, 0],
 			zoom: 2,
 			attributionControl: false,

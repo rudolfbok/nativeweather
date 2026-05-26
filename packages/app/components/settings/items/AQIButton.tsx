@@ -35,7 +35,7 @@ export const AQIButton = () => {
 				<StyledModal
 					visible={showModal}
 					onClose={() => setShowModal(false)}
-					header={t('airquality.title')}
+					header={t('airquality.titlefull')}
 					settingsModal={true}
 				>
 					<AQISelect />

@@ -1,9 +1,9 @@
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
 import { getWeatherIconUri } from 'app/utils/getWeatherIconUri';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import {
@@ -22,25 +22,25 @@ export const useWidgets = () => {
 	const mapConditions = useMapConditions();
 	const isIOS = Platform.OS === 'ios';
 
-	const localTemp = useSwitchTemp({
+	const localTemp = switchTemp({
 		celsius: localWeatherData?.current.tempC,
 		fahrenheit: localWeatherData?.current.tempF,
 		currentTemp,
 	});
 
-	const localTempMin = useSwitchTemp({
+	const localTempMin = switchTemp({
 		celsius: localWeatherData?.forecast.forecastday[0].day.minTempC,
 		fahrenheit: localWeatherData?.forecast.forecastday[0].day.minTempF,
 		currentTemp,
 	});
 
-	const localTempMax = useSwitchTemp({
+	const localTempMax = switchTemp({
 		celsius: localWeatherData?.forecast.forecastday[0].day.maxTempC,
 		fahrenheit: localWeatherData?.forecast.forecastday[0].day.maxTempF,
 		currentTemp,
 	});
 
-	const feelsLikeTemperature = useSwitchTemp({
+	const feelsLikeTemperature = switchTemp({
 		celsius: localWeatherData?.current.feelsLikeC,
 		fahrenheit: localWeatherData?.current.feelsLikeF,
 		currentTemp,

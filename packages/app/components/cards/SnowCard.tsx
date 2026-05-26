@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { Snowflake } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
@@ -22,7 +22,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const [showModal, setShowModal] = useState(false);
 	const router = useRouter();
 
-	const display = useSwitchMetrics({
+	const display = switchMetrics({
 		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
 		imperial: `${snowPrecipIn ?? (0).toFixed(2)}in`,
 		currentUnits: currentUnits,

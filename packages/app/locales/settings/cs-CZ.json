@@ -4,17 +4,15 @@
 		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
 		"openfreemap": "Poskytuje vektorové mapové podklady OpenFreeMap pro interaktivní geografické mapy",
 		"openweather": "Alternativní zdroj dat pro aktuální počasí a předpovědi",
-		"title": "Informace",
+		"title": "O aplikaci",
 		"weatherapi": "Hlavní zdroj dat pro aktuální počasí, předpovědi, astronomické údaje a vrstvy meteorologických map"
 	},
 	"airquality": {
 		"american": "Americký",
 		"european": "Evropský",
 		"title": "Kvalita ovzduší",
+		"titlefull": "Index kvality ovzduší",
 		"titleshort": "IKO"
-	},
-	"aboutapp": {
-		"title": "O aplikaci"
 	},
 	"compass": {
 		"title": "Kompas"

@@ -146,7 +146,9 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 						))}
 					</View>
 					<View className={clsx('mt-4 flex w-full flex-row items-center justify-center gap-1')}>
-						<StyledText type="bodysecondary">{t('airquality.provider')}</StyledText>
+						<StyledText type="bodysecondary" className={clsx('opacity-70')}>
+							{t('airquality.provider')}
+						</StyledText>
 						<Pressable onPress={() => Linking.openURL('https://open-meteo.com/')}>
 							<StyledText type="link" className={clsx('!text-sm')}>
 								OpenMeteoAPI

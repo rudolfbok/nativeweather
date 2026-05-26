@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
 import { getDirection } from 'app/utils/mappings/mapDirections';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { clsx } from 'clsx';
 import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
@@ -29,13 +29,13 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 	const { t } = useTranslate('weather');
 	const router = useRouter();
 
-	const displaySpeed = useSwitchMetrics({
+	const displaySpeed = switchMetrics({
 		metric: `${Math.round(windKm)}km/h`,
 		imperial: `${Math.round(windMil)}mph`,
 		currentUnits: currentUnits,
 	});
 
-	const displayGust = useSwitchMetrics({
+	const displayGust = switchMetrics({
 		metric: `${Math.round(gustKm ?? 0)}km/h`,
 		imperial: `${Math.round(gustMil ?? 0)}mph`,
 		currentUnits: currentUnits,
@@ -76,7 +76,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 				details && (
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<StyledText type="body">{t('wind.direction.main')}</StyledText>
-						<StyledText type="body">{getDirection(degree, 'short')}</StyledText>
+						<StyledText type="body">{getDirection(degree, 'short', t)}</StyledText>
 						<WindArrowIcon degree={degree ?? 0} />
 					</View>
 				)

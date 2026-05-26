@@ -65,7 +65,7 @@ export const FeedbackFeature = () => {
 			<StyledPressable
 				onPress={() => setType(variant)}
 				className={clsx(
-					'w-1/2 flex-row items-center justify-center gap-2 rounded-3xl p-3 md:w-fit',
+					'w-1/2 flex-row items-center justify-center gap-2 rounded-full p-3 md:w-fit',
 					isSelected && '!bg-primaryblue'
 				)}
 			>

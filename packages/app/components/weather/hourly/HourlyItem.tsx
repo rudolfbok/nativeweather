@@ -2,8 +2,8 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useSwitchTemp } from 'app/hooks/switch/useSwitchTemp';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 
 interface HourlyItemProps {
 	hour: number | string;
@@ -38,7 +38,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 				)}
 			</View>
 			<StyledText type="body" className={clsx('font-semibold')}>
-				{useSwitchTemp({
+				{switchTemp({
 					celsius: tempC,
 					fahrenheit: tempF,
 					currentTemp: currentTemp,

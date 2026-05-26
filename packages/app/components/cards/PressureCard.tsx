@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useSwitchMetrics } from 'app/hooks/switch/useSwitchMetrics';
 import { useStorageString } from 'app/storage/useStorageString';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { CircleGauge } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
@@ -20,7 +20,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	const [showModal, setShowModal] = useState(false);
 	const router = useRouter();
 
-	const display = useSwitchMetrics({
+	const display = switchMetrics({
 		metric: `${Math.round(pressureMb)}hPa`,
 		imperial: `${pressureIn.toFixed(1)}inHg`,
 		currentUnits: currentUnits,
