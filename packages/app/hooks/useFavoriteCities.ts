@@ -54,19 +54,18 @@ export const useFavoriteCities = () => {
 			cities.map(async (city: City) => {
 				const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 
-				if (!weatherData) {
-					if (displayToast) {
-						showToast({ message: t('toast.notrefreshed'), preset: 'error' });
-					}
-
-					return null;
-				}
-				if (displayToast) {
-					showToast({ message: t('toast.refreshed'), preset: 'done' });
-				}
-				return { city, weather: weatherData };
+				return weatherData ? { city, weather: weatherData } : null;
 			})
 		);
+
+		if (displayToast && cities.length > 0) {
+			const hasRefreshError = results.some((result) => !result);
+
+			showToast({
+				message: hasRefreshError ? t('toast.notrefreshed') : t('toast.refreshed'),
+				preset: hasRefreshError ? 'error' : 'done',
+			});
+		}
 
 		setFavoritesData(results.filter(Boolean));
 		setRefreshing?.(false);

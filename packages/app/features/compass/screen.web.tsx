@@ -185,7 +185,7 @@ export const CompassFeature = () => {
 					</div>
 				</div>
 			) : (
-				<View className={clsx('flex items-center gap-4')}>
+				<View className={clsx('flex items-center gap-2')}>
 					<View className="items-center gap-2 p-4 md:w-1/2 lg:w-[40%]">
 						<View className={clsx('w-fit rounded-xl bg-[#FF0000] p-2')}>
 							<CompassIcon width={40} height={40} />

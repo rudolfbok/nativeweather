@@ -1,4 +1,4 @@
-import { FeedbackFeature } from 'app/features/feedback/screen.web';
+import { FeedbackFeature } from 'app/features/feedback/screen';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

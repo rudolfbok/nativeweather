@@ -134,7 +134,7 @@
 		"button": {
 			"location": "Allow location access"
 		},
-		"text": "The compass feature is available only on supported Apple devices on iOS and iPadOS.\n\nMagnetometer needed for this feature is in all iPhones since 3GS and on iPad since Air 2. For iPad support varies for specific models.\n\nSince iOS 13 we must ask for your approval to use this specific hardware.",
+		"text": "The compass feature requires a supported Apple device with a magnetometer.\n\niOS may ask for permission before using this hardware.",
 		"title": "Compass"
 	},
 	"condition": {

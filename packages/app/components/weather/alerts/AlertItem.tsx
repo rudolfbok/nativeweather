@@ -12,7 +12,7 @@ interface AlertItemProps {
 
 export const AlertItem = ({ title, area, onPress }: AlertItemProps) => {
 	return (
-		<StyledPressable onPress={onPress} className={clsx('w-full flex-row items-center gap-2 rounded-3xl p-4')}>
+		<StyledPressable onPress={onPress} className={clsx('w-full flex-row items-center gap-2 p-4')}>
 			<View className={clsx('flex-1')}>
 				<StyledText type="subtitle">{title}</StyledText>
 				{area.length > 0 && (

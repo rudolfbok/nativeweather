@@ -134,7 +134,7 @@
 		"button": {
 			"location": "Povolit přístup k poloze"
 		},
-		"text": "Funkcionalita kompasu je dostupná pouze na podporovaných zařízeních Apple s iOS a iPadOS.\n\nMagnetometr potřebný pro tuto funkci je ve všech iPhonech od modelu 3GS a na iPadu od Air 2. Pro iPad se podpora liší podle konkrétního zařízení.\n\nPokud chcete tuto funkci používat musíme se od iOS 13 ptát na souhlas se sdílením vašich polohových údajů.",
+		"text": "Funkce kompasu vyžaduje podporované zařízení Apple s magnetometrem.\n\niOS se může před použitím tohoto hardwaru zeptat na povolení.",
 		"title": "Kompas"
 	},
 	"condition": {

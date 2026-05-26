@@ -145,7 +145,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 							/>
 						))}
 					</View>
-					<View className={clsx('mt-4 flex w-full flex-row items-center justify-center gap-1')}>
+					{/* <View className={clsx('mt-4 flex w-full flex-row items-center justify-center gap-1')}>
 						<StyledText type="bodysecondary" className={clsx('opacity-70')}>
 							{t('airquality.provider')}
 						</StyledText>
@@ -154,7 +154,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 								OpenMeteoAPI
 							</StyledText>
 						</Pressable>
-					</View>
+					</View> */}
 				</View>
 			)}
 			{detailComponents[showAirQualityMetric ?? ''] ?? null}
