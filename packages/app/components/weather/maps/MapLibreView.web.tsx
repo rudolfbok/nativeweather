@@ -387,27 +387,30 @@ export const MapLibreView = () => {
 			{weatherMarker && (
 				<View
 					className={clsx(
-						'bg-systemBackground absolute z-10 w-fit flex-row gap-2 rounded-3xl border border-black/10 p-3 shadow-md',
+						'bg-systemBackground absolute z-10 w-fit rounded-3xl border border-black/10 p-3 shadow-md',
 						'dark:bg-secondarySystemBackground_dark dark:border-white/10 dark:shadow-white/10',
-						weatherMarker.status !== 'ready' && 'items-center'
+						weatherMarker.status !== 'ready' && 'flex-row items-center'
 					)}
 					style={{ left: weatherMarker.point.x, top: weatherMarker.point.y }}
 				>
-					{weatherMarker.status === 'loading' && (
-						<View className={clsx('flex-row items-center gap-2')}>
-							<ActivityIndicator size="small" color="#007AFF" />
-						</View>
-					)}
+					{weatherMarker.status === 'loading' && <ActivityIndicator size="small" color="#007AFF" />}
 					{weatherMarker.status === 'error' && (
 						<StyledText type="bodysecondary" className={clsx('font-semibold')}>
 							{t('maps.weatherUnavailable')}
 						</StyledText>
 					)}
-					{weatherMarker.status === 'ready' && weatherMarker.value && (
-						<View>
+					<View className="flex-row items-center justify-between gap-2">
+						{weatherMarker.status === 'ready' && weatherMarker.value && (
 							<StyledText type="bodysecondary" className={clsx('opacity-70')}>
 								{getWeatherMarkerTitle(weatherMarker.layer)}
 							</StyledText>
+						)}
+						<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
+							<X color="#007AFF" size={20} />
+						</StyledPressable>
+					</View>
+					{weatherMarker.status === 'ready' && weatherMarker.value && (
+						<View>
 							<StyledText type="title" className={clsx('font-bold')}>
 								{weatherMarker.value}
 							</StyledText>
@@ -423,9 +426,6 @@ export const MapLibreView = () => {
 							)}
 						</View>
 					)}
-					<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
-						<X color="#007AFF" size={20} />
-					</StyledPressable>
 				</View>
 			)}
 			<View className={clsx('absolute bottom-4 left-4 gap-2')}>
@@ -433,7 +433,7 @@ export const MapLibreView = () => {
 					<MapButton key={style} icon={icon} onPress={() => setTileStyle(style)} />
 				))}
 			</View>
-			{mapLoading && (
+			{!mapLoading && (
 				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
 					<ActivityIndicator size="small" color="#007AFF" />
 					<StyledText type="body">{t('maps.loading')}</StyledText>
