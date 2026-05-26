@@ -1,6 +1,7 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
@@ -73,24 +74,21 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 	return (
 		<View className={clsx('gap-2')}>
 			{severity && (
-				<View>
-					<StyledText type="subtitle">{t('alerts.severity')}</StyledText>
+				<ContentRow title={t('alerts.severity')}>
 					<StyledText type="body">{getLocaleSeverity(severity)}</StyledText>
-				</View>
+				</ContentRow>
 			)}
 
-			<View>
-				<StyledText type="subtitle">{t('alerts.expires')}</StyledText>
+			<ContentRow title={t('alerts.expires')}>
 				<StyledText type="body">
 					{getTime(expires)} - {formatDate(expires)}
 				</StyledText>
-			</View>
+			</ContentRow>
 
 			{area.length > 0 && (
-				<View>
-					<StyledText type="subtitle">{t('alerts.area')}</StyledText>
+				<ContentRow title={t('alerts.area')}>
 					<StyledText type="body">{area}</StyledText>
-				</View>
+				</ContentRow>
 			)}
 			{description.length > 0 && (
 				<ContentRow title={t('alerts.description')}>
@@ -101,11 +99,11 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 					</StyledText>
 				</ContentRow>
 			)}
-			{instructions.length > 0 && (
+			{/* {instructions.length > 0 && (
 				<ContentRow title={t('alerts.instructions')}>
 					<StyledText type="body">{removeDoubleSpaces(instructions.trim())}</StyledText>
 				</ContentRow>
-			)}
+			)} */}
 		</View>
 	);
 };

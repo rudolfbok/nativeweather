@@ -277,10 +277,15 @@
 			"2": "Wind"
 		},
 		"legend": {
+			"precipitation": "Click on the map to show the current precipitation.",
 			"temperature": "Click on the map to show the current temperature.",
-			"title": "Legend"
+			"title": "Legend",
+			"wind": "Click on the map to show the current wind speed."
 		},
 		"loading": "Maps are loading..",
+		"currentTemperature": "Current temperature",
+		"temperatureUnavailable": "Temperature unavailable",
+		"weatherUnavailable": "Weather data unavailable",
 		"title": "Maps"
 	},
 	"modal": {

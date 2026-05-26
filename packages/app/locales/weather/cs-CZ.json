@@ -277,10 +277,15 @@
 			"2": "Vítr"
 		},
 		"legend": {
+			"precipitation": "Klikněte na mapu pro zobrazení aktuálních srážek.",
 			"temperature": "Klikněte na mapu pro zobrazení teploty.",
-			"title": "Legenda"
+			"title": "Legenda",
+			"wind": "Klikněte na mapu pro zobrazení aktuální rychlosti větru."
 		},
 		"loading": "Mapy se načítají..",
+		"currentTemperature": "Aktuální teplota",
+		"temperatureUnavailable": "Teplota není dostupná",
+		"weatherUnavailable": "Údaje o počasí nejsou dostupné",
 		"title": "Mapy"
 	},
 	"modal": {

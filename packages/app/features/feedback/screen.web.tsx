@@ -50,17 +50,29 @@ export const FeedbackFeature = () => {
 		setLoading(false);
 	};
 
-	const TypeButton = ({ variant, text, icon }: { variant: string; text: string; icon: ReactNode }) => {
+	const TypeButton = ({
+		variant,
+		text,
+		icon,
+	}: {
+		variant: string;
+		text: string;
+		icon: (color: string) => ReactNode;
+	}) => {
+		const isSelected = type === variant;
+
 		return (
 			<StyledPressable
 				onPress={() => setType(variant)}
 				className={clsx(
-					'flex-row items-center justify-center gap-2 rounded-3xl border border-transparent p-3 max-md:flex-1',
-					type === variant && '!border-primaryblue'
+					'w-1/2 flex-row items-center justify-center gap-2 rounded-3xl p-3 md:w-fit',
+					isSelected && '!bg-primaryblue'
 				)}
 			>
-				{icon}
-				<StyledText type="subtitle">{text}</StyledText>
+				{icon(isSelected ? 'white' : '#007AFF')}
+				<StyledText type="subtitle" className={clsx(isSelected && '!text-white dark:!text-white')}>
+					{text}
+				</StyledText>
 			</StyledPressable>
 		);
 	};
@@ -81,10 +93,14 @@ export const FeedbackFeature = () => {
 			<View className={clsx('w-full gap-4 pb-4 md:w-1/2 lg:w-[40%]')}>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className={clsx('flex-row items-center gap-4 max-md:justify-center')}>
-						<TypeButton icon={<Bug color="#007AFF" />} variant="Bug" text={t('feedback.bug')} />
-						<TypeButton icon={<Cog color="#007AFF" />} variant="Feature" text={t('feedback.feature')} />
-						<TypeButton icon={<MessageCircle color="#007AFF" />} variant="Feedback" text={t('feedback.feedback')} />
+					<View className={clsx('flex-co gap-4 md:flex-row')}>
+						<TypeButton icon={(color) => <Bug color={color} />} variant="Bug" text={t('feedback.bug')} />
+						<TypeButton icon={(color) => <Cog color={color} />} variant="Feature" text={t('feedback.feature')} />
+						<TypeButton
+							icon={(color) => <MessageCircle color={color} />}
+							variant="Feedback"
+							text={t('feedback.feedback')}
+						/>
 					</View>
 				</View>
 				<View className={clsx('gap-2')}>

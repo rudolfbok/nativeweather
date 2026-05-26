@@ -14,7 +14,7 @@ export const showToast = ({ message, preset }: ShowToastProps) => {
 		from: 'bottom',
 		icon: {
 			ios: undefined,
-			web: preset === 'error' ? <X size={22} color="red" /> : <Check color="blue" size={22} />,
+			web: preset === 'error' ? <X size={22} color="red" /> : <Check color="#007AFF" size={22} />,
 		},
 	});
 

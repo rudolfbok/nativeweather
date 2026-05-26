@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
-import { OpenStreetMapLogo } from 'app/components/icons/logos/OpenStreetMapLogo';
+import { OpenFreeMapLogo } from 'app/components/icons/logos/OpenFreeMapLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
@@ -49,18 +49,18 @@ export const AboutFeature = () => {
 			url: 'https://open-meteo.com/',
 		},
 		{
-			name: 'OpenStreetMap',
-			logo: <OpenStreetMapLogo />,
-			description: t('about.openstreetmap'),
-			url: 'https://www.openstreetmap.org/',
+			name: 'OpenFreeMap',
+			logo: <OpenFreeMapLogo />,
+			description: t('about.openfreemap'),
+			url: 'https://openfreemap.org/',
 		},
 	];
 
 	return (
 		<View className={clsx('gap-2')}>
-			<RoundView className={clsx('p-4')}>
+			<ContentRow title={t('aboutapp.title')}>
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
-			</RoundView>
+			</ContentRow>
 			<ContentRow title={t('datasource.title')}>
 				<View className="gap-4">
 					{dataSourceItemValues.map(({ name, logo, description, url }, index) => (

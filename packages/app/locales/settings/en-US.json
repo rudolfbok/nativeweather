@@ -1,8 +1,8 @@
 {
 	"about": {
-		"aboutapp": "NativeWeather is an application for displaying current weather and forecasts. It also displays current air pollution values and maps for the whole world.",
+		"aboutapp": "NativeWeather is a cross-platform application for displaying current weather, short-term forecasts, and long-term forecasts. The application also shows current air pollution values and allows users to monitor important air quality indicators. It also includes global map data and meteorological map layers for the entire world.",
 		"openmeteo": "Specialized data for air quality index (AQI) and pollution",
-		"openstreetmap": "Provides OpenStreetMap vector basemap tiles for interactive geographic maps",
+		"openfreemap": "Provides OpenFreeMap vector basemap tiles for interactive geographic maps",
 		"openweather": "Alternative source for current weather and forecasts",
 		"title": "About",
 		"weatherapi": "The main source of data for current weather, forecasts, astronomical data, and weather map overlays"
@@ -12,6 +12,9 @@
 		"european": "European",
 		"title": "Air quality",
 		"titleshort": "AQI"
+	},
+	"aboutapp": {
+		"title": "Info"
 	},
 	"compass": {
 		"title": "Compass"
