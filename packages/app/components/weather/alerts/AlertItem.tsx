@@ -16,12 +16,12 @@ export const AlertItem = ({ title, area, onPress }: AlertItemProps) => {
 			<View className={clsx('flex-1')}>
 				<StyledText type="subtitle">{title}</StyledText>
 				{area.length > 0 && (
-					<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">
+					<StyledText type="body" numberOfLines={1} ellipsizeMode="tail" className={clsx('opacity-70')}>
 						{area}
 					</StyledText>
 				)}
 			</View>
-			<ChevronRight color="#007AFF" size={28} />
+			<ChevronRight color="#007AFF" />
 		</StyledPressable>
 	);
 };

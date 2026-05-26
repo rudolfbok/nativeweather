@@ -16,7 +16,7 @@ export default function ForecastModalScreen() {
 	const getDayName = (date: string, short: boolean) =>
 		new Date(date).toLocaleString(tolgee.getLanguage(), {
 			weekday: short ? 'short' : 'long',
-			day: '2-digit',
+			day: 'numeric',
 			month: 'long',
 		});
 

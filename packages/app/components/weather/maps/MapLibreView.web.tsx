@@ -16,7 +16,7 @@ import { CloudRain, InfoIcon, Thermometer, Wind, X } from 'lucide-react-native';
 import maplibregl, { type Map as MapLibreMap, type MapMouseEvent } from 'maplibre-gl';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, GestureResponderEvent, Pressable, View } from 'react-native';
-import { PrecipitationInfo, TemperatureInfo, WindInfo } from './TemperatureInfo';
+import { PrecipitationInfo, MapsLegend, WindInfo } from './MapsLegend';
 import { TileLiberty } from 'app/components/icons/TileLiberty';
 import { TilePositron } from 'app/components/icons/TilePositron';
 
@@ -212,7 +212,7 @@ export const MapLibreView = () => {
 		if (layer === 'precip') return <PrecipitationInfo />;
 		if (layer === 'wind') return <WindInfo />;
 
-		return <TemperatureInfo />;
+		return <MapsLegend />;
 	};
 
 	useEffect(() => {
@@ -433,7 +433,7 @@ export const MapLibreView = () => {
 					<MapButton key={style} icon={icon} onPress={() => setTileStyle(style)} />
 				))}
 			</View>
-			{!mapLoading && (
+			{mapLoading && (
 				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
 					<ActivityIndicator size="small" color="#007AFF" />
 					<StyledText type="body">{t('maps.loading')}</StyledText>
