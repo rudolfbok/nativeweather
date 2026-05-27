@@ -76,7 +76,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 	const colors = stops.map((stop) => stop.color) as unknown as readonly [string, string, ...string[]];
 
 	return (
-		<View className={clsx('w-full md:w-96')}>
+		<View className={clsx('w-full lg:w-96')}>
 			<StyledText type="body">{description}</StyledText>
 			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')}>
 				<LinearGradient
