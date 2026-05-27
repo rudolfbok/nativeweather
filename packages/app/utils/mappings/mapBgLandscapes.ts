@@ -1,5 +1,5 @@
 const dayLandscapesBg: Record<number, string> = {
-	1000: '#3C8AFF',
+	1000: '#76D0E2',
 	1003: '#49AEC9',
 	1006: '#49AEC9',
 	1009: '#9BAFAD',

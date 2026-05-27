@@ -79,7 +79,7 @@ export const FeedbackFeature = () => {
 
 	return (
 		<View className={clsx('gap-4 md:items-center')}>
-			<View className={clsx('flex items-center gap-2 p-4 md:w-1/2 lg:w-[40%]')}>
+			<View className={clsx('ios:hidden flex items-center gap-2 p-4 md:w-1/2 lg:w-[40%]')}>
 				<View className={clsx('bg-primaryblue rounded-xl p-2')}>
 					<MessageCircle size={40} color="white" />
 				</View>

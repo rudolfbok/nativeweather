@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { CircleAlert, X } from 'lucide-react-native';
+import { BadgeAlert, X } from 'lucide-react-native';
 import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack, useRouter } from 'expo-router';
 import { ReactNode } from 'react';
@@ -44,7 +44,7 @@ export default function ModalsLayout() {
 			<Stack.Screen
 				name="index"
 				options={{
-					headerTitle: () => <ModalHeader icon={<CircleAlert color="#007AFF" />} title={t('alerts.modaltitle')} />,
+					headerTitle: () => <ModalHeader icon={<BadgeAlert color="#007AFF" />} title={t('alerts.modaltitle')} />,
 				}}
 			/>
 			<Stack.Screen

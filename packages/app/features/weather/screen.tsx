@@ -40,14 +40,17 @@ export const WeatherFeature = () => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: textColor,
+				headerTintColor: 'white',
+				headerTitleStyle: { color: 'white' },
 			});
 		} else {
 			navigation.setOptions({
 				headerTitle: t('tab.weather'),
+				headerTintColor: textColor,
+				headerTitleStyle: { color: textColor },
 			});
 		}
-	}, [weatherData]);
+	}, [navigation, t, textColor, weatherData]);
 
 	const onRefresh = async () => {
 		if (!weatherData) return;
@@ -97,7 +100,7 @@ export const WeatherFeature = () => {
 				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
 				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
 			>
-				<ActivityIndicator animating={true} size="large" color="#007AFF" />
+				<ActivityIndicator animating={true} size="large" color="#FFFFFF83" />
 			</Animated.View>
 			<Animated.ScrollView
 				// onScroll={scrollHandler}

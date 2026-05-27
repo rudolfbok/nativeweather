@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorageString';
 import { switchTemp } from 'app/utils/switch/switchTemp';
-import { Droplets, Sunrise } from 'lucide-react-native';
+import { Droplets } from 'lucide-react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { HumidityModal } from './modals/HumidityModal';
-import { StyledModal } from '../common/styled/StyledModal';
-import { Platform } from 'react-native';
-import { useRouter } from 'solito/navigation';
 
 interface HumidityCardProps {
 	data: number;

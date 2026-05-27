@@ -4,27 +4,30 @@ import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
+import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { shareLink } from 'app/utils/services/shareLink';
 import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Platform, Pressable } from 'react-native';
+import { Platform, Pressable, View } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const { backgroundColor, textColor } = useThemeColors();
-
-	// const titleColor = Platform.OS === 'ios' ? DynamicColorIOS({ light: 'black', dark: 'white' }) : 'black';
+	const headerTextColor = weatherData ? 'white' : textColor;
+	const headerBackgroundColor = weatherData
+		? weatherLandscapeBg({ code: weatherData.current.condition.code, isDay: weatherData.current.isDay })
+		: undefined;
 
 	useEffect(() => {
 		if (!weatherData) return;
 
 		const city = cityFromWeather(weatherData);
 		setIsFavorite(isCityInFavorites(city));
-	}, [weatherData]);
+	}, [setIsFavorite, weatherData]);
 
 	const LeftButton = () => {
 		return (
@@ -32,7 +35,7 @@ export default function TabLayout() {
 				onPress={() => shareLink(weatherData)}
 				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
 			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color={textColor} style={{ pointerEvents: 'none' }} />
+				<Share size={Platform.OS === 'ios' ? 22 : 28} color={headerTextColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -45,8 +48,8 @@ export default function TabLayout() {
 			>
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
-					color={textColor}
-					fill={isFavorite ? textColor : 'transparent'}
+					color={headerTextColor}
+					fill={isFavorite ? headerTextColor : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
 			</Pressable>
@@ -63,16 +66,13 @@ export default function TabLayout() {
 					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,
 					headerTransparent: true,
-					// headerTintColor: textColor,
-					// headerStyle: { backgroundColor: 'rgba(73, 205, 240, 1)' },
+					headerTintColor: headerTextColor,
+					headerBackground: () =>
+						headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: headerBackgroundColor }} /> : null,
 					headerTitleAlign: 'center',
-					// headerTitleStyle: { color: !weatherData ? textColor : 'white' },
-					// headerBackground: () => (
-					// 	<WeatherLandscape code={weatherData?.current.condition.code} isDay={weatherData?.current.isDay} />
-					// ),
+					headerTitleStyle: { color: headerTextColor },
 					contentStyle: {
 						backgroundColor,
-						// marginTop: Platform.OS === 'android' ? 110 : 0,
 						paddingHorizontal: 0,
 					},
 				}}

@@ -3,16 +3,22 @@ import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { DotIndicator } from 'app/components/icons/DotIndicator';
+import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 
 interface AlertItemProps {
 	title: string;
 	area: string;
+	severity: string;
 	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
 }
 
-export const AlertItem = ({ title, area, onPress }: AlertItemProps) => {
+export const AlertItem = ({ title, area, severity, onPress }: AlertItemProps) => {
 	return (
 		<StyledPressable onPress={onPress} className={clsx('w-full flex-row items-center gap-2 p-4')}>
+			<View className={clsx('mx-2')}>
+				<DotIndicator fill={getAlertSeverityDotColor(severity)} />
+			</View>
 			<View className={clsx('flex-1')}>
 				<StyledText type="subtitle">{title}</StyledText>
 				{area.length > 0 && (

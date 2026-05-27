@@ -34,6 +34,7 @@ export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null 
 									}
 									title={alert.event}
 									area={alert.areas}
+									severity={alert.severity}
 								/>
 								{index < filteredAlerts.length - 1 && <Separator className={clsx('mx-4')} />}
 							</View>

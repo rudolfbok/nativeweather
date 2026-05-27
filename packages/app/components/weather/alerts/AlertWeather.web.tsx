@@ -4,7 +4,7 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
-import { ChevronRight, CircleAlert } from 'lucide-react-native';
+import { ChevronRight, BadgeAlert } from 'lucide-react-native';
 import { useState } from 'react';
 import { AlertModal } from './AlertModal';
 import { Platform } from 'react-native';
@@ -33,7 +33,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 				className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
 			>
 				<CardHeader
-					icon={<CircleAlert color="#007AFF" />}
+					icon={<BadgeAlert color="#007AFF" />}
 					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
 				/>
 				<ChevronRight color="#007AFF" size={26} />
@@ -46,13 +46,13 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 					desktop
 				)}
 			>
-				<CardHeader icon={<CircleAlert color="#007AFF" size={28} />} header={String(alertsLength)} />
+				<CardHeader icon={<BadgeAlert color="#007AFF" size={28} />} header={String(alertsLength)} />
 			</StyledPressable>
 
 			{showAlertModal && (
 				<StyledModal
 					visible={showAlertModal}
-					icon={selectedAlert ? undefined : <CircleAlert color="#007AFF" />}
+					icon={selectedAlert ? undefined : <BadgeAlert color="#007AFF" />}
 					header={selectedAlert === null ? t('alerts.modaltitle') : selectedAlert.event}
 					goBackHeader={selectedAlert ? true : false}
 					goBackOnPress={() => setSelectedAlert(null)}

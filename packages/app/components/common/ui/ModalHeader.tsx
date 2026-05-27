@@ -1,4 +1,3 @@
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { clsx } from 'clsx';
 import { ChevronLeft, X } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
@@ -25,8 +24,6 @@ export const ModalHeader = ({
 	onBackPress,
 	onClose,
 }: ModalHeaderProps) => {
-	const switchColors = useSwitchColors('black', 'white');
-
 	return (
 		<View>
 			<View className={clsx('flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
@@ -42,7 +39,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')}>
-					<X color={switchColors} size={28} style={{ pointerEvents: 'none' }} />
+					<X color="#007AFF" size={28} style={{ pointerEvents: 'none' }} />
 				</StyledPressable>
 			</View>
 			{daysToggle}

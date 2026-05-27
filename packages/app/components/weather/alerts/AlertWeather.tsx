@@ -3,7 +3,7 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { WeatherAlert } from 'app/types/weatherAlert';
 import { clsx } from 'clsx';
-import { ChevronRight, CircleAlert } from 'lucide-react-native';
+import { ChevronRight, BadgeAlert } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
 
@@ -29,7 +29,7 @@ export const AlertWeather = ({ alertsLength, mobile }: AlertWeatherProps) => {
 			style={{ padding: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
 		>
 			<CardHeader
-				icon={<CircleAlert color="#007AFF" />}
+				icon={<BadgeAlert color="#007AFF" />}
 				header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
 			/>
 			<ChevronRight color="#007AFF" size={26} />

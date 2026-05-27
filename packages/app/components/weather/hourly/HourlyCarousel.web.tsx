@@ -14,6 +14,14 @@ interface HourlyCarouselProps<T> {
 	renderItem: (item: T, index: number) => JSX.Element;
 }
 
+const arrowBase = clsx(
+	'pointer-events-none opacity-100',
+	'group-hover:pointer-events-auto',
+	'focus-visible:pointer-events-auto focus-visible:opacity-100'
+);
+
+const isTouchDevice = navigator.maxTouchPoints > 0;
+
 export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>) => {
 	const { t } = useTranslate('weather');
 
@@ -35,14 +43,6 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 	}, [emblaApi, updateButtons]);
 
 	const switchColors = useSwitchColors('black', 'white');
-
-	const isTouchDevice = navigator.maxTouchPoints > 0;
-
-	const arrowBase = clsx(
-		'pointer-events-none opacity-100',
-		'group-hover:pointer-events-auto',
-		'focus-visible:pointer-events-auto focus-visible:opacity-100'
-	);
 
 	const LeftArrow = () => (
 		<button

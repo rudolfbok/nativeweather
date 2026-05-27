@@ -9,6 +9,7 @@ import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWidgets } from 'app/hooks/useWidgets';
 import { useStorageBoolean } from 'app/storage/useStorageBoolean';
 import { clsx } from 'clsx';
@@ -24,6 +25,7 @@ export const HomeFeature = () => {
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
 	const { getLocalWeather } = useCurrentLocation();
+	const { textColor } = useThemeColors();
 
 	useWidgets();
 
@@ -44,7 +46,7 @@ export const HomeFeature = () => {
 			<ScreenWrapper
 				refreshControl={
 					<RefreshControl
-						tintColor="#007AFF"
+						tintColor={textColor}
 						refreshing={refreshing}
 						onRefresh={() => favoriteCitiesHook.refreshFavoriteCities({ displayToast: true, setRefreshing })}
 						style={{ zIndex: 100 }}

@@ -2,7 +2,9 @@ import { useTolgee, useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { RoundView } from 'app/components/common/ui/RoundView';
+import { Separator } from 'app/components/common/ui/Separator';
 import { useWeather } from 'app/hooks/useWeather';
+import { getAlertSeverityTextColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
@@ -73,20 +75,23 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 
 	return (
 		<View className={clsx('gap-2')}>
-			{severity && (
-				<View>
-					<StyledText type="title">{t('alerts.severity')}</StyledText>
-					<StyledText type="body">{getLocaleSeverity(severity)}</StyledText>
+			<RoundView className={clsx('gap-2 p-4')}>
+				{severity && (
+					<View className={clsx('items-center gap-1')}>
+						<StyledText type="title">{t('alerts.severity')}</StyledText>
+						<StyledText type="body" className={clsx('font-semibold', getAlertSeverityTextColor(severity))}>
+							{getLocaleSeverity(severity)}
+						</StyledText>
+					</View>
+				)}
+				<Separator />
+				<View className={clsx('items-center')}>
+					<StyledText type="title">{t('alerts.expires')}</StyledText>
+					<StyledText type="body">
+						{getTime(expires)} - {formatDate(expires)}
+					</StyledText>
 				</View>
-			)}
-
-			<View>
-				<StyledText type="title">{t('alerts.expires')}</StyledText>
-				<StyledText type="body">
-					{getTime(expires)} - {formatDate(expires)}
-				</StyledText>
-			</View>
-
+			</RoundView>
 			{area.length > 0 && (
 				<ContentRow title={t('alerts.area')}>
 					<StyledText type="body">{area}</StyledText>
@@ -101,11 +106,11 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 					</StyledText>
 				</ContentRow>
 			)}
-			{/* {instructions.length > 0 && (
+			{instructions.length > 0 && (
 				<ContentRow title={t('alerts.instructions')}>
 					<StyledText type="body">{removeDoubleSpaces(instructions.trim())}</StyledText>
 				</ContentRow>
-			)} */}
+			)}
 		</View>
 	);
 };

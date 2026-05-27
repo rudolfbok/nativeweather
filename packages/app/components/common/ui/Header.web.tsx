@@ -54,12 +54,7 @@ export const Header = () => {
 				)}
 			>
 				<View className={clsx('absolute right-0 z-50 mr-2 md:mt-2')}>
-					<Hamburger
-						toggled={openDrawer}
-						size={22}
-						color={useSwitchColors('black', 'white')}
-						onToggle={() => setOpenDrawer(!openDrawer)}
-					/>
+					<Hamburger toggled={openDrawer} size={22} color="#007AFF" onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
 				<ScrollView
 					className={clsx('flex-1')}

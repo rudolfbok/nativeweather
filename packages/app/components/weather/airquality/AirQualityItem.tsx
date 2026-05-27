@@ -1,6 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { AirQualityIndicator } from 'app/components/icons/AirQualityIndicator';
+import { DotIndicator } from 'app/components/icons/DotIndicator';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 
@@ -28,7 +28,7 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 				</StyledText>
 			</View>
 			<View className={clsx('flex-row items-center justify-end gap-2')}>
-				<AirQualityIndicator fill={colorIndicator} />
+				<DotIndicator fill={colorIndicator} />
 				<StyledText type="data">
 					{data}
 					{units}

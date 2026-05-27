@@ -2,16 +2,15 @@ import { ReactNode } from 'react';
 import { ScrollView } from 'react-native';
 
 interface ScreenWrapperProps {
-	children: ReactNode;
-	contentContainerClassName?: string;
 	refreshControl?: any;
+	children: ReactNode;
 }
 
-export const ScreenWrapper = ({ children, refreshControl, contentContainerClassName }: ScreenWrapperProps) => {
+export const ScreenWrapper = ({ refreshControl, children }: ScreenWrapperProps) => {
 	return (
 		<ScrollView
 			contentInsetAdjustmentBehavior="automatic"
-			contentContainerClassName="px-4 pb-4"
+			contentContainerClassName="px-4"
 			refreshControl={refreshControl}
 		>
 			{children}

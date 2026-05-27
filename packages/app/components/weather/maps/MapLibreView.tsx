@@ -31,8 +31,8 @@ const WEATHER_SOURCE_ID = 'weatherapi';
 const WEATHER_LAYER_ID = 'weatherapi-layer';
 const OPENFREEMAP_LIBERTY = 'https://tiles.openfreemap.org/styles/liberty';
 const OPENFREEMAP_POSITRON = 'https://tiles.openfreemap.org/styles/positron';
-// const TEMPERATURE_CARD_WIDTH = 150;
-// const TEMPERATURE_CARD_HEIGHT = 120;
+const TEMPERATURE_CARD_WIDTH = 220;
+const TEMPERATURE_CARD_HEIGHT = 120;
 const TEMPERATURE_CARD_OFFSET = 12;
 
 type WeatherMarker = {
@@ -137,12 +137,12 @@ const formatWeatherMarker = (
 };
 
 const getTemperatureCardPoint = (point: [number, number], size: MapSize) => {
-	// const maxX = Math.max(TEMPERATURE_CARD_OFFSET, size.width - TEMPERATURE_CARD_WIDTH - TEMPERATURE_CARD_OFFSET);
-	// const maxY = Math.max(TEMPERATURE_CARD_OFFSET, size.height - TEMPERATURE_CARD_HEIGHT - TEMPERATURE_CARD_OFFSET);
+	const maxX = Math.max(TEMPERATURE_CARD_OFFSET, size.width - TEMPERATURE_CARD_WIDTH - TEMPERATURE_CARD_OFFSET);
+	const maxY = Math.max(TEMPERATURE_CARD_OFFSET, size.height - TEMPERATURE_CARD_HEIGHT - TEMPERATURE_CARD_OFFSET);
 
 	return {
-		x: Math.min(Math.max(point[0] + TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET)),
-		y: Math.min(Math.max(point[1] - TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET)),
+		x: Math.min(Math.max(point[0] + TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET), maxX),
+		y: Math.min(Math.max(point[1] - TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET), maxY),
 	};
 };
 
@@ -376,7 +376,7 @@ export const MapLibreView = () => {
 					<MapButton key={style} icon={icon} onPress={() => setTileStyle(style)} />
 				))}
 			</View>
-			{mapLoading && (
+			{!mapLoading && (
 				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
 					<ActivityIndicator size="small" color="#007AFF" />
 					<StyledText type="body">{t('maps.loading')}</StyledText>
@@ -395,7 +395,7 @@ export const MapLibreView = () => {
 				</View>
 			</View>
 			{showLegend && (
-				<View className={clsx('ios:bottom-28 absolute bottom-4 left-4 right-4')}>
+				<View className={clsx('ios:bottom-28 absolute bottom-4 left-6 right-6')}>
 					<AnimatedView duration={30}>
 						<RoundView className={clsx('p-4')}>
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>

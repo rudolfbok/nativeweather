@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import UVScale from 'app/assets/uvscale.png';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
-import { Droplets, Sun } from 'lucide-react-native';
+import { Sun } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';

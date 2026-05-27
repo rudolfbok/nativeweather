@@ -42,7 +42,7 @@
 			}
 		},
 		"o3": {
-			"main": "Přízemní ozon je škodlivý vzdušný polutant, který vzniká při reakci slunečního záření s emisemi z dopravy a průmyslu. Může způsobit bolesti na hrudi, kašel a zhoršovat astma a další plicní onemocnění. Je obzvláště nebezpečný během horkých slunečných dnů.",
+			"main": "Přízemní ozon je škodlivý vzdušný polutant, který vzniká při reakci slunečního záření s emisemi z dopravy a průmyslu. Může způsobit bolesti na hrudi, kašel a zhoršovat astma a další plicní onemocnění. Je obzvláště nebezpečný během horkých slunečných dnů. Hodnoty bývají nejvyšší během teplých slunečných odpolední. Zranitelnější jsou děti, starší lidé a lidé, kteří se venku fyzicky namáhají.",
 			"text": {
 				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
 				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když neobvykle citliví jedinci mohou pociťovat mírné dýchací potíže.",
@@ -53,7 +53,7 @@
 			}
 		},
 		"pm10": {
-			"main": "PM10 označuje částice o průměru 10 mikrometrů nebo menším. Tyto částice mohou dráždit oči, nos a krk, a mohou zhoršovat astma a další dýchací potíže. Při vyšších koncentracích mohou způsobit kašel, dušnost a zánětlivé reakce dýchacích cest.",
+			"main": "PM10 označuje částice o průměru 10 mikrometrů nebo menším. Tyto částice mohou dráždit oči, nos a krk, a mohou zhoršovat astma a další dýchací potíže. Při vyšších koncentracích mohou způsobit kašel, dušnost a zánětlivé reakce dýchacích cest. Často pocházejí z prachu, silniční dopravy, stavebních prací a pylu. Při vysokých koncentracích může expozici snížit pobyt uvnitř a zavřená okna.",
 			"text": {
 				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
 				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když citliví jedinci mohou mít menší problémy.",
@@ -64,7 +64,7 @@
 			}
 		},
 		"pm25": {
-			"main": "PM2.5 označuje jemné částice o průměru 2.5 mikrometru nebo menším. Tyto drobné částice mohou pronikat hluboko do plic a krevního oběhu a způsobit vážné zdravotní problémy, včetně srdečních onemocnění, mrtvice a respiračních potíží.",
+			"main": "PM2.5 označuje jemné částice o průměru 2.5 mikrometru nebo menším. Tyto drobné částice mohou pronikat hluboko do plic a krevního oběhu a způsobit vážné zdravotní problémy, včetně srdečních onemocnění, mrtvice a respiračních potíží. Často vznikají při spalování, například v dopravě, při vytápění, lesních požárech nebo průmyslové činnosti. Protože jsou velmi malé, mohou ve vzduchu zůstávat déle a šířit se dál než větší částice.",
 			"text": {
 				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
 				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když citliví jedinci mohou mít menší problémy.",

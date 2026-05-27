@@ -42,7 +42,7 @@
 			}
 		},
 		"o3": {
-			"main": "Ground-level ozone is harmful, formed by sunlight reacting with traffic and industrial emissions. Can cause chest pain, coughing, worsen asthma.",
+			"main": "Ground-level ozone is harmful, formed by sunlight reacting with traffic and industrial emissions. Can cause chest pain, coughing, worsen asthma. Levels are usually highest on warm, sunny afternoons. Children, older adults, and people who exercise outdoors are more vulnerable.",
 			"text": {
 				"0": "Air quality is excellent with minimal health risks for all groups.",
 				"1": "Air quality is acceptable for most people, although unusually sensitive individuals may experience mild respiratory discomfort.",
@@ -53,7 +53,7 @@
 			}
 		},
 		"pm10": {
-			"main": "PM10 are particles ≤10 micrometers. Can irritate eyes, nose, throat; worsen asthma.",
+			"main": "PM10 are particles ≤10 micrometers. Can irritate eyes, nose, throat; worsen asthma. They often come from dust, road traffic, construction, and pollen. Staying indoors and keeping windows closed can reduce exposure during high concentrations.",
 			"text": {
 				"0": "Air quality is excellent with minimal health risks for all groups.",
 				"1": "Air quality is acceptable for most people, although sensitive individuals may experience minor problems.",
@@ -64,7 +64,7 @@
 			}
 		},
 		"pm25": {
-			"main": "PM2.5 are fine particles ≤2.5 micrometers. Can penetrate deep into lungs and bloodstream, causing serious health issues.",
+			"main": "PM2.5 are fine particles ≤2.5 micrometers. Can penetrate deep into lungs and bloodstream, causing serious health issues. They are commonly produced by combustion, including traffic, heating, wildfires, and industrial activity. Because they are very small, they can remain in the air longer and travel farther than larger particles.",
 			"text": {
 				"0": "Air quality is excellent with minimal health risk for all groups.",
 				"1": "Air quality is acceptable for most people, though sensitive individuals may experience minor issues.",

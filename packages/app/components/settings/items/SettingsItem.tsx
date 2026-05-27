@@ -1,5 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { Check, ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';
@@ -30,12 +31,16 @@ export const SettingsItem = ({
 	selected,
 	variant,
 }: SettingsItemProps) => {
+	const { textColor } = useThemeColors();
+
 	const RightElement = () => {
 		switch (variant) {
 			case 'value':
 				return (
 					<View className={clsx('flex flex-row items-center gap-1')}>
-						<StyledText type="body">{currentValue}</StyledText>
+						<StyledText type="body" className={clsx('opacity-70')}>
+							{currentValue}
+						</StyledText>
 						<ChevronRight color="#007AFF" />
 					</View>
 				);
