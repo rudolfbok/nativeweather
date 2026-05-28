@@ -57,7 +57,7 @@ export const CityCard = ({
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'flex flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4 hover:shadow-md dark:hover:shadow-white/30'
+				'flex flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
 			)}
 			style={{
 				display: 'flex',
@@ -106,14 +106,7 @@ export const CityCard = ({
 				</StyledText>
 			</View>
 			<View className={clsx('items-center')}>
-				<WeatherIcon
-					isDay={isDay}
-					code={conditionCode}
-					width={80}
-					height={80}
-					strokeWidth={Platform.OS === 'web' ? 0.5 : 0}
-					source={currentSource}
-				/>
+				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
 				{showWorldTime && displayTime && (
 					<StyledText type="localtime" className={clsx('!text-white opacity-70')}>
 						{getLocalTimeNow(timeZone)}
