@@ -35,7 +35,7 @@ export default function TabLayout() {
 				onPress={() => shareLink(weatherData)}
 				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
 			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color="#007AFF" style={{ pointerEvents: 'none' }} />
+				<Share size={Platform.OS === 'ios' ? 22 : 28} color={headerTextColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -48,7 +48,7 @@ export default function TabLayout() {
 			>
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
-					color="yellow"
+					color={headerTextColor}
 					fill={isFavorite ? headerTextColor : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
@@ -68,7 +68,7 @@ export default function TabLayout() {
 					headerTransparent: true,
 					headerTintColor: headerTextColor,
 					headerBackground: () =>
-						headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: headerBackgroundColor }} /> : null,
+						headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: 'transparent' }} /> : null,
 					headerTitleAlign: 'center',
 					headerTitleStyle: { color: headerTextColor },
 					contentStyle: {

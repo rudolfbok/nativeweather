@@ -56,7 +56,9 @@ export const CityCard = ({
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx('flex flex-1 select-none flex-row items-center justify-between rounded-3xl p-4')}
+			className={clsx(
+				'flex flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4 hover:shadow-md dark:hover:shadow-white/30'
+			)}
 			style={{
 				display: 'flex',
 				width: '100%',
@@ -73,7 +75,7 @@ export const CityCard = ({
 			<View className={clsx('flex-grow')}>
 				<StyledText
 					type="subtitle"
-					className={clsx('native:!text-white truncate font-semibold')}
+					className={clsx('native:!text-white web:!text-white truncate font-semibold')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -81,15 +83,13 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="bodysecondary"
-					className={clsx(
-						'native:!text-white/80 web:text-secondaryLabel dark:text-secondaryLabel_dark line-clamp-1 truncate font-semibold'
-					)}
+					className={clsx('native:!text-white web:!text-white line-clamp-1 truncate font-semibold opacity-70')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
 					{region}
 				</StyledText>
-				<StyledText type="title" className={clsx('native:!text-white !text-xl !font-bold')}>
+				<StyledText type="title" className={clsx('native:!text-white web:!text-white !text-xl !font-bold')}>
 					{switchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
@@ -98,7 +98,7 @@ export const CityCard = ({
 				</StyledText>
 				<StyledText
 					type="body"
-					className={clsx('native:!text-white line-clamp-1 truncate font-semibold')}
+					className={clsx('native:!text-white web:!text-white line-clamp-1 truncate font-semibold')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -115,10 +115,7 @@ export const CityCard = ({
 					source={currentSource}
 				/>
 				{showWorldTime && displayTime && (
-					<StyledText
-						type="localtime"
-						className={clsx('native:!text-white/80 web:text-secondaryLabel dark:text-secondaryLabel_dark')}
-					>
+					<StyledText type="localtime" className={clsx('!text-white opacity-70')}>
 						{getLocalTimeNow(timeZone)}
 					</StyledText>
 				)}
