@@ -15,7 +15,7 @@
 			"error": "Chyba při načítání počasí pro vybrané město"
 		},
 		"input": {
-			"error": "Nepodařilo se načíst data o počasí pro hledané město"
+			"error": "Počasí se nepodařilo načíst"
 		},
 		"searchbar": "Zadejte město nebo souřadnice..",
 		"searchbar.native": "Hledat..",

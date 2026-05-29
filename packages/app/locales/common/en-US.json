@@ -15,7 +15,7 @@
 			"error": "Error loading weather for the selected city"
 		},
 		"input": {
-			"error": "Failed to fetch weather data for searched city"
+			"error": "Couldn't load weather for this city"
 		},
 		"searchbar": "Search any city or coordinates..",
 		"searchbar.native": "Search..",
