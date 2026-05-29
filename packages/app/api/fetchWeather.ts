@@ -4,24 +4,29 @@ import { mapOpenWeatherApi } from './mapOpenWeatherAPI';
 import { mapWeatherApi } from './mapWeatherAPI';
 
 export const fetchWeather = async (query: any, source: string) => {
-	if (source === 'weatherapi') {
-		const weatherData = await fetchWeatherAPI(query);
-		if (!weatherData) {
-			throw new Error('City not found');
-		}
-		const normalizedData = mapWeatherApi(weatherData);
-		return normalizedData;
-	}
-
-	if (source === 'openweather') {
-		const weatherData = await fetchOpenWeatherAPI(query);
-		if (!weatherData) {
-			throw new Error('City not found');
+	try {
+		if (source === 'weatherapi') {
+			const weatherData = await fetchWeatherAPI(query);
+			if (!weatherData || weatherData.error || Array.isArray(weatherData)) {
+				return null;
+			}
+			const normalizedData = mapWeatherApi(weatherData);
+			return normalizedData;
 		}
 
-		const normalizedData = mapOpenWeatherApi(weatherData);
-		return normalizedData;
+		if (source === 'openweather') {
+			const weatherData = await fetchOpenWeatherAPI(query);
+			if (!weatherData || weatherData.error || Array.isArray(weatherData)) {
+				return null;
+			}
+
+			const normalizedData = mapOpenWeatherApi(weatherData);
+			return normalizedData;
+		}
+	} catch (error) {
+		console.error('Failed to fetch weather data:', error);
+		return null;
 	}
 
-	throw new Error('Unknown weather source');
+	return null;
 };

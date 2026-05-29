@@ -28,7 +28,9 @@ export const SearchBar = () => {
 				onChangeText={setSearchValue}
 				clearSearch={() => setSearchValue('')}
 				onFocus={() => setIsSearchBarFocused(true)}
-				performSearch={() => handleInputSearch(searchValue)}
+				performSearch={async () => {
+					await handleInputSearch(searchValue);
+				}}
 				onBlur={() => {
 					setTimeout(() => setIsSearchBarFocused(false), 130);
 				}}

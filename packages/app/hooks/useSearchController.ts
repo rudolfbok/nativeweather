@@ -57,8 +57,11 @@ export const useSearchController = () => {
 			setSearchValue('');
 			const path = buildWeatherSlug(weatherData);
 			router.push(path);
+			return true;
 		} else {
 			showToast({ message: t('search.input.error'), preset: 'error' });
+			setSearchValue('');
+			return false;
 		}
 	};
 

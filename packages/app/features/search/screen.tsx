@@ -6,9 +6,10 @@ import { RecentSearches } from 'app/components/weather/search/RecentSearches';
 import { SuggestionsList } from 'app/components/weather/search/SuggestionsList';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
+import type { SearchBarCommands } from 'react-native-screens';
 
 export const SearchFeature = () => {
 	const {
@@ -26,13 +27,20 @@ export const SearchFeature = () => {
 
 	const { t } = useTranslate('common');
 	const navigation = useNavigation();
+	const searchBarRef = useRef<SearchBarCommands | null>(null);
 
 	useEffect(() => {
 		navigation.setOptions({
 			headerSearchBarOptions: {
+				ref: searchBarRef,
 				placeholder: t('search.searchbar.native'),
 				onChangeText: (event) => setSearchValue(event.nativeEvent.text),
-				onSearchButtonPress: () => handleInputSearch(searchValue),
+				onSearchButtonPress: async () => {
+					const success = await handleInputSearch(searchValue);
+					if (!success) {
+						searchBarRef.current?.clearText();
+					}
+				},
 				onFocus: () => setIsSearchBarFocused(true),
 				onBlur: () => setIsSearchBarFocused(false),
 				// hideNavigationBar: false,

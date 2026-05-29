@@ -1,4 +1,5 @@
 import { useTranslate } from '@tolgee/react';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
@@ -68,9 +69,10 @@ export default function TabLayout() {
 					headerTransparent: true,
 					headerTintColor: headerTextColor,
 					headerBackground: () =>
-						headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: 'transparent' }} /> : null,
+						headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: '#77CFE2' }} /> : null,
 					headerTitleAlign: 'center',
 					headerTitleStyle: { color: headerTextColor },
+					headerTitle: () => <StyledText type="title">Hey</StyledText>,
 					contentStyle: {
 						backgroundColor,
 						paddingHorizontal: 0,
