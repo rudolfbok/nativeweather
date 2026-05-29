@@ -1,144 +1,36 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeatherAPI } from 'app/api/fetchWeatherAPI';
-import { AnimatedView } from 'app/components/common/animated/AnimatedView';
-import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { RoundView } from 'app/components/common/ui/RoundView';
-import { CloudsIcon } from 'app/components/icons/CloudsIcon';
 import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
 import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
-import { CloudRain, InfoIcon, Thermometer, Wind, X } from 'lucide-react-native';
 import maplibregl, { type Map as MapLibreMap, type MapMouseEvent } from 'maplibre-gl';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, GestureResponderEvent, Pressable, View } from 'react-native';
-import { PrecipitationInfo, MapsLegend, WindInfo } from './MapsLegend';
-import { TileLiberty } from 'app/components/icons/TileLiberty';
-import { TilePositron } from 'app/components/icons/TilePositron';
+import { useEffect, useRef, useState } from 'react';
+import { View } from 'react-native';
+import {
+	formatWeatherMarker,
+	getTemperatureCardPoint,
+	getWeatherApiMapPeriod,
+	getWeatherMarkerTitle,
+	MapLayerControls,
+	MapLegendOverlay,
+	MapLoadingOverlay,
+	MapTileControls,
+	OPENFREEMAP_LIBERTY,
+	WEATHER_LAYER_ID,
+	WEATHER_SOURCE_ID,
+	WeatherMarkerCard,
+	type WeatherMarker,
+} from './MapLibreShared';
 
-const WEATHER_SOURCE_ID = 'weatherapi';
-const WEATHER_LAYER_ID = 'weatherapi-layer';
-const OPENFREEMAP_LIBERTY = 'https://tiles.openfreemap.org/styles/liberty';
-const OPENFREEMAP_POSITRON = 'https://tiles.openfreemap.org/styles/positron';
-const TEMPERATURE_CARD_WIDTH = 220;
-const TEMPERATURE_CARD_HEIGHT = 120;
-const TEMPERATURE_CARD_OFFSET = 12;
-
-type WeatherMarker = {
-	requestId: number;
-	lngLat: [number, number];
-	point: { x: number; y: number };
-	layer: string;
-	status: 'loading' | 'ready' | 'error';
-	value?: string;
-	detail?: string;
-	location?: string;
-};
-
-type WeatherApiCurrent = {
-	temp_c?: number;
-	temp_f?: number;
-	precip_mm?: number;
-	precip_in?: number;
-	wind_kph?: number;
-	wind_mph?: number;
-	gust_kph?: number;
-	gust_mph?: number;
-	wind_dir?: string;
-};
-
-const layerButtons = [
-	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
-	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
-	{ layer: 'wind', icon: <Wind color="gray" /> },
-];
-
-const tileButtons = [
-	{ style: OPENFREEMAP_LIBERTY, icon: <TileLiberty /> },
-	{ style: OPENFREEMAP_POSITRON, icon: <TilePositron /> },
-];
-
-const getWeatherApiMapPeriod = () => {
-	const now = new Date();
-	const year = now.getUTCFullYear();
-	const month = String(now.getUTCMonth() + 1).padStart(2, '0');
-	const day = String(now.getUTCDate()).padStart(2, '0');
-	const hour = String(now.getUTCHours()).padStart(2, '0');
-
-	return `${year}${month}${day}${hour}`;
-};
-
-const formatWeatherMarker = (
-	layer: string,
-	current: WeatherApiCurrent,
-	currentTemp: string | undefined,
-	currentUnits: string | undefined,
-	gustLabel: string
-) => {
-	if (layer === 'precip') {
-		if (current.precip_mm == null || current.precip_in == null) return null;
-
-		return {
-			value: switchMetrics({
-				metric: `${current.precip_mm.toFixed(1)} mm`,
-				imperial: `${current.precip_in.toFixed(2)} in`,
-				currentUnits,
-			}),
-		};
-	}
-
-	if (layer === 'wind') {
-		if (current.wind_kph == null || current.wind_mph == null) return null;
-
-		const value = switchMetrics({
-			metric: `${Math.round(current.wind_kph)} km/h`,
-			imperial: `${Math.round(current.wind_mph)} mph`,
-			currentUnits,
-		});
-		const gust =
-			current.gust_kph == null || current.gust_mph == null
-				? null
-				: `${gustLabel} ${switchMetrics({
-						metric: `${Math.round(current.gust_kph)} km/h`,
-						imperial: `${Math.round(current.gust_mph)} mph`,
-						currentUnits,
-					})}`;
-		const detail = [current.wind_dir, gust].filter(Boolean).join(' - ');
-
-		return { value, detail };
-	}
-
-	if (current.temp_c == null || current.temp_f == null) return null;
-
-	return {
-		value: switchTemp({
-			celsius: current.temp_c,
-			fahrenheit: current.temp_f,
-			currentTemp,
-			includeUnit: true,
-		}),
-	};
-};
-
-const getTemperatureCardPoint = (map: MapLibreMap, point: { x: number; y: number }) => {
+const getWebTemperatureCardPoint = (map: MapLibreMap, point: { x: number; y: number }) => {
 	const container = map.getContainer();
-	const maxX = Math.max(
-		TEMPERATURE_CARD_OFFSET,
-		container.clientWidth - TEMPERATURE_CARD_WIDTH - TEMPERATURE_CARD_OFFSET
-	);
-	const maxY = Math.max(
-		TEMPERATURE_CARD_OFFSET,
-		container.clientHeight - TEMPERATURE_CARD_HEIGHT - TEMPERATURE_CARD_OFFSET
-	);
 
-	return {
-		x: Math.min(Math.max(point.x + TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET), maxX),
-		y: Math.min(Math.max(point.y - TEMPERATURE_CARD_OFFSET, TEMPERATURE_CARD_OFFSET), maxY),
-	};
+	return getTemperatureCardPoint(point, {
+		width: container.clientWidth,
+		height: container.clientHeight,
+	});
 };
 
 const setWeatherLayer = (map: MapLibreMap, layer: string) => {
@@ -170,20 +62,6 @@ const setWeatherLayer = (map: MapLibreMap, layer: string) => {
 	});
 };
 
-const MapButton = ({
-	onPress,
-	icon,
-}: {
-	onPress: (event: GestureResponderEvent) => void | Promise<void>;
-	icon: ReactNode;
-}) => {
-	return (
-		<StyledPressable onPress={onPress} className={clsx('rounded-3xl border border-transparent p-2')}>
-			{icon}
-		</StyledPressable>
-	);
-};
-
 export const MapLibreView = () => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
@@ -202,18 +80,6 @@ export const MapLibreView = () => {
 	const switchColors = useSwitchColors('black', 'white');
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
-	const getWeatherMarkerTitle = (markerLayer: string) => {
-		if (markerLayer === 'precip') return t('maps.layer.1');
-		if (markerLayer === 'wind') return t('maps.layer.2');
-
-		return t('maps.layer.0');
-	};
-	const getLayerInfo = () => {
-		if (layer === 'precip') return <PrecipitationInfo />;
-		if (layer === 'wind') return <WindInfo />;
-
-		return <MapsLegend />;
-	};
 
 	useEffect(() => {
 		currentLayerRef.current = layer;
@@ -308,7 +174,7 @@ export const MapLibreView = () => {
 
 				const point = map.project(current.lngLat);
 
-				return { ...current, point: getTemperatureCardPoint(map, point) };
+				return { ...current, point: getWebTemperatureCardPoint(map, point) };
 			});
 		};
 
@@ -330,7 +196,7 @@ export const MapLibreView = () => {
 			setWeatherMarker({
 				requestId,
 				lngLat,
-				point: getTemperatureCardPoint(map, event.point),
+				point: getWebTemperatureCardPoint(map, event.point),
 				layer: markerLayer,
 				status: 'loading',
 			});
@@ -385,92 +251,40 @@ export const MapLibreView = () => {
 		<View className={clsx('relative flex w-full flex-1 overflow-hidden rounded-3xl')}>
 			<div ref={mapContainerRef} className={clsx('h-full w-full rounded-3xl')} />
 			{weatherMarker && (
-				<View
-					className={clsx(
-						'bg-systemBackground absolute z-10 w-fit rounded-3xl border border-black/10 p-3 shadow-md',
-						'dark:bg-secondarySystemBackground_dark dark:border-white/10 dark:shadow-white/10',
-						weatherMarker.status !== 'ready' && 'flex-row items-center'
-					)}
-					style={{ left: weatherMarker.point.x, top: weatherMarker.point.y }}
-				>
-					{weatherMarker.status === 'loading' && <ActivityIndicator size="small" color="#007AFF" />}
-					{weatherMarker.status === 'error' && (
-						<StyledText type="bodysecondary" className={clsx('font-semibold')}>
-							{t('maps.weatherUnavailable')}
-						</StyledText>
-					)}
-					<View className="flex-row items-center justify-between gap-2">
-						{weatherMarker.status === 'ready' && weatherMarker.value && (
-							<StyledText type="bodysecondary" className={clsx('opacity-70')}>
-								{getWeatherMarkerTitle(weatherMarker.layer)}
-							</StyledText>
-						)}
-						<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
-							<X color="#007AFF" size={20} />
-						</StyledPressable>
-					</View>
-					{weatherMarker.status === 'ready' && weatherMarker.value && (
-						<View>
-							<StyledText type="title" className={clsx('font-bold')}>
-								{weatherMarker.value}
-							</StyledText>
-							{!!weatherMarker.detail && (
-								<StyledText type="bodysecondary" className={clsx('opacity-70')}>
-									{weatherMarker.detail}
-								</StyledText>
-							)}
-							{!!weatherMarker.location && (
-								<StyledText type="bodysecondary" className={clsx('opacity-70')}>
-									{weatherMarker.location}
-								</StyledText>
-							)}
-						</View>
-					)}
-				</View>
+				<WeatherMarkerCard
+					weatherMarker={weatherMarker}
+					title={getWeatherMarkerTitle(weatherMarker.layer, t)}
+					unavailableLabel={t('maps.weatherUnavailable')}
+					onClose={() => setWeatherMarker(null)}
+					className={clsx('w-fit')}
+					loadingClassName={clsx('flex-row items-center')}
+				/>
 			)}
-			<View className={clsx('absolute bottom-4 left-4 gap-2')}>
-				{tileButtons.map(({ style, icon }) => (
-					<MapButton key={style} icon={icon} onPress={() => setTileStyle(style)} />
-				))}
-			</View>
-			{!mapLoading && (
-				<View className={clsx('absolute inset-0 flex-row items-center justify-center gap-2')}>
-					<ActivityIndicator size="small" color="#007AFF" />
-					<StyledText type="body">{t('maps.loading')}</StyledText>
-				</View>
-			)}
-			<View className={clsx('absolute bottom-4 right-4 flex-row items-end gap-2')}>
-				{!showLegend && (
-					<StyledPressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('h-fit rounded-3xl p-2')}>
-						<InfoIcon color={switchColors} />
-					</StyledPressable>
+			<MapTileControls
+				className={clsx('absolute bottom-4 left-4 gap-2')}
+				buttonClassName={clsx('rounded-3xl p-2')}
+				onTilePress={setTileStyle}
+			/>
+			<MapLoadingOverlay visible={!mapLoading} label={t('maps.loading')} />
+			<MapLayerControls
+				className={clsx('absolute bottom-4 right-4 flex-row items-end gap-2')}
+				buttonClassName={clsx('rounded-3xl p-2')}
+				infoButtonClassName={clsx('rounded-3xl p-2')}
+				showLegend={showLegend}
+				switchColors={switchColors}
+				onLayerPress={setLayer}
+				onToggleLegend={() => setShowLegend((prev) => !prev)}
+			/>
+			<MapLegendOverlay
+				visible={showLegend}
+				className={clsx('absolute bottom-4 right-4 max-lg:left-4')}
+				closeButtonClassName={clsx(
+					'hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark rounded-3xl p-1'
 				)}
-				<View className={clsx('gap-2')}>
-					{layerButtons.map(({ layer, icon }, index) => (
-						<MapButton key={index} onPress={() => setLayer(layer)} icon={icon} />
-					))}
-				</View>
-			</View>
-			{showLegend && (
-				<View className={clsx('absolute bottom-4 right-4 max-lg:left-4')}>
-					<AnimatedView duration={30}>
-						<RoundView className={clsx('p-4')}>
-							<View className={clsx('flex w-full flex-row items-center justify-between')}>
-								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
-								<Pressable
-									onPress={() => setShowLegend((prev) => !prev)}
-									className={clsx(
-										'hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark rounded-3xl p-1'
-									)}
-								>
-									<X color="#007AFF" />
-								</Pressable>
-							</View>
-							{getLayerInfo()}
-						</RoundView>
-					</AnimatedView>
-				</View>
-			)}
+				title={t('maps.legend.title')}
+				layer={layer}
+				onToggleLegend={() => setShowLegend((prev) => !prev)}
+			/>
 		</View>
 	);
 };
