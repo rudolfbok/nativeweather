@@ -1,6 +1,6 @@
 interface SwitchTempProps {
-	celsius: number | null | undefined;
-	fahrenheit: number | null | undefined;
+	celsius: number;
+	fahrenheit: number;
 	currentTemp: string | undefined;
 	includeUnit?: boolean;
 }

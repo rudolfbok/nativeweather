@@ -6,11 +6,25 @@ export interface City {
 	country: string;
 }
 
+const defaultFavoriteCities: City[] = [
+	{ name: 'Praha', region: 'Hlavni mesto Praha', country: 'Czech Republic' },
+	{ name: 'New York', region: 'New York', country: 'United States of America' },
+	{ name: 'Osaka-Shi', region: 'Osaka', country: 'Japan' },
+	{ name: 'London', region: 'City of London, Greater London', country: 'United Kingdom' },
+];
+
 export const isSameCity = (a: City, b: City) => a.name === b.name && a.region === b.region && a.country === b.country;
 
 export const getFavoriteCities = (): City[] => {
 	try {
 		const data = storage.getString('favoriteCities');
+
+		if (data === undefined) {
+			const favorites = [...defaultFavoriteCities];
+			storage.set('favoriteCities', JSON.stringify(favorites));
+			return favorites;
+		}
+
 		if (!data) return [];
 
 		const parsed = JSON.parse(data);

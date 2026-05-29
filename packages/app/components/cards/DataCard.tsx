@@ -45,7 +45,11 @@ export const DataCard = ({
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>
-					{description && <StyledText type="body">{description}</StyledText>}
+					{description && (
+						<StyledText type="body" className={clsx('opacity-70')}>
+							{description}
+						</StyledText>
+					)}
 					{extraContent && <View>{extraContent}</View>}
 				</View>
 				<View className={clsx('w-full items-end')}>

@@ -19,11 +19,13 @@ interface DataSourceItemProps {
 
 const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) => {
 	return (
-		<View className={clsx('gap-2')}>
+		<View className={clsx('items-center gap-2')}>
 			{logo}
-			<View>
+			<View className={clsx('items-center')}>
 				<StyledText type="subtitle">{name}</StyledText>
-				<StyledText type="body">{description}</StyledText>
+				<StyledText type="body" className={clsx('text-center')}>
+					{description}
+				</StyledText>
 			</View>
 			<Pressable onPress={() => Linking.openURL(url)}>
 				<StyledText type="link">{url}</StyledText>
