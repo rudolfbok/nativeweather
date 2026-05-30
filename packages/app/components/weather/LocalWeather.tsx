@@ -3,21 +3,21 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { clsx } from 'clsx';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { CityCard } from './CityCard';
 
-export const LocalWeather = () => {
+interface LocalWeatherProps {
+	error?: boolean;
+}
+
+export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData } = useLocalWeather();
-	const { error } = useCurrentLocation();
 	const { handleCityPress } = useSearchController();
-
-	// if (Platform.OS === "ios") {}
 
 	if (error) {
 		return (

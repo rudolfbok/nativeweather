@@ -24,16 +24,16 @@ export const HomeFeature = () => {
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
-	const { getLocalWeather } = useCurrentLocation();
+	const { getLocalWeather, error: localWeatherError } = useCurrentLocation();
 	const { textColor } = useThemeColors();
 
 	useWidgets();
 
 	useEffect(() => {
-		if (!localWeatherData) {
-			getLocalWeather();
+		if (showLocalWeather && !localWeatherData) {
+			void getLocalWeather();
 		}
-	}, [localWeatherData, getLocalWeather]);
+	}, [showLocalWeather, localWeatherData, getLocalWeather]);
 
 	return (
 		<View className={clsx('w-full flex-1')}>
@@ -57,7 +57,7 @@ export const HomeFeature = () => {
 					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
 							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
-							<LocalWeather />
+							<LocalWeather error={localWeatherError} />
 						</View>
 					)}
 					<FavoriteCities hook={favoriteCitiesHook} />

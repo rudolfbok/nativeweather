@@ -1,7 +1,7 @@
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
 import { useStorageString } from 'app/storage/useStorageString';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 const getCoordinates = (): Promise<GeolocationPosition | null> => {
 	return new Promise((resolve) => {
@@ -23,22 +23,41 @@ const getCoordinates = (): Promise<GeolocationPosition | null> => {
 
 export const useCurrentLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
-	const { setLocalWeatherData } = useLocalWeather();
+	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
 	const [error, setError] = useState<boolean>(false);
+	const isFetchingRef = useRef(false);
 
-	void error;
+	const getLocalWeather = useCallback(async () => {
+		if (isFetchingRef.current) {
+			return null;
+		}
 
-	const getLocalWeather = async () => {
+		isFetchingRef.current = true;
 		setError(false);
+
 		try {
-			const { coords } = await getCoordinates();
+			const position = await getCoordinates();
+			if (!position || !currentSource) {
+				setError(true);
+				return null;
+			}
+
+			const { coords } = position;
 			const result = await fetchWeather([coords.latitude, coords.longitude], currentSource);
+			if (!result) {
+				setError(true);
+				return null;
+			}
+
 			await setLocalWeatherData(result);
 			return result;
-		} catch (error) {
+		} catch {
 			setError(true);
+			return null;
+		} finally {
+			isFetchingRef.current = false;
 		}
-	};
+	}, [currentSource, setLocalWeatherData]);
 
 	return { getLocalWeather, error };
 };

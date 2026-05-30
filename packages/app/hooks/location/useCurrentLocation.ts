@@ -1,21 +1,33 @@
 import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
 import { fetchWeather } from 'app/api/fetchWeather';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useLocalWeather } from '../useLocalWeather';
 import { useStorageString } from 'app/storage/useStorageString';
 
 export const useCurrentLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const [error, setError] = useState<boolean>(false);
-	const { setLocalWeatherData } = useLocalWeather();
+	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
+	const isFetchingRef = useRef(false);
 
-	const getLocalWeather = async () => {
+	const getLocalWeather = useCallback(async () => {
+		if (isFetchingRef.current) {
+			return null;
+		}
+
+		isFetchingRef.current = true;
 		setError(false);
 
 		try {
+			if (!currentSource) {
+				setError(true);
+				return null;
+			}
+
 			const { status: authStatus } = await requestForegroundPermissionsAsync();
 			if (authStatus !== 'granted') {
 				setError(true);
+				return null;
 			}
 
 			const { coords } = await getCurrentPositionAsync({
@@ -23,11 +35,20 @@ export const useCurrentLocation = () => {
 			});
 
 			const result = await fetchWeather(`${coords.latitude},${coords.longitude}`, currentSource);
+			if (!result) {
+				setError(true);
+				return null;
+			}
+
 			await setLocalWeatherData(result);
-		} catch (error) {
+			return result;
+		} catch {
 			setError(true);
+			return null;
+		} finally {
+			isFetchingRef.current = false;
 		}
-	};
+	}, [currentSource, setLocalWeatherData]);
 
 	return { getLocalWeather, error };
 };

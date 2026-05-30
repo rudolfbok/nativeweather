@@ -17,14 +17,14 @@ export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { t } = useTranslate('weather');
 	const favoriteCitiesHook = useFavoriteCities();
-	const { getLocalWeather } = useCurrentLocation();
+	const { getLocalWeather, error: localWeatherError } = useCurrentLocation();
 	const { localWeatherData } = useLocalWeather();
 
 	useEffect(() => {
-		if (!localWeatherData) {
-			getLocalWeather();
+		if (showLocalWeather && !localWeatherData) {
+			void getLocalWeather();
 		}
-	}, [localWeatherData, getLocalWeather]);
+	}, [showLocalWeather, localWeatherData, getLocalWeather]);
 
 	return (
 		<AnimatedView duration={25}>
@@ -37,7 +37,7 @@ export const HomeFeature = () => {
 					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
 							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
-							<LocalWeather />
+							<LocalWeather error={localWeatherError} />
 						</View>
 					)}
 					<FavoriteCities hook={favoriteCitiesHook} />

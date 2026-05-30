@@ -1,7 +1,7 @@
 const BASE_URL = 'https://my-weather-proxy.rudolf-bok-account.workers.dev';
 
 export const fetchWeatherAPI = async (query: string | number[]) => {
-	const weatherUrl = `${BASE_URL}/forecast.json?&q=${query}&days=7&aqi=no&alerts=yes`;
+	const weatherUrl = `${BASE_URL}/forecast.json?q=${query}&days=7&aqi=no&alerts=yes`;
 
 	try {
 		const response = await fetch(weatherUrl);
@@ -24,7 +24,7 @@ export const fetchWeatherAPI = async (query: string | number[]) => {
 };
 
 export const fetchLocation = async (searchedLocation: string | number[]) => {
-	const locationUrl = `${BASE_URL}/search.json?&q=${searchedLocation}`;
+	const locationUrl = `${BASE_URL}/search.json?q=${searchedLocation}`;
 
 	try {
 		const response = await fetch(locationUrl);
