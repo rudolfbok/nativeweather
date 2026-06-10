@@ -15,7 +15,9 @@ export default {
 		const url = new URL(request.url);
 		let response: Response;
 
-		if (url.pathname === '/forecast.json') {
+		if (url.pathname === '/favicon.ico') {
+			response = new Response(null, { status: 204 });
+		} else if (url.pathname === '/forecast.json') {
 			response = await fetchForecast(url.searchParams, env);
 		} else if (url.pathname === '/search.json') {
 			response = await fetchLocation(url.searchParams, env);
@@ -50,7 +52,7 @@ const fetchForecast = async (params: URLSearchParams, env: Env): Promise<Respons
 
 	try {
 		if (!query) {
-			throw new Error('Missing q query parameter');
+			throw new Error('Missing query parameter');
 		}
 
 		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${query}&days=7&aqi=no&alerts=yes`;
@@ -80,7 +82,7 @@ const fetchLocation = async (params: URLSearchParams, env: Env): Promise<Respons
 
 	try {
 		if (!searchedLocation) {
-			throw new Error('Missing q query parameter');
+			throw new Error('Missing query parameter');
 		}
 
 		const response = await fetch(locationUrl);
@@ -132,7 +134,7 @@ const fetchWeather = async (params: URLSearchParams, env: Env): Promise<Response
 
 	try {
 		if (!query) {
-			throw new Error('Missing q query parameter');
+			throw new Error('Missing query parameter');
 		}
 
 		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${query}&days=7&aqi=no&alerts=yes`;

@@ -6,7 +6,7 @@ interface __BaseEnv_Env {
 }
 declare namespace Cloudflare {
 	interface GlobalProps {
-		mainModule: typeof import('./src/index');
+		mainModule: typeof import("./src/index");
 	}
 	interface Env extends __BaseEnv_Env {}
 }
@@ -15,7 +15,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, 'WEATHER_API_KEY'>> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "WEATHER_API_KEY">> {}
 }
 
 // Begin runtime types
