@@ -1,30 +1,50 @@
 const WEATHER_API_BASE_URL = "https://api.weatherapi.com/v1";
 const AIR_QUALITY_API_URL =
   "https://air-quality-api.open-meteo.com/v1/air-quality";
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    if (request.method === "OPTIONS") {
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
     const url = new URL(request.url);
+    let response: Response;
 
     if (url.pathname === "/forecast.json") {
-      return fetchForecast(url.searchParams, env);
+      response = await fetchForecast(url.searchParams, env);
+    } else if (url.pathname === "/search.json") {
+      response = await fetchLocation(url.searchParams, env);
+    } else if (url.pathname === "/air-quality") {
+      response = await fetchAirQuality(url.searchParams);
+    } else if (url.pathname === "/weather") {
+      response = await fetchWeather(url.searchParams, env);
+    } else {
+      response = Response.json({ error: "Not found" }, { status: 404 });
     }
 
-    if (url.pathname === "/search.json") {
-      return fetchLocation(url.searchParams, env);
-    }
-
-    if (url.pathname === "/air-quality") {
-      return fetchAirQuality(url.searchParams);
-    }
-
-    if (url.pathname === "/weather") {
-      return fetchWeather(url.searchParams, env);
-    }
-
-    return Response.json({ error: "Not found" }, { status: 404 });
+    return withCorsHeaders(response);
   },
 } satisfies ExportedHandler<Env>;
+
+const withCorsHeaders = (response: Response): Response => {
+  const headers = new Headers(response.headers);
+
+  for (const [key, value] of Object.entries(CORS_HEADERS)) {
+    headers.set(key, value);
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+};
 
 const fetchForecast = async (
   params: URLSearchParams,
