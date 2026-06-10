@@ -6,6 +6,7 @@
 	"packageManager": "pnpm@10.33.0",
 	"scripts": {
 		"dev": "wrangler dev",
+		"format": "prettier --write .",
 		"deploy": "wrangler deploy",
 		"cf-typegen": "wrangler types",
 		"typecheck": "tsc --noEmit",
@@ -15,5 +16,8 @@
 		"@types/node": "^25.9.2",
 		"typescript": "^6.0.3",
 		"wrangler": "^4.99.0"
+	},
+	"dependencies": {
+		"prettier": "^3.8.4"
 	}
 }
