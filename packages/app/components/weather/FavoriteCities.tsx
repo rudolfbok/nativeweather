@@ -38,11 +38,7 @@ export const FavoriteCities = ({ hook }: { hook: any }) => {
 			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
 				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
 				{favoritesData.length > 0 && (
-					<StyledPressable
-						onPress={() => setShowDeleteCity((prev) => !prev)}
-						className={clsx('rounded-3xl p-1.5')}
-						style={{ padding: 6 }}
-					>
+					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
 						{showDeleteCity ? <X size={26} color="#007AFF" style={{ pointerEvents: 'none' }} /> : <EditIcon />}
 					</StyledPressable>
 				)}

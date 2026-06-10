@@ -1,7 +1,7 @@
-const BASE_URL = 'https://my-weather-proxy.rudolf-bok-account.workers.dev';
+const BASE_URL = 'https://nativeweather-api.bitwebs.workers.dev';
 
 export const fetchWeatherAPI = async (query: string | number[]) => {
-	const weatherUrl = `${BASE_URL}/forecast.json?q=${query}&days=7&aqi=no&alerts=yes`;
+	const weatherUrl = `${BASE_URL}/forecast.json?q=${query}`;
 
 	try {
 		const response = await fetch(weatherUrl);

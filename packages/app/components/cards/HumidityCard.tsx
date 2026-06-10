@@ -9,7 +9,7 @@ import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { HumidityModal } from './modals/HumidityModal';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 interface HumidityCardProps {
 	data: number;
@@ -50,7 +50,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 			description={description}
 			extraContent={
 				dewPoint && (
-					<StyledText type="body" className={clsx('opacity-70')}>
+					<StyledText type="body">
 						{t('humidity.dewpoint.title')}: {dewPointValue}
 					</StyledText>
 				)

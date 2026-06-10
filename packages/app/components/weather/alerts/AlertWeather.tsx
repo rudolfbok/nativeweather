@@ -24,9 +24,16 @@ export const AlertWeather = ({ alertsLength, mobile }: AlertWeatherProps) => {
 	return (
 		<StyledPressable
 			onPress={() => router.push('/modals/alerts')}
-			// className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
+			className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
 			liquidGlass={true}
-			style={{ padding: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
+			style={{
+				padding: 16,
+				flexDirection: 'row',
+				width: 'auto',
+				borderRadius: 20,
+				marginTop: 4,
+				justifyContent: 'space-between',
+			}}
 		>
 			<CardHeader
 				icon={<BadgeAlert color="#007AFF" />}

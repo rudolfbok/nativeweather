@@ -18,7 +18,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const { airQualityData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [currentAQI] = useStorageString('currentAQI');
-	const [showAirQualityModal, setShowAirQualityModal] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 	const router = useRouter();
 
 	const aq = airQualityData?.current;
@@ -48,14 +48,10 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	return (
 		<>
 			<StyledPressable
-				onPress={
-					Platform.OS === 'ios'
-						? () => router.push('/modals/airquality')
-						: () => setShowAirQualityModal((prev) => !prev)
-				}
-				className={clsx('col-span-3 flex gap-4 rounded-3xl p-4', className)}
-				style={{ padding: 16, gap: 8, display: 'flex' }}
+				onPress={Platform.OS === 'ios' ? () => router.push('/modals/airquality') : () => setShowModal((prev) => !prev)}
+				className={clsx('col-span-3 gap-2 gap-4 rounded-3xl p-4', className)}
 				liquidGlass={true}
+				style={{ padding: 16, gap: 8, display: 'flex' }}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>
@@ -87,12 +83,8 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					<StyledText type="body">{currentAQI === 'EU' ? 'EUAQI' : 'USAQI'}</StyledText>
 				</View>
 			</StyledPressable>
-			{showAirQualityModal && (
-				<AirQualityModal
-					visible={showAirQualityModal}
-					airQualityData={airQualityData}
-					onClose={() => setShowAirQualityModal(false)}
-				/>
+			{showModal && (
+				<AirQualityModal visible={showModal} airQualityData={airQualityData} onClose={() => setShowModal(false)} />
 			)}
 		</>
 	);

@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { GestureResponderEvent, View } from 'react-native';
+import { GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/ui/CardHeader';
@@ -13,7 +13,7 @@ interface DataCardProps {
 	extraContent?: React.ReactNode;
 	className?: string;
 	modal: React.ReactNode;
-	style?: React.CSSProperties;
+	style?: StyleProp<ViewStyle>;
 }
 
 export const DataCard = ({
@@ -45,11 +45,7 @@ export const DataCard = ({
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>
-					{description && (
-						<StyledText type="body" className={clsx('opacity-70')}>
-							{description}
-						</StyledText>
-					)}
+					{description && <StyledText type="body">{description}</StyledText>}
 					{extraContent && <View>{extraContent}</View>}
 				</View>
 				<View className={clsx('w-full items-end')}>

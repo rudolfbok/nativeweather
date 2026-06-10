@@ -5,13 +5,10 @@ import { DataCard } from './DataCard';
 import { CloudsModal } from './modals/CloudsModal';
 import { clsx } from 'clsx';
 import { StyledModal } from '../common/styled/StyledModal';
-import { useRouter } from 'solito/navigation';
-import { Platform } from 'react-native';
 
 export const CloudsCard = ({ data }: { data: number }) => {
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
-	const router = useRouter();
 
 	const cloudCoverRanges = [
 		{ max: 13, description: t('description.cloudcover.0') },
@@ -24,7 +21,7 @@ export const CloudsCard = ({ data }: { data: number }) => {
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/clouds') : () => setShowModal(true)}
+			onPress={() => setShowModal(true)}
 			icon={<CloudsIcon />}
 			title={t('cloudcover.title')}
 			description={description}

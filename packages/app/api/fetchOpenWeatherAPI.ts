@@ -1,6 +1,6 @@
 import { fetchLocation } from './fetchWeatherAPI';
 
-const BASE_URL = 'https://my-fetch-openweather-proxy.rudolf-bok-account.workers.dev';
+const BASE_URL = 'https://openweather-api.bitwebs.workers.dev';
 
 export const fetchOpenWeatherAPI = async (query: string | number[]) => {
 	try {

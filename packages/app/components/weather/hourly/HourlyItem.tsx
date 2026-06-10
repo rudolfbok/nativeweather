@@ -31,7 +31,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 					strokeWidth={StyleSheet.hairlineWidth}
 					source={currentSource}
 				/>
-				{rainChance > 0 && (
+				{rainChance > 10 && (
 					<StyledText type="rainchance" className={clsx('!text-primaryblue')}>
 						{Math.round(rainChance)}%
 					</StyledText>

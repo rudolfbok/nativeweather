@@ -62,7 +62,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 			title={t('moon.title')}
 			data={getLocalePhase[phase]}
 			className={clsx(
-				'native:!aspect-auto native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto'
+				'native:!aspect-auto native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto aspect-[2/1] h-full w-full'
 			)}
 			style={{ width: '100%', height: '100%', aspectRatio: 2 }}
 			extraContent={

@@ -80,7 +80,7 @@
 		"provider": "Data jsou poskytována",
 		"title": "Kvalita ovzduší",
 		"usaqi": {
-			"main": "Americký index kvality ovzduší (IKO) je metrika kvality ovzduší používaná ve Spojených státech. Hodnota se pohybuje od 0 do 500, přičemž vyšší hodnota AQI znamená vyšší úroveň znečištění ovzduší a větší zdravotní riziko. Systém slouží k varování veřejnosti, když je znečištění ovzduší nebezpečné. Existuje zvýšené riziko u lidí se srdečními a dýchacími potížemi.\n\nOficiální pokyny Americké agentury pro ochranu životního prostředí (EPA) a údaje o znečištění ovzduší v reálném čase naleznete na této stránce:",
+			"main": "Americký index kvality ovzduší (IKO) je metrika kvality ovzduší používaná ve Spojených státech. Hodnota se pohybuje od 0 do 500, přičemž vyšší hodnota IKO znamená vyšší úroveň znečištění ovzduší a větší zdravotní riziko. Systém slouží k varování veřejnosti, když je znečištění ovzduší nebezpečné. Existuje zvýšené riziko u lidí se srdečními a dýchacími potížemi.\n\nOficiální pokyny Americké agentury pro ochranu životního prostředí (EPA) a údaje o znečištění ovzduší v reálném čase naleznete na této stránce:",
 			"text": {
 				"0": "Vynikající kvalita ovzduší bez zdravotních rizik. Ideální pro všechny outdoorové aktivity a cvičení.",
 				"1": "Kvalita ovzduší je pro většinu lidí přijatelná. U neobvykle citlivých jedinců se mohou vyskytnout mírné respirační potíže.",

@@ -1,5 +1,5 @@
-import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
-import { background, font, foregroundStyle, frame, resizable } from '@expo/ui/swift-ui/modifiers';
+import { HStack, Text, VStack } from '@expo/ui/swift-ui';
+import { background, font, foregroundStyle, frame } from '@expo/ui/swift-ui/modifiers';
 import { createWidget } from 'expo-widgets';
 
 type SmallAQIWidgetProps = {

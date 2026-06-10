@@ -12,7 +12,7 @@
 }
 
 .maplibregl-canvas-container.maplibregl-interactive {
-	cursor: default;
+	cursor: pointer;
 }
 
 .maplibregl-canvas-container.maplibregl-interactive:active {

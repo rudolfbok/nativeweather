@@ -24,7 +24,7 @@ import { StormDay } from 'app/components/icons/weather/storm/StormDay';
 import { StormNight } from 'app/components/icons/weather/storm/StormNight';
 import React from 'react';
 
-interface WeatherAPIMainIcon {
+interface WeatherAPIMainIconProps {
 	isDay: 0 | 1;
 	code: number;
 	width: number;
@@ -134,7 +134,7 @@ const nightIcons: Record<number, React.ComponentType<any>> = {
 	1282: StormNight,
 };
 
-export const WeatherAPIMainIcon = ({ isDay, code, width, height, strokeWidth }: WeatherAPIMainIcon) => {
+export const WeatherAPIMainIcon = ({ isDay, code, width, height, strokeWidth }: WeatherAPIMainIconProps) => {
 	const icons = isDay === 1 ? dayIcons : nightIcons;
 	const IconComponent = icons[code] || OvercastDay;
 

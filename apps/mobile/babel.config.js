@@ -1,7 +1,12 @@
 module.exports = function (api) {
-	api.cache(true);
+	// api.cache(true);
+	const isProduction = api.env('production');
+
 	return {
 		presets: [['babel-preset-expo', { jsxImportSource: 'nativewind' }], 'nativewind/babel'],
-		plugins: ['react-native-worklets/plugin'],
+		plugins: [
+			...(isProduction ? [['transform-remove-console', { exclude: ['error'] }]] : []),
+			'react-native-worklets/plugin',
+		],
 	};
 };

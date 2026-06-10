@@ -40,8 +40,8 @@ export const WeatherFeature = () => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: 'white',
-				headerTitleStyle: { color: 'white' },
+				headerTintColor: textColor,
+				headerTitleStyle: { color: textColor },
 			});
 		} else {
 			navigation.setOptions({

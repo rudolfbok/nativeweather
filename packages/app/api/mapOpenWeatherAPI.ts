@@ -87,8 +87,8 @@ export const mapOpenWeatherApi = (data: any): WeatherData => {
 					},
 				},
 				hour: (weatherData.hourly ?? [])
-					.filter((h: any) => new Date(h.dt * 1000).getDate() === new Date(day.dt * 1000).getDate())
-					.map((hourData: any) => ({
+					.filter((h) => new Date(h.dt * 1000).getDate() === new Date(day.dt * 1000).getDate())
+					.map((hourData) => ({
 						timeEpoch: hourData.dt,
 						tempC: hourData.temp,
 						tempF: hourData.temp * 1.8 + 32,

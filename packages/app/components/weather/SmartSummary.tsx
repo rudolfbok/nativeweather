@@ -15,11 +15,14 @@ const SUMMARY_ICON = <SmartSummaryIcon />;
 
 type Variant = 1 | 2 | 3;
 type AQIType = 'eu' | 'us';
+type SummaryCategory = 'combo' | 'precip' | 'cloud' | 'wind' | 'uv' | 'visibility' | 'aqi' | 'range';
 
 interface SummaryCandidate {
+	category: SummaryCategory;
 	order: number;
 	priority: number;
 	text: string;
+	relatedCategories?: SummaryCategory[];
 }
 
 interface SmartSummaryProps {
@@ -156,74 +159,14 @@ export const SmartSummary = React.memo(function SmartSummary({
 		const candidates: SummaryCandidate[] = [];
 		const rainMm = rainPrecipMm ?? 0;
 		const snowCm = snowPrecipCm ?? 0;
-
-		candidates.push({
-			order: 7,
-			priority: 90,
-			text: t(`range_${tempRangeBucket}_${variant}`, { amount: displayTempRange }),
-		});
-
-		if (rainMm > 0.1 && snowCm > 0.1) {
-			candidates.push({
-				order: 1,
-				priority: 10,
-				text: t(`precip_mixed_${variant}`, { rain, snow }),
-			});
-		} else if (snowCm > 0.1) {
-			candidates.push({
-				order: 1,
-				priority: 11,
-				text: t(`precip_snow_${variant}`, { amount: snow }),
-			});
-		} else if (rainMm > 0.1) {
-			candidates.push({
-				order: 1,
-				priority: rainMm >= 5 ? 12 : 28,
-				text: t(`precip_rain_${variant}`, { amount: rain }),
-			});
-		} else {
-			candidates.push({
-				order: 1,
-				priority: 50,
-				text: t(`precip_none_${variant}`),
-			});
-		}
-
+		const hasRain = rainMm > 0.1;
+		const hasSnow = snowCm > 0.1;
 		const cloudBucket = getCloudBucket(cloudCover);
-		if (cloudBucket) {
-			candidates.push({
-				order: 2,
-				priority: cloudBucket === 'overcast' ? 34 : 55,
-				text: t(`cloud_${cloudBucket}_${variant}`),
-			});
-		}
-
-		if (maxWindKph != null) {
-			const windBucket = maxWindKph >= 40 ? 'strong' : maxWindKph >= 20 ? 'breezy' : 'light';
-			candidates.push({
-				order: 3,
-				priority: windBucket === 'strong' ? 16 : windBucket === 'breezy' ? 42 : 65,
-				text: t(`wind_${windBucket}_${variant}`, { amount: wind }),
-			});
-		}
-
-		if (uvIndex != null) {
-			const uvBucket = uvIndex >= 8 ? 'very_high' : uvIndex > 5 ? 'high' : 'low';
-			candidates.push({
-				order: 4,
-				priority: uvBucket === 'very_high' ? 14 : uvBucket === 'high' ? 32 : 75,
-				text: t(`uv_${uvBucket}_${variant}`, { value: Math.round(uvIndex) }),
-			});
-		}
-
-		if (avgVisibilityKm != null && avgVisibilityKm > 0) {
-			candidates.push({
-				order: 5,
-				priority: avgVisibilityKm < 5 ? (avgVisibilityKm < 2 ? 13 : 24) : 80,
-				text: t(`visibility_${avgVisibilityKm < 5 ? 'low' : 'good'}_${variant}`, { amount: visibility }),
-			});
-		}
-
+		const windBucket = maxWindKph == null ? null : maxWindKph >= 40 ? 'strong' : maxWindKph >= 20 ? 'breezy' : 'light';
+		const uvBucket = uvIndex == null ? null : uvIndex >= 8 ? 'very_high' : uvIndex > 5 ? 'high' : 'low';
+		const hasLowVisibility = avgVisibilityKm != null && avgVisibilityKm > 0 && avgVisibilityKm < 5;
+		const isColdDay = tempBucket === 'freezing' || tempBucket === 'cold';
+		const isHotDay = tempBucket === 'hot' || tempBucket === 'warm';
 		const preferredAQIType: AQIType = currentAQI === 'EU' ? 'eu' : 'us';
 		const fallbackAQIType: AQIType = preferredAQIType === 'eu' ? 'us' : 'eu';
 		const selectedAQIType =
@@ -235,21 +178,193 @@ export const SmartSummary = React.memo(function SmartSummary({
 					? fallbackAQIType
 					: preferredAQIType;
 		const selectedAQIValue = selectedAQIType === 'eu' ? airQualityEU : airQualityUS;
+		const selectedAQILevel = selectedAQIValue == null ? null : getAQILevel(selectedAQIValue, selectedAQIType);
 
-		if (selectedAQIValue != null) {
-			const level = getAQILevel(selectedAQIValue, selectedAQIType);
-			candidates.push({
-				order: 6,
-				priority: getAQIPriority(level),
-				text: t(`aqi_${selectedAQIType}_${level}_${variant}`, { value: selectedAQIValue }),
+		const addCandidate = (candidate: SummaryCandidate) => {
+			if (candidate.text) {
+				candidates.push(candidate);
+			}
+		};
+
+		const addComboCandidate = (key: string, relatedCategories: SummaryCategory[], priority = 8) => {
+			addCandidate({
+				category: 'combo',
+				order: 0,
+				priority,
+				text: t(`combo_${key}_${variant}`, {
+					rain,
+					snow,
+					wind,
+					visibility,
+					uv: Math.round(uvIndex ?? 0),
+					aqi: selectedAQIValue,
+					range: displayTempRange,
+				}),
+				relatedCategories,
+			});
+		};
+
+		if (hasRain && hasSnow && isColdDay) {
+			addComboCandidate('mixed_freezing', ['precip'], 4);
+		} else if (hasSnow && isColdDay) {
+			addComboCandidate('snow_cold', ['precip'], 5);
+		} else if (hasSnow && (windBucket === 'strong' || windBucket === 'breezy')) {
+			addComboCandidate('snow_wind', ['precip', 'wind', 'visibility'], 6);
+		} else if (hasRain && (windBucket === 'strong' || windBucket === 'breezy')) {
+			addComboCandidate('rain_wind', ['precip', 'wind'], 6);
+		} else if (hasRain && hasLowVisibility) {
+			addComboCandidate('rain_visibility', ['precip', 'visibility'], 7);
+		} else if (isHotDay && (uvBucket === 'very_high' || uvBucket === 'high')) {
+			addComboCandidate('heat_uv', ['uv'], 7);
+		} else if (isHotDay && selectedAQILevel != null && selectedAQILevel >= 3) {
+			addComboCandidate('heat_aqi', ['aqi'], 8);
+		} else if (isColdDay && (windBucket === 'strong' || windBucket === 'breezy')) {
+			addComboCandidate('cold_wind', ['wind'], 8);
+		} else if (
+			(cloudBucket === 'clear' || cloudBucket === 'partly') &&
+			(uvBucket === 'very_high' || uvBucket === 'high')
+		) {
+			addComboCandidate('clear_uv', ['cloud', 'uv'], 9);
+		} else if (!hasRain && !hasSnow && cloudBucket === 'overcast') {
+			addComboCandidate('dry_overcast', ['cloud'], 25);
+		} else if (!hasRain && !hasSnow && tempRangeBucket === 'wide') {
+			addComboCandidate('dry_wide', ['range'], 28);
+		} else if (
+			!hasRain &&
+			!hasSnow &&
+			windBucket === 'light' &&
+			uvBucket === 'low' &&
+			selectedAQILevel != null &&
+			selectedAQILevel <= 2
+		) {
+			addComboCandidate('calm', [], 45);
+		}
+
+		addCandidate({
+			category: 'range',
+			order: 7,
+			priority: 90,
+			text: t(`range_${tempRangeBucket}_${variant}`, { amount: displayTempRange }),
+		});
+
+		if (hasRain && hasSnow) {
+			addCandidate({
+				category: 'precip',
+				order: 1,
+				priority: 10,
+				text: t(`precip_mixed_${variant}`, { rain, snow }),
+			});
+		} else if (hasSnow) {
+			addCandidate({
+				category: 'precip',
+				order: 1,
+				priority: 11,
+				text: t(`precip_snow_${variant}`, { amount: snow }),
+			});
+		} else if (hasRain) {
+			addCandidate({
+				category: 'precip',
+				order: 1,
+				priority: rainMm >= 5 ? 12 : 28,
+				text: t(`precip_rain_${variant}`, { amount: rain }),
+			});
+		} else {
+			addCandidate({
+				category: 'precip',
+				order: 1,
+				priority: 50,
+				text: t(`precip_none_${variant}`),
 			});
 		}
 
-		const selected = candidates
+		if (cloudBucket) {
+			addCandidate({
+				category: 'cloud',
+				order: 2,
+				priority: cloudBucket === 'overcast' ? 34 : 55,
+				text: t(`cloud_${cloudBucket}_${variant}`),
+			});
+		}
+
+		if (windBucket) {
+			addCandidate({
+				category: 'wind',
+				order: 3,
+				priority: windBucket === 'strong' ? 16 : windBucket === 'breezy' ? 42 : 65,
+				text: t(`wind_${windBucket}_${variant}`, { amount: wind }),
+			});
+		}
+
+		if (uvBucket) {
+			addCandidate({
+				category: 'uv',
+				order: 4,
+				priority: uvBucket === 'very_high' ? 14 : uvBucket === 'high' ? 32 : 75,
+				text: t(`uv_${uvBucket}_${variant}`, { value: Math.round(uvIndex) }),
+			});
+		}
+
+		if (avgVisibilityKm != null && avgVisibilityKm > 0) {
+			addCandidate({
+				category: 'visibility',
+				order: 5,
+				priority: avgVisibilityKm < 5 ? (avgVisibilityKm < 2 ? 13 : 24) : 80,
+				text: t(`visibility_${avgVisibilityKm < 5 ? 'low' : 'good'}_${variant}`, { amount: visibility }),
+			});
+		}
+
+		if (selectedAQIValue != null && selectedAQILevel != null) {
+			addCandidate({
+				category: 'aqi',
+				order: 6,
+				priority: getAQIPriority(selectedAQILevel),
+				text: t(`aqi_${selectedAQIType}_${selectedAQILevel}_${variant}`, { value: selectedAQIValue }),
+			});
+		}
+
+		const selectedCandidates: SummaryCandidate[] = [];
+		const usedCategories = new Set<SummaryCategory>();
+		const mutedCategories = new Set<SummaryCategory>();
+		const comboCandidate = candidates.find((candidate) => candidate.category === 'combo');
+		const detailTarget = Math.min(comboCandidate ? 2 : 3, candidates.length);
+
+		const addSelectedCandidate = (candidate: SummaryCandidate, allowMuted = false, limit = detailTarget) => {
+			if (selectedCandidates.length >= limit || usedCategories.has(candidate.category)) return false;
+			if (!allowMuted && mutedCategories.has(candidate.category)) return false;
+
+			selectedCandidates.push(candidate);
+			usedCategories.add(candidate.category);
+			return true;
+		};
+
+		if (comboCandidate) {
+			addSelectedCandidate(comboCandidate, true);
+			comboCandidate.relatedCategories?.forEach((category) => mutedCategories.add(category));
+		}
+
+		[...candidates]
+			.filter((candidate) => candidate.category !== 'combo' && candidate.priority <= 18)
 			.sort((a, b) => a.priority - b.priority)
-			.slice(0, 2)
-			.sort((a, b) => a.order - b.order)
-			.map(({ text }) => text);
+			.forEach((candidate) => addSelectedCandidate(candidate));
+
+		const precipCandidate = candidates.find((candidate) => candidate.category === 'precip');
+		const rangeCandidate = candidates.find((candidate) => candidate.category === 'range');
+
+		if (precipCandidate && (hasRain || hasSnow || !comboCandidate)) {
+			addSelectedCandidate(precipCandidate, !hasRain && !hasSnow);
+		}
+
+		if (rangeCandidate) {
+			addSelectedCandidate(rangeCandidate);
+		}
+
+		[...candidates].sort((a, b) => a.priority - b.priority).forEach((candidate) => addSelectedCandidate(candidate));
+
+		if (selectedCandidates.length < detailTarget) {
+			[...candidates].sort((a, b) => a.order - b.order).forEach((candidate) => addSelectedCandidate(candidate, true));
+		}
+
+		const selected = selectedCandidates.sort((a, b) => a.order - b.order).map(({ text }) => text);
 
 		return [tempText, ...selected].join(' ');
 	}, [

@@ -9,7 +9,7 @@ import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { SunsetModal } from './modals/SunsetModal';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 export const SunsetCard = ({ data }: { data: string }) => {
 	const [currentLanguage] = useStorageString('currentLang');
@@ -23,11 +23,7 @@ export const SunsetCard = ({ data }: { data: string }) => {
 			icon={<Sunset color="#F75B02" />}
 			title={t('sunset.title')}
 			data={formatTimeByLang(data, currentLanguage)}
-			extraContent={
-				<StyledText type="body" className={clsx('opacity-70')}>
-					{t('localtime')}
-				</StyledText>
-			}
+			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
 			modal={
 				showModal && (
 					<StyledModal

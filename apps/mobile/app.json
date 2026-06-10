@@ -23,8 +23,8 @@
 			"package": "com.rudyxsides.nativeweather"
 		},
 		"plugins": [
-			"expo-router",
 			"@maplibre/maplibre-react-native",
+			"expo-router",
 			[
 				"expo-splash-screen",
 				{

@@ -9,7 +9,7 @@ import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
 import { DataCard } from './DataCard';
 import { RainModal } from './modals/RainModal';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 interface RainCardProps {
 	rainPrecipMm: number;

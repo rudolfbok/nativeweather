@@ -75,12 +75,8 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 			extraContent={
 				details && (
 					<View className={clsx('flex flex-row items-center gap-1')}>
-						<StyledText type="body" className={clsx('opacity-70')}>
-							{t('wind.direction.main')}
-						</StyledText>
-						<StyledText type="body" className={clsx('opacity-70')}>
-							{getDirection(degree, 'short', t)}
-						</StyledText>
+						<StyledText type="body">{t('wind.direction.main')}</StyledText>
+						<StyledText type="body">{getDirection(degree, 'short', t)}</StyledText>
 						<WindArrowIcon degree={degree ?? 0} />
 					</View>
 				)

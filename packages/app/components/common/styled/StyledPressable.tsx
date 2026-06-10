@@ -1,24 +1,48 @@
 import { clsx } from 'clsx';
-import { GlassColorScheme } from 'expo-glass-effect';
-import { GestureResponderEvent, Platform, Pressable } from 'react-native';
+import { GlassColorScheme, GlassView } from 'expo-glass-effect';
+import { GestureResponderEvent, Platform, Pressable, StyleProp, ViewStyle } from 'react-native';
 
 interface StyledPressableProps {
+	style?: StyleProp<ViewStyle>;
 	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	onPressIn?: (event: GestureResponderEvent) => void | Promise<void>;
-	className?: string;
-	children: React.ReactNode;
-	style?: any;
 	tintColor?: string;
+	children: React.ReactNode;
+	className?: string;
 	colorScheme?: GlassColorScheme;
-	liquidGlass?: any;
+	liquidGlass?: boolean;
 }
 
-export const StyledPressable = ({ onPress, onPressIn, className, children, tintColor }: StyledPressableProps) => {
+export const StyledPressable = ({
+	colorScheme,
+	tintColor,
+	style,
+	className,
+	onPress,
+	onPressIn,
+	children,
+	liquidGlass = false,
+}: StyledPressableProps) => {
+	if (liquidGlass && Platform.OS === 'ios') {
+		return (
+			<Pressable onPress={onPress}>
+				<GlassView
+					style={{ borderRadius: 24, ...style }}
+					isInteractive={true}
+					tintColor={tintColor}
+					colorScheme={colorScheme}
+				>
+					{children}
+				</GlassView>
+			</Pressable>
+		);
+	}
+
 	return (
 		<Pressable
 			onPress={onPress}
 			onPressIn={onPressIn}
-			style={Platform.OS === 'web' && tintColor ? { backgroundColor: tintColor } : undefined}
+			style={{ backgroundColor: tintColor }}
 			className={clsx(
 				'bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
 				'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',

@@ -1,7 +1,7 @@
 {
 	"about": {
 		"aboutapp": "NativeWeather je cross-platform aplikace pro zobrazení aktuálního počasí, krátkodobé a dlouhodobé předpovědi. Aplikace zobrazuje aktuální hodnoty znečištění ovzduší a umožňuje sledovat důležité ukazatele kvality vzduchu. Součástí jsou také mapové podklady a meteorologické mapové vrstvy pro celý svět.",
-		"openmeteo": "Specializovaná data pro index kvality ovzduší (AQI) a znečištění",
+		"openmeteo": "Specializovaná data pro index kvality ovzduší (IKO) a znečištění",
 		"openfreemap": "Poskytuje vektorové mapové podklady OpenFreeMap pro interaktivní geografické mapy",
 		"openweather": "Alternativní zdroj dat pro aktuální počasí a předpovědi",
 		"title": "O aplikaci",

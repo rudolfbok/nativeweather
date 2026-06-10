@@ -4,9 +4,9 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { AboutButton } from 'app/components/settings/items/AboutButton';
 import { AQIButton } from 'app/components/settings/items/AQIButton';
 import { CompassButton } from 'app/components/settings/items/CompassButton';
+import { FeedbackButton } from 'app/components/settings/items/FeedbackButton';
 import { LanguageButton } from 'app/components/settings/items/LanguageButton';
 import { LocalWeatherToggle } from 'app/components/settings/items/LocalWeatherToggle';
-import { FeedbackButton } from 'app/components/settings/items/FeedbackButton';
 import { TemperatureButton } from 'app/components/settings/items/TemperatureButton';
 import { ThemeButton } from 'app/components/settings/items/ThemeButton';
 import { UnitsButton } from 'app/components/settings/items/UnitsButton';
@@ -15,8 +15,6 @@ import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import pkg from '../../../../apps/web/package.json';
-import { SourceSelect } from 'app/components/settings/selectors/SourceSelect';
-import { SourceButton } from 'app/components/settings/items/SourceButton';
 
 export const SettingsFeature = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);

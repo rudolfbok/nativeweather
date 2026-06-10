@@ -7,7 +7,7 @@ import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { GlassColorScheme } from 'expo-glass-effect';
 import { DateTime } from 'luxon';
-import { GestureResponderEvent, Platform, View } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
 
@@ -57,7 +57,7 @@ export const CityCard = ({
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'flex flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
+				'w-full flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
 			)}
 			style={{
 				display: 'flex',

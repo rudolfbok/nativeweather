@@ -16,10 +16,10 @@ export const fetchWeather = async (query: any, source: string) => {
 			const normalizedData = mapOpenWeatherApi(weatherData);
 			return normalizedData;
 		}
+
+		return null;
 	} catch (error) {
 		console.error('Failed to fetch weather data:', error);
 		return null;
 	}
-
-	return null;
 };
