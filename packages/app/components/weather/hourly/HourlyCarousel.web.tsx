@@ -20,7 +20,7 @@ const arrowBase = clsx(
 	'focus-visible:pointer-events-auto focus-visible:opacity-100'
 );
 
-const isTouchDevice = navigator.maxTouchPoints > 0;
+// const isTouchDevice = navigator.maxTouchPoints > 0;
 
 export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>) => {
 	const { t } = useTranslate('weather');
@@ -74,7 +74,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		<RoundView className={clsx('group w-full py-4')}>
 			<View className={clsx('mb-4 flex-row items-center justify-between px-4')}>
 				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} />
-				<View className={clsx('h-full w-[70px] flex-row gap-2', isTouchDevice && 'hidden')}>
+				<View className={clsx('h-full w-[70px] flex-row gap-2')}>
 					<LeftArrow />
 					<RightArrow />
 				</View>
