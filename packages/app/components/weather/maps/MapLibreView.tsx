@@ -9,10 +9,10 @@ import {
 } from '@maplibre/maplibre-react-native';
 import { useTranslate } from '@tolgee/react';
 import { fetchWeatherAPI } from 'app/api/fetchWeatherAPI';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { LayoutChangeEvent, View } from 'react-native';

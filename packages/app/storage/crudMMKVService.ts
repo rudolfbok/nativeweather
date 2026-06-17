@@ -1,10 +1,5 @@
-import { storage } from './storage';
-
-export interface City {
-	name: string;
-	region: string;
-	country: string;
-}
+import { storage } from './initStorage';
+import type { City } from 'app/types/city';
 
 const defaultFavoriteCities: City[] = [
 	{ name: 'Praha', region: 'Hlavni mesto Praha', country: 'Czech Republic' },
@@ -30,7 +25,7 @@ export const getFavoriteCities = (): City[] => {
 		const parsed = JSON.parse(data);
 		if (Array.isArray(parsed)) {
 			return parsed.filter(
-				(city: any): city is City =>
+				(city: City) =>
 					typeof city === 'object' &&
 					city !== null &&
 					typeof city.name === 'string' &&

@@ -7,9 +7,9 @@ import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 // import { useSearchController } from 'app/hooks/useSearchController';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
-import { countryNameToCode } from 'app/utils/helpers/countryNameToCode';
-import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
+import { useStorageString } from 'app/storage/useStorage';
+import { countryCode } from 'app/utils/helpers/countryCode';
+import { buildSlug } from 'app/utils/services/buildSlug';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -43,7 +43,7 @@ export const WeatherFeature = () => {
 				const data = await fetchWeather(query, currentSource);
 
 				if (data) {
-					const path = buildWeatherSlug(data);
+					const path = buildSlug(data);
 					if (path !== window.location.pathname) {
 						router.replace(path);
 					}
@@ -65,8 +65,8 @@ export const WeatherFeature = () => {
 		useCallback(() => {
 			document.title = 'NativeWeather';
 			if (weatherData?.location) {
-				const countryCode = countryNameToCode(weatherData.location.country)?.toUpperCase();
-				document.title = `NativeWeather | ${weatherData.location.name} (${countryCode})`;
+				const code = countryCode(weatherData.location.country)?.toUpperCase();
+				document.title = `NativeWeather | ${weatherData.location.name} (${code})`;
 			}
 		}, [weatherData?.location])
 	);

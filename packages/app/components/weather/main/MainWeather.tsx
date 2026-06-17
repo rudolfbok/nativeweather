@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp } from 'lucide-react-native';

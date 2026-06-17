@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import { Search, X } from 'lucide-react-native';
 import { useState } from 'react';

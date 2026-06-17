@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { Eye } from 'lucide-react-native';
 import { useState } from 'react';

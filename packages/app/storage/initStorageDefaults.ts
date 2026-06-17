@@ -1,4 +1,4 @@
-import { storage } from 'app/storage/storage';
+import { storage } from './initStorage';
 
 export const initStorageDefaults = () => {
 	if (storage.getString('currentSource') === undefined) {

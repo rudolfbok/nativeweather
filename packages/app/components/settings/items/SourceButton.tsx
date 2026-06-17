@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { DatabaseZap } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'solito/navigation';
@@ -16,7 +16,6 @@ export const SourceButton = () => {
 
 	const getName: Record<string, string> = {
 		weatherapi: 'Weather API',
-		openweather: 'OpenWeather',
 		openmeteo: 'OpenMeteo',
 	};
 

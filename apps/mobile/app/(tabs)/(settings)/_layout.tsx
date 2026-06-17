@@ -1,10 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useBackgroundColor, useTextColor } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
-	const { backgroundColor, textColor } = useThemeColors();
+	const backgroundColor = useBackgroundColor();
+	const textColor = useTextColor();
 
 	return (
 		<Stack

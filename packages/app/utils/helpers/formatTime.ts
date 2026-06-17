@@ -1,4 +1,4 @@
-export const formatTimeByLang = (timeStr: string, lang = 'en-US'): string => {
+export const formatTime = (timeStr: string, lang = 'en-US'): string => {
 	const timeFormat = /^\d{1,2}:\d{2}\s?(AM|PM)$/i;
 	if (!timeFormat.test(timeStr)) {
 		return 'No data';

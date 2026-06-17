@@ -4,6 +4,7 @@ import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
 import { CardHeader } from './CardHeader';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -39,7 +40,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')}>
-					<X color="#007AFF" size={28} style={{ pointerEvents: 'none' }} />
+					<X className="text-black dark:text-white" size={28} style={{ pointerEvents: 'none' }} />
 				</StyledPressable>
 			</View>
 			{daysToggle}

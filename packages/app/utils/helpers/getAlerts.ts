@@ -1,7 +1,7 @@
-import type { WeatherData } from 'app/types/weatherData';
-import type { WeatherAlert } from 'app/types/weatherAlert';
+import type { NormalizedData } from 'app/types/normalizedData';
+import type { WeatherAlert } from 'app/types/weatherAPI';
 
-type AlertLocation = Pick<WeatherData['location'], 'name' | 'region'>;
+type AlertLocation = Pick<NormalizedData['location'], 'name' | 'region'>;
 
 const getAlertKey = (alert: WeatherAlert) =>
 	alert.identifier || `${alert.event}|${alert.areas}|${alert.effective}|${alert.expires}`;
@@ -38,7 +38,7 @@ const matchesLocationArea = (alert: WeatherAlert, locationAreaCandidates: string
 	return locationAreaCandidates.some((candidate) => alertAreas.includes(candidate));
 };
 
-export const getActiveWeatherAlerts = (alerts: WeatherAlert[] = [], location?: AlertLocation) => {
+export const getAlerts = (alerts: WeatherAlert[] = [], location?: AlertLocation) => {
 	const activeAlerts = alerts.filter(
 		(alert, index, self) =>
 			alert.msgtype === 'Alert' &&

@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useBackgroundColor, useTextColor } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
-import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
+import { extractCity } from 'app/utils/helpers/extractCity';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { shareLink } from 'app/utils/services/shareLink';
 import { clsx } from 'clsx';
@@ -17,7 +17,8 @@ export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
-	const { backgroundColor, textColor } = useThemeColors();
+	const backgroundColor = useBackgroundColor();
+	const textColor = useTextColor();
 	const headerTextColor = weatherData ? 'white' : textColor;
 	const headerBackgroundColor = weatherData
 		? weatherLandscapeBg({ code: weatherData.current.condition.code, isDay: weatherData.current.isDay })
@@ -26,7 +27,7 @@ export default function TabLayout() {
 	useEffect(() => {
 		if (!weatherData) return;
 
-		const city = cityFromWeather(weatherData);
+		const city = extractCity(weatherData);
 		setIsFavorite(isCityInFavorites(city));
 	}, [setIsFavorite, weatherData]);
 
@@ -44,7 +45,7 @@ export default function TabLayout() {
 	const RightButton = () => {
 		return (
 			<Pressable
-				onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
+				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
 				className={clsx('h-10 w-10 items-center justify-center')}
 			>
 				<Star

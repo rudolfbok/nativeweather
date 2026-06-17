@@ -1,12 +1,11 @@
 'use client';
 
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useBackgroundColor } from 'app/hooks/useThemeColors';
 import { TolgeeProvider } from 'app/provider/TolgeeProvider';
 import { initStorageDefaults } from 'app/storage/initStorageDefaults';
-import { clsx } from 'clsx';
+import { initThemeFromStorage } from 'app/storage/initTheme';
 import { Stack } from 'expo-router';
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import '../global.css';
 
@@ -16,21 +15,20 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-	const { backgroundColor } = useThemeColors();
+	const backgroundColor = useBackgroundColor();
 
 	useEffect(() => {
 		initStorageDefaults();
+		initThemeFromStorage();
 	}, []);
 
 	return (
 		<TolgeeProvider>
 			<GestureHandlerRootView>
-				<View className={clsx('absolute inset-0')} style={{ backgroundColor }}>
-					<Stack nativeContainerStyle={{ backgroundColor }} screenOptions={{ contentStyle: { backgroundColor } }}>
-						<Stack.Screen name="(tabs)" options={{ headerShown: false, contentStyle: { backgroundColor } }} />
-						<Stack.Screen name="modals" options={{ headerShown: false, presentation: 'modal' }} />
-					</Stack>
-				</View>
+				<Stack nativeContainerStyle={{ backgroundColor }}>
+					<Stack.Screen name="(tabs)" options={{ headerShown: false, contentStyle: { backgroundColor } }} />
+					<Stack.Screen name="modals" options={{ headerShown: false, presentation: 'modal' }} />
+				</Stack>
 			</GestureHandlerRootView>
 		</TolgeeProvider>
 	);

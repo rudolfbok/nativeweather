@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
-import { AirQualityData } from 'app/types/airQualityData';
+import { OpenMeteoAQI } from 'app/types/openMeteo';
 import {
 	EUAQIIndicatorColor,
 	NO2IndicatorColor,
@@ -10,7 +10,7 @@ import {
 	PM10IndicatorColor,
 	PM25IndicatorColor,
 	USAQIIndicatorColor,
-} from 'app/utils/mappings/mapAirQualityIndicators';
+} from 'app/utils/mappings/mapAQIDots';
 import { clsx } from 'clsx';
 import { JSX, ReactNode, useState } from 'react';
 import { Linking, Platform, Pressable, View } from 'react-native';
@@ -26,7 +26,7 @@ import { USAQIDetail } from './USAQIDetail';
 interface AirQualityModalProps {
 	visible?: boolean;
 	onClose?: () => void;
-	airQualityData: AirQualityData;
+	airQualityData: OpenMeteoAQI;
 }
 
 export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQualityModalProps) => {

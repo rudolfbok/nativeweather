@@ -1,10 +1,9 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { WeatherAlert } from 'app/types/weatherAlert';
+import { WeatherAlert } from 'app/types/weatherAPI';
 import { clsx } from 'clsx';
-import { ChevronRight, BadgeAlert } from 'lucide-react-native';
-import { useState } from 'react';
+import { BadgeAlert, ChevronRight } from 'lucide-react-native';
 import { useRouter } from 'solito/navigation';
 
 interface AlertWeatherProps {

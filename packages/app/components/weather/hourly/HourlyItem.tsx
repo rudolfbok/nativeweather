@@ -2,7 +2,7 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 
 interface HourlyItemProps {

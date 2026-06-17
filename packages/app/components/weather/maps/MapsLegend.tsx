@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { LinearGradient } from 'expo-linear-gradient';
 import { View } from 'react-native';

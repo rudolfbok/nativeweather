@@ -1,4 +1,4 @@
-export interface CityCardWeather {
+export interface CityCard {
 	location: {
 		name: string;
 		region: string;

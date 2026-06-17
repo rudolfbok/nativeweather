@@ -5,6 +5,7 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { EditIcon } from 'app/components/icons/EditIcon';
+import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { clsx } from 'clsx';
 import { Trash, X } from 'lucide-react-native';
@@ -13,19 +14,11 @@ import { Platform, Pressable, View } from 'react-native';
 import { CityCard } from './CityCard';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 
-export const FavoriteCities = ({ hook }: { hook: any }) => {
-	const { t } = useTranslate(['common']);
-	const [showDeleteCity, setShowDeleteCity] = useState<boolean>(false);
+export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
+	const { t } = useTranslate('common');
+	const [showDeleteCity, setShowDeleteCity] = useState(false);
 	const { favoritesData, handleRemoveCity, loading, refreshFavoriteCities } = hook;
 	const { handleCityPress } = useSearchController();
-
-	// if (Platform.OS === 'ios' && favoritesData.length > 1) {
-	// 	useFocusEffect(
-	// 		useCallback(() => {
-	// 			refreshFavoriteCities({ displayToast: false });
-	// 		}, [])
-	// 	);
-	// }
 
 	useEffect(() => {
 		if (Platform.OS === 'web') {

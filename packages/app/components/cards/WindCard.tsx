@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { getDirection } from 'app/utils/mappings/mapDirections';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { clsx } from 'clsx';

@@ -6,7 +6,7 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';

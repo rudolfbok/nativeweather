@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledSwitch } from 'app/components/common/styled/StyledSwitch';
 import { ClockFadingIcon } from 'app/components/icons/settings/ClockFadingIcon';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
+import { useStorageBoolean } from 'app/storage/useStorage';
 import { SettingsItem } from './SettingsItem';
 
 export const WorldTimeToggle = () => {

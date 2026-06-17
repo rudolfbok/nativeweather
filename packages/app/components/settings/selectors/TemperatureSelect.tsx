@@ -1,7 +1,7 @@
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { CelsiusIcon } from 'app/components/icons/settings/CelsiusIcon';
 import { FahrenheitIcon } from 'app/components/icons/settings/FahrenheitIcon';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const TemperatureSelect = () => {

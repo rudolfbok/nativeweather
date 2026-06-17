@@ -20,13 +20,12 @@ import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
-import { useStorageString } from 'app/storage/useStorageString';
-import { cityFromWeather } from 'app/utils/helpers/cityFromWeather';
-import { getActiveWeatherAlerts } from 'app/utils/helpers/getActiveWeatherAlerts';
+import { useStorageString } from 'app/storage/useStorage';
+import { extractCity } from 'app/utils/helpers/extractCity';
+import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
-import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView';
@@ -41,7 +40,7 @@ export const HeroWeather = () => {
 	useEffect(() => {
 		if (!weatherData) return;
 
-		const city = cityFromWeather(weatherData);
+		const city = extractCity(weatherData);
 		setIsFavorite(isCityInFavorites(city));
 	}, [setIsFavorite, weatherData]);
 
@@ -79,11 +78,8 @@ export const HeroWeather = () => {
 	const currentSnowChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfSnow;
 	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snowCm;
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
-
-	const filteredAlerts = getActiveWeatherAlerts(weatherData.alerts.alert, weatherData.location);
-
+	const filteredAlerts = getAlerts(weatherData.alerts.alert, weatherData.location);
 	const alertsLength = filteredAlerts.length ?? 0;
-
 	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource!);
 
 	const DataCardGrid = () => {
@@ -161,12 +157,6 @@ export const HeroWeather = () => {
 							displayTime={true}
 							strokeWidth={0}
 						/>
-						<Pressable
-							onPress={() => handleFavoriteToggle(cityFromWeather(weatherData))}
-							className={clsx('native:hidden absolute bottom-0 right-0 lg:p-2')}
-						>
-							<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
-						</Pressable>
 						{Platform.OS === 'web' && (
 							<AlertWeather
 								filteredAlerts={filteredAlerts}

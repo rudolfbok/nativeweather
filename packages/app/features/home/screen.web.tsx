@@ -5,10 +5,10 @@ import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
-import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
+import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
+import { useStorageBoolean } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
@@ -17,7 +17,7 @@ export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { t } = useTranslate('weather');
 	const favoriteCitiesHook = useFavoriteCities();
-	const { getLocalWeather, error: localWeatherError } = useCurrentLocation();
+	const { getLocalWeather, error: localWeatherError } = useLocation();
 	const { localWeatherData } = useLocalWeather();
 
 	useEffect(() => {

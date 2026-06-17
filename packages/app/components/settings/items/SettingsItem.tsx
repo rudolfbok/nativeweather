@@ -1,6 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useTextColor } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { Check, ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';
@@ -31,7 +31,7 @@ export const SettingsItem = ({
 	selected,
 	variant,
 }: SettingsItemProps) => {
-	const { textColor } = useThemeColors();
+	const textColor = useTextColor();
 
 	const RightElement = () => {
 		switch (variant) {

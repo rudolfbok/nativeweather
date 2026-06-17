@@ -4,7 +4,7 @@ import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 import { Cog, House, Search, Sun } from 'lucide-react-native';
 import { useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');

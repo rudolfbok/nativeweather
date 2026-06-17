@@ -1,4 +1,3 @@
-import { OpenWeatherMainIcon } from '../../utils/mappings/mapOpenWeatherIcons';
 import { WeatherAPIMainIcon } from '../../utils/mappings/mapWeatherAPIIcons';
 
 interface MapWeatherIconsProps {
@@ -15,7 +14,4 @@ export const WeatherIcon = ({ code, isDay, width, height, strokeWidth, source }:
 		return <WeatherAPIMainIcon code={code} isDay={isDay} width={width} height={height} strokeWidth={strokeWidth} />;
 	}
 
-	if (source === 'openweather') {
-		return <OpenWeatherMainIcon code={code} isDay={isDay} width={width} height={height} strokeWidth={strokeWidth} />;
-	}
 };

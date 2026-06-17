@@ -1,4 +1,4 @@
-export interface AirQualityData {
+export interface OpenMeteoAQI {
 	current: {
 		european_aqi: number;
 		us_aqi: number;

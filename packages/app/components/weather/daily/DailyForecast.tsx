@@ -8,7 +8,7 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSelectedDay } from 'app/hooks/useSelectedDay';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';

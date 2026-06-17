@@ -1,6 +1,6 @@
-import { AirQualityData } from 'app/types/airQualityData';
+import { OpenMeteoAQI } from 'app/types/openMeteo';
 
-export const fetchAirQuality = async (lat: number, lon: number): Promise<AirQualityData | null> => {
+export const fetchAirQuality = async (lat: number, lon: number): Promise<OpenMeteoAQI | null> => {
 	const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi,us_aqi,pm10,pm2_5,ozone,nitrogen_dioxide`;
 
 	try {

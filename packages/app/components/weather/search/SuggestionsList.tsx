@@ -1,4 +1,4 @@
-import { City } from 'app/storage/crudMMKVService';
+import type { City } from 'app/types/city';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { SearchResult } from './SearchResult';

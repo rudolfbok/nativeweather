@@ -1,6 +1,6 @@
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { getWeatherIconUri } from 'app/utils/getWeatherIconUri';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { switchTemp } from 'app/utils/switch/switchTemp';
@@ -11,7 +11,7 @@ import {
 	OzoneIndicatorColor,
 	PM10IndicatorColor,
 	PM25IndicatorColor,
-} from 'app/utils/mappings/mapAirQualityIndicators';
+} from 'app/utils/mappings/mapAQIDots';
 
 export const useWidgets = () => {
 	const { localWeatherData, localAQIData } = useLocalWeather();
@@ -60,14 +60,10 @@ export const useWidgets = () => {
 	const updateWidgetSnapshot = async (
 		loadWidget: () => Promise<{ default: { updateSnapshot: (props: any) => void } }>,
 		props: object,
-		name: string,
-		signal: AbortSignal
+		name: string
 	) => {
 		try {
 			const { default: widget } = await loadWidget();
-
-			if (signal.aborted) return;
-
 			widget.updateSnapshot(props);
 		} catch (error) {
 			console.error(`Failed to update ${name} widget snapshot`, error);
@@ -76,43 +72,26 @@ export const useWidgets = () => {
 
 	useEffect(() => {
 		if (!isIOS) return;
-
-		const controller = new AbortController();
-
-		async function loadIcon() {
-			if (!localWeatherData) {
-				setImagePathURI(null);
-				return;
-			}
-
-			try {
-				const uri = await getWeatherIconUri({
-					isDay: localWeatherData.current.isDay,
-					code: localWeatherData.current.condition.code,
-				});
-
-				if (!controller.signal.aborted) {
-					setImagePathURI(uri);
-				}
-			} catch (error) {
-				console.error('Failed to resolve widget weather icon URI', error);
-				if (!controller.signal.aborted) {
-					setImagePathURI(null);
-				}
-			}
+		if (!localWeatherData) {
+			setImagePathURI(null);
+			return;
 		}
 
-		loadIcon();
-
-		return () => controller.abort();
+		void getWeatherIconUri({
+			isDay: localWeatherData.current.isDay,
+			code: localWeatherData.current.condition.code,
+		})
+			.then(setImagePathURI)
+			.catch((error) => {
+				console.error('Failed to resolve widget weather icon URI', error);
+				setImagePathURI(null);
+			});
 	}, [localWeatherData?.current.isDay, localWeatherData?.current.condition.code]);
 
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor || !condition) return;
 
-		const controller = new AbortController();
-
-		updateWidgetSnapshot(
+		void updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/MediumLocal'),
 			{
 				imagePath: imagePathURI,
@@ -128,11 +107,8 @@ export const useWidgets = () => {
 				code: localWeatherData.current.condition.code,
 				currentSource,
 			},
-			'MediumLocal',
-			controller.signal
+			'MediumLocal'
 		);
-
-		return () => controller.abort();
 	}, [
 		localWeatherData,
 		imagePathURI,
@@ -147,9 +123,7 @@ export const useWidgets = () => {
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !localAQIData || !bgColor) return;
 
-		const controller = new AbortController();
-
-		updateWidgetSnapshot(
+		void updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/MediumAQI'),
 			{
 				PM25: localAQIData.current.pm2_5,
@@ -164,19 +138,14 @@ export const useWidgets = () => {
 				region: localWeatherData.location.region,
 				bgColor,
 			},
-			'MediumAQI',
-			controller.signal
+			'MediumAQI'
 		);
-
-		return () => controller.abort();
 	}, [localWeatherData, localAQIData, bgColor]);
 
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor) return;
 
-		const controller = new AbortController();
-
-		updateWidgetSnapshot(
+		void updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/SmallLocal'),
 			{
 				temp: localTemp,
@@ -186,29 +155,22 @@ export const useWidgets = () => {
 				bgColor,
 				location: localWeatherData.location.name,
 			},
-			'SmallLocal',
-			controller.signal
+			'SmallLocal'
 		);
-
-		return () => controller.abort();
 	}, [localWeatherData, imagePathURI, localTemp, localTempMin, localTempMax, bgColor]);
 
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !localAQIData || !bgColor) return;
 
 		const currentAQISelected = currentAQI === 'EU' ? localAQIData.current.european_aqi : localAQIData.current.us_aqi;
-		const controller = new AbortController();
 
-		updateWidgetSnapshot(
+		void updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/SmallAQI'),
 			{
 				AQI: currentAQISelected,
 				bgColor,
 			},
-			'SmallAQI',
-			controller.signal
+			'SmallAQI'
 		);
-
-		return () => controller.abort();
 	}, [localWeatherData, localAQIData, currentAQI, bgColor]);
 };

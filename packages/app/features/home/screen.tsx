@@ -6,12 +6,12 @@ import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
-import { useCurrentLocation } from 'app/hooks/location/useCurrentLocation';
+import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useTextColor } from 'app/hooks/useThemeColors';
 import { useWidgets } from 'app/hooks/useWidgets';
-import { useStorageBoolean } from 'app/storage/useStorageBoolean';
+import { useStorageBoolean } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { RefreshControl, View } from 'react-native';
@@ -24,8 +24,8 @@ export const HomeFeature = () => {
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
-	const { getLocalWeather, error: localWeatherError } = useCurrentLocation();
-	const { textColor } = useThemeColors();
+	const { getLocalWeather, error: localWeatherError } = useLocation();
+	const textColor = useTextColor();
 
 	useWidgets();
 

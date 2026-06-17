@@ -1,13 +1,11 @@
-import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { WeatherAlert } from 'app/types/weatherAlert';
-import { clsx } from 'clsx';
-import { Platform, View } from 'react-native';
-import { AlertDetail } from './AlertDetail';
-import { AlertItem } from './AlertItem';
-import { useRouter } from 'solito/navigation';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { Separator } from 'app/components/common/ui/Separator';
+import { WeatherAlert } from 'app/types/weatherAPI';
+import { clsx } from 'clsx';
+import { Platform, View } from 'react-native';
+import { useRouter } from 'solito/navigation';
+import { AlertDetail } from './AlertDetail';
+import { AlertItem } from './AlertItem';
 
 interface AlertModalProps {
 	onPress?: (alert: WeatherAlert) => void;
@@ -16,7 +14,6 @@ interface AlertModalProps {
 }
 
 export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null }: AlertModalProps) => {
-	const { t } = useTranslate('weather');
 	const router = useRouter();
 
 	return (
@@ -41,7 +38,6 @@ export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null 
 						))}
 					</RoundView>
 				)}
-
 				{selectedAlert && (
 					<AlertDetail
 						severity={selectedAlert.severity}
@@ -52,9 +48,6 @@ export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null 
 					/>
 				)}
 			</View>
-			{/* <StyledText type="bodysecondary" className={clsx('mt-4 text-center opacity-70')}>
-				{t('alerts.disclaimer')}
-			</StyledText> */}
 		</>
 	);
 };

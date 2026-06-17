@@ -1,10 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { fetchLocation } from 'app/api/fetchWeatherAPI';
-import { City } from 'app/storage/crudMMKVService';
-import { useStorageObject } from 'app/storage/useStorageObject';
-import { useStorageString } from 'app/storage/useStorageString';
-import { buildWeatherSlug } from 'app/utils/services/buildWeatherSlug';
+import { useStorageObject, useStorageString } from 'app/storage/useStorage';
+import type { City } from 'app/types/city';
+import { buildSlug } from 'app/utils/services/buildSlug';
 import { showToast } from 'app/utils/services/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
@@ -37,7 +36,7 @@ export const useSearchController = () => {
 		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 		if (weatherData) {
 			setWeatherData(weatherData);
-			const path = buildWeatherSlug(weatherData);
+			const path = buildSlug(weatherData);
 			router.push(path);
 		} else {
 			showToast({
@@ -55,7 +54,7 @@ export const useSearchController = () => {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
-			const path = buildWeatherSlug(weatherData);
+			const path = buildSlug(weatherData);
 			router.push(path);
 			return true;
 		} else {

@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useModalBackground, useTextColor } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { Cloud, CloudRain, Droplets, Eye, GaugeCircle, Moon, Sun, Sunrise, Sunset, Wind, X } from 'lucide-react-native';
@@ -9,7 +9,8 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { modalBackground, textColor } = useThemeColors();
+	const modalBackground = useModalBackground();
+	const textColor = useTextColor();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (

@@ -1,6 +1,7 @@
-import { WeatherData } from 'app/types/weatherData';
+import type { WeatherAPIResponse } from 'app/types/weatherAPI';
+import { NormalizedData } from 'app/types/normalizedData';
 
-export const mapWeatherApi = (data: any): WeatherData => {
+export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 	return {
 		location: {
 			name: data.location.name,

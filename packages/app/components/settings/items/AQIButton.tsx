@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { AirQualitySettingsIcon } from 'app/components/icons/settings/AirQualitySettingsIcon';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';

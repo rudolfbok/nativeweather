@@ -11,8 +11,8 @@ import { WaningGibbous } from 'app/components/icons/moonphases/WaningGibbous';
 import { WaxingCrescent } from 'app/components/icons/moonphases/WaxingCrescent';
 import { WaxingGibbous } from 'app/components/icons/moonphases/WaxingGibbous';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
-import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
+import { useStorageString } from 'app/storage/useStorage';
+import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
 import { JSX } from 'react';
 import { View } from 'react-native';
@@ -108,8 +108,8 @@ export const MoonModal = ({ phase, illumination, isMoonUp, moonrise, moonset }: 
 						</StyledText>
 						<StyledText type="body">
 							{isMoonUp === 0
-								? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
-								: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
+								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
+								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
 						</StyledText>
 						<StyledText type="subtitle">
 							{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moonPhase]}

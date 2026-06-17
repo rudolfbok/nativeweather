@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
-import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
+import { useStorageString } from 'app/storage/useStorage';
+import { formatTime } from 'app/utils/helpers/formatTime';
 import { Sunrise } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
@@ -22,7 +22,7 @@ export const SunriseCard = ({ data }: { data: string }) => {
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/sunrise') : () => setShowModal(true)}
 			icon={<Sunrise color="#FFBF04" />}
 			title={t('sunrise.title')}
-			data={formatTimeByLang(data, currentLanguage)}
+			data={formatTime(data, currentLanguage)}
 			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
 			modal={
 				showModal && (

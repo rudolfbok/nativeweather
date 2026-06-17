@@ -1,8 +1,8 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useBackgroundColor } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function HomeLayout() {
-	const { backgroundColor } = useThemeColors();
+	const backgroundColor = useBackgroundColor();
 
 	return (
 		<Stack

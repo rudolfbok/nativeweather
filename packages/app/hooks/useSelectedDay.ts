@@ -1,7 +1,7 @@
-import { WeatherData } from 'app/types/weatherData';
+import { NormalizedData } from 'app/types/normalizedData';
 import { create } from 'zustand';
 
-type ForecastDay = WeatherData['forecast']['forecastday'][0];
+type ForecastDay = NormalizedData['forecast']['forecastday'][0];
 
 interface SelectedDayState {
 	selectedDay: ForecastDay | null;

@@ -2,9 +2,9 @@ import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } 
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useCallback, useRef, useState } from 'react';
 import { useLocalWeather } from '../useLocalWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 
-export const useCurrentLocation = () => {
+export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const [error, setError] = useState<boolean>(false);
 	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);

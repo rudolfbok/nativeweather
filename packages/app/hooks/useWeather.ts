@@ -1,12 +1,12 @@
 import { create } from 'zustand';
-import { WeatherData } from 'app/types/weatherData';
-import { AirQualityData } from 'app/types/airQualityData';
+import { NormalizedData } from 'app/types/normalizedData';
+import { OpenMeteoAQI } from 'app/types/openMeteo';
 import { fetchAirQuality } from 'app/api/fetchAirQuality';
 
 interface WeatherState {
-	weatherData: WeatherData | null;
-	airQualityData: AirQualityData | null;
-	setWeatherData: (data: WeatherData | null) => void;
+	weatherData: NormalizedData | null;
+	airQualityData: OpenMeteoAQI | null;
+	setWeatherData: (data: NormalizedData | null) => void;
 }
 
 export const useWeather = create<WeatherState>((set, get) => ({

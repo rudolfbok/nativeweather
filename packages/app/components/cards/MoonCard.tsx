@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorageString';
-import { formatTimeByLang } from 'app/utils/helpers/formatTimeByLang';
+import { useStorageString } from 'app/storage/useStorage';
+import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
 import { Moon } from 'lucide-react-native';
 import { JSX, useState } from 'react';
@@ -74,8 +74,8 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 						</StyledText>
 						<StyledText type="body" className={clsx('opacity-70')}>
 							{isMoonUp === 0
-								? `${t('moon.moonset')} ${formatTimeByLang(moonset, currentLanguage)}`
-								: `${t('moon.moonrise')} ${formatTimeByLang(moonrise, currentLanguage)}`}
+								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
+								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
 						</StyledText>
 					</View>
 				</View>

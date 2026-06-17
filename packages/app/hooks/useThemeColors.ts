@@ -1,11 +1,11 @@
-import { useSwitchColors } from './switch/useSwitchColors';
+import { useSwitchColors } from './useSwitchColors';
 
-export const useThemeColors = () => {
-	return {
-		headerBackground: useSwitchColors('#FFFFFF', '#121212'),
-		backgroundColor: useSwitchColors('#F2F2F2', '#000000'),
-		modalBackground: useSwitchColors('F2F2F2', '#0E0E0F'),
-		textColor: useSwitchColors('#000000', '#FFFFFF'),
-		borderColor: useSwitchColors('#FFFFFF', '#000000'),
-	};
-};
+export const useHeaderBackground = () => useSwitchColors('#FFFFFF', '#121212');
+
+export const useBackgroundColor = () => useSwitchColors('#F2F2F2', '#000000');
+
+export const useModalBackground = () => useSwitchColors('#F2F2F2', '#0E0E0F');
+
+export const useTextColor = () => useSwitchColors('#000000', '#FFFFFF');
+
+export const useBorderColor = () => useSwitchColors('#FFFFFF', '#000000');

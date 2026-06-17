@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import * as React from 'react';
 import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
 

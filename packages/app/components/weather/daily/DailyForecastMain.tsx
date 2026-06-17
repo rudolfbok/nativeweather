@@ -1,9 +1,9 @@
 import { useTolgee } from '@tolgee/react';
 import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
-import { useStorageString } from 'app/storage/useStorageString';
-import { WeatherData } from 'app/types/weatherData';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useStorageString } from 'app/storage/useStorage';
+import { NormalizedData } from 'app/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -12,7 +12,7 @@ import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
 
-export const DailyForecastMain = ({ day }: { day: WeatherData['forecast']['forecastday'][0] | null }) => {
+export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['forecastday'][0] | null }) => {
 	const scrollRef = useRef<ScrollView>(null);
 	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();

@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeatherAPI } from 'app/api/fetchWeatherAPI';
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useMapLayer } from 'app/hooks/useMapLayer';
 import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import maplibregl, { type Map as MapLibreMap, type MapMouseEvent } from 'maplibre-gl';
 import { useEffect, useRef, useState } from 'react';

@@ -1,11 +1,11 @@
 import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
 import { AlertModal } from 'app/components/weather/alerts/AlertModal';
 import { useWeather } from 'app/hooks/useWeather';
-import { getActiveWeatherAlerts } from 'app/utils/helpers/getActiveWeatherAlerts';
+import { getAlerts } from 'app/utils/helpers/getAlerts';
 
 export default function AlertModalScreen() {
 	const { weatherData } = useWeather();
-	const filteredAlerts = getActiveWeatherAlerts(weatherData?.alerts.alert, weatherData?.location);
+	const filteredAlerts = getAlerts(weatherData?.alerts.alert, weatherData?.location);
 
 	return (
 		<ModalScrollView>

@@ -1,4 +1,4 @@
-export const countryNameToCode = (name: string): string => {
+export const countryCode = (name: string): string => {
 	const countries: Record<string, string> = {
 		Afghanistan: 'af',
 		Albania: 'al',

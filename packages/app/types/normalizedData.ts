@@ -1,6 +1,6 @@
-import { WeatherAlert } from './weatherAlert';
+import { WeatherAlert } from './weatherAPI';
 
-export interface WeatherData {
+export interface NormalizedData {
 	location: {
 		name: string;
 		region: string;

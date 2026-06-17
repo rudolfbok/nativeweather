@@ -1,17 +1,27 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { useStorageString } from 'app/storage/useStorageString';
+import { useStorageString } from 'app/storage/useStorage';
 import { Moon, Paintbrush, Sun } from 'lucide-react-native';
 import { colorScheme } from 'nativewind';
+import { useEffect } from 'react';
+import { Platform } from 'react-native';
 import { SettingsItem } from '../items/SettingsItem';
+
+type ThemeMode = 'light' | 'dark' | 'system';
 
 export const ThemeSelect = () => {
 	const { t } = useTranslate('settings');
 	const [currentTheme, setCurrentTheme] = useStorageString('currentTheme');
+	const themeMode = (currentTheme ?? 'system') as ThemeMode;
 
-	const handleColorChange = (mode: 'light' | 'dark' | 'system') => {
-		if (currentTheme === mode) return;
-		colorScheme.set(mode);
+	useEffect(() => {
+		if (Platform.OS === 'web') return;
+
+		colorScheme.set(themeMode);
+	}, [themeMode]);
+
+	const handleColorChange = (mode: ThemeMode) => {
+		if (themeMode === mode) return;
 		setCurrentTheme(mode);
 	};
 
@@ -22,7 +32,7 @@ export const ThemeSelect = () => {
 				iconbg="bg-[#007AFF]"
 				title={t('theme.light')}
 				variant="check"
-				selected={currentTheme === 'light'}
+				selected={themeMode === 'light'}
 				onPress={() => handleColorChange('light')}
 				border={true}
 			/>
@@ -31,7 +41,7 @@ export const ThemeSelect = () => {
 				iconbg="bg-[#007AFF]"
 				title={t('theme.dark')}
 				variant="check"
-				selected={currentTheme === 'dark'}
+				selected={themeMode === 'dark'}
 				onPress={() => handleColorChange('dark')}
 				border={true}
 			/>
@@ -40,7 +50,7 @@ export const ThemeSelect = () => {
 				iconbg="bg-[#007AFF]"
 				title={t('theme.system')}
 				variant="check"
-				selected={currentTheme === 'system'}
+				selected={themeMode === 'system'}
 				onPress={() => handleColorChange('system')}
 			/>
 		</RoundView>

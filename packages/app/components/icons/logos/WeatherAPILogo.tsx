@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/switch/useSwitchColors';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import Svg, { Path } from 'react-native-svg';
 
 export const WeatherAPILogo = () => {
