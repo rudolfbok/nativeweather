@@ -39,16 +39,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 				<ChevronRight color="#007AFF" size={26} />
 			</StyledPressable>
 
-			<StyledPressable
-				onPress={() => setShowAlertModal(true)}
-				className={clsx(
-					'web:bg-transparent web:dark:bg-transparent absolute bottom-2 left-2 w-fit flex-row items-center gap-2 rounded-3xl p-2',
-					desktop
-				)}
-			>
-				<CardHeader icon={<BadgeAlert color="#FE0704" size={28} />} header={String(alertsLength)} />
-			</StyledPressable>
-
 			{showAlertModal && (
 				<StyledModal
 					visible={showAlertModal}

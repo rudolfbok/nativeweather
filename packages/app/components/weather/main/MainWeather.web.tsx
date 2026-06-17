@@ -74,9 +74,9 @@ export const MainWeather = ({
 	}, [setIsFavorite, weatherData]);
 
 	return (
-		<View className={clsx('relative items-center overflow-hidden rounded-3xl p-4')}>
+		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4')}>
 			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
-				<View className={clsx('absolute -top-[480px] left-1/2 -translate-x-1/2')}>
+				<View className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2')}>
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
 				<View className={clsx('absolute inset-0 bg-black/25')} />
@@ -133,7 +133,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('relative z-10 my-1', conditionStyle)}>
+			<View className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl', conditionStyle)}>
 				<StyledText type="title" className="!text-white" style={textShadowStyle}>
 					{condition}
 				</StyledText>

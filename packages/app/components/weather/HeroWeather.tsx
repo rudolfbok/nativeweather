@@ -134,7 +134,7 @@ export const HeroWeather = () => {
 		<View className={clsx('pb-4')}>
 			<View className={clsx('grid select-none grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3')}>
 				<View className={clsx('native:px-4 flex-col gap-4')}>
-					<View>
+					<View className="gap-4">
 						<MainWeather
 							name={weatherData.location.name}
 							country={weatherData.location.country}
@@ -157,21 +157,14 @@ export const HeroWeather = () => {
 							displayTime={true}
 							strokeWidth={0}
 						/>
-						{Platform.OS === 'web' && (
-							<AlertWeather
-								filteredAlerts={filteredAlerts}
-								alertsLength={alertsLength}
-								desktop="max-lg:hidden"
-								mobile="hidden"
-							/>
-						)}
+						{Platform.OS === 'web' && <AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />}
 					</View>
-					<AlertWeather
+					{/* <AlertWeather
 						filteredAlerts={filteredAlerts}
 						alertsLength={alertsLength}
 						desktop="hidden"
 						mobile="lg:hidden"
-					/>
+					/> */}
 					<SmartSummary
 						minTempC={weatherData.forecast.forecastday[0].day.minTempC}
 						maxTempC={weatherData.forecast.forecastday[0].day.maxTempC}
