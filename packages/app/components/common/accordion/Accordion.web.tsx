@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
-import { ChevronRight } from 'lucide-react-native';
+import { ChevronIcon } from 'app/components/icons/ChevronIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { StyledText } from '../styled/StyledText';
 
@@ -41,7 +41,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 					{title}
 				</StyledText>
 				<div ref={arrowRef}>
-					<ChevronRight size={26} color="#007AFF" />
+					<ChevronIcon />
 				</div>
 			</div>
 			<div

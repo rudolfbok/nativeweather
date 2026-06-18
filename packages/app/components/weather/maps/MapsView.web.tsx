@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { Map } from 'lucide-react-native';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { MapLibreView } from './MapLibreView.web';
+import { MapLibreView } from './MapLibreView';
 
 export const MapsView = () => {
 	const { t } = useTranslate('weather');

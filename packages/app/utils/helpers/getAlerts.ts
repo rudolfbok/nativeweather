@@ -3,8 +3,7 @@ import type { WeatherAlert } from 'app/types/weatherAPI';
 
 type AlertLocation = Pick<NormalizedData['location'], 'name' | 'region'>;
 
-const getAlertKey = (alert: WeatherAlert) =>
-	alert.identifier || `${alert.event}|${alert.areas}|${alert.effective}|${alert.expires}`;
+const getAlertKey = (alert: WeatherAlert) => alert.identifier || alert.event.trim().toLowerCase();
 
 const normalizeArea = (value = '') =>
 	value

@@ -1,8 +1,8 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useTextColor } from 'app/hooks/useThemeColors';
+import { ChevronIcon } from 'app/components/icons/ChevronIcon';
 import { clsx } from 'clsx';
-import { Check, ChevronRight } from 'lucide-react-native';
+import { Check } from 'lucide-react-native';
 import { ReactNode } from 'react';
 import { GestureResponderEvent, Platform, View, StyleSheet, Pressable } from 'react-native';
 
@@ -31,21 +31,19 @@ export const SettingsItem = ({
 	selected,
 	variant,
 }: SettingsItemProps) => {
-	const textColor = useTextColor();
-
 	const RightElement = () => {
-		switch (variant) {
+			switch (variant) {
 			case 'value':
 				return (
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<StyledText type="body" className={clsx('opacity-70')}>
 							{currentValue}
 						</StyledText>
-						<ChevronRight color={textColor} />
+						<ChevronIcon />
 					</View>
 				);
 			case 'link':
-				return <ChevronRight color={textColor} />;
+				return <ChevronIcon />;
 			case 'toggle':
 				return toggle;
 			case 'check':

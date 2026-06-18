@@ -1,4 +1,4 @@
-import { ChevronRight } from 'lucide-react-native';
+import { ChevronIcon } from 'app/components/icons/ChevronIcon';
 import { ReactNode, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
@@ -27,7 +27,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			<Pressable onPress={toggle} className={clsx('flex-row items-center justify-between py-2')}>
 				<StyledText type="subtitle">{title}</StyledText>
 				<Animated.View style={chevronStyle}>
-					<ChevronRight size={26} color="#007AFF" />
+					<ChevronIcon />
 				</Animated.View>
 			</Pressable>
 			{expanded && (

@@ -42,10 +42,10 @@ export const StyledPressable = ({
 		<Pressable
 			onPress={onPress}
 			onPressIn={onPressIn}
-			style={{ backgroundColor: tintColor }}
+			style={tintColor ? { backgroundColor: tintColor } : undefined}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
-				'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark',
+				'bg-systemBackground hover:bg-tertiarySystemBackground native:active:!bg-tertiarySystemBackground',
+				'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark native:active:dark:!bg-tertiarySystemBackground_dark',
 				className
 			)}
 		>

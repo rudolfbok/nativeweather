@@ -1,6 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
+import { ChevronIcon } from 'app/components/icons/ChevronIcon';
 import { clsx } from 'clsx';
-import { ChevronRight } from 'lucide-react-native';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { DotIndicator } from 'app/components/icons/DotIndicator';
@@ -27,7 +27,7 @@ export const AlertItem = ({ title, area, severity, onPress }: AlertItemProps) =>
 					</StyledText>
 				)}
 			</View>
-			<ChevronRight color="#007AFF" />
+			<ChevronIcon />
 		</StyledPressable>
 	);
 };

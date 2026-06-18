@@ -13,7 +13,7 @@ import {
 	WindCard,
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
-import { AlertWeather } from 'app/components/weather/alerts/AlertWeather';
+import { AlertWeather } from './alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
@@ -34,7 +34,7 @@ import { SmartSummary } from './SmartSummary';
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
-	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
+	const { setIsFavorite } = useFavoriteCities();
 	const mapConditions = useMapConditions();
 
 	useEffect(() => {
@@ -157,14 +157,8 @@ export const HeroWeather = () => {
 							displayTime={true}
 							strokeWidth={0}
 						/>
-						{Platform.OS === 'web' && <AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />}
+						<AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />
 					</View>
-					{/* <AlertWeather
-						filteredAlerts={filteredAlerts}
-						alertsLength={alertsLength}
-						desktop="hidden"
-						mobile="lg:hidden"
-					/> */}
 					<SmartSummary
 						minTempC={weatherData.forecast.forecastday[0].day.minTempC}
 						maxTempC={weatherData.forecast.forecastday[0].day.maxTempC}
