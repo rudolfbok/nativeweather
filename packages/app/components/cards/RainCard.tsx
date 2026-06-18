@@ -49,7 +49,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 			description={description}
 			extraContent={
 				(rainPrecipMm >= 0.1 || rainPrecipIn >= 0.1) && (
-					<StyledText type="body" className={clsx('opacity-70')}>
+					<StyledText type="body">
 						{t('rain.rainfall')} {display}
 					</StyledText>
 				)

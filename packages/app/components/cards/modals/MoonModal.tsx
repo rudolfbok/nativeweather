@@ -102,15 +102,17 @@ export const MoonModal = ({ phase, illumination, isMoonUp, moonrise, moonset }: 
 			<ContentRow title={t('moon.now')} className={clsx('max-xl:hidden')}>
 				<View className={clsx('flex-row items-center gap-4')}>
 					{moonPhaseComponents[phase]}
-					<View className={clsx('gap-1')}>
-						<StyledText type="body">
-							{t('moon.illumination')} {illumination}%
-						</StyledText>
-						<StyledText type="body">
-							{isMoonUp === 0
-								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
-								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
-						</StyledText>
+					<View className={clsx('gap-2')}>
+						<View>
+							<StyledText type="body">
+								{t('moon.illumination')} {illumination}%
+							</StyledText>
+							<StyledText type="body">
+								{isMoonUp === 0
+									? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
+									: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
+							</StyledText>
+						</View>
 						<StyledText type="subtitle">
 							{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moonPhase]}
 						</StyledText>

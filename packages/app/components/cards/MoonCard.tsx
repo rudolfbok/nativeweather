@@ -69,10 +69,10 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				<View className={clsx('mt-6 flex-row items-center gap-4 xl:hidden')}>
 					{moonPhaseComponents[phase]}
 					<View>
-						<StyledText type="body" className={clsx('opacity-70')}>
+						<StyledText type="body">
 							{t('moon.illumination')} {illumination}%
 						</StyledText>
-						<StyledText type="body" className={clsx('opacity-70')}>
+						<StyledText type="body">
 							{isMoonUp === 0
 								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
 								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}

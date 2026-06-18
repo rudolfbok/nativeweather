@@ -20,7 +20,7 @@ import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, GestureResponderEvent, LayoutChangeEvent, Platform, Pressable, View } from 'react-native';
 import { PrecipitationInfo, MapsLegend, WindInfo } from './MapsLegend';
 
-declare const require: (id: string) => unknown;
+// declare const require: (id: string) => unknown;
 
 const WEATHER_SOURCE_ID = 'weatherapi';
 const WEATHER_LAYER_ID = 'weatherapi-layer';
@@ -572,14 +572,14 @@ export const MapLibreView = () => {
 				</View>
 			</View>
 			{showLegend && (
-				<View className={clsx('ios:bottom-28 absolute bottom-4 left-6 right-6')}>
+				<View className={clsx('ios:bottom-28 absolute bottom-4 right-4 max-md:left-4')}>
 					<AnimatedView duration={30}>
-						<RoundView className={clsx('p-4')}>
+						<RoundView className={clsx('w-full p-4 md:w-96')}>
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>
 								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
-								<Pressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('rounded-full p-1')}>
+								<StyledPressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('rounded-full p-1')}>
 									<X color="#007AFF" />
-								</Pressable>
+								</StyledPressable>
 							</View>
 							{getLayerInfo()}
 						</RoundView>
