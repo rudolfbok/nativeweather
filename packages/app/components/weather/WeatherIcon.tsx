@@ -13,5 +13,4 @@ export const WeatherIcon = ({ code, isDay, width, height, strokeWidth, source }:
 	if (source === 'weatherapi') {
 		return <WeatherAPIMainIcon code={code} isDay={isDay} width={width} height={height} strokeWidth={strokeWidth} />;
 	}
-
 };

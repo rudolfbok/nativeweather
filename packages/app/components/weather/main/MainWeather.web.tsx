@@ -76,10 +76,10 @@ export const MainWeather = ({
 	return (
 		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4')}>
 			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
-				<View className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2')}>
+				<View className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2 scale-x-[1.6]')}>
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
-				<View className={clsx('absolute inset-0 bg-black/25')} />
+				{/* <View className={clsx('absolute inset-0 bg-black/25')} /> */}
 			</View>
 			<View className={clsx('relative z-10 flex-col items-center')}>
 				<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
