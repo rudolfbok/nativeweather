@@ -19,7 +19,7 @@ export const MapsView = () => {
 			<RoundView className={clsx('w-full flex-grow flex-col px-4 pb-4 pt-3 max-md:h-[450px]')}>
 				<View className={clsx('mb-2 flex flex-row items-center justify-between')}>
 					<CardHeader icon={<Map color="black" fill="#F2F2F7" />} header={t('maps.title')} />
-					<StyledPressable onPress={() => setShowMapsModal((prev) => !prev)} className={clsx('rounded-full p-1')}>
+					<StyledPressable onPress={() => setShowMapsModal((prev) => !prev)} className={clsx('rounded-full p-1.5')}>
 						<MaximizeIcon />
 					</StyledPressable>
 				</View>

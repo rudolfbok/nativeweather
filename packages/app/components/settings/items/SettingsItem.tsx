@@ -41,11 +41,11 @@ export const SettingsItem = ({
 						<StyledText type="body" className={clsx('opacity-70')}>
 							{currentValue}
 						</StyledText>
-						<ChevronRight color="#007AFF" />
+						<ChevronRight color={textColor} />
 					</View>
 				);
 			case 'link':
-				return <ChevronRight color="#007AFF" />;
+				return <ChevronRight color={textColor} />;
 			case 'toggle':
 				return toggle;
 			case 'check':
@@ -58,9 +58,10 @@ export const SettingsItem = ({
 	return (
 		<StyledPressable
 			onPress={Platform.OS === 'web' ? (variant === 'check' || variant === 'link' ? onPress : showModal) : onPress}
+			liquidGlass={false}
 			className={clsx(
 				'select-none px-4 pt-4',
-
+				variant !== 'toggle' && 'active:!bg-tertiarySystemBackground active:dark:!bg-tertiarySystemBackground_dark',
 				variant === 'toggle' && 'hover:!bg-transparent active:!bg-transparent'
 			)}
 		>

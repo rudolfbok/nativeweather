@@ -37,6 +37,7 @@ interface MainWeatherProps {
 	colorScheme?: any;
 	displayShadow?: boolean;
 	conditionStyle?: string;
+	dailyModal?: boolean;
 }
 
 export const MainWeather = ({
@@ -58,6 +59,7 @@ export const MainWeather = ({
 	conditionText,
 	colorScheme,
 	displayShadow = true,
+	dailyModal = false,
 }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
@@ -127,7 +129,7 @@ export const MainWeather = ({
 				style={{ paddingHorizontal: 16, paddingVertical: 8 }}
 				liquidGlass={true}
 				colorScheme={colorScheme}
-				glassEffectStyle="clear"
+				glassEffectStyle={dailyModal ? 'regular' : 'clear'}
 			>
 				<StyledText
 					type="subtitle"

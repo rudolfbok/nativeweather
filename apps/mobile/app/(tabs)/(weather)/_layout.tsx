@@ -51,7 +51,7 @@ export default function TabLayout() {
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
 					color={textColor}
-					fill={isFavorite ? headerTextColor : 'transparent'}
+					fill={isFavorite ? textColor : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
 			</Pressable>

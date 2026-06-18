@@ -1,17 +1,17 @@
 import { useTranslate } from '@tolgee/react';
-import { useWeather } from 'app/hooks/useWeather';
-import { useStorageString } from 'app/storage/useStorage';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
+import { useWeather } from 'app/hooks/useWeather';
+import { isCityInFavorites } from 'app/storage/crudMMKVService';
+import { useStorageString } from 'app/storage/useStorage';
+import { extractCity } from 'app/utils/helpers/extractCity';
+import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
+import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp, Star } from 'lucide-react-native';
-import { Pressable, View } from 'react-native';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
-import { extractCity } from 'app/utils/helpers/extractCity';
-import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { useEffect } from 'react';
+import { Pressable, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -35,6 +35,7 @@ interface MainWeatherProps {
 	colorScheme?: any;
 	displayShadow?: boolean;
 	conditionStyle?: string;
+	dailyModal?: boolean;
 }
 
 const textShadowStyle = {
@@ -42,6 +43,10 @@ const textShadowStyle = {
 	textShadowOffset: { width: 2, height: 2 },
 	textShadowRadius: 4,
 };
+
+const iconShadowStyle = {
+	filter: 'drop-shadow(0px 0px 1px rgba(0,0,0,0.5))',
+} as const;
 
 export const MainWeather = ({
 	name,
@@ -59,6 +64,7 @@ export const MainWeather = ({
 	code,
 	condition,
 	conditionStyle = '!bg-transparent',
+	dailyModal = false,
 }: MainWeatherProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
@@ -74,25 +80,28 @@ export const MainWeather = ({
 	}, [setIsFavorite, weatherData]);
 
 	return (
-		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4')}>
+		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4', dailyModal && 'gap-0')}>
 			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
-				<View className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2 scale-x-[2]')}>
+				<View
+					className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2 scale-x-[2]', dailyModal && '-top-[510px]')}
+				>
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
-				{/* <View className={clsx('absolute inset-0 bg-black/25')} /> */}
 			</View>
-			<View className={clsx('relative z-10 flex-col items-center')}>
-				<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
-					{name}
-				</StyledText>
-				<StyledText type="country" className={clsx('!text-white opacity-70')} style={textShadowStyle}>
-					{country}
-				</StyledText>
-			</View>
+			{name && country && (
+				<View className={clsx('relative z-10 flex-col items-center')}>
+					<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
+						{name}
+					</StyledText>
+					<StyledText type="country" className={clsx('!text-white opacity-70')} style={textShadowStyle}>
+						{country}
+					</StyledText>
+				</View>
+			)}
 			<View className={clsx('relative z-10 flex-row items-center justify-center gap-4')}>
 				<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} source={currentSource} />
 				<View className={clsx('items-center')}>
-					<StyledText type="maintemp" className={clsx('pl-3 !text-white')} style={textShadowStyle}>
+					<StyledText type="maintemp" className={clsx('pl-3', '!text-white')} style={textShadowStyle}>
 						{switchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -101,8 +110,8 @@ export const MainWeather = ({
 					</StyledText>
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
-							<MoveDown size={18} color="white" />
-							<StyledText type="body" className="!text-white" style={textShadowStyle}>
+							<MoveDown size={18} color="white" style={iconShadowStyle} />
+							<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
 								{switchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -111,8 +120,8 @@ export const MainWeather = ({
 							</StyledText>
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
-							<MoveUp size={18} color="white" />
-							<StyledText type="body" className="!text-white" style={textShadowStyle}>
+							<MoveUp size={18} color="white" style={iconShadowStyle} />
+							<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
 								{switchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -122,7 +131,7 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="body" className="!text-white" style={textShadowStyle}>
+						<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
 							{t('feelslike')}{' '}
 							{switchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -134,13 +143,13 @@ export const MainWeather = ({
 				</View>
 			</View>
 			<View className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl', conditionStyle)}>
-				<StyledText type="title" className="!text-white" style={textShadowStyle}>
+				<StyledText type="title" className={clsx('!text-white')} style={textShadowStyle}>
 					{condition}
 				</StyledText>
 			</View>
 			<Pressable
 				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
-				className={clsx('native:hidden absolute bottom-4 right-4 z-20 lg:p-2')}
+				className={clsx('native:hidden absolute bottom-4 right-4 z-20 lg:p-2', dailyModal && 'hidden')}
 			>
 				<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
 			</Pressable>

@@ -9,6 +9,9 @@ import { useState } from 'react';
 import { AlertModal } from './AlertModal';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
+import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
+import { AlertIcon } from 'app/components/icons/AlertIcon';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 
 interface AlertWeatherProps {
 	filteredAlerts: WeatherAlert[];
@@ -23,8 +26,27 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 	const [showAlertModal, setShowAlertModal] = useState(false);
 	const [selectedAlert, setSelectedAlert] = useState(null);
 	const router = useRouter();
+	const textColor = useSwitchColors('black', 'white');
 
 	if (alertsLength === 0) return null;
+
+	const severityValues: Record<string, number> = {
+		Unknown: 0,
+		Minor: 1,
+		Moderate: 2,
+		Severe: 3,
+		Extreme: 4,
+	};
+
+	const mostSevereAlert = filteredAlerts.reduce((mostSevereAlert, alert) => {
+		if (severityValues[alert.severity] > severityValues[mostSevereAlert.severity]) {
+			return alert;
+		}
+
+		return mostSevereAlert;
+	});
+
+	const alertIconColor = getAlertSeverityDotColor(mostSevereAlert.severity);
 
 	return (
 		<>
@@ -33,10 +55,10 @@ export const AlertWeather = ({ filteredAlerts, alertsLength, desktop, mobile }: 
 				className={clsx('native:mt-4 w-full flex-row items-center justify-between rounded-3xl p-4', mobile)}
 			>
 				<CardHeader
-					icon={<BadgeAlert color="#007AFF" />}
+					icon={<AlertIcon mostSevere={alertIconColor} />}
 					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
 				/>
-				<ChevronRight color="#007AFF" size={26} />
+				<ChevronRight color={textColor} size={26} />
 			</StyledPressable>
 
 			{showAlertModal && (

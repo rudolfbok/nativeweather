@@ -56,7 +56,7 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 				displayTime={false}
 				feelslike={false}
 				displayShadow={false}
-				conditionStyle="mt-4 py-2 px-4"
+				dailyModal={true}
 			/>
 			<SmartSummary
 				minTempC={day.day.minTempC}

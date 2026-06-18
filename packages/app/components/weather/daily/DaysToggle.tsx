@@ -18,13 +18,14 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 		});
 
 	return (
-		<View className={clsx('my-2 flex-row justify-between gap-2 border-blue-400')}>
+		<View className={clsx('mb-4 mt-2 flex-row justify-between gap-2')}>
 			{days.slice(0, 7).map((day) => {
 				return (
 					<StyledPressable
 						key={day.date}
 						onPress={() => onSelectDay(day)}
 						className={clsx('w-[45px] flex-1 items-center justify-center rounded-3xl py-2')}
+						style={{ padding: 8 }}
 						liquidGlass={true}
 					>
 						<StyledText type="body" className={clsx('font-semibold')}>
