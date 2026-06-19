@@ -5,20 +5,22 @@ import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { TileLiberty } from 'app/components/icons/TileLiberty';
-import { TilePositron } from 'app/components/icons/TilePositron';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { RainIcon, WindIcon } from 'app/components/icons/main';
+import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
+import { TileLiberty } from 'app/components/icons/ui/TileLiberty';
+import { TilePositron } from 'app/components/icons/ui/TilePositron';
 import { useMapLayer } from 'app/hooks/useMapLayer';
+import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
-import { CloudRain, InfoIcon, Thermometer, Wind, X } from 'lucide-react-native';
+import { InfoIcon, Thermometer } from 'lucide-react-native';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, GestureResponderEvent, LayoutChangeEvent, Platform, Pressable, View } from 'react-native';
-import { PrecipitationInfo, MapsLegend, WindInfo } from './MapsLegend';
+import { ActivityIndicator, GestureResponderEvent, LayoutChangeEvent, Platform, View } from 'react-native';
+import { MapsLegend, PrecipitationInfo, WindInfo } from './MapsLegend';
 
 // declare const require: (id: string) => unknown;
 
@@ -63,8 +65,8 @@ type NativeMapLibre = typeof import('@maplibre/maplibre-react-native');
 
 const layerButtons = [
 	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
-	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
-	{ layer: 'wind', icon: <Wind color="gray" /> },
+	{ layer: 'precip', icon: <RainIcon /> },
+	{ layer: 'wind', icon: <WindIcon /> },
 ];
 
 const tileButtons = [
@@ -527,7 +529,7 @@ export const MapLibreView = () => {
 								</StyledText>
 							)}
 							<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
-								<X color="#007AFF" size={20} />
+								<CloseIcon color="#007AFF" size={20} />
 							</StyledPressable>
 						</View>
 						{weatherMarker.status === 'ready' && weatherMarker.value && (
@@ -578,7 +580,7 @@ export const MapLibreView = () => {
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>
 								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
 								<StyledPressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('rounded-full p-1')}>
-									<X color="#007AFF" />
+									<CloseIcon color="#007AFF" />
 								</StyledPressable>
 							</View>
 							{getLayerInfo()}

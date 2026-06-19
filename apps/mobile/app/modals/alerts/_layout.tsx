@@ -1,11 +1,12 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { BadgeAlert, X } from 'lucide-react-native';
+import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { useModalBackground, useTextColor } from 'app/hooks/useThemeColors';
+import { clsx } from 'clsx';
 import { Stack, useRouter } from 'expo-router';
+import { BadgeAlert } from 'lucide-react-native';
 import { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
-import { clsx } from 'clsx';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
@@ -35,7 +36,7 @@ export default function ModalsLayout() {
 				},
 				headerRight: () => (
 					<Pressable onPress={() => router.back()} className={clsx('h-10 w-10 items-center justify-center')}>
-						<X color={textColor} />
+						<CloseIcon />
 					</Pressable>
 				),
 				headerBackButtonMenuEnabled: true,

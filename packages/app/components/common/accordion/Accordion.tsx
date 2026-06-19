@@ -1,4 +1,4 @@
-import { ChevronIcon } from 'app/components/icons/ChevronIcon';
+import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { ReactNode, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';

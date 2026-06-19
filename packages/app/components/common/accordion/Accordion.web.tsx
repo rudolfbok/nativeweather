@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
-import { ChevronIcon } from 'app/components/icons/ChevronIcon';
+import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { StyledText } from '../styled/StyledText';
 

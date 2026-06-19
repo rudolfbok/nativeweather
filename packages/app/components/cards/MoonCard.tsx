@@ -2,7 +2,6 @@ import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
-import { Moon } from 'lucide-react-native';
 import { JSX, useState } from 'react';
 import { Platform, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
@@ -18,6 +17,7 @@ import { WaxingCrescent } from '../icons/moonphases/WaxingCrescent';
 import { WaxingGibbous } from '../icons/moonphases/WaxingGibbous';
 import { DataCard } from './DataCard';
 import { MoonModal } from './modals/MoonModal';
+import { MoonIcon } from '../icons/main/MoonIcon';
 
 interface MoonCardProps {
 	phase: string;
@@ -58,7 +58,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/moon') : () => setShowModal(true)}
-			icon={<Moon color="#753A87" />}
+			icon={<MoonIcon />}
 			title={t('moon.title')}
 			data={getLocalePhase[phase]}
 			className={clsx(
@@ -84,7 +84,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Moon color="#753A87" />}
+						icon={<MoonIcon />}
 						header={t('moon.title')}
 						onClose={() => setShowModal(false)}
 					>

@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
+import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { OpenMeteoAQI } from 'app/types/openMeteo';
 import {
 	EUAQIIndicatorColor,

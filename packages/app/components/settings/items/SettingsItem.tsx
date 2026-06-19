@@ -1,10 +1,10 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ChevronIcon } from 'app/components/icons/ChevronIcon';
+import { CheckIcon } from 'app/components/icons/ui/CheckIcon';
+import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { clsx } from 'clsx';
-import { Check } from 'lucide-react-native';
 import { ReactNode } from 'react';
-import { GestureResponderEvent, Platform, View, StyleSheet, Pressable } from 'react-native';
+import { GestureResponderEvent, Platform, StyleSheet, View } from 'react-native';
 
 interface SettingsItemProps {
 	icon: ReactNode;
@@ -31,26 +31,18 @@ export const SettingsItem = ({
 	selected,
 	variant,
 }: SettingsItemProps) => {
-	const RightElement = () => {
-			switch (variant) {
-			case 'value':
-				return (
-					<View className={clsx('flex flex-row items-center gap-1')}>
-						<StyledText type="body" className={clsx('opacity-70')}>
-							{currentValue}
-						</StyledText>
-						<ChevronIcon />
-					</View>
-				);
-			case 'link':
-				return <ChevronIcon />;
-			case 'toggle':
-				return toggle;
-			case 'check':
-				return selected ? <Check color="#007AFF" /> : null;
-			default:
-				return null;
-		}
+	const rightElement = {
+		value: (
+			<View className={clsx('flex flex-row items-center gap-1')}>
+				<StyledText type="body" className={clsx('opacity-70')}>
+					{currentValue}
+				</StyledText>
+				<ChevronIcon />
+			</View>
+		),
+		link: <ChevronIcon />,
+		toggle: toggle,
+		check: selected ? <CheckIcon /> : null,
 	};
 
 	return (
@@ -76,7 +68,7 @@ export const SettingsItem = ({
 						{title}
 					</StyledText>
 				</View>
-				<RightElement />
+				{rightElement[variant]}
 			</View>
 		</StyledPressable>
 	);

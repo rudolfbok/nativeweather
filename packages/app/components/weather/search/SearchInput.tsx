@@ -1,8 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
+import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
-import { Search, X } from 'lucide-react-native';
+import { Search } from 'lucide-react-native';
 import { useState } from 'react';
 import { GestureResponderEvent, NativeSyntheticEvent, Pressable, TargetedEvent, TextInput } from 'react-native';
 
@@ -68,7 +69,7 @@ export const SearchInput = ({
 					onHoverIn={() => setIsXHovered(true)}
 					onHoverOut={() => setIsXHovered(false)}
 				>
-					<X size={22} color={isXHovered ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />
+					<CloseIcon size={22} color={isXHovered ? '#007AFF' : undefined} />
 				</Pressable>
 			)}
 		</RoundView>

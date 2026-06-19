@@ -1,15 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
-import { Droplets } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
+import { HumidityIcon } from '../icons/main/HumidityIcon';
 import { DataCard } from './DataCard';
 import { HumidityModal } from './modals/HumidityModal';
-import { clsx } from 'clsx';
 
 interface HumidityCardProps {
 	data: number;
@@ -45,7 +44,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/humidity') : () => setShowModal(true)}
-			icon={<Droplets color="#29C632" />}
+			icon={<HumidityIcon />}
 			title={t('humidity.title')}
 			description={description}
 			extraContent={
@@ -60,7 +59,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Droplets color="#29C632" />}
+						icon={<HumidityIcon />}
 						header={t('humidity.title')}
 						onClose={() => setShowModal(false)}
 					>

@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { Eye } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
+import { VisibilityIcon } from '../icons/main/VisibilityIcon';
 import { DataCard } from './DataCard';
 import { VisibilityModal } from './modals/VisibilityModal';
 
@@ -48,7 +48,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/visibility') : () => setShowModal(true)}
-			icon={<Eye color="#39C1C7" />}
+			icon={<VisibilityIcon />}
 			title={t('visibility.title')}
 			description={description}
 			data={display}
@@ -56,7 +56,7 @@ export const VisibilityCard = ({ visKm, visMiles }: VisibilityCardProps) => {
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Eye color="#39C1C7" />}
+						icon={<VisibilityIcon />}
 						header={t('visibility.title')}
 						onClose={() => setShowModal(false)}
 					>

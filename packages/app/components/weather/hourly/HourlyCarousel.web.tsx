@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { ClockIcon } from 'app/components/icons/ClockIcon';
+import { ClockIcon } from 'app/components/icons/main/ClockIcon';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { clsx } from 'clsx';
 import useEmblaCarousel from 'embla-carousel-react';

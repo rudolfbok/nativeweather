@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { AirQualityIcon } from 'app/components/icons/AirQualityIcon';
+import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
+import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { useModalBackground, useTextColor } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
-import { X } from 'lucide-react-native';
 import React, { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -32,7 +32,7 @@ export default function ModalsLayout() {
 						onPress={() => router.replace('/(tabs)/(weather)/[city]')}
 						className={clsx('h-10 w-10 items-center justify-center')}
 					>
-						<X color={textColor} />
+						<CloseIcon />
 					</Pressable>
 				),
 				contentStyle: {

@@ -4,7 +4,7 @@ import { useTranslate } from '@tolgee/react';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { SmartSummaryIcon } from 'app/components/icons/SmartSummaryIcon';
+import { SmartSummaryIcon } from 'app/components/icons/main/SmartSummaryIcon';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { switchTemp } from 'app/utils/switch/switchTemp';

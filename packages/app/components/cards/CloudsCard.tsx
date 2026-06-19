@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { useState } from 'react';
-import { CloudsIcon } from '../icons/CloudsIcon';
+import { CloudsIcon } from '../icons/main/CloudsIcon';
 import { DataCard } from './DataCard';
 import { CloudsModal } from './modals/CloudsModal';
 import { clsx } from 'clsx';

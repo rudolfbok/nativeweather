@@ -1,6 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { DotIndicator } from 'app/components/icons/DotIndicator';
+import { DotIndicator } from 'app/components/icons/ui/DotIndicator';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 

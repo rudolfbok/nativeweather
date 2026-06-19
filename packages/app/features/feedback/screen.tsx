@@ -65,7 +65,7 @@ export const FeedbackFeature = () => {
 			<StyledPressable
 				onPress={() => setType(variant)}
 				className={clsx(
-					'w-1/2 flex-row items-center justify-center gap-2 rounded-full p-3 md:w-fit',
+					'w-1/2 flex-row items-center justify-center gap-2 rounded-full px-4 py-2 md:w-fit',
 					isSelected && '!bg-primaryblue'
 				)}
 			>
@@ -124,6 +124,7 @@ export const FeedbackFeature = () => {
 						onPress={handleSubmit}
 						text={loading ? t('feedback.sending') : t('feedback.button')}
 						icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <ArrowRight color="#007AFF" />}
+						className="!min-w-[260px]"
 					/>
 				</View>
 			</View>

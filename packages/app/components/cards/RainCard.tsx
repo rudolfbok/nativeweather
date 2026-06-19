@@ -1,15 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { CloudRain } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
+import { RainIcon } from '../icons/main/RainIcon';
 import { DataCard } from './DataCard';
 import { RainModal } from './modals/RainModal';
-import { clsx } from 'clsx';
 
 interface RainCardProps {
 	rainPrecipMm: number;
@@ -44,7 +43,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/rain') : () => setShowModal(true)}
-			icon={<CloudRain color="#2793FF" />}
+			icon={<RainIcon />}
 			title={t('rain.title')}
 			description={description}
 			extraContent={
@@ -59,7 +58,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<CloudRain color="#2793FF" />}
+						icon={<RainIcon />}
 						header={t('rain.title')}
 						onClose={() => setShowModal(false)}
 					>

@@ -3,7 +3,7 @@ import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { Calendar } from 'app/components/icons/CalendarIcon';
+import { Calendar } from 'app/components/icons/main/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSelectedDay } from 'app/hooks/useSelectedDay';

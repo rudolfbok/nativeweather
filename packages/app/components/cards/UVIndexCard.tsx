@@ -2,12 +2,12 @@ import { useTranslate } from '@tolgee/react';
 import UVScale from 'app/assets/uvscale.png';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
-import { Sun } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
+import { UVIcon } from '../icons/main/UVIcon';
 import { DataCard } from './DataCard';
 import { UVIndexModal } from './modals/UVIndexModal';
 
@@ -34,7 +34,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/uvindex') : () => setShowModal(true)}
-			icon={<Sun color="purple" />}
+			icon={<UVIcon />}
 			title="UV"
 			description={description}
 			extraContent={
@@ -57,12 +57,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 			data={Math.round(data)}
 			modal={
 				showModal && (
-					<StyledModal
-						visible={showModal}
-						icon={<Sun color="purple" />}
-						header="UV Index"
-						onClose={() => setShowModal(false)}
-					>
+					<StyledModal visible={showModal} icon={<UVIcon />} header="UV Index" onClose={() => setShowModal(false)}>
 						<UVIndexModal />
 					</StyledModal>
 				)

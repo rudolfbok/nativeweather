@@ -1,12 +1,12 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { Snowflake } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
+import { SnowIcon } from '../icons/main/SnowIcon';
 import { DataCard } from './DataCard';
 import { SnowModal } from './modals/SnowModal';
 
@@ -43,7 +43,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/snow') : () => setShowModal(true)}
-			icon={<Snowflake color="#3796B8" />}
+			icon={<SnowIcon />}
 			title={t('snow.title')}
 			description={description}
 			extraContent={
@@ -58,7 +58,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Snowflake color="#3796B8" />}
+						icon={<SnowIcon />}
 						header={t('snow.title')}
 						onClose={() => setShowModal(false)}
 					>

@@ -1,9 +1,9 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { ChevronIcon } from 'app/components/icons/ChevronIcon';
+import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { DotIndicator } from 'app/components/icons/DotIndicator';
+import { DotIndicator } from 'app/components/icons/ui/DotIndicator';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 
 interface AlertItemProps {

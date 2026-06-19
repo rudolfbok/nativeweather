@@ -1,15 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
-import { Sunrise } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
 import { StyledText } from '../common/styled/StyledText';
+import { SunriseIcon } from '../icons/main/SunriseIcon';
 import { DataCard } from './DataCard';
 import { SunriseModal } from './modals/SunriseModal';
-import { clsx } from 'clsx';
 
 export const SunriseCard = ({ data }: { data: string }) => {
 	const [currentLanguage] = useStorageString('currentLang');
@@ -20,7 +19,7 @@ export const SunriseCard = ({ data }: { data: string }) => {
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/sunrise') : () => setShowModal(true)}
-			icon={<Sunrise color="#FFBF04" />}
+			icon={<SunriseIcon />}
 			title={t('sunrise.title')}
 			data={formatTime(data, currentLanguage)}
 			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
@@ -28,7 +27,7 @@ export const SunriseCard = ({ data }: { data: string }) => {
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Sunrise color="#FFBF04" />}
+						icon={<SunriseIcon />}
 						header={t('sunrise.title')}
 						onClose={() => setShowModal(false)}
 					>

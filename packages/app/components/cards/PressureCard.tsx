@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { CircleGauge } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../common/styled/StyledModal';
+import { PressureIcon } from '../icons/main/PressureIcon';
 import { DataCard } from './DataCard';
 import { PressureModal } from './modals/PressureModal';
 
@@ -50,7 +50,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	return (
 		<DataCard
 			onPress={Platform.OS === 'ios' ? () => router.push('/modals/pressure') : () => setShowModal(true)}
-			icon={<CircleGauge color="#737373" />}
+			icon={<PressureIcon />}
 			title={t('pressure.title')}
 			description={description}
 			data={display}
@@ -58,7 +58,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<CircleGauge color="#737373" />}
+						icon={<PressureIcon />}
 						header={t('pressure.title')}
 						onClose={() => setShowModal(false)}
 					>
