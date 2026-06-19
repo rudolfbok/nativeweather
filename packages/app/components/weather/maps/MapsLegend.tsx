@@ -2,8 +2,8 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
-import { LinearGradient } from 'expo-linear-gradient';
 import { View } from 'react-native';
+import { LegendGradient } from './LegendGradient';
 
 const celsiusStops = [
 	{ value: -50, color: '#000082' },
@@ -79,13 +79,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 		<View className={clsx('w-full')}>
 			<StyledText type="body">{description}</StyledText>
 			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')}>
-				<LinearGradient
-					colors={colors}
-					locations={locations}
-					style={{ flex: 1 }}
-					start={{ x: 0, y: 0 }}
-					end={{ x: 1, y: 0 }}
-				>
+				<LegendGradient colors={colors} locations={locations}>
 					<View className={clsx('ml-1 mr-6 flex-1 flex-row items-center justify-between md:mr-7')}>
 						{labelStops.map((stop, index) => (
 							<View
@@ -100,7 +94,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 							</View>
 						))}
 					</View>
-				</LinearGradient>
+				</LegendGradient>
 			</View>
 			{!!unit && (
 				<StyledText type="bodysecondary" className={clsx('mt-1 text-right opacity-70')}>
