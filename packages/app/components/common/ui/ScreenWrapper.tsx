@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
-import { ScrollView } from 'react-native';
+import { ReactElement, ReactNode } from 'react';
+import { RefreshControlProps, ScrollView } from 'react-native';
 
 interface ScreenWrapperProps {
-	refreshControl?: any;
+	refreshControl?: ReactElement<RefreshControlProps>;
 	children: ReactNode;
 }
 

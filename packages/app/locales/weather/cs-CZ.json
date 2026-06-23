@@ -213,14 +213,14 @@
 			"2": "Velká šance",
 			"3": "Bude sněžit"
 		},
-		"uvindex": {
+		"uv": {
 			"0": "Minimální",
 			"1": "Střední",
 			"2": "Vysoké",
 			"3": "Velmi vysoké",
 			"4": "Extrémní"
 		},
-		"visibility": {
+		"range": {
 			"0": "Hustá mlha",
 			"1": "Mlha",
 			"2": "Lehká mlha",
@@ -429,7 +429,7 @@
 			"title": "Soumrak"
 		}
 	},
-	"uvindex": {
+	"uv": {
 		"index": {
 			"description": "UV Index je mezinárodní standard pro měření intenzity ultrafialového záření dopadającího na zemský povrch. Tento index pomáhá lidem pochopit riziko poškození kůže slunečním zářením a přijmout vhodná ochranná opatření.",
 			"title": "Podrobnosti o indexu",
@@ -447,7 +447,7 @@
 			"4": "Chraňte se před sluncem, bez ochrany nevycházejte ven."
 		}
 	},
-	"visibility": {
+	"range": {
 		"about": "Definice",
 		"text": "Dohlednost udává maximální vzdálenost, na kterou lze rozeznat objekty pouhým okem. Je ovlivněna mlhou, vlhkostí vzduchu, znečištěním a srážkami. Dohlednost je důležitá pro bezpečnost v dopravě, letectví a námořní plavbě.",
 		"title": "Dohled",

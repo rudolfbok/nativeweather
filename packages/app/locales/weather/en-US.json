@@ -213,14 +213,14 @@
 			"2": "Moderate chance",
 			"3": "It will snow"
 		},
-		"uvindex": {
+		"uv": {
 			"0": "Minimal",
 			"1": "Moderate",
 			"2": "High",
 			"3": "Very high",
 			"4": "Extreme"
 		},
-		"visibility": {
+		"range": {
 			"0": "Dense fog",
 			"1": "Mist",
 			"2": "Light fog",
@@ -429,7 +429,7 @@
 			"title": "Twilight"
 		}
 	},
-	"uvindex": {
+	"uv": {
 		"index": {
 			"description": "The UV Index is an international standard for measuring the intensity of ultraviolet radiation reaching the Earth's surface. This index helps people understand the risk of skin damage from sunlight and take appropriate protective measures.",
 			"title": "About index",
@@ -447,11 +447,11 @@
 			"4": "Completely protect yourself from the sun, without any protection do not stay outside."
 		}
 	},
-	"visibility": {
+	"range": {
 		"about": "Definition",
-		"text": "Visibility indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Visibility is important for safety in transportation, aviation, and maritime navigation.",
+		"text": "Range indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Range is important for safety in transportation, aviation, and maritime navigation.",
 		"title": "Range",
-		"values": "Visibility scale"
+		"values": "Range scale"
 	},
 	"wind": {
 		"beaufortscale": "Beaufort scale",

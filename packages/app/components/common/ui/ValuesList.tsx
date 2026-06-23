@@ -1,12 +1,12 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { ModalValueItem } from '../../cards/modals/ModalValueItem';
+import { ModalValueItem } from './ModalValueItem';
 import { Separator } from './Separator';
 
 interface ValuesListProps {
 	values: {
 		name: string;
-		value?: any; //// ?????
+		value?: string;
 		textColor?: string;
 		description?: string;
 		moonPhase?: React.ReactNode;

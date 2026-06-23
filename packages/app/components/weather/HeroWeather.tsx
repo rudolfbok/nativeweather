@@ -8,14 +8,15 @@ import {
 	SnowCard,
 	SunriseCard,
 	SunsetCard,
-	UVIndexCard,
-	VisibilityCard,
+	UVCard,
+	RangeCard,
 	WindCard,
+	CloudsCard,
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { AlertWeather } from './alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
-import { MainWeather } from 'app/components/weather/main/MainWeather';
+import { MainWeather } from 'app/components/weather/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
@@ -26,7 +27,6 @@ import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { Platform, View } from 'react-native';
-import { CloudsCard } from '../cards/CloudsCard';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from './maps/MapsView';
 import { SmartSummary } from './SmartSummary';
@@ -71,7 +71,7 @@ export const HeroWeather = () => {
 	);
 
 	const currentIndex = weatherData.forecast.forecastday[0].hour.findIndex(
-		(hour: any) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
+		(hour) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
 	);
 
 	const currentRainChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfRain;
@@ -107,8 +107,8 @@ export const HeroWeather = () => {
 					details={true}
 					currentWind={true}
 				/>
-				<UVIndexCard data={weatherData.current.uv} />
-				<VisibilityCard visKm={weatherData.current.visibilityKm} visMiles={weatherData.current.visibilityMiles} />
+				<UVCard data={weatherData.current.uv} />
+				<RangeCard visKm={weatherData.current.rangeKm} visMiles={weatherData.current.rangeMiles} />
 				<HumidityCard
 					data={weatherData.current.humidity}
 					dewPoint={true}
@@ -150,12 +150,7 @@ export const HeroWeather = () => {
 							code={weatherData.current.condition.code}
 							feelslike={true}
 							condition={conditionLabel}
-							textColor="!text-white"
-							conditionText="!text-white"
-							colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
-							arrowcolor="white"
-							displayTime={true}
-							strokeWidth={0}
+							// colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
 						/>
 						<AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />
 					</View>
@@ -171,10 +166,10 @@ export const HeroWeather = () => {
 						cloudCover={weatherData.current.cloudCover}
 						airQualityEU={airQualityData?.current.european_aqi}
 						airQualityUS={airQualityData?.current.us_aqi}
-						uvIndex={weatherData.current.uv}
+						uv={weatherData.current.uv}
 						maxWindKph={weatherData.forecast.forecastday[0].day.maxWindKph}
-						avgVisibilityKm={weatherData.current.visibilityKm}
-						avgVisibilityMiles={weatherData.current.visibilityMiles}
+						avgRangeKm={weatherData.current.rangeKm}
+						avgRangeMiles={weatherData.current.rangeMiles}
 						dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
 					/>
 					<HourlyForecast />

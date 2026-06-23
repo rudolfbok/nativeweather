@@ -1,7 +1,7 @@
 import { fetchWeatherAPI } from './fetchWeatherAPI';
 import { mapWeatherApi } from './mapWeatherAPI';
 
-export const fetchWeather = async (query: any, source: string) => {
+export const fetchWeather = async (query: string | number[], source: string) => {
 	try {
 		if (source === 'weatherapi') {
 			const weatherData = await fetchWeatherAPI(query);

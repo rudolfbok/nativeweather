@@ -4,65 +4,65 @@ import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../common/styled/StyledModal';
-import { StyledText } from '../common/styled/StyledText';
-import { RainIcon } from '../icons/main/RainIcon';
-import { DataCard } from './DataCard';
-import { RainModal } from './modals/RainModal';
+import { StyledModal } from '../../common/styled/StyledModal';
+import { StyledText } from '../../common/styled/StyledText';
+import { SnowIcon } from '../../icons/main/SnowIcon';
+import { DataCard } from '../DataCard';
+import { SnowModal } from './SnowModal';
 
-interface RainCardProps {
-	rainPrecipMm: number;
-	rainPrecipIn: number;
-	rainChance: number;
+interface SnowCardProps {
+	snowPrecipCm: number;
+	snowPrecipIn: number;
+	snowChance: number;
 }
 
-export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardProps) => {
+export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 	const router = useRouter();
 
 	const display = switchMetrics({
-		metric: `${rainPrecipMm.toFixed(1)}mm`,
-		imperial: `${rainPrecipIn.toFixed(2)}in`,
+		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
+		imperial: `${snowPrecipIn ?? (0).toFixed(2)}in`,
 		currentUnits: currentUnits,
 	});
 
-	const rainChanceRanges = [
+	const snowChanceRanges = [
 		{ max: 10, description: t('precipitation.chance.0') },
 		{ max: 30, description: t('precipitation.chance.1') },
-		{ max: 50, description: t('precipitation.chance.2') },
+		{ max: 50, description: t('precipitation.snow.chance.2') },
 		{ max: 70, description: t('precipitation.chance.3') },
 		{ max: 90, description: t('precipitation.chance.4') },
 		{ max: 100, description: t('precipitation.chance.5') },
 		{ max: Infinity, description: t('precipitation.chance.6') },
 	];
 
-	const description = rainChanceRanges.find((range) => rainChance < range.max)?.description ?? '';
+	const description = snowChanceRanges.find((range) => snowChance < range.max)?.description ?? '';
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/rain') : () => setShowModal(true)}
-			icon={<RainIcon />}
-			title={t('rain.title')}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/snow') : () => setShowModal(true)}
+			icon={<SnowIcon />}
+			title={t('snow.title')}
 			description={description}
 			extraContent={
-				(rainPrecipMm >= 0.1 || rainPrecipIn >= 0.1) && (
+				(snowPrecipCm >= 0.1 || snowPrecipIn >= 0.1) && (
 					<StyledText type="body">
-						{t('rain.rainfall')} {display}
+						{t('snow.snowfall')} {display}
 					</StyledText>
 				)
 			}
-			data={Math.round(rainChance) + '%'}
+			data={snowChance + '%'}
 			modal={
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<RainIcon />}
-						header={t('rain.title')}
+						icon={<SnowIcon />}
+						header={t('snow.title')}
 						onClose={() => setShowModal(false)}
 					>
-						<RainModal />
+						<SnowModal />
 					</StyledModal>
 				)
 			}

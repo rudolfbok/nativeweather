@@ -4,10 +4,10 @@ import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../common/styled/StyledModal';
-import { PressureIcon } from '../icons/main/PressureIcon';
-import { DataCard } from './DataCard';
-import { PressureModal } from './modals/PressureModal';
+import { StyledModal } from '../../common/styled/StyledModal';
+import { PressureIcon } from '../../icons/main/PressureIcon';
+import { DataCard } from '../DataCard';
+import { PressureModal } from './PressureModal';
 
 interface PressureCardProps {
 	pressureMb: number;

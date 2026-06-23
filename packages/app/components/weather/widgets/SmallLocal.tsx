@@ -4,7 +4,7 @@ import { createWidget } from 'expo-widgets';
 
 type SmallLocalWidgetProps = {
 	temp: string;
-	imagePath: any;
+	imagePath: string;
 	bgColor: string;
 	minTemperature: string;
 	maxTemperature: string;

@@ -1,5 +1,5 @@
 import { useTolgee } from '@tolgee/react';
-import { RainCard, SnowCard, UVIndexCard, VisibilityCard, WindCard } from 'app/components/cards';
+import { RainCard, SnowCard, UVCard, RangeCard, WindCard } from 'app/components/cards';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useStorageString } from 'app/storage/useStorage';
@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
-import { MainWeather } from '../main/MainWeather';
+import { MainWeather } from '../MainWeather';
 import { SmartSummary } from '../SmartSummary';
 
 export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['forecastday'][0] | null }) => {
@@ -68,9 +68,9 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 				snowPrecipCm={day.day.totalSnowCm}
 				snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
 				maxWindKph={day.day.maxWindKph}
-				uvIndex={day.day.uv}
-				avgVisibilityKm={day.day.avgVisKm}
-				avgVisibilityMiles={day.day.avgVisMiles}
+				uv={day.day.uv}
+				avgRangeKm={day.day.avgVisKm}
+				avgRangeMiles={day.day.avgVisMiles}
 				dateEpoch={day.date_epoch}
 			/>
 			{!day.hour || day.hour.length === 0 ? null : (
@@ -108,8 +108,8 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 					/>
 				)}
 
-				<UVIndexCard data={day.day.uv} />
-				<VisibilityCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
+				<UVCard data={day.day.uv} />
+				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
 				<WindCard
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}

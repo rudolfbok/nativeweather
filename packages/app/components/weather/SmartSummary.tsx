@@ -15,7 +15,7 @@ const SUMMARY_ICON = <SmartSummaryIcon />;
 
 type Variant = 1 | 2 | 3;
 type AQIType = 'eu' | 'us';
-type SummaryCategory = 'combo' | 'precip' | 'cloud' | 'wind' | 'uv' | 'visibility' | 'aqi' | 'range';
+type SummaryCategory = 'combo' | 'precip' | 'cloud' | 'wind' | 'uv' | 'range' | 'aqi' | 'range';
 
 interface SummaryCandidate {
 	category: SummaryCategory;
@@ -37,10 +37,10 @@ interface SmartSummaryProps {
 	cloudCover?: number;
 	airQualityEU?: number;
 	airQualityUS?: number;
-	uvIndex?: number;
+	uv?: number;
 	maxWindKph?: number;
-	avgVisibilityKm?: number;
-	avgVisibilityMiles?: number;
+	avgRangeKm?: number;
+	avgRangeMiles?: number;
 	dateEpoch?: number;
 }
 
@@ -113,10 +113,10 @@ export const SmartSummary = React.memo(function SmartSummary({
 	cloudCover,
 	airQualityEU,
 	airQualityUS,
-	uvIndex,
+	uv,
 	maxWindKph,
-	avgVisibilityKm,
-	avgVisibilityMiles,
+	avgRangeKm,
+	avgRangeMiles,
 	dateEpoch,
 }: SmartSummaryProps) {
 	const { t } = useTranslate('summary');
@@ -140,9 +140,9 @@ export const SmartSummary = React.memo(function SmartSummary({
 		imperial: `${(snowPrecipIn ?? 0).toFixed(2)} in`,
 		currentUnits,
 	});
-	const visibility = switchMetrics({
-		metric: `${Math.round(avgVisibilityKm ?? 0)} km`,
-		imperial: `${Math.round(avgVisibilityMiles ?? 0)} mi`,
+	const range = switchMetrics({
+		metric: `${Math.round(avgRangeKm ?? 0)} km`,
+		imperial: `${Math.round(avgRangeMiles ?? 0)} mi`,
 		currentUnits,
 	});
 	const wind = switchMetrics({
@@ -163,8 +163,8 @@ export const SmartSummary = React.memo(function SmartSummary({
 		const hasSnow = snowCm > 0.1;
 		const cloudBucket = getCloudBucket(cloudCover);
 		const windBucket = maxWindKph == null ? null : maxWindKph >= 40 ? 'strong' : maxWindKph >= 20 ? 'breezy' : 'light';
-		const uvBucket = uvIndex == null ? null : uvIndex >= 8 ? 'very_high' : uvIndex > 5 ? 'high' : 'low';
-		const hasLowVisibility = avgVisibilityKm != null && avgVisibilityKm > 0 && avgVisibilityKm < 5;
+		const uvBucket = uv == null ? null : uv >= 8 ? 'very_high' : uv > 5 ? 'high' : 'low';
+		const hasLowRange = avgRangeKm != null && avgRangeKm > 0 && avgRangeKm < 5;
 		const isColdDay = tempBucket === 'freezing' || tempBucket === 'cold';
 		const isHotDay = tempBucket === 'hot' || tempBucket === 'warm';
 		const preferredAQIType: AQIType = currentAQI === 'EU' ? 'eu' : 'us';
@@ -195,8 +195,8 @@ export const SmartSummary = React.memo(function SmartSummary({
 					rain,
 					snow,
 					wind,
-					visibility,
-					uv: Math.round(uvIndex ?? 0),
+					range,
+					uv: Math.round(uv ?? 0),
 					aqi: selectedAQIValue,
 					range: displayTempRange,
 				}),
@@ -209,11 +209,11 @@ export const SmartSummary = React.memo(function SmartSummary({
 		} else if (hasSnow && isColdDay) {
 			addComboCandidate('snow_cold', ['precip'], 5);
 		} else if (hasSnow && (windBucket === 'strong' || windBucket === 'breezy')) {
-			addComboCandidate('snow_wind', ['precip', 'wind', 'visibility'], 6);
+			addComboCandidate('snow_wind', ['precip', 'wind', 'range'], 6);
 		} else if (hasRain && (windBucket === 'strong' || windBucket === 'breezy')) {
 			addComboCandidate('rain_wind', ['precip', 'wind'], 6);
-		} else if (hasRain && hasLowVisibility) {
-			addComboCandidate('rain_visibility', ['precip', 'visibility'], 7);
+		} else if (hasRain && hasLowRange) {
+			addComboCandidate('rain_range', ['precip', 'range'], 7);
 		} else if (isHotDay && (uvBucket === 'very_high' || uvBucket === 'high')) {
 			addComboCandidate('heat_uv', ['uv'], 7);
 		} else if (isHotDay && selectedAQILevel != null && selectedAQILevel >= 3) {
@@ -300,16 +300,16 @@ export const SmartSummary = React.memo(function SmartSummary({
 				category: 'uv',
 				order: 4,
 				priority: uvBucket === 'very_high' ? 14 : uvBucket === 'high' ? 32 : 75,
-				text: t(`uv_${uvBucket}_${variant}`, { value: Math.round(uvIndex) }),
+				text: t(`uv_${uvBucket}_${variant}`, { value: Math.round(uv) }),
 			});
 		}
 
-		if (avgVisibilityKm != null && avgVisibilityKm > 0) {
+		if (avgRangeKm != null && avgRangeKm > 0) {
 			addCandidate({
-				category: 'visibility',
+				category: 'range',
 				order: 5,
-				priority: avgVisibilityKm < 5 ? (avgVisibilityKm < 2 ? 13 : 24) : 80,
-				text: t(`visibility_${avgVisibilityKm < 5 ? 'low' : 'good'}_${variant}`, { amount: visibility }),
+				priority: avgRangeKm < 5 ? (avgRangeKm < 2 ? 13 : 24) : 80,
+				text: t(`range_${avgRangeKm < 5 ? 'low' : 'good'}_${variant}`, { amount: range }),
 			});
 		}
 
@@ -370,7 +370,7 @@ export const SmartSummary = React.memo(function SmartSummary({
 	}, [
 		airQualityEU,
 		airQualityUS,
-		avgVisibilityKm,
+		avgRangeKm,
 		cloudCover,
 		currentAQI,
 		dateEpoch,
@@ -386,8 +386,8 @@ export const SmartSummary = React.memo(function SmartSummary({
 		snowPrecipCm,
 		tempRangeC,
 		t,
-		uvIndex,
-		visibility,
+		uv,
+		range,
 		wind,
 	]);
 

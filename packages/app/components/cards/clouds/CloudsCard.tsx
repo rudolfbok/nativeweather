@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
 import { useState } from 'react';
-import { CloudsIcon } from '../icons/main/CloudsIcon';
-import { DataCard } from './DataCard';
-import { CloudsModal } from './modals/CloudsModal';
+import { CloudsIcon } from 'app/components/icons/main';
+import { DataCard } from '../DataCard';
+import { CloudsModal } from './CloudsModal';
 import { clsx } from 'clsx';
-import { StyledModal } from '../common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 
 export const CloudsCard = ({ data }: { data: number }) => {
 	const { t } = useTranslate('weather');

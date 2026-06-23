@@ -23,8 +23,8 @@ export interface NormalizedData {
 		pressureInHg: number;
 		pressureMb: number;
 		uv: number;
-		visibilityKm: number;
-		visibilityMiles: number;
+		rangeKm: number;
+		rangeMiles: number;
 		windDegree: number;
 		windDir: string;
 		windKph: number;

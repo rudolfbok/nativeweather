@@ -25,8 +25,8 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 			pressureInHg: data.current.pressure_in,
 			pressureMb: data.current.pressure_mb,
 			uv: data.current.uv,
-			visibilityKm: data.current.vis_km,
-			visibilityMiles: data.current.vis_miles,
+			rangeKm: data.current.vis_km,
+			rangeMiles: data.current.vis_miles,
 			windDegree: data.current.wind_degree,
 			windDir: data.current.wind_dir,
 			windKph: data.current.wind_kph,
@@ -41,7 +41,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 			},
 		},
 		forecast: {
-			forecastday: data.forecast.forecastday.map((day: any) => ({
+			forecastday: data.forecast.forecastday.map((day) => ({
 				date: day.date,
 				date_epoch: day.date_epoch,
 				day: {
@@ -66,7 +66,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 						code: day.day.condition.code,
 					},
 				},
-				hour: day.hour.map((hour: any) => ({
+				hour: day.hour.map((hour) => ({
 					timeEpoch: hour.time_epoch,
 					tempC: hour.temp_c,
 					tempF: hour.temp_f,

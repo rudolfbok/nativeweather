@@ -12,5 +12,5 @@ export * from './SnowIcon';
 export * from './SunriseIcon';
 export * from './SunsetIcon';
 export * from './UVIcon';
-export * from './VisibilityIcon';
+export * from './RangeIcon';
 export * from './WindIcon';

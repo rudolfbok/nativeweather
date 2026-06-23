@@ -1,17 +1,37 @@
 import { clsx } from 'clsx';
+import { GlassColorScheme, GlassEffectStyleConfig, GlassStyle, GlassView, GlassViewProps } from 'expo-glass-effect';
 import React from 'react';
-import { View } from 'react-native';
+import { Platform, StyleProp, TextStyle, View } from 'react-native';
 
 interface RoundViewProps {
-	className?: string;
 	children: React.ReactNode;
-	style?: any;
-	colorScheme?: any;
+	style?: StyleProp<TextStyle>;
+	className?: string;
+	colorScheme?: GlassColorScheme;
 	liquidGlass?: boolean;
-	glassEffectStyle?: any;
+	glassEffectStyle?: GlassStyle;
 }
 
-export const RoundView = ({ className, children }: RoundViewProps) => {
+export const RoundView = ({
+	liquidGlass = false,
+	glassEffectStyle,
+	colorScheme,
+	style,
+	className,
+	children,
+}: RoundViewProps) => {
+	if (Platform.OS === 'ios' && liquidGlass) {
+		return (
+			<GlassView
+				style={{ borderRadius: 24, overflow: 'hidden', ...style }}
+				colorScheme={colorScheme}
+				glassEffectStyle={glassEffectStyle}
+			>
+				{children}
+			</GlassView>
+		);
+	}
+
 	return (
 		<View
 			className={clsx(

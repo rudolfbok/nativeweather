@@ -1,7 +1,7 @@
 import { WeatherAPIMainIcon } from '../../utils/mappings/mapWeatherAPIIcons';
 
 interface MapWeatherIconsProps {
-	code: any;
+	code: number;
 	isDay: 0 | 1;
 	width: number;
 	height: number;

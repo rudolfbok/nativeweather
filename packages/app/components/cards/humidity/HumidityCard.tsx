@@ -4,11 +4,11 @@ import { switchTemp } from 'app/utils/switch/switchTemp';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../common/styled/StyledModal';
-import { StyledText } from '../common/styled/StyledText';
-import { HumidityIcon } from '../icons/main/HumidityIcon';
-import { DataCard } from './DataCard';
-import { HumidityModal } from './modals/HumidityModal';
+import { StyledModal } from '../../common/styled/StyledModal';
+import { StyledText } from '../../common/styled/StyledText';
+import { HumidityIcon } from '../../icons/main/HumidityIcon';
+import { DataCard } from '../DataCard';
+import { HumidityModal } from './HumidityModal';
 
 interface HumidityCardProps {
 	data: number;

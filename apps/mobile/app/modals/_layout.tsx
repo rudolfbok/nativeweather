@@ -9,7 +9,7 @@ import {
 	SunriseIcon,
 	SunsetIcon,
 	UVIcon,
-	VisibilityIcon,
+	RangeIcon,
 	WindIcon,
 } from 'app/components/icons/main';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
@@ -86,15 +86,15 @@ export default function ModalsLayout() {
 				}}
 			/>
 			<Stack.Screen
-				name="uvindex"
+				name="uv"
 				options={{
 					headerTitle: () => <ModalHeader icon={<UVIcon />} title="UV Index" />,
 				}}
 			/>
 			<Stack.Screen
-				name="visibility"
+				name="range"
 				options={{
-					headerTitle: () => <ModalHeader icon={<VisibilityIcon />} title={t('visibility.title')} />,
+					headerTitle: () => <ModalHeader icon={<RangeIcon />} title={t('range.title')} />,
 				}}
 			/>
 			<Stack.Screen

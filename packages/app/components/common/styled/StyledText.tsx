@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
-import { Text, TextProps, TextStyle } from 'react-native';
+import { CSSProperties } from 'react';
+import { StyleProp, Text, TextProps, TextStyle } from 'react-native';
 
 const textStyles = {
 	screentitle: 'text-4xl web:text-xl font-bold',
@@ -22,7 +23,7 @@ interface StyledTextProps extends TextProps {
 	children: React.ReactNode;
 	className?: string;
 	type: keyof typeof textStyles;
-	style?: any;
+	style?: StyleProp<TextStyle>;
 }
 
 export const StyledText = ({ children, type, className, style, ...rest }: StyledTextProps) => {

@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { CompassIcon } from 'app/components/icons/settings/CompassIcon';
+import { useStorageBoolean } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ export const CompassFeature = () => {
 	const { t } = useTranslate('weather');
 	const [compassRotation, setCompassRotation] = useState(0);
 	const [heading, setHeading] = useState<number | null>(null);
-	const [permissionGranted, setPermissionGranted] = useState(false);
+	const [permissionGranted, setPermissionGranted] = useStorageBoolean('compassPermission');
 
 	const requestPermission = async () => {
 		const DeviceOrientationEventWithPermission = DeviceOrientationEvent as any;
@@ -186,16 +186,9 @@ export const CompassFeature = () => {
 				</div>
 			) : (
 				<View className={clsx('flex items-center gap-2')}>
-					<View className="items-center gap-2 p-4 md:w-1/2 lg:w-[40%]">
-						<View className={clsx('w-fit rounded-xl bg-[#FF0000] p-2')}>
-							<CompassIcon width={40} height={40} />
-						</View>
-						<StyledText type="maintitle" className={clsx('text-center')}>
-							{t('compass.title')}
-						</StyledText>
-						<StyledText type="body" className={clsx('text-center')}>
-							{t('compass.text')}
-						</StyledText>
+					<View className="gap-2 md:w-1/2 lg:w-[40%]">
+						<StyledText type="maintitle">{t('compass.title')}</StyledText>
+						<StyledText type="body">{t('compass.text')}</StyledText>
 					</View>
 					<StyledButton
 						onPress={requestPermission}

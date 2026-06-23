@@ -3,7 +3,7 @@ import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { Calendar } from 'app/components/icons/main/CalendarIcon';
+import { CalendarIcon } from 'app/components/icons/main/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useSelectedDay } from 'app/hooks/useSelectedDay';
@@ -59,7 +59,11 @@ export const DailyForecast = () => {
 	return (
 		<>
 			<RoundView className={clsx('flex w-full')} liquidGlass={true}>
-				<CardHeader icon={<Calendar />} header={t('dailyforecast.title')} className={clsx('web:px-4 mb-1 px-4 pt-4')} />
+				<CardHeader
+					icon={<CalendarIcon />}
+					header={t('dailyforecast.title')}
+					className={clsx('web:px-4 mb-1 px-4 pt-4')}
+				/>
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 					<Pressable
 						key={index}

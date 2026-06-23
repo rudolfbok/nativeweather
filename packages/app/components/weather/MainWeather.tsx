@@ -1,5 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { RoundView } from 'app/components/common/ui/RoundView';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
@@ -11,7 +12,7 @@ import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Pressable, View } from 'react-native';
+import { Platform, Pressable, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -27,12 +28,7 @@ interface MainWeatherProps {
 	feelsLikeF?: number;
 	isDay: 0 | 1;
 	code: number;
-	condition: any;
-	textColor: string;
-	arrowcolor: string;
-	strokeWidth?: number;
-	displayTime: boolean;
-	colorScheme?: any;
+	condition: string;
 	displayShadow?: boolean;
 	conditionStyle?: string;
 	dailyModal?: boolean;
@@ -83,12 +79,15 @@ export const MainWeather = ({
 		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4', dailyModal && 'gap-0')}>
 			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
 				<View
-					className={clsx('absolute -top-[435px] left-1/2 -translate-x-1/2 scale-x-[2]', dailyModal && '-top-[510px]')}
+					className={clsx(
+						'absolute -bottom-[10px] left-1/2 -translate-x-1/2 scale-x-[2]',
+						dailyModal && '-top-[510px]'
+					)}
 				>
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
 			</View>
-			{name && country && (
+			{Platform.OS === 'web' && name && country && (
 				<View className={clsx('relative z-10 flex-col items-center')}>
 					<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
 						{name}
@@ -142,24 +141,22 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl', conditionStyle)}>
+			<RoundView
+				liquidGlass={true}
+				glassEffectStyle="clear"
+				style={{ paddingHorizontal: 12, paddingVertical: 8 }}
+				className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl', conditionStyle)}
+			>
 				<StyledText type="title" className={clsx('!text-white')} style={textShadowStyle}>
 					{condition}
 				</StyledText>
-			</View>
+			</RoundView>
 			<Pressable
 				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
 				className={clsx('native:hidden absolute bottom-4 right-4 z-20 lg:p-2', dailyModal && 'hidden')}
 			>
 				<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
 			</Pressable>
-			{/* {showWorldTime && displayTime && (
-				<View className={clsx('flex flex-row items-center justify-center')}>
-					<StyledText type="localtime" className={clsx('font-semibold')}>
-						{getLocalTimeNow(weatherData!.location.tzId)}
-					</StyledText>
-				</View>
-			)} */}
 		</View>
 	);
 };

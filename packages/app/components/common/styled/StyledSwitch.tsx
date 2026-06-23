@@ -2,8 +2,8 @@ import { Switch, View } from 'react-native';
 import { clsx } from 'clsx';
 
 interface StyledSwitchProps {
-	value: any;
-	onValueChange: any;
+	value: boolean;
+	onValueChange: (value: boolean) => void;
 }
 
 export const StyledSwitch = ({ value, onValueChange }: StyledSwitchProps) => {

@@ -6,6 +6,7 @@ import { useWeather } from 'app/hooks/useWeather';
 import { useTolgee } from '@tolgee/react';
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { NormalizedData } from 'app/types/normalizedData';
 
 export default function ForecastModalScreen() {
 	const { weatherData } = useWeather();
@@ -28,7 +29,10 @@ export default function ForecastModalScreen() {
 
 	return (
 		<ModalScrollView>
-			<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={(day: any) => setSelectedDay(day)} />
+			<DaysToggle
+				days={weatherData.forecast.forecastday}
+				onSelectDay={(day: NormalizedData['forecast']['forecastday'][0]) => setSelectedDay(day)}
+			/>
 			<DailyForecastMain day={selectedDay} />
 		</ModalScrollView>
 	);

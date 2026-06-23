@@ -6,12 +6,11 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useTextColor } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
-import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, View } from 'react-native';
+import { RefreshControl, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -95,16 +94,7 @@ export const WeatherFeature = () => {
 
 	return (
 		<View className={clsx('flex-1')}>
-			<Animated.View
-				pointerEvents="none"
-				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
-				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
-			>
-				<ActivityIndicator animating={true} size="large" color="#FFFFFF83" />
-			</Animated.View>
 			<Animated.ScrollView
-				// onScroll={scrollHandler}
-				// scrollEventThrottle={16}
 				contentInsetAdjustmentBehavior="automatic"
 				refreshControl={
 					<RefreshControl
@@ -113,13 +103,9 @@ export const WeatherFeature = () => {
 						progressBackgroundColor="transparent"
 						refreshing={refreshing}
 						onRefresh={onRefresh}
-						// progressViewOffset={150}
 					/>
 				}
 			>
-				<View className={clsx('absolute -top-[540px] left-0 right-0 -z-10 h-[1000px]')}>
-					<WeatherLandscape code={weatherData.current.condition.code} isDay={weatherData.current.isDay} />
-				</View>
 				<HeroWeather />
 			</Animated.ScrollView>
 		</View>

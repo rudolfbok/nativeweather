@@ -1,5 +1,5 @@
 import { Snowflake } from 'lucide-react-native';
 
 export const SnowIcon = () => {
-	return <Snowflake color="#3796B8" />;
+	return <Snowflake color="#3796B8" fill="#3796B8" />;
 };

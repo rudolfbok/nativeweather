@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../common/styled/StyledModal';
-import { UVIcon } from '../icons/main/UVIcon';
-import { DataCard } from './DataCard';
-import { UVIndexModal } from './modals/UVIndexModal';
+import { StyledModal } from '../../common/styled/StyledModal';
+import { UVIcon } from '../../icons/main/UVIcon';
+import { DataCard } from '../DataCard';
+import { UVModal } from './UVModal';
 
-export const UVIndexCard = ({ data }: { data: number }) => {
+export const UVCard = ({ data }: { data: number }) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
@@ -22,18 +22,18 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 	const scaleUV = Math.min((roundUV / MAX_UV) * 100, 100);
 
 	const uvRanges = [
-		{ max: 2, description: t('description.uvindex.0') },
-		{ max: 5, description: t('description.uvindex.1') },
-		{ max: 7, description: t('description.uvindex.2') },
-		{ max: 10, description: t('description.uvindex.3') },
-		{ max: Infinity, description: t('description.uvindex.4') },
+		{ max: 2, description: t('description.uv.0') },
+		{ max: 5, description: t('description.uv.1') },
+		{ max: 7, description: t('description.uv.2') },
+		{ max: 10, description: t('description.uv.3') },
+		{ max: Infinity, description: t('description.uv.4') },
 	];
 
 	const description = uvRanges.find((range) => data < range.max)?.description ?? '';
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/uvindex') : () => setShowModal(true)}
+			onPress={Platform.OS === 'ios' ? () => router.push('/modals/uv') : () => setShowModal(true)}
 			icon={<UVIcon />}
 			title="UV"
 			description={description}
@@ -58,7 +58,7 @@ export const UVIndexCard = ({ data }: { data: number }) => {
 			modal={
 				showModal && (
 					<StyledModal visible={showModal} icon={<UVIcon />} header="UV Index" onClose={() => setShowModal(false)}>
-						<UVIndexModal />
+						<UVModal />
 					</StyledModal>
 				)
 			}

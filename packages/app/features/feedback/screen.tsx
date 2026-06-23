@@ -69,26 +69,21 @@ export const FeedbackFeature = () => {
 					isSelected && '!bg-primaryblue'
 				)}
 			>
-				{icon(isSelected ? 'white' : '#007AFF')}
-				<StyledText type="subtitle" className={clsx(isSelected && '!text-white dark:!text-white')}>
-					{text}
-				</StyledText>
+				<View>{icon(isSelected ? 'white' : '#007AFF')}</View>
+				<View className="flex-1 items-center">
+					<StyledText type="subtitle" className={clsx(isSelected && '!text-white dark:!text-white')}>
+						{text}
+					</StyledText>
+				</View>
 			</StyledPressable>
 		);
 	};
 
 	return (
 		<View className={clsx('gap-4 md:items-center')}>
-			<View className={clsx('ios:hidden flex items-center gap-2 p-4 md:w-1/2 lg:w-[40%]')}>
-				<View className={clsx('bg-primaryblue rounded-xl p-2')}>
-					<MessageCircle size={40} color="white" />
-				</View>
-				<StyledText type="maintitle" className={clsx('text-center')}>
-					{t('feedback.title')}
-				</StyledText>
-				<StyledText type="body" className={clsx('text-center')}>
-					{t('feedback.text')}
-				</StyledText>
+			<View className={clsx('ios:hidden flex gap-2 md:w-1/2 lg:w-[40%]')}>
+				<StyledText type="maintitle">{t('feedback.title')}</StyledText>
+				<StyledText type="body">{t('feedback.text')}</StyledText>
 			</View>
 			<View className={clsx('w-full gap-4 pb-4 md:w-1/2 lg:w-[40%]')}>
 				<View className={clsx('gap-2')}>
@@ -122,9 +117,8 @@ export const FeedbackFeature = () => {
 				<View className={clsx('w-full items-center justify-center')}>
 					<StyledButton
 						onPress={handleSubmit}
-						text={loading ? t('feedback.sending') : t('feedback.button')}
+						text={t('feedback.button')}
 						icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <ArrowRight color="#007AFF" />}
-						className="!min-w-[260px]"
 					/>
 				</View>
 			</View>

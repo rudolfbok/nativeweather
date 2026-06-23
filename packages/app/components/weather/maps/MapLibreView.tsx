@@ -16,7 +16,7 @@ import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
-import { InfoIcon, Thermometer } from 'lucide-react-native';
+import { CloudRain, InfoIcon, Thermometer } from 'lucide-react-native';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, GestureResponderEvent, LayoutChangeEvent, Platform, View } from 'react-native';
@@ -65,7 +65,7 @@ type NativeMapLibre = typeof import('@maplibre/maplibre-react-native');
 
 const layerButtons = [
 	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
-	{ layer: 'precip', icon: <RainIcon /> },
+	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
 	{ layer: 'wind', icon: <WindIcon /> },
 ];
 
@@ -552,7 +552,7 @@ export const MapLibreView = () => {
 					</View>
 				</View>
 			)}
-			<View className={clsx('ios:bottom-28 absolute bottom-4 left-6 gap-2')}>
+			<View className={clsx('ios:bottom-28 absolute bottom-4 left-4 gap-2')}>
 				{tileButtons.map(({ style, icon }, index) => (
 					<MapButton key={index} icon={icon} onPress={() => setTileStyle(style)} />
 				))}
@@ -563,7 +563,7 @@ export const MapLibreView = () => {
 					<StyledText type="body">{t('maps.loading')}</StyledText>
 				</View>
 			)}
-			<View className={clsx('ios:bottom-28 absolute bottom-4 right-6 flex-row items-end gap-2')}>
+			<View className={clsx('ios:bottom-28 absolute bottom-4 right-4 flex-row items-end gap-2')}>
 				{!showLegend && (
 					<MapButton icon={<InfoIcon color={switchColors} />} onPress={() => setShowLegend((prev) => !prev)} />
 				)}

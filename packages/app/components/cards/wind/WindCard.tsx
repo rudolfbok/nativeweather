@@ -7,11 +7,11 @@ import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../common/styled/StyledModal';
-import { StyledText } from '../common/styled/StyledText';
-import { WindArrowIcon } from '../icons/ui/WindArrowIcon';
-import { DataCard } from './DataCard';
-import { WindModal } from './modals/WindModal';
+import { StyledModal } from '../../common/styled/StyledModal';
+import { StyledText } from '../../common/styled/StyledText';
+import { WindArrowIcon } from '../../icons/ui/WindArrowIcon';
+import { DataCard } from '../DataCard';
+import { WindModal } from './WindModal';
 
 interface WindCardProps {
 	windKm: number;

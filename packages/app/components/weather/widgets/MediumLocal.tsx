@@ -14,7 +14,7 @@ type MediumLocalWidgetProps = {
 	code: number;
 	currentSource: string;
 	bgColor: string;
-	imagePath: any;
+	imagePath: string;
 };
 
 const MediumLocalWidget = (props: MediumLocalWidgetProps) => {
