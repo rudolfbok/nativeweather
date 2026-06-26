@@ -13,7 +13,6 @@ interface DataCardProps {
 	extraContent?: React.ReactNode;
 	className?: string;
 	modal: React.ReactNode;
-	style?: StyleProp<ViewStyle>;
 }
 
 export const DataCard = ({
@@ -25,22 +24,15 @@ export const DataCard = ({
 	extraContent,
 	className,
 	modal,
-	style,
 }: DataCardProps) => {
 	return (
 		<>
 			<StyledPressable
 				onPress={onPress}
-				className={clsx('web:w-full aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4', className)}
-				style={{
-					aspectRatio: 1,
-					flexBasis: '48%',
-					width: '48%',
-					height: 173,
-					justifyContent: 'space-between',
-					padding: 16,
-					...style,
-				}}
+				className={clsx(
+					'web:w-full ios:h-[173px] aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
+					className
+				)}
 				liquidGlass={true}
 			>
 				<CardHeader icon={icon} header={title} />

@@ -1,9 +1,9 @@
 import { clsx } from 'clsx';
 import { GlassColorScheme, GlassView } from 'expo-glass-effect';
 import { GestureResponderEvent, Platform, Pressable, StyleProp, ViewStyle } from 'react-native';
+import tw from 'twrnc';
 
 interface StyledPressableProps {
-	style?: StyleProp<ViewStyle>;
 	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	onPressIn?: (event: GestureResponderEvent) => void | Promise<void>;
 	tintColor?: string;
@@ -16,22 +16,16 @@ interface StyledPressableProps {
 export const StyledPressable = ({
 	colorScheme,
 	tintColor,
-	style,
 	className,
 	onPress,
 	onPressIn,
 	children,
 	liquidGlass = false,
 }: StyledPressableProps) => {
-	if (liquidGlass && Platform.OS === 'ios') {
+	if (Platform.OS === 'ios' && liquidGlass) {
 		return (
 			<Pressable onPress={onPress}>
-				<GlassView
-					style={{ borderRadius: 24, ...style }}
-					isInteractive={true}
-					tintColor={tintColor}
-					colorScheme={colorScheme}
-				>
+				<GlassView style={tw`${className}`} isInteractive={true} tintColor={tintColor} colorScheme={colorScheme}>
 					{children}
 				</GlassView>
 			</Pressable>

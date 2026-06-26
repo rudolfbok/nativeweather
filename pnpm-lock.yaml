@@ -274,6 +274,9 @@ importers:
       solito:
         specifier: ^5.0.0
         version: 5.0.0
+      twrnc:
+        specifier: ^4.16.0
+        version: 4.16.0(react-native@0.83.4(@babel/core@7.29.0)(@react-native/metro-config@0.85.1(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.0))(yaml@2.8.3)
       zustand:
         specifier: ^5.0.9
         version: 5.0.12(@types/react@19.2.14)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
@@ -6707,6 +6710,11 @@ packages:
   turbo@2.9.6:
     resolution: {integrity: sha512-+v2QJey7ZUeUiuigkU+uFfklvNUyPI2VO2vBpMYJA+a1hKFLFiKtUYlRHdb3P9CrAvMzi0upbjI4WT+zKtqkBg==}
     hasBin: true
+
+  twrnc@4.16.0:
+    resolution: {integrity: sha512-sPSnSlT2CmOd2ITUm9M8ltsEjTyJti/9HpYfewAfhqRT4gMQtOWkK1tiIev0vVhPJ9IcTGtk2TC33OsSLhsFfA==}
+    peerDependencies:
+      react-native: 0.83.4
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -15414,6 +15422,14 @@ snapshots:
       '@turbo/linux-arm64': 2.9.6
       '@turbo/windows-64': 2.9.6
       '@turbo/windows-arm64': 2.9.6
+
+  twrnc@4.16.0(react-native@0.83.4(@babel/core@7.29.0)(@react-native/metro-config@0.85.1(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.0))(yaml@2.8.3):
+    dependencies:
+      react-native: 0.83.4(@babel/core@7.29.0)(@react-native/metro-config@0.85.1(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.0)
+      tailwindcss: 3.4.18(yaml@2.8.3)
+    transitivePeerDependencies:
+      - tsx
+      - yaml
 
   type-check@0.4.0:
     dependencies:

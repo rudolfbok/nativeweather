@@ -198,7 +198,6 @@ export const SmartSummary = React.memo(function SmartSummary({
 					range,
 					uv: Math.round(uv ?? 0),
 					aqi: selectedAQIValue,
-					range: displayTempRange,
 				}),
 				relatedCategories,
 			});

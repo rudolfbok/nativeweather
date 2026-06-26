@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { GlassColorScheme, GlassEffectStyleConfig, GlassStyle, GlassView, GlassViewProps } from 'expo-glass-effect';
 import React from 'react';
 import { Platform, StyleProp, TextStyle, View } from 'react-native';
+import tw from 'twrnc';
 
 interface RoundViewProps {
 	children: React.ReactNode;
@@ -23,7 +24,7 @@ export const RoundView = ({
 	if (Platform.OS === 'ios' && liquidGlass) {
 		return (
 			<GlassView
-				style={{ borderRadius: 24, overflow: 'hidden', ...style }}
+				style={tw`rounded-3xl overflow-hidden ${className}`}
 				colorScheme={colorScheme}
 				glassEffectStyle={glassEffectStyle}
 			>

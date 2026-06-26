@@ -1,12 +1,11 @@
 import { useTolgee } from '@tolgee/react';
-import { RainCard, SnowCard, UVCard, RangeCard, WindCard } from 'app/components/cards';
+import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from 'app/components/cards';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
 import { useStorageString } from 'app/storage/useStorage';
 import { NormalizedData } from 'app/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../MainWeather';
@@ -16,7 +15,6 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 	const scrollRef = useRef<ScrollView>(null);
 	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();
-	const arrowColor = useSwitchColors('black', 'white');
 	const mapConditions = useMapConditions();
 
 	useEffect(() => {
@@ -50,10 +48,6 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 				isDay={1}
 				code={day.day.condition.code}
 				condition={mapConditions(day.day.condition.code, 1, currentSource)}
-				arrowcolor={arrowColor}
-				textColor="red"
-				strokeWidth={StyleSheet.hairlineWidth}
-				displayTime={false}
 				feelslike={false}
 				displayShadow={false}
 				dailyModal={true}

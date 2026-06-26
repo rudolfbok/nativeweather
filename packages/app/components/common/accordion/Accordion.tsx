@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, LinearTransition, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyledText } from '../styled/StyledText';
-import { RoundView } from '../ui/RoundView.ios';
+import { RoundView } from '../ui/RoundView';
 import { clsx } from 'clsx';
 
 interface AccordionProps {

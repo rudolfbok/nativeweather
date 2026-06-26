@@ -29,7 +29,6 @@ export const CloudsCard = ({ data }: { data: number }) => {
 			className={clsx(
 				'native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto web:xl:hidden native:!aspect-auto min-w-full gap-6 md:h-full'
 			)}
-			style={{ width: '100%', height: '100%', aspectRatio: 2 }}
 			modal={
 				showModal && (
 					<StyledModal
