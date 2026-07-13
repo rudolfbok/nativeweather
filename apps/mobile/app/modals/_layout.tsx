@@ -13,7 +13,7 @@ import {
 	WindIcon,
 } from 'app/components/icons/main';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useModalBackground, useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { ReactNode } from 'react';
@@ -21,8 +21,7 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const modalBackground = useModalBackground();
-	const textColor = useTextColor();
+	const { modalBg, text } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -35,12 +34,12 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: modalBackground }}
+			nativeContainerStyle={{ backgroundColor: modalBg }}
 			screenOptions={{
 				headerBackButtonDisplayMode: 'minimal',
 				headerTransparent: true,
 				headerTitleStyle: {
-					color: textColor,
+					color: text,
 				},
 				headerRight: () => (
 					<Pressable onPress={() => router.back()} className={clsx('h-10 w-10 items-center justify-center')}>

@@ -6,7 +6,7 @@ import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
-import { ArrowRight, Bug, Cog, MessageCircle } from 'lucide-react-native';
+import { Bug, CircleQuestionMark, Cog, MessageCircle, SendHorizonal } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { ActivityIndicator, TextInput, View } from 'react-native';
 import { showToast } from '../../utils/services/showToast';
@@ -65,13 +65,13 @@ export const FeedbackFeature = () => {
 			<StyledPressable
 				onPress={() => setType(variant)}
 				className={clsx(
-					'w-1/2 flex-row items-center justify-center gap-2 rounded-full px-4 py-2 md:w-fit',
+					'min-h-12 flex-1 basis-[120px] flex-row items-center justify-between gap-2 rounded-3xl px-4 py-3',
 					isSelected && '!bg-primaryblue'
 				)}
 			>
 				<View>{icon(isSelected ? 'white' : '#007AFF')}</View>
-				<View className="flex-1 items-center">
-					<StyledText type="subtitle" className={clsx(isSelected && '!text-white dark:!text-white')}>
+				<View className="flex-grow items-center">
+					<StyledText type="subtitle" className={clsx('text-center', isSelected && '!text-white dark:!text-white')}>
 						{text}
 					</StyledText>
 				</View>
@@ -80,22 +80,31 @@ export const FeedbackFeature = () => {
 	};
 
 	return (
-		<View className={clsx('gap-4 md:items-center')}>
-			<View className={clsx('ios:hidden flex gap-2 md:w-1/2 lg:w-[40%]')}>
-				<StyledText type="maintitle">{t('feedback.title')}</StyledText>
-				<StyledText type="body">{t('feedback.text')}</StyledText>
-			</View>
-			<View className={clsx('w-full gap-4 pb-4 md:w-1/2 lg:w-[40%]')}>
+		<View className={clsx('items-center pb-4')}>
+			<View className="gap-4 lg:w-3/4 xl:w-2/3 2xl:w-2/5">
+				<View className={clsx('ios:hidden flex w-full gap-2')}>
+					<StyledText type="maintitle">{t('feedback.title')}</StyledText>
+					<StyledText type="body">{t('feedback.text')}</StyledText>
+				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className={clsx('flex-co gap-4 md:flex-row')}>
-						<TypeButton icon={(color) => <Bug color={color} />} variant="Bug" text={t('feedback.bug')} />
-						<TypeButton icon={(color) => <Cog color={color} />} variant="Feature" text={t('feedback.feature')} />
-						<TypeButton
-							icon={(color) => <MessageCircle color={color} />}
-							variant="Feedback"
-							text={t('feedback.feedback')}
-						/>
+					<View className={clsx('flex-row flex-wrap gap-4')}>
+						<View className="w-full flex-row gap-4">
+							<TypeButton icon={(color) => <Bug color={color} />} variant="Bug" text={t('feedback.bug')} />
+							<TypeButton icon={(color) => <Cog color={color} />} variant="Feature" text={t('feedback.feature')} />
+						</View>
+						<View className="w-full flex-row gap-4">
+							<TypeButton
+								icon={(color) => <MessageCircle color={color} />}
+								variant="Feedback"
+								text={t('feedback.feedback')}
+							/>
+							<TypeButton
+								icon={(color) => <CircleQuestionMark color={color} />}
+								variant="Question"
+								text={t('feedback.question')}
+							/>
+						</View>
 					</View>
 				</View>
 				<View className={clsx('gap-2')}>
@@ -118,7 +127,7 @@ export const FeedbackFeature = () => {
 					<StyledButton
 						onPress={handleSubmit}
 						text={t('feedback.button')}
-						icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <ArrowRight color="#007AFF" />}
+						icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
 					/>
 				</View>
 			</View>

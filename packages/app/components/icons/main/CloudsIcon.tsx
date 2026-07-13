@@ -1,8 +1,8 @@
 import { Cloud } from 'lucide-react-native';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 
 export const CloudsIcon = () => {
-	const switchColors = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
-	return <Cloud color={switchColors} />;
+	return <Cloud color={text} />;
 };

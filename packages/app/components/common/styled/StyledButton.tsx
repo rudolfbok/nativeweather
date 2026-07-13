@@ -16,7 +16,7 @@ export const StyledButton = ({ onPress, icon, className, text }: StyledButtonPro
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark select-none flex-row items-center justify-center gap-2 rounded-full px-4 py-2',
+				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark select-none flex-row items-center justify-center gap-2 rounded-3xl p-4',
 				className
 			)}
 		>

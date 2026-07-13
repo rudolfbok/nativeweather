@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useModalBackground, useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import React, { ReactNode } from 'react';
@@ -10,8 +10,7 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const modalBackground = useModalBackground();
-	const textColor = useTextColor();
+	const { modalBg } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -36,10 +35,10 @@ export default function ModalsLayout() {
 					</Pressable>
 				),
 				contentStyle: {
-					backgroundColor: modalBackground,
+					backgroundColor: modalBg,
 				},
 			}}
-			nativeContainerStyle={{ backgroundColor: modalBackground }}
+			nativeContainerStyle={{ backgroundColor: modalBg }}
 		>
 			<Stack.Screen
 				name="index"

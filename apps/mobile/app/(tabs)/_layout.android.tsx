@@ -1,49 +1,45 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
-import { Cog, House, Search, Sun } from 'lucide-react-native';
 import { useTranslate } from '@tolgee/react';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
+import { Tabs } from 'expo-router';
+import { Cog, House, Search, Sun } from 'lucide-react-native';
+import React from 'react';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
-	const tabBarColor = useSwitchColors('#F2F2F7', '#000');
-	const iconColor = useSwitchColors('black', 'white');
-	const tabBarBorderColor = useSwitchColors('#E5E5E8', '#2F2F32');
+	const { background, border, text } = useThemeColors();
 
 	return (
 		<Tabs
 			screenOptions={{
 				headerShown: false,
-				tabBarStyle: { backgroundColor: tabBarColor, height: 90, paddingTop: 5, borderTopColor: tabBarBorderColor },
+				tabBarStyle: { backgroundColor: background, height: 90, paddingTop: 5, borderTopColor: border },
 			}}
 		>
 			<Tabs.Screen
 				name="(home)"
 				options={{
-					tabBarIcon: () => <House color={iconColor} />,
+					tabBarIcon: () => <House color={text} />,
 					tabBarLabel: t('tab.home'),
 				}}
 			/>
 			<Tabs.Screen
 				name="(weather)"
 				options={{
-					tabBarIcon: () => <Sun color={iconColor} />,
+					tabBarIcon: () => <Sun color={text} />,
 					tabBarLabel: t('tab.weather'),
 				}}
 			/>
 			<Tabs.Screen
 				name="(settings)"
 				options={{
-					tabBarIcon: () => <Cog color={iconColor} />,
+					tabBarIcon: () => <Cog color={text} />,
 					tabBarLabel: t('tab.settings'),
 				}}
 			/>
 			<Tabs.Screen
 				name="(search)"
 				options={{
-					tabBarIcon: () => <Search color={iconColor} />,
+					tabBarIcon: () => <Search color={text} />,
 					tabBarLabel: t('tab.search'),
 				}}
 			/>

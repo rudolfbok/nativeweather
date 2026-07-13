@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
+import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
@@ -9,9 +10,10 @@ import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useWeather } from 'app/hooks/useWeather';
 import { useWidgets } from 'app/hooks/useWidgets';
-import { useStorageBoolean } from 'app/storage/useStorage';
+import { useStorageBoolean, useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { RefreshControl, View } from 'react-native';
@@ -20,12 +22,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData } = useLocalWeather();
+	const { weatherData, setWeatherData } = useWeather();
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
+	const [currentSource] = useStorageString('currentSource');
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const favoriteCitiesHook = useFavoriteCities();
 	const { getLocalWeather, error: localWeatherError } = useLocation();
-	const textColor = useTextColor();
+	const { text } = useThemeColors();
 
 	useWidgets();
 
@@ -34,6 +38,19 @@ export const HomeFeature = () => {
 			void getLocalWeather();
 		}
 	}, [showLocalWeather, localWeatherData, getLocalWeather]);
+
+	useEffect(() => {
+		if (!showLocalWeather || weatherData) return;
+
+		(async () => {
+			const data = await fetchWeather(
+				`${localWeatherData.location.name}${localWeatherData.location.region}${localWeatherData.location.country}`,
+				currentSource
+			);
+
+			setWeatherData(data);
+		})();
+	}, [showLocalWeather, weatherData, localWeatherData, currentSource]);
 
 	return (
 		<View className={clsx('w-full flex-1')}>
@@ -46,7 +63,7 @@ export const HomeFeature = () => {
 			<ScreenWrapper
 				refreshControl={
 					<RefreshControl
-						tintColor={textColor}
+						tintColor={text}
 						refreshing={refreshing}
 						onRefresh={() => favoriteCitiesHook.refreshFavoriteCities({ displayToast: true, setRefreshing })}
 						style={{ zIndex: 100 }}

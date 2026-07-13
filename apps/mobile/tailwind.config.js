@@ -35,6 +35,9 @@ module.exports = {
 				// tertiaryLabel: "#8E8E93",
 				// tertiaryLabel_dark: "#636366",
 			},
+			borderRadius: {
+				'4xl': '28px',
+			},
 		},
 	},
 	plugins: [],

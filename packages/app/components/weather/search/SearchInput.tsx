@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { Search } from 'lucide-react-native';
 import { useState } from 'react';
@@ -29,7 +29,7 @@ export const SearchInput = ({
 	const { t } = useTranslate('common');
 	const [isXHovered, setIsXHovered] = useState(false);
 
-	const switchColors = useSwitchColors('#98989F', '#7F7F84');
+	const { text } = useThemeColors();
 
 	return (
 		<RoundView
@@ -46,7 +46,7 @@ export const SearchInput = ({
 			}}
 		>
 			<Pressable onPress={performSearch} className={clsx('cursor-pointer')}>
-				<Search size={22} color={isFocused ? '#007AFF' : switchColors} style={{ pointerEvents: 'none' }} />
+				<Search size={22} color={isFocused ? '#007AFF' : text} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 			<TextInput
 				value={searchValue}
@@ -55,7 +55,7 @@ export const SearchInput = ({
 				returnKeyType="search"
 				autoComplete="off"
 				placeholder={isFocused ? '' : t('search.searchbar')}
-				placeholderTextColor={switchColors}
+				placeholderTextColor={text}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				className={clsx(

@@ -1,11 +1,11 @@
-import { useBackgroundColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function MapsLayout() {
-	const backgroundColor = useBackgroundColor();
+	const { background } = useThemeColors();
 
 	return (
-		<Stack nativeContainerStyle={{ backgroundColor }}>
+		<Stack nativeContainerStyle={{ backgroundColor: background }}>
 			<Stack.Screen
 				name="index"
 				options={{

@@ -58,15 +58,6 @@ export const CityCard = ({
 			className={clsx(
 				'w-full flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
 			)}
-			style={{
-				display: 'flex',
-				width: '100%',
-				flexDirection: 'row',
-				alignItems: 'center',
-				justifyContent: 'space-between',
-				borderRadius: 24,
-				padding: 16,
-			}}
 			tintColor={`${tintColor}E6`}
 			liquidGlass={true}
 			colorScheme={colorScheme}

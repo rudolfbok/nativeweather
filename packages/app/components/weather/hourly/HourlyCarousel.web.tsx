@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { ClockIcon } from 'app/components/icons/main/ClockIcon';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';
@@ -42,7 +42,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		emblaApi.on('reInit', updateButtons);
 	}, [emblaApi, updateButtons]);
 
-	const switchColors = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
 	const LeftArrow = () => (
 		<button
@@ -53,7 +53,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 			aria-disabled={!canPrev}
 			className={clsx(arrowBase, !canPrev && 'opacity-20')}
 		>
-			<ChevronLeftCircle size={28} color={switchColors} />
+			<ChevronLeftCircle size={28} color={text} />
 		</button>
 	);
 
@@ -66,7 +66,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 			aria-disabled={!canNext}
 			className={clsx(arrowBase, !canNext && 'opacity-20')}
 		>
-			<ChevronRightCircle size={28} color={switchColors} />
+			<ChevronRightCircle size={28} color={text} />
 		</button>
 	);
 

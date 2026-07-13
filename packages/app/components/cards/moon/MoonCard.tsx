@@ -62,7 +62,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 			title={t('moon.title')}
 			data={getLocalePhase[phase]}
 			className={clsx(
-				'ios:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto !aspect-video h-fit min-w-full'
+				'ios:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto h-fit min-w-full'
 			)}
 			extraContent={
 				<View className={clsx('mt-4 flex-row items-center gap-4 xl:hidden')}>

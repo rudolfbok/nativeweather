@@ -4,16 +4,16 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { LoadingIndicator } from 'app/components/common/ui/LoadingIndicator';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { EditIcon } from 'app/components/icons/ui/EditIcon';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useSearchController } from 'app/hooks/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { clsx } from 'clsx';
-import { Trash } from 'lucide-react-native';
+import { Edit, Trash2 } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloseIcon } from '../icons/ui/CloseIcon';
 import { CityCard } from './CityCard';
+import { EditIcon } from '../icons/ui/EditIcon';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');
@@ -33,13 +33,13 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
 				{favoritesData.length > 0 && (
 					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
-						{showDeleteCity ? <CloseIcon size={26} color="#007AFF" /> : <EditIcon />}
+						{showDeleteCity ? <CloseIcon size={26} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>
 			{loading && !favoritesData && <LoadingIndicator text={t('favorites.loading')} />}
 			{favoritesData.length === 0 && !loading && (
-				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')} style={{ padding: 16 }}>
+				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
 					<StyledText type="body" className={clsx('text-center')}>
 						{t('favorites.nosaved')}
 					</StyledText>
@@ -75,7 +75,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 											'absolute -top-1 right-1 h-fit w-fit justify-center rounded-full bg-red-600 p-1 hover:bg-red-800'
 										)}
 									>
-										<Trash color="white" size={22} />
+										<Trash2 color="white" size={22} />
 									</Pressable>
 								</AnimatedView>
 							)}

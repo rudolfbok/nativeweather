@@ -144,7 +144,6 @@ export const MainWeather = ({
 			<RoundView
 				liquidGlass={true}
 				glassEffectStyle="clear"
-				style={{ paddingHorizontal: 12, paddingVertical: 8 }}
 				className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl', conditionStyle)}
 			>
 				<StyledText type="title" className={clsx('!text-white')} style={textShadowStyle}>

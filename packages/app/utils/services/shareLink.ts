@@ -1,16 +1,16 @@
-import { NormalizedData } from 'app/types/normalizedData';
-import { Share } from 'react-native';
-import { buildSlug } from './buildSlug';
+import { NormalizedData } from "app/types/normalizedData";
+import { Share } from "react-native";
+import { buildSlug } from "./buildSlug";
 
 export const shareLink = async (weatherData: NormalizedData) => {
-	const url = `https://nativeweather.app/${buildSlug(weatherData)}`;
+  const url = `https://nativeweather.app/${buildSlug(weatherData)}`;
 
-	try {
-		await Share.share({
-			url, // místo message
-			title: `Weather in ${weatherData.location.name}`,
-		});
-	} catch (error) {
-		console.error('Error sharing:', error);
-	}
+  try {
+    await Share.share({
+      url, // misto message
+      title: `Weather in ${weatherData.location.name}`,
+    });
+  } catch (error) {
+    console.error("Error sharing:", error);
+  }
 };

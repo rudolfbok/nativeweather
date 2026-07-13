@@ -1,6 +1,6 @@
 'use client';
 
-import { useBackgroundColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { TolgeeProvider } from 'app/provider/TolgeeProvider';
 import { initStorageDefaults } from 'app/storage/initStorageDefaults';
 import { initThemeFromStorage } from 'app/storage/initTheme';
@@ -15,7 +15,7 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-	const backgroundColor = useBackgroundColor();
+	const { background } = useThemeColors();
 
 	useEffect(() => {
 		initStorageDefaults();
@@ -25,8 +25,8 @@ export default function RootLayout() {
 	return (
 		<TolgeeProvider>
 			<GestureHandlerRootView>
-				<Stack nativeContainerStyle={{ backgroundColor }}>
-					<Stack.Screen name="(tabs)" options={{ headerShown: false, contentStyle: { backgroundColor } }} />
+				<Stack nativeContainerStyle={{ backgroundColor: background }}>
+					<Stack.Screen name="(tabs)" options={{ headerShown: false, contentStyle: { backgroundColor: background } }} />
 					<Stack.Screen name="modals" options={{ headerShown: false, presentation: 'modal' }} />
 				</Stack>
 			</GestureHandlerRootView>

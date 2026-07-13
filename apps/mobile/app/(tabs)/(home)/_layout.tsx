@@ -1,16 +1,16 @@
-import { useBackgroundColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function HomeLayout() {
-	const backgroundColor = useBackgroundColor();
+	const { background } = useThemeColors();
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor }}
+			nativeContainerStyle={{ backgroundColor: background }}
 			screenOptions={{
 				headerShown: false,
 				contentStyle: {
-					backgroundColor,
+					backgroundColor: background,
 				},
 			}}
 		>

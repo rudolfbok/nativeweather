@@ -3,7 +3,7 @@ import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroWeather } from 'app/components/weather/HeroWeather';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import * as Burnt from 'burnt';
@@ -11,15 +11,13 @@ import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { RefreshControl, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
-	const textColor = useTextColor();
-	const insets = useSafeAreaInsets();
+	const { text } = useThemeColors();
 	const [refreshing, setRefreshing] = useState(false);
 	const refreshProgress = useSharedValue(0);
 	const navigation = useNavigation();
@@ -28,28 +26,21 @@ export const WeatherFeature = () => {
 		refreshProgress.value = withTiming(refreshing ? 1 : 0, { duration: 180 });
 	}, [refreshing, refreshProgress]);
 
-	const pullIndicatorStyle = useAnimatedStyle(() => {
-		const progress = Math.max(refreshProgress.value);
-		return {
-			opacity: progress,
-		};
-	});
-
 	useEffect(() => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: textColor,
-				headerTitleStyle: { color: textColor },
+				headerTintColor: text,
+				headerTitleStyle: { color: text },
 			});
 		} else {
 			navigation.setOptions({
 				headerTitle: t('tab.weather'),
-				headerTintColor: textColor,
-				headerTitleStyle: { color: textColor },
+				headerTintColor: text,
+				headerTitleStyle: { color: text },
 			});
 		}
-	}, [navigation, t, textColor, weatherData]);
+	}, [navigation, t, text, weatherData]);
 
 	const onRefresh = async () => {
 		if (!weatherData) return;

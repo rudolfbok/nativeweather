@@ -1,8 +1,8 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Check } from 'lucide-react-native';
 
 export const CheckIcon = () => {
-	const checkColor = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
-	return <Check color={checkColor} />;
+	return <Check color={text} />;
 };

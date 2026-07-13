@@ -56,8 +56,10 @@ export const addFavoriteCity = (city: City): boolean => {
 			return false;
 		}
 
-		favorites.push(city);
-		storage.set('favoriteCities', JSON.stringify(favorites));
+		const updatedFavorites = [city, ...favorites];
+		storage.set('favoriteCities', JSON.stringify(updatedFavorites));
+		// favorites.push(city);
+		// storage.set('favoriteCities', JSON.stringify(favorites));
 		console.warn('City was added to favorites!');
 		return true;
 	} catch (error) {
@@ -108,7 +110,7 @@ export const getFavoritesStorageInfo = () => {
 		const allKeys = storage.getAllKeys();
 		return {
 			keys: allKeys,
-			size: storage.size,
+			size: storage.byteSize,
 			hasFavorites: storage.contains('favoriteCities'),
 		};
 	} catch (error) {

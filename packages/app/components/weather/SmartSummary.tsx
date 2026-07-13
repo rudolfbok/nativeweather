@@ -10,9 +10,6 @@ import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import React, { useMemo } from 'react';
 
-const CARD_STYLE = { gap: 8, padding: 16 };
-const SUMMARY_ICON = <SmartSummaryIcon />;
-
 type Variant = 1 | 2 | 3;
 type AQIType = 'eu' | 'us';
 type SummaryCategory = 'combo' | 'precip' | 'cloud' | 'wind' | 'uv' | 'range' | 'aqi' | 'range';
@@ -391,8 +388,8 @@ export const SmartSummary = React.memo(function SmartSummary({
 	]);
 
 	return (
-		<RoundView className="w-full gap-2 p-4" style={CARD_STYLE} liquidGlass>
-			<CardHeader icon={SUMMARY_ICON} header={t('title')} />
+		<RoundView className="w-full gap-2 p-4" liquidGlass>
+			<CardHeader icon={<SmartSummaryIcon />} header={t('title')} />
 			<StyledText type="body">{combinedSummary}</StyledText>
 		</RoundView>
 	);

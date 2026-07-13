@@ -1,21 +1,20 @@
 import { useTranslate } from '@tolgee/react';
-import { useBackgroundColor, useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function SettingsLayout() {
 	const { t } = useTranslate('settings');
-	const backgroundColor = useBackgroundColor();
-	const textColor = useTextColor();
+	const { background, text } = useThemeColors();
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor }}
+			nativeContainerStyle={{ backgroundColor: background }}
 			screenOptions={{
 				headerTransparent: true,
-				headerTintColor: textColor,
+				headerTintColor: text,
 				headerBackButtonDisplayMode: 'minimal',
 				contentStyle: {
-					backgroundColor,
+					backgroundColor: background,
 				},
 			}}
 		>

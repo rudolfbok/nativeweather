@@ -51,7 +51,6 @@ export const AirQuality = ({ className }: { className?: string }) => {
 				onPress={Platform.OS === 'ios' ? () => router.push('/modals/airquality') : () => setShowModal((prev) => !prev)}
 				className={clsx('col-span-3 gap-2 gap-4 rounded-3xl p-4', className)}
 				liquidGlass={true}
-				style={{ padding: 16, gap: 8, display: 'flex' }}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>

@@ -1,4 +1,4 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { X } from 'lucide-react-native';
 
 interface CloseIconProps {
@@ -7,7 +7,7 @@ interface CloseIconProps {
 }
 
 export const CloseIcon = ({ color, size = 24 }: CloseIconProps) => {
-	const xColor = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
-	return <X color={color ? color : xColor} size={size} />;
+	return <X color={color ? color : text} size={size} />;
 };

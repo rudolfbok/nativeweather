@@ -10,7 +10,7 @@ import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { TileLiberty } from 'app/components/icons/ui/TileLiberty';
 import { TilePositron } from 'app/components/icons/ui/TilePositron';
 import { useMapLayer } from 'app/hooks/useMapLayer';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
@@ -208,7 +208,7 @@ export const MapLibreView = () => {
 	const currentLayerRef = useRef(layer);
 	const temperatureRequestRef = useRef(0);
 	const [weatherMarker, setWeatherMarker] = useState<WeatherMarker | null>(null);
-	const switchColors = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
 	const weatherTileUrl = `https://weathermaps.weatherapi.com/${layer}/tiles/${getWeatherApiMapPeriod()}/{z}/{x}/{y}.png`;
@@ -565,7 +565,7 @@ export const MapLibreView = () => {
 			)}
 			<View className={clsx('ios:bottom-28 absolute bottom-4 right-4 flex-row items-end gap-2')}>
 				{!showLegend && (
-					<MapButton icon={<InfoIcon color={switchColors} />} onPress={() => setShowLegend((prev) => !prev)} />
+					<MapButton icon={<InfoIcon color={text} />} onPress={() => setShowLegend((prev) => !prev)} />
 				)}
 				<View className={clsx('gap-2')}>
 					{layerButtons.map(({ layer, icon }, index) => (

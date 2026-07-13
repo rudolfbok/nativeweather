@@ -1,13 +1,13 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import * as React from 'react';
 import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
 
 export const OpenMeteoIcon = () => {
-	const logoColors = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
 	return (
 		<Svg width={20} height={20} viewBox="0 0 20 20">
-			<G clipPath="url(#clip0_445_89)" fill={logoColors}>
+			<G clipPath="url(#clip0_445_89)" fill={text}>
 				<Path d="M8.753 9.997a4.374 4.374 0 014.375 4.444.627.627 0 00.78.615 1.877 1.877 0 011.796 3.142c-.352.351-.829.549-1.326.549H3.753a2.5 2.5 0 11.125-4.998.625.625 0 00.637-.469 4.377 4.377 0 014.238-3.283zm5.591 3.75a5.625 5.625 0 00-10.9-1.238 3.75 3.75 0 00.309 7.488h10.625a3.125 3.125 0 100-6.25h-.034z" />
 				<Path d="M13.128 1.875a.625.625 0 10-1.25 0v1.25a.625.625 0 001.25 0v-1.25zm4.678 2.455a.624.624 0 10-.883-.884l-.885.884a.626.626 0 00.885.885l.883-.885zm-9.723-.884a.625.625 0 00-.884.884l.884.885a.626.626 0 10.885-.885l-.885-.884zm2.167 4.218a2.5 2.5 0 114.12 2.747c.249.351.465.728.645 1.123a3.75 3.75 0 10-6.05-4.032c.44.014.87.07 1.285.162zm5.605 5.092c.75.269 1.406.738 1.903 1.34a.627.627 0 00.048-.927l-.883-.884a.626.626 0 00-1.068.471zm2.273-4.631a.625.625 0 000 1.25h1.25a.625.625 0 100-1.25h-1.25z" />
 			</G>

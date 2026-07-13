@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useBackgroundColor, useTextColor } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { useWeather } from 'app/hooks/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { extractCity } from 'app/utils/helpers/extractCity';
@@ -15,8 +15,7 @@ export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
-	const backgroundColor = useBackgroundColor();
-	const textColor = useTextColor();
+	const { background } = useThemeColors();
 	useEffect(() => {
 		if (!weatherData) return;
 
@@ -52,7 +51,7 @@ export default function TabLayout() {
 	};
 
 	return (
-		<Stack nativeContainerStyle={{ backgroundColor }}>
+		<Stack nativeContainerStyle={{ backgroundColor: background }}>
 			<Stack.Screen
 				name="[city]"
 				options={{
@@ -68,7 +67,7 @@ export default function TabLayout() {
 					// headerTitleStyle: { color: headerTextColor },
 					// headerTitle: () => <StyledText type="title">Hey</StyledText>,
 					contentStyle: {
-						backgroundColor,
+						backgroundColor: background,
 						paddingHorizontal: 0,
 					},
 				}}

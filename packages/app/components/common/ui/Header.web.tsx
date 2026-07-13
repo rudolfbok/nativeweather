@@ -2,7 +2,7 @@
 
 import { SettingsFeature } from 'app/features/settings/screen';
 import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
 import { Pressable, ScrollView, View } from 'react-native';
@@ -14,6 +14,7 @@ import { AnimatedView } from '../animated/AnimatedView.web';
 export const Header = () => {
 	const router = useRouter();
 	const { openDrawer, setOpenDrawer } = useOpenDrawer();
+	const { text } = useThemeColors();
 
 	return (
 		<>
@@ -39,7 +40,7 @@ export const Header = () => {
 						<Hamburger
 							toggled={openDrawer}
 							size={22}
-							color={useSwitchColors('black', 'white')}
+							color={text}
 							onToggle={() => setOpenDrawer(!openDrawer)}
 						/>
 					</View>

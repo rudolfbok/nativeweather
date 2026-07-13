@@ -78,7 +78,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 	return (
 		<View className={clsx('w-full')}>
 			<StyledText type="body">{description}</StyledText>
-			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')}>
+			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-3xl')}>
 				<LegendGradient colors={colors} locations={locations}>
 					<View className={clsx('ml-1 mr-6 flex-1 flex-row items-center justify-between md:mr-7')}>
 						{labelStops.map((stop, index) => (

@@ -1,9 +1,9 @@
-import { useSwitchColors } from 'app/hooks/useSwitchColors';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 import { ChevronRight } from 'lucide-react-native';
 import React from 'react';
 
 export const ChevronIcon = () => {
-	const chevronColor = useSwitchColors('black', 'white');
+	const { text } = useThemeColors();
 
-	return <ChevronRight color={chevronColor} size={26} />;
+	return <ChevronRight color={text} size={26} />;
 };
