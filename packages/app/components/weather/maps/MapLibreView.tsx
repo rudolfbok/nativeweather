@@ -451,6 +451,7 @@ export const MapLibreView = () => {
 
 		const handleWebMapClick = async (event: MapMouseEvent) => {
 			await handleWeatherMarkerPress([event.lngLat.lng, event.lngLat.lat], [event.point.x, event.point.y]);
+			setShowLegend(false);
 		};
 
 		webMap.on('click', handleWebMapClick);
@@ -522,21 +523,23 @@ export const MapLibreView = () => {
 						</StyledText>
 					)}
 					<View>
-						<View className="flex-row items-center justify-between gap-2">
-							{weatherMarker.status === 'ready' && weatherMarker.value && (
+						<View className="flex-row items-center justify-end gap-2">
+							{/* {weatherMarker.status === 'ready' && weatherMarker.value && (
 								<StyledText type="bodysecondary" className={clsx('opacity-70')}>
 									{getWeatherMarkerTitle(weatherMarker.layer)}
 								</StyledText>
-							)}
-							<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
-								<CloseIcon color="#007AFF" size={20} />
-							</StyledPressable>
+							)} */}
 						</View>
 						{weatherMarker.status === 'ready' && weatherMarker.value && (
 							<View>
-								<StyledText type="title" className={clsx('font-bold')}>
-									{weatherMarker.value}
-								</StyledText>
+								<View className="flex-row items-center justify-between gap-2">
+									<StyledText type="title" className={clsx('font-bold')}>
+										{weatherMarker.value}
+									</StyledText>
+									<StyledPressable onPress={() => setWeatherMarker(null)} className={clsx('h-fit rounded-full p-1')}>
+										<CloseIcon color={text} size={20} />
+									</StyledPressable>
+								</View>
 								{!!weatherMarker.detail && (
 									<StyledText type="bodysecondary" className={clsx('opacity-70')}>
 										{weatherMarker.detail}
@@ -565,7 +568,13 @@ export const MapLibreView = () => {
 			)}
 			<View className={clsx('ios:bottom-28 absolute bottom-4 right-4 flex-row items-end gap-2')}>
 				{!showLegend && (
-					<MapButton icon={<InfoIcon color={text} />} onPress={() => setShowLegend((prev) => !prev)} />
+					<MapButton
+						icon={<InfoIcon color={text} />}
+						onPress={() => {
+							setShowLegend((prev) => !prev);
+							setWeatherMarker(null);
+						}}
+					/>
 				)}
 				<View className={clsx('gap-2')}>
 					{layerButtons.map(({ layer, icon }, index) => (
@@ -576,11 +585,17 @@ export const MapLibreView = () => {
 			{showLegend && (
 				<View className={clsx('ios:bottom-28 absolute bottom-4 right-4 max-md:left-4')}>
 					<AnimatedView duration={30}>
-						<RoundView className={clsx('w-full p-4 md:w-96')}>
+						<RoundView
+							className={clsx(
+								'w-full border border-black/10 p-3 p-4 shadow-md md:w-96 dark:border-white/10 dark:shadow-white/10'
+							)}
+						>
 							<View className={clsx('flex w-full flex-row items-center justify-between')}>
-								<StyledText type="subtitle">{t('maps.legend.title')}</StyledText>
+								<StyledText type="body" className={clsx('font-semibold')}>
+									{t('maps.legend.title')}
+								</StyledText>
 								<StyledPressable onPress={() => setShowLegend((prev) => !prev)} className={clsx('rounded-full p-1')}>
-									<CloseIcon color="#007AFF" />
+									<CloseIcon size={22} color={text} />
 								</StyledPressable>
 							</View>
 							{getLayerInfo()}

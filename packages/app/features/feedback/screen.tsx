@@ -126,8 +126,8 @@ export const FeedbackFeature = () => {
 				<View className={clsx('w-full items-center justify-center')}>
 					<StyledButton
 						onPress={handleSubmit}
-						text={t('feedback.button')}
-						icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
+						text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
+						// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
 					/>
 				</View>
 			</View>

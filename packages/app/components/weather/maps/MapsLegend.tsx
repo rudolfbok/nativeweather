@@ -1,6 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { useStorageString } from 'app/storage/useStorage';
+import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { LegendGradient } from './LegendGradient';
@@ -33,6 +34,8 @@ const precipitationStops = [
 	{ value: 32, color: '#ffc800' },
 	{ value: 64, color: '#ff5000' },
 ];
+
+const precipitationLabelStops = precipitationStops.filter(({ value }) => value !== 4);
 
 const windStops = [
 	{ value: 0, color: '#fdfeff' },
@@ -77,8 +80,8 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 
 	return (
 		<View className={clsx('w-full')}>
-			<StyledText type="body">{description}</StyledText>
-			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-3xl')}>
+			{/* <StyledText type="body">{description}</StyledText> */}
+			<View className={clsx('relative mt-2 h-14 w-full overflow-hidden rounded-2xl')}>
 				<LegendGradient colors={colors} locations={locations}>
 					<View className={clsx('ml-1 mr-6 flex-1 flex-row items-center justify-between md:mr-7')}>
 						{labelStops.map((stop, index) => (
@@ -116,19 +119,28 @@ export const MapsLegend = () => {
 };
 
 export const PrecipitationInfo = () => {
+	const [currentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('weather');
 
 	return (
 		<GradientLegend
 			description={t('maps.legend.precipitation')}
 			stops={precipitationStops}
-			formatLabel={(value) => `${value}`}
-			unit="mm/h"
+			labelStops={precipitationLabelStops}
+			formatLabel={(value) =>
+				switchMetrics({
+					metric: `${value}`,
+					imperial: `${(value / 25.4).toFixed(1)}`,
+					currentUnits,
+				})
+			}
+			unit={switchMetrics({ metric: 'mm/h', imperial: 'in/h', currentUnits })}
 		/>
 	);
 };
 
 export const WindInfo = () => {
+	const [currentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('weather');
 
 	return (
@@ -136,8 +148,14 @@ export const WindInfo = () => {
 			description={t('maps.legend.wind')}
 			stops={windStops}
 			labelStops={windLabelStops}
-			formatLabel={(value) => `${value}`}
-			unit="m/s"
+			formatLabel={(value) =>
+				switchMetrics({
+					metric: `${Math.round(value * 3.6)}`,
+					imperial: `${Math.round(value * 3.6 * 0.621371)}`,
+					currentUnits,
+				})
+			}
+			unit={switchMetrics({ metric: 'km/h', imperial: 'mph', currentUnits })}
 		/>
 	);
 };

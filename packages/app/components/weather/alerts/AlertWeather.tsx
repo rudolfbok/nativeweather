@@ -50,14 +50,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 				onPress={Platform.OS === 'ios' ? () => router.push('/modals/alerts') : () => setShowAlertModal(true)}
 				className={clsx('w-full flex-row items-center justify-between rounded-3xl p-4')}
 				liquidGlass={true}
-				style={{
-					padding: 16,
-					flexDirection: 'row',
-					width: 'auto',
-					borderRadius: 20,
-					marginTop: 4,
-					justifyContent: 'space-between',
-				}}
 			>
 				<CardHeader
 					icon={<AlertIcon mostSevere={alertIconColor} />}

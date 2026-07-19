@@ -25,7 +25,6 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 						key={day.date}
 						onPress={() => onSelectDay(day)}
 						className={clsx('w-[45px] flex-1 items-center justify-center rounded-3xl py-2')}
-						style={{ padding: 8 }}
 						liquidGlass={true}
 					>
 						<StyledText type="body" className={clsx('font-semibold')}>

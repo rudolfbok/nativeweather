@@ -28,8 +28,7 @@ export const SearchInput = ({
 }: SearchInputProps) => {
 	const { t } = useTranslate('common');
 	const [isXHovered, setIsXHovered] = useState(false);
-
-	const { text } = useThemeColors();
+	const { unfocusedSearch } = useThemeColors();
 
 	return (
 		<RoundView
@@ -37,16 +36,9 @@ export const SearchInput = ({
 				'bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark w-full flex-row items-center justify-center border border-transparent px-4',
 				isFocused && '!border-primaryblue'
 			)}
-			style={{
-				marginBottom: 16,
-				flexDirection: 'row',
-				alignItems: 'center',
-				justifyContent: 'center',
-				paddingHorizontal: 16,
-			}}
 		>
 			<Pressable onPress={performSearch} className={clsx('cursor-pointer')}>
-				<Search size={22} color={isFocused ? '#007AFF' : text} style={{ pointerEvents: 'none' }} />
+				<Search size={22} color={isFocused ? '#007AFF' : unfocusedSearch} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 			<TextInput
 				value={searchValue}
@@ -55,7 +47,7 @@ export const SearchInput = ({
 				returnKeyType="search"
 				autoComplete="off"
 				placeholder={isFocused ? '' : t('search.searchbar')}
-				placeholderTextColor={text}
+				placeholderTextColor={unfocusedSearch}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				className={clsx(

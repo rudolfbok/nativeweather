@@ -21,13 +21,15 @@
 	},
 	"feedback": {
 		"bug": "Bug",
-		"button": "Send feedback",
+		"button": {
+			"send": "Send feedback",
+			"sending": "Sending feedback..."
+		},
 		"feature": "Feature",
 		"feedback": "Message",
 		"message": "Message",
 		"placeholder": "Write your message here..",
 		"question": "Question",
-		"sending": "Sending the message",
 		"text": "Have a suggestion or noticed something that could be better? I'd really appreciate your feedback. Every message helps improve the app for everyone.",
 		"title": "Send feedback",
 		"toast": {
