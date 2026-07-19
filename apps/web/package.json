@@ -19,7 +19,7 @@
 		"gsap": "^3.14.2",
 		"hamburger-react": "^2.5.2",
 		"maplibre-gl": "^5.24.0",
-		"nativewind": "^4.1.23",
+		"nativewind": "4.1.23",
 		"next": "16.2.9",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",

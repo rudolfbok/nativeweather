@@ -39,18 +39,18 @@ export const HomeFeature = () => {
 		}
 	}, [showLocalWeather, localWeatherData, getLocalWeather]);
 
-	useEffect(() => {
-		if (!showLocalWeather || weatherData) return;
+	// useEffect(() => {
+	// 	if (!showLocalWeather || weatherData) return;
 
-		(async () => {
-			const data = await fetchWeather(
-				`${localWeatherData.location.name}${localWeatherData.location.region}${localWeatherData.location.country}`,
-				currentSource
-			);
+	// 	(async () => {
+	// 		const data = await fetchWeather(
+	// 			`${localWeatherData.location.name}${localWeatherData.location.region}${localWeatherData.location.country}`,
+	// 			currentSource
+	// 		);
 
-			setWeatherData(data);
-		})();
-	}, [showLocalWeather, weatherData, localWeatherData, currentSource]);
+	// 		setWeatherData(data);
+	// 	})();
+	// }, [showLocalWeather, weatherData, localWeatherData, currentSource]);
 
 	return (
 		<View className={clsx('w-full flex-1')}>

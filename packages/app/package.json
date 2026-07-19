@@ -16,8 +16,15 @@
 		"typescript": "~5.9.2"
 	},
 	"peerDependencies": {
-		"react": "19.2.0",
-		"react-native": "0.83.4"
+		"react": "19.0.0 || 19.2.0",
+		"react-native": "0.79.6 || 0.83.4",
+		"react-native-reanimated": "^3.19.4 || ^4.2.1",
+		"react-native-svg": "^15.15.4"
+	},
+	"peerDependenciesMeta": {
+		"react-native-reanimated": {
+			"optional": true
+		}
 	},
 	"dependencies": {
 		"@emailjs/react-native": "^5.1.0",
@@ -27,9 +34,8 @@
 		"clsx": "^2.1.1",
 		"lucide-react-native": "^0.562.0",
 		"luxon": "^3.7.2",
-		"nativewind": "^4.1.23",
+		"nativewind": "4.1.23",
 		"solito": "^5.0.0",
-		"twrnc": "^4.16.0",
 		"zustand": "^5.0.9"
 	}
 }

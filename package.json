@@ -11,6 +11,7 @@
 		"typecheck": "turbo typecheck",
 		"web": "cd apps/web && turbo dev",
 		"mobile": "cd apps/mobile && turbo dev",
+		"macos": "cd apps/macos && stmux -- [ \"turbo dev\" .. \"wait-on tcp:localhost:8081 && pnpm macos\" ]",
 		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
 	},
 	"keywords": [],
@@ -18,24 +19,8 @@
 	"packageManager": "pnpm@10.26.2",
 	"devDependencies": {
 		"prettier": "^3.7.4",
-		"turbo": "^2.7.2"
-	},
-	"pnpm": {
-		"overrides": {
-			"react": "19.2.0",
-			"react-dom": "19.2.0",
-			"react-native": "0.83.4",
-			"react-native-web": "0.21.1",
-			"tailwindcss": "3.4.18"
-		},
-		"onlyBuiltDependencies": [
-			"sharp",
-			"unrs-resolver",
-			"workerd"
-		],
-		"patchedDependencies": {
-			"@react-navigation/native-stack@7.14.11": "patches/@react-navigation__native-stack@7.14.11.patch",
-			"react-native-screens@4.23.0": "patches/react-native-screens@4.23.0.patch"
-		}
+		"stmux": "^2.0.0",
+		"turbo": "^2.7.2",
+		"wait-on": "^9.0.10"
 	}
 }

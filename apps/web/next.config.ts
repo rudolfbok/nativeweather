@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
 			...(config.resolve.alias || {}),
 			app: '../../packages/app',
 			// "react-native-mmkv": false,
-			'react-native$': 'react-native-web',
+			'react-native$': require.resolve('react-native-web'),
 		};
 		config.resolve.extensions = ['.web.ts', '.web.tsx', '.web.js', ...config.resolve.extensions];
 		return config;

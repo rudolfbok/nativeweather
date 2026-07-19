@@ -1,0 +1,26 @@
+const path = require('path');
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { withNativeWind } = require('nativewind/dist/metro');
+
+const workspaceRoot = path.resolve(__dirname, '../..');
+
+/**
+ * Metro configuration
+ * https://reactnative.dev/docs/metro
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
+const config = mergeConfig(getDefaultConfig(__dirname), {
+	watchFolders: [workspaceRoot],
+	resolver: {
+		disableHierarchicalLookup: true,
+		nodeModulesPaths: [path.resolve(__dirname, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')],
+		extraNodeModules: {
+			react: path.resolve(__dirname, 'node_modules/react'),
+			'react-native': path.resolve(__dirname, 'node_modules/react-native'),
+		},
+	},
+});
+
+// withNativeWind takes your config and the path to your CSS entry point
+module.exports = withNativeWind(config, { input: './globals.css' });

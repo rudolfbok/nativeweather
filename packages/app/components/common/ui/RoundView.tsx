@@ -1,8 +1,16 @@
 import { clsx } from 'clsx';
-import { GlassColorScheme, GlassStyle, GlassView } from 'expo-glass-effect';
+import {
+	GlassColorScheme,
+	GlassStyle,
+	GlassView,
+	isGlassEffectAPIAvailable,
+	isLiquidGlassAvailable,
+} from 'expo-glass-effect';
+import { cssInterop } from 'nativewind';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import tw from 'twrnc';
+
+const StyledGlassView = cssInterop(GlassView, { className: 'style' });
 
 interface RoundViewProps {
 	children: React.ReactNode;
@@ -19,15 +27,15 @@ export const RoundView = ({
 	className,
 	children,
 }: RoundViewProps) => {
-	if (Platform.OS === 'ios' && liquidGlass) {
+	if (Platform.OS === 'ios' && liquidGlass && isLiquidGlassAvailable() && isGlassEffectAPIAvailable()) {
 		return (
-			<GlassView
-				style={tw`rounded-3xl overflow-hidden ${className}`}
+			<StyledGlassView
+				className={clsx('overflow-hidden rounded-3xl', className)}
 				colorScheme={colorScheme}
 				glassEffectStyle={glassEffectStyle}
 			>
 				{children}
-			</GlassView>
+			</StyledGlassView>
 		);
 	}
 
