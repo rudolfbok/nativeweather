@@ -1,4 +1,5 @@
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { Text, View, useColorScheme } from 'react-native';
 import './globals.css';
 
@@ -20,18 +21,9 @@ export default function App() {
 
 	return (
 		<View className="flex-1 items-center justify-center bg-[#F2F2F7] dark:bg-[#0D1119]">
-			<View className="items-center gap-4 rounded-3xl bg-white p-10 dark:bg-[#161A21]">
-				<Text className="text-5xl font-bold">React Native macOS</Text>
-				<StyledText type="title">StyledText imported from packages/app</StyledText>
-				<View className="flex-row gap-2">
-					<FeaturePill name="React Native macOS" color={switchColor('black', 'white')} />
-					<FeaturePill name="Nativewind" color="#05900A" />
-					<FeaturePill name="TypeScript" color="#0079FF" />
-					<FeaturePill name="PNPM" color="#EB9331" />
-				</View>
-				<View>
-					<Text>Edit App.tsx to start building your app</Text>
-				</View>
+			<View className="items-center rounded-3xl bg-white p-10 dark:bg-[#161A21]">
+				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={0.5} source="weatherapi" />
+				<StyledText type="screentitle">NativeWeather macOS desktop app</StyledText>
 			</View>
 		</View>
 	);
