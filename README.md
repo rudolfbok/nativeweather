@@ -10,7 +10,7 @@
 
 <!-- ![GitHub release](https://img.shields.io/github/v/release/rudolfbok/nativeweather) -->
 
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/) [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Google Play](https://img.shields.io/badge/Google%20Play-3CAB59?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/) [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Google Play](https://img.shields.io/badge/Google%20Play-3CAB59?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME) [![MacOS](https://img.shields.io/badge/MacOS--9cf?logo=Apple&style=social)](https://your-link-here.com)
 
 <!-- [![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/) -->
 
@@ -59,9 +59,9 @@
 
 <div align="center">
 
-NativeWeather is a cross-platform weather application for Web, iOS, and Android
+NativeWeather is a cross-platform weather application for Web, iOS, Android and macOS
 <br/><br/>
-Built with Turborepo, Next.js, Expo, React Native Web, NativeWind, and shared app code in a monorepo PNPM workspace.
+Built with Turborepo, Next.js, Expo, React Native, NativeWind, and shared app code in a monorepo PNPM workspace.
 
 This started as my first long-term project and has grown into a real weather product with forecasts, air quality, maps, alerts, favorites, local weather, settings, localization, and iOS widgets.
 
@@ -70,6 +70,7 @@ This started as my first long-term project and has grown into a real weather pro
 - Visit the website: https://nativeweather.app
 - Download on the App Store: https://appstore.apple.com
 - Get it on Google Play: https://playstore.google.com
+- Download the macOS app: https://nativeweather.pages.dev
 
 ## Features
 
@@ -92,13 +93,14 @@ This started as my first long-term project and has grown into a real weather pro
 - React 19
 - React Native
 - React Native Web
+- React Native macOS
 - NativeWind
 - React Native MMKV
 - Tolgee
 
 ## Monorepo Structure
 
-This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS and Expo frameworks with a shared code from packages/app folder
+This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS, Expo frameworks and bare React Native project with a shared code from packages/app folder
 
 Many thanks to gurselcakar and his guide - https://www.gurselcakar.com/monorepo
 
@@ -110,6 +112,7 @@ nativeweather/
 ├── apps/
 │   ├── web/          # Next.js web app
 │   └── mobile/       # Expo mobile app
+│   └── macos/        # macOS desktop app
 ├── packages/
 │   └── app/          # Shared app code, components, hooks, storage, API, types
 ├── package.json
@@ -123,7 +126,7 @@ Prerequisites
 
 - Node.js
 - PNPM
-- Xcode for iOS development
+- Xcode for iOS and macOS development
 - Expo tooling for mobile development
 
 This project uses pnpm:
@@ -132,13 +135,7 @@ This project uses pnpm:
 pnpm install
 ```
 
-Run both web and mobile application with TUI terminal:
-
-```txt
-pnpm dev
-```
-
-Alternatively you can run web or mobile only
+## Dev scripts
 
 Run the web app:
 
@@ -150,4 +147,10 @@ Run the mobile app:
 
 ```txt
 pnpm mobile
+```
+
+Run the Mac desktop app:
+
+```txt
+pnpm macos
 ```
