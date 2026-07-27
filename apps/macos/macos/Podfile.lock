@@ -5,6 +5,57 @@ PODS:
   - FBLazyVector (0.79.4)
   - fmt (11.0.2)
   - glog (0.3.5)
+  - MMKVCore (2.4.0)
+  - NitroMmkv (4.3.1):
+    - DoubleConversion
+    - glog
+    - MMKVCore (= 2.4.0)
+    - NitroModules
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsc
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - NitroModules (0.35.4):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsc
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1686,6 +1737,8 @@ DEPENDENCIES:
   - FBLazyVector (from `../../../node_modules/react-native-macos/Libraries/FBLazyVector`)
   - fmt (from `../../../node_modules/react-native-macos/third-party-podspecs/fmt.podspec`)
   - glog (from `../../../node_modules/react-native-macos/third-party-podspecs/glog.podspec`)
+  - NitroMmkv (from `../../../node_modules/react-native-mmkv`)
+  - NitroModules (from `../../../node_modules/react-native-nitro-modules`)
   - RCT-Folly (from `../../../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../../../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../../../node_modules/react-native-macos/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -1754,6 +1807,10 @@ DEPENDENCIES:
   - SocketRocket (from `../../../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec`)
   - Yoga (from `../../../node_modules/react-native-macos/ReactCommon/yoga`)
 
+SPEC REPOS:
+  trunk:
+    - MMKVCore
+
 EXTERNAL SOURCES:
   boost:
     :podspec: "../../../node_modules/react-native-macos/third-party-podspecs/boost.podspec"
@@ -1767,6 +1824,10 @@ EXTERNAL SOURCES:
     :podspec: "../../../node_modules/react-native-macos/third-party-podspecs/fmt.podspec"
   glog:
     :podspec: "../../../node_modules/react-native-macos/third-party-podspecs/glog.podspec"
+  NitroMmkv:
+    :path: "../../../node_modules/react-native-mmkv"
+  NitroModules:
+    :path: "../../../node_modules/react-native-nitro-modules"
   RCT-Folly:
     :podspec: "../../../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec"
   RCTDeprecation:
@@ -1905,6 +1966,9 @@ SPEC CHECKSUMS:
   FBLazyVector: 9d061dde596c0d405ce66a93dabe1cf794e76e23
   fmt: f6af2d677a106e3e44c9536a4c0c7f03ab53c854
   glog: ea1690290b2b90f923ffcce07436498f09b428ee
+  MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
+  NitroMmkv: 1d0a9f991bc4b5db3709904730a138bd7c7a2bb2
+  NitroModules: cd0d440cf8a5fdeac4435b3ba30b6cd8420f1e1c
   RCT-Folly: e8b53d8c0d2d9df4a6a8b0a368a1a91fc62a88cb
   RCTDeprecation: 0418ac97b9f53b2e37f473da1663ef3061e46beb
   RCTRequired: 61528f74d9cf28b483de36e8ad1e157fa9e5c640
