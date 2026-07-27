@@ -1,7 +1,7 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { View } from 'react-native';
-import { useNavigationScreen } from './hooks/useNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 
 export const Settings = () => {
 	const { setNavigationScreen } = useNavigationScreen();

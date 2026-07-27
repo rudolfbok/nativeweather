@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { Sidebar } from './Sidebar';
 import { Weather } from './Weather';
 import { Settings } from './Settings';
-import { useNavigationScreen } from './hooks/useNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 
 export default function Layout() {
 	const { navigationScreen } = useNavigationScreen();
