@@ -28,6 +28,10 @@
 
 <div align="center">
 <img src="packages/app/assets/readme/web_3.png" alt="web screeshot no. 1" width="600" />
+<!-- &nbsp;
+<img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="200" />
+&nbsp;
+<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="200" /> -->
 </div>
 
 <div align="center">
@@ -66,37 +70,38 @@
 
 <div align="center">
 
-** **THIS PROJECT IS UNDER ACTIVE DEVELOPMENT AND SHOULD BE CONSIDERED AS SUCH** **
+** ⚠️ **THIS PROJECT IS UNDER ACTIVE DEVELOPMENT AND SHOULD BE CONSIDERED AS SUCH** **
 
-NativeWeather is a cross-platform weather application for Web, iOS, Android and macOS
+NativeWeather is a cross-platform weather application for **Web, iOS, Android and macOS**
 <br/><br/>
-Built with Turborepo, Next.js, Expo, React Native, NativeWind, and shared app code in a monorepo PNPM workspace.
+Built with **Turborepo**, **Next.js**, **Expo**, **React Native**, **NativeWind**, and shared app code in a monorepo **PNPM workspaces**.
 
-This started as my first long-term project and has grown into a real weather product with forecasts, air quality, maps, alerts, favorites, local weather, settings, localization, and iOS widgets.
+This started as my first long-term project and has grown into a real weather product with forecasts, air quality, maps, alerts, favorites, local weather, iOS widgets and more.
 
 </div>
 
-- Visit the website: https://nativeweather.app
-- Download on the App Store: https://appstore.apple.com
-- Get it on Google Play: https://playstore.google.com
-- Download the macOS app: https://nativeweather.pages.dev
+- 🌐 **Website:** https://nativeweather.app
+
+<!-- - Download on the App Store: In active development
+- Get it on Google Play: In development
+- Download the macOS app: In active development -->
 
 ## Features
 
 - Current weather with condition-based visuals
-- 7-day forecast and hourly forecast
-- Smart weather summary
-- Favorite cities
-- Air quality data with EU AQI and US AQI support
+- Hourly and 7-day forecasts
+- Smart weather summaries
+- Favorite locations
+- Air quality (EU AQI & US AQI)
 - Weather alerts
-- Light, dark, and system theme support
-- English and Czech localization with Tolgee
-- iOS widgets with Expo Widgets
+- Light, dark, and system themes
+- English and Czech localization (Tolgee)
+- iOS widgets (Expo Widgets)
 
 ## Tech Stack
 
 - Turborepo
-- pnpm workspaces
+- pnpm Workspaces
 - Next.js 16
 - Expo SDK 55
 - React 19
@@ -109,12 +114,11 @@ This started as my first long-term project and has grown into a real weather pro
 
 ## Monorepo Structure
 
-This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS, Expo frameworks and bare React Native project with a shared code from packages/app folder
+This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS, Expo frameworks and bare React Native project with a shared code from `packages/app` folder
 
-Many thanks to gurselcakar and his guide - https://www.gurselcakar.com/monorepo
-
-<!-- <br/>
-Universal React Monorepo template - https://github.com/gurselcakar/universal-react-monorepo -->
+Special thanks to [@gurselcakar](https://github.com/gurselcakar) for the excellent guide:
+<br/>
+Universal React Monorepo template - https://github.com/gurselcakar/universal-react-monorepo
 
 ```txt
 nativeweather/
@@ -131,12 +135,12 @@ nativeweather/
 
 ## Getting Started
 
-Prerequisites
+### Prerequisites:
 
 - Node.js
-- PNPM
-- Xcode for iOS and macOS development
-- Expo tooling for mobile development
+- pnpm
+- Xcode (for iOS and macOS development)
+- Expo tooling
 
 This project uses pnpm:
 
