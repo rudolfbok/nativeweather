@@ -6,13 +6,24 @@ import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
-import { Bug, CircleQuestionMark, Cog, MessageCircle, SendHorizonal } from 'lucide-react-native';
+import {
+	Bug,
+	Check,
+	ChevronDown,
+	ChevronRight,
+	CircleQuestionMark,
+	Cog,
+	MessageCircle,
+	SendHorizonal,
+} from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
-import { ActivityIndicator, TextInput, View } from 'react-native';
+import { ActivityIndicator, Pressable, TextInput, View } from 'react-native';
 import { showToast } from '../../utils/services/showToast';
+import { DropdownMenu } from 'app/components/common/ui/DropdownMenu';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
+	const [open, setOpen] = useState(false);
 	const [type, setType] = useState('');
 	const [message, setMessage] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -79,6 +90,25 @@ export const FeedbackFeature = () => {
 		);
 	};
 
+	const DropdownItem = ({ icon, title, variant }: { icon: ReactNode; title: string; variant: string }) => {
+		const isSelected = type === variant;
+		return (
+			<Pressable
+				onPress={() => {
+					setType(variant);
+					setOpen(false);
+				}}
+				className="hover:dark:bg-tertiarySystemBackground_dark dark flex-row items-center p-4"
+			>
+				{icon}
+				<View className="flex-1 items-center">
+					<StyledText type="body">{title}</StyledText>
+				</View>
+				<View className="h-6 w-6 items-center justify-center">{isSelected && <Check color="#007AFF" size={20} />}</View>
+			</Pressable>
+		);
+	};
+
 	return (
 		<View className={clsx('items-center pb-4')}>
 			<View className="gap-4 lg:w-3/4 xl:w-2/3 2xl:w-2/5">
@@ -88,23 +118,32 @@ export const FeedbackFeature = () => {
 				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className={clsx('flex-row flex-wrap gap-4')}>
-						<View className="w-full flex-row gap-4">
-							<TypeButton icon={(color) => <Bug color={color} />} variant="Bug" text={t('feedback.bug')} />
-							<TypeButton icon={(color) => <Cog color={color} />} variant="Feature" text={t('feedback.feature')} />
-						</View>
-						<View className="w-full flex-row gap-4">
-							<TypeButton
-								icon={(color) => <MessageCircle color={color} />}
-								variant="Feedback"
-								text={t('feedback.feedback')}
-							/>
-							<TypeButton
-								icon={(color) => <CircleQuestionMark color={color} />}
-								variant="Question"
-								text={t('feedback.question')}
-							/>
-						</View>
+					<View className="dark:bg-secondarySystemBackground_dark w-[240px] overflow-hidden rounded-3xl">
+						<Pressable
+							onPress={() => setOpen((prev) => !prev)}
+							className="hover:dark:bg-tertiarySystemBackground_dark flex-row items-center justify-between gap-2 overflow-hidden p-4"
+						>
+							<StyledText type="body" className="font-semibold">
+								{type ? t(`feedback.${type}`) : t('feedback.select')}
+							</StyledText>
+							{open ? <ChevronDown color="#007AFF" /> : <ChevronRight color="#007AFF" />}
+						</Pressable>
+						{open && (
+							<View>
+								<DropdownItem icon={<Bug color="#007AFF" />} title={t('feedback.bug')} variant="bug" />
+								<DropdownItem icon={<Cog color="#007AFF" />} title={t('feedback.feature')} variant="feature" />
+								<DropdownItem
+									icon={<MessageCircle color="#007AFF" />}
+									title={t('feedback.message')}
+									variant="message"
+								/>
+								<DropdownItem
+									icon={<CircleQuestionMark color="#007AFF" />}
+									title={t('feedback.question')}
+									variant="question"
+								/>
+							</View>
+						)}
 					</View>
 				</View>
 				<View className={clsx('gap-2')}>
@@ -123,12 +162,13 @@ export const FeedbackFeature = () => {
 						)}
 					/>
 				</View>
-
-				<StyledButton
-					onPress={handleSubmit}
-					text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
-					// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
-				/>
+				<View className="w-full items-center">
+					<StyledButton
+						onPress={handleSubmit}
+						text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
+						// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
+					/>
+				</View>
 			</View>
 		</View>
 	);

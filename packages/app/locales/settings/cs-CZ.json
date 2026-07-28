@@ -30,6 +30,7 @@
 		"message": "Zpráva",
 		"placeholder": "Sem napište zprávu..",
 		"question": "Otázka",
+		"select": "Zvolte typ zprávy",
 		"text": "Máte návrh nebo jste si všimli něčeho, co by mohlo být lepší? Opravdu ocením vaši zpětnou vazbu. Každá zpráva pomáhá zlepšovat aplikaci pro všechny.",
 		"title": "Poslat názor",
 		"toast": {
