@@ -10,6 +10,8 @@
 
 <!-- ![GitHub release](https://img.shields.io/github/v/release/rudolfbok/nativeweather) -->
 
+![Status](https://img.shields.io/badge/status-active%20development-blue)
+
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/) [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Google Play](https://img.shields.io/badge/Google%20Play-3CAB59?logo=google-play&logoColor=white)](#) [![MacOS](https://img.shields.io/badge/MacOS--9cf?logo=Apple&style=social)](#)
 
 <!-- [![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/) -->
@@ -25,12 +27,17 @@
 </div>
 
 <div align="center">
-<img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 3" width="200" />
-&nbsp;
+<img src="packages/app/assets/readme/web_3.png" alt="web screeshot no. 1" width="600" />
+</div>
+
+<div align="center">
+
+<!-- <img src="packages/app/assets/readme/web_1.png" alt="Web screeshot no. 1" width="200" />
+&nbsp; -->
 <!-- <img src="packages/app/assets/readme/ios_1.png" alt="iOS screeshot no. 1" width="200" /> -->
 <img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="200" />
 &nbsp;
-<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 2" width="200" />
+<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="200" />
 <!-- &nbsp;
 <img src="packages/app/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="200" /> -->
 </div>
@@ -58,6 +65,8 @@
 <br/>
 
 <div align="center">
+
+** **THIS PROJECT IS UNDER ACTIVE DEVELOPMENT AND SHOULD BE CONSIDERED AS SUCH** **
 
 NativeWeather is a cross-platform weather application for Web, iOS, Android and macOS
 <br/><br/>
