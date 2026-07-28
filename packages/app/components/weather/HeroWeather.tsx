@@ -1,20 +1,19 @@
 'use client';
 
 import {
+	CloudsCard,
 	HumidityCard,
 	MoonCard,
 	PressureCard,
 	RainCard,
+	RangeCard,
 	SnowCard,
 	SunriseCard,
 	SunsetCard,
 	UVCard,
-	RangeCard,
 	WindCard,
-	CloudsCard,
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
-import { AlertWeather } from './alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
@@ -26,9 +25,9 @@ import { extractCity } from 'app/utils/helpers/extractCity';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
+import { AlertWeather } from './alerts/AlertWeather';
 import { HourlyForecast } from './hourly/HourlyForecast';
-import { MapsView } from './maps/MapsView';
 import { SmartSummary } from './SmartSummary';
 
 export const HeroWeather = () => {
@@ -131,65 +130,51 @@ export const HeroWeather = () => {
 	};
 
 	return (
-		<View className={clsx('pb-4')}>
-			<View className={clsx('grid select-none grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3')}>
-				<View className={clsx('native:px-4 flex-col gap-4')}>
-					<View className="gap-4">
-						<MainWeather
-							name={weatherData.location.name}
-							country={weatherData.location.country}
-							currentTempC={weatherData.current.tempC}
-							currentTempF={weatherData.current.tempF}
-							feelsLikeC={weatherData.current.feelsLikeC}
-							feelsLikeF={weatherData.current.feelsLikeF}
-							maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
-							maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
-							minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
-							minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
-							isDay={weatherData.current.isDay}
-							code={weatherData.current.condition.code}
-							feelslike={true}
-							condition={conditionLabel}
-							// colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
-						/>
-						<AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />
-					</View>
-					<SmartSummary
-						minTempC={weatherData.forecast.forecastday[0].day.minTempC}
-						maxTempC={weatherData.forecast.forecastday[0].day.maxTempC}
-						minTempF={weatherData.forecast.forecastday[0].day.minTempF}
-						maxTempF={weatherData.forecast.forecastday[0].day.maxTempF}
-						rainPrecipMm={weatherData.forecast.forecastday[0].day.totalPrecipMm}
-						rainPrecipIn={weatherData.forecast.forecastday[0].day.totalPrecipIn}
-						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalSnowCm}
-						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalSnowCm * 0.393701).toFixed(2))}
-						cloudCover={weatherData.current.cloudCover}
-						airQualityEU={airQualityData?.current.european_aqi}
-						airQualityUS={airQualityData?.current.us_aqi}
-						uv={weatherData.current.uv}
-						maxWindKph={weatherData.forecast.forecastday[0].day.maxWindKph}
-						avgRangeKm={weatherData.current.rangeKm}
-						avgRangeMiles={weatherData.current.rangeMiles}
-						dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
+		<View className={clsx('gap-4 pb-4')}>
+			<View className={clsx('flex-col gap-4 px-4')}>
+				<View className="gap-4">
+					<MainWeather
+						name={weatherData.location.name}
+						country={weatherData.location.country}
+						currentTempC={weatherData.current.tempC}
+						currentTempF={weatherData.current.tempF}
+						feelsLikeC={weatherData.current.feelsLikeC}
+						feelsLikeF={weatherData.current.feelsLikeF}
+						maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
+						maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
+						minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
+						minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
+						isDay={weatherData.current.isDay}
+						code={weatherData.current.condition.code}
+						feelslike={true}
+						condition={conditionLabel}
+						// colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
 					/>
-					<HourlyForecast />
-					<AirQuality className={clsx('xl:web:hidden')} />
+					<AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />
 				</View>
-				<View className={clsx('native:px-4 gap-4')}>
-					<DailyForecast />
-					{Platform.OS === 'web' && <MapsView />}
-				</View>
-				<View
-					className={clsx(
-						'native:px-4 flex flex-row flex-wrap items-center justify-between gap-4',
-						'web:grid web:h-fit web:grid-cols-2 web:md:hidden web:xl:grid web:xl:grid-cols-3'
-					)}
-				>
-					{Platform.OS === 'web' && <AirQuality className={clsx('max-xl:hidden')} />}
-					<DataCardGrid />
-				</View>
+				<SmartSummary
+					minTempC={weatherData.forecast.forecastday[0].day.minTempC}
+					maxTempC={weatherData.forecast.forecastday[0].day.maxTempC}
+					minTempF={weatherData.forecast.forecastday[0].day.minTempF}
+					maxTempF={weatherData.forecast.forecastday[0].day.maxTempF}
+					rainPrecipMm={weatherData.forecast.forecastday[0].day.totalPrecipMm}
+					rainPrecipIn={weatherData.forecast.forecastday[0].day.totalPrecipIn}
+					snowPrecipCm={weatherData.forecast.forecastday[0].day.totalSnowCm}
+					snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalSnowCm * 0.393701).toFixed(2))}
+					cloudCover={weatherData.current.cloudCover}
+					airQualityEU={airQualityData?.current.european_aqi}
+					airQualityUS={airQualityData?.current.us_aqi}
+					uv={weatherData.current.uv}
+					maxWindKph={weatherData.forecast.forecastday[0].day.maxWindKph}
+					avgRangeKm={weatherData.current.rangeKm}
+					avgRangeMiles={weatherData.current.rangeMiles}
+					dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
+				/>
+				<HourlyForecast />
+				<AirQuality />
+				<DailyForecast />
 			</View>
-			<View className={clsx('native:hidden', 'mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
+			<View className={clsx('flex flex-row flex-wrap items-center justify-between gap-4 px-4')}>
 				<DataCardGrid />
 			</View>
 		</View>

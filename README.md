@@ -10,7 +10,7 @@
 
 <!-- ![GitHub release](https://img.shields.io/github/v/release/rudolfbok/nativeweather) -->
 
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/) [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Google Play](https://img.shields.io/badge/Google%20Play-3CAB59?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME) [![MacOS](https://img.shields.io/badge/MacOS--9cf?logo=Apple&style=social)](https://your-link-here.com)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](https://nativeweather.app/) [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) [![Google Play](https://img.shields.io/badge/Google%20Play-3CAB59?logo=google-play&logoColor=white)](#) [![MacOS](https://img.shields.io/badge/MacOS--9cf?logo=Apple&style=social)](#)
 
 <!-- [![Web App](https://img.shields.io/badge/Web%20App-live-2F855A?logo=cloudflare&logoColor=white)](https://nativeweather.app/) -->
 

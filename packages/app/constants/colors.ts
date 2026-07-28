@@ -4,7 +4,7 @@ export const colors = {
 		unfocusedSearch: '#00000099',
 		border: '#FFFFFF',
 		headerBg: '#000000',
-		modalBg: '#FFFFFF',
+		modalBg: '#F2F2F7',
 		background: '#F2F2F2',
 	},
 	dark: {
@@ -12,7 +12,7 @@ export const colors = {
 		unfocusedSearch: '#FFFFFF99',
 		border: '#000000',
 		headerBg: '#121212',
-		modalBg: '#FFFFFF',
+		modalBg: '#0E0E0F',
 		background: '#000000',
 	},
 };

@@ -15,7 +15,7 @@ export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
-	const { background } = useThemeColors();
+	const { background, text } = useThemeColors();
 	useEffect(() => {
 		if (!weatherData) return;
 
@@ -29,7 +29,7 @@ export default function TabLayout() {
 				onPress={() => shareLink(weatherData)}
 				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
 			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color="#007AFF" style={{ pointerEvents: 'none' }} />
+				<Share size={Platform.OS === 'ios' ? 22 : 28} color={text} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -42,8 +42,8 @@ export default function TabLayout() {
 			>
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
-					color="#FE9804"
-					fill={isFavorite ? '#FE9804' : 'transparent'}
+					color={text}
+					fill={isFavorite ? text : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
 			</Pressable>
