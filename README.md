@@ -27,11 +27,11 @@
 </div>
 
 <div align="center">
-<img src="packages/app/assets/readme/web_3.png" alt="web screeshot no. 1" width="600" />
-<!-- &nbsp;
-<img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="200" />
-&nbsp;
-<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="200" /> -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/web_1_dark.png" width="600">
+    <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/web_1_light.png" width="600">
+    <img alt="Web screenshot" src="packages/app/assets/readme/web_1_light.png" width="600">
+  </picture>
 </div>
 
 <div align="center">
