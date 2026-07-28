@@ -19,7 +19,6 @@ import {
 import { ReactNode, useState } from 'react';
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native';
 import { showToast } from '../../utils/services/showToast';
-import { DropdownMenu } from 'app/components/common/ui/DropdownMenu';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
