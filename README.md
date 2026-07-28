@@ -36,9 +36,13 @@
 
 <div align="center">
 
-<!-- <img src="packages/app/assets/readme/web_1.png" alt="Web screeshot no. 1" width="200" />
-&nbsp; -->
-<!-- <img src="packages/app/assets/readme/ios_1.png" alt="iOS screeshot no. 1" width="200" /> -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/ios_1.png" width="200">
+  <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/ios_3.png" width="200">
+  <img alt="iOS screenshot" src="packages/app/assets/readme/ios_1.png" width="200">
+</picture>
+<!-- <img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 1" width="200" /> -->
+&nbsp;
 <img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="200" />
 &nbsp;
 <img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="200" />
