@@ -15,6 +15,8 @@
   
   [super applicationDidFinishLaunching:notification];
   self.window.title = @"NativeWeather";
+  [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, 1198, 896) display:NO];
+  self.window.minSize = NSMakeSize(1198, 896);
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

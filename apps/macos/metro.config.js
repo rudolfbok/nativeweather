@@ -16,6 +16,13 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
 		disableHierarchicalLookup: true,
 		nodeModulesPaths: [path.resolve(__dirname, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')],
 		resolveRequest: (context, moduleName, platform) => {
+			if (platform === 'macos' && moduleName === 'expo-image') {
+				return {
+					filePath: path.resolve(__dirname, 'stubs/expo-image.js'),
+					type: 'sourceFile',
+				};
+			}
+
 			if (platform === 'macos' && moduleName === 'react-native-worklets') {
 				return {
 					filePath: path.resolve(__dirname, 'stubs/react-native-worklets.js'),

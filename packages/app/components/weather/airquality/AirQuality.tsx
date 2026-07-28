@@ -49,7 +49,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		<>
 			<StyledPressable
 				onPress={Platform.OS === 'ios' ? () => router.push('/modals/airquality') : () => setShowModal((prev) => !prev)}
-				className={clsx('col-span-3 gap-2 gap-4 rounded-3xl p-4', className)}
+				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', className)}
 				liquidGlass={true}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />

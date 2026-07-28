@@ -173,7 +173,7 @@ export const HeroWeather = () => {
 						dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
 					/>
 					<HourlyForecast />
-					<AirQuality className={clsx('xl:hidden')} />
+					<AirQuality className={clsx('xl:web:hidden')} />
 				</View>
 				<View className={clsx('native:px-4 gap-4')}>
 					<DailyForecast />

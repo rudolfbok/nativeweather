@@ -12,7 +12,7 @@ export const Sidebar = () => {
 	const { text } = useThemeColors();
 
 	return (
-		<View className="m-4 w-[340px] justify-between rounded-3xl bg-systemBackground p-4 dark:bg-secondarySystemBackground_dark">
+		<View className="my-4 ml-4 w-[340px] justify-between rounded-3xl bg-systemBackground p-4 dark:bg-secondarySystemBackground_dark">
 			<View className="w-full">
 				<FavoriteCities hook={favoriteHook} />
 			</View>

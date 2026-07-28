@@ -36,8 +36,10 @@ export const useSearchController = () => {
 		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 		if (weatherData) {
 			setWeatherData(weatherData);
-			// const path = buildSlug(weatherData);
-			// router.push(path);
+			if (Platform.OS !== 'macos') {
+				const path = buildSlug(weatherData);
+				router.push(path);
+			}
 		} else {
 			showToast({
 				message: t('search.city.error'),
@@ -54,8 +56,10 @@ export const useSearchController = () => {
 			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
-			const path = buildSlug(weatherData);
-			router.push(path);
+			if (Platform.OS !== 'macos') {
+				const path = buildSlug(weatherData);
+				router.push(path);
+			}
 			return true;
 		} else {
 			showToast({ message: t('search.input.error'), preset: 'error' });

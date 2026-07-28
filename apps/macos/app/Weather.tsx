@@ -1,15 +1,15 @@
-import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { View } from 'react-native';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper.macos';
+import { WeatherFeature } from 'app/features/weather/screen.macos';
+import { useWeather } from 'app/hooks/useWeather';
 
 export const Weather = () => {
-	const { setNavigationScreen } = useNavigationScreen();
+	const { weatherData } = useWeather();
+	const weatherKey = weatherData ? `${weatherData.location.lat}:${weatherData.location.lon}` : 'empty';
 
 	return (
-		<View className="w-full items-center">
-			<View className="gap-4">
+		<ScreenWrapper resetKey={weatherKey}>
+			<WeatherFeature />
+			{/* <View className="gap-4">
 				<StyledPressable onPress={() => setNavigationScreen('testing')} className="rounded-3xl p-4">
 					<StyledText type="title">Go to testing screen</StyledText>
 				</StyledPressable>
@@ -18,7 +18,7 @@ export const Weather = () => {
 				</StyledPressable>
 			</View>
 			<WeatherIcon isDay={1} width={120} height={120} code={1003} strokeWidth={0.5} source="weatherapi" />
-			<StyledText type="title">NativeWeather macOS desktop app</StyledText>
-		</View>
+			<StyledText type="title">NativeWeather macOS desktop app</StyledText> */}
+		</ScreenWrapper>
 	);
 };
