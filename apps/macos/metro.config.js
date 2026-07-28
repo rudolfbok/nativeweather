@@ -15,6 +15,16 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
 	resolver: {
 		disableHierarchicalLookup: true,
 		nodeModulesPaths: [path.resolve(__dirname, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')],
+		resolveRequest: (context, moduleName, platform) => {
+			if (platform === 'macos' && moduleName === 'react-native-worklets') {
+				return {
+					filePath: path.resolve(__dirname, 'stubs/react-native-worklets.js'),
+					type: 'sourceFile',
+				};
+			}
+
+			return context.resolveRequest(context, moduleName, platform);
+		},
 		extraNodeModules: {
 			react: path.resolve(__dirname, 'node_modules/react'),
 			'react-native': path.resolve(__dirname, 'node_modules/react-native'),

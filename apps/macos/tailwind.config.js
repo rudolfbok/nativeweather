@@ -3,8 +3,9 @@ module.exports = {
 	// 1. Update your content paths
 	content: [
 		'./App.{js,jsx,ts,tsx}',
-		'./components/**/*.{js,jsx,ts,tsx}',
+		'./app/**/*.{js,jsx,ts,tsx}',
 		'../../packages/app/components/**/*.{js,jsx,ts,tsx}',
+		'../../packages/app/utils/**/*.{js,jsx,ts,tsx}',
 	],
 
 	// 2. ADD THIS PRESET (Vital for v4)

@@ -1,15 +1,40 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { View } from 'react-native';
 import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { showFavoriteToast, showToast } from 'app/utils/services/showToast.macos';
+import { View } from 'react-native';
 
 export const Settings = () => {
 	const { setNavigationScreen } = useNavigationScreen();
 
 	return (
-		<View className="w-full items-center">
+		<View className="w-full items-center gap-4">
 			<StyledPressable onPress={() => setNavigationScreen('weather')} className="p-6">
 				<StyledText type="title">Go back to weather</StyledText>
+			</StyledPressable>
+			<StyledPressable
+				onPress={() => showToast({ message: 'Success toast', preset: 'done' })}
+				className="rounded-2xl px-5 py-3"
+			>
+				<StyledText type="body">Show success toast</StyledText>
+			</StyledPressable>
+			<StyledPressable
+				onPress={() => showToast({ message: 'Error toast', preset: 'error' })}
+				className="rounded-2xl px-5 py-3"
+			>
+				<StyledText type="body">Show error toast</StyledText>
+			</StyledPressable>
+			<StyledPressable
+				onPress={() => showFavoriteToast({ message: 'Add to favorites', type: 'add' })}
+				className="rounded-2xl px-5 py-3"
+			>
+				<StyledText type="body">Add to favorites</StyledText>
+			</StyledPressable>
+			<StyledPressable
+				onPress={() => showFavoriteToast({ message: 'Remove from favorites', type: 'remove' })}
+				className="rounded-2xl px-5 py-3"
+			>
+				<StyledText type="body">Remove from favorites</StyledText>
 			</StyledPressable>
 		</View>
 	);
