@@ -36,8 +36,8 @@ export const useSearchController = () => {
 		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
 		if (weatherData) {
 			setWeatherData(weatherData);
-			const path = buildSlug(weatherData);
-			router.push(path);
+			// const path = buildSlug(weatherData);
+			// router.push(path);
 		} else {
 			showToast({
 				message: t('search.city.error'),

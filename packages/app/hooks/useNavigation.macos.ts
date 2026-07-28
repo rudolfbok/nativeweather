@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type NavigationScreen = 'weather' | 'settings';
+type NavigationScreen = 'weather' | 'settings' | 'testing';
 
 interface NavigationState {
 	navigationScreen: NavigationScreen;

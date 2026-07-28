@@ -54,7 +54,7 @@ export const SettingsFeature = () => {
 				<View className={clsx('flex items-center')}>
 					<StyledText type="bodysecondary">NativeWeather</StyledText>
 					<StyledText type="bodysecondary">
-						Version:
+						Version:&nbsp;
 						{Platform.OS === 'web' && pkg.version}
 						{(Platform.OS === 'ios' || Platform.OS === 'android') && Constants.expoConfig?.version}
 						{Platform.OS === 'macos' && '0.0.1'}

@@ -9,11 +9,16 @@ export const Weather = () => {
 
 	return (
 		<View className="w-full items-center">
-			<StyledPressable onPress={() => setNavigationScreen('settings')} className="p-6">
-				<StyledText type="title">Go to settings screen</StyledText>
-			</StyledPressable>
-			<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={0.5} source="weatherapi" />
-			<StyledText type="screentitle">NativeWeather macOS desktop app</StyledText>
+			<View className="gap-4">
+				<StyledPressable onPress={() => setNavigationScreen('testing')} className="rounded-3xl p-4">
+					<StyledText type="title">Go to testing screen</StyledText>
+				</StyledPressable>
+				<StyledPressable onPress={() => setNavigationScreen('settings')} className="rounded-3xl p-4">
+					<StyledText type="title">Go to settings screen</StyledText>
+				</StyledPressable>
+			</View>
+			<WeatherIcon isDay={1} width={120} height={120} code={1003} strokeWidth={0.5} source="weatherapi" />
+			<StyledText type="title">NativeWeather macOS desktop app</StyledText>
 		</View>
 	);
 };

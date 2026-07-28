@@ -60,7 +60,7 @@ export const addFavoriteCity = (city: City): boolean => {
 		storage.set('favoriteCities', JSON.stringify(updatedFavorites));
 		// favorites.push(city);
 		// storage.set('favoriteCities', JSON.stringify(favorites));
-		console.warn('City was added to favorites!');
+		// console.warn('City was added to favorites!');
 		return true;
 	} catch (error) {
 		console.error('Error adding favorite city:', error);
@@ -86,7 +86,7 @@ export const removeFavoriteCity = (city: City): boolean => {
 		}
 
 		storage.set('favoriteCities', JSON.stringify(updatedFavorites));
-		console.warn('City was removed from favorites');
+		// console.warn('City was removed from favorites');
 		return true;
 	} catch (error) {
 		console.error('Error removing favorite city:', error);
