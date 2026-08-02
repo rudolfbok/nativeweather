@@ -1,4 +1,5 @@
 import { StyledText } from 'app/components/common/styled/StyledText';
+import clsx from 'clsx';
 import { Check, Star, StarOff, X } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { View } from 'react-native';
@@ -50,7 +51,14 @@ export const Toast = () => {
 	const { Icon, color } = toastStyles[toast.type];
 
 	return (
-		<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark absolute bottom-6 right-6 z-50 w-[320px] flex-row items-center gap-4 rounded-xl p-4">
+		<View
+			className={clsx(
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark',
+				'flex-row items-center gap-4 rounded-xl p-4',
+				'absolute bottom-6 right-6 z-50 w-[320px]',
+				'border border-black/10 dark:border-white/10'
+			)}
+		>
 			<Icon color={color} fill={toast.type === 'add' ? color : 'none'} />
 			<StyledText type="bodysecondary" className="flex-1 font-semibold" numberOfLines={3}>
 				{toast.message}
