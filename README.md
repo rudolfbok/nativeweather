@@ -129,7 +129,7 @@ nativeweather/
 ├── apps/
 │   ├── web/          # Next.js web app
 │   └── mobile/       # Expo mobile app
-│   └── macos/        # macOS desktop app
+│   └── desktop/      # macOS desktop app
 ├── packages/
 │   └── app/          # Shared app code, components, hooks, storage, API, types
 ├── package.json
@@ -154,19 +154,28 @@ pnpm install
 
 ## Dev scripts
 
-Run the web app:
+#### Run the web app
 
 ```txt
 pnpm web
 ```
 
-Run the mobile app:
+#### Run the mobile app
 
 ```txt
 pnpm mobile
 ```
 
-Run the Mac desktop app:
+#### Run the macOS desktop app
+
+Install pod files
+
+```txt
+cd apps/desktop/macos
+pod install
+```
+
+Run the desktop app from root
 
 ```txt
 pnpm macos

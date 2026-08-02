@@ -11,7 +11,7 @@
 		"typecheck": "turbo typecheck",
 		"web": "cd apps/web && turbo dev",
 		"mobile": "cd apps/mobile && turbo dev",
-		"macos": "cd apps/macos && stmux -- [ \"turbo dev\" .. \"wait-on tcp:localhost:8081 && pnpm macos\" ]",
+		"macos": "cd apps/desktop && stmux -- [ \"turbo dev\" .. \"wait-on tcp:localhost:8081 && pnpm macos\" ]",
 		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
 	},
 	"keywords": [],

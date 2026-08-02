@@ -37,7 +37,7 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
 
-  apps/macos:
+  apps/desktop:
     dependencies:
       '@babel/runtime':
         specifier: ^7.25.0

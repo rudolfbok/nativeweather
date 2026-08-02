@@ -3,7 +3,6 @@
 import emailjs from '@emailjs/react-native';
 import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
-import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import {
@@ -60,35 +59,6 @@ export const FeedbackFeature = () => {
 		setLoading(false);
 	};
 
-	const TypeButton = ({
-		variant,
-		text,
-		icon,
-	}: {
-		variant: string;
-		text: string;
-		icon: (color: string) => ReactNode;
-	}) => {
-		const isSelected = type === variant;
-
-		return (
-			<StyledPressable
-				onPress={() => setType(variant)}
-				className={clsx(
-					'min-h-12 flex-1 basis-[120px] flex-row items-center justify-between gap-2 rounded-3xl px-4 py-3',
-					isSelected && '!bg-primaryblue'
-				)}
-			>
-				<View>{icon(isSelected ? 'white' : '#007AFF')}</View>
-				<View className="flex-grow items-center">
-					<StyledText type="subtitle" className={clsx('text-center', isSelected && '!text-white dark:!text-white')}>
-						{text}
-					</StyledText>
-				</View>
-			</StyledPressable>
-		);
-	};
-
 	const DropdownItem = ({ icon, title, variant }: { icon: ReactNode; title: string; variant: string }) => {
 		const isSelected = type === variant;
 		return (
@@ -117,7 +87,7 @@ export const FeedbackFeature = () => {
 				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className="dark:bg-secondarySystemBackground_dark w-[240px] overflow-hidden rounded-3xl">
+					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark w-[240px] overflow-hidden rounded-3xl">
 						<Pressable
 							onPress={() => setOpen((prev) => !prev)}
 							className="hover:dark:bg-tertiarySystemBackground_dark flex-row items-center justify-between gap-2 overflow-hidden p-4"

@@ -23,7 +23,7 @@ pnpm install
 Install CocoaPods
 
 ```bash
-cd apps/macos/macos
+cd apps/desktop/macos
 pod install
 cd ../../..
 ```
