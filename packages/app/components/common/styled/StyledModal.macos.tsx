@@ -2,6 +2,9 @@ import { clsx } from 'clsx';
 import { Ref } from 'react';
 import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
 import { ModalHeader } from '../ui/ModalHeader';
+// import { hairlineWidth } from 'react-native/types_generated/Libraries/StyleSheet/StyleSheetExports';
+import { StyleSheet } from 'react-native';
+import { useThemeColors } from 'app/hooks/useThemeColors';
 
 interface StyledModalProps {
 	visible: boolean;
@@ -32,21 +35,24 @@ export const StyledModal = ({
 	mapsModal = false,
 	children,
 }: StyledModalProps) => {
+	const { modalBorder } = useThemeColors();
+
 	return (
-		<Pressable className="absolute h-screen w-screen bg-white/20" onPress={onClose}>
+		<Pressable className="z-100 absolute h-screen w-screen bg-black/40 dark:bg-black/70" onPress={onClose}>
 			{/* <Pressable className="ahsolute z-10 h-screen w-screen" onPress={onClose} /> */}
 			{/* <Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden')} /> */}
 			<View
 				className={clsx(
 					'no-modal-scroll overflow-hidden',
-					'px-4 pt-4',
+					'pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'h-[100dvh] w-full md:h-fit',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
+					// 'border border-white',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
 				)}
+				style={{ borderWidth: StyleSheet.hairlineWidth, borderColor: modalBorder }}
 			>
 				<ModalHeader
 					icon={icon}
@@ -60,7 +66,7 @@ export const StyledModal = ({
 				{mapsModal ? (
 					<View className={clsx('flex-1 pb-4')}>{children}</View>
 				) : (
-					<ScrollView ref={ref} showsVerticalScrollIndicator={false} className={clsx('flex-grow pb-4')}>
+					<ScrollView ref={ref} className={clsx('flex-grow')} contentContainerClassName="px-4 pb-4">
 						{children}
 					</ScrollView>
 				)}

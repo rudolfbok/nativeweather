@@ -6,6 +6,7 @@ export const colors = {
 		headerBg: '#000000',
 		modalBg: '#F2F2F7',
 		background: '#F2F2F2',
+		modalBorder: '#00000033',
 	},
 	dark: {
 		text: '#FFFFFF',
@@ -14,5 +15,6 @@ export const colors = {
 		headerBg: '#121212',
 		modalBg: '#0E0E0F',
 		background: '#000000',
+		modalBorder: '#FFFFFF33',
 	},
 };

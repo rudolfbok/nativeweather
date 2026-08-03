@@ -26,7 +26,7 @@ export const ModalHeader = ({
 	onClose,
 }: ModalHeaderProps) => {
 	return (
-		<View>
+		<View className="macos:px-4">
 			<View className={clsx('flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (

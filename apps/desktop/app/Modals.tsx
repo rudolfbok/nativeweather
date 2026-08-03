@@ -12,7 +12,6 @@ import { UVModal } from 'app/components/cards/uv/UVModal';
 import { WindModal } from 'app/components/cards/wind/WindModal';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { AlertIcon } from 'app/components/icons/main/AlertIcon';
-import { CalendarIcon } from 'app/components/icons/main/CalendarIcon';
 import { CloudsIcon } from 'app/components/icons/main/CloudsIcon';
 import { HumidityIcon } from 'app/components/icons/main/HumidityIcon';
 import { MoonIcon } from 'app/components/icons/main/MoonIcon';
