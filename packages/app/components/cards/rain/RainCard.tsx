@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
@@ -20,7 +22,13 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToRain = useModalNavigation({
+		ios: () => router.push('/modals/rain'),
+		macos: () => setModalScreen('rain'),
+		web: () => setShowModal(true),
+	});
 
 	const display = switchMetrics({
 		metric: `${rainPrecipMm.toFixed(1)}mm`,
@@ -42,7 +50,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/rain') : () => setShowModal(true)}
+			onPress={navigateToRain}
 			icon={<RainIcon />}
 			title={t('rain.title')}
 			description={description}
@@ -55,6 +63,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 			}
 			data={Math.round(rainChance) + '%'}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

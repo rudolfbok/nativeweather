@@ -4,6 +4,8 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AlertIcon } from 'app/components/icons/main/AlertIcon';
 import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { WeatherAlert } from 'app/types/weatherAPI';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
@@ -22,7 +24,13 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 	const tolgee = useTolgee();
 	const [showAlertModal, setShowAlertModal] = useState(false);
 	const [selectedAlert, setSelectedAlert] = useState(null);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToAlerts = useModalNavigation({
+		ios: () => router.push('/modals/alerts'),
+		macos: () => setModalScreen('alerts'),
+		web: () => setShowAlertModal(true),
+	});
 
 	if (alertsLength === 0) return null;
 
@@ -47,7 +55,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 	return (
 		<>
 			<StyledPressable
-				onPress={Platform.OS === 'ios' ? () => router.push('/modals/alerts') : () => setShowAlertModal(true)}
+				onPress={navigateToAlerts}
 				className={clsx('w-full flex-row items-center justify-between rounded-3xl p-4')}
 				liquidGlass={true}
 			>
@@ -58,7 +66,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 				<ChevronIcon />
 			</StyledPressable>
 
-			{showAlertModal && (
+			{Platform.OS !== 'macos' && showAlertModal && (
 				<StyledModal
 					visible={showAlertModal}
 					icon={selectedAlert ? undefined : <AlertIcon mostSevere={alertIconColor} />}

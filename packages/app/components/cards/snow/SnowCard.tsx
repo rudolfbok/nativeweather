@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
@@ -20,7 +22,13 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToSnow = useModalNavigation({
+		ios: () => router.push('/modals/snow'),
+		macos: () => setModalScreen('snow'),
+		web: () => setShowModal(true),
+	});
 
 	const display = switchMetrics({
 		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
@@ -42,7 +50,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/snow') : () => setShowModal(true)}
+			onPress={navigateToSnow}
 			icon={<SnowIcon />}
 			title={t('snow.title')}
 			description={description}
@@ -55,6 +63,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 			}
 			data={snowChance + '%'}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

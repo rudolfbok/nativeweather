@@ -6,6 +6,8 @@ import { RoundView } from 'app/components/common/ui/RoundView';
 import { CalendarIcon } from 'app/components/icons/main/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useSelectedDay } from 'app/hooks/useSelectedDay';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
@@ -25,7 +27,13 @@ export const DailyForecast = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToForecast = useModalNavigation({
+		ios: () => router.push('/modals/forecast'),
+		macos: () => setModalScreen('forecast'),
+		web: () => undefined,
+	});
 
 	useEffect(() => {
 		if (scrollRef.current) {
@@ -69,7 +77,7 @@ export const DailyForecast = () => {
 						key={index}
 						onPress={() => {
 							setSelectedDay(day);
-							Platform.OS === 'ios' && router.push('/modals/forecast');
+							navigateToForecast();
 						}}
 						className={clsx(
 							'!cursor-pointer items-center justify-center px-4',

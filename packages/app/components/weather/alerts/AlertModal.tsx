@@ -25,7 +25,7 @@ export const AlertModal = ({ onPress, filteredAlerts = [], selectedAlert = null 
 							<View key={alert.identifier || index}>
 								<AlertItem
 									onPress={
-										Platform.OS === 'web'
+										Platform.OS === 'web' || Platform.OS === 'macos'
 											? () => onPress?.(alert)
 											: () => router.push(`/modals/alerts/detail?alert=${index}`)
 									}

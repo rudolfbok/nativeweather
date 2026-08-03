@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
@@ -42,7 +44,13 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
 	const [currentLanguage] = useStorageString('currentLang');
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToMoon = useModalNavigation({
+		ios: () => router.push('/modals/moon'),
+		macos: () => setModalScreen('moon'),
+		web: () => setShowModal(true),
+	});
 
 	const getLocalePhase: Record<string, string> = {
 		'New Moon': t('moon.phase.newmoon'),
@@ -57,7 +65,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/moon') : () => setShowModal(true)}
+			onPress={navigateToMoon}
 			icon={<MoonIcon />}
 			title={t('moon.title')}
 			data={getLocalePhase[phase]}
@@ -80,6 +88,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				</View>
 			}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

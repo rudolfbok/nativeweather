@@ -1,5 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import UVScale from 'app/assets/uvscale.png';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useWeather } from 'app/hooks/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
@@ -15,7 +17,13 @@ export const UVCard = ({ data }: { data: number }) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToUV = useModalNavigation({
+		ios: () => router.push('/modals/uv'),
+		macos: () => setModalScreen('uv'),
+		web: () => setShowModal(true),
+	});
 
 	const MAX_UV = 15;
 	const roundUV = weatherData ? Math.round(data) : 0;
@@ -33,7 +41,7 @@ export const UVCard = ({ data }: { data: number }) => {
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/uv') : () => setShowModal(true)}
+			onPress={navigateToUV}
 			icon={<UVIcon />}
 			title="UV"
 			description={description}
@@ -56,6 +64,7 @@ export const UVCard = ({ data }: { data: number }) => {
 			}
 			data={Math.round(data)}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal visible={showModal} icon={<UVIcon />} header="UV Index" onClose={() => setShowModal(false)}>
 						<UVModal />

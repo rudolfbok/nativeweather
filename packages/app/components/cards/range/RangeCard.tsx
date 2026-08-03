@@ -1,11 +1,13 @@
 import { useTranslate } from '@tolgee/react';
+import { RangeIcon } from 'app/components/icons/main/RangeIcon';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { StyledModal } from '../../common/styled/StyledModal';
-import { RangeIcon } from 'app/components/icons/main/RangeIcon';
 import { DataCard } from '../DataCard';
 import { RangeModal } from './RangeModal';
 
@@ -18,7 +20,13 @@ export const RangeCard = ({ visKm, visMiles }: RangeCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToRange = useModalNavigation({
+		ios: () => router.push('/modals/range'),
+		macos: () => setModalScreen('range'),
+		web: () => setShowModal(true),
+	});
 
 	const display = switchMetrics({
 		metric: `${Math.round(visKm)}km`,
@@ -47,12 +55,13 @@ export const RangeCard = ({ visKm, visMiles }: RangeCardProps) => {
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/range') : () => setShowModal(true)}
+			onPress={navigateToRange}
 			icon={<RangeIcon />}
 			title={t('range.title')}
 			description={description}
 			data={display}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

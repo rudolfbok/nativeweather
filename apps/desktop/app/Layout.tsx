@@ -1,11 +1,12 @@
 import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { Toast } from 'app/utils/services/showToast.macos';
+import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { Settings } from './Settings';
 import { Sidebar } from './Sidebar';
-import { Weather } from './Weather';
 import { Testing } from './Testing';
-import { clsx } from 'clsx';
+import { Weather } from './Weather';
+import { Modals } from './Modals';
 
 export default function Layout() {
 	const { navigationScreen } = useNavigationScreen();
@@ -18,6 +19,7 @@ export default function Layout() {
 				{navigationScreen === 'settings' && <Settings />}
 				{navigationScreen === 'testing' && <Testing />}
 			</View>
+			<Modals />
 			<Toast />
 		</View>
 	);

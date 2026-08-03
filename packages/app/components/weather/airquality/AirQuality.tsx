@@ -5,6 +5,8 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CardHeader } from 'app/components/common/ui/CardHeader';
 import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
@@ -19,7 +21,13 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const { t } = useTranslate('weather');
 	const [currentAQI] = useStorageString('currentAQI');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToAirQuality = useModalNavigation({
+		ios: () => router.push('/modals/airquality'),
+		macos: () => setModalScreen('airquality'),
+		web: () => setShowModal((showModal) => !showModal),
+	});
 
 	const aq = airQualityData?.current;
 
@@ -48,7 +56,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	return (
 		<>
 			<StyledPressable
-				onPress={Platform.OS === 'ios' ? () => router.push('/modals/airquality') : () => setShowModal((prev) => !prev)}
+				onPress={navigateToAirQuality}
 				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', className)}
 				liquidGlass={true}
 			>
@@ -82,7 +90,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					<StyledText type="body">{currentAQI === 'EU' ? 'EUAQI' : 'USAQI'}</StyledText>
 				</View>
 			</StyledPressable>
-			{showModal && (
+			{Platform.OS !== 'macos' && showModal && (
 				<AirQualityModal visible={showModal} airQualityData={airQualityData} onClose={() => setShowModal(false)} />
 			)}
 		</>

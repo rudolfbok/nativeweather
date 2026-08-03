@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
@@ -18,7 +20,13 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	const [currentUnits] = useStorageString('currentUnits');
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToPressure = useModalNavigation({
+		ios: () => router.push('/modals/pressure'),
+		macos: () => setModalScreen('pressure'),
+		web: () => setShowModal(true),
+	});
 
 	const display = switchMetrics({
 		metric: `${Math.round(pressureMb)}hPa`,
@@ -49,12 +57,13 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/pressure') : () => setShowModal(true)}
+			onPress={navigateToPressure}
 			icon={<PressureIcon />}
 			title={t('pressure.title')}
 			description={description}
 			data={display}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

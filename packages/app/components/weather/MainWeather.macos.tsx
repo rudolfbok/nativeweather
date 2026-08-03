@@ -58,7 +58,7 @@ export const MainWeather = ({
 			className="relative items-center justify-center overflow-hidden rounded-3xl p-4"
 			// style={{ backgroundColor: isDay === 1 ? '#3979b8' : '#091331' }}
 		>
-			<View pointerEvents="none" className="absolute -bottom-10 left-0">
+			<View pointerEvents="none" className="absolute -bottom-10">
 				<WeatherLandscape code={code} isDay={isDay} />
 			</View>
 			{name && country && (

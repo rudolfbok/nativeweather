@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { useState } from 'react';
@@ -14,16 +16,23 @@ export const SunsetCard = ({ data }: { data: string }) => {
 	const [currentLanguage] = useStorageString('currentLang');
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToSunset = useModalNavigation({
+		ios: () => router.push('/modals/sunset'),
+		macos: () => setModalScreen('sunset'),
+		web: () => setShowModal(true),
+	});
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/sunset') : () => setShowModal(true)}
+			onPress={navigateToSunset}
 			icon={<SunsetIcon />}
 			title={t('sunset.title')}
 			data={formatTime(data, currentLanguage)}
 			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

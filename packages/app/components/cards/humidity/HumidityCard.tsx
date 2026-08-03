@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { useState } from 'react';
@@ -21,7 +23,13 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	const { t } = useTranslate('weather');
 	const [currentTemp] = useStorageString('currentTemp');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToHumidity = useModalNavigation({
+		ios: () => router.push('/modals/humidity'),
+		macos: () => setModalScreen('humidity'),
+		web: () => setShowModal(true),
+	});
 
 	const dewPointValue = dewPoint
 		? switchTemp({
@@ -43,7 +51,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/humidity') : () => setShowModal(true)}
+			onPress={navigateToHumidity}
 			icon={<HumidityIcon />}
 			title={t('humidity.title')}
 			description={description}
@@ -56,6 +64,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 			}
 			data={data + '%'}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

@@ -1,4 +1,6 @@
 import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { getDirection } from 'app/utils/mappings/mapDirections';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
@@ -27,7 +29,13 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 	const { t } = useTranslate('weather');
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+	const navigateToWind = useModalNavigation({
+		ios: () => router.push('/modals/wind'),
+		macos: () => setModalScreen('wind'),
+		web: () => setShowModal(true),
+	});
 
 	const displaySpeed = switchMetrics({
 		metric: `${Math.round(windKm)}km/h`,
@@ -68,7 +76,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 
 	return (
 		<DataCard
-			onPress={Platform.OS === 'ios' ? () => router.push('/modals/wind') : () => setShowModal(true)}
+			onPress={navigateToWind}
 			icon={<Wind color="gray" />}
 			title={t('wind.title')}
 			description={description}
@@ -83,6 +91,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 			}
 			data={displaySpeed}
 			modal={
+				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}
