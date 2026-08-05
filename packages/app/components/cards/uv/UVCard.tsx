@@ -20,7 +20,7 @@ export const UVCard = ({ data }: { data: number }) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToUV = useModalNavigation({
-		ios: () => router.push('/modals/uv'),
+		mobile: () => router.push('/modals/uv'),
 		macos: () => setModalScreen('uv'),
 		web: () => setShowModal(true),
 	});

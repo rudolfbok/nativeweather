@@ -24,7 +24,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToAirQuality = useModalNavigation({
-		ios: () => router.push('/modals/airquality'),
+		mobile: () => router.push('/modals/airquality'),
 		macos: () => setModalScreen('airquality'),
 		web: () => setShowModal((showModal) => !showModal),
 	});

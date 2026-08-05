@@ -25,7 +25,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToSnow = useModalNavigation({
-		ios: () => router.push('/modals/snow'),
+		mobile: () => router.push('/modals/snow'),
 		macos: () => setModalScreen('snow'),
 		web: () => setShowModal(true),
 	});

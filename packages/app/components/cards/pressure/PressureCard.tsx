@@ -23,7 +23,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToPressure = useModalNavigation({
-		ios: () => router.push('/modals/pressure'),
+		mobile: () => router.push('/modals/pressure'),
 		macos: () => setModalScreen('pressure'),
 		web: () => setShowModal(true),
 	});

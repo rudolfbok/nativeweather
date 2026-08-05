@@ -30,7 +30,7 @@ export const DailyForecast = () => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToForecast = useModalNavigation({
-		ios: () => router.push('/modals/forecast'),
+		mobile: () => router.push('/modals/forecast'),
 		macos: () => setModalScreen('forecast'),
 		web: () => undefined,
 	});

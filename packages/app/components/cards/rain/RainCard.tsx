@@ -24,8 +24,9 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 	const [showModal, setShowModal] = useState(false);
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
+
 	const navigateToRain = useModalNavigation({
-		ios: () => router.push('/modals/rain'),
+		mobile: () => router.push('/modals/rain'),
 		macos: () => setModalScreen('rain'),
 		web: () => setShowModal(true),
 	});

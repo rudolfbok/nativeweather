@@ -32,7 +32,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToWind = useModalNavigation({
-		ios: () => router.push('/modals/wind'),
+		mobile: () => router.push('/modals/wind'),
 		macos: () => setModalScreen('wind'),
 		web: () => setShowModal(true),
 	});

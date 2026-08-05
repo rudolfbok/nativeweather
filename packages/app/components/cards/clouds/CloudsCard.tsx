@@ -16,7 +16,7 @@ export const CloudsCard = ({ data }: { data: number }) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToClouds = useModalNavigation({
-		ios: () => router.push('/modals/clouds'),
+		mobile: () => router.push('/modals/clouds'),
 		macos: () => setModalScreen('clouds'),
 		web: () => setShowModal(true),
 	});

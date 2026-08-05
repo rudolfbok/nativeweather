@@ -26,7 +26,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToHumidity = useModalNavigation({
-		ios: () => router.push('/modals/humidity'),
+		mobile: () => router.push('/modals/humidity'),
 		macos: () => setModalScreen('humidity'),
 		web: () => setShowModal(true),
 	});

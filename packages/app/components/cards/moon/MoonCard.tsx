@@ -47,7 +47,7 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToMoon = useModalNavigation({
-		ios: () => router.push('/modals/moon'),
+		mobile: () => router.push('/modals/moon'),
 		macos: () => setModalScreen('moon'),
 		web: () => setShowModal(true),
 	});

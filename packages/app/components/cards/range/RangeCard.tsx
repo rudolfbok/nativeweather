@@ -23,7 +23,7 @@ export const RangeCard = ({ visKm, visMiles }: RangeCardProps) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToRange = useModalNavigation({
-		ios: () => router.push('/modals/range'),
+		mobile: () => router.push('/modals/range'),
 		macos: () => setModalScreen('range'),
 		web: () => setShowModal(true),
 	});

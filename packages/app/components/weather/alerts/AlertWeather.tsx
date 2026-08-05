@@ -27,7 +27,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToAlerts = useModalNavigation({
-		ios: () => router.push('/modals/alerts'),
+		mobile: () => router.push('/modals/alerts'),
 		macos: () => setModalScreen('alerts'),
 		web: () => setShowAlertModal(true),
 	});

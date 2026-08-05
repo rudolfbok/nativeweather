@@ -19,7 +19,7 @@ export const SunsetCard = ({ data }: { data: string }) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToSunset = useModalNavigation({
-		ios: () => router.push('/modals/sunset'),
+		mobile: () => router.push('/modals/sunset'),
 		macos: () => setModalScreen('sunset'),
 		web: () => setShowModal(true),
 	});

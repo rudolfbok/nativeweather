@@ -19,7 +19,7 @@ export const SunriseCard = ({ data }: { data: string }) => {
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToSunrise = useModalNavigation({
-		ios: () => router.push('/modals/sunrise'),
+		mobile: () => router.push('/modals/sunrise'),
 		macos: () => setModalScreen('sunrise'),
 		web: () => setShowModal(true),
 	});
