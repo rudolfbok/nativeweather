@@ -20,9 +20,9 @@ export default function Layout() {
 					{navigationScreen === 'settings' && <Settings />}
 					{navigationScreen === 'testing' && <Testing />}
 				</View>
-				<Modals />
 				<Toast />
 			</View>
+			<Modals />
 		</>
 	);
 }

@@ -105,6 +105,7 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 		return (
 			<StyledModal
 				visible={visible}
+				airQualityModal={!showAirQualityMetric && true}
 				goBackHeader={showAirQualityMetric ? true : false}
 				goBackOnPress={() => setShowAirQualityMetric(null)}
 				icon={showAirQualityMetric ? undefined : <AirQualityIcon />}

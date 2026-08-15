@@ -1,9 +1,8 @@
 import { clsx } from 'clsx';
 import { Ref } from 'react';
-import { GestureResponderEvent, Pressable, ScrollView, View } from 'react-native';
+import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { ModalHeader } from '../ui/ModalHeader';
 import { useThemeColors } from 'app/hooks/useThemeColors';
-import { StyleSheet } from 'react-native';
 
 interface StyledModalProps {
 	visible: boolean;
@@ -36,18 +35,18 @@ export const StyledModal = ({
 }: StyledModalProps) => {
 	const { modalBorder } = useThemeColors();
 
+	if (!visible) return null;
+
 	return (
-		<Pressable className="h-screen w-screen bg-black/40 dark:bg-black/70" onPress={onClose}>
-			{/* <Pressable className="ahsolute z-10 h-screen w-screen" onPress={onClose} /> */}
-			{/* <Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden')} /> */}
+		<View className="absolute inset-0 z-50 h-screen w-screen items-center justify-center bg-black/40 dark:bg-black/60">
+			<Pressable className="absolute inset-0 h-screen w-screen" onPress={onClose} />
 			<View
 				className={clsx(
 					'no-modal-scroll overflow-hidden',
-					'pt-4',
+					'-mt-4 pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'h-[100dvh] w-full md:h-fit',
-					'md:m-auto md:max-h-[80vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					// 'border border-white',
+					'max-h-[80vh] w-full',
+					'md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
 				)}
@@ -70,6 +69,6 @@ export const StyledModal = ({
 					</ScrollView>
 				)}
 			</View>
-		</Pressable>
+		</View>
 	);
 };

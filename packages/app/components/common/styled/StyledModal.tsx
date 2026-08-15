@@ -14,6 +14,7 @@ interface StyledModalProps {
 	goBackHeader?: boolean;
 	goBackOnPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	settingsModal?: boolean;
+	airQualityModal?: boolean;
 	mapsModal?: boolean;
 	children: React.ReactNode;
 }
@@ -29,6 +30,7 @@ export const StyledModal = ({
 	goBackHeader = false,
 	goBackOnPress,
 	settingsModal = false,
+	airQualityModal = false,
 	mapsModal = false,
 	children,
 }: StyledModalProps) => {
@@ -52,6 +54,7 @@ export const StyledModal = ({
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
+					airQualityModal && 'w-full md:w-[600px]',
 					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
 				)}
 			>

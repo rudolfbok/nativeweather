@@ -48,14 +48,14 @@ export const WeatherFeature = () => {
 		setRefreshing(true);
 
 		try {
-			const rereshedData = await fetchWeather(
+			const refreshedData = await fetchWeather(
 				`${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`,
 				currentSource
 			);
 
-			if (!rereshedData) throw new Error('No fresh weather data');
+			if (!refreshedData) throw new Error('No fresh weather data');
 
-			setWeatherData(rereshedData);
+			setWeatherData(refreshedData);
 
 			Burnt.toast({
 				preset: 'done',

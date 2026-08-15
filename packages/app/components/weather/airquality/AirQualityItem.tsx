@@ -18,7 +18,7 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'native:w-[48%] web:w-full web:!aspect-square ios:h-[173px] aspect-square basis-[48%] justify-between rounded-3xl p-4 md:h-40'
+				'ios:w-[48%] macos:flex-grow web:w-full web:!aspect-square ios:h-[173px] macos:!h-[180px] aspect-square justify-between rounded-3xl p-4 md:h-40'
 			)}
 			liquidGlass={true}
 		>
