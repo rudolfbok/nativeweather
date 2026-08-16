@@ -29,6 +29,24 @@ interface AirQualityModalProps {
 	airQualityData: OpenMeteoAQI;
 }
 
+const detailComponents: Record<string, JSX.Element> = {
+	euaqi: <EUAQIDetail />,
+	usaqi: <USAQIDetail />,
+	pm25: <PM25Detail />,
+	pm10: <PM10Detail />,
+	o3: <O3Detail />,
+	no2: <NO2Detail />,
+};
+
+const nameFormat: Record<string, string> = {
+	euaqi: 'EU AQI',
+	usaqi: 'US AQI',
+	pm25: 'PM2.5',
+	pm10: 'PM10',
+	o3: 'O3',
+	no2: 'NO2',
+};
+
 export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQualityModalProps) => {
 	const { t } = useTranslate('weather');
 	const [showAirQualityMetric, setShowAirQualityMetric] = useState<string | null>(null);
@@ -78,24 +96,6 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 			units: 'μg/m³',
 		},
 	];
-
-	const detailComponents: Record<string, JSX.Element> = {
-		euaqi: <EUAQIDetail />,
-		usaqi: <USAQIDetail />,
-		pm25: <PM25Detail />,
-		pm10: <PM10Detail />,
-		o3: <O3Detail />,
-		no2: <NO2Detail />,
-	};
-
-	const nameFormat: Record<string, string> = {
-		euaqi: 'EU AQI',
-		usaqi: 'US AQI',
-		pm25: 'PM2.5',
-		pm10: 'PM10',
-		o3: 'O3',
-		no2: 'NO2',
-	};
 
 	const Wrapper = ({ children }: { children: ReactNode }) => {
 		if (Platform.OS === 'ios') {

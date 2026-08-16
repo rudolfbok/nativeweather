@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/ui/CardHeader';
+import { variants } from 'app/constants/pressableVariants';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -30,10 +31,7 @@ export const DataCard = ({
 		<>
 			<Pressable
 				onPress={onPress}
-				className={clsx(
-					'bg-systemBackground hover:bg-tertiarySystemBackground justify-between overflow-hidden rounded-3xl p-4',
-					'dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark'
-				)}
+				className={clsx('justify-between overflow-hidden rounded-3xl p-4', !wide && 'aspect-square', variants)}
 				style={{ width: wide ? '49%' : '23.5%', height: 180 }}
 			>
 				<CardHeader icon={icon} header={title} />

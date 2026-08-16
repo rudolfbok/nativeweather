@@ -12,6 +12,7 @@ export const RangeIcon = () => {
 			/>
 			<Path
 				d="M12 15a3 3 0 100-6 3 3 0 000 6z"
+				fill="#39C1C7"
 				stroke="#39C1C7"
 				strokeWidth={2}
 				strokeLinecap="round"

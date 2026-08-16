@@ -65,7 +65,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 				/>
 				<ChevronIcon />
 			</StyledPressable>
-
 			{Platform.OS !== 'macos' && showAlertModal && (
 				<StyledModal
 					visible={showAlertModal}
@@ -84,17 +83,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 						selectedAlert={selectedAlert}
 					/>
 				</StyledModal>
-				// <AlertModal
-				// 	visible={showAlertModal}
-				// 	onClose={() => {
-				// 		setShowAlertModal(false);
-				// 		setSelectedAlert(null);
-				// 	}}
-				// 	goBackOnPress={() => setSelectedAlert(null)}
-				// 	filteredAlerts={filteredAlerts}
-				// 	selectedAlert={selectedAlert}
-				// 	onPress={(alert) => setSelectedAlert(alert)}
-				// />
 			)}
 		</>
 	);

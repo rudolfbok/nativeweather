@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { StyledPressable } from './StyledPressable';
 import { StyledText } from './StyledText';
+import { variants } from 'app/constants/pressableVariants';
 
 interface StyledButtonProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -16,7 +17,7 @@ export const StyledButton = ({ onPress, icon, className, text }: StyledButtonPro
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'bg-systemBackground hover:bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark w-full select-none flex-row items-center justify-center gap-2 rounded-3xl p-4 lg:w-fit',
+				'w-full select-none flex-row items-center justify-center gap-2 rounded-3xl p-4 lg:w-fit',
 				className
 			)}
 		>

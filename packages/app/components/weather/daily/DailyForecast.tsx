@@ -18,6 +18,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native'
 import { useRouter } from 'solito/navigation';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
+import { variants } from 'app/constants/pressableVariants';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -27,7 +28,7 @@ export const DailyForecast = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
-	const { setModalScreen } = useNavigationScreen();
+	const { modalScreen, setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToForecast = useModalNavigation({
 		mobile: () => router.push('/modals/forecast'),
@@ -75,14 +76,16 @@ export const DailyForecast = () => {
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 					<Pressable
 						key={index}
+						pointerEvents={modalScreen ? 'none' : 'auto'}
 						onPress={() => {
 							setSelectedDay(day);
 							navigateToForecast();
 						}}
 						className={clsx(
 							'!cursor-pointer items-center justify-center px-4',
-							'ios:bg-transparent bg-systemBackground hover:bg-tertiarySystemBackground active:native:bg-tertiarySystemBackground',
-							'ios:dark:bg-transparent dark:bg-secondarySystemBackground_dark dark:hover:bg-tertiarySystemBackground_dark dark:active:native:bg-tertiarySystemBackground_dark'
+							'ios:bg-transparent ios:dark:bg-transparent',
+							variants
+							// modalScreen && 'pointer-events-none'
 						)}
 						style={{
 							alignItems: 'center',

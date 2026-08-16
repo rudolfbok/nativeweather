@@ -15,6 +15,7 @@ interface StyledModalProps {
 	goBackHeader?: boolean;
 	goBackOnPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	settingsModal?: boolean;
+	airQualityModal?: boolean;
 	mapsModal?: boolean;
 	children: React.ReactNode;
 }
@@ -30,6 +31,7 @@ export const StyledModal = ({
 	goBackHeader = false,
 	goBackOnPress,
 	settingsModal = false,
+	airQualityModal = false,
 	mapsModal = false,
 	children,
 }: StyledModalProps) => {
@@ -38,17 +40,22 @@ export const StyledModal = ({
 	if (!visible) return null;
 
 	return (
-		<View className="absolute inset-0 z-50 h-screen w-screen items-center justify-center bg-black/40 dark:bg-black/60">
+		<View
+			// pointerEvents="auto"
+			// onStartShouldSetResponder={() => true}
+			className="absolute inset-0 h-screen w-screen items-center justify-center bg-black/40 dark:bg-black/60"
+		>
 			<Pressable className="absolute inset-0 h-screen w-screen" onPress={onClose} />
 			<View
 				className={clsx(
 					'no-modal-scroll overflow-hidden',
-					'-mt-4 pt-4',
+					'-mt-6 pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'max-h-[80vh] w-full',
 					'md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
-					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
+					mapsModal && 'min-h-[80vh] lg:max-w-5xl',
+					airQualityModal && 'w-full md:w-[600px]'
 				)}
 				style={{ borderWidth: StyleSheet.hairlineWidth, borderColor: modalBorder }}
 			>

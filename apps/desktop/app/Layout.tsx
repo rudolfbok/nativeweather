@@ -9,13 +9,13 @@ import { Weather } from './Weather';
 import { Modals } from './Modals';
 
 export default function Layout() {
-	const { navigationScreen } = useNavigationScreen();
+	const { navigationScreen, modalScreen } = useNavigationScreen();
 
 	return (
 		<>
-			<View className="flex-1 flex-row bg-secondarySystemBackground dark:bg-systemBackground_dark">
+			<View className={clsx('flex-1 flex-row bg-secondarySystemBackground dark:bg-systemBackground_dark')}>
 				<Sidebar />
-				<View className={clsx('flex-1 items-center')}>
+				<View className={clsx('flex-1 items-center', modalScreen && 'pointer-events-none')}>
 					{navigationScreen === 'weather' && <Weather />}
 					{navigationScreen === 'settings' && <Settings />}
 					{navigationScreen === 'testing' && <Testing />}

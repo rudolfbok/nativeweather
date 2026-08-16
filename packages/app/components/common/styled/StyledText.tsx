@@ -1,5 +1,4 @@
 import { clsx } from 'clsx';
-import { CSSProperties } from 'react';
 import { StyleProp, Text, TextProps, TextStyle } from 'react-native';
 
 const textStyles = {

@@ -85,7 +85,7 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 			)}
 			<View
 				className={clsx(
-					'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 flex w-full flex-row flex-wrap justify-between gap-4'
+					'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 ios:flex-wrap flex w-full flex-row justify-between gap-4'
 				)}
 			>
 				{day.day.dailySnowChance > day.day.dailyRainChance ? (
