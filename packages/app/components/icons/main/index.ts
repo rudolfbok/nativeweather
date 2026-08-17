@@ -4,6 +4,7 @@ export * from './CalendarIcon';
 export * from './ClockIcon';
 export * from './CloudsIcon';
 export * from './HumidityIcon';
+export * from './MapIcon';
 export * from './MoonIcon';
 export * from './PressureIcon';
 export * from './RainIcon';

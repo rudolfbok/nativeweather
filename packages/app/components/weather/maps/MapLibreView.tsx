@@ -10,12 +10,13 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
 import { MapControls } from './MapControls';
+import { MapCompass } from './MapCompass';
 import { MapWeatherPopup } from './MapWeatherPopup';
 
 type Point = { x: number; y: number };
 type Size = { width: number; height: number };
 
-export const MapLibreView = () => {
+export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const { layer, setLayer } = useMapLayer();
@@ -24,6 +25,8 @@ export const MapLibreView = () => {
 	const [status, setStatus] = useState<MapLoadStatus>('loading');
 	const [mapSize, setMapSize] = useState<Size>({ width: 0, height: 0 });
 	const [markerAnchor, setMarkerAnchor] = useState<Point | null>(null);
+	const [bearing, setBearing] = useState(0);
+	const [showLegend, setShowLegend] = useState(false);
 	const mapRef = useRef<MapRef | null>(null);
 	const cameraRef = useRef<CameraRef | null>(null);
 	const mapLatitude = weatherData?.location?.lat;
@@ -41,6 +44,7 @@ export const MapLibreView = () => {
 	};
 
 	const handleMapPress: NonNullable<MapProps['onPress']> = async (event) => {
+		setShowLegend(false);
 		const [x, y] = event.nativeEvent.point;
 		setMarkerAnchor({ x, y });
 		await requestWeatherPoint(event.nativeEvent.lngLat, layer);
@@ -61,6 +65,11 @@ export const MapLibreView = () => {
 		setMarkerAnchor(null);
 	};
 
+	const handleLegendChange = (show: boolean) => {
+		setShowLegend(show);
+		if (show) closePopup();
+	};
+
 	return (
 		<View className="relative flex w-full flex-1 overflow-hidden" onLayout={handleLayout}>
 			<Map
@@ -70,11 +79,12 @@ export const MapLibreView = () => {
 				attribution={false}
 				logo={false}
 				compass={false}
-				touchRotate={false}
+				touchRotate={true}
 				touchPitch={false}
 				onPress={handleMapPress}
 				onDidFinishLoadingStyle={() => setStatus('ready')}
 				onDidFailLoadingMap={() => setStatus('error')}
+				onRegionIsChanging={(event) => setBearing(event.nativeEvent.bearing)}
 				onRegionDidChange={updateMarkerAnchor}
 			>
 				<Camera ref={cameraRef} initialViewState={{ center: [0, 0], zoom: 2 }} />
@@ -89,6 +99,12 @@ export const MapLibreView = () => {
 					<Layer id="weatherapi-layer" type="raster" source="weatherapi" paint={weatherRasterPaint} />
 				</RasterSource>
 			</Map>
+			{showCompass && (
+				<MapCompass
+					bearing={bearing}
+					onPress={() => cameraRef.current?.setStop({ bearing: 0, duration: 300 })}
+				/>
+			)}
 
 			{status === 'loading' && (
 				<View className="absolute inset-0 flex-row items-center justify-center gap-2">
@@ -110,7 +126,6 @@ export const MapLibreView = () => {
 					mapSize={mapSize}
 					title={t(`maps.layer.${weatherPoint.layer === 'tmp2m' ? 0 : weatherPoint.layer === 'precip' ? 1 : 2}`)}
 					errorLabel={t('maps.weatherUnavailable')}
-					closeLabel={t('maps.closePopup')}
 					onClose={closePopup}
 				/>
 			)}
@@ -122,7 +137,8 @@ export const MapLibreView = () => {
 					setStatus('loading');
 					setBaseMap(style);
 				}}
-				onOpenLegend={closePopup}
+				showLegend={showLegend}
+				onLegendChange={handleLegendChange}
 			/>
 		</View>
 	);

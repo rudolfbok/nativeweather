@@ -16,6 +16,7 @@ import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
 import { MapControls } from './MapControls';
+import { MapCompass } from './MapCompass';
 import { MapWeatherPopup } from './MapWeatherPopup';
 
 type Point = { x: number; y: number };
@@ -40,7 +41,12 @@ const setWeatherLayer = (map: MapLibreMap, layer: WeatherMapLayer) => {
 	});
 };
 
-export const MapLibreView = () => {
+const clearWeatherLayer = (map: MapLibreMap) => {
+	if (map.getLayer(WEATHER_LAYER_ID)) map.removeLayer(WEATHER_LAYER_ID);
+	if (map.getSource(WEATHER_SOURCE_ID)) map.removeSource(WEATHER_SOURCE_ID);
+};
+
+export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
 	const { layer, setLayer } = useMapLayer();
@@ -50,6 +56,9 @@ export const MapLibreView = () => {
 	const [map, setMap] = useState<MapLibreMap | null>(null);
 	const [mapSize, setMapSize] = useState<Size>({ width: 0, height: 0 });
 	const [markerAnchor, setMarkerAnchor] = useState<Point | null>(null);
+	const [bearing, setBearing] = useState(0);
+	const [weatherLayerVisible, setWeatherLayerVisible] = useState(true);
+	const [showLegend, setShowLegend] = useState(false);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const activeStyleRef = useRef<BaseMapStyle>('liberty');
 
@@ -68,7 +77,7 @@ export const MapLibreView = () => {
 				center: [0, 0],
 				zoom: 2,
 				attributionControl: false,
-				dragRotate: false,
+				dragRotate: showCompass,
 				pitchWithRotate: false,
 			});
 			instance.on('error', () => {
@@ -83,33 +92,34 @@ export const MapLibreView = () => {
 			mounted = false;
 			instance?.remove();
 		};
-	}, []);
+	}, [showCompass]);
 
 	useEffect(() => {
 		if (!map) return;
 		let cancelled = false;
-		const installLayer = () => {
+		const updateLayer = () => {
 			if (cancelled) return;
-			setWeatherLayer(map, layer);
+			if (weatherLayerVisible) setWeatherLayer(map, layer);
+			else clearWeatherLayer(map);
 			setStatus('ready');
 		};
 
 		if (activeStyleRef.current !== baseMap) {
 			activeStyleRef.current = baseMap;
 			setStatus('loading');
-			map.once('style.load', installLayer);
+			map.once('style.load', updateLayer);
 			map.setStyle(getBaseMapUrl(baseMap));
 		} else if (map.isStyleLoaded()) {
-			installLayer();
+			updateLayer();
 		} else {
-			map.once('style.load', installLayer);
+			map.once('style.load', updateLayer);
 		}
 
 		return () => {
 			cancelled = true;
-			map.off('style.load', installLayer);
+			map.off('style.load', updateLayer);
 		};
-	}, [baseMap, layer, map]);
+	}, [baseMap, layer, map, weatherLayerVisible]);
 
 	useEffect(() => {
 		const latitude = weatherData?.location?.lat;
@@ -137,8 +147,18 @@ export const MapLibreView = () => {
 	}, [map, weatherPoint]);
 
 	useEffect(() => {
-		if (!map) return;
+		if (!map || !showCompass) return;
+		const updateBearing = () => setBearing(map.getBearing());
+		map.on('rotate', updateBearing);
+		return () => {
+			map.off('rotate', updateBearing);
+		};
+	}, [map, showCompass]);
+
+	useEffect(() => {
+		if (!map || !weatherLayerVisible) return;
 		const handleClick = (event: MapMouseEvent) => {
+			setShowLegend(false);
 			setMarkerAnchor({ x: event.point.x, y: event.point.y });
 			requestWeatherPoint([event.lngLat.lng, event.lngLat.lat], layer);
 		};
@@ -146,9 +166,10 @@ export const MapLibreView = () => {
 		return () => {
 			map.off('click', handleClick);
 		};
-	}, [layer, map, requestWeatherPoint]);
+	}, [layer, map, requestWeatherPoint, weatherLayerVisible]);
 
 	const handleLayerChange = (nextLayer: WeatherMapLayer) => {
+		setWeatherLayerVisible(true);
 		setLayer(nextLayer);
 		clearWeatherPoint();
 		setMarkerAnchor(null);
@@ -159,6 +180,17 @@ export const MapLibreView = () => {
 		setMarkerAnchor(null);
 	};
 
+	const handleClearLayer = () => {
+		setWeatherLayerVisible(false);
+		setShowLegend(false);
+		closePopup();
+	};
+
+	const handleLegendChange = (show: boolean) => {
+		setShowLegend(show);
+		if (show) closePopup();
+	};
+
 	const handleLayout = (event: LayoutChangeEvent) => {
 		setMapSize({ width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height });
 	};
@@ -166,6 +198,9 @@ export const MapLibreView = () => {
 	return (
 		<View className="relative flex w-full flex-1 overflow-hidden" onLayout={handleLayout}>
 			<div ref={containerRef} className="h-full w-full rounded-3xl" />
+			{showCompass && (
+				<MapCompass bearing={bearing} onPress={() => map?.resetNorth({ duration: 300 })} />
+			)}
 			{status === 'loading' && (
 				<View className="absolute inset-0 flex-row items-center justify-center gap-2">
 					<ActivityIndicator size="small" color="#007AFF" />
@@ -186,16 +221,18 @@ export const MapLibreView = () => {
 					mapSize={mapSize}
 					title={t(`maps.layer.${weatherPoint.layer === 'tmp2m' ? 0 : weatherPoint.layer === 'precip' ? 1 : 2}`)}
 					errorLabel={t('maps.weatherUnavailable')}
-					closeLabel={t('maps.closePopup')}
 					onClose={closePopup}
 				/>
 			)}
 			<MapControls
 				layer={layer}
+				weatherLayerVisible={weatherLayerVisible}
 				baseMap={baseMap}
 				onLayerChange={handleLayerChange}
+				onClearLayer={showCompass ? handleClearLayer : undefined}
 				onBaseMapChange={setBaseMap}
-				onOpenLegend={closePopup}
+				showLegend={showLegend}
+				onLegendChange={handleLegendChange}
 			/>
 		</View>
 	);

@@ -4,49 +4,36 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { RainIcon, WindIcon } from 'app/components/icons/main';
+import { ColorMapIcon } from 'app/components/icons/maps/ColorMapIcon';
+import { NoColorMapIcon } from 'app/components/icons/maps/NoColorMapIcon';
 import { ThermometerIcon } from 'app/components/icons/maps/ThermometerIcon';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { TileLiberty } from 'app/components/icons/ui/TileLiberty';
-import { TilePositron } from 'app/components/icons/ui/TilePositron';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
-import { InfoIcon } from 'lucide-react-native';
-import { ReactNode, useState } from 'react';
-import { View } from 'react-native';
+import { CloudOff, InfoIcon } from 'lucide-react-native';
+import { ReactNode } from 'react';
+import { Platform, View } from 'react-native';
 import { MapsLegend, PrecipitationInfo, WindInfo } from './MapsLegend';
 
 const weatherLayers = [
-	{ id: 'tmp2m' as const, icon: <ThermometerIcon />, labelKey: 'maps.layer.0' },
-	{ id: 'precip' as const, icon: <RainIcon />, labelKey: 'maps.layer.1' },
-	{ id: 'wind' as const, icon: <WindIcon />, labelKey: 'maps.layer.2' },
+	{ id: 'tmp2m' as const, icon: <ThermometerIcon /> },
+	{ id: 'precip' as const, icon: <RainIcon /> },
+	{ id: 'wind' as const, icon: <WindIcon /> },
 ];
 
 const baseMapButtons = [
-	{ id: 'liberty' as const, icon: <TileLiberty />, labelKey: 'maps.basemap.liberty' },
-	{ id: 'positron' as const, icon: <TilePositron />, labelKey: 'maps.basemap.positron' },
+	{ id: 'liberty' as const, icon: <ColorMapIcon /> },
+	{ id: 'positron' as const, icon: <NoColorMapIcon /> },
 ];
 
-const MapButton = ({
-	active,
-	label,
-	onPress,
-	icon,
-}: {
-	active?: boolean;
-	label: string;
-	onPress: () => void;
-	icon: ReactNode;
-}) => (
+const MapButton = ({ onPress, icon }: { onPress: () => void; icon: ReactNode }) => (
 	<StyledPressable
 		onPress={onPress}
-		accessibilityLabel={label}
-		accessibilityRole="button"
-		accessibilityState={{ selected: active }}
-		className={clsx(
-			'ios:p-3 items-center rounded-full border p-2',
-			active ? 'border-systemBlue bg-tertiarySystemBackground dark:bg-tertiarySystemBackground_dark' : 'border-transparent'
-		)}
+		liquidGlass={true}
+		glassEffectStyle="regular"
+		colorScheme="auto"
+		className={clsx('ios:p-3 items-center rounded-full p-2.5')}
 	>
 		{icon}
 	</StyledPressable>
@@ -54,57 +41,46 @@ const MapButton = ({
 
 export const MapControls = ({
 	layer,
+	weatherLayerVisible = true,
 	baseMap,
 	onLayerChange,
+	onClearLayer,
 	onBaseMapChange,
-	onOpenLegend,
+	showLegend,
+	onLegendChange,
 }: {
 	layer: WeatherMapLayer;
+	weatherLayerVisible?: boolean;
 	baseMap: BaseMapStyle;
 	onLayerChange: (layer: WeatherMapLayer) => void;
+	onClearLayer?: () => void;
 	onBaseMapChange: (style: BaseMapStyle) => void;
-	onOpenLegend: () => void;
+	showLegend: boolean;
+	onLegendChange: (show: boolean) => void;
 }) => {
 	const { t } = useTranslate('weather');
 	const { text } = useThemeColors();
-	const [showLegend, setShowLegend] = useState(false);
-	const closeLegend = () => setShowLegend(false);
 	const layerInfo = layer === 'precip' ? <PrecipitationInfo /> : layer === 'wind' ? <WindInfo /> : <MapsLegend />;
 
 	return (
 		<>
-			<View className="ios:bottom-28 absolute bottom-4 left-4 gap-2">
-				{baseMapButtons.map(({ id, icon, labelKey }) => (
-					<MapButton
-						key={id}
-						active={baseMap === id}
-						label={t(labelKey)}
-						icon={icon}
-						onPress={() => onBaseMapChange(id)}
-					/>
+			<View className="ios:bottom-28 ios:gap-4 ios:left-6 absolute bottom-4 left-4 gap-2">
+				{baseMapButtons.map(({ id, icon }) => (
+					<MapButton key={id} icon={icon} onPress={() => onBaseMapChange(id)} />
 				))}
 			</View>
-			<View className="ios:bottom-28 absolute bottom-4 right-4 flex-row items-end gap-2">
-				{!showLegend && (
+			<View className="ios:bottom-28 ios:gap-4 ios:right-6 absolute bottom-4 right-4 flex-row items-end gap-2">
+				{!showLegend && weatherLayerVisible && (
 					<MapButton
-						label={t('maps.legend.title')}
-						icon={<InfoIcon color={text} />}
-						onPress={() => {
-							setShowLegend(true);
-							onOpenLegend();
-						}}
+						icon={<InfoIcon color={Platform.OS === 'web' ? text : 'black'} />}
+						onPress={() => onLegendChange(true)}
 					/>
 				)}
-				<View className="gap-2">
-					{weatherLayers.map(({ id, icon, labelKey }) => (
-						<MapButton
-							key={id}
-							active={layer === id}
-							label={t(labelKey)}
-							icon={icon}
-							onPress={() => onLayerChange(id)}
-						/>
+				<View className="ios:gap-4 gap-2">
+					{weatherLayers.map(({ id, icon }) => (
+						<MapButton key={id} icon={icon} onPress={() => onLayerChange(id)} />
 					))}
+					{onClearLayer && <MapButton icon={<CloudOff color={text} />} onPress={onClearLayer} />}
 				</View>
 			</View>
 			{showLegend && (
@@ -115,12 +91,7 @@ export const MapControls = ({
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}
 								</StyledText>
-								<StyledPressable
-									onPress={closeLegend}
-									accessibilityLabel={t('maps.closeLegend')}
-									accessibilityRole="button"
-									className="rounded-full p-1"
-								>
+								<StyledPressable onPress={() => onLegendChange(false)} className="rounded-full p-1">
 									<CloseIcon size={22} color={text} />
 								</StyledPressable>
 							</View>

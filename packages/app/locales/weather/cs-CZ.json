@@ -271,12 +271,6 @@
 		"title": "Místní počasí"
 	},
 	"maps": {
-		"basemap": {
-			"liberty": "Barevná mapa",
-			"positron": "Světlá mapa"
-		},
-		"closeLegend": "Zavřít legendu mapy",
-		"closePopup": "Zavřít údaje o počasí",
 		"layer": {
 			"0": "Teplota",
 			"1": "Srážky",

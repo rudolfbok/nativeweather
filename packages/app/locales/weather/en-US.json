@@ -271,12 +271,6 @@
 		"title": "Local weather"
 	},
 	"maps": {
-		"basemap": {
-			"liberty": "Color map",
-			"positron": "Light map"
-		},
-		"closeLegend": "Close map legend",
-		"closePopup": "Close weather details",
 		"layer": {
 			"0": "Temperature",
 			"1": "Precipitation",

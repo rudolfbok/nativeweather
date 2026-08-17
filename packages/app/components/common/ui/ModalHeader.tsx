@@ -48,8 +48,8 @@ export const ModalHeader = ({
 					)}
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
-				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1')}>
-					<CloseIcon size={28} />
+				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5')}>
+					<CloseIcon size={26} />
 				</StyledPressable>
 			</View>
 			{daysToggle}

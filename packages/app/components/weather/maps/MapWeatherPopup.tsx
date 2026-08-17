@@ -26,7 +26,6 @@ export const MapWeatherPopup = ({
 	mapSize,
 	title,
 	errorLabel,
-	closeLabel,
 	onClose,
 }: {
 	weatherPoint: MapWeatherPoint;
@@ -34,7 +33,6 @@ export const MapWeatherPopup = ({
 	mapSize: Size;
 	title: string;
 	errorLabel: string;
-	closeLabel: string;
 	onClose: () => void;
 }) => {
 	const { text } = useThemeColors();
@@ -46,17 +44,20 @@ export const MapWeatherPopup = ({
 		<View
 			onLayout={handleLayout}
 			className={clsx(
-				'bg-systemBackground absolute z-10 min-w-40 max-w-64 rounded-3xl border border-black/10 p-3 shadow-md',
+				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3 shadow-md',
+				weatherPoint.status === 'loading' && 'w-12',
 				'dark:bg-secondarySystemBackground_dark dark:border-white/10 dark:shadow-white/10'
 			)}
-			style={{ left: point.x, top: point.y }}
+			style={{ left: point.x, top: point.y, maxWidth: Math.min(288, mapSize.width - OFFSET * 2) }}
 		>
 			<View className="flex-row items-start justify-between gap-3">
-				<View className="flex-1">
-					<StyledText type="bodysecondary" className="opacity-70">
-						{title}
-					</StyledText>
-					{weatherPoint.status === 'loading' && <ActivityIndicator className="mt-2 self-start" size="small" color="#007AFF" />}
+				<View className="min-w-0 shrink">
+					{weatherPoint.status !== 'loading' && (
+						<StyledText type="bodysecondary" className="opacity-70">
+							{title}
+						</StyledText>
+					)}
+					{weatherPoint.status === 'loading' && <ActivityIndicator className="self-center" size="small" color="#007AFF" />}
 					{weatherPoint.status === 'error' && (
 						<StyledText type="bodysecondary" className="mt-1 font-semibold">
 							{errorLabel}
@@ -80,14 +81,14 @@ export const MapWeatherPopup = ({
 						</View>
 					)}
 				</View>
-				<StyledPressable
-					onPress={onClose}
-					accessibilityLabel={closeLabel}
-					accessibilityRole="button"
-					className="h-fit rounded-full p-1"
-				>
-					<CloseIcon color={text} size={20} />
-				</StyledPressable>
+				{weatherPoint.status !== 'loading' && (
+					<StyledPressable
+						onPress={onClose}
+						className="h-fit rounded-full p-1"
+					>
+						<CloseIcon color={text} size={20} />
+					</StyledPressable>
+				)}
 			</View>
 		</View>
 	);
