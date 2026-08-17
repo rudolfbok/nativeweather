@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
 

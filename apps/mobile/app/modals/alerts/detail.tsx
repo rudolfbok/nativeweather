@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
 import { AlertDetail } from 'app/components/weather/alerts/AlertDetail';
-import { useWeather } from 'app/hooks/useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';

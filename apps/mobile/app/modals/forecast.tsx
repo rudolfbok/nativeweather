@@ -1,8 +1,8 @@
 import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
-import { useSelectedDay } from 'app/hooks/useSelectedDay';
+import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
 import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
-import { useWeather } from 'app/hooks/useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { useTolgee } from '@tolgee/react';
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';

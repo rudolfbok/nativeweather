@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useSearchController } from 'app/hooks/useSearchController';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useSearchController } from 'app/hooks/search/useSearchController';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 

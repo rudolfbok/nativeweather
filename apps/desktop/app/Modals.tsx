@@ -31,9 +31,9 @@ import { AirQualityModal } from 'app/components/weather/airquality/AirQualityMod
 import { AlertModal } from 'app/components/weather/alerts/AlertModal';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
 import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
-import { ModalScreen, useNavigationScreen } from 'app/hooks/useNavigation.macos';
-import { useSelectedDay } from 'app/hooks/useSelectedDay';
-import { useWeather } from 'app/hooks/useWeather';
+import { ModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { WeatherAlert } from 'app/types/weatherAPI';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';

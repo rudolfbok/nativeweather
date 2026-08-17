@@ -23,7 +23,7 @@ export const MapsView = () => {
 						<MaximizeIcon />
 					</StyledPressable>
 				</View>
-				<MapLibreView />
+				{!showMapsModal && <MapLibreView />}
 			</RoundView>
 			{showMapsModal && (
 				<StyledModal

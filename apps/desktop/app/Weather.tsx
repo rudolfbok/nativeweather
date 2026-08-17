@@ -1,6 +1,6 @@
 import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper.macos';
 import { WeatherFeature } from 'app/features/weather/screen.macos';
-import { useWeather } from 'app/hooks/useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 
 export const Weather = () => {
 	const { weatherData } = useWeather();

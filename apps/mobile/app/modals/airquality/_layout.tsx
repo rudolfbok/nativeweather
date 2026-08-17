@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import React, { ReactNode } from 'react';

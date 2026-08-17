@@ -8,7 +8,7 @@ import { showToast } from 'app/utils/services/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { useWeather } from './useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');

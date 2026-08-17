@@ -3,11 +3,14 @@ import type { WeatherAPIResponse } from 'app/types/weatherAPI';
 
 const BASE_URL = 'https://nativeweather-api.bitwebs.workers.dev';
 
-export const fetchWeatherAPI = async (query: string | number[]): Promise<WeatherAPIResponse | null> => {
+export const fetchWeatherAPI = async (
+	query: string | number[],
+	options?: { signal?: AbortSignal }
+): Promise<WeatherAPIResponse | null> => {
 	const weatherUrl = `${BASE_URL}/forecast.json?q=${query}`;
 
 	try {
-		const response = await fetch(weatherUrl);
+		const response = await fetch(weatherUrl, { signal: options?.signal });
 
 		if (!response.ok) {
 			throw new Error(`Weather request failed (${response.status})`);
@@ -21,6 +24,7 @@ export const fetchWeatherAPI = async (query: string | number[]): Promise<Weather
 
 		return weatherData;
 	} catch (error) {
+		if (options?.signal?.aborted) return null;
 		console.error('Failed to fetch weather data:', error);
 		return null;
 	}

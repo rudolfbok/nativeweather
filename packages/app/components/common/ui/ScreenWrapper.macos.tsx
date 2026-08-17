@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 interface ScreenWrapperProps {
 	className?: string;

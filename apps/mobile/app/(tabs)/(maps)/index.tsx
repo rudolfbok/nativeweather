@@ -6,8 +6,8 @@ import { View } from 'react-native';
 
 export default function MapsScreen() {
 	return (
-		<View className={clsx('flex-1')}>
-			{/* <MapLibreView /> */}
+		<View className={clsx('flex-1 p-4')}>
+			<MapLibreView />
 		</View>
 	);
 }

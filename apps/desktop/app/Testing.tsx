@@ -1,6 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { showFavoriteToast, showToast } from 'app/utils/services/showToast.macos';
 import { View } from 'react-native';
 

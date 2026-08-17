@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { CompassIcon } from 'app/components/icons/settings/CompassIcon';
-import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
+import { useOpenDrawer } from 'app/hooks/navigation/useOpenDrawer';
 import { useRouter } from 'solito/navigation';
 import { SettingsItem } from './SettingsItem';
 

@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function SettingsLayout() {

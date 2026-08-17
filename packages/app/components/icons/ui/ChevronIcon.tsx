@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { ChevronRight } from 'lucide-react-native';
 import React from 'react';
 

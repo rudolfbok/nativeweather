@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
+import { useOpenDrawer } from 'app/hooks/navigation/useOpenDrawer';
 import { MessageCircle } from 'lucide-react-native';
 import { useRouter } from 'solito/navigation';
 import { SettingsItem } from './SettingsItem';

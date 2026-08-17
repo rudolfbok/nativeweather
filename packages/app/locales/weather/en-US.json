@@ -271,6 +271,12 @@
 		"title": "Local weather"
 	},
 	"maps": {
+		"basemap": {
+			"liberty": "Color map",
+			"positron": "Light map"
+		},
+		"closeLegend": "Close map legend",
+		"closePopup": "Close weather details",
 		"layer": {
 			"0": "Temperature",
 			"1": "Precipitation",
@@ -282,7 +288,8 @@
 			"title": "Legend",
 			"wind": "Click on the map to show the current wind speed."
 		},
-		"loading": "Maps are loading..",
+		"loading": "Map is loading…",
+		"loadError": "The map could not be loaded. Check your connection and try again.",
 		"currentTemperature": "Current temperature",
 		"temperatureUnavailable": "Temperature unavailable",
 		"weatherUnavailable": "Weather data unavailable",

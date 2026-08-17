@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { RangeIcon } from 'app/components/icons/main/RangeIcon';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
-import { useModalNavigation } from 'app/hooks/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';

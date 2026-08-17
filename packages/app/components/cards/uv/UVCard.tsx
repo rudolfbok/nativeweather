@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import UVScale from 'app/assets/uvscale.png';
-import { useModalNavigation } from 'app/hooks/useModalNavigation';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
-import { useWeather } from 'app/hooks/useWeather';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';

@@ -10,7 +10,7 @@ import { WaningCrescent } from 'app/components/icons/moonphases/WaningCrescent';
 import { WaningGibbous } from 'app/components/icons/moonphases/WaningGibbous';
 import { WaxingCrescent } from 'app/components/icons/moonphases/WaxingCrescent';
 import { WaxingGibbous } from 'app/components/icons/moonphases/WaxingGibbous';
-import { useWeather } from 'app/hooks/useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';

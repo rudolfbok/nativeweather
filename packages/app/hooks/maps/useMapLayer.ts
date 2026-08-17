@@ -1,8 +1,9 @@
 import { create } from 'zustand';
+import type { WeatherMapLayer } from 'app/constants/weatherMap';
 
 interface LayerState {
-	layer: string;
-	setLayer: (layer: string) => void;
+	layer: WeatherMapLayer;
+	setLayer: (layer: WeatherMapLayer) => void;
 }
 
 export const useMapLayer = create<LayerState>((set) => ({

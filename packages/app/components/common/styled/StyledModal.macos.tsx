@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { Ref } from 'react';
 import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { ModalHeader } from '../ui/ModalHeader';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
 interface StyledModalProps {
 	visible: boolean;

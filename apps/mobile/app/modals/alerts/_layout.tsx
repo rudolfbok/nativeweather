@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Stack, useRouter } from 'expo-router';
 import { BadgeAlert } from 'lucide-react-native';

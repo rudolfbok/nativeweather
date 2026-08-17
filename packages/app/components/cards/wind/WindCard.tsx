@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { WindIcon } from 'app/components/icons/main';
-import { useModalNavigation } from 'app/hooks/useModalNavigation';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { getDirection } from 'app/utils/mappings/mapDirections';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';

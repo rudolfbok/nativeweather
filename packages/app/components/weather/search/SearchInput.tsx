@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Search } from 'lucide-react-native';
 import { useState } from 'react';

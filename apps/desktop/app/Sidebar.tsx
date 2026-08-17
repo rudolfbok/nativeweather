@@ -1,9 +1,9 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { SettingsFeature } from 'app/features/settings/screen';
-import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Settings, ShieldCheck } from 'lucide-react-native';
 import { ScrollView, View } from 'react-native';
 

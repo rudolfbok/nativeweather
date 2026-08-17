@@ -14,7 +14,7 @@ import {
 	WindIcon,
 } from 'app/components/icons/main';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { ReactNode } from 'react';

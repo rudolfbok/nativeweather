@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useThemeColors } from 'app/hooks/useThemeColors';
-import { useWeather } from 'app/hooks/useWeather';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { extractCity } from 'app/utils/helpers/extractCity';
 import { shareLink } from 'app/utils/services/shareLink';

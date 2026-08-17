@@ -1,4 +1,4 @@
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { Toast } from 'app/utils/services/showToast.macos';
 import { View } from 'react-native';
 import { Settings } from './Settings';

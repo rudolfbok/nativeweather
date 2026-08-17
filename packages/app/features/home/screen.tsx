@@ -8,11 +8,11 @@ import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo'
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useLocation } from 'app/hooks/location/useLocation';
-import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
-import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useThemeColors } from 'app/hooks/useThemeColors';
-import { useWeather } from 'app/hooks/useWeather';
-import { useWidgets } from 'app/hooks/useWidgets';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useWeather } from 'app/hooks/weather/useWeather';
+import { useWidgets } from 'app/hooks/widgets/useWidgets';
 import { useStorageBoolean, useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';

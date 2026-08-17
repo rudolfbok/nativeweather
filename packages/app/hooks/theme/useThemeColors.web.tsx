@@ -2,7 +2,7 @@
 
 import { useStorageString } from 'app/storage/useStorage';
 import { useEffect, useState } from 'react';
-import { colors } from '../constants/colors';
+import { colors } from 'app/constants/colors';
 
 export function useThemeColors() {
 	const [currentTheme] = useStorageString('currentTheme');

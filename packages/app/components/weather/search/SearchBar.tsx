@@ -1,5 +1,5 @@
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
-import { useSearchController } from 'app/hooks/useSearchController';
+import { useSearchController } from 'app/hooks/search/useSearchController';
 import { RecentSearches } from './RecentSearches';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';

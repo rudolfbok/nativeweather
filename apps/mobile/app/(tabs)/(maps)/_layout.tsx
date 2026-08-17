@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function MapsLayout() {

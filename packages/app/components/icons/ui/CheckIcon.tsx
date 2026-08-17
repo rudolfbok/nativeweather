@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Check } from 'lucide-react-native';
 
 export const CheckIcon = () => {

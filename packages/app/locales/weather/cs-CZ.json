@@ -271,6 +271,12 @@
 		"title": "Místní počasí"
 	},
 	"maps": {
+		"basemap": {
+			"liberty": "Barevná mapa",
+			"positron": "Světlá mapa"
+		},
+		"closeLegend": "Zavřít legendu mapy",
+		"closePopup": "Zavřít údaje o počasí",
 		"layer": {
 			"0": "Teplota",
 			"1": "Srážky",
@@ -282,7 +288,8 @@
 			"title": "Legenda",
 			"wind": "Klikněte na mapu pro zobrazení aktuální rychlosti větru."
 		},
-		"loading": "Mapy se načítají..",
+		"loading": "Mapa se načítá…",
+		"loadError": "Mapu se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.",
 		"currentTemperature": "Aktuální teplota",
 		"temperatureUnavailable": "Teplota není dostupná",
 		"weatherUnavailable": "Údaje o počasí nejsou dostupné",

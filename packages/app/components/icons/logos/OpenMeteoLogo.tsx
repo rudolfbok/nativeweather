@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
 
 export const OpenMeteoLogo = () => {

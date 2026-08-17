@@ -3,7 +3,7 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/ui/ContentRow';
 import { RoundView } from 'app/components/common/ui/RoundView';
 import { Separator } from 'app/components/common/ui/Separator';
-import { useWeather } from 'app/hooks/useWeather';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { getAlertSeverityTextColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslate } from '@tolgee/react';
 import { RecentSearches } from 'app/components/weather/search/RecentSearches';
 import { SuggestionsList } from 'app/components/weather/search/SuggestionsList';
-import { useSearchController } from 'app/hooks/useSearchController';
+import { useSearchController } from 'app/hooks/search/useSearchController';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { View } from 'react-native';

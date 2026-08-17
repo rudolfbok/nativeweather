@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { useModalNavigation } from 'app/hooks/useModalNavigation';
-import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { useState } from 'react';

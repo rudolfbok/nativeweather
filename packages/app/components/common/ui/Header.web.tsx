@@ -1,8 +1,8 @@
 'use client';
 
 import { SettingsFeature } from 'app/features/settings/screen';
-import { useOpenDrawer } from 'app/hooks/useOpenDrawer';
-import { useThemeColors } from 'app/hooks/useThemeColors';
+import { useOpenDrawer } from 'app/hooks/navigation/useOpenDrawer';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
 import { Pressable, ScrollView, View } from 'react-native';

@@ -1,5 +1,5 @@
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useLocalWeather } from 'app/hooks/useLocalWeather';
+import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { getWeatherIconUri } from 'app/utils/getWeatherIconUri';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';

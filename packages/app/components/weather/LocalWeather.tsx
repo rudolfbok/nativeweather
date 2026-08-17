@@ -3,8 +3,8 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/ui/RoundView';
-import { useLocalWeather } from 'app/hooks/useLocalWeather';
-import { useSearchController } from 'app/hooks/useSearchController';
+import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
+import { useSearchController } from 'app/hooks/search/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

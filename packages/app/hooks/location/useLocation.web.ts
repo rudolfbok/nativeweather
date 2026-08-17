@@ -1,5 +1,5 @@
 import { fetchWeather } from 'app/api/fetchWeather';
-import { useLocalWeather } from 'app/hooks/useLocalWeather';
+import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { useCallback, useRef, useState } from 'react';
 
