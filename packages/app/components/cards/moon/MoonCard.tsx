@@ -73,13 +73,13 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				'ios:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto h-fit min-w-full'
 			)}
 			extraContent={
-				<View className={clsx('mt-4 flex-row items-center gap-4 xl:hidden')}>
-					{moonPhaseComponents[phase]}
+				<View className={clsx('flex-row items-center max-xl:mt-4 max-xl:gap-4')}>
+					<View className="xl:hidden">{moonPhaseComponents[phase]}</View>
 					<View>
 						<StyledText type="body">
 							{t('moon.illumination')} {illumination}%
 						</StyledText>
-						<StyledText type="body">
+						<StyledText type="body" className="xl:hidden">
 							{isMoonUp === 0
 								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
 								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}

@@ -78,7 +78,7 @@ export const FeedbackFeature = () => {
 				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark w-[240px] overflow-hidden rounded-3xl">
+					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark w-full overflow-hidden rounded-3xl md:w-[240px]">
 						<Pressable
 							onPress={() => setOpen((prev) => !prev)}
 							className="hover:dark:bg-tertiarySystemBackground_dark flex-row items-center justify-between gap-2 overflow-hidden p-4"
