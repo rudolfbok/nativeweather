@@ -15,7 +15,7 @@ import {
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
-import { MainWeather } from 'app/components/weather/MainWeather';
+import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
@@ -26,9 +26,9 @@ import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { View } from 'react-native';
-import { AlertWeather } from './alerts/AlertWeather';
-import { HourlyForecast } from './hourly/HourlyForecast';
-import { SmartSummary } from './SmartSummary';
+import { AlertWeather } from '../alerts/AlertWeather';
+import { HourlyForecast } from '../hourly/HourlyForecast';
+import { SmartSummary } from '../SmartSummary';
 
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');

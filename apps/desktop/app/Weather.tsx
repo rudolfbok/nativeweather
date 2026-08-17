@@ -7,7 +7,7 @@ export const Weather = () => {
 	const weatherKey = weatherData ? `${weatherData.location.lat}:${weatherData.location.lon}` : 'empty';
 
 	return (
-		<ScreenWrapper resetKey={weatherKey}>
+		<ScreenWrapper>
 			<WeatherFeature />
 			{/* <View className="gap-4">
 				<StyledPressable onPress={() => setNavigationScreen('testing')} className="rounded-3xl p-4">

@@ -9,6 +9,12 @@ export const Testing = () => {
 
 	return (
 		<View className="w-full items-center gap-4 p-4">
+			<View className="items-center gap-2">
+				<StyledText type="title">Pointer test</StyledText>
+				<View className="rounded-3xl bg-yellow-400 p-4" style={{ cursor: 'pointer' }}>
+					<StyledText type="body">Pointer test</StyledText>
+				</View>
+			</View>
 			<StyledPressable onPress={() => setNavigationScreen('weather')} className="rounded-3xl p-4">
 				<StyledText type="title">Go back to weather</StyledText>
 			</StyledPressable>

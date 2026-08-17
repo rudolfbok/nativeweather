@@ -16,11 +16,12 @@ import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
-import { CloudRain, InfoIcon, Thermometer } from 'lucide-react-native';
+import { CloudRain, Droplet, InfoIcon, Thermometer } from 'lucide-react-native';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, GestureResponderEvent, LayoutChangeEvent, Platform, View } from 'react-native';
 import { MapsLegend, PrecipitationInfo, WindInfo } from './MapsLegend';
+import { ThermometerIcon } from 'app/components/icons/maps/ThemometerIcon';
 
 // declare const require: (id: string) => unknown;
 
@@ -64,8 +65,8 @@ type MapSize = {
 type NativeMapLibre = typeof import('@maplibre/maplibre-react-native');
 
 const layerButtons = [
-	{ layer: 'tmp2m', icon: <Thermometer color="#FF7000" /> },
-	{ layer: 'precip', icon: <CloudRain color="#2793FF" /> },
+	{ layer: 'tmp2m', icon: <ThermometerIcon /> },
+	{ layer: 'precip', icon: <RainIcon /> },
 	{ layer: 'wind', icon: <WindIcon /> },
 ];
 
@@ -183,7 +184,10 @@ const MapButton = ({
 	icon: ReactNode;
 }) => {
 	return (
-		<StyledPressable onPress={onPress} className={clsx('ios:p-3 rounded-full border border-transparent p-2')}>
+		<StyledPressable
+			onPress={onPress}
+			className={clsx('ios:p-3 items-center rounded-full border border-transparent p-2')}
+		>
 			{icon}
 		</StyledPressable>
 	);

@@ -5,18 +5,38 @@ export const TileLiberty = () => {
 	return (
 		<Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
 			<Path
-				d="M14.719 5.854L9.005 3.18v15.009l5.714 2.625V5.854zM3 5.768l5.714-2.674v15.01L3 20.727V5.768zM15.29 5.854l5.713-2.674v15.009l-5.714 2.625V5.854z"
-				fill="#10AB61"
-			/>
-			<Path
-				d="M3.671 15.053l4.507-2.697.188 5.25-4.522 2.197-.173-4.75zM9.877 11.594l5.47 3.54-.162 4.915-6.03-1.253.722-7.202z"
-				fill="#159BE1"
-			/>
-			<Path d="M15.054 15.174l5.04-3.028.992 5.187-5.708 2.531-.324-4.69z" fill="#159BE1" />
-			<Path
-				d="M15 5.766v15M9 3.234v15M14.106 5.551a2 2 0 001.788 0l3.659-1.83A1 1 0 0121 4.617v12.764a1 1 0 01-.553.894l-4.553 2.277a2 2 0 01-1.788 0l-4.212-2.106a2 2 0 00-1.788 0l-3.659 1.83A1 1 0 013 19.38V6.616a1 1 0 01.553-.894l4.553-2.277a2 2 0 011.788 0l4.212 2.106z"
+				d="M3.5 7L2 10v1h3l2 1v1.5l.5 1.5L9 16l2 1v4.5h4V16l1-1h5.5l.5-2v-2l-.5-3H17l-2 4h-2l-1-2-1-2H9L7 6.5V3l-.5.5L5 5 3.5 7z"
+				fill="#06F"
 				stroke="#000"
-				strokeWidth={1.7}
+			/>
+			<Path d="M7 6V4l2-1 2.5-.5H14l2 1L18 5l1 1 1 1v1h-3l-1 1v2l-1 1h-1.5l-1-1-.5-2-1-1H9L8 7 7 6z" fill="#10AB61" />
+			<Path
+				d="M7 3.344v1.66a3 3 0 003 3 2 2 0 012 2c0 1.1.9 2 2 2a2 2 0 002-2c0-1.1.9-2 2-2h3.17"
+				stroke="#000"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<Path d="M5 11H2v3.5L3 17l2 2 2 1.5L9 22h2v-4l-1-2H8l-1-1v-3l-1-1H5z" fill="#10AB61" stroke="#000" />
+			<Path
+				d="M10.997 21.95V18a2 2 0 00-2-2 2 2 0 01-2-2v-1a2 2 0 00-2-2h-2.95"
+				stroke="#000"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<Path d="M15 16v5h2l4-4v-2h-5l-1 1z" fill="#10AB61" stroke="#000" />
+			<Path
+				d="M21.54 15H17a2 2 0 00-2 2v4.54"
+				stroke="#000"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<Path
+				d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+				stroke="#000"
+				strokeWidth={2}
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>

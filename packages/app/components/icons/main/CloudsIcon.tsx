@@ -4,5 +4,5 @@ import { useThemeColors } from 'app/hooks/useThemeColors';
 export const CloudsIcon = () => {
 	const { text } = useThemeColors();
 
-	return <Cloud color={text} />;
+	return <Cloud color={text} fill="white" />;
 };

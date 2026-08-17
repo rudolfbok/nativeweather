@@ -4,7 +4,7 @@ import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
-import { HeroWeather } from 'app/components/weather/HeroWeather';
+import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 // import { useSearchController } from 'app/hooks/useSearchController';
 import { useWeather } from 'app/hooks/useWeather';
 import { useStorageString } from 'app/storage/useStorage';

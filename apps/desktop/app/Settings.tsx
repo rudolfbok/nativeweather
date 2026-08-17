@@ -10,13 +10,10 @@ export const Settings = () => {
 	const { setNavigationScreen } = useNavigationScreen();
 
 	return (
-		<View className="mt-4">
-			<Pressable
-				onPress={() => setNavigationScreen('weather')}
-				className="mx-4 flex-row items-center gap-2 rounded-3xl p-4"
-			>
-				<ChevronLeft color="#007AFF" />
-				<StyledText type="title">Go back to weather</StyledText>
+		<View>
+			<Pressable onPress={() => setNavigationScreen('weather')} className="flex-row items-center gap-2 rounded-3xl p-4">
+				{/* <ChevronLeft color="#007AFF" /> */}
+				<StyledText type="screentitle">Settings</StyledText>
 			</Pressable>
 			<ScreenWrapper>
 				<SettingsFeature />

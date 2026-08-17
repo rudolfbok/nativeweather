@@ -14,16 +14,16 @@ export const ScreenWrapper = ({ className, children, resetKey }: ScreenWrapperPr
 	const scrollRef = useRef<ScrollView>(null);
 	const resetPending = useRef(false);
 
-	useEffect(() => {
-		resetPending.current = true;
-		scrollRef.current?.scrollTo({ y: 0, animated: false });
-	}, [resetKey]);
+	// useEffect(() => {
+	// 	resetPending.current = true;
+	// 	scrollRef.current?.scrollTo({ y: 0, animated: false });
+	// }, [resetKey]);
 
 	return (
 		<ScrollView
 			ref={scrollRef}
 			contentInsetAdjustmentBehavior="automatic"
-			contentContainerClassName={clsx('px-4 py-4', navigationScreen !== 'weather' && 'px-40', className)}
+			contentContainerClassName={clsx('p-4', className)}
 			onContentSizeChange={() => {
 				if (!resetPending.current) return;
 

@@ -1,4 +1,5 @@
 import { useTranslate } from '@tolgee/react';
+import { WindIcon } from 'app/components/icons/main';
 import { useModalNavigation } from 'app/hooks/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
@@ -77,7 +78,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 	return (
 		<DataCard
 			onPress={navigateToWind}
-			icon={<Wind color="gray" />}
+			icon={<WindIcon />}
 			title={t('wind.title')}
 			description={description}
 			extraContent={
@@ -95,7 +96,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 				showModal && (
 					<StyledModal
 						visible={showModal}
-						icon={<Wind color="gray" />}
+						icon={<WindIcon />}
 						header={t('wind.title')}
 						onClose={() => setShowModal(false)}
 					>

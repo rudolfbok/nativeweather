@@ -1,27 +1,32 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { CloudsModal } from 'app/components/cards/clouds/CloudsModal';
-import { HumidityModal } from 'app/components/cards/humidity/HumidityModal';
-import { MoonModal } from 'app/components/cards/moon/MoonModal';
-import { PressureModal } from 'app/components/cards/pressure/PressureModal';
-import { RainModal } from 'app/components/cards/rain/RainModal';
-import { RangeModal } from 'app/components/cards/range/RangeModal';
-import { SnowModal } from 'app/components/cards/snow/SnowModal';
-import { SunriseModal } from 'app/components/cards/sunrise/SunriseModal';
-import { SunsetModal } from 'app/components/cards/sunset/SunsetModal';
-import { UVModal } from 'app/components/cards/uv/UVModal';
-import { WindModal } from 'app/components/cards/wind/WindModal';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
-import { AlertIcon } from 'app/components/icons/main/AlertIcon';
-import { CloudsIcon } from 'app/components/icons/main/CloudsIcon';
-import { HumidityIcon } from 'app/components/icons/main/HumidityIcon';
-import { MoonIcon } from 'app/components/icons/main/MoonIcon';
-import { PressureIcon } from 'app/components/icons/main/PressureIcon';
-import { RainIcon } from 'app/components/icons/main/RainIcon';
-import { RangeIcon } from 'app/components/icons/main/RangeIcon';
-import { SnowIcon } from 'app/components/icons/main/SnowIcon';
-import { SunriseIcon } from 'app/components/icons/main/SunriseIcon';
-import { SunsetIcon } from 'app/components/icons/main/SunsetIcon';
-import { UVIcon } from 'app/components/icons/main/UVIcon';
+import {
+	CloudsModal,
+	HumidityModal,
+	MoonModal,
+	PressureModal,
+	RainModal,
+	RangeModal,
+	SnowModal,
+	SunriseModal,
+	SunsetModal,
+	UVModal,
+	WindModal,
+} from 'app/components/cards';
+import {
+	AlertIcon,
+	CloudsIcon,
+	HumidityIcon,
+	MoonIcon,
+	PressureIcon,
+	RainIcon,
+	RangeIcon,
+	SnowIcon,
+	SunriseIcon,
+	SunsetIcon,
+	UVIcon,
+	WindIcon,
+} from 'app/components/icons/main';
+import { ModalHeader } from 'app/components/common/ui/ModalHeader';
 import { AirQualityModal } from 'app/components/weather/airquality/AirQualityModal';
 import { AlertModal } from 'app/components/weather/alerts/AlertModal';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
@@ -32,8 +37,32 @@ import { useWeather } from 'app/hooks/useWeather';
 import { WeatherAlert } from 'app/types/weatherAPI';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
-import { Wind } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
+import { GestureResponderEvent, ScrollView, View } from 'react-native';
+
+const ModalContent = ({
+	children,
+	daysToggle,
+	goBackHeader,
+	goBackOnPress,
+	...headerProps
+}: {
+	children: ReactNode;
+	icon?: ReactNode;
+	header: string;
+	subHeader?: ReactNode;
+	daysToggle?: ReactNode;
+	onClose: (event: GestureResponderEvent) => void;
+	goBackHeader?: boolean;
+	goBackOnPress?: (event: GestureResponderEvent) => void;
+}) => (
+	<View className="w-full flex-1 pt-4 xl:px-24 2xl:px-56">
+		<ModalHeader {...headerProps} daysToggle={daysToggle} showBack={goBackHeader} onBackPress={goBackOnPress} />
+		<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={true}>
+			{children}
+		</ScrollView>
+	</View>
+);
 
 export const Modals = () => {
 	const { t } = useTranslate('weather');
@@ -54,15 +83,12 @@ export const Modals = () => {
 	const closeModal = () => setModalScreen(null);
 
 	if (modalScreen === 'airquality') {
-		return airQualityData ? (
-			<AirQualityModal visible={true} airQualityData={airQualityData} onClose={closeModal} />
-		) : null;
+		return airQualityData ? <AirQualityModal airQualityData={airQualityData} onClose={closeModal} /> : null;
 	}
 
 	if (modalScreen === 'alerts') {
 		return (
-			<StyledModal
-				visible={true}
+			<ModalContent
 				icon={
 					selectedAlert || !mostSevereAlert ? undefined : (
 						<AlertIcon mostSevere={getAlertSeverityDotColor(mostSevereAlert.severity)} />
@@ -77,7 +103,7 @@ export const Modals = () => {
 				}}
 			>
 				<AlertModal onPress={setSelectedAlert} filteredAlerts={filteredAlerts} selectedAlert={selectedAlert} />
-			</StyledModal>
+			</ModalContent>
 		);
 	}
 
@@ -87,8 +113,7 @@ export const Modals = () => {
 		}
 
 		return (
-			<StyledModal
-				visible={true}
+			<ModalContent
 				header={new Date(selectedDay.date).toLocaleString(tolgee.getLanguage(), { weekday: 'long' })}
 				subHeader={new Date(selectedDay.date).toLocaleDateString(tolgee.getLanguage(), {
 					day: 'numeric',
@@ -102,7 +127,7 @@ export const Modals = () => {
 				daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={setSelectedDay} />}
 			>
 				<DailyForecastMain day={selectedDay} />
-			</StyledModal>
+			</ModalContent>
 		);
 	}
 
@@ -120,7 +145,7 @@ export const Modals = () => {
 		sunrise: { icon: <SunriseIcon />, header: t('sunrise.title'), content: <SunriseModal /> },
 		sunset: { icon: <SunsetIcon />, header: t('sunset.title'), content: <SunsetModal /> },
 		uv: { icon: <UVIcon />, header: 'UV Index', content: <UVModal /> },
-		wind: { icon: <Wind color="gray" />, header: t('wind.title'), content: <WindModal /> },
+		wind: { icon: <WindIcon />, header: t('wind.title'), content: <WindModal /> },
 	};
 	const modal = modalScreen ? modals[modalScreen] : null;
 
@@ -129,8 +154,8 @@ export const Modals = () => {
 	}
 
 	return (
-		<StyledModal visible={true} icon={modal.icon} header={modal.header} onClose={() => setModalScreen(null)}>
+		<ModalContent icon={modal.icon} header={modal.header} onClose={() => setModalScreen(null)}>
 			{modal.content}
-		</StyledModal>
+		</ModalContent>
 	);
 };

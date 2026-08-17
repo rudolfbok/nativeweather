@@ -39,7 +39,7 @@ export const StyledPressable = ({
 		<Pressable
 			onPress={onPress}
 			onPressIn={onPressIn}
-			style={tintColor ? { backgroundColor: tintColor } : undefined}
+			style={[tintColor ? { backgroundColor: tintColor } : undefined, { cursor: 'pointer' }]}
 			className={clsx(variants, className)}
 		>
 			{children}

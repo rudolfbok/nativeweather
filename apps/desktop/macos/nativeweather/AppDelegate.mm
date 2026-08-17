@@ -15,8 +15,26 @@
   
   [super applicationDidFinishLaunching:notification];
   self.window.title = @"NativeWeather";
-  [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, 1198, 896) display:NO];
-  self.window.minSize = NSMakeSize(1198, 896);
+  const NSSize windowSize = NSMakeSize(1125, 789);
+  [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y,
+                                   windowSize.width, windowSize.height)
+                 display:NO];
+  self.window.minSize = windowSize;
+  self.window.styleMask |= NSWindowStyleMaskResizable;
+  self.window.delegate = self;
+  self.window.collectionBehavior =
+      NSWindowCollectionBehaviorFullScreenNone | NSWindowCollectionBehaviorFullScreenDisallowsTiling;
+  [self.window standardWindowButton:NSWindowZoomButton].enabled = YES;
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
+{
+  return NSMakeSize(1125, 789);
+}
+
+- (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)newFrame
+{
+  return NO;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

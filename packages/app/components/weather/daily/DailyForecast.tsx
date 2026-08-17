@@ -76,21 +76,12 @@ export const DailyForecast = () => {
 				{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 					<Pressable
 						key={index}
-						pointerEvents={modalScreen ? 'none' : 'auto'}
 						onPress={() => {
 							setSelectedDay(day);
 							navigateToForecast();
 						}}
-						className={clsx(
-							'!cursor-pointer items-center justify-center px-4',
-							'ios:bg-transparent ios:dark:bg-transparent',
-							variants
-							// modalScreen && 'pointer-events-none'
-						)}
-						style={{
-							alignItems: 'center',
-							justifyContent: 'center',
-						}}
+						className={clsx('items-center justify-center px-4', 'ios:bg-transparent ios:dark:bg-transparent', variants)}
+						style={{ cursor: 'pointer' }}
 					>
 						<View
 							className={clsx(

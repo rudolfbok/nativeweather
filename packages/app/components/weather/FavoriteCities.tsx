@@ -74,6 +74,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 										className={clsx(
 											'absolute -top-1 right-1 h-fit w-fit justify-center rounded-full bg-red-600 p-1 hover:bg-red-800'
 										)}
+										style={{ cursor: 'pointer' }}
 									>
 										<Trash2 color="white" size={22} />
 									</Pressable>

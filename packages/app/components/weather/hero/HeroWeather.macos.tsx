@@ -14,9 +14,9 @@ import {
 	CloudsCard,
 } from 'app/components/cards';
 import { AirQuality } from 'app/components/weather/airquality/AirQuality';
-import { AlertWeather } from './alerts/AlertWeather';
+import { AlertWeather } from '../alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
-import { MainWeather } from 'app/components/weather/MainWeather';
+import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useFavoriteCities } from 'app/hooks/useFavoriteCities';
 import { useWeather } from 'app/hooks/useWeather';
@@ -26,8 +26,8 @@ import { extractCity } from 'app/utils/helpers/extractCity';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { useEffect } from 'react';
 import { View } from 'react-native';
-import { HourlyForecast } from './hourly/HourlyForecast';
-import { SmartSummary } from './SmartSummary';
+import { HourlyForecast } from '../hourly/HourlyForecast';
+import { SmartSummary } from '../SmartSummary';
 
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
@@ -132,7 +132,7 @@ export const HeroWeather = () => {
 	};
 
 	return (
-		<View className="gap-4">
+		<View className="w-full gap-4 self-center xl:px-24 2xl:px-56">
 			<View className="flex-row items-start gap-4">
 				<View className="flex-1 gap-4">
 					<View className="gap-4">

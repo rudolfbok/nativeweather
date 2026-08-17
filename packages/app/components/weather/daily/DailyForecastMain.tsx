@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 import { ScrollView, View } from 'react-native';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
-import { MainWeather } from '../MainWeather';
+import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
 
 export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['forecastday'][0] | null }) => {

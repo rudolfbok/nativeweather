@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { Platform } from 'react-native';
 
 const bg = 'bg-systemBackground dark:bg-secondarySystemBackground_dark';

@@ -6,10 +6,11 @@ import {
 	MoonIcon,
 	PressureIcon,
 	RainIcon,
+	RangeIcon,
+	SnowIcon,
 	SunriseIcon,
 	SunsetIcon,
 	UVIcon,
-	RangeIcon,
 	WindIcon,
 } from 'app/components/icons/main';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
@@ -70,6 +71,12 @@ export default function ModalsLayout() {
 				name="rain"
 				options={{
 					headerTitle: () => <ModalHeader icon={<RainIcon />} title={t('rain.title')} />,
+				}}
+			/>
+			<Stack.Screen
+				name="snow"
+				options={{
+					headerTitle: () => <ModalHeader icon={<SnowIcon />} title={t('snow.title')} />,
 				}}
 			/>
 			<Stack.Screen

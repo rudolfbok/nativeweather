@@ -5,18 +5,9 @@ import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
-import {
-	Bug,
-	Check,
-	ChevronDown,
-	ChevronRight,
-	CircleQuestionMark,
-	Cog,
-	MessageCircle,
-	SendHorizonal,
-} from 'lucide-react-native';
+import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
-import { ActivityIndicator, Pressable, TextInput, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from '../../utils/services/showToast';
 
 export const FeedbackFeature = () => {

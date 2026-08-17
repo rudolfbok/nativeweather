@@ -1,6 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ModalHeader } from 'app/components/common/ui/ModalHeader';
 import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { OpenMeteoAQI } from 'app/types/openMeteo';
 import {
@@ -13,7 +14,7 @@ import {
 } from 'app/utils/mappings/mapAQIDots';
 import { clsx } from 'clsx';
 import { JSX, ReactNode, useState } from 'react';
-import { Linking, Platform, Pressable, View } from 'react-native';
+import { Linking, Platform, Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { AirQualityItem } from './AirQualityItem';
 import { EUAQIDetail } from './EUAQIDetail';
@@ -100,6 +101,27 @@ export const AirQualityModal = ({ visible, onClose, airQualityData }: AirQuality
 	const Wrapper = ({ children }: { children: ReactNode }) => {
 		if (Platform.OS === 'ios') {
 			return <>{children}</>;
+		}
+
+		if (Platform.OS === 'macos') {
+			return (
+				<View className="w-full flex-1 pt-4">
+					<ModalHeader
+						icon={showAirQualityMetric ? undefined : <AirQualityIcon />}
+						header={
+							showAirQualityMetric === null
+								? t('airquality.title')
+								: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '')
+						}
+						showBack={Boolean(showAirQualityMetric)}
+						onBackPress={() => setShowAirQualityMetric(null)}
+						onClose={() => onClose?.()}
+					/>
+					<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={false}>
+						{children}
+					</ScrollView>
+				</View>
+			);
 		}
 
 		return (

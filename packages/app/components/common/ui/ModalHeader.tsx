@@ -5,12 +5,13 @@ import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
 import { CardHeader } from './CardHeader';
+import { useState } from 'react';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
 	header: string;
 	subHeader?: React.ReactNode;
-	daysToggle: React.ReactNode;
+	daysToggle?: React.ReactNode;
 	showBack?: boolean;
 	onBackPress?: (e: GestureResponderEvent) => void;
 	onClose: (e: GestureResponderEvent) => void;
@@ -20,19 +21,27 @@ export const ModalHeader = ({
 	icon,
 	header,
 	subHeader,
-	daysToggle,
+	daysToggle = null,
 	showBack,
 	onBackPress,
 	onClose,
 }: ModalHeaderProps) => {
+	const [hover, setHover] = useState(false);
+
 	return (
 		<View className="macos:px-4">
 			<View className={clsx('flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
-						<Pressable onPress={onBackPress} className={clsx('-ml-1 flex-row items-center gap-2')}>
-							<ChevronLeft color="#007AFF" size={29} style={{ pointerEvents: 'none' }} />
-							<CardHeader icon={icon} header={header} underline={true} />
+						<Pressable
+							onPress={onBackPress}
+							className={clsx('-ml-1 flex-row items-center gap-2')}
+							style={{ cursor: 'pointer' }}
+							onHoverIn={() => setHover(true)}
+							onHoverOut={() => setHover(false)}
+						>
+							<ChevronLeft color="#007AFF" size={29} />
+							<CardHeader icon={icon} header={header} underline={true} className={clsx(hover && 'underline')} />
 						</Pressable>
 					) : (
 						<CardHeader icon={icon} header={header} underline={false} />
