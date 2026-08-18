@@ -4,10 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --webpack",
-		"dev:turbopack": "next dev --turbopack",
 		"build": "next build --webpack",
-		"build:turbopack": "next build --turbopack",
-		"start": "next start",
+		"start": "next start --webpack",
 		"lint": "eslint",
 		"typecheck": "tsc --noEmit",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
