@@ -5,7 +5,6 @@ import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { DataCard } from '../DataCard';
 import { CloudsModal } from './CloudsModal';
@@ -41,7 +40,6 @@ export const CloudsCard = ({ data }: { data: number }) => {
 				'native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto web:xl:hidden native:!aspect-auto min-w-full gap-6 md:h-full'
 			)}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

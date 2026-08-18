@@ -11,7 +11,7 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'solito/navigation';
 import { AirQualityModal } from './AirQualityModal';
@@ -90,7 +90,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					<StyledText type="body">{currentAQI === 'EU' ? 'EUAQI' : 'USAQI'}</StyledText>
 				</View>
 			</StyledPressable>
-			{Platform.OS !== 'macos' && showModal && (
+			{showModal && (
 				<AirQualityModal visible={showModal} airQualityData={airQualityData} onClose={() => setShowModal(false)} />
 			)}
 		</>

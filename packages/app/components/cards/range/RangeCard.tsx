@@ -5,9 +5,8 @@ import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { DataCard } from '../DataCard';
 import { RangeModal } from './RangeModal';
 
@@ -61,7 +60,6 @@ export const RangeCard = ({ visKm, visMiles }: RangeCardProps) => {
 			description={description}
 			data={display}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

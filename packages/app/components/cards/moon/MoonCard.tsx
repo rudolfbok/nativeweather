@@ -5,21 +5,21 @@ import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { FirstQuarter } from '../../icons/moonphases/FirstQuarter';
-import { FullMoon } from '../../icons/moonphases/FullMoon';
-import { LastQuarter } from '../../icons/moonphases/LastQuarter';
-import { NewMoon } from '../../icons/moonphases/NewMoon';
-import { WaningCrescent } from '../../icons/moonphases/WaningCrescent';
-import { WaningGibbous } from '../../icons/moonphases/WaningGibbous';
-import { WaxingCrescent } from '../../icons/moonphases/WaxingCrescent';
-import { WaxingGibbous } from '../../icons/moonphases/WaxingGibbous';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { FirstQuarter } from 'app/components/icons/moonphases/FirstQuarter';
+import { FullMoon } from 'app/components/icons/moonphases/FullMoon';
+import { LastQuarter } from 'app/components/icons/moonphases/LastQuarter';
+import { NewMoon } from 'app/components/icons/moonphases/NewMoon';
+import { WaningCrescent } from 'app/components/icons/moonphases/WaningCrescent';
+import { WaningGibbous } from 'app/components/icons/moonphases/WaningGibbous';
+import { WaxingCrescent } from 'app/components/icons/moonphases/WaxingCrescent';
+import { WaxingGibbous } from 'app/components/icons/moonphases/WaxingGibbous';
 import { DataCard } from '../DataCard';
 import { MoonModal } from './MoonModal';
-import { MoonIcon } from '../../icons/main/MoonIcon';
+import { MoonIcon } from 'app/components/icons/main/MoonIcon';
 
 interface MoonCardProps {
 	phase: string;
@@ -88,7 +88,6 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				</View>
 			}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

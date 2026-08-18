@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
-import { showToast } from '../../utils/services/showToast';
+import { showToast } from 'app/utils/services/showToast';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');

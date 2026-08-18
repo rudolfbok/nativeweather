@@ -4,11 +4,10 @@ import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { SunsetIcon } from '../../icons/main/SunsetIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { SunsetIcon } from 'app/components/icons/main/SunsetIcon';
 import { DataCard } from '../DataCard';
 import { SunsetModal } from './SunsetModal';
 
@@ -32,7 +31,6 @@ export const SunsetCard = ({ data }: { data: string }) => {
 			data={formatTime(data, currentLanguage)}
 			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

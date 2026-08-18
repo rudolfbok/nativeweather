@@ -4,11 +4,10 @@ import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchTemp } from 'app/utils/switch/switchTemp';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { HumidityIcon } from '../../icons/main/HumidityIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { HumidityIcon } from 'app/components/icons/main/HumidityIcon';
 import { DataCard } from '../DataCard';
 import { HumidityModal } from './HumidityModal';
 
@@ -64,7 +63,6 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 			}
 			data={data + '%'}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

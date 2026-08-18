@@ -4,11 +4,10 @@ import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { RainIcon } from '../../icons/main/RainIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { RainIcon } from 'app/components/icons/main/RainIcon';
 import { DataCard } from '../DataCard';
 import { RainModal } from './RainModal';
 
@@ -64,7 +63,6 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance }: RainCardPro
 			}
 			data={Math.round(rainChance) + '%'}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

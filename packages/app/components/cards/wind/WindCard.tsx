@@ -8,11 +8,11 @@ import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { clsx } from 'clsx';
 import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { WindArrowIcon } from '../../icons/ui/WindArrowIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { WindArrowIcon } from 'app/components/icons/ui/WindArrowIcon';
 import { DataCard } from '../DataCard';
 import { WindModal } from './WindModal';
 
@@ -92,7 +92,6 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 			}
 			data={displaySpeed}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}

@@ -5,11 +5,11 @@ import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { UVIcon } from '../../icons/main/UVIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { UVIcon } from 'app/components/icons/main/UVIcon';
 import { DataCard } from '../DataCard';
 import { UVModal } from './UVModal';
 
@@ -64,7 +64,6 @@ export const UVCard = ({ data }: { data: number }) => {
 			}
 			data={Math.round(data)}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal visible={showModal} icon={<UVIcon />} header="UV Index" onClose={() => setShowModal(false)}>
 						<UVModal />

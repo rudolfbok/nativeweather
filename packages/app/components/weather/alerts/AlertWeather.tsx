@@ -10,7 +10,6 @@ import { WeatherAlert } from 'app/types/weatherAPI';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
 import { AlertModal } from './AlertModal';
 
@@ -65,7 +64,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 				/>
 				<ChevronIcon />
 			</StyledPressable>
-			{Platform.OS !== 'macos' && showAlertModal && (
+			{showAlertModal && (
 				<StyledModal
 					visible={showAlertModal}
 					icon={selectedAlert ? undefined : <AlertIcon mostSevere={alertIconColor} />}

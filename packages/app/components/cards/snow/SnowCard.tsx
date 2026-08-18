@@ -4,11 +4,10 @@ import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
-import { Platform } from 'react-native';
 import { useRouter } from 'solito/navigation';
-import { StyledModal } from '../../common/styled/StyledModal';
-import { StyledText } from '../../common/styled/StyledText';
-import { SnowIcon } from '../../icons/main/SnowIcon';
+import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { SnowIcon } from 'app/components/icons/main/SnowIcon';
 import { DataCard } from '../DataCard';
 import { SnowModal } from './SnowModal';
 
@@ -63,7 +62,6 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 			}
 			data={snowChance + '%'}
 			modal={
-				Platform.OS !== 'macos' &&
 				showModal && (
 					<StyledModal
 						visible={showModal}
