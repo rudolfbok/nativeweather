@@ -5,7 +5,7 @@ import { HourlyItem } from './HourlyItem';
 
 export const HourlyForecast = () => {
 	const { t } = useTranslate('weather');
-	const { weatherData } = useWeather();
+	const weatherData = useWeather((state) => state.weatherData);
 
 	const tolgee = useTolgee();
 	const tolgeeLang = tolgee.getLanguage();

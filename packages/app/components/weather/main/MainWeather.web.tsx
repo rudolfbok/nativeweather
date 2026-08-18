@@ -62,7 +62,7 @@ export const MainWeather = ({
 	conditionStyle = '!bg-transparent',
 	dailyModal = false,
 }: MainWeatherProps) => {
-	const { weatherData } = useWeather();
+	const weatherData = useWeather((state) => state.weatherData);
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');

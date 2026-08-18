@@ -12,7 +12,7 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
-	const { setWeatherData } = useWeather();
+	const setWeatherData = useWeather((state) => state.setWeatherData);
 	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
@@ -20,7 +20,9 @@ export const useSearchController = () => {
 	const [suggestions, setSuggestions] = useState<City[]>([]);
 	const [weatherLoading, setWeatherLoading] = useState(false);
 	// const inputRef = useRef<TextInput>(null);
-	const debounceTimerRef = useRef<number | null>(null);
+	const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const suggestionAbortRef = useRef<AbortController | null>(null);
+	const weatherAbortRef = useRef<AbortController | null>(null);
 
 	const router = useRouter();
 
@@ -32,10 +34,16 @@ export const useSearchController = () => {
 	const showSuggestions = isSearchBarFocused && suggestions.length > 0;
 
 	const handleCityPress = async (city: City) => {
+		weatherAbortRef.current?.abort();
+		const controller = new AbortController();
+		weatherAbortRef.current = controller;
 		setWeatherLoading(true);
-		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
+		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource, {
+			signal: controller.signal,
+		});
+		if (controller.signal.aborted) return;
 		if (weatherData) {
-			setWeatherData(weatherData);
+			void setWeatherData(weatherData);
 			if (Platform.OS !== 'macos') {
 				const path = buildSlug(weatherData);
 				router.push(path);
@@ -51,47 +59,59 @@ export const useSearchController = () => {
 	};
 
 	const handleInputSearch = async (query: string) => {
-		const weatherData = await fetchWeather(query, currentSource);
+		weatherAbortRef.current?.abort();
+		const controller = new AbortController();
+		weatherAbortRef.current = controller;
+		setWeatherLoading(true);
+		const weatherData = await fetchWeather(query, currentSource, { signal: controller.signal });
+		if (controller.signal.aborted) return false;
 		if (weatherData) {
-			setWeatherData(weatherData);
+			void setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
 			if (Platform.OS !== 'macos') {
 				const path = buildSlug(weatherData);
 				router.push(path);
 			}
+			setWeatherLoading(false);
 			return true;
 		} else {
 			showToast({ message: t('search.input.error'), preset: 'error' });
 			setSearchValue('');
+			setWeatherLoading(false);
 			return false;
 		}
 	};
 
 	useEffect(() => {
-		const getSuggestions = async () => {
-			if (!searchValue.trim()) {
-				setSuggestions([]);
-				return;
-			}
+		suggestionAbortRef.current?.abort();
+		if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
 
-			const suggestionsData = await fetchLocation(searchValue);
+		if (!searchValue.trim()) {
+			setSuggestions([]);
+			return;
+		}
 
-			if (suggestionsData) {
-				setSuggestions(suggestionsData);
-			} else {
-				setSuggestions([]);
-			}
-		};
+		debounceTimerRef.current = setTimeout(async () => {
+			const controller = new AbortController();
+			suggestionAbortRef.current = controller;
+			const suggestionsData = await fetchLocation(searchValue, { signal: controller.signal });
 
-		getSuggestions();
+			if (!controller.signal.aborted) setSuggestions(suggestionsData ?? []);
+		}, 250);
 
 		return () => {
-			if (debounceTimerRef.current) {
-				clearTimeout(debounceTimerRef.current);
-			}
+			if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+			suggestionAbortRef.current?.abort();
 		};
 	}, [searchValue]);
+
+	useEffect(
+		() => () => {
+			weatherAbortRef.current?.abort();
+		},
+		[]
+	);
 
 	const addToRecentSearches = (city: City) => {
 		const newSearches = [

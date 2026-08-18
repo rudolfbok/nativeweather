@@ -18,13 +18,9 @@ import { AlertWeather } from '../alerts/AlertWeather';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { useStorageString } from 'app/storage/useStorage';
-import { extractCity } from 'app/utils/helpers/extractCity';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
-import { useEffect } from 'react';
 import { View } from 'react-native';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
@@ -32,15 +28,7 @@ import { SmartSummary } from '../SmartSummary';
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
-	const { setIsFavorite } = useFavoriteCities();
 	const mapConditions = useMapConditions();
-
-	useEffect(() => {
-		if (!weatherData) return;
-
-		const city = extractCity(weatherData);
-		setIsFavorite(isCityInFavorites(city));
-	}, [setIsFavorite, weatherData]);
 
 	if (!weatherData) return null;
 
@@ -83,7 +71,7 @@ export const HeroWeather = () => {
 		currentSource ?? 'weatherapi'
 	);
 
-	const DataCardGrid = () => {
+	const renderDataCardGrid = () => {
 		return (
 			<>
 				{currentSnowChance > currentRainChance ? (
@@ -181,7 +169,7 @@ export const HeroWeather = () => {
 				</View>
 			</View>
 			<View className="flex-row flex-wrap items-center justify-between gap-4">
-				<DataCardGrid />
+				{renderDataCardGrid()}
 			</View>
 		</View>
 	);

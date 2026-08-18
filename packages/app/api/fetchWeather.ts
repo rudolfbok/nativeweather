@@ -2,10 +2,14 @@ import type { NormalizedData } from 'app/types/normalizedData';
 import { fetchWeatherAPI } from './fetchWeatherAPI';
 import { mapWeatherApi } from './mapWeatherAPI';
 
-export const fetchWeather = async (query: string | number[], source: string): Promise<NormalizedData | null> => {
+export const fetchWeather = async (
+	query: string | number[],
+	source: string,
+	options?: { signal?: AbortSignal }
+): Promise<NormalizedData | null> => {
 	try {
 		if (source === 'weatherapi') {
-			const weatherData = await fetchWeatherAPI(query);
+			const weatherData = await fetchWeatherAPI(query, options);
 			if (!weatherData) return null;
 
 			return mapWeatherApi(weatherData);

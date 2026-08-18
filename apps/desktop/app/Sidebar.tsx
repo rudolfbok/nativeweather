@@ -8,7 +8,7 @@ import { Settings, ShieldCheck } from 'lucide-react-native';
 import { ScrollView, View } from 'react-native';
 
 export const Sidebar = () => {
-	const favoriteHook = useFavoriteCities();
+	const favoriteHook = useFavoriteCities({ refresh: true });
 	const { navigationScreen, setNavigationScreen } = useNavigationScreen();
 	const { text } = useThemeColors();
 

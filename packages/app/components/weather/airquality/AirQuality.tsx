@@ -17,7 +17,7 @@ import { useRouter } from 'solito/navigation';
 import { AirQualityModal } from './AirQualityModal';
 
 export const AirQuality = ({ className }: { className?: string }) => {
-	const { airQualityData } = useWeather();
+	const airQualityData = useWeather((state) => state.airQualityData);
 	const { t } = useTranslate('weather');
 	const [currentAQI] = useStorageString('currentAQI');
 	const [showModal, setShowModal] = useState(false);

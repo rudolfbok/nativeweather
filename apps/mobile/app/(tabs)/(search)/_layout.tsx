@@ -1,15 +1,10 @@
 import { useTranslate } from '@tolgee/react';
-import { useSearchController } from 'app/hooks/search/useSearchController';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Stack } from 'expo-router';
-import { useEffect } from 'react';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
-	const { searchValue } = useSearchController();
 	const { background, text } = useThemeColors();
-
-	useEffect(() => console.log(searchValue), [searchValue]);
 
 	return (
 		<Stack nativeContainerStyle={{ backgroundColor: background }}>

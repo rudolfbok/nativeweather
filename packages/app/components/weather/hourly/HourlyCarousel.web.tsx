@@ -40,6 +40,10 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		updateButtons();
 		emblaApi.on('select', updateButtons);
 		emblaApi.on('reInit', updateButtons);
+		return () => {
+			emblaApi.off('select', updateButtons);
+			emblaApi.off('reInit', updateButtons);
+		};
 	}, [emblaApi, updateButtons]);
 
 	const { text } = useThemeColors();

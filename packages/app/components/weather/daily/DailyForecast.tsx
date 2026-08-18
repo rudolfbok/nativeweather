@@ -22,7 +22,7 @@ import { variants } from 'app/constants/pressableVariants';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
-	const { weatherData } = useWeather();
+	const weatherData = useWeather((state) => state.weatherData);
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');

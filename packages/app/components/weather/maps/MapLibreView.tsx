@@ -19,7 +19,7 @@ type Size = { width: number; height: number };
 
 export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) => {
 	const { t } = useTranslate('weather');
-	const { weatherData } = useWeather();
+	const weatherData = useWeather((state) => state.weatherData);
 	const { layer, setLayer } = useMapLayer();
 	const { weatherPoint, requestWeatherPoint, clearWeatherPoint } = useMapWeatherPoint(t('wind.current.gust'));
 	const [baseMap, setBaseMap] = useState<BaseMapStyle>('liberty');
@@ -29,11 +29,14 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	const [bearing, setBearing] = useState(0);
 	const [showLegend, setShowLegend] = useState(false);
 	const [showLoading, setShowLoading] = useState(false);
+	const [mapReady, setMapReady] = useState(false);
 	const mapRef = useRef<MapRef | null>(null);
 	const cameraRef = useRef<CameraRef | null>(null);
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
-	const initializedAtLocation = useRef(mapLatitude != null && mapLongitude != null);
+	const initializedLocation = useRef(
+		mapLatitude != null && mapLongitude != null ? `${mapLatitude}:${mapLongitude}` : null
+	);
 
 	useEffect(() => {
 		if (status !== 'loading') {
@@ -45,13 +48,15 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	}, [status]);
 
 	useEffect(() => {
-		if (mapLatitude == null || mapLongitude == null) return;
-		if (initializedAtLocation.current) {
-			initializedAtLocation.current = false;
+		if (!mapReady || mapLatitude == null || mapLongitude == null) return;
+		const location = `${mapLatitude}:${mapLongitude}`;
+		if (initializedLocation.current === location) {
+			initializedLocation.current = null;
 			return;
 		}
+		initializedLocation.current = null;
 		cameraRef.current?.easeTo({ center: [mapLongitude, mapLatitude], zoom: 7, duration: 500 });
-	}, [mapLatitude, mapLongitude]);
+	}, [mapLatitude, mapLongitude, mapReady]);
 
 	const updateMarkerAnchor = async () => {
 		if (!mapRef.current || !weatherPoint) return;
@@ -104,7 +109,10 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 				touchRotate={true}
 				touchPitch={false}
 				onPress={handleMapPress}
-				onDidFinishRenderingMapFully={() => setStatus('ready')}
+				onDidFinishRenderingMapFully={() => {
+					setMapReady(true);
+					setStatus('ready');
+				}}
 				onDidFailLoadingMap={() => setStatus('error')}
 				onRegionIsChanging={(event) => setBearing(event.nativeEvent.bearing)}
 				onRegionDidChange={updateMarkerAnchor}

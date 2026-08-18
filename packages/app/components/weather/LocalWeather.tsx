@@ -16,7 +16,7 @@ interface LocalWeatherProps {
 
 export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
 	const { t } = useTranslate('weather');
-	const { localWeatherData } = useLocalWeather();
+	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 	const { handleCityPress } = useSearchController();
 
 	if (error) {

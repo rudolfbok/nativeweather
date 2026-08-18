@@ -9,7 +9,7 @@ import { useSearchController } from 'app/hooks/search/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
 import { clsx } from 'clsx';
 import { Edit, Trash2 } from 'lucide-react-native';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloseIcon } from '../icons/ui/CloseIcon';
 import { CityCard } from './CityCard';
@@ -18,14 +18,8 @@ import { EditIcon } from '../icons/ui/EditIcon';
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');
 	const [showDeleteCity, setShowDeleteCity] = useState(false);
-	const { favoritesData, handleRemoveCity, loading, refreshFavoriteCities } = hook;
+	const { favoritesData, handleRemoveCity, loading } = hook;
 	const { handleCityPress } = useSearchController();
-
-	useEffect(() => {
-		if (Platform.OS === 'web') {
-			refreshFavoriteCities({ displayToast: false });
-		}
-	}, []);
 
 	return (
 		<View className={clsx('gap-2')}>
@@ -37,7 +31,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 					</StyledPressable>
 				)}
 			</View>
-			{loading && !favoritesData && <LoadingIndicator text={t('favorites.loading')} />}
+			{loading && favoritesData.length === 0 && <LoadingIndicator text={t('favorites.loading')} />}
 			{favoritesData.length === 0 && !loading && (
 				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
 					<StyledText type="body" className={clsx('text-center')}>

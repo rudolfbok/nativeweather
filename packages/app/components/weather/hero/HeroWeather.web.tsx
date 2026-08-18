@@ -17,14 +17,10 @@ import { AirQuality } from 'app/components/weather/airquality/AirQuality';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { useStorageString } from 'app/storage/useStorage';
-import { extractCity } from 'app/utils/helpers/extractCity';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
-import { useEffect } from 'react';
 import { View } from 'react-native';
 import { AlertWeather } from '../alerts/AlertWeather';
 import { HourlyForecast } from '../hourly/HourlyForecast';
@@ -34,15 +30,7 @@ import { SmartSummary } from '../SmartSummary';
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
-	const { setIsFavorite } = useFavoriteCities();
 	const mapConditions = useMapConditions();
-
-	useEffect(() => {
-		if (!weatherData) return;
-
-		const city = extractCity(weatherData);
-		setIsFavorite(isCityInFavorites(city));
-	}, [setIsFavorite, weatherData]);
 
 	if (!weatherData) return null;
 
@@ -70,19 +58,20 @@ export const HeroWeather = () => {
 		10
 	);
 
-	const currentIndex = weatherData.forecast.forecastday[0].hour.findIndex(
-		(hour) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
-	);
+	const currentHour =
+		weatherData.forecast.forecastday[0].hour.find(
+			(hour) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
+		) ?? weatherData.forecast.forecastday[0].hour[0];
 
-	const currentRainChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfRain;
-	const currentSnowChance = weatherData.forecast.forecastday[0].hour[currentIndex].chanceOfSnow;
-	const currentSnowPrecipCm = weatherData.forecast.forecastday[0].hour[currentIndex].snowCm;
+	const currentRainChance = currentHour?.chanceOfRain ?? 0;
+	const currentSnowChance = currentHour?.chanceOfSnow ?? 0;
+	const currentSnowPrecipCm = currentHour?.snowCm ?? 0;
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 	const filteredAlerts = getAlerts(weatherData.alerts.alert, weatherData.location);
 	const alertsLength = filteredAlerts.length ?? 0;
 	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource!);
 
-	const DataCardGrid = () => {
+	const renderDataCardGrid = () => {
 		return (
 			<>
 				{currentSnowChance > currentRainChance ? (
@@ -186,11 +175,11 @@ export const HeroWeather = () => {
 					)}
 				>
 					<AirQuality className={clsx('max-xl:hidden')} />
-					<DataCardGrid />
+					{renderDataCardGrid()}
 				</View>
 			</View>
 			<View className={clsx('mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
-				<DataCardGrid />
+				{renderDataCardGrid()}
 			</View>
 		</View>
 	);

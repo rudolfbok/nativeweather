@@ -12,7 +12,7 @@ import { CityCard } from 'app/types/cityCard';
 import type { City } from 'app/types/city';
 import { showFavoriteToast } from 'app/utils/services/showFavoriteToast';
 import { showToast } from 'app/utils/services/showToast';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocalWeather } from './useLocalWeather';
 
 export interface FavoriteCity {
@@ -25,50 +25,66 @@ interface RefreshFavoritesProps {
 	setRefreshing?: (v: boolean) => void;
 }
 
-export const useFavoriteCities = () => {
+export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {}) => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
-	const { localWeatherData, setLocalWeatherData } = useLocalWeather();
+	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
+	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(refresh);
 	const [isFavorite, setIsFavorite] = useState<boolean>(undefined);
+	const refreshAbortRef = useRef<AbortController | null>(null);
 
 	const refreshFavoriteCities = async ({ displayToast = true, setRefreshing }: RefreshFavoritesProps = {}) => {
+		refreshAbortRef.current?.abort();
+		const controller = new AbortController();
+		refreshAbortRef.current = controller;
 		setLoading(true);
 		setRefreshing?.(true);
 
-		const cities = getFavoriteCities();
+		try {
+			const cities = getFavoriteCities();
+			let localRefreshFailed = false;
 
-		if (showLocalWeather && localWeatherData) {
-			const weatherData = await fetchWeather(
-				`${localWeatherData.location.name}, ${localWeatherData.location.country}`,
-				currentSource
+			if (showLocalWeather && localWeatherData) {
+				const weatherData = await fetchWeather(
+					`${localWeatherData.location.name}, ${localWeatherData.location.country}`,
+					currentSource,
+					{ signal: controller.signal }
+				);
+				if (controller.signal.aborted) return;
+				if (weatherData) await setLocalWeatherData(weatherData);
+				else localRefreshFailed = true;
+			}
+
+			const results = await Promise.all(
+				cities.map(async (city: City) => {
+					const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource, {
+						signal: controller.signal,
+					});
+
+					return weatherData ? { city, weather: weatherData } : null;
+				})
 			);
-			if (!weatherData) return null;
-			await setLocalWeatherData(weatherData);
+			if (controller.signal.aborted) return;
+
+			if (displayToast && (cities.length > 0 || localRefreshFailed)) {
+				const hasRefreshError = localRefreshFailed || results.some((result) => !result);
+
+				showToast({
+					message: hasRefreshError ? t('toast.notrefreshed') : t('toast.refreshed'),
+					preset: hasRefreshError ? 'error' : 'done',
+				});
+			}
+
+			setFavoritesData(results.filter(Boolean));
+		} finally {
+			if (refreshAbortRef.current === controller) {
+				setRefreshing?.(false);
+				setLoading(false);
+			}
 		}
-
-		const results = await Promise.all(
-			cities.map(async (city: City) => {
-				const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource);
-
-				return weatherData ? { city, weather: weatherData } : null;
-			})
-		);
-
-		if (displayToast && cities.length > 0) {
-			const hasRefreshError = results.some((result) => !result);
-
-			showToast({
-				message: hasRefreshError ? t('toast.notrefreshed') : t('toast.refreshed'),
-				preset: hasRefreshError ? 'error' : 'done',
-			});
-		}
-
-		setFavoritesData(results.filter(Boolean));
-		setRefreshing?.(false);
-		setLoading(false);
 	};
 
 	const handleRemoveCity = async (city: City) => {
@@ -96,8 +112,15 @@ export const useFavoriteCities = () => {
 	};
 
 	useEffect(() => {
-		refreshFavoriteCities({ displayToast: false });
-	}, [currentSource]);
+		if (refresh) void refreshFavoriteCities({ displayToast: false });
+	}, [currentSource, refresh]);
+
+	useEffect(
+		() => () => {
+			refreshAbortRef.current?.abort();
+		},
+		[]
+	);
 
 	return {
 		favoritesData,

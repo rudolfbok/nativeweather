@@ -27,7 +27,7 @@ export const HomeFeature = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
-	const favoriteCitiesHook = useFavoriteCities();
+	const favoriteCitiesHook = useFavoriteCities({ refresh: true });
 	const { getLocalWeather, error: localWeatherError } = useLocation();
 	const { text } = useThemeColors();
 

@@ -16,9 +16,9 @@ import { ScrollView, View } from 'react-native';
 export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { t } = useTranslate('weather');
-	const favoriteCitiesHook = useFavoriteCities();
+	const favoriteCitiesHook = useFavoriteCities({ refresh: true });
 	const { getLocalWeather, error: localWeatherError } = useLocation();
-	const { localWeatherData } = useLocalWeather();
+	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 
 	useEffect(() => {
 		if (showLocalWeather && !localWeatherData) {

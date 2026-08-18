@@ -5,7 +5,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SearchBar } from 'app/components/weather/search/SearchBar';
 import { useEffect, useState } from 'react';
-import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
+import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { clsx } from 'clsx';
 
 export const SearchFeature = () => {
@@ -14,32 +14,31 @@ export const SearchFeature = () => {
 
 	const [primaryTitle, setPrimaryTitle] = useState('');
 
-	const scrollY = useSharedValue(0);
+	const headerCollapsed = useSharedValue(false);
+
+	const updateHeader = (collapsed: boolean) => {
+		if (collapsed) {
+			navigation.setOptions({ headerTitle: t('search.title') });
+			setPrimaryTitle('');
+		} else {
+			navigation.setOptions({ headerTransparent: true, headerTitle: '', headerBackground: undefined });
+			setPrimaryTitle(t('search.title'));
+		}
+	};
 
 	const scrollHandler = useAnimatedScrollHandler({
 		onScroll: (event) => {
-			scrollY.value = event.contentOffset.y;
+			const collapsed = event.contentOffset.y > 10;
+			if (collapsed !== headerCollapsed.value) {
+				headerCollapsed.value = collapsed;
+				runOnJS(updateHeader)(collapsed);
+			}
 		},
 	});
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			if (scrollY.value > 10) {
-				navigation.setOptions({
-					headerTitle: t('search.title'),
-				});
-				setPrimaryTitle('');
-			} else {
-				navigation.setOptions({
-					headerTransparent: true,
-					headerTitle: '',
-					headerBackground: undefined,
-				});
-				setPrimaryTitle(t('search.title'));
-			}
-		}, 16);
-		return () => clearInterval(interval);
-	}, [navigation, scrollY]);
+		updateHeader(false);
+	}, [navigation, t]);
 
 	return (
 		<Animated.ScrollView

@@ -77,15 +77,23 @@ export const useWidgets = () => {
 			return;
 		}
 
+		let cancelled = false;
 		void getWeatherIconUri({
 			isDay: localWeatherData.current.isDay,
 			code: localWeatherData.current.condition.code,
 		})
-			.then(setImagePathURI)
+			.then((uri) => {
+				if (!cancelled) setImagePathURI(uri);
+			})
 			.catch((error) => {
+				if (cancelled) return;
 				console.error('Failed to resolve widget weather icon URI', error);
 				setImagePathURI(null);
 			});
+
+		return () => {
+			cancelled = true;
+		};
 	}, [localWeatherData?.current.isDay, localWeatherData?.current.condition.code]);
 
 	useEffect(() => {

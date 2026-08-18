@@ -21,11 +21,14 @@ export const WeatherFeature = () => {
 	const router = useRouter();
 	const params = useParams<{ city: string }>();
 	const searchParams = useSearchParams();
+	const region = searchParams.get('r');
+	const country = searchParams.get('cr');
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
+		const controller = new AbortController();
 		const loadWeather = async () => {
 			const slug = params.city;
 			if (!slug) return;
@@ -37,14 +40,12 @@ export const WeatherFeature = () => {
 			setLoading(true);
 			setError(false);
 
-			const r = searchParams.get('r');
-			const cr = searchParams.get('cr');
-
 			const city = slug.trim().toLowerCase().replace(/\s+/g, '-');
-			const query = cr || r ? `${city}, ${r}, ${cr}` : city;
+			const query = country || region ? `${city}, ${region}, ${country}` : city;
 
 			try {
-				const data = await fetchWeather(query, currentSource);
+				const data = await fetchWeather(query, currentSource, { signal: controller.signal });
+				if (controller.signal.aborted) return;
 
 				if (data) {
 					const path = buildSlug(data);
@@ -56,14 +57,15 @@ export const WeatherFeature = () => {
 					setError(true);
 				}
 			} catch {
-				setError(true);
+				if (!controller.signal.aborted) setError(true);
 			} finally {
-				setLoading(false);
+				if (!controller.signal.aborted) setLoading(false);
 			}
 		};
 
-		loadWeather();
-	}, [params.city, currentSource]);
+		void loadWeather();
+		return () => controller.abort();
+	}, [params.city, region, country, currentSource]);
 
 	useEffect(
 		useCallback(() => {
