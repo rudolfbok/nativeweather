@@ -24,6 +24,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
+				<link rel="preconnect" href="https://tiles.openfreemap.org" />
+				<link rel="preconnect" href="https://weathermaps.weatherapi.com" />
 				<script
 					defer
 					src="https://cloud.umami.is/script.js"
@@ -32,7 +34,7 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					'dark:bg-systemBackground_dark bg-secondarySystemBackground select-none px-4 min-[2200px]:px-80',
+					'select-none bg-secondarySystemBackground px-4 dark:bg-systemBackground_dark min-[2200px]:px-80',
 					geistSans.variable,
 					geistMono.variable
 				)}

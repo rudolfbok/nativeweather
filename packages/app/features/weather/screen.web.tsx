@@ -29,6 +29,10 @@ export const WeatherFeature = () => {
 		const loadWeather = async () => {
 			const slug = params.city;
 			if (!slug) return;
+			const currentPath = `${window.location.pathname}${window.location.search}`;
+			const currentWeather = useWeather.getState().weatherData;
+
+			if (currentWeather && buildSlug(currentWeather) === currentPath) return;
 
 			setLoading(true);
 			setError(false);
@@ -44,7 +48,7 @@ export const WeatherFeature = () => {
 
 				if (data) {
 					const path = buildSlug(data);
-					if (path !== window.location.pathname) {
+					if (path !== currentPath) {
 						router.replace(path);
 					}
 					setWeatherData(data);

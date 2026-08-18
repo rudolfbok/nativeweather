@@ -4,11 +4,13 @@ import { CityCard } from 'app/types/cityCard';
 import { create } from 'zustand';
 
 interface LocalWeatherState {
-	localWeatherData: CityCard;
-	setLocalWeatherData: (data: CityCard) => Promise<void>;
-	localAQIData: OpenMeteoAQI;
-	setLocalAQIData: (data: OpenMeteoAQI) => void;
+	localWeatherData: CityCard | null;
+	setLocalWeatherData: (data: CityCard | null) => Promise<void>;
+	localAQIData: OpenMeteoAQI | null;
+	setLocalAQIData: (data: OpenMeteoAQI | null) => void;
 }
+
+let airQualityRequest = 0;
 
 export const useLocalWeather = create<LocalWeatherState>((set, get) => ({
 	localWeatherData: null,
@@ -16,23 +18,30 @@ export const useLocalWeather = create<LocalWeatherState>((set, get) => ({
 	setLocalAQIData: (data) => set({ localAQIData: data }),
 	setLocalWeatherData: async (data) => {
 		const prev = get().localWeatherData;
+		const request = ++airQualityRequest;
 
-		if (prev && data && prev.location.lat === data.location.lat && prev.location.lon === data.location.lon) {
-			set({ localWeatherData: data });
+		if (!data) {
+			set({ localWeatherData: null, localAQIData: null });
 			return;
 		}
 
-		set({
-			localWeatherData: data,
-			localAQIData: null,
-		});
+		const sameLocation =
+			prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
 
-		if (!data) return;
+		set(sameLocation ? { localWeatherData: data } : { localWeatherData: data, localAQIData: null });
 
 		try {
 			const aq = await fetchAirQuality(data.location.lat, data.location.lon);
+			const current = get().localWeatherData;
 
-			set({ localAQIData: aq });
+			if (
+				aq &&
+				request === airQualityRequest &&
+				current?.location.lat === data.location.lat &&
+				current?.location.lon === data.location.lon
+			) {
+				set({ localAQIData: aq });
+			}
 		} catch (error) {
 			console.error('Local AQI fetch failed', error);
 		}

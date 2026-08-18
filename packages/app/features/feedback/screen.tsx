@@ -17,6 +17,12 @@ export const FeedbackFeature = () => {
 	const [message, setMessage] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
+	const selectedIcon = {
+		bug: <Bug color="#007AFF" />,
+		feature: <Cog color="#007AFF" />,
+		message: <MessageCircle color="#007AFF" />,
+		question: <CircleQuestionMark color="#007AFF" />,
+	};
 
 	const handleSubmit = async () => {
 		if (loading) return;
@@ -58,10 +64,10 @@ export const FeedbackFeature = () => {
 					setType(variant);
 					setOpen(false);
 				}}
-				className="hover:dark:bg-tertiarySystemBackground_dark dark flex-row items-center p-4"
+				className="hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center p-4"
 			>
-				{icon}
-				<View className="flex-1 items-center">
+				<View className="h-6 w-6 items-center justify-center">{icon}</View>
+				<View className="ml-3 flex-1">
 					<StyledText type="body">{title}</StyledText>
 				</View>
 				<View className="h-6 w-6 items-center justify-center">{isSelected && <Check color="#007AFF" size={20} />}</View>
@@ -78,14 +84,17 @@ export const FeedbackFeature = () => {
 				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark w-full overflow-hidden rounded-3xl md:w-[240px]">
+					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark web:md:w-[320px] w-full overflow-hidden rounded-3xl">
 						<Pressable
 							onPress={() => setOpen((prev) => !prev)}
-							className="hover:dark:bg-tertiarySystemBackground_dark flex-row items-center justify-between gap-2 overflow-hidden p-4"
+							className="hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden p-4"
 						>
-							<StyledText type="body" className="font-semibold">
-								{type ? t(`feedback.${type}`) : t('feedback.select')}
-							</StyledText>
+							<View className="flex-row items-center gap-3">
+								{selectedIcon[type]}
+								<StyledText type="body" className="font-semibold">
+									{type ? t(`feedback.${type}`) : t('feedback.select')}
+								</StyledText>
+							</View>
 							{open ? <ChevronDown color="#007AFF" /> : <ChevronRight color="#007AFF" />}
 						</Pressable>
 						{open && (
@@ -122,7 +131,7 @@ export const FeedbackFeature = () => {
 						)}
 					/>
 				</View>
-				<View className="w-full items-center">
+				<View className="w-full items-start">
 					<StyledButton
 						onPress={handleSubmit}
 						text={loading ? t('feedback.button.sending') : t('feedback.button.send')}

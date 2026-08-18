@@ -17,6 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
 import { MapControls } from './MapControls';
 import { MapCompass } from './MapCompass';
+import { MapNavigationControls } from './MapNavigationControls';
 import { MapWeatherPopup } from './MapWeatherPopup';
 
 type Point = { x: number; y: number };
@@ -59,8 +60,21 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	const [bearing, setBearing] = useState(0);
 	const [weatherLayerVisible, setWeatherLayerVisible] = useState(true);
 	const [showLegend, setShowLegend] = useState(false);
+	const [showLoading, setShowLoading] = useState(false);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const activeStyleRef = useRef<BaseMapStyle>('liberty');
+	const mapLatitude = weatherData?.location?.lat;
+	const mapLongitude = weatherData?.location?.lon;
+	const initializedAtLocation = useRef(mapLatitude != null && mapLongitude != null);
+
+	useEffect(() => {
+		if (status !== 'loading') {
+			setShowLoading(false);
+			return;
+		}
+		const timeout = setTimeout(() => setShowLoading(true), 2000);
+		return () => clearTimeout(timeout);
+	}, [status]);
 
 	useEffect(() => {
 		if (!containerRef.current) return;
@@ -74,8 +88,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			instance = new maplibregl.Map({
 				container: containerRef.current,
 				style: getBaseMapUrl('liberty'),
-				center: [0, 0],
-				zoom: 2,
+				center: mapLatitude != null && mapLongitude != null ? [mapLongitude, mapLatitude] : [0, 0],
+				zoom: mapLatitude != null && mapLongitude != null ? 7 : 2,
 				attributionControl: false,
 				dragRotate: showCompass,
 				pitchWithRotate: false,
@@ -97,12 +111,16 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	useEffect(() => {
 		if (!map) return;
 		let cancelled = false;
+		const handleReady = () => {
+			if (!cancelled) setStatus('ready');
+		};
 		const updateLayer = () => {
 			if (cancelled) return;
 			if (weatherLayerVisible) setWeatherLayer(map, layer);
 			else clearWeatherLayer(map);
-			setStatus('ready');
+			map.once('idle', handleReady);
 		};
+		setStatus('loading');
 
 		if (activeStyleRef.current !== baseMap) {
 			activeStyleRef.current = baseMap;
@@ -118,15 +136,18 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 		return () => {
 			cancelled = true;
 			map.off('style.load', updateLayer);
+			map.off('idle', handleReady);
 		};
 	}, [baseMap, layer, map, weatherLayerVisible]);
 
 	useEffect(() => {
-		const latitude = weatherData?.location?.lat;
-		const longitude = weatherData?.location?.lon;
-		if (!map || latitude == null || longitude == null) return;
-		map.easeTo({ center: [longitude, latitude], zoom: 7, duration: 500 });
-	}, [map, weatherData?.location?.lat, weatherData?.location?.lon]);
+		if (!map || mapLatitude == null || mapLongitude == null) return;
+		if (initializedAtLocation.current) {
+			initializedAtLocation.current = false;
+			return;
+		}
+		map.easeTo({ center: [mapLongitude, mapLatitude], zoom: 7, duration: 500 });
+	}, [map, mapLatitude, mapLongitude]);
 
 	useEffect(() => {
 		if (!map) return;
@@ -199,16 +220,29 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 		<View className="relative flex w-full flex-1 overflow-hidden" onLayout={handleLayout}>
 			<div ref={containerRef} className="h-full w-full rounded-3xl" />
 			{showCompass && (
-				<MapCompass bearing={bearing} onPress={() => map?.resetNorth({ duration: 300 })} />
+				<MapNavigationControls
+					onZoomIn={() => map?.zoomIn({ duration: 300 })}
+					onZoomOut={() => map?.zoomOut({ duration: 300 })}
+					onLocate={() => {
+						if (mapLatitude != null && mapLongitude != null) {
+							map?.easeTo({ center: [mapLongitude, mapLatitude], zoom: 7, duration: 500 });
+						}
+					}}
+				/>
 			)}
-			{status === 'loading' && (
-				<View className="absolute inset-0 flex-row items-center justify-center gap-2">
-					<ActivityIndicator size="small" color="#007AFF" />
-					<StyledText type="body">{t('maps.loading')}</StyledText>
+			{showCompass && <MapCompass bearing={bearing} onPress={() => map?.resetNorth({ duration: 300 })} />}
+			{showLoading && (
+				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
+					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3 shadow-lg">
+						<ActivityIndicator size="small" color="#007AFF" />
+						<StyledText type="body" className="font-semibold">
+							{t('maps.loading')}
+						</StyledText>
+					</View>
 				</View>
 			)}
 			{status === 'error' && (
-				<View className="bg-systemBackground/90 absolute inset-0 items-center justify-center p-6 dark:bg-systemBackground_dark/90">
+				<View className="bg-systemBackground/90 dark:bg-systemBackground_dark/90 absolute inset-0 items-center justify-center p-6">
 					<StyledText type="body" className="text-center font-semibold">
 						{t('maps.loadError')}
 					</StyledText>

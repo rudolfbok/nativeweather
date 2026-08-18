@@ -15,13 +15,7 @@ export const AlertIcon = ({ mostSevere }: { mostSevere: string }) => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<Path
-				d="M12 8v4M12 16h.01"
-				stroke={mostSevere === 'alert' ? 'red' : 'green'}
-				strokeWidth={2}
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<Path d="M12 8v4M12 16h.01" stroke="#000" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
 		</Svg>
 	);
 };

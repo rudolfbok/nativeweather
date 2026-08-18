@@ -6,8 +6,10 @@ import { fetchAirQuality } from 'app/api/fetchAirQuality';
 interface WeatherState {
 	weatherData: NormalizedData | null;
 	airQualityData: OpenMeteoAQI | null;
-	setWeatherData: (data: NormalizedData | null) => void;
+	setWeatherData: (data: NormalizedData | null) => Promise<void>;
 }
+
+let airQualityRequest = 0;
 
 export const useWeather = create<WeatherState>((set, get) => ({
 	weatherData: null,
@@ -15,23 +17,30 @@ export const useWeather = create<WeatherState>((set, get) => ({
 
 	setWeatherData: async (data) => {
 		const prev = get().weatherData;
+		const request = ++airQualityRequest;
 
-		if (prev && data && prev.location.lat === data.location.lat && prev.location.lon === data.location.lon) {
-			set({ weatherData: data });
+		if (!data) {
+			set({ weatherData: null, airQualityData: null });
 			return;
 		}
 
-		set({
-			weatherData: data,
-			airQualityData: null,
-		});
+		const sameLocation =
+			prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
 
-		if (!data) return;
+		set(sameLocation ? { weatherData: data } : { weatherData: data, airQualityData: null });
 
 		try {
 			const aq = await fetchAirQuality(data.location.lat, data.location.lon);
+			const current = get().weatherData;
 
-			set({ airQualityData: aq });
+			if (
+				aq &&
+				request === airQualityRequest &&
+				current?.location.lat === data.location.lat &&
+				current?.location.lon === data.location.lon
+			) {
+				set({ airQualityData: aq });
+			}
 		} catch (e) {
 			console.error('AQI fetch failed', e);
 		}
