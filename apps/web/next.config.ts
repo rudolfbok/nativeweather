@@ -1,3 +1,4 @@
+import path from 'node:path';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -24,6 +25,13 @@ const nextConfig: NextConfig = {
 		},
 	},
 	reactStrictMode: false, // reanimated doesn't support this on web
+	turbopack: {
+		root: path.resolve(__dirname, '../..'),
+		resolveAlias: {
+			'react-native': 'react-native-web',
+		},
+		resolveExtensions: ['.web.ts', '.web.tsx', '.web.js', '.web.jsx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
+	},
 	webpack: (config, { isServer }) => {
 		// Only for the client (browser) bundle
 		if (!isServer) {
