@@ -333,9 +333,6 @@ importers:
 
   packages/app:
     dependencies:
-      '@emailjs/react-native':
-        specifier: ^5.1.0
-        version: 5.1.0(react-native@0.86.2(@babel/core@7.29.0)(@react-native-community/cli@18.0.0(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.3))
       '@maplibre/maplibre-react-native':
         specifier: ^11.2.1
         version: 11.2.1(@expo/config-plugins@57.0.8(typescript@6.0.3))(@types/geojson@7946.0.16)(@types/react@19.2.14)(react-native@0.86.2(@babel/core@7.29.0)(@react-native-community/cli@18.0.0(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.3))(react@19.2.3)
@@ -1220,16 +1217,6 @@ packages:
   '@egjs/hammerjs@2.0.17':
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
     engines: {node: '>=0.8.0'}
-
-  '@emailjs/browser@4.4.1':
-    resolution: {integrity: sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==}
-    engines: {node: '>=14.0.0'}
-
-  '@emailjs/react-native@5.1.0':
-    resolution: {integrity: sha512-21kboKT2pESqF7Ap2dYDChFTeoyMOAtov1HIAiG2yEu2cljmk6B2vYdRvX6RtH8MekMCo4EqCP8gqd5kmOSzZA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react-native: '>=0.60 <1.0'
 
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
@@ -9658,14 +9645,6 @@ snapshots:
   '@egjs/hammerjs@2.0.17':
     dependencies:
       '@types/hammerjs': 2.0.46
-
-  '@emailjs/browser@4.4.1': {}
-
-  '@emailjs/react-native@5.1.0(react-native@0.86.2(@babel/core@7.29.0)(@react-native-community/cli@18.0.0(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.3))':
-    dependencies:
-      '@emailjs/browser': 4.4.1
-      '@react-native-async-storage/async-storage': 2.2.0(react-native@0.86.2(@babel/core@7.29.0)(@react-native-community/cli@18.0.0(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.3))
-      react-native: 0.86.2(@babel/core@7.29.0)(@react-native-community/cli@18.0.0(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0))(@types/react@19.2.14)(react@19.2.3)
 
   '@emnapi/core@1.10.0':
     dependencies:

@@ -1,6 +1,5 @@
 'use client';
 
-import emailjs from '@emailjs/react-native';
 import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledText } from 'app/components/common/styled/StyledText';
@@ -26,25 +25,19 @@ export const FeedbackFeature = () => {
 
 	const handleSubmit = async () => {
 		if (loading) return;
-		if (message.trim().length === 0 || type === null) {
+		if (message.trim().length === 0 || type.length === 0) {
 			return showToast({ message: t('feedback.toast.error'), preset: 'error' });
 		}
 		setLoading(true);
 
 		try {
-			await emailjs.send(
-				'service_vokedf9',
-				'template_tix3tiv',
-				{
-					type: type || '',
-					message: message || '',
-					subject: `${type}: NativeWeather Contact Form`,
-					email: 'nativeweather@post.cz',
-				},
-				{
-					publicKey: 'user_FbIPjF3fksfbG7UWYkWfg',
-				}
-			);
+			const response = await fetch('https://nativeweather-email.bitwebs.workers.dev', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ type, message }),
+			});
+
+			if (!response.ok) throw new Error(`Feedback API returned ${response.status}`);
 			setType('');
 			setMessage('');
 			showToast({ message: t('feedback.toast.sent'), preset: 'done' });

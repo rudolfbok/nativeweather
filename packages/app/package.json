@@ -35,7 +35,6 @@
 		}
 	},
 	"dependencies": {
-		"@emailjs/react-native": "^5.1.0",
 		"@tolgee/format-icu": "^6.2.7",
 		"@tolgee/react": "^6.2.7",
 		"burnt": "^0.13.0",
