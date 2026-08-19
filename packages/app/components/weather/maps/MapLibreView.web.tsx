@@ -181,7 +181,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	}, [map, showCompass]);
 
 	useEffect(() => {
-		if (!map || !weatherLayerVisible) return;
+		if (!map || !weatherLayerVisible || !showCompass) return;
 		const handleClick = (event: MapMouseEvent) => {
 			setShowLegend(false);
 			setMarkerAnchor({ x: event.point.x, y: event.point.y });
@@ -191,7 +191,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 		return () => {
 			map.off('click', handleClick);
 		};
-	}, [layer, map, requestWeatherPoint, weatherLayerVisible]);
+	}, [layer, map, requestWeatherPoint, showCompass, weatherLayerVisible]);
 
 	const handleLayerChange = (nextLayer: WeatherMapLayer) => {
 		setWeatherLayerVisible(true);
@@ -252,7 +252,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 					</StyledText>
 				</View>
 			)}
-			{weatherPoint && markerAnchor && mapSize.width > 0 && mapSize.height > 0 && (
+			{showCompass && weatherPoint && markerAnchor && mapSize.width > 0 && mapSize.height > 0 && (
 				<MapWeatherPopup
 					weatherPoint={weatherPoint}
 					anchor={markerAnchor}
@@ -266,6 +266,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 				layer={layer}
 				weatherLayerVisible={weatherLayerVisible}
 				baseMap={baseMap}
+				showInfo={showCompass}
 				onLayerChange={handleLayerChange}
 				onClearLayer={showCompass ? handleClearLayer : undefined}
 				onBaseMapChange={setBaseMap}

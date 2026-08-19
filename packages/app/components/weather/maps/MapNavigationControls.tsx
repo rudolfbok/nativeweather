@@ -1,7 +1,6 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Locate, Minus, Plus } from 'lucide-react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Platform, View } from 'react-native';
 
 const MapNavigationButton = ({ icon, onPress }: { icon: React.ReactNode; onPress: () => void }) => (

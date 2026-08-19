@@ -1311,6 +1311,29 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
+  - react-native-webview (13.16.0):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsc
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-NativeModulesApple (0.79.4):
     - glog
     - React-callinvoker
@@ -1772,6 +1795,7 @@ DEPENDENCIES:
   - React-logger (from `../../../node_modules/react-native-macos/ReactCommon/logger`)
   - React-Mapbuffer (from `../../../node_modules/react-native-macos/ReactCommon`)
   - React-microtasksnativemodule (from `../../../node_modules/react-native-macos/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-webview (from `../../../node_modules/react-native-webview`)
   - React-NativeModulesApple (from `../../../node_modules/react-native-macos/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-oscompat (from `../../../node_modules/react-native-macos/ReactCommon/oscompat`)
   - React-perflogger (from `../../../node_modules/react-native-macos/ReactCommon/reactperflogger`)
@@ -1890,6 +1914,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native-macos/ReactCommon"
   React-microtasksnativemodule:
     :path: "../../../node_modules/react-native-macos/ReactCommon/react/nativemodule/microtasks"
+  react-native-webview:
+    :path: "../../../node_modules/react-native-webview"
   React-NativeModulesApple:
     :path: "../../../node_modules/react-native-macos/ReactCommon/react/nativemodule/core/platform/ios"
   React-oscompat:
@@ -2000,6 +2026,7 @@ SPEC CHECKSUMS:
   React-logger: 3152f0452ed3688957a176b89cc512a460b10f99
   React-Mapbuffer: 7f632ae277e622a7a1965700ca536dca3b5b3c03
   React-microtasksnativemodule: 0d932564c77f494db08e8ee0d1243108497a51d7
+  react-native-webview: 8b84ea7f8c5582bdef24d8612208018a3265f017
   React-NativeModulesApple: 3c746c22abc1611dffb9eafdc8fd32ab69d01437
   React-oscompat: 556c945d9e7746c14b408a7a25041ec2acaa7717
   React-perflogger: 0fa9e315017b491d07ba245d8e8c39fcabbfe3b9

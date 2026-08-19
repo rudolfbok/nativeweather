@@ -5,7 +5,7 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
+import { ActivityIndicator, LayoutChangeEvent, Platform, View } from 'react-native';
 
 type Size = { width: number; height: number };
 type Point = { x: number; y: number };
@@ -44,9 +44,10 @@ export const MapWeatherPopup = ({
 		<View
 			onLayout={handleLayout}
 			className={clsx(
-				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3 shadow-md',
+				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3',
+				Platform.OS !== 'macos' && 'shadow-md dark:shadow-white/10',
 				weatherPoint.status === 'loading' && 'w-12',
-				'dark:bg-secondarySystemBackground_dark dark:border-white/10 dark:shadow-white/10'
+				'dark:bg-secondarySystemBackground_dark dark:border-white/10'
 			)}
 			style={{ left: point.x, top: point.y, maxWidth: Math.min(288, mapSize.width - OFFSET * 2) }}
 		>

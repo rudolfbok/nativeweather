@@ -46,6 +46,7 @@ export const MapControls = ({
 	onLayerChange,
 	onClearLayer,
 	onBaseMapChange,
+	showInfo = false,
 	showLegend,
 	onLegendChange,
 }: {
@@ -55,6 +56,7 @@ export const MapControls = ({
 	onLayerChange: (layer: WeatherMapLayer) => void;
 	onClearLayer?: () => void;
 	onBaseMapChange: (style: BaseMapStyle) => void;
+	showInfo?: boolean;
 	showLegend: boolean;
 	onLegendChange: (show: boolean) => void;
 }) => {
@@ -70,9 +72,9 @@ export const MapControls = ({
 				))}
 			</View>
 			<View className="ios:bottom-28 ios:gap-4 ios:right-6 absolute bottom-4 right-4 flex-row items-end gap-2">
-				{!showLegend && weatherLayerVisible && (
+				{showInfo && !showLegend && weatherLayerVisible && (
 					<MapButton
-						icon={<InfoIcon color={Platform.OS === 'web' ? text : 'black'} />}
+						icon={<InfoIcon color={Platform.OS === 'ios' ? 'black' : text} />}
 						onPress={() => onLegendChange(true)}
 					/>
 				)}
@@ -86,7 +88,12 @@ export const MapControls = ({
 			{showLegend && (
 				<View className="ios:bottom-28 absolute bottom-4 right-4 max-md:left-4">
 					<AnimatedView duration={30}>
-						<RoundView className="w-full border border-black/10 p-4 shadow-md md:w-96 dark:border-white/10 dark:shadow-white/10">
+						<RoundView
+							className={clsx(
+								'w-full border border-black/10 p-4 md:w-96 dark:border-white/10',
+								Platform.OS !== 'macos' && 'shadow-md dark:shadow-white/10'
+							)}
+						>
 							<View className="flex w-full flex-row items-center justify-between">
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}

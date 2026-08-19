@@ -24,6 +24,7 @@ import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { View } from 'react-native';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
+import { MapsView } from '../maps/MapsView';
 
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
@@ -166,6 +167,7 @@ export const HeroWeather = () => {
 				</View>
 				<View className="flex-1 gap-4">
 					<DailyForecast />
+					<MapsView />
 				</View>
 			</View>
 			<View className="flex-row flex-wrap items-center justify-between gap-4">

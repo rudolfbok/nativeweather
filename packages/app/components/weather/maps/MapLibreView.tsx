@@ -65,6 +65,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	};
 
 	const handleMapPress: NonNullable<MapProps['onPress']> = async (event) => {
+		if (!showCompass) return;
 		setShowLegend(false);
 		const [x, y] = event.nativeEvent.point;
 		setMarkerAnchor({ x, y });
@@ -108,7 +109,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 				compass={false}
 				touchRotate={true}
 				touchPitch={false}
-				onPress={handleMapPress}
+				onPress={showCompass ? handleMapPress : undefined}
 				onDidFinishRenderingMapFully={() => {
 					setMapReady(true);
 					setStatus('ready');
@@ -167,7 +168,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 					</StyledText>
 				</View>
 			)}
-			{weatherPoint && markerAnchor && mapSize.width > 0 && mapSize.height > 0 && (
+			{showCompass && weatherPoint && markerAnchor && mapSize.width > 0 && mapSize.height > 0 && (
 				<MapWeatherPopup
 					weatherPoint={weatherPoint}
 					anchor={markerAnchor}
@@ -180,6 +181,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 			<MapControls
 				layer={layer}
 				baseMap={baseMap}
+				showInfo={showCompass}
 				onLayerChange={handleLayerChange}
 				onBaseMapChange={(style) => {
 					setStatus('loading');
