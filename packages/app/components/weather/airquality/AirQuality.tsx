@@ -13,7 +13,7 @@ import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
 
 export const AirQuality = ({ className }: { className?: string }) => {

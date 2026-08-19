@@ -5,7 +5,7 @@ import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useTolgee } from '@tolgee/react';
 import { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from 'expo-router';
 import { NormalizedData } from 'app/types/normalizedData';
 
 export default function ForecastModalScreen() {

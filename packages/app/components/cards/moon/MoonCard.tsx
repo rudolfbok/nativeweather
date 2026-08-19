@@ -6,7 +6,7 @@ import { formatTime } from 'app/utils/helpers/formatTime';
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FirstQuarter } from 'app/components/icons/moonphases/FirstQuarter';

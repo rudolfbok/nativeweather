@@ -12,10 +12,10 @@
 	"dependencies": {
 		"@babel/runtime": "^7.25.0",
 		"app": "workspace:*",
-		"nativewind": "4.1.23",
+		"nativewind": "4.2.6",
 		"react": "19.0.0",
 		"react-native": "0.79.6",
-		"react-native-css-interop": "0.2.3",
+		"react-native-css-interop": "0.2.6",
 		"react-native-macos": "0.79.4",
 		"react-native-mmkv": "4.3.1",
 		"react-native-nitro-modules": "0.35.4",

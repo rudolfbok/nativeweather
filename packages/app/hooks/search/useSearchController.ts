@@ -7,7 +7,7 @@ import { buildSlug } from 'app/utils/services/buildSlug';
 import { showToast } from 'app/utils/services/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { useWeather } from 'app/hooks/weather/useWeather';
 
 export const useSearchController = () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from 'expo-router';
 import { useTranslate } from '@tolgee/react';
 import { RecentSearches } from 'app/components/weather/search/RecentSearches';
 import { SuggestionsList } from 'app/components/weather/search/SuggestionsList';

@@ -3,7 +3,7 @@ import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { useStorageString } from 'app/storage/useStorage';
 import { Paintbrush } from 'lucide-react-native';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { ThemeSelect } from '../selectors/ThemeSelect';
 import { SettingsItem } from './SettingsItem';
 import { clsx } from 'clsx';

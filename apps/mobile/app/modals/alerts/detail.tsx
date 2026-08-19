@@ -1,9 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
 import { AlertDetail } from 'app/components/weather/alerts/AlertDetail';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
-import { useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
 
 export default function AlertDetailScreen() {
@@ -13,13 +12,15 @@ export default function AlertDetailScreen() {
 	const filteredAlerts = getAlerts(weatherData?.alerts.alert, weatherData?.location);
 	const selectedAlert = filteredAlerts[Number(alert)];
 
-	if (!selectedAlert) return null;
-
 	useEffect(() => {
+		if (!selectedAlert) return;
+
 		navigation.setOptions({
 			headerTitle: selectedAlert.event,
 		});
-	}, [selectedAlert]);
+	}, [navigation, selectedAlert]);
+
+	if (!selectedAlert) return null;
 
 	return (
 		<ModalScrollView>

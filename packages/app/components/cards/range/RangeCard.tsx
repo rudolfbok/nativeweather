@@ -5,7 +5,7 @@ import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { DataCard } from '../DataCard';
 import { RangeModal } from './RangeModal';

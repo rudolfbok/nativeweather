@@ -4,7 +4,7 @@ import { AirQualitySettingsIcon } from 'app/components/icons/settings/AirQuality
 import { useStorageString } from 'app/storage/useStorage';
 import { useState } from 'react';
 import { Platform } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
 

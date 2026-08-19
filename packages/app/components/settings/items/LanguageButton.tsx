@@ -2,7 +2,7 @@ import { useTolgee, useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { Languages as LanguagesIcon } from 'lucide-react-native';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { LanguageSelect } from '../selectors/LanguageSelect';
 import { SettingsItem } from './SettingsItem';
 

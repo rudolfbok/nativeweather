@@ -3,7 +3,7 @@ import { Separator } from 'app/components/common/ui/Separator';
 import { WeatherAlert } from 'app/types/weatherAPI';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AlertDetail } from './AlertDetail';
 import { AlertItem } from './AlertItem';
 

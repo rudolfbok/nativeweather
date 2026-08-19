@@ -15,7 +15,7 @@ import {
 import { clsx } from 'clsx';
 import { JSX, ReactNode, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, View } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AirQualityItem } from './AirQualityItem';
 import { EUAQIDetail } from './EUAQIDetail';
 import { NO2Detail } from './NO2Detail';

@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/styled/StyledModal';
 import { Info } from 'lucide-react-native';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 
 import { SettingsItem } from './SettingsItem';
 import { AboutFeature } from 'app/features/about/screen';

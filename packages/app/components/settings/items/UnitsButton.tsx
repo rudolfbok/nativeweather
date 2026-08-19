@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from 'app/storage/useStorage';
 import { Ruler } from 'lucide-react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
 import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';

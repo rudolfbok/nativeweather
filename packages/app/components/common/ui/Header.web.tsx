@@ -6,7 +6,7 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
 import { Pressable, ScrollView, View } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
 import { SearchBar } from 'app/components/weather/search/SearchBar';
 import { AnimatedView } from '../animated/AnimatedView.web';

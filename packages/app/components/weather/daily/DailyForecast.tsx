@@ -15,7 +15,7 @@ import { switchTemp } from 'app/utils/switch/switchTemp';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
 import { variants } from 'app/constants/pressableVariants';

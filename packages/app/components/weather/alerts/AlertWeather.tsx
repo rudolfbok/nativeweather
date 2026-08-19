@@ -10,7 +10,7 @@ import { WeatherAlert } from 'app/types/weatherAPI';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AlertModal } from './AlertModal';
 
 interface AlertWeatherProps {

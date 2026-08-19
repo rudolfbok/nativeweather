@@ -5,7 +5,7 @@ import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { useRouter } from 'solito/navigation';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { DataCard } from '../DataCard';
 import { CloudsModal } from './CloudsModal';
 

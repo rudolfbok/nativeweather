@@ -1,6 +1,6 @@
 'use client';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from 'expo-router';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SearchBar } from 'app/components/weather/search/SearchBar';
