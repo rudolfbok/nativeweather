@@ -4,6 +4,7 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { isCityInFavorites } from 'app/storage/crudMMKVService';
 import { extractCity } from 'app/utils/helpers/extractCity';
+import { weatherLandscapeText } from 'app/utils/mappings/mapBgLandscapes';
 import { shareLink } from 'app/utils/services/shareLink';
 import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
@@ -16,6 +17,9 @@ export default function TabLayout() {
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const { background, text } = useThemeColors();
+	const headerTextColor = weatherData
+		? weatherLandscapeText({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
+		: text;
 	useEffect(() => {
 		if (!weatherData) return;
 
@@ -29,7 +33,7 @@ export default function TabLayout() {
 				onPress={() => shareLink(weatherData)}
 				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
 			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color={text} style={{ pointerEvents: 'none' }} />
+				<Share size={Platform.OS === 'ios' ? 22 : 28} color={headerTextColor} style={{ pointerEvents: 'none' }} />
 			</Pressable>
 		);
 	};
@@ -42,8 +46,8 @@ export default function TabLayout() {
 			>
 				<Star
 					size={Platform.OS === 'ios' ? 22 : 28}
-					color={text}
-					fill={isFavorite ? text : 'transparent'}
+					color={headerTextColor}
+					fill={isFavorite ? headerTextColor : 'transparent'}
 					style={{ pointerEvents: 'none' }}
 				/>
 			</Pressable>

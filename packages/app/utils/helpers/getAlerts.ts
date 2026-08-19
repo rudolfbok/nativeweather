@@ -51,3 +51,19 @@ export const getAlerts = (alerts: WeatherAlert[] = [], location?: AlertLocation)
 
 	return locationAlerts.length > 0 ? locationAlerts : activeAlerts;
 };
+
+export const getMostSevereAlert = (alerts: WeatherAlert[]) => {
+	const severityValues: Record<string, number> = {
+		Unknown: 0,
+		Minor: 1,
+		Moderate: 2,
+		Severe: 3,
+		Extreme: 4,
+	};
+
+	return alerts.reduce<WeatherAlert | undefined>((mostSevere, alert) => {
+		if (!mostSevere || severityValues[alert.severity] > severityValues[mostSevere.severity]) return alert;
+
+		return mostSevere;
+	}, undefined);
+};

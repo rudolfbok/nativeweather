@@ -26,7 +26,7 @@ import { AlertWeather } from '../alerts/AlertWeather';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
 
-export const HeroWeather = () => {
+export const HeroWeather = ({ onLandscapeLayout }: { onLandscapeLayout?: (height: number) => void }) => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
 	const mapConditions = useMapConditions();
@@ -122,23 +122,25 @@ export const HeroWeather = () => {
 		<View className={clsx('gap-4 pb-4')}>
 			<View className={clsx('flex-col gap-4 px-4')}>
 				<View className="gap-4">
-					<MainWeather
-						name={weatherData.location.name}
-						country={weatherData.location.country}
-						currentTempC={weatherData.current.tempC}
-						currentTempF={weatherData.current.tempF}
-						feelsLikeC={weatherData.current.feelsLikeC}
-						feelsLikeF={weatherData.current.feelsLikeF}
-						maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
-						maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
-						minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
-						minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
-						isDay={weatherData.current.isDay}
-						code={weatherData.current.condition.code}
-						feelslike={true}
-						condition={conditionLabel}
-						// colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
-					/>
+					<View onLayout={(event) => onLandscapeLayout?.(event.nativeEvent.layout.height)}>
+						<MainWeather
+							name={weatherData.location.name}
+							country={weatherData.location.country}
+							currentTempC={weatherData.current.tempC}
+							currentTempF={weatherData.current.tempF}
+							feelsLikeC={weatherData.current.feelsLikeC}
+							feelsLikeF={weatherData.current.feelsLikeF}
+							maxTempC={weatherData.forecast.forecastday[0]?.day.maxTempC}
+							maxTempF={weatherData.forecast.forecastday[0]?.day.maxTempF}
+							minTempC={weatherData.forecast.forecastday[0]?.day.minTempC}
+							minTempF={weatherData.forecast.forecastday[0]?.day.minTempF}
+							isDay={weatherData.current.isDay}
+							code={weatherData.current.condition.code}
+							feelslike={true}
+							condition={conditionLabel}
+							// colorScheme={weatherData.current.isDay === 1 ? 'light' : 'dark'}
+						/>
+					</View>
 					<AlertWeather filteredAlerts={filteredAlerts} alertsLength={alertsLength} />
 				</View>
 				<SmartSummary

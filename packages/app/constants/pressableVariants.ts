@@ -8,5 +8,5 @@ const active = 'active:bg-tertiarySystemBackground dark:active:bg-tertiarySystem
 export const variants = Platform.select({
 	web: clsx(bg, hover),
 	macos: clsx(bg, hover),
-	default: clsx(bg, active),
+	ios: clsx(bg, active),
 });

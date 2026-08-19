@@ -6,12 +6,13 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/storage/useStorage';
+import { weatherLandscapeBg, weatherLandscapeText } from 'app/utils/mappings/mapBgLandscapes';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, View } from 'react-native';
-import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, View } from 'react-native';
+import Animated, { FadeIn, useSharedValue, withTiming } from 'react-native-reanimated';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -19,6 +20,8 @@ export const WeatherFeature = () => {
 	const { weatherData, setWeatherData } = useWeather();
 	const { text } = useThemeColors();
 	const [refreshing, setRefreshing] = useState(false);
+	const [landscapeHeight, setLandscapeHeight] = useState(0);
+	const [showHeaderBackground, setShowHeaderBackground] = useState(false);
 	const refreshProgress = useSharedValue(0);
 	const navigation = useNavigation();
 
@@ -27,11 +30,28 @@ export const WeatherFeature = () => {
 	}, [refreshing, refreshProgress]);
 
 	useEffect(() => {
+		const headerBackgroundColor = weatherData
+			? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
+			: undefined;
+		const headerTextColor = weatherData
+			? weatherLandscapeText({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
+			: text;
+
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: text,
-				headerTitleStyle: { color: text },
+				headerTintColor: headerTextColor,
+				headerTitleStyle: { color: headerTextColor },
+				headerBackground:
+					showHeaderBackground && headerBackgroundColor
+						? () => (
+							<Animated.View
+								entering={FadeIn.duration(200)}
+								className="flex-1"
+								style={{ backgroundColor: headerBackgroundColor }}
+							/>
+						)
+						: undefined,
 			});
 		} else {
 			navigation.setOptions({
@@ -40,7 +60,14 @@ export const WeatherFeature = () => {
 				headerTitleStyle: { color: text },
 			});
 		}
-	}, [navigation, t, text, weatherData]);
+	}, [navigation, showHeaderBackground, t, text, weatherData]);
+
+	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+		const shouldShowHeaderBackground = landscapeHeight > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight;
+		setShowHeaderBackground((current) =>
+			current === shouldShowHeaderBackground ? current : shouldShowHeaderBackground
+		);
+	};
 
 	const onRefresh = async () => {
 		if (!weatherData) return;
@@ -93,6 +120,8 @@ export const WeatherFeature = () => {
 				<ActivityIndicator animating={true} size="large" color="#FFFFFF83" />
 			</Animated.View> */}
 			<Animated.ScrollView
+				onScroll={handleScroll}
+				scrollEventThrottle={16}
 				contentInsetAdjustmentBehavior="automatic"
 				refreshControl={
 					<RefreshControl
@@ -104,7 +133,7 @@ export const WeatherFeature = () => {
 					/>
 				}
 			>
-				<HeroWeather />
+				<HeroWeather onLandscapeLayout={setLandscapeHeight} />
 			</Animated.ScrollView>
 		</View>
 	);

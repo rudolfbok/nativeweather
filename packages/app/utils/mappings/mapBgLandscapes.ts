@@ -106,3 +106,14 @@ export const weatherLandscapeBg = ({ isDay, code }: { isDay: 0 | 1; code: number
 
 	return bgColor;
 };
+
+export const weatherLandscapeText = ({ isDay, code }: { isDay: 0 | 1; code: number }) => {
+	const color = weatherLandscapeBg({ isDay, code });
+	const red = parseInt(color.slice(1, 3), 16) / 255;
+	const green = parseInt(color.slice(3, 5), 16) / 255;
+	const blue = parseInt(color.slice(5, 7), 16) / 255;
+	const linearize = (value: number) => (value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+	const luminance = linearize(red) * 0.2126 + linearize(green) * 0.7152 + linearize(blue) * 0.0722;
+
+	return luminance > 0.179 ? '#111111' : '#FFFFFF';
+};

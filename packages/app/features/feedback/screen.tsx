@@ -8,6 +8,7 @@ import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, Message
 import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from 'app/utils/services/showToast';
+import { variants } from 'app/constants/pressableVariants';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
@@ -57,10 +58,10 @@ export const FeedbackFeature = () => {
 					setType(variant);
 					setOpen(false);
 				}}
-				className="hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center p-4"
+				className={clsx('flex-row items-center gap-4 p-4', variants)}
 			>
 				<View className="h-6 w-6 items-center justify-center">{icon}</View>
-				<View className="ml-3 flex-1">
+				<View className="flex-1">
 					<StyledText type="body">{title}</StyledText>
 				</View>
 				<View className="h-6 w-6 items-center justify-center">{isSelected && <Check color="#007AFF" size={20} />}</View>
@@ -70,7 +71,7 @@ export const FeedbackFeature = () => {
 
 	return (
 		<View className={clsx('items-center pb-4')}>
-			<View className="gap-4 lg:w-3/4 xl:w-2/3 2xl:w-2/5">
+			<View className="w-full gap-4 lg:w-3/4 xl:w-2/3 2xl:w-2/5">
 				<View className={clsx('ios:hidden flex w-full gap-2')}>
 					<StyledText type="maintitle">{t('feedback.title')}</StyledText>
 					<StyledText type="body">{t('feedback.text')}</StyledText>

@@ -6,11 +6,12 @@ import { AlertIcon } from 'app/components/icons/main/AlertIcon';
 import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useRouter } from 'app/hooks/navigation/useRouter';
 import { WeatherAlert } from 'app/types/weatherAPI';
+import { getMostSevereAlert } from 'app/utils/helpers/getAlerts';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AlertModal } from './AlertModal';
 
 interface AlertWeatherProps {
@@ -33,23 +34,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 
 	if (alertsLength === 0) return null;
 
-	const severityValues: Record<string, number> = {
-		Unknown: 0,
-		Minor: 1,
-		Moderate: 2,
-		Severe: 3,
-		Extreme: 4,
-	};
-
-	const mostSevereAlert = filteredAlerts.reduce((mostSevereAlert, alert) => {
-		if (severityValues[alert.severity] > severityValues[mostSevereAlert.severity]) {
-			return alert;
-		}
-
-		return mostSevereAlert;
-	});
-
-	const alertIconColor = getAlertSeverityDotColor(mostSevereAlert.severity);
+	const alertIconColor = getAlertSeverityDotColor(getMostSevereAlert(filteredAlerts)?.severity ?? 'Unknown');
 
 	return (
 		<>
