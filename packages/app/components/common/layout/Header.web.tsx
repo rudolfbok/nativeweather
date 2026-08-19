@@ -9,7 +9,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
 import { SearchBar } from 'app/components/weather/search/SearchBar';
-import { AnimatedView } from '../common/animated/AnimatedView.web';
+import { AnimatedView } from '../animated/AnimatedView.web';
 
 export const Header = () => {
 	const router = useRouter();

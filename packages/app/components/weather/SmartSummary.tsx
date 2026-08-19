@@ -5,9 +5,9 @@ import { CardHeader } from 'app/components/common/layout/CardHeader';
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SmartSummaryIcon } from 'app/components/icons/main/SmartSummaryIcon';
-import { useStorageString } from 'app/storage/useStorage';
-import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageString } from 'app/database/useStorage';
+import { switchMetrics } from 'app/utils/formatting/selectUnitValue';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import React, { useMemo } from 'react';
 
 type Variant = 1 | 2 | 3;

@@ -1,5 +1,5 @@
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
-import { Toast } from 'app/utils/services/showToast.macos';
+import { Toast } from 'app/utils/notifications/showToast.macos';
 import { View } from 'react-native';
 import { Settings } from './Settings';
 import { Sidebar } from './Sidebar';

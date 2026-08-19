@@ -1,6 +1,6 @@
 import { NormalizedData } from "app/types/normalizedData";
 import { Share } from "react-native";
-import { buildSlug } from "./buildSlug";
+import { buildSlug } from './weatherSlug';
 
 export const shareLink = async (weatherData: NormalizedData) => {
   const url = `https://nativeweather.app/${buildSlug(weatherData)}`;

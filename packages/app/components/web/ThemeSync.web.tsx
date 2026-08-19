@@ -1,6 +1,6 @@
 'use client';
 
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { useEffect } from 'react';
 
 export const ThemeSync = () => {

@@ -1,6 +1,6 @@
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { useCallback, useRef, useState } from 'react';
 
 const getCoordinates = (): Promise<GeolocationPosition | null> => {

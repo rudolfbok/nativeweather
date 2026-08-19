@@ -1,4 +1,4 @@
-import { WeatherAPIMainIcon } from 'app/utils/mappings/mapWeatherAPIIcons';
+import { WeatherAPIMainIcon } from 'app/utils/mappings/weatherIcons';
 
 interface MapWeatherIconsProps {
 	code: number;

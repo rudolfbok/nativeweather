@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { Ruler } from 'lucide-react-native';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';

@@ -15,10 +15,10 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
-import { MapControls } from './MapControls';
-import { MapCompass } from './MapCompass';
-import { MapNavigationControls } from './MapNavigationControls';
-import { MapWeatherPopup } from './MapWeatherPopup';
+import { MapCompass } from '../ui/MapCompass';
+import { MapControls } from '../ui/MapControls';
+import { MapNavigationControls } from '../ui/MapNavigationControls';
+import { MapWeatherPopup } from '../ui/MapWeatherPopup';
 
 type Point = { x: number; y: number };
 type Size = { width: number; height: number };

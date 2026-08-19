@@ -13,7 +13,7 @@ import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useWidgets } from 'app/hooks/widgets/useWidgets';
-import { useStorageBoolean, useStorageString } from 'app/storage/useStorage';
+import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { RefreshControl, View } from 'react-native';

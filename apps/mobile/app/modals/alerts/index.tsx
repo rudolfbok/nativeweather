@@ -2,7 +2,7 @@ import { ModalHeader } from 'app/components/common/modal/ModalHeader';
 import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
 import { AlertModal } from 'app/components/alerts/AlertModal';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts } from 'app/utils/helpers/getAlerts';
+import { getAlerts } from 'app/utils/alertFilters';
 import { useNavigation } from 'expo-router';
 import React from 'react';
 import { useTranslate } from '@tolgee/react';

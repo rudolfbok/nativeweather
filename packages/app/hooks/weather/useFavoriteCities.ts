@@ -6,12 +6,12 @@ import {
 	isCityInFavorites,
 	isSameCity,
 	removeFavoriteCity,
-} from 'app/storage/crudMMKVService';
-import { useStorageBoolean, useStorageString } from 'app/storage/useStorage';
+} from 'app/database/crudMMKVService';
+import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
 import { CityCard } from 'app/types/cityCard';
 import type { City } from 'app/types/city';
-import { showFavoriteToast } from 'app/utils/services/showFavoriteToast';
-import { showToast } from 'app/utils/services/showToast';
+import { showFavoriteToast } from 'app/utils/notifications/showFavoriteToast';
+import { showToast } from 'app/utils/notifications/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { useLocalWeather } from './useLocalWeather';
 

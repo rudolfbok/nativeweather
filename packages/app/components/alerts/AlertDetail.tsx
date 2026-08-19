@@ -4,7 +4,7 @@ import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { Separator } from 'app/components/common/styled/Separator';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlertSeverityTextColor } from 'app/utils/mappings/mapAlertSeverity';
+import { getAlertSeverityTextColor } from 'app/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

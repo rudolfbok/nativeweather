@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
 import { LanguageSelect } from 'app/components/settings/selectors/LanguageSelect';
 
 export default function LanguageScreen() {

@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useStorageBoolean } from 'app/storage/useStorage';
+import { useStorageBoolean } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';

@@ -1,7 +1,7 @@
 import { useTolgee } from '@tolgee/react';
 import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from 'app/components/cards';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { NormalizedData } from 'app/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';

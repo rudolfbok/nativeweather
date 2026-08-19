@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { DotIndicator } from 'app/components/icons/ui/DotIndicator';
-import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
+import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 
 interface AlertItemProps {
 	title: string;

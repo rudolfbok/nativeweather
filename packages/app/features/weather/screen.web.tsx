@@ -7,9 +7,9 @@ import { HeroSkeleton } from 'app/components/weather/hero/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 // import { useSearchController } from 'app/hooks/search/useSearchController';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { useStorageString } from 'app/storage/useStorage';
-import { countryCode } from 'app/utils/helpers/countryCode';
-import { buildSlug } from 'app/utils/services/buildSlug';
+import { useStorageString } from 'app/database/useStorage';
+import { countryCode } from 'app/utils/countryCode';
+import { buildSlug } from 'app/utils/weatherSlug';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 

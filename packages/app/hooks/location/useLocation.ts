@@ -2,7 +2,7 @@ import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } 
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useCallback, useRef, useState } from 'react';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 
 export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');

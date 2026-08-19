@@ -1,6 +1,6 @@
 'use client';
 
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { useEffect, useState } from 'react';
 import { colors } from 'app/constants/colors';
 

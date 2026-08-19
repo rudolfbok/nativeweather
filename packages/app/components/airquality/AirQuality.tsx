@@ -8,7 +8,7 @@ import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';

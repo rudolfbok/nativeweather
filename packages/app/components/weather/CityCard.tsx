@@ -1,8 +1,8 @@
 import { useTolgee } from '@tolgee/react';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
-import { useStorageBoolean, useStorageString } from 'app/storage/useStorage';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { GlassColorScheme } from 'expo-glass-effect';
 import { DateTime } from 'luxon';

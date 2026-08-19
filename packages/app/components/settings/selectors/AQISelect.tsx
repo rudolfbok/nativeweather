@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { EUFLag } from 'app/components/icons/settings/EUFlag';
 import { USAFlag } from 'app/components/icons/settings/USAFlag';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const AQISelect = () => {

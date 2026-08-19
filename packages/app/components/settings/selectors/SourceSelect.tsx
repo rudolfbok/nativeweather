@@ -1,7 +1,7 @@
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { OpenMeteoIcon } from 'app/components/icons/settings/OpenMeteoIcon';
 import { WeatherAPIIcon } from 'app/components/icons/settings/WeatherAPIIcon';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 
 export const SourceSelect = () => {

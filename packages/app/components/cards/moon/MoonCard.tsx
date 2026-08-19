@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
-import { useStorageString } from 'app/storage/useStorage';
-import { formatTime } from 'app/utils/helpers/formatTime';
+import { useStorageString } from 'app/database/useStorage';
+import { formatTime } from 'app/utils/formatting/formatTime';
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';

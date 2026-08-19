@@ -1,5 +1,5 @@
 import { NormalizedData } from 'app/types/normalizedData';
-import { countryCode } from '../helpers/countryCode';
+import { countryCode } from './countryCode';
 
 export const buildSlug = (weatherData: NormalizedData): string => {
 	if (!weatherData) return null;

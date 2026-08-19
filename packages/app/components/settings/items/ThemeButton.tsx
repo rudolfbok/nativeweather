@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from 'app/components/common/modal/StyledModal';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { Paintbrush } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';

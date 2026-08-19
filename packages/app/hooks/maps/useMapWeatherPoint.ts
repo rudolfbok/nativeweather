@@ -1,7 +1,7 @@
 import { fetchWeatherAPI } from 'app/api/fetchWeatherAPI';
-import { useStorageString } from 'app/storage/useStorage';
-import { switchMetrics } from 'app/utils/switch/switchMetrics';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageString } from 'app/database/useStorage';
+import { switchMetrics } from 'app/utils/formatting/selectUnitValue';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { useEffect, useRef, useState } from 'react';
 import type { WeatherMapLayer } from 'app/constants/weatherMap';
 

@@ -19,12 +19,12 @@ import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { useStorageString } from 'app/storage/useStorage';
-import { getAlerts } from 'app/utils/helpers/getAlerts';
+import { useStorageString } from 'app/database/useStorage';
+import { getAlerts } from 'app/utils/alertFilters';
 import { View } from 'react-native';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
-import { MapsView } from '../../maps/MapsView';
+import { MapsView } from '../../maps/views/MapsView';
 
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');

@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
-import { useStorageString } from 'app/storage/useStorage';
+import { useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

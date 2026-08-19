@@ -14,7 +14,7 @@ import { clsx } from 'clsx';
 import { CloudOff, InfoIcon } from 'lucide-react-native';
 import { ReactNode } from 'react';
 import { Platform, View } from 'react-native';
-import { MapsLegend, PrecipitationInfo, WindInfo } from './MapsLegend';
+import { MapsLegend, PrecipitationInfo, WindInfo } from '../legend/MapsLegend';
 
 const weatherLayers = [
 	{ id: 'tmp2m' as const, icon: <ThermometerIcon /> },

@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { fetchLocation } from 'app/api/fetchWeatherAPI';
-import { useStorageObject, useStorageString } from 'app/storage/useStorage';
+import { useStorageObject, useStorageString } from 'app/database/useStorage';
 import type { City } from 'app/types/city';
-import { buildSlug } from 'app/utils/services/buildSlug';
-import { showToast } from 'app/utils/services/showToast';
+import { buildSlug } from 'app/utils/weatherSlug';
+import { showToast } from 'app/utils/notifications/showToast';
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { useRouter } from 'app/hooks/navigation/useRouter';

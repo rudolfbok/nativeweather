@@ -1,5 +1,5 @@
-import { ClientOnly } from 'app/components/common/web/ClientOnly';
-import { Header } from 'app/components/navigation/Header.web';
+import { Header } from 'app/components/common/layout/Header.web';
+import { ClientOnly } from 'app/components/web/ClientOnly';
 import { clsx } from 'clsx';
 import { Geist, Geist_Mono } from 'next/font/google';
 import 'maplibre-gl/dist/maplibre-gl.css';

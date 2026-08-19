@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
 import { AQISelect } from 'app/components/settings/selectors/AQISelect';
 
 export default function AQIScreen() {

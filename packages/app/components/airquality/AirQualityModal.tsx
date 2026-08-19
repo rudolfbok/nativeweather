@@ -11,7 +11,7 @@ import {
 	PM10IndicatorColor,
 	PM25IndicatorColor,
 	USAQIIndicatorColor,
-} from 'app/utils/mappings/mapAQIDots';
+} from 'app/utils/mappings/airQuality';
 import { clsx } from 'clsx';
 import { JSX, ReactNode, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, View } from 'react-native';

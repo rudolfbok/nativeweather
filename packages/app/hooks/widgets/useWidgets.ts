@@ -1,9 +1,9 @@
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
-import { useStorageString } from 'app/storage/useStorage';
-import { getWeatherIconUri } from 'app/utils/getWeatherIconUri';
-import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageString } from 'app/database/useStorage';
+import { getWeatherIconUri } from 'app/utils/mappings/weatherIconAssets';
+import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import {
@@ -11,7 +11,7 @@ import {
 	OzoneIndicatorColor,
 	PM10IndicatorColor,
 	PM25IndicatorColor,
-} from 'app/utils/mappings/mapAQIDots';
+} from 'app/utils/mappings/airQuality';
 
 export const useWidgets = () => {
 	const { localWeatherData, localAQIData } = useLocalWeather();

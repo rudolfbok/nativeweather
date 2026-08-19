@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
-import { showToast } from 'app/utils/services/showToast';
+import { showToast } from 'app/utils/notifications/showToast';
 import { variants } from 'app/constants/pressableVariants';
 
 export const FeedbackFeature = () => {

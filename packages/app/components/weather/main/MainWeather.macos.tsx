@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useStorageString } from 'app/storage/useStorage';
-import { WeatherLandscape } from 'app/utils/mappings/mapLandscapes';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageString } from 'app/database/useStorage';
+import { WeatherLandscape } from 'app/utils/mappings/landscapes';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { MoveDown, MoveUp } from 'lucide-react-native';
 import { View } from 'react-native';
 

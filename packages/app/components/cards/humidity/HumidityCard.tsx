@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
-import { useStorageString } from 'app/storage/useStorage';
-import { switchTemp } from 'app/utils/switch/switchTemp';
+import { useStorageString } from 'app/database/useStorage';
+import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { StyledModal } from 'app/components/common/modal/StyledModal';

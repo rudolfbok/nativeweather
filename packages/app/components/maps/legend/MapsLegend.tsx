@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { useStorageString } from 'app/storage/useStorage';
-import { switchMetrics } from 'app/utils/switch/switchMetrics';
+import { useStorageString } from 'app/database/useStorage';
+import { switchMetrics } from 'app/utils/formatting/selectUnitValue';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { LegendGradient } from './LegendGradient';

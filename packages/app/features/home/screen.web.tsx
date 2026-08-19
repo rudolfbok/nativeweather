@@ -8,7 +8,7 @@ import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
-import { useStorageBoolean } from 'app/storage/useStorage';
+import { useStorageBoolean } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';

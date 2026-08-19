@@ -35,8 +35,8 @@ import { ModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNaviga
 import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { WeatherAlert } from 'app/types/weatherAPI';
-import { getAlerts } from 'app/utils/helpers/getAlerts';
-import { getAlertSeverityDotColor } from 'app/utils/mappings/mapAlertSeverity';
+import { getAlerts } from 'app/utils/alertFilters';
+import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 import { ReactNode, useState } from 'react';
 import { GestureResponderEvent, ScrollView, View } from 'react-native';
 

@@ -6,7 +6,7 @@ import { LoadingIndicator } from 'app/components/common/layout/LoadingIndicator'
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useSearchController } from 'app/hooks/search/useSearchController';
-import { weatherLandscapeBg } from 'app/utils/mappings/mapBgLandscapes';
+import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
 import { Edit, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
