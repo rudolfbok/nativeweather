@@ -28,7 +28,7 @@ export const MapNavigationControls = ({
 	const iconProps = { color: text, size: 22, strokeWidth: 2.5 };
 
 	return (
-		<View className="web:top-4 ios:left-6 absolute left-4 gap-1">
+		<View className="web:top-4 ios:left-6 absolute left-6 gap-4">
 			<MapNavigationButton icon={<Plus {...iconProps} />} onPress={onZoomIn} />
 			<MapNavigationButton icon={<Minus {...iconProps} />} onPress={onZoomOut} />
 			<MapNavigationButton icon={<Locate {...iconProps} color="#007AFF" />} onPress={onLocate} />

@@ -1,5 +1,5 @@
 import { Droplet } from 'lucide-react-native';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
 
 export const HumidityIcon = () => {
 	// return <Droplet color="#3DA443" />;
