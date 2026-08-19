@@ -1,4 +1,4 @@
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
 import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
 import { DaysToggle } from 'app/components/weather/daily/DaysToggle';

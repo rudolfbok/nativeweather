@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';
 import { useRouter } from 'app/hooks/navigation/useRouter';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { FirstQuarter } from 'app/components/icons/moonphases/FirstQuarter';
 import { FullMoon } from 'app/components/icons/moonphases/FullMoon';

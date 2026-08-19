@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';

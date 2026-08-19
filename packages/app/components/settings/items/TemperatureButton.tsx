@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { useStorageString } from 'app/storage/useStorage';
 import { Thermometer } from 'lucide-react-native';
 import { useState } from 'react';

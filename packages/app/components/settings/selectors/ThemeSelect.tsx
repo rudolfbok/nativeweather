@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { useStorageString } from 'app/storage/useStorage';
 import { Moon, Paintbrush, Sun } from 'lucide-react-native';
 import { colorScheme } from 'nativewind';

@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { ScrollView } from 'react-native';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { ClockIcon } from 'app/components/icons/main/ClockIcon';
 import { clsx } from 'clsx';
 import { JSX } from 'react';

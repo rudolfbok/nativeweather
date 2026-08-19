@@ -1,5 +1,5 @@
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
-import { O3Detail } from 'app/components/weather/airquality/O3Detail';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { O3Detail } from 'app/components/airquality/O3Detail';
 
 export default function O3ModalScreen() {
 	return (

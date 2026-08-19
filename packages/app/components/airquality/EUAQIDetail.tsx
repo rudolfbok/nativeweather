@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ValuesList } from 'app/components/common/ui/ValuesList';
+import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { clsx } from 'clsx';
 import { Linking, Pressable, View } from 'react-native';
 

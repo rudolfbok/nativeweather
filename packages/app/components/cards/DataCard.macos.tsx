@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { StyledText } from '../common/styled/StyledText';
-import { CardHeader } from '../common/ui/CardHeader';
+import { CardHeader } from '../common/layout/CardHeader';
 import { variants } from 'app/constants/pressableVariants';
 
 interface DataCardProps {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SmartSummaryIcon } from 'app/components/icons/main/SmartSummaryIcon';
 import { useStorageString } from 'app/storage/useStorage';

@@ -1,6 +1,6 @@
-import { ModalHeader } from 'app/components/common/ui/ModalHeader';
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
-import { AlertModal } from 'app/components/weather/alerts/AlertModal';
+import { ModalHeader } from 'app/components/common/modal/ModalHeader';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { AlertModal } from 'app/components/alerts/AlertModal';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { useNavigation } from 'expo-router';

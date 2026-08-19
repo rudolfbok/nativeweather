@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper.macos';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper.macos';
 import { WeatherFeature } from 'app/features/weather/screen.macos';
 import { useWeather } from 'app/hooks/weather/useWeather';
 

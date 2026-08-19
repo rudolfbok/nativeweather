@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { ModalValueItem } from './ModalValueItem';
-import { Separator } from './Separator';
+import { Separator } from '../styled/Separator';
 
 interface ValuesListProps {
 	values: {

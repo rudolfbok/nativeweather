@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { MapIcon } from 'app/components/icons/main';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

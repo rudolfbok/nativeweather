@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { ClockIcon } from 'app/components/icons/main/ClockIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';

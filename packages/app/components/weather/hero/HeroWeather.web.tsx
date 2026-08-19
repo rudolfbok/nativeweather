@@ -13,7 +13,7 @@ import {
 	UVCard,
 	WindCard,
 } from 'app/components/cards';
-import { AirQuality } from 'app/components/weather/airquality/AirQuality';
+import { AirQuality } from 'app/components/airquality/AirQuality';
 import { DailyForecast } from 'app/components/weather/daily/DailyForecast';
 import { MainWeather } from 'app/components/weather/main/MainWeather';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
@@ -22,9 +22,9 @@ import { useStorageString } from 'app/storage/useStorage';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { AlertWeather } from '../alerts/AlertWeather';
+import { AlertWeather } from '../../alerts/AlertWeather';
 import { HourlyForecast } from '../hourly/HourlyForecast';
-import { MapsView } from '../maps/MapsView';
+import { MapsView } from '../../maps/MapsView';
 import { SmartSummary } from '../SmartSummary';
 
 export const HeroWeather = () => {
@@ -178,9 +178,7 @@ export const HeroWeather = () => {
 					{renderDataCardGrid()}
 				</View>
 			</View>
-			<View className={clsx('mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>
-				{renderDataCardGrid()}
-			</View>
+			<View className={clsx('mt-4 hidden h-fit grid-cols-4 gap-4 md:grid xl:hidden')}>{renderDataCardGrid()}</View>
 		</View>
 	);
 };

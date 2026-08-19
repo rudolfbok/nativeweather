@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { FeedbackFeature } from 'app/features/feedback/screen';
 
 export default function FeedbackScreen() {

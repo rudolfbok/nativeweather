@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { AboutButton } from 'app/components/settings/items/AboutButton';
 import { AQIButton } from 'app/components/settings/items/AQIButton';
 import { CompassButton } from 'app/components/settings/items/CompassButton';

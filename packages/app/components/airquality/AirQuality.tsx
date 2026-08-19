@@ -3,7 +3,7 @@ import EUAQIScale from 'app/assets/euaqiscale.png';
 import USAQIScale from 'app/assets/usaqiscale.png';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
 import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';

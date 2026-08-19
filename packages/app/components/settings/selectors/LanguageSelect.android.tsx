@@ -1,5 +1,5 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { CzechFlag } from 'app/components/icons/settings/CzechFlag';
 import { EnglishFlag } from 'app/components/icons/settings/EnglishFlag';
 import { useStorageString } from 'app/storage/useStorage';

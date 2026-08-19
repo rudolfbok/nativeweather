@@ -1,6 +1,6 @@
-import { EUAQIDetail } from 'app/components/weather/airquality/EUAQIDetail';
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { EUAQIDetail } from 'app/components/airquality/EUAQIDetail';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 
 export default function EUAQIModalScreen() {
 	return (

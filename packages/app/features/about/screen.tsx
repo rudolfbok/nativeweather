@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { OpenFreeMapLogo } from 'app/components/icons/logos/OpenFreeMapLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { Linking, Pressable, View } from 'react-native';
-import { Separator } from 'app/components/common/ui/Separator';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { Separator } from 'app/components/common/styled/Separator';
+import { ContentRow } from 'app/components/common/layout/ContentRow';
 
 interface DataSourceItemProps {
 	name: string;

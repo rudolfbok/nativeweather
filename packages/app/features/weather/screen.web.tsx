@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
-import { HeroSkeleton } from 'app/components/common/ui/HeroSkeleton';
+import { HeroSkeleton } from 'app/components/weather/hero/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 // import { useSearchController } from 'app/hooks/search/useSearchController';
 import { useWeather } from 'app/hooks/weather/useWeather';

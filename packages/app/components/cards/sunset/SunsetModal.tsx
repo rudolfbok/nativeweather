@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
+import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

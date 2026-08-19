@@ -1,5 +1,5 @@
-import { RoundView } from 'app/components/common/ui/RoundView';
-import { Separator } from 'app/components/common/ui/Separator';
+import { RoundView } from 'app/components/common/styled/RoundView';
+import { Separator } from 'app/components/common/styled/Separator';
 import { WeatherAlert } from 'app/types/weatherAPI';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';

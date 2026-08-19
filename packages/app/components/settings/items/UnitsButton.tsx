@@ -5,7 +5,7 @@ import { useRouter } from 'app/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
 import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 
 export const UnitsButton = () => {
 	const { t } = useTranslate('settings');

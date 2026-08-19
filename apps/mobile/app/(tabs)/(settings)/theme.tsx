@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { ThemeSelect } from 'app/components/settings/selectors/ThemeSelect';
 
 export default function ThemeScreen() {

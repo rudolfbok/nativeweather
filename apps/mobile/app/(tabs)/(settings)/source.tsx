@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { SourceSelect } from 'app/components/settings/selectors/SourceSelect';
 
 export default function SourceScreen() {

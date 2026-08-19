@@ -1,8 +1,8 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { CalendarIcon } from 'app/components/icons/main/CalendarIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';

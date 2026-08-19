@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { CloudsIcon } from 'app/components/icons/main';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';

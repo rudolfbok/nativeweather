@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { UnitsSelect } from 'app/components/settings/selectors/UnitsSelect';
 
 export default function UnitsScreen() {

@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import { Accordion } from 'app/components/common/accordion/Accordion';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { ValuesList } from 'app/components/common/ui/ValuesList';
+import { ContentRow } from 'app/components/common/layout/ContentRow';
+import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { useStorageString } from 'app/storage/useStorage';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

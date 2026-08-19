@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { MapIcon } from 'app/components/icons/main';
 import { MaximizeIcon } from 'app/components/icons/ui/MaximizeIcon';
 import { clsx } from 'clsx';

@@ -1,7 +1,7 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
-import { CardHeader } from 'app/components/common/ui/CardHeader';
+import { CardHeader } from 'app/components/common/layout/CardHeader';
 import { AlertIcon } from 'app/components/icons/main/AlertIcon';
 import { ChevronIcon } from 'app/components/icons/ui/ChevronIcon';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';

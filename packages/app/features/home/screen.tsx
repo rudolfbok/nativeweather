@@ -3,7 +3,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';

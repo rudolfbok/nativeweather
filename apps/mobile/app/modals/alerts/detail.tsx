@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
-import { AlertDetail } from 'app/components/weather/alerts/AlertDetail';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { AlertDetail } from 'app/components/alerts/AlertDetail';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { getAlerts } from 'app/utils/helpers/getAlerts';
 import { useEffect } from 'react';

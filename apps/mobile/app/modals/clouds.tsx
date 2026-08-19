@@ -1,5 +1,5 @@
 import { CloudsModal } from 'app/components/cards/clouds/CloudsModal';
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
 
 export default function CloudsModalScreen() {
 	return (

@@ -1,5 +1,5 @@
 import { PressureModal } from 'app/components/cards/pressure/PressureModal';
-import { ModalScrollView } from 'app/components/common/ui/ModalScrollView';
+import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
 
 export default function PressureModalScreen() {
 	return (

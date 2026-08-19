@@ -5,7 +5,7 @@ import { useStorageString } from 'app/storage/useStorage';
 import { switchMetrics } from 'app/utils/switch/switchMetrics';
 import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { RainIcon } from 'app/components/icons/main/RainIcon';
 import { DataCard } from '../DataCard';

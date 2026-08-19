@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
-import { CardHeader } from './CardHeader';
+import { CardHeader } from '../layout/CardHeader';
 import { useState } from 'react';
 
 interface ModalHeaderProps {

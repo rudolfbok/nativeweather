@@ -26,9 +26,9 @@ import {
 	UVIcon,
 	WindIcon,
 } from 'app/components/icons/main';
-import { ModalHeader } from 'app/components/common/ui/ModalHeader';
-import { AirQualityModal } from 'app/components/weather/airquality/AirQualityModal';
-import { AlertModal } from 'app/components/weather/alerts/AlertModal';
+import { ModalHeader } from 'app/components/common/modal/ModalHeader';
+import { AirQualityModal } from 'app/components/airquality/AirQualityModal';
+import { AlertModal } from 'app/components/alerts/AlertModal';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
 import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
 import { ModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';

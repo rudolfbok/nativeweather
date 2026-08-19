@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { RoundView } from 'app/components/common/ui/RoundView';
+import { RoundView } from 'app/components/common/styled/RoundView';
 import { RainIcon, WindIcon } from 'app/components/icons/main';
 import { ColorMapIcon } from 'app/components/icons/maps/ColorMapIcon';
 import { NoColorMapIcon } from 'app/components/icons/maps/NoColorMapIcon';

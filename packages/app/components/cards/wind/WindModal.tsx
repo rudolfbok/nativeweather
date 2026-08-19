@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { ContentRow } from 'app/components/common/ui/ContentRow';
-import { Separator } from 'app/components/common/ui/Separator';
-import { ValuesList } from 'app/components/common/ui/ValuesList';
+import { ContentRow } from 'app/components/common/layout/ContentRow';
+import { Separator } from 'app/components/common/styled/Separator';
+import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { WindDirectionIcon } from 'app/components/icons/ui/WindDirectionIcon';
 import { useStorageString } from 'app/storage/useStorage';
 import { getDirection } from 'app/utils/mappings/mapDirections';

@@ -1,7 +1,8 @@
 import { clsx } from 'clsx';
 import { Ref } from 'react';
-import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
-import { ModalHeader } from '../ui/ModalHeader';
+import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ModalHeader } from './ModalHeader';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
 interface StyledModalProps {
 	visible: boolean;
@@ -34,29 +35,29 @@ export const StyledModal = ({
 	mapsModal = false,
 	children,
 }: StyledModalProps) => {
+	const { modalBorder } = useThemeColors();
+
+	if (!visible) return null;
+
 	return (
-		<Modal
-			visible={visible}
-			transparent={true}
-			presentationStyle="overFullScreen"
-			animationType="none"
-			onRequestClose={onClose}
-			navigationBarTranslucent={true}
-			statusBarTranslucent={true}
+		<View
+			// pointerEvents="auto"
+			// onStartShouldSetResponder={() => true}
+			className="absolute inset-0 h-screen w-screen items-center justify-center bg-black/40 dark:bg-black/60"
 		>
-			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden')} />
+			<Pressable className="absolute inset-0 h-screen w-screen" onPress={onClose} />
 			<View
 				className={clsx(
 					'no-modal-scroll overflow-hidden',
-					'px-4 pt-4',
+					'-mt-6 pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
-					'h-[100dvh] w-full md:h-fit',
-					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
+					'max-h-[80vh] w-full',
+					'md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
-					airQualityModal && 'w-full md:w-[600px]',
-					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
+					mapsModal && 'min-h-[80vh] lg:max-w-5xl',
+					airQualityModal && 'w-full md:w-[600px]'
 				)}
+				style={{ borderWidth: StyleSheet.hairlineWidth, borderColor: modalBorder }}
 			>
 				<ModalHeader
 					icon={icon}
@@ -70,11 +71,11 @@ export const StyledModal = ({
 				{mapsModal ? (
 					<View className={clsx('flex-1 pb-4')}>{children}</View>
 				) : (
-					<ScrollView ref={ref} showsVerticalScrollIndicator={false} className={clsx('flex-grow pb-4')}>
+					<ScrollView ref={ref} className={clsx('flex-grow')} contentContainerClassName="px-4 pb-4">
 						{children}
 					</ScrollView>
 				)}
 			</View>
-		</Modal>
+		</View>
 	);
 };

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'app/hooks/navigation/useRouter';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { UVIcon } from 'app/components/icons/main/UVIcon';
 import { DataCard } from '../DataCard';
 import { UVModal } from './UVModal';

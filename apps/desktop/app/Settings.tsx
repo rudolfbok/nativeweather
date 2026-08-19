@@ -1,5 +1,5 @@
 import { SettingsFeature } from 'app/features/settings/screen';
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';

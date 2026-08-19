@@ -1,5 +1,5 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { Languages as LanguagesIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';

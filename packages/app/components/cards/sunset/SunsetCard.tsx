@@ -5,7 +5,7 @@ import { useStorageString } from 'app/storage/useStorage';
 import { formatTime } from 'app/utils/helpers/formatTime';
 import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
-import { StyledModal } from 'app/components/common/styled/StyledModal';
+import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { SunsetIcon } from 'app/components/icons/main/SunsetIcon';
 import { DataCard } from '../DataCard';

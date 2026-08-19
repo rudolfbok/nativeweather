@@ -1,4 +1,4 @@
-import { ScreenWrapper } from 'app/components/common/ui/ScreenWrapper';
+import { ScreenWrapper } from 'app/components/layout/ScreenWrapper';
 import { TemperatureSelect } from 'app/components/settings/selectors/TemperatureSelect';
 
 export default function TemperatureSreen() {

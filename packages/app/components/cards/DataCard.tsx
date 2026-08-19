@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
-import { CardHeader } from '../common/ui/CardHeader';
+import { CardHeader } from '../common/layout/CardHeader';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
