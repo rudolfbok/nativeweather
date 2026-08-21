@@ -1,0 +1,63 @@
+diff --git a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
+index b42e7efd724270a73176b8f32beb9ed21ee53e8a..5262d052b7fa1072e379df07d9b334bc72cd3002 100644
+--- a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
++++ b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
+@@ -61,6 +61,27 @@ - (instancetype)initWithFrame:(CGRect)frame
+   return self;
+ }
+ 
++#if TARGET_OS_OSX // [macOS]
++- (void)scrollWheel:(NSEvent *)event
++{
++  if (!self.isScrollEnabled) {
++    [[self nextResponder] scrollWheel:event];
++    return;
++  }
++
++  CGSize viewportSize = self.contentView.bounds.size;
++  BOOL scrollsHorizontally = self.contentSize.width > viewportSize.width + 1.0;
++  BOOL scrollsVertically = self.contentSize.height > viewportSize.height + 1.0;
++
++  if (scrollsHorizontally && !scrollsVertically && fabs(event.scrollingDeltaY) > fabs(event.scrollingDeltaX)) {
++    [[self nextResponder] scrollWheel:event];
++    return;
++  }
++
++  [super scrollWheel:event];
++}
++#endif // macOS
++
+ - (void)preserveContentOffsetWithBlock:(void (^)())block
+ {
+   if (!block) {
+diff --git a/React/Views/ScrollView/RCTScrollView.m b/React/Views/ScrollView/RCTScrollView.m
+index a8076b5b9ef14eec7096d88349b9138c70047cb3..c543aed8a35b49ce4e5d035496fe5dd667cdaaf6 100644
+--- a/React/Views/ScrollView/RCTScrollView.m
++++ b/React/Views/ScrollView/RCTScrollView.m
+@@ -116,13 +116,23 @@ - (BOOL)isFlipped
+   return !self.inverted;
+ }
+ 
+-- (void)scrollWheel:(NSEvent *)theEvent
++- (void)scrollWheel:(NSEvent *)event
+ {
+   if (!self.isScrollEnabled) {
+-    [[self nextResponder] scrollWheel:theEvent];
++    [[self nextResponder] scrollWheel:event];
++    return;
++  }
++
++  CGSize viewportSize = self.contentView.bounds.size;
++  BOOL scrollsHorizontally = self.contentSize.width > viewportSize.width + 1.0;
++  BOOL scrollsVertically = self.contentSize.height > viewportSize.height + 1.0;
++
++  if (scrollsHorizontally && !scrollsVertically && fabs(event.scrollingDeltaY) > fabs(event.scrollingDeltaX)) {
++    [[self nextResponder] scrollWheel:event];
+     return;
+   }
+-  [super scrollWheel:theEvent];
++
++  [super scrollWheel:event];
+ }
+ #endif // macOS]
+ 

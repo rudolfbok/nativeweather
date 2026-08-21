@@ -6,11 +6,19 @@ import { useRouter } from 'app/hooks/navigation/useRouter';
 
 import { SettingsItem } from './SettingsItem';
 import { AboutFeature } from 'app/features/about/screen';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 export const AboutButton = () => {
 	const { t } = useTranslate('settings');
 	const router = useRouter();
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
+	const navigateToAbout = useModalNavigation({
+		mobile: () => router.push('/about'),
+		macos: () => setModalScreen('about'),
+		web: () => setShowModal(true),
+	});
 
 	return (
 		<>
@@ -20,7 +28,7 @@ export const AboutButton = () => {
 				title={t('about.title')}
 				variant="value"
 				showModal={() => setShowModal(true)}
-				onPress={() => router.push('/about')}
+				onPress={navigateToAbout}
 				border={true}
 			/>
 			{showModal && (

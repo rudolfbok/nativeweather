@@ -6,13 +6,20 @@ import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { TemperatureSelect } from '../selectors/TemperatureSelect';
 import { SettingsItem } from './SettingsItem';
-import { clsx } from 'clsx';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 export const TemperatureButton = () => {
 	const { t } = useTranslate('settings');
 	const router = useRouter();
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
+	const navigateToTemperature = useModalNavigation({
+		mobile: () => router.push('/temperature'),
+		macos: () => setModalScreen('temperature'),
+		web: () => setShowModal(true),
+	});
 
 	const getUpperCaseTemp: Record<string, string> = {
 		celsius: 'Celsius',
@@ -26,7 +33,7 @@ export const TemperatureButton = () => {
 				iconbg="bg-primaryblue"
 				title={t('temperature')}
 				variant="value"
-				onPress={() => router.push('/temperature')}
+				onPress={navigateToTemperature}
 				showModal={() => setShowModal(true)}
 				currentValue={getUpperCaseTemp[currentTemperature]}
 				border={true}

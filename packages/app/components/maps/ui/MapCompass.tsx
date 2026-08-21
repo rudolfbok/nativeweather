@@ -21,14 +21,23 @@ const directions = [
 	'NNW',
 ] as const;
 
-export const MapCompass = ({ bearing, onPress }: { bearing: number; onPress: () => void }) => {
+export const MapCompass = ({
+	bearing,
+	onPress,
+	onInteraction = () => {},
+}: {
+	bearing: number;
+	onPress: () => void;
+	onInteraction?: () => void;
+}) => {
 	const { t } = useTranslate('weather');
 	const direction = directions[Math.round((((bearing % 360) + 360) % 360) / 22.5) % directions.length];
 
 	return (
-		<View className="web:top-4 ios:right-6 absolute right-4 items-center gap-1">
+		<View className="ios:top-6 ios:right-6 absolute right-4 top-4 items-center gap-1">
 			<StyledPressable
 				onPress={onPress}
+				onPressIn={onInteraction}
 				className="bg-systemBackground dark:bg-secondarySystemBackground_dark h-11 w-11 items-center justify-center rounded-full"
 			>
 				<View className="h-7 w-1" style={{ transform: [{ rotate: `${-bearing}deg` }] }}>

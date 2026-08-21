@@ -5,7 +5,7 @@ import { useStorageString } from 'app/database/useStorage';
 import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { MoveDown, MoveUp } from 'lucide-react-native';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -33,6 +33,17 @@ const textShadowStyle = {
 	textShadowRadius: 3,
 };
 
+const landscapeStyle = StyleSheet.create({
+	frame: {
+		position: 'absolute',
+		bottom: -40,
+		left: '50%',
+		width: 600,
+		height: 710,
+		marginLeft: -300,
+	},
+});
+
 export const MainWeather = ({
 	name,
 	country,
@@ -48,6 +59,7 @@ export const MainWeather = ({
 	isDay,
 	code,
 	condition,
+	dailyModal = false,
 }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
@@ -58,7 +70,7 @@ export const MainWeather = ({
 			className="relative items-center justify-center overflow-hidden rounded-3xl p-4"
 			// style={{ backgroundColor: isDay === 1 ? '#3979b8' : '#091331' }}
 		>
-			<View pointerEvents="none" className="absolute -bottom-10 scale-x-[1.5]">
+			<View pointerEvents="none" className="absolute -bottom-10">
 				<WeatherLandscape code={code} isDay={isDay} />
 			</View>
 			{name && country && (

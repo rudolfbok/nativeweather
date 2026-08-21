@@ -5,7 +5,7 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { ActivityIndicator, LayoutChangeEvent, Platform, View } from 'react-native';
+import { ActivityIndicator, LayoutChangeEvent, Platform, Pressable, View } from 'react-native';
 
 type Size = { width: number; height: number };
 type Point = { x: number; y: number };
@@ -27,6 +27,7 @@ export const MapWeatherPopup = ({
 	title,
 	errorLabel,
 	onClose,
+	onInteraction = () => {},
 }: {
 	weatherPoint: MapWeatherPoint;
 	anchor: Point;
@@ -34,6 +35,7 @@ export const MapWeatherPopup = ({
 	title: string;
 	errorLabel: string;
 	onClose: () => void;
+	onInteraction?: () => void;
 }) => {
 	const { text } = useThemeColors();
 	const [popupSize, setPopupSize] = useState<Size>({ width: 220, height: 96 });
@@ -41,8 +43,9 @@ export const MapWeatherPopup = ({
 	const handleLayout = (event: LayoutChangeEvent) => setPopupSize(event.nativeEvent.layout);
 
 	return (
-		<View
+		<Pressable
 			onLayout={handleLayout}
+			onPressIn={onInteraction}
 			className={clsx(
 				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3',
 				Platform.OS !== 'macos' && 'shadow-md dark:shadow-white/10',
@@ -84,6 +87,7 @@ export const MapWeatherPopup = ({
 				</View>
 				{weatherPoint.status !== 'loading' && (
 					<StyledPressable
+						onPressIn={onInteraction}
 						onPress={onClose}
 						className="h-fit rounded-full p-1"
 					>
@@ -91,6 +95,6 @@ export const MapWeatherPopup = ({
 					</StyledPressable>
 				)}
 			</View>
-		</View>
+		</Pressable>
 	);
 };

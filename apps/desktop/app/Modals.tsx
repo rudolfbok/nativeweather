@@ -16,6 +16,7 @@ import {
 	AlertIcon,
 	CloudsIcon,
 	HumidityIcon,
+	MapIcon,
 	MoonIcon,
 	PressureIcon,
 	RainIcon,
@@ -29,9 +30,17 @@ import {
 import { ModalHeader } from 'app/components/common/modal/ModalHeader';
 import { AirQualityModal } from 'app/components/airquality/AirQualityModal';
 import { AlertModal } from 'app/components/alerts/AlertModal';
+import { AQISelect } from 'app/components/settings/selectors/AQISelect';
+import { LanguageSelect } from 'app/components/settings/selectors/LanguageSelect';
+import { TemperatureSelect } from 'app/components/settings/selectors/TemperatureSelect';
+import { ThemeSelect } from 'app/components/settings/selectors/ThemeSelect';
+import { UnitsSelect } from 'app/components/settings/selectors/UnitsSelect';
+import { MapLibreView } from 'app/components/maps/views/MapLibreView';
+import { AboutFeature } from 'app/features/about/screen';
+import { FeedbackFeature } from 'app/features/feedback/screen';
 import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
 import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
-import { ModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { ModalScreen, SettingsModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { WeatherAlert } from 'app/types/weatherAPI';
@@ -66,6 +75,7 @@ const ModalContent = ({
 
 export const Modals = () => {
 	const { t } = useTranslate('weather');
+	const { t: settingsT } = useTranslate('settings');
 	const tolgee = useTolgee();
 	const { modalScreen, setModalScreen } = useNavigationScreen();
 	const { weatherData, airQualityData } = useWeather();
@@ -131,8 +141,38 @@ export const Modals = () => {
 		);
 	}
 
+	if (modalScreen === 'maps') {
+		return (
+			<View className="w-full flex-1 py-4">
+				<ModalHeader icon={<MapIcon />} header={t('maps.title')} onClose={closeModal} />
+				<View className="flex-grow px-4">
+					<MapLibreView showCompass={true} />
+				</View>
+			</View>
+		);
+	}
+
+	const settingsModals: Record<SettingsModalScreen, { header: string; content: ReactNode }> = {
+		theme: { header: settingsT('theme.title'), content: <ThemeSelect /> },
+		language: { header: settingsT('language.title'), content: <LanguageSelect /> },
+		temperature: { header: settingsT('temperature'), content: <TemperatureSelect /> },
+		units: { header: settingsT('units.title'), content: <UnitsSelect /> },
+		'settings-aqi': { header: settingsT('airquality.titlefull'), content: <AQISelect /> },
+		about: { header: settingsT('about.title'), content: <AboutFeature /> },
+		feedback: { header: settingsT('feedback.title'), content: <FeedbackFeature /> },
+	};
+	const settingsModal = modalScreen ? settingsModals[modalScreen as SettingsModalScreen] : null;
+
+	if (settingsModal) {
+		return (
+			<ModalContent header={settingsModal.header} onClose={closeModal}>
+				{settingsModal.content}
+			</ModalContent>
+		);
+	}
+
 	const modals: Record<
-		Exclude<ModalScreen, 'airquality' | 'alerts' | 'forecast' | null>,
+		Exclude<ModalScreen, SettingsModalScreen | 'airquality' | 'alerts' | 'forecast' | 'maps' | null>,
 		{ icon: ReactNode; header: string; content: ReactNode }
 	> = {
 		clouds: { icon: <CloudsIcon />, header: t('cloudcover.title'), content: <CloudsModal /> },
@@ -147,7 +187,7 @@ export const Modals = () => {
 		uv: { icon: <UVIcon />, header: 'UV Index', content: <UVModal /> },
 		wind: { icon: <WindIcon />, header: t('wind.title'), content: <WindModal /> },
 	};
-	const modal = modalScreen ? modals[modalScreen] : null;
+	const modal = modalScreen ? modals[modalScreen as keyof typeof modals] : null;
 
 	if (!modal) {
 		return null;

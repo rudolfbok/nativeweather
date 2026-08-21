@@ -5,6 +5,7 @@ module.exports = {
 		'./App.{js,jsx,ts,tsx}',
 		'./app/**/*.{js,jsx,ts,tsx}',
 		'../../packages/app/components/**/*.{js,jsx,ts,tsx}',
+		'../../packages/app/features/**/*.{js,jsx,ts,tsx}',
 		'../../packages/app/utils/**/*.{js,jsx,ts,tsx}',
 	],
 

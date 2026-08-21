@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { ThemeSelect } from '../selectors/ThemeSelect';
 import { SettingsItem } from './SettingsItem';
-import { clsx } from 'clsx';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 export const ThemeButton = () => {
 	const { t } = useTranslate('settings');
@@ -14,6 +15,12 @@ export const ThemeButton = () => {
 	const [showModal, setShowModal] = useState(false);
 
 	const router = useRouter();
+	const { setModalScreen } = useNavigationScreen();
+	const navigateToTheme = useModalNavigation({
+		mobile: () => router.push('/theme'),
+		macos: () => setModalScreen('theme'),
+		web: () => setShowModal(true),
+	});
 
 	const getLocaleMode = (mode: string) => {
 		switch (mode) {
@@ -35,7 +42,7 @@ export const ThemeButton = () => {
 				iconbg="bg-primaryblue"
 				title={t('theme.title')}
 				variant="value"
-				onPress={() => router.push('/theme')}
+				onPress={navigateToTheme}
 				showModal={() => setShowModal(true)}
 				currentValue={getLocaleMode(currentTheme ?? 'system')}
 				border={true}

@@ -5,12 +5,20 @@ import { useState } from 'react';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { LanguageSelect } from '../selectors/LanguageSelect';
 import { SettingsItem } from './SettingsItem';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 export const LanguageButton = () => {
 	const { t } = useTranslate('settings');
 	const [showModal, setShowModal] = useState(false);
 
 	const router = useRouter();
+	const { setModalScreen } = useNavigationScreen();
+	const navigateToLanguage = useModalNavigation({
+		mobile: () => router.push('/language'),
+		macos: () => setModalScreen('language'),
+		web: () => setShowModal(true),
+	});
 
 	const tolgee = useTolgee();
 	const lang = tolgee.getLanguage()!;
@@ -27,7 +35,7 @@ export const LanguageButton = () => {
 				iconbg="bg-purple-500"
 				title={t('language.title')}
 				variant="value"
-				onPress={() => router.push('/language')}
+				onPress={navigateToLanguage}
 				showModal={() => setShowModal(true)}
 				currentValue={getLocale[lang]}
 			/>

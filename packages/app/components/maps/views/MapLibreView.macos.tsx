@@ -139,8 +139,14 @@ const MAP_HTML = `<!doctype html>
 						state.weatherUrl = command.weatherUrl;
 						state.weatherVisible = command.weatherVisible === true;
 						state.interactive = command.interactive === true;
-						if (styleChanged) map.setStyle(command.styleUrl);
-						applyWeather(configurationVersion);
+						if (styleChanged) {
+							// setStyle removes the custom weather source/layer. The style.load
+							// handler re-adds it after the new base style is ready; applying it
+							// here can race with the style reset and leave the layer missing.
+							map.setStyle(command.styleUrl);
+						} else {
+							applyWeather(configurationVersion);
+						}
 						if (Array.isArray(command.center)) map.easeTo({ center: command.center, zoom: command.zoom, duration: 500 });
 					} else if (command.type === 'center' && Array.isArray(command.center)) {
 						map.easeTo({ center: command.center, zoom: command.zoom, duration: 500 });
@@ -183,6 +189,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	const [showLoading, setShowLoading] = useState(false);
 	const [bridgeReady, setBridgeReady] = useState(false);
 	const webViewRef = useRef<WebView>(null);
+	const lastControlInteraction = useRef(0);
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
 
@@ -257,6 +264,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			message.type === 'press' &&
 			[message.lng, message.lat, message.x, message.y].every(Number.isFinite)
 		) {
+			if (Date.now() - lastControlInteraction.current < 500) return;
 			setShowLegend(false);
 			setMarkerAnchor({ x: message.x, y: message.y });
 			requestWeatherPoint([message.lng, message.lat], layer);
@@ -264,6 +272,9 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	};
 
 	const handleLayout = (event: LayoutChangeEvent) => setMapSize(event.nativeEvent.layout);
+	const markControlInteraction = () => {
+		lastControlInteraction.current = Date.now();
+	};
 
 	return (
 		<View
@@ -300,6 +311,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			/>
 			{showCompass && (
 				<MapNavigationControls
+					onInteraction={markControlInteraction}
 					onZoomIn={() => send({ type: 'zoom', delta: 1 })}
 					onZoomOut={() => send({ type: 'zoom', delta: -1 })}
 					onLocate={() => {
@@ -309,7 +321,13 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 					}}
 				/>
 			)}
-			{showCompass && <MapCompass bearing={bearing} onPress={() => send({ type: 'resetNorth' })} />}
+			{showCompass && (
+				<MapCompass
+					bearing={bearing}
+					onInteraction={markControlInteraction}
+					onPress={() => send({ type: 'resetNorth' })}
+				/>
+			)}
 			{showLoading && (
 				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
 					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3">
@@ -329,6 +347,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			)}
 			{showCompass && weatherPoint && markerAnchor && mapSize.width > 0 && mapSize.height > 0 && (
 				<MapWeatherPopup
+					onInteraction={markControlInteraction}
 					weatherPoint={weatherPoint}
 					anchor={markerAnchor}
 					mapSize={mapSize}
@@ -338,6 +357,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 				/>
 			)}
 			<MapControls
+				onInteraction={markControlInteraction}
 				layer={layer}
 				weatherLayerVisible={weatherLayerVisible}
 				baseMap={baseMap}

@@ -3,26 +3,43 @@ import type { WeatherAPIResponse } from 'app/types/weatherAPI';
 
 const BASE_URL = 'https://nativeweather-api.bitwebs.workers.dev';
 
+export class WeatherRequestError extends Error {
+	constructor(
+		message: string,
+		readonly status: number
+	) {
+		super(message);
+		this.name = 'WeatherRequestError';
+	}
+}
+
+export const fetchWeatherAPIOrThrow = async (
+	query: string | number[],
+	options?: { signal?: AbortSignal; cache?: RequestCache }
+): Promise<WeatherAPIResponse> => {
+	const weatherUrl = `${BASE_URL}/forecast.json?q=${encodeURIComponent(query.toString())}`;
+	const response = await fetch(weatherUrl, {
+		signal: options?.signal,
+		cache: options?.cache,
+	});
+
+	if (!response.ok) {
+		const errorBody = await response.text();
+		const upstreamStatus = Number(errorBody.match(/\b[45]\d{2}\b/)?.[0]);
+		const status = upstreamStatus || response.status;
+
+		throw new WeatherRequestError(`Weather request failed (${status})`, status);
+	}
+
+	return (await response.json()) as WeatherAPIResponse;
+};
+
 export const fetchWeatherAPI = async (
 	query: string | number[],
 	options?: { signal?: AbortSignal }
 ): Promise<WeatherAPIResponse | null> => {
-	const weatherUrl = `${BASE_URL}/forecast.json?q=${encodeURIComponent(query.toString())}`;
-
 	try {
-		const response = await fetch(weatherUrl, { signal: options?.signal });
-
-		if (!response.ok) {
-			throw new Error(`Weather request failed (${response.status})`);
-		}
-
-		const weatherData = (await response.json()) as WeatherAPIResponse;
-
-		if (!weatherData) {
-			throw new Error('City not found');
-		}
-
-		return weatherData;
+		return await fetchWeatherAPIOrThrow(query, options);
 	} catch (error) {
 		if (options?.signal?.aborted) return null;
 		console.error('Failed to fetch weather data:', error);

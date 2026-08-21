@@ -1,12 +1,22 @@
 import { create } from 'zustand';
 
 type NavigationScreen = 'weather' | 'settings' | 'testing';
+export type SettingsModalScreen =
+	| 'theme'
+	| 'language'
+	| 'temperature'
+	| 'units'
+	| 'settings-aqi'
+	| 'about'
+	| 'feedback';
 export type ModalScreen =
+	| SettingsModalScreen
 	| 'airquality'
 	| 'alerts'
 	| 'clouds'
 	| 'forecast'
 	| 'humidity'
+	| 'maps'
 	| 'moon'
 	| 'pressure'
 	| 'rain'
@@ -28,6 +38,6 @@ interface NavigationState {
 export const useNavigationScreen = create<NavigationState>((set) => ({
 	navigationScreen: 'weather',
 	modalScreen: null,
-	setNavigationScreen: (screen) => set({ navigationScreen: screen }),
+	setNavigationScreen: (screen) => set({ navigationScreen: screen, modalScreen: null }),
 	setModalScreen: (screen) => set({ modalScreen: screen }),
 }));

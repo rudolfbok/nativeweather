@@ -2,13 +2,14 @@ import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { fetchLocation } from 'app/api/fetchWeatherAPI';
 import { useStorageObject, useStorageString } from 'app/database/useStorage';
-import type { City } from 'app/types/city';
-import { buildSlug } from 'app/utils/weatherSlug';
-import { showToast } from 'app/utils/notifications/showToast';
-import { useEffect, useRef, useState } from 'react';
-import { Platform } from 'react-native';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { useWeather } from 'app/hooks/weather/useWeather';
+import type { City } from 'app/types/city';
+import { showToast } from 'app/utils/notifications/showToast';
+import { buildSlug } from 'app/utils/weatherSlug';
+import { useEffect, useRef, useState } from 'react';
+import { Platform } from 'react-native';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
@@ -23,6 +24,7 @@ export const useSearchController = () => {
 	const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const suggestionAbortRef = useRef<AbortController | null>(null);
 	const weatherAbortRef = useRef<AbortController | null>(null);
+	const { setNavigationScreen } = useNavigationScreen();
 
 	const router = useRouter();
 
@@ -44,7 +46,9 @@ export const useSearchController = () => {
 		if (controller.signal.aborted) return;
 		if (weatherData) {
 			void setWeatherData(weatherData);
-			if (Platform.OS !== 'macos') {
+			if (Platform.OS === 'macos') {
+				setNavigationScreen('weather');
+			} else {
 				const path = buildSlug(weatherData);
 				router.push(path);
 			}
@@ -69,7 +73,9 @@ export const useSearchController = () => {
 			void setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
-			if (Platform.OS !== 'macos') {
+			if (Platform.OS === 'macos') {
+				setNavigationScreen('weather');
+			} else {
 				const path = buildSlug(weatherData);
 				router.push(path);
 			}

@@ -1,6 +1,8 @@
-import { WeatherFeature } from 'app/features/weather/screen';
+import { WeatherFeature } from 'app/features/weather/screen.web';
+import { fetchWeatherAPIOrThrow, WeatherRequestError } from 'app/api/fetchWeatherAPI';
 
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 export const metadata: Metadata = {
 	description: 'Current weather data',
 	twitter: {
@@ -23,6 +25,26 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function WeatherPage() {
+const validateCity = async (query: string) => {
+	try {
+		await fetchWeatherAPIOrThrow(query, { cache: 'no-store' });
+	} catch (error) {
+		if (error instanceof WeatherRequestError && [400, 404].includes(error.status)) notFound();
+		throw error;
+	}
+};
+
+export default async function WeatherPage({
+	params,
+	searchParams,
+}: {
+	params: Promise<{ city: string }>;
+	searchParams: Promise<{ r?: string; cr?: string }>;
+}) {
+	const [{ city }, { r: region, cr: country }] = await Promise.all([params, searchParams]);
+	const normalizedCity = city.trim().toLowerCase().replace(/\s+/g, '-');
+	const query = country || region ? `${normalizedCity}, ${region ?? ''}, ${country ?? ''}` : normalizedCity;
+	await validateCity(query);
+
 	return <WeatherFeature />;
 }

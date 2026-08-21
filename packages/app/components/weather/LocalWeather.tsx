@@ -9,6 +9,7 @@ import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { CityCard } from './CityCard';
+import { CityCardSkeleton } from './CityCardSkeleton';
 
 interface LocalWeatherProps {
 	error?: boolean;
@@ -37,11 +38,7 @@ export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
 	if (!localWeatherData) {
 		return (
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
-				<View
-					className={clsx(
-						'bg-systemBackground dark:bg-secondarySystemBackground_dark web:animate-pulse h-[132px] w-full rounded-3xl'
-					)}
-				/>
+				<CityCardSkeleton />
 			</View>
 		);
 	}

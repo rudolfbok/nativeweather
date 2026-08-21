@@ -5,7 +5,7 @@ import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 
 export const RainModal = () => {
 	const { t } = useTranslate('weather');
@@ -68,20 +68,22 @@ export const RainModal = () => {
 		},
 	];
 
+	const LongContent = Platform.OS === 'macos' ? ContentRow : Accordion;
+
 	return (
 		<View className={clsx('gap-2')}>
 			<ContentRow title={t('rain.chance.title')}>
 				<StyledText type="body">{t('rain.chance.description')}</StyledText>
 			</ContentRow>
-			<Accordion title={t('rain.chance.values')}>
+			<LongContent title={t('rain.chance.values')}>
 				<ValuesList values={rainChanceValues} valueColor="!text-[#2793FF]" showIndex={false} />
-			</Accordion>
+			</LongContent>
 			<ContentRow title={t('rain.rainfall.title')}>
 				<StyledText type="body">{t('rain.rainfall.description')}</StyledText>
 			</ContentRow>
-			<Accordion title={t('rain.rainfall.values')}>
+			<LongContent title={t('rain.rainfall.values')}>
 				<ValuesList values={rainPrecipValues} valueColor="!text-[#2793FF]" showIndex={false} />
-			</Accordion>
+			</LongContent>
 		</View>
 	);
 };

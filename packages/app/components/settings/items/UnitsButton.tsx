@@ -6,12 +6,20 @@ import { SettingsItem } from './SettingsItem';
 import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';
 import { StyledModal } from 'app/components/common/modal/StyledModal';
+import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 
 export const UnitsButton = () => {
 	const { t } = useTranslate('settings');
 	const router = useRouter();
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
+	const navigateToUnits = useModalNavigation({
+		mobile: () => router.push('/units'),
+		macos: () => setModalScreen('units'),
+		web: () => setShowModal(true),
+	});
 
 	const getUpperCaseUnits: Record<string, string> = {
 		metric: t('units.metric'),
@@ -25,7 +33,7 @@ export const UnitsButton = () => {
 				iconbg="bg-primaryblue"
 				title={t('units.title')}
 				variant="value"
-				onPress={() => router.push('/units')}
+				onPress={navigateToUnits}
 				showModal={() => setShowModal(true)}
 				currentValue={getUpperCaseUnits[currentUnits]}
 				border={true}

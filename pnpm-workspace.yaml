@@ -16,3 +16,4 @@ overrides:
 
 patchedDependencies:
   expo-router: patches/expo-router.patch
+  react-native-macos: patches/react-native-macos.patch

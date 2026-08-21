@@ -16,7 +16,6 @@ export const FeedbackFeature = () => {
 	const [type, setType] = useState('');
 	const [message, setMessage] = useState('');
 	const [loading, setLoading] = useState(false);
-	const [isFocused, setIsFocused] = useState(false);
 	const selectedIcon = {
 		bug: <Bug color="#007AFF" />,
 		feature: <Cog color="#007AFF" />,
@@ -59,6 +58,7 @@ export const FeedbackFeature = () => {
 					setOpen(false);
 				}}
 				className={clsx('flex-row items-center gap-4 p-4', variants)}
+				style={{ cursor: 'pointer' }}
 			>
 				<View className="h-6 w-6 items-center justify-center">{icon}</View>
 				<View className="flex-1">
@@ -71,9 +71,11 @@ export const FeedbackFeature = () => {
 
 	return (
 		<View className={clsx('items-center pb-4')}>
-			<View className="w-full gap-4 lg:w-3/4 xl:w-2/3 2xl:w-2/5">
+			<View className="web:lg:w-3/4 web:xl:w-2/3 web:2xl:w-2/5 w-full gap-4">
 				<View className={clsx('ios:hidden flex w-full gap-2')}>
-					<StyledText type="maintitle">{t('feedback.title')}</StyledText>
+					<StyledText type="maintitle" className="macos:hidden">
+						{t('feedback.title')}
+					</StyledText>
 					<StyledText type="body">{t('feedback.text')}</StyledText>
 				</View>
 				<View className={clsx('gap-2')}>
@@ -82,6 +84,7 @@ export const FeedbackFeature = () => {
 						<Pressable
 							onPress={() => setOpen((prev) => !prev)}
 							className="hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden p-4"
+							style={{ cursor: 'pointer' }}
 						>
 							<View className="flex-row items-center gap-3">
 								{selectedIcon[type]}
@@ -112,14 +115,14 @@ export const FeedbackFeature = () => {
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.message')}</StyledText>
 					<TextInput
+						//@ts-expect-error
+						enableFocusRing={false}
 						placeholder={t('feedback.placeholder')}
 						value={message}
 						onChangeText={setMessage}
 						multiline={true}
 						textAlignVertical="top"
 						placeholderTextColor="#8E8E93"
-						onFocus={() => setIsFocused(true)}
-						onBlur={() => setIsFocused(false)}
 						className={clsx(
 							'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl border border-transparent p-4 text-base outline-none'
 						)}

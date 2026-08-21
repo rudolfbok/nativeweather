@@ -121,7 +121,7 @@ export const HeroWeather = () => {
 	};
 
 	return (
-		<View className="w-full gap-4 self-center xl:px-24 2xl:px-56">
+		<View className="w-full gap-4 self-center">
 			<View className="flex-row items-start gap-4">
 				<View className="flex-1 gap-4">
 					<View className="gap-4">

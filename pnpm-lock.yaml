@@ -13,6 +13,9 @@ patchedDependencies:
   expo-router:
     hash: b39219202d9f26cc04d8cfcd8d89274f9fa99988cecc364e2074c19e7b5a221e
     path: patches/expo-router.patch
+  react-native-macos:
+    hash: 827e377ff591fd21a179985781cf7d2511d2c588880c43165f72e46e07a9fd1d
+    path: patches/react-native-macos.patch
 
 importers:
 

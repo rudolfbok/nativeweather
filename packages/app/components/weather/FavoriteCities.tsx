@@ -2,7 +2,6 @@ import { useTranslate } from '@tolgee/react';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { LoadingIndicator } from 'app/components/common/layout/LoadingIndicator';
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useSearchController } from 'app/hooks/search/useSearchController';
@@ -13,25 +12,28 @@ import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloseIcon } from '../icons/ui/CloseIcon';
 import { CityCard } from './CityCard';
+import { CityCardSkeleton } from './CityCardSkeleton';
 import { EditIcon } from '../icons/ui/EditIcon';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');
 	const [showDeleteCity, setShowDeleteCity] = useState(false);
-	const { favoritesData, handleRemoveCity, loading } = hook;
+	const { favoritesData, favoriteCount, handleRemoveCity, loading } = hook;
 	const { handleCityPress } = useSearchController();
 
 	return (
 		<View className={clsx('gap-2')}>
-			<View className={clsx('flex min-h-6 flex-row items-center justify-between')}>
+			<View className={clsx('flex h-fit min-h-6 flex-row items-center justify-between')}>
 				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
-				{favoritesData.length > 0 && (
-					<StyledPressable onPress={() => setShowDeleteCity((prev) => !prev)} className={clsx('rounded-3xl p-1.5')}>
+				{favoriteCount > 0 && (
+					<StyledPressable
+						onPress={() => setShowDeleteCity((prev) => !prev)}
+						className={clsx('macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5')}
+					>
 						{showDeleteCity ? <CloseIcon size={26} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>
-			{loading && favoritesData.length === 0 && <LoadingIndicator text={t('favorites.loading')} />}
 			{favoritesData.length === 0 && !loading && (
 				<RoundView className={clsx('w-full items-center place-self-center p-4 md:w-fit')}>
 					<StyledText type="body" className={clsx('text-center')}>
@@ -44,6 +46,9 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 					Platform.OS === 'web' ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'gap-4'
 				)}
 			>
+				{loading &&
+					favoritesData.length === 0 &&
+					Array.from({ length: favoriteCount }, (_, index) => <CityCardSkeleton key={index} />)}
 				{favoritesData.map(({ city, weather }, index) => {
 					const tintColor = weatherLandscapeBg({ isDay: weather.current.isDay, code: weather.current.condition.code });
 					return (

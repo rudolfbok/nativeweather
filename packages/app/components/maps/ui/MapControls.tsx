@@ -27,9 +27,10 @@ const baseMapButtons = [
 	{ id: 'positron' as const, icon: <NoColorMapIcon /> },
 ];
 
-const MapButton = ({ onPress, icon }: { onPress: () => void; icon: ReactNode }) => (
+const MapButton = ({ onPress, onPressIn, icon }: { onPress: () => void; onPressIn: () => void; icon: ReactNode }) => (
 	<StyledPressable
 		onPress={onPress}
+		onPressIn={onPressIn}
 		liquidGlass={true}
 		glassEffectStyle="clear"
 		// colorScheme="auto"
@@ -49,6 +50,7 @@ export const MapControls = ({
 	showInfo = false,
 	showLegend,
 	onLegendChange,
+	onInteraction = () => {},
 }: {
 	layer: WeatherMapLayer;
 	weatherLayerVisible?: boolean;
@@ -59,6 +61,7 @@ export const MapControls = ({
 	showInfo?: boolean;
 	showLegend: boolean;
 	onLegendChange: (show: boolean) => void;
+	onInteraction?: () => void;
 }) => {
 	const { t } = useTranslate('weather');
 	const { text } = useThemeColors();
@@ -68,21 +71,24 @@ export const MapControls = ({
 		<>
 			<View className="ios:bottom-28 ios:gap-4 ios:left-6 absolute bottom-4 left-4 gap-2">
 				{baseMapButtons.map(({ id, icon }) => (
-					<MapButton key={id} icon={icon} onPress={() => onBaseMapChange(id)} />
+					<MapButton key={id} icon={icon} onPressIn={onInteraction} onPress={() => onBaseMapChange(id)} />
 				))}
 			</View>
 			<View className="ios:bottom-28 ios:gap-4 ios:right-6 absolute bottom-4 right-4 flex-row items-end gap-2">
 				{showInfo && !showLegend && weatherLayerVisible && (
 					<MapButton
 						icon={<InfoIcon color={Platform.OS === 'ios' ? 'black' : text} />}
+						onPressIn={onInteraction}
 						onPress={() => onLegendChange(true)}
 					/>
 				)}
 				<View className="ios:gap-4 gap-2">
 					{weatherLayers.map(({ id, icon }) => (
-						<MapButton key={id} icon={icon} onPress={() => onLayerChange(id)} />
+						<MapButton key={id} icon={icon} onPressIn={onInteraction} onPress={() => onLayerChange(id)} />
 					))}
-					{onClearLayer && <MapButton icon={<CloudOff color={text} />} onPress={onClearLayer} />}
+					{onClearLayer && (
+						<MapButton icon={<CloudOff color={text} />} onPressIn={onInteraction} onPress={onClearLayer} />
+					)}
 				</View>
 			</View>
 			{showLegend && (
@@ -98,7 +104,11 @@ export const MapControls = ({
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}
 								</StyledText>
-								<StyledPressable onPress={() => onLegendChange(false)} className="rounded-full p-1">
+								<StyledPressable
+									onPressIn={onInteraction}
+									onPress={() => onLegendChange(false)}
+									className="rounded-full p-1"
+								>
 									<CloseIcon size={22} color={text} />
 								</StyledPressable>
 							</View>

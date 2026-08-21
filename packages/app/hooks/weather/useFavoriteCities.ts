@@ -32,6 +32,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
+	const [favoriteCount, setFavoriteCount] = useState(() => getFavoriteCities().length);
 	const [loading, setLoading] = useState(refresh);
 	const [isFavorite, setIsFavorite] = useState<boolean>(undefined);
 	const refreshAbortRef = useRef<AbortController | null>(null);
@@ -45,6 +46,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 
 		try {
 			const cities = getFavoriteCities();
+			setFavoriteCount(cities.length);
 			let localRefreshFailed = false;
 
 			if (showLocalWeather && localWeatherData) {
@@ -91,6 +93,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 		setFavoritesData((prev) => prev.filter((item) => !isSameCity(item.city, city)));
 
 		const success = removeFavoriteCity(city);
+		if (success) setFavoriteCount((count) => Math.max(0, count - 1));
 		showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
 		if (!success) {
 			await refreshFavoriteCities();
@@ -101,11 +104,13 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 		const isAlreadyFavorite = isCityInFavorites(city);
 
 		if (isAlreadyFavorite) {
-			removeFavoriteCity(city);
+			const success = removeFavoriteCity(city);
+			if (success) setFavoriteCount((count) => Math.max(0, count - 1));
 			setIsFavorite(false);
 			showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
 		} else {
-			addFavoriteCity(city);
+			const success = addFavoriteCity(city);
+			if (success) setFavoriteCount((count) => count + 1);
 			setIsFavorite(true);
 			showFavoriteToast({ message: `${city.name} ${t('toast.add')}`, type: 'add' });
 		}
@@ -124,6 +129,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 
 	return {
 		favoritesData,
+		favoriteCount,
 		loading,
 		refreshFavoriteCities,
 		handleRemoveCity,
