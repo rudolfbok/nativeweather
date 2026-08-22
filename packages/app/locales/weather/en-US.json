@@ -265,7 +265,7 @@
 	"localtime": "Local time",
 	"localweather": {
 		"error": {
-			"followup": "Please check your location access and network connection\nLocal weather can be disabled in settings",
+			"followup": "Please check your location access and network connection",
 			"notavailable": "Local weather is not available"
 		},
 		"title": "Local weather"

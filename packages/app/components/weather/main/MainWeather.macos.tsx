@@ -34,13 +34,13 @@ const textShadowStyle = {
 };
 
 const landscapeStyle = StyleSheet.create({
-	frame: {
+	dailyFrame: {
 		position: 'absolute',
 		bottom: -40,
 		left: '50%',
-		width: 600,
+		width: 900,
 		height: 710,
-		marginLeft: -300,
+		marginLeft: -450,
 	},
 });
 
@@ -70,8 +70,12 @@ export const MainWeather = ({
 			className="relative items-center justify-center overflow-hidden rounded-3xl p-4"
 			// style={{ backgroundColor: isDay === 1 ? '#3979b8' : '#091331' }}
 		>
-			<View pointerEvents="none" className="absolute -bottom-10">
-				<WeatherLandscape code={code} isDay={isDay} />
+			<View
+				pointerEvents="none"
+				className="absolute -bottom-10"
+				style={dailyModal ? landscapeStyle.dailyFrame : undefined}
+			>
+				<WeatherLandscape code={code} isDay={isDay} width={dailyModal ? 900 : undefined} height={710} />
 			</View>
 			{name && country && (
 				<View className="relative z-10 items-center">

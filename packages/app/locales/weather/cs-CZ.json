@@ -265,7 +265,7 @@
 	"localtime": "Místní čas",
 	"localweather": {
 		"error": {
-			"followup": "Zkontrolujte prosím přístup k poloze a připojení k síti\nMístní počasí lze deaktivovat v nastavení",
+			"followup": "Zkontrolujte prosím přístup k poloze a připojení k síti",
 			"notavailable": "Předpověď počasí není k dispozici"
 		},
 		"title": "Místní počasí"

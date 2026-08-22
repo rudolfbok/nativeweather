@@ -23,7 +23,7 @@ export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
 	if (error) {
 		return (
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
-				<RoundView className={clsx('p-4 lg:w-fit')}>
+				<RoundView className={clsx('min-h-[134px] justify-center gap-2 p-4 lg:w-fit')}>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t('localweather.error.notavailable')}
 					</StyledText>

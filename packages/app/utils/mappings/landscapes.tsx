@@ -11,6 +11,7 @@ import { RainNightLandscape } from 'app/components/landscapes/rain/RainNight';
 import { SnowLandscape } from 'app/components/landscapes/snow/Snow';
 import { ThunderDayLandscape } from 'app/components/landscapes/thunder/ThunderDay';
 import { ThunderNightLandscape } from 'app/components/landscapes/thunder/ThunderNight';
+import { LandscapeWrapper } from 'app/components/landscapes/LandscapeWrapper';
 
 const dayLandscapes: Record<number, React.ComponentType<any>> = {
 	1000: ClearDayLandscape,
@@ -114,9 +115,23 @@ const nightLandscapes: Record<number, React.ComponentType<any>> = {
 	1282: ThunderNightLandscape,
 };
 
-export const WeatherLandscape = ({ isDay, code }: { isDay: 0 | 1; code: number }) => {
+export interface WeatherLandscapeProps {
+	width?: number;
+	height?: number;
+}
+
+export const WeatherLandscape = ({
+	isDay,
+	code,
+	width,
+	height,
+}: { isDay: 0 | 1; code: number } & WeatherLandscapeProps) => {
 	const landscapes = isDay === 1 ? dayLandscapes : nightLandscapes;
 	const LandscapeComponent = landscapes[code] || OvercastDayLandscape;
 
-	return <LandscapeComponent />;
+	return (
+		<LandscapeWrapper width={width} height={height}>
+			<LandscapeComponent />
+		</LandscapeWrapper>
+	);
 };

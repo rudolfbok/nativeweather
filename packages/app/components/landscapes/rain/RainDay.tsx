@@ -1,8 +1,8 @@
-import Svg, { ClipPath, Defs, G, LinearGradient, Path, Stop } from 'react-native-svg';
+import { ClipPath, Defs, G, LinearGradient, Path, Stop } from 'react-native-svg';
 
 export const RainDayLandscape = () => {
 	return (
-		<Svg width={600} height={710} viewBox="0 0 600 710" fill="none">
+		<>
 			<G clipPath="url(#clip0_24_163)">
 				<Path fill="url(#paint0_linear_24_163)" d="M0 0H600V710H0z" />
 				<Path
@@ -23,6 +23,6 @@ export const RainDayLandscape = () => {
 					<Path fill="#fff" d="M0 0H600V710H0z" />
 				</ClipPath>
 			</Defs>
-		</Svg>
+		</>
 	);
 };
