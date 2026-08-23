@@ -24,9 +24,19 @@ interface WindCardProps {
 	degree?: number;
 	details: boolean;
 	currentWind: boolean;
+	showBackdrop?: boolean;
 }
 
-export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, currentWind }: WindCardProps) => {
+export const WindCard = ({
+	windKm,
+	windMil,
+	gustKm,
+	gustMil,
+	degree,
+	details,
+	currentWind,
+	showBackdrop,
+}: WindCardProps) => {
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 	const { t } = useTranslate('weather');
@@ -98,6 +108,7 @@ export const WindCard = ({ windKm, windMil, gustKm, gustMil, degree, details, cu
 						icon={<WindIcon />}
 						header={t('wind.title')}
 						onClose={() => setShowModal(false)}
+						showBackdrop={showBackdrop}
 					>
 						<WindModal currentWind={currentWind} degree={degree ?? 0} speed={displaySpeed} gust={displayGust} />
 					</StyledModal>

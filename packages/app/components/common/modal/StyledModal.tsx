@@ -16,6 +16,7 @@ interface StyledModalProps {
 	settingsModal?: boolean;
 	airQualityModal?: boolean;
 	mapsModal?: boolean;
+	showBackdrop?: boolean;
 	children: React.ReactNode;
 }
 
@@ -32,6 +33,7 @@ export const StyledModal = ({
 	settingsModal = false,
 	airQualityModal = false,
 	mapsModal = false,
+	showBackdrop = true,
 	children,
 }: StyledModalProps) => {
 	return (
@@ -44,7 +46,13 @@ export const StyledModal = ({
 			navigationBarTranslucent={true}
 			statusBarTranslucent={true}
 		>
-			<Pressable onPress={onClose} className={clsx('absolute inset-0 bg-black/40 backdrop-blur-md max-md:hidden')} />
+			<Pressable
+				onPress={onClose}
+				className={clsx(
+					'absolute inset-0 max-md:hidden',
+					showBackdrop && 'bg-black/40 backdrop-blur-md'
+				)}
+			/>
 			<View
 				className={clsx(
 					'no-modal-scroll overflow-hidden',

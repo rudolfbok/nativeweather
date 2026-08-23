@@ -1,11 +1,10 @@
 import { useTranslate } from '@tolgee/react';
-import { Accordion } from 'app/components/common/accordion/Accordion';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 
 export const RainModal = () => {
 	const { t } = useTranslate('weather');
@@ -68,22 +67,20 @@ export const RainModal = () => {
 		},
 	];
 
-	const LongContent = Platform.OS === 'macos' ? ContentRow : Accordion;
-
 	return (
 		<View className={clsx('gap-2')}>
 			<ContentRow title={t('rain.chance.title')}>
 				<StyledText type="body">{t('rain.chance.description')}</StyledText>
 			</ContentRow>
-			<LongContent title={t('rain.chance.values')}>
+			<ContentRow title={t('rain.chance.values')}>
 				<ValuesList values={rainChanceValues} valueColor="!text-[#2793FF]" showIndex={false} />
-			</LongContent>
+			</ContentRow>
 			<ContentRow title={t('rain.rainfall.title')}>
 				<StyledText type="body">{t('rain.rainfall.description')}</StyledText>
 			</ContentRow>
-			<LongContent title={t('rain.rainfall.values')}>
+			<ContentRow title={t('rain.rainfall.values')}>
 				<ValuesList values={rainPrecipValues} valueColor="!text-[#2793FF]" showIndex={false} />
-			</LongContent>
+			</ContentRow>
 		</View>
 	);
 };

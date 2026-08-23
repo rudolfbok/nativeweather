@@ -37,12 +37,7 @@ export const Header = () => {
 				</View>
 				<View className={clsx('z-50 order-2 flex flex-row items-center justify-end md:w-1/4 xl:w-1/3')}>
 					<View className={clsx('-mr-2')}>
-						<Hamburger
-							toggled={openDrawer}
-							size={22}
-							color={text}
-							onToggle={() => setOpenDrawer(!openDrawer)}
-						/>
+						<Hamburger toggled={openDrawer} size={22} color={text} onToggle={() => setOpenDrawer(!openDrawer)} />
 					</View>
 				</View>
 			</View>

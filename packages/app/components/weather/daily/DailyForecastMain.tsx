@@ -93,22 +93,25 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 						snowChance={day.day.dailySnowChance}
 						snowPrecipCm={day.day.totalSnowCm}
 						snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
+						showBackdrop={false}
 					/>
 				) : (
 					<RainCard
 						rainChance={day.day.dailyRainChance}
 						rainPrecipMm={day.day.totalPrecipMm}
 						rainPrecipIn={day.day.totalPrecipIn}
+						showBackdrop={false}
 					/>
 				)}
 
-				<UVCard data={day.day.uv} />
-				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} />
+				<UVCard data={day.day.uv} showBackdrop={false} />
+				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} showBackdrop={false} />
 				<WindCard
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}
 					details={false}
 					currentWind={false}
+					showBackdrop={false}
 				/>
 			</View>
 		</View>

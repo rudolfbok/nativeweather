@@ -1,5 +1,4 @@
 import { useTranslate } from '@tolgee/react';
-import { Accordion } from 'app/components/common/accordion/Accordion';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
@@ -73,15 +72,15 @@ export const SnowModal = () => {
 			<ContentRow title={t('snow.chance.title')}>
 				<StyledText type="body">{t('snow.chance.description')}</StyledText>
 			</ContentRow>
-			<Accordion title={t('snow.chance.values')}>
+			<ContentRow title={t('snow.chance.values')}>
 				<ValuesList values={snowChanceValues} valueColor="!text-[#3796B8]" showIndex={false} />
-			</Accordion>
+			</ContentRow>
 			<ContentRow title={t('snow.snowfall.title')}>
 				<StyledText type="body">{t('snow.snowfall.description')}</StyledText>
 			</ContentRow>
-			<Accordion title={t('snow.snowfall.values')}>
+			<ContentRow title={t('snow.snowfall.values')}>
 				<ValuesList values={snowPrecipValues} valueColor="!text-[#3796B8]" showIndex={false} />
-			</Accordion>
+			</ContentRow>
 		</View>
 	);
 };

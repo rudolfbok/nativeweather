@@ -13,7 +13,12 @@ import { UVIcon } from 'app/components/icons/main/UVIcon';
 import { DataCard } from '../DataCard';
 import { UVModal } from './UVModal';
 
-export const UVCard = ({ data }: { data: number }) => {
+interface UVCardProps {
+	data: number;
+	showBackdrop?: boolean;
+}
+
+export const UVCard = ({ data, showBackdrop }: UVCardProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
@@ -65,7 +70,13 @@ export const UVCard = ({ data }: { data: number }) => {
 			data={Math.round(data)}
 			modal={
 				showModal && (
-					<StyledModal visible={showModal} icon={<UVIcon />} header="UV Index" onClose={() => setShowModal(false)}>
+					<StyledModal
+						visible={showModal}
+						icon={<UVIcon />}
+						header="UV Index"
+						onClose={() => setShowModal(false)}
+						showBackdrop={showBackdrop}
+					>
 						<UVModal />
 					</StyledModal>
 				)

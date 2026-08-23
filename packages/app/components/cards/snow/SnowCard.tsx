@@ -15,9 +15,10 @@ interface SnowCardProps {
 	snowPrecipCm: number;
 	snowPrecipIn: number;
 	snowChance: number;
+	showBackdrop?: boolean;
 }
 
-export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardProps) => {
+export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop }: SnowCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -68,6 +69,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance }: SnowCardPro
 						icon={<SnowIcon />}
 						header={t('snow.title')}
 						onClose={() => setShowModal(false)}
+						showBackdrop={showBackdrop}
 					>
 						<SnowModal />
 					</StyledModal>
