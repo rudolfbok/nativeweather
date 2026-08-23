@@ -29,7 +29,7 @@ export const useSearchController = () => {
 	const router = useRouter();
 
 	const showRecentSearches =
-		Platform.OS === 'web'
+		Platform.OS === 'web' || Platform.OS === 'macos'
 			? isSearchBarFocused && (recentSearches || []).length > 0 && searchValue.length === 0
 			: (recentSearches || []).length > 0 && searchValue.length === 0;
 
