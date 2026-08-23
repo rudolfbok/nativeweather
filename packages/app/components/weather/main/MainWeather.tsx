@@ -1,18 +1,18 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/styled/RoundView';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useWeather } from 'app/hooks/weather/useWeather';
 import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useStorageString } from 'app/database/useStorage';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { extractCity } from 'app/utils/extractCity';
-import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
+import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { MoveDown, MoveUp, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -77,22 +77,15 @@ export const MainWeather = ({
 
 	return (
 		<>
-			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
-				<View className={clsx('absolute -bottom-[30px] scale-x-[2]', dailyModal && '-top-[510px]')}>
+			<View pointerEvents="none" className={clsx('absolute inset-0 z-0', dailyModal && 'hidden')}>
+				<View className={clsx('absolute -bottom-[25px] scale-x-[2]')}>
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
 			</View>
 			<View className={clsx('flex items-center gap-2 overflow-hidden rounded-3xl p-4', dailyModal && 'gap-0')}>
-				{Platform.OS === 'web' && name && country && (
-					<View className={clsx('relative z-10 flex-col items-center')}>
-						<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
-							{name}
-						</StyledText>
-						<StyledText type="country" className={clsx('!text-white opacity-70')} style={textShadowStyle}>
-							{country}
-						</StyledText>
-					</View>
-				)}
+				<View pointerEvents="none" className={clsx('absolute -bottom-[30px] z-0', !dailyModal && 'hidden')}>
+					<WeatherLandscape code={code} isDay={isDay} />
+				</View>
 				<View className={clsx('relative z-10 flex-row items-center justify-center gap-4')}>
 					<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} source={currentSource} />
 					<View className={clsx('items-center')}>

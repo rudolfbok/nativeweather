@@ -10,7 +10,7 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
-	const { modalBg } = useThemeColors();
+	const { modalBg, text } = useThemeColors();
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
@@ -26,6 +26,7 @@ export default function ModalsLayout() {
 			screenOptions={{
 				headerTransparent: true,
 				headerBackButtonDisplayMode: 'minimal',
+				headerTitleStyle: { color: text },
 				headerRight: () => (
 					<Pressable
 						onPress={() => router.replace('/(tabs)/(weather)/[city]')}

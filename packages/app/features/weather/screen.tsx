@@ -6,13 +6,12 @@ import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/database/useStorage';
-import { weatherLandscapeBg, weatherLandscapeText } from 'app/utils/mappings/landscapeColors';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, View } from 'react-native';
-import Animated, { FadeIn, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -21,7 +20,7 @@ export const WeatherFeature = () => {
 	const { text } = useThemeColors();
 	const [refreshing, setRefreshing] = useState(false);
 	const [landscapeHeight, setLandscapeHeight] = useState(0);
-	const [showHeaderBackground, setShowHeaderBackground] = useState(false);
+	const [shouldChangeColor, setShouldChangeColor] = useState(false);
 	const refreshProgress = useSharedValue(0);
 	const navigation = useNavigation();
 
@@ -30,28 +29,11 @@ export const WeatherFeature = () => {
 	}, [refreshing, refreshProgress]);
 
 	useEffect(() => {
-		const headerBackgroundColor = weatherData
-			? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
-			: undefined;
-		const headerTextColor = weatherData
-			? weatherLandscapeText({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
-			: text;
-
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: weatherData.location.name,
-				headerTintColor: headerTextColor,
-				headerTitleStyle: { color: headerTextColor },
-				headerBackground:
-					showHeaderBackground && headerBackgroundColor
-						? () => (
-							<Animated.View
-								entering={FadeIn.duration(200)}
-								className="flex-1"
-								style={{ backgroundColor: headerBackgroundColor }}
-							/>
-						)
-						: undefined,
+				headerTintColor: shouldChangeColor ? text : 'white',
+				headerTitleStyle: { color: shouldChangeColor ? text : 'white' },
 			});
 		} else {
 			navigation.setOptions({
@@ -60,13 +42,12 @@ export const WeatherFeature = () => {
 				headerTitleStyle: { color: text },
 			});
 		}
-	}, [navigation, showHeaderBackground, t, text, weatherData]);
+	}, [navigation, shouldChangeColor, t, text, weatherData]);
 
 	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-		const shouldShowHeaderBackground = landscapeHeight > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight;
-		setShowHeaderBackground((current) =>
-			current === shouldShowHeaderBackground ? current : shouldShowHeaderBackground
-		);
+		const changeColor =
+			landscapeHeight - 50 > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight - 50;
+		setShouldChangeColor((current) => (current === changeColor ? current : changeColor));
 	};
 
 	const onRefresh = async () => {
