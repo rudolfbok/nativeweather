@@ -9,6 +9,7 @@ import { NoColorMapIcon } from 'app/components/icons/maps/NoColorMapIcon';
 import { ThermometerIcon } from 'app/components/icons/maps/ThermometerIcon';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
+import { shadow } from 'app/constants/shadow';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { CloudOff, InfoIcon } from 'lucide-react-native';
@@ -94,12 +95,7 @@ export const MapControls = ({
 			{showLegend && (
 				<View className="ios:bottom-28 absolute bottom-4 right-4 max-md:left-4">
 					<AnimatedView duration={30}>
-						<RoundView
-							className={clsx(
-								'w-full border border-black/10 p-4 md:w-96 dark:border-white/10',
-								Platform.OS !== 'macos' && 'shadow-md dark:shadow-white/10'
-							)}
-						>
+						<RoundView className={clsx('w-full border border-black/10 p-4 md:w-96 dark:border-white/10', shadow)}>
 							<View className="flex w-full flex-row items-center justify-between">
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}

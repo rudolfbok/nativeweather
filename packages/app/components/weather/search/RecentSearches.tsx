@@ -1,4 +1,5 @@
 import type { City } from 'app/types/city';
+import { shadow } from 'app/constants/shadow';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { SearchResult } from './SearchResult';
@@ -12,15 +13,11 @@ const recentSearchesCount = Platform.OS === 'web' || Platform.OS === 'macos' ? 5
 
 export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps) => {
 	return (
-		<View
-			className={clsx(
-				'web:px-6 w-full items-center',
-				'macos:absolute macos:left-0 macos:right-0 macos:top-16 macos:z-50'
-			)}
-		>
+		<View className={clsx('web:px-6 w-full items-center')}>
 			<View
 				className={clsx(
-					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/10'
+					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl',
+					shadow
 				)}
 			>
 				{(recentSearches || []).slice(0, recentSearchesCount).map((item, index) => (

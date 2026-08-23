@@ -1,11 +1,17 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useStorageString } from 'app/database/useStorage';
-import { WeatherLandscape } from 'app/utils/mappings/landscapes';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWeather } from 'app/hooks/weather/useWeather';
+import { extractCity } from 'app/utils/extractCity';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
-import { MoveDown, MoveUp } from 'lucide-react-native';
-import { StyleSheet, View } from 'react-native';
+import { WeatherLandscape } from 'app/utils/mappings/landscapes';
+import { clsx } from 'clsx';
+import { MoveDown, MoveUp, Star } from 'lucide-react-native';
+import { useEffect } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -61,9 +67,18 @@ export const MainWeather = ({
 	condition,
 	dailyModal = false,
 }: MainWeatherProps) => {
+	const weatherData = useWeather((state) => state.weatherData);
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
+	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
+
+	useEffect(() => {
+		if (!weatherData) return;
+
+		const city = extractCity(weatherData);
+		setIsFavorite(isCityInFavorites(city));
+	}, [setIsFavorite, weatherData]);
 
 	return (
 		<View
@@ -131,6 +146,13 @@ export const MainWeather = ({
 					{condition}
 				</StyledText>
 			</View>
+			<Pressable
+				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
+				className={clsx('absolute bottom-4 right-4 z-20 lg:p-2', dailyModal && 'hidden')}
+				style={{ cursor: 'pointer' }}
+			>
+				<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
+			</Pressable>
 		</View>
 	);
 };

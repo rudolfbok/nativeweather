@@ -3,6 +3,7 @@ import { GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native'
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/layout/CardHeader';
+import { border } from 'app/constants/border';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -31,6 +32,7 @@ export const DataCard = ({
 				onPress={onPress}
 				className={clsx(
 					'web:w-full ios:h-[173px] aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
+					border,
 					className
 				)}
 				liquidGlass={true}

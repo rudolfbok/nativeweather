@@ -4,6 +4,7 @@ import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { NormalizedData } from 'app/types/normalizedData';
 import { useTolgee } from '@tolgee/react';
+import { border } from 'app/constants/border';
 
 interface DaysToggleProps {
 	days: NormalizedData['forecast']['forecastday'];
@@ -24,7 +25,7 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 					<StyledPressable
 						key={day.date}
 						onPress={() => onSelectDay(day)}
-						className={clsx('min-h-11 w-[45px] flex-1 items-center justify-center rounded-3xl py-2')}
+						className={clsx('min-h-11 w-[45px] flex-1 items-center justify-center rounded-3xl py-2', border)}
 						liquidGlass={true}
 					>
 						<StyledText type="body" className={clsx('font-semibold')}>

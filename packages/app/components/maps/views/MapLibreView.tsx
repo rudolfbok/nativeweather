@@ -2,11 +2,13 @@ import { Camera, Layer, Map, RasterSource } from '@maplibre/maplibre-react-nativ
 import type { CameraRef, MapProps, MapRef } from '@maplibre/maplibre-react-native';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { shadow } from 'app/constants/shadow';
 import { getBaseMapUrl, getWeatherTileUrl, MapLoadStatus, weatherRasterPaint } from 'app/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
 import { useMapLayer } from 'app/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { useWeather } from 'app/hooks/weather/useWeather';
+import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, Platform, View } from 'react-native';
 import { MapCompass } from '../ui/MapCompass';
@@ -153,7 +155,12 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 
 			{showLoading && (
 				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
-					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3 shadow-lg">
+					<View
+						className={clsx(
+							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
+							shadow
+						)}
+					>
 						<ActivityIndicator size="small" color="#007AFF" />
 						<StyledText type="body" className="font-semibold">
 							{t('maps.loading')}

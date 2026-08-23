@@ -9,10 +9,12 @@ import {
 	WEATHER_SOURCE_ID,
 } from 'app/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
+import { shadow } from 'app/constants/shadow';
 import { useMapLayer } from 'app/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';
+import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, View } from 'react-native';
 import { MapCompass } from '../ui/MapCompass';
@@ -237,7 +239,12 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			{showCompass && <MapCompass bearing={bearing} onPress={() => map?.resetNorth({ duration: 300 })} />}
 			{showLoading && (
 				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
-					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3 shadow-lg">
+					<View
+						className={clsx(
+							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
+							shadow
+						)}
+					>
 						<ActivityIndicator size="small" color="#007AFF" />
 						<StyledText type="body" className="font-semibold">
 							{t('maps.loading')}

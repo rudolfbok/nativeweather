@@ -28,6 +28,7 @@ interface RefreshFavoritesProps {
 export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {}) => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
+	const [favoriteCitiesValue] = useStorageString('favoriteCities');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
@@ -117,8 +118,9 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 	};
 
 	useEffect(() => {
+		if (favoriteCitiesValue !== undefined) setFavoriteCount(getFavoriteCities().length);
 		if (refresh) void refreshFavoriteCities({ displayToast: false });
-	}, [currentSource, refresh]);
+	}, [currentSource, favoriteCitiesValue, refresh]);
 
 	useEffect(
 		() => () => {

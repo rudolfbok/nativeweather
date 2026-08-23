@@ -17,14 +17,6 @@ import { Platform, View } from 'react-native';
 import pkg from '../../../../apps/web/package.json';
 import { ReactNode } from 'react';
 
-const SettingsSection = ({ children }: { children: ReactNode }) => {
-	return (
-		<View className="dark:bg-secondarySystemBackground_dark flex overflow-hidden rounded-3xl !bg-black">
-			{children}
-		</View>
-	);
-};
-
 export const SettingsFeature = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 	const { t } = useTranslate('settings');
@@ -35,10 +27,10 @@ export const SettingsFeature = () => {
 				{t('settings')}
 			</StyledText>
 			<View className={clsx('gap-4')}>
-				<SettingsSection>
+				<RoundView>
 					<ThemeButton />
 					<LanguageButton />
-				</SettingsSection>
+				</RoundView>
 				{/* <RoundView>
 					<SourceButton />
 				</RoundView> */}

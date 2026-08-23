@@ -1,6 +1,5 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
-import { SearchBar } from 'app/components/weather/search/SearchBar';
 import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
@@ -23,9 +22,9 @@ export const Sidebar = () => {
 
 	return (
 		<View className="my-4 ml-4 w-[340px] justify-between rounded-3xl bg-systemBackground dark:bg-secondarySystemBackground_dark">
-			<View className="relative z-20 mx-4 mt-4">
+			{/* <View className="relative z-20 mx-4 mt-4">
 				<SearchBar />
-			</View>
+			</View> */}
 			<ScrollView className="z-0 flex-1" contentContainerClassName="flex h-full p-4">
 				<View className="w-full">
 					<FavoriteCities hook={favoriteHook} />

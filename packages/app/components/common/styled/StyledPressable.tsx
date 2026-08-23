@@ -1,3 +1,4 @@
+import { border } from 'app/constants/border';
 import { variants } from 'app/constants/pressableVariants';
 import { clsx } from 'clsx';
 import {

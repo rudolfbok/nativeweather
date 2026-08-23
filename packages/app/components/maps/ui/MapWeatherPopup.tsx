@@ -1,11 +1,12 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
+import { shadow } from 'app/constants/shadow';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { ActivityIndicator, LayoutChangeEvent, Platform, Pressable, View } from 'react-native';
+import { ActivityIndicator, LayoutChangeEvent, Pressable, View } from 'react-native';
 
 type Size = { width: number; height: number };
 type Point = { x: number; y: number };
@@ -48,7 +49,7 @@ export const MapWeatherPopup = ({
 			onPressIn={onInteraction}
 			className={clsx(
 				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3',
-				Platform.OS !== 'macos' && 'shadow-md dark:shadow-white/10',
+				shadow,
 				weatherPoint.status === 'loading' && 'w-12',
 				'dark:bg-secondarySystemBackground_dark dark:border-white/10'
 			)}
@@ -61,7 +62,9 @@ export const MapWeatherPopup = ({
 							{title}
 						</StyledText>
 					)}
-					{weatherPoint.status === 'loading' && <ActivityIndicator className="self-center" size="small" color="#007AFF" />}
+					{weatherPoint.status === 'loading' && (
+						<ActivityIndicator className="self-center" size="small" color="#007AFF" />
+					)}
 					{weatherPoint.status === 'error' && (
 						<StyledText type="bodysecondary" className="mt-1 font-semibold">
 							{errorLabel}
@@ -86,11 +89,7 @@ export const MapWeatherPopup = ({
 					)}
 				</View>
 				{weatherPoint.status !== 'loading' && (
-					<StyledPressable
-						onPressIn={onInteraction}
-						onPress={onClose}
-						className="h-fit rounded-full p-1"
-					>
+					<StyledPressable onPressIn={onInteraction} onPress={onClose} className="h-fit rounded-full p-1">
 						<CloseIcon color={text} size={20} />
 					</StyledPressable>
 				)}

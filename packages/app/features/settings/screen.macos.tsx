@@ -16,7 +16,7 @@ export const SettingsFeature = () => {
 		<View className="w-full gap-4">
 			<View className="w-full flex-row items-start gap-4">
 				<View className="flex-1 gap-4">
-					<RoundView className="!bg-black">
+					<RoundView>
 						<ThemeButton />
 						<LanguageButton />
 					</RoundView>

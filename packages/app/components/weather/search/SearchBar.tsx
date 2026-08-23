@@ -4,8 +4,11 @@ import { RecentSearches } from './RecentSearches';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';
 import { clsx } from 'clsx';
+import { useEffect, useRef } from 'react';
+import { Platform } from 'react-native';
 
 export const SearchBar = () => {
+	const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const {
 		searchValue,
 		setSearchValue,
@@ -20,6 +23,13 @@ export const SearchBar = () => {
 		addToRecentSearches,
 	} = useSearchController();
 
+	useEffect(
+		() => () => {
+			if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
+		},
+		[]
+	);
+
 	return (
 		<>
 			<SearchInput
@@ -27,15 +37,22 @@ export const SearchBar = () => {
 				isFocused={isSearchBarFocused}
 				onChangeText={setSearchValue}
 				clearSearch={() => setSearchValue('')}
-				onFocus={() => setIsSearchBarFocused(true)}
+				onFocus={() => {
+					if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
+					setIsSearchBarFocused(true);
+				}}
 				performSearch={async () => {
 					await handleInputSearch(searchValue);
 				}}
 				onBlur={() => {
-					setTimeout(() => setIsSearchBarFocused(false), 130);
+					if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
+					blurTimeoutRef.current = setTimeout(() => {
+						setIsSearchBarFocused(false);
+						blurTimeoutRef.current = null;
+					}, 130);
 				}}
 			/>
-			{showRecentSearches && (
+			{((Platform.OS === 'macos' && !showSuggestions) || showRecentSearches) && (
 				<AnimatedView duration={20} className={clsx('w-full')}>
 					<RecentSearches recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
 				</AnimatedView>

@@ -15,6 +15,7 @@ import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
+import { border } from 'app/constants/border';
 
 export const AirQuality = ({ className }: { className?: string }) => {
 	const airQualityData = useWeather((state) => state.airQualityData);
@@ -57,7 +58,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		<>
 			<StyledPressable
 				onPress={navigateToAirQuality}
-				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', className)}
+				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', border, className)}
 				liquidGlass={true}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />

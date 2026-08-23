@@ -1,6 +1,7 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { DotIndicator } from 'app/components/icons/ui/DotIndicator';
+import { border } from 'app/constants/border';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 
@@ -18,7 +19,8 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'ios:w-[48%] ios:basis-[48%] macos:flex-grow web:w-full ios:h-[173px] macos:h-[130px] macos:aspect-video web:h-full aspect-square justify-between rounded-3xl p-4'
+				'ios:w-[48%] ios:basis-[48%] macos:flex-grow web:w-full ios:h-[173px] macos:h-[130px] macos:aspect-video web:h-full aspect-square justify-between rounded-3xl p-4',
+				border
 			)}
 			liquidGlass={true}
 		>

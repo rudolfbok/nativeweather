@@ -6,6 +6,7 @@ import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
 import { CardHeader } from '../layout/CardHeader';
 import { useState } from 'react';
+import { border } from 'app/constants/border';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -48,7 +49,7 @@ export const ModalHeader = ({
 					)}
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
-				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5')}>
+				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
 					<CloseIcon size={26} />
 				</StyledPressable>
 			</View>
