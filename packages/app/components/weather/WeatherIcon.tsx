@@ -9,8 +9,6 @@ interface MapWeatherIconsProps {
 	source: string;
 }
 
-export const WeatherIcon = ({ code, isDay, width, height, strokeWidth, source }: MapWeatherIconsProps) => {
-	if (source === 'weatherapi') {
-		return <WeatherAPIMainIcon code={code} isDay={isDay} width={width} height={height} strokeWidth={strokeWidth} />;
-	}
-};
+export const WeatherIcon = ({ code, isDay, width, height, strokeWidth }: MapWeatherIconsProps) => (
+	<WeatherAPIMainIcon code={code} isDay={isDay} width={width} height={height} strokeWidth={strokeWidth} />
+);

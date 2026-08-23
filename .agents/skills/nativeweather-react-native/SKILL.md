@@ -55,6 +55,15 @@ Run that from `packages/app` for shared code, `apps/web` for web parity, and `ap
 - Keep weather source logic centralized; do not duplicate provider branching inside components.
 - Persist only actual user preferences or app state that must survive restart.
 
+## Weather Sources
+
+- Treat additional providers as experimental until the user explicitly promotes them to the main product experience.
+- Use WeatherAPI search as the canonical source for city name, region, country, coordinates, and resulting slugs. Other providers supply weather data for those coordinates and must not replace the canonical location identity.
+- Normalize provider conditions to the existing WeatherAPI condition codes at the adapter boundary. `WeatherIcon` and `useMapConditions` should consume normalized codes without branching on `currentSource`.
+- Keep provider selection and response mapping in the API layer. Components may react to normalized capabilities, but should not inspect raw provider payloads.
+- Do not ship provider keys in shared client code. Route authenticated provider requests through the project API before production rollout.
+- Account for homepage fan-out when testing providers with concurrency or quota limits. Prefer centralized caching or request coordination over provider-specific throttling in UI hooks.
+
 ## UI And Performance
 
 - Strings in React Native UI belong inside text components.
