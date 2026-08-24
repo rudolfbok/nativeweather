@@ -1,18 +1,21 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/styled/RoundView';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import { ArrowDownIcon } from 'app/components/icons/ui/ArrowDownIcon';
+import { ArrowUpIcon } from 'app/components/icons/ui/ArrowUpIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useWeather } from 'app/hooks/weather/useWeather';
+import { textOutline } from 'app/constants/textOutline';
 import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useStorageString } from 'app/database/useStorage';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { extractCity } from 'app/utils/extractCity';
-import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
+import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { clsx } from 'clsx';
-import { MoveDown, MoveUp, Star } from 'lucide-react-native';
+import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 interface MainWeatherProps {
 	name?: string;
@@ -33,16 +36,6 @@ interface MainWeatherProps {
 	conditionStyle?: string;
 	dailyModal?: boolean;
 }
-
-const textShadowStyle = {
-	textShadowColor: 'rgba(0,0,0,0.5)',
-	textShadowOffset: { width: 2, height: 2 },
-	textShadowRadius: 4,
-};
-
-const iconShadowStyle = {
-	filter: 'drop-shadow(0px 0px 1px rgba(0,0,0,0.5))',
-} as const;
 
 export const MainWeather = ({
 	name,
@@ -87,12 +80,12 @@ export const MainWeather = ({
 					<WeatherLandscape code={code} isDay={isDay} />
 				</View>
 			</View>
-			{Platform.OS === 'web' && name && country && (
+			{name && country && (
 				<View className={clsx('relative z-10 flex-col items-center')}>
-					<StyledText type="city" className={clsx('text-center !text-white')} style={textShadowStyle}>
+					<StyledText type="city" className={clsx('text-center !text-white')} style={textOutline}>
 						{name}
 					</StyledText>
-					<StyledText type="country" className={clsx('!text-white opacity-70')} style={textShadowStyle}>
+					<StyledText type="country" className={clsx('!text-white opacity-70')} style={textOutline}>
 						{country}
 					</StyledText>
 				</View>
@@ -100,7 +93,7 @@ export const MainWeather = ({
 			<View className={clsx('relative z-10 flex-row items-center justify-center gap-4')}>
 				<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} source={currentSource} />
 				<View className={clsx('items-center')}>
-					<StyledText type="maintemp" className={clsx('pl-3', '!text-white')} style={textShadowStyle}>
+					<StyledText type="maintemp" className={clsx('pl-3', '!text-white')} style={textOutline}>
 						{switchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -109,8 +102,8 @@ export const MainWeather = ({
 					</StyledText>
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
-							<MoveDown size={18} color="white" style={iconShadowStyle} />
-							<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
+							<ArrowDownIcon />
+							<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
 								{switchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -119,8 +112,8 @@ export const MainWeather = ({
 							</StyledText>
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
-							<MoveUp size={18} color="white" style={iconShadowStyle} />
-							<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
+							<ArrowUpIcon />
+							<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
 								{switchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -130,7 +123,7 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="body" className={clsx('!text-white')} style={textShadowStyle}>
+						<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
 							{t('feelslike')}{' '}
 							{switchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -146,13 +139,13 @@ export const MainWeather = ({
 				glassEffectStyle="clear"
 				className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-lg', conditionStyle)}
 			>
-				<StyledText type="title" className={clsx('!text-white')} style={textShadowStyle}>
+				<StyledText type="title" className={clsx('!text-white')} style={textOutline}>
 					{condition}
 				</StyledText>
 			</RoundView>
 			<Pressable
 				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
-				className={clsx('native:hidden absolute bottom-4 right-4 z-20 lg:p-2', dailyModal && 'hidden')}
+				className={clsx('absolute bottom-4 right-4 z-20 lg:p-2', dailyModal && 'hidden')}
 			>
 				<Star color="#FE9804" fill={isFavorite ? '#FE9804' : 'transparent'} size={30} />
 			</Pressable>

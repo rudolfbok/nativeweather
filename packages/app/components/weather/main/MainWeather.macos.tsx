@@ -1,6 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { ArrowDownIcon } from 'app/components/icons/ui/ArrowDownIcon';
+import { ArrowUpIcon } from 'app/components/icons/ui/ArrowUpIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { textOutline } from 'app/constants/textOutline';
 import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useStorageString } from 'app/database/useStorage';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
@@ -9,7 +12,7 @@ import { extractCity } from 'app/utils/extractCity';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { clsx } from 'clsx';
-import { MoveDown, MoveUp, Star } from 'lucide-react-native';
+import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -32,12 +35,6 @@ interface MainWeatherProps {
 	conditionStyle?: string;
 	dailyModal?: boolean;
 }
-
-const textShadowStyle = {
-	textShadowColor: 'rgba(0,0,0,0.5)',
-	textShadowOffset: { width: 1, height: 1 },
-	textShadowRadius: 3,
-};
 
 const landscapeStyle = StyleSheet.create({
 	dailyFrame: {
@@ -94,10 +91,10 @@ export const MainWeather = ({
 			</View>
 			{name && country && (
 				<View className="relative z-10 items-center">
-					<StyledText type="city" className="text-center !text-white" style={textShadowStyle}>
+					<StyledText type="city" className="text-center !text-white" style={textOutline}>
 						{name}
 					</StyledText>
-					<StyledText type="country" className="!text-white opacity-70" style={textShadowStyle}>
+					<StyledText type="country" className="!text-white opacity-70" style={textOutline}>
 						{country}
 					</StyledText>
 				</View>
@@ -112,25 +109,25 @@ export const MainWeather = ({
 					source={currentSource ?? 'weatherapi'}
 				/>
 				<View className="items-center">
-					<StyledText type="maintemp" className="pl-3 !text-white" style={textShadowStyle}>
+					<StyledText type="maintemp" className="pl-3 !text-white" style={textOutline}>
 						{switchTemp({ celsius: currentTempC, fahrenheit: currentTempF, currentTemp: currentTemperature })}
 					</StyledText>
 					<View className="flex-row items-center gap-1">
 						<View className="flex-row items-center">
-							<MoveDown size={18} color="white" />
-							<StyledText type="body" className="!text-white" style={textShadowStyle}>
+							<ArrowDownIcon />
+							<StyledText type="body" className="!text-white" style={textOutline}>
 								{switchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp: currentTemperature })}
 							</StyledText>
 						</View>
 						<View className="flex-row items-center">
-							<MoveUp size={18} color="white" />
-							<StyledText type="body" className="!text-white" style={textShadowStyle}>
+							<ArrowUpIcon />
+							<StyledText type="body" className="!text-white" style={textOutline}>
 								{switchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp: currentTemperature })}
 							</StyledText>
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="body" className="!text-white" style={textShadowStyle}>
+						<StyledText type="body" className="!text-white" style={textOutline}>
 							{t('feelslike')}{' '}
 							{switchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -142,7 +139,7 @@ export const MainWeather = ({
 				</View>
 			</View>
 			<View className="relative z-10 rounded-full bg-black/10 px-4 py-2">
-				<StyledText type="title" className="!text-white" style={textShadowStyle}>
+				<StyledText type="title" className="!text-white" style={textOutline}>
 					{condition}
 				</StyledText>
 			</View>

@@ -9,6 +9,7 @@ import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from 'app/utils/notifications/showToast';
 import { variants } from 'app/constants/pressableVariants';
+import { border } from 'app/constants/border';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
@@ -80,10 +81,19 @@ export const FeedbackFeature = () => {
 				</View>
 				<View className={clsx('gap-2')}>
 					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
-					<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark web:md:w-[320px] w-full overflow-hidden rounded-3xl">
+					<View
+						className={clsx(
+							'bg-systemBackground dark:bg-secondarySystemBackground_dark web:md:w-[320px] w-full overflow-hidden rounded-3xl',
+							open && border
+						)}
+					>
 						<Pressable
 							onPress={() => setOpen((prev) => !prev)}
-							className="hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden p-4"
+							className={clsx(
+								'hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden rounded-3xl p-4',
+								!open && border,
+								open && '!rounded-bl-none !rounded-br-none'
+							)}
 							style={{ cursor: 'pointer' }}
 						>
 							<View className="flex-row items-center gap-3">
@@ -124,7 +134,8 @@ export const FeedbackFeature = () => {
 						textAlignVertical="top"
 						placeholderTextColor="#8E8E93"
 						className={clsx(
-							'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl border border-transparent p-4 text-base outline-none'
+							'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl p-4 text-base outline-none',
+							border
 						)}
 					/>
 				</View>

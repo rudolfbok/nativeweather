@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { Ref } from 'react';
 import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
 import { ModalHeader } from './ModalHeader';
+import { border } from 'app/constants/border';
 
 interface StyledModalProps {
 	visible: boolean;
@@ -57,7 +58,7 @@ export const StyledModal = ({
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'h-[100dvh] w-full md:h-fit',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					showBackdrop && 'dark:shadow-[0px_0px_2px] dark:shadow-white/40',
+					border,
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					airQualityModal && 'w-full md:w-[600px]',
 					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
