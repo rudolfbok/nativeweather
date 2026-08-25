@@ -58,7 +58,7 @@ export const StyledModal = ({
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'h-[100dvh] w-full md:h-fit',
 					'md:m-auto md:max-h-[85vh] md:max-w-2xl md:rounded-3xl lg:max-w-3xl',
-					border,
+					'border-black/15 md:border dark:border-white/15',
 					settingsModal && 'md:max-w-md lg:max-w-lg',
 					airQualityModal && 'w-full md:w-[600px]',
 					mapsModal && 'min-h-[80vh] lg:max-w-5xl'
