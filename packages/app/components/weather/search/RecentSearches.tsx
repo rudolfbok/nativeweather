@@ -1,8 +1,8 @@
 import type { City } from 'app/types/city';
-import { shadow } from 'app/constants/shadow';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { SearchResult } from './SearchResult';
+import { border } from 'app/constants/border';
 
 interface RecentSearchesProps {
 	recentSearches: City[];
@@ -17,7 +17,7 @@ export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps
 			<View
 				className={clsx(
 					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl',
-					shadow
+					border
 				)}
 			>
 				{(recentSearches || []).slice(0, recentSearchesCount).map((item, index) => (

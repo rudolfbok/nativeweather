@@ -2,7 +2,7 @@ import { Camera, Layer, Map, RasterSource } from '@maplibre/maplibre-react-nativ
 import type { CameraRef, MapProps, MapRef } from '@maplibre/maplibre-react-native';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { shadow } from 'app/constants/shadow';
+import { border } from 'app/constants/border';
 import { getBaseMapUrl, getWeatherTileUrl, MapLoadStatus, weatherRasterPaint } from 'app/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
 import { useMapLayer } from 'app/hooks/maps/useMapLayer';
@@ -158,7 +158,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 					<View
 						className={clsx(
 							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
-							shadow
+							border
 						)}
 					>
 						<ActivityIndicator size="small" color="#007AFF" />

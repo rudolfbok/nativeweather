@@ -1,7 +1,7 @@
 import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { shadow } from 'app/constants/shadow';
+import { border } from 'app/constants/border';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
@@ -49,7 +49,7 @@ export const MapWeatherPopup = ({
 			onPressIn={onInteraction}
 			className={clsx(
 				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3',
-				shadow,
+				border,
 				weatherPoint.status === 'loading' && 'w-12',
 				'dark:bg-secondarySystemBackground_dark dark:border-white/10'
 			)}

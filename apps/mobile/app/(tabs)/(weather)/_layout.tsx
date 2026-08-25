@@ -1,15 +1,14 @@
 import { useTranslate } from '@tolgee/react';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
-import { useWeather } from 'app/hooks/weather/useWeather';
 import { isCityInFavorites } from 'app/database/crudMMKVService';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { extractCity } from 'app/utils/extractCity';
 import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Platform, Pressable } from 'react-native';
-import type { ColorValue } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
@@ -23,7 +22,7 @@ export default function TabLayout() {
 		setIsFavorite(isCityInFavorites(city));
 	}, [setIsFavorite, weatherData]);
 
-	const LeftButton = ({ color }: { color: ColorValue }) => {
+	const LeftButton = () => {
 		return (
 			<Pressable
 				onPress={() => console.log('Shared button was clicked!')}
@@ -34,7 +33,7 @@ export default function TabLayout() {
 		);
 	};
 
-	const RightButton = ({ color }: { color: ColorValue }) => {
+	const RightButton = () => {
 		if (!weatherData) return null;
 
 		return (
@@ -58,14 +57,14 @@ export default function TabLayout() {
 				name="[city]"
 				options={{
 					title: t('tab.weather'),
-					headerLeft: ({ tintColor }) => weatherData && <LeftButton color={tintColor ?? text} />,
-					headerRight: ({ tintColor }) => weatherData && <RightButton color={tintColor ?? text} />,
+					headerLeft: () => weatherData && <LeftButton />,
+					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,
 					headerTransparent: true,
-					headerTintColor: weatherData ? 'white' : text,
+					// headerTintColor: weatherData ? 'white' : text,
 					// headerBackground: () =>
 					// 	headerBackgroundColor ? <View style={{ flex: 1, backgroundColor: '#77CFE2' }} /> : null,
-					headerTitleAlign: 'center',
+					// headerTitleAlign: 'center',
 					// headerTitleStyle: { color: headerTextColor },
 					// headerTitle: () => <StyledText type="title">Hey</StyledText>,
 					contentStyle: {

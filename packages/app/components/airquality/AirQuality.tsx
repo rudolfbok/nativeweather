@@ -11,7 +11,7 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from 'app/hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
@@ -58,7 +58,11 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		<>
 			<StyledPressable
 				onPress={navigateToAirQuality}
-				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', border, className)}
+				className={clsx(
+					'col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4',
+					Platform.OS !== 'ios' && border,
+					className
+				)}
 				liquidGlass={true}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />

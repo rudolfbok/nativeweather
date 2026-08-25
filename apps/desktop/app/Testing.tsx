@@ -4,14 +4,11 @@ import { View } from 'react-native';
 
 export const Testing = () => {
 	return (
-		<View className="w-full items-center p-4">
-			<View className="w-full gap-4">
-				<StyledText type="body" className="!text-3xl font-semibold">
-					Search
-				</StyledText>
-
-				<SearchBar />
-			</View>
+		<View className="w-full items-center gap-4 p-4">
+			<StyledText type="body" className="!text-3xl font-semibold">
+				Search
+			</StyledText>
+			<SearchBar />
 		</View>
 	);
 };

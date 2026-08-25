@@ -9,7 +9,7 @@ import {
 	WEATHER_SOURCE_ID,
 } from 'app/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from 'app/constants/weatherMap';
-import { shadow } from 'app/constants/shadow';
+import { border } from 'app/constants/border';
 import { useMapLayer } from 'app/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from 'app/hooks/maps/useMapWeatherPoint';
 import { useWeather } from 'app/hooks/weather/useWeather';
@@ -242,7 +242,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 					<View
 						className={clsx(
 							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
-							shadow
+							border
 						)}
 					>
 						<ActivityIndicator size="small" color="#007AFF" />

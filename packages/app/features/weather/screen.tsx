@@ -31,7 +31,11 @@ export const WeatherFeature = () => {
 	useEffect(() => {
 		if (weatherData) {
 			navigation.setOptions({
-				headerTitle: weatherData.location.name,
+				headerTitle: () => (
+					<StyledText type="title" style={{ color: shouldChangeColor ? text : 'white' }}>
+						{weatherData.location.name}
+					</StyledText>
+				),
 				headerTintColor: shouldChangeColor ? text : 'white',
 				headerTitleStyle: { color: shouldChangeColor ? text : 'white' },
 			});
@@ -45,8 +49,7 @@ export const WeatherFeature = () => {
 	}, [navigation, shouldChangeColor, t, text, weatherData]);
 
 	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-		const changeColor =
-			landscapeHeight - 50 > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight - 50;
+		const changeColor = landscapeHeight - 50 > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight - 50;
 		setShouldChangeColor((current) => (current === changeColor ? current : changeColor));
 	};
 
