@@ -39,13 +39,13 @@ export const WeatherFeature = () => {
 			if (!controller.signal.aborted && data) {
 				const path = buildSlug(data);
 				if (path !== currentPath) router.replace(path);
-				void setWeatherData(data);
+				setWeatherData(data);
 			}
 
 			if (!controller.signal.aborted) setLoading(false);
 		};
 
-		void loadWeather();
+		loadWeather();
 		return () => controller.abort();
 	}, [country, currentSource, params.city, region, router, setWeatherData]);
 

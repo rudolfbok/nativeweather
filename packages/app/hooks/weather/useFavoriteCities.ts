@@ -52,7 +52,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 
 			if (showLocalWeather && localWeatherData) {
 				const weatherData = await fetchWeather(
-					`${localWeatherData.location.name}, ${localWeatherData.location.country}`,
+					[localWeatherData.location.lat, localWeatherData.location.lon],
 					currentSource,
 					{ signal: controller.signal }
 				);
@@ -119,7 +119,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 
 	useEffect(() => {
 		if (favoriteCitiesValue !== undefined) setFavoriteCount(getFavoriteCities().length);
-		if (refresh) void refreshFavoriteCities({ displayToast: false });
+		if (refresh) refreshFavoriteCities({ displayToast: false });
 	}, [currentSource, favoriteCitiesValue, refresh]);
 
 	useEffect(

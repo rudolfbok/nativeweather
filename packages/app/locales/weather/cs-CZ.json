@@ -265,8 +265,14 @@
 	"localtime": "Místní čas",
 	"localweather": {
 		"error": {
-			"followup": "Zkontrolujte prosím přístup k poloze a připojení k síti",
-			"notavailable": "Předpověď počasí není k dispozici"
+			"permission": { "title": "Přístup k poloze je zablokovaný", "message": "Povolte přístup k poloze v nastavení zařízení nebo prohlížeče." },
+			"unavailable": { "title": "Poloha není dostupná", "message": "Zařízení nedokázalo určit vaši aktuální polohu." },
+			"timeout": { "title": "Požadavek na polohu vypršel", "message": "Zkuste to znovu na místě s lepším GPS nebo síťovým signálem." },
+			"network": { "title": "Nelze se spojit se službou počasí", "message": "Zkontrolujte připojení k internetu a zkuste to znovu." },
+			"server": { "title": "Služba počasí není dostupná", "message": "Poskytovatel počasí vrátil chybu. Zkuste to později." },
+			"source": { "title": "Zdroj počasí není nastavený", "message": "Před načtením místního počasí vyberte zdroj v Nastavení." },
+			"unknown": { "title": "Místní počasí se nepodařilo načíst", "message": "Při načítání místního počasí došlo k neočekávané chybě." },
+			"retry": "Zkusit znovu"
 		},
 		"title": "Místní počasí"
 	},

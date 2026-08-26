@@ -45,7 +45,7 @@ export const useSearchController = () => {
 		});
 		if (controller.signal.aborted) return;
 		if (weatherData) {
-			void setWeatherData(weatherData);
+			setWeatherData(weatherData);
 			if (Platform.OS === 'macos') {
 				setNavigationScreen('weather');
 			} else {
@@ -70,7 +70,7 @@ export const useSearchController = () => {
 		const weatherData = await fetchWeather(query, currentSource, { signal: controller.signal });
 		if (controller.signal.aborted) return false;
 		if (weatherData) {
-			void setWeatherData(weatherData);
+			setWeatherData(weatherData);
 			setIsSearchBarFocused(false);
 			setSearchValue('');
 			if (Platform.OS === 'macos') {

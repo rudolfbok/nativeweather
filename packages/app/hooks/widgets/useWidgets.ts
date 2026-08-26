@@ -78,7 +78,7 @@ export const useWidgets = () => {
 		}
 
 		let cancelled = false;
-		void getWeatherIconUri({
+		getWeatherIconUri({
 			isDay: localWeatherData.current.isDay,
 			code: localWeatherData.current.condition.code,
 		})
@@ -99,7 +99,7 @@ export const useWidgets = () => {
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor || !condition) return;
 
-		void updateWidgetSnapshot(
+		updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/MediumLocal'),
 			{
 				imagePath: imagePathURI,
@@ -131,7 +131,7 @@ export const useWidgets = () => {
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !localAQIData || !bgColor) return;
 
-		void updateWidgetSnapshot(
+		updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/MediumAQI'),
 			{
 				PM25: localAQIData.current.pm2_5,
@@ -153,7 +153,7 @@ export const useWidgets = () => {
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor) return;
 
-		void updateWidgetSnapshot(
+		updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/SmallLocal'),
 			{
 				temp: localTemp,
@@ -172,7 +172,7 @@ export const useWidgets = () => {
 
 		const currentAQISelected = currentAQI === 'EU' ? localAQIData.current.european_aqi : localAQIData.current.us_aqi;
 
-		void updateWidgetSnapshot(
+		updateWidgetSnapshot(
 			() => import('app/components/weather/widgets/SmallAQI'),
 			{
 				AQI: currentAQISelected,

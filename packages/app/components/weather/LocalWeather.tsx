@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/styled/RoundView';
-import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
+import { StyledText } from 'app/components/common/styled/StyledText';
+import type { LocalWeatherErrorKind } from 'app/hooks/location/locationError';
 import { useSearchController } from 'app/hooks/search/useSearchController';
+import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
@@ -12,12 +13,12 @@ import { CityCard } from './CityCard';
 import { CityCardSkeleton } from './CityCardSkeleton';
 
 interface LocalWeatherProps {
-	error?: boolean;
+	error?: LocalWeatherErrorKind | null;
 }
 
-export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
+export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
 	const { t } = useTranslate('weather');
-	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
+	const { localWeatherData } = useLocalWeather();
 	const { handleCityPress } = useSearchController();
 
 	if (error) {
@@ -25,10 +26,10 @@ export const LocalWeather = ({ error = false }: LocalWeatherProps) => {
 			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
 				<RoundView className={clsx('min-h-[134px] justify-center gap-2 p-4 lg:w-fit')}>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
-						{t('localweather.error.notavailable')}
+						{t(`localweather.error.${error}.title`)}
 					</StyledText>
 					<StyledText type="body" className={clsx('text-center')}>
-						{t('localweather.error.followup')}
+						{t(`localweather.error.${error}.message`)}
 					</StyledText>
 				</RoundView>
 			</View>

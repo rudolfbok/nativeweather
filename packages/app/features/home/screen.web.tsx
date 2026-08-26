@@ -7,7 +7,6 @@ import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useStorageBoolean } from 'app/database/useStorage';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
@@ -18,13 +17,12 @@ export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
 	const favoriteCitiesHook = useFavoriteCities({ refresh: true });
 	const { getLocalWeather, error: localWeatherError } = useLocation();
-	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 
 	useEffect(() => {
-		if (showLocalWeather && !localWeatherData) {
-			void getLocalWeather();
+		if (showLocalWeather) {
+			getLocalWeather();
 		}
-	}, [showLocalWeather, localWeatherData, getLocalWeather]);
+	}, [showLocalWeather, getLocalWeather]);
 
 	return (
 		<AnimatedView duration={25}>
@@ -37,7 +35,7 @@ export const HomeFeature = () => {
 					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
 							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
-							<LocalWeather error={localWeatherError} />
+							<LocalWeather error={localWeatherError} onRetry={getLocalWeather} />
 						</View>
 					)}
 					<FavoriteCities hook={favoriteCitiesHook} />

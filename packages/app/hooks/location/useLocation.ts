@@ -1,13 +1,15 @@
 import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
-import { fetchWeather } from 'app/api/fetchWeather';
+import { fetchWeatherOrThrow } from 'app/api/fetchWeather';
+import { LocalWeatherError, toLocalWeatherError } from './locationError';
+import type { LocalWeatherErrorKind } from './locationError';
 import { useCallback, useRef, useState } from 'react';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useStorageString } from 'app/database/useStorage';
 
 export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
-	const [error, setError] = useState<boolean>(false);
-	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
+	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
+	const { setLocalWeatherData } = useLocalWeather();
 	const isFetchingRef = useRef(false);
 
 	const getLocalWeather = useCallback(async () => {
@@ -16,34 +18,33 @@ export const useLocation = () => {
 		}
 
 		isFetchingRef.current = true;
-		setError(false);
+		setError(null);
 
 		try {
 			if (!currentSource) {
-				setError(true);
-				return null;
+				throw new LocalWeatherError('source', 'No weather source is configured.');
 			}
 
 			const { status: authStatus } = await requestForegroundPermissionsAsync();
 			if (authStatus !== 'granted') {
-				setError(true);
-				return null;
+				throw new LocalWeatherError('permission', 'Location permission was denied.');
 			}
 
-			const { coords } = await getCurrentPositionAsync({
-				accuracy: Accuracy.Balanced,
-			});
+			const { coords } = await Promise.race([
+				getCurrentPositionAsync({ accuracy: Accuracy.Balanced }),
+				new Promise<never>((_, reject) =>
+					setTimeout(() => reject(new LocalWeatherError('timeout', 'Location request timed out.')), 15_000)
+				),
+			]);
 
-			const result = await fetchWeather(`${coords.latitude},${coords.longitude}`, currentSource);
-			if (!result) {
-				setError(true);
-				return null;
-			}
+			const result = await fetchWeatherOrThrow(`${coords.latitude},${coords.longitude}`, currentSource);
 
 			await setLocalWeatherData(result);
 			return result;
-		} catch {
-			setError(true);
+		} catch (caughtError) {
+			const nextError = toLocalWeatherError(caughtError);
+			setError(nextError.kind);
+			console.error('Local weather fetch failed:', caughtError);
 			return null;
 		} finally {
 			isFetchingRef.current = false;

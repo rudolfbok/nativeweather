@@ -9,40 +9,86 @@ import { ArrowRight } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
+type DeviceOrientationEventWithPermission = typeof DeviceOrientationEvent & {
+	requestPermission?: () => Promise<'granted' | 'denied'>;
+};
+
+const getOrientationPermissionApi = () => {
+	if (typeof window === 'undefined' || !('DeviceOrientationEvent' in window)) return null;
+
+	return window.DeviceOrientationEvent as DeviceOrientationEventWithPermission;
+};
+
+const normalizeHeading = (value: number) => (value + 360) % 360;
+
 export const CompassFeature = () => {
 	const { t } = useTranslate('weather');
 	const [compassRotation, setCompassRotation] = useState(0);
 	const [heading, setHeading] = useState<number | null>(null);
 	const [permissionGranted, setPermissionGranted] = useStorageBoolean('compassPermission');
+	const [requestingPermission, setRequestingPermission] = useState(false);
 
 	const requestPermission = async () => {
-		const DeviceOrientationEventWithPermission = DeviceOrientationEvent as any;
+		if (requestingPermission) return;
 
-		if (typeof DeviceOrientationEventWithPermission.requestPermission === 'function') {
-			try {
-				const permission = await DeviceOrientationEventWithPermission.requestPermission();
-				if (permission === 'granted') {
-					setPermissionGranted(true);
-				} else {
-					console.error('Permission denied for device orientation.');
-				}
-			} catch (error) {
-				console.error('Error requesting permission:', error);
+		const orientationApi = getOrientationPermissionApi();
+		if (!orientationApi) {
+			setPermissionGranted(false);
+			return;
+		}
+
+		setRequestingPermission(true);
+		try {
+			const permission = await orientationApi.requestPermission?.();
+			if (permission === 'denied') {
+				setPermissionGranted(false);
+				return;
 			}
-		} else {
+
 			setPermissionGranted(true);
+		} catch (error) {
+			setPermissionGranted(false);
+			console.error('Error requesting device orientation permission:', error);
+		} finally {
+			setRequestingPermission(false);
 		}
 	};
 
 	useEffect(() => {
-		if (!permissionGranted) return;
+		const orientationApi = getOrientationPermissionApi();
+		if (!orientationApi) {
+			setPermissionGranted(false);
+			return;
+		}
 
-		const handleOrientation = (event: any) => {
-			if (event.webkitCompassHeading !== null) {
-				setHeading(event.webkitCompassHeading);
-				setCompassRotation(-event.webkitCompassHeading);
-			}
+		// Safari requires this permission to be requested from a user gesture. A
+		// persisted value cannot be trusted after the user changes browser settings.
+		if (typeof orientationApi.requestPermission === 'function') {
+			setPermissionGranted(false);
+		} else {
+			setPermissionGranted(true);
+		}
+	}, [setPermissionGranted]);
+
+	useEffect(() => {
+		if (permissionGranted !== true) return;
+
+		const handleOrientation = (event: DeviceOrientationEvent & { webkitCompassHeading?: number }) => {
+			const webkitHeading = event.webkitCompassHeading;
+			const nextHeading =
+				typeof webkitHeading === 'number' && Number.isFinite(webkitHeading)
+					? webkitHeading
+					: typeof event.alpha === 'number' && Number.isFinite(event.alpha)
+						? 360 - event.alpha
+						: null;
+
+			if (nextHeading === null) return;
+
+			const normalizedHeading = normalizeHeading(nextHeading);
+			setHeading(normalizedHeading);
+			setCompassRotation(-normalizedHeading);
 		};
+
 		window.addEventListener('deviceorientation', handleOrientation);
 		return () => {
 			window.removeEventListener('deviceorientation', handleOrientation);

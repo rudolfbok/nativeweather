@@ -1,17 +1,27 @@
-import { fetchWeather } from 'app/api/fetchWeather';
+import { fetchWeatherOrThrow } from 'app/api/fetchWeather';
+import { LocalWeatherError, toLocalWeatherError } from './locationError';
+import type { LocalWeatherErrorKind } from './locationError';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { useStorageString } from 'app/database/useStorage';
 import { useCallback, useRef, useState } from 'react';
 
-const getCoordinates = (): Promise<GeolocationPosition | null> => {
-	return new Promise((resolve) => {
+const positionErrorKinds: Record<number, LocalWeatherErrorKind> = {
+	1: 'permission',
+	3: 'timeout',
+};
+
+const getCoordinates = (): Promise<GeolocationPosition> => {
+	return new Promise((resolve, reject) => {
 		if (!navigator.geolocation) {
-			return resolve(null);
+			return reject(new LocalWeatherError('unavailable', 'Geolocation is not available.'));
 		}
 
 		navigator.geolocation.getCurrentPosition(
 			(pos) => resolve(pos),
-			() => resolve(null),
+			(positionError) => {
+				const kind = positionErrorKinds[positionError.code] ?? 'unavailable';
+				reject(new LocalWeatherError(kind, positionError.message));
+			},
 			{
 				enableHighAccuracy: false,
 				timeout: 10_000,
@@ -23,8 +33,8 @@ const getCoordinates = (): Promise<GeolocationPosition | null> => {
 
 export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
-	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
-	const [error, setError] = useState<boolean>(false);
+	const { setLocalWeatherData } = useLocalWeather();
+	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
 	const isFetchingRef = useRef(false);
 
 	const getLocalWeather = useCallback(async () => {
@@ -33,26 +43,21 @@ export const useLocation = () => {
 		}
 
 		isFetchingRef.current = true;
-		setError(false);
+		setError(null);
 
 		try {
+			if (!currentSource) throw new LocalWeatherError('source', 'No weather source is configured.');
 			const position = await getCoordinates();
-			if (!position || !currentSource) {
-				setError(true);
-				return null;
-			}
 
 			const { coords } = position;
-			const result = await fetchWeather([coords.latitude, coords.longitude], currentSource);
-			if (!result) {
-				setError(true);
-				return null;
-			}
+			const result = await fetchWeatherOrThrow([coords.latitude, coords.longitude], currentSource);
 
 			await setLocalWeatherData(result);
 			return result;
-		} catch {
-			setError(true);
+		} catch (caughtError) {
+			const nextError = toLocalWeatherError(caughtError);
+			setError(nextError.kind);
+			console.error('Local weather fetch failed:', caughtError);
 			return null;
 		} finally {
 			isFetchingRef.current = false;

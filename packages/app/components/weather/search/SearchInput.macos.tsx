@@ -32,7 +32,7 @@ export const SearchInput = ({
 	const { text, unfocusedSearch } = useThemeColors();
 
 	const handleClear = (event: GestureResponderEvent) => {
-		void clearSearch(event);
+		clearSearch(event);
 		inputRef.current?.focus();
 	};
 

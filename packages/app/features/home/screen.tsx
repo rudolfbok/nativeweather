@@ -1,19 +1,16 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { fetchWeather } from 'app/api/fetchWeather';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
-import { useLocation } from 'app/hooks/location/useLocation';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { useWidgets } from 'app/hooks/widgets/useWidgets';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
+import { useLocation } from 'app/hooks/location/useLocation';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWidgets } from 'app/hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { RefreshControl, View } from 'react-native';
@@ -21,8 +18,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
-	const { localWeatherData } = useLocalWeather();
-	const { weatherData, setWeatherData } = useWeather();
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [currentSource] = useStorageString('currentSource');
 	const insets = useSafeAreaInsets();
@@ -34,10 +29,10 @@ export const HomeFeature = () => {
 	useWidgets();
 
 	useEffect(() => {
-		if (showLocalWeather && !localWeatherData) {
-			void getLocalWeather();
+		if (showLocalWeather && currentSource) {
+			getLocalWeather();
 		}
-	}, [showLocalWeather, localWeatherData, getLocalWeather]);
+	}, [showLocalWeather, currentSource, getLocalWeather]);
 
 	// useEffect(() => {
 	// 	if (!showLocalWeather || weatherData) return;
