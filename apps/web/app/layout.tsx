@@ -1,20 +1,9 @@
 import { Header } from 'app/components/common/layout/Header.web';
 import { ClientOnly } from 'app/components/web/ClientOnly';
 import { clsx } from 'clsx';
-import { Geist, Geist_Mono } from 'next/font/google';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import '../globals.css';
 import { Providers } from './providers';
-
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-});
 
 export default function RootLayout({
 	children,
@@ -22,7 +11,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html>
 			<head>
 				<link rel="preconnect" href="https://tiles.openfreemap.org" />
 				<link rel="preconnect" href="https://weathermaps.weatherapi.com" />
@@ -34,12 +23,10 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					'select-none bg-secondarySystemBackground px-4 dark:bg-systemBackground_dark min-[2200px]:px-80',
-					geistSans.variable,
-					geistMono.variable
+					'flex-1 select-none bg-secondarySystemBackground px-4 dark:bg-systemBackground_dark min-[2200px]:px-80'
 				)}
 			>
-				<ClientOnly>
+				<ClientOnly fallback={<div className="theme-fallback fixed inset-0" />}>
 					<Providers>
 						<Header />
 						{children}

@@ -9,8 +9,6 @@ export const ClientOnly = ({ children, fallback }: { children: ReactNode; fallba
 		setMounted(true);
 	}, []);
 
-	if (fallback && typeof window === undefined) return fallback;
-
-	if (!mounted) return null;
+	if (!mounted) return fallback ?? null;
 	return <>{children}</>;
 };

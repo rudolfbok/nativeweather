@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.theme-fallback {
+	background: #f2f2f7;
+}
+
+@media (prefers-color-scheme: dark) {
+	.theme-fallback {
+		background: #000;
+	}
+}
+
 :root:has(.no-modal-scroll) {
 	overflow: hidden;
 }

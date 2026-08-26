@@ -1,13 +1,13 @@
 'use client';
 
 import { useStorageString } from 'app/database/useStorage';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 export const ThemeSync = () => {
 	const [currentTheme] = useStorageString('currentTheme');
 	const themeMode = currentTheme ?? 'system';
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (themeMode === 'system') {
 			const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
