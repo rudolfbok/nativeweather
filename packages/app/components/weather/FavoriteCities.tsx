@@ -7,7 +7,7 @@ import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useSearchController } from 'app/hooks/search/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
-import { Edit, Trash2 } from 'lucide-react-native';
+import { Edit, Trash2, XIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloseIcon } from '../icons/ui/CloseIcon';
@@ -71,17 +71,15 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 								colorScheme="auto"
 							/>
 							{showDeleteCity && (
-								<AnimatedView duration={30}>
-									<Pressable
-										onPress={() => handleRemoveCity(city)}
-										className={clsx(
-											'absolute -top-1 right-1 h-fit w-fit justify-center rounded-full bg-red-600 p-1 hover:bg-red-800'
-										)}
-										style={{ cursor: 'pointer' }}
-									>
-										<Trash2 color="white" size={22} />
-									</Pressable>
-								</AnimatedView>
+								<Pressable
+									onPress={() => handleRemoveCity(city)}
+									className={clsx(
+										'absolute -bottom-1 right-0 h-fit w-fit justify-center rounded-full bg-red-600 p-1 hover:bg-red-800'
+									)}
+									style={{ cursor: 'pointer' }}
+								>
+									<Trash2 color="white" size={20} />
+								</Pressable>
 							)}
 						</View>
 					);
