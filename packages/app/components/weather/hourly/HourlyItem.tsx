@@ -33,7 +33,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 				/>
 				{rainChance > 10 && (
 					<StyledText type="rainchance" className={clsx('!text-primaryblue')}>
-						{Math.round(rainChance)}%
+						{Math.round(rainChance / 5) * 5}%
 					</StyledText>
 				)}
 			</View>
