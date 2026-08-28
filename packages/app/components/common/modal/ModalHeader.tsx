@@ -7,6 +7,7 @@ import { StyledText } from '../styled/StyledText';
 import { CardHeader } from '../layout/CardHeader';
 import { useState } from 'react';
 import { border } from 'app/constants/border';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -28,22 +29,23 @@ export const ModalHeader = ({
 	onClose,
 }: ModalHeaderProps) => {
 	const [hover, setHover] = useState(false);
+	const { text } = useThemeColors();
 
 	return (
 		<View className="macos:px-4">
 			<View className={clsx('flex-row items-center justify-between pb-4', daysToggle && '!items-start')}>
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
-						<Pressable
-							onPress={onBackPress}
-							className={clsx('-ml-1 flex-row items-center gap-2')}
-							style={{ cursor: 'pointer' }}
-							onHoverIn={() => setHover(true)}
-							onHoverOut={() => setHover(false)}
-						>
-							<ChevronLeft color="#007AFF" size={29} />
-							<CardHeader icon={icon} header={header} underline={true} className={clsx(hover && 'underline')} />
-						</Pressable>
+						<View className={clsx('flex-row items-center gap-2')}>
+							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5', border)}>
+								<ChevronLeft color={text} size={26} />
+							</StyledPressable>
+							<Pressable onPress={onBackPress}>
+								<StyledText type="title" className="hover:underline">
+									{header}
+								</StyledText>
+							</Pressable>
+						</View>
 					) : (
 						<CardHeader icon={icon} header={header} underline={false} />
 					)}

@@ -4,7 +4,7 @@ import { StyledText } from '../styled/StyledText';
 
 interface CardHeaderProps {
 	header: string;
-	icon: React.ReactNode;
+	icon?: React.ReactNode;
 	underline?: boolean;
 	className?: string;
 }
