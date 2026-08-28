@@ -53,12 +53,12 @@ export const SearchBar = () => {
 				}}
 			/>
 			{((Platform.OS === 'macos' && !showSuggestions) || showRecentSearches) && (
-				<AnimatedView duration={20} className={clsx('w-full')}>
+				<AnimatedView duration={200} className={clsx('w-full')}>
 					<RecentSearches recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
 				</AnimatedView>
 			)}
 			{showSuggestions && (
-				<AnimatedView duration={20} className={clsx('w-full')}>
+				<AnimatedView duration={200} className={clsx('w-full')}>
 					<SuggestionsList
 						suggestions={suggestions}
 						onSelect={(item) => {

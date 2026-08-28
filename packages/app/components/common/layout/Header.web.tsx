@@ -58,14 +58,16 @@ export const Header = () => {
 					<SettingsFeature />
 				</ScrollView>
 			</View>
-			{openDrawer && (
-				<AnimatedView
-					className={clsx('inset-0 z-40 bg-black/30 max-md:hidden md:fixed dark:bg-black/60')}
-					duration={30}
-				>
-					<Pressable onPress={() => setOpenDrawer(false)} className={clsx('h-full w-full')} />
-				</AnimatedView>
-			)}
+			<AnimatedView
+				className={clsx(
+					'inset-0 z-40 bg-black/30 max-md:hidden md:fixed dark:bg-black/60',
+					!openDrawer && 'pointer-events-none'
+				)}
+				duration={250}
+				visible={openDrawer}
+			>
+				<Pressable onPress={() => setOpenDrawer(false)} className={clsx('h-full w-full')} />
+			</AnimatedView>
 		</>
 	);
 };

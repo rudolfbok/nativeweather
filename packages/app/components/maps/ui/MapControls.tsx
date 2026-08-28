@@ -94,7 +94,7 @@ export const MapControls = ({
 			</View>
 			{showLegend && (
 				<View className="ios:bottom-28 absolute bottom-4 right-4 max-md:left-4">
-					<AnimatedView duration={30}>
+					<AnimatedView duration={250}>
 						<RoundView className={clsx('w-full border border-black/10 p-4 md:w-96 dark:border-white/10', border)}>
 							<View className="flex w-full flex-row items-center justify-between">
 								<StyledText type="body" className="font-semibold">

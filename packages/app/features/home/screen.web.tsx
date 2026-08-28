@@ -25,7 +25,7 @@ export const HomeFeature = () => {
 	}, [showLocalWeather, getLocalWeather]);
 
 	return (
-		<AnimatedView duration={25}>
+		<AnimatedView duration={250}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}

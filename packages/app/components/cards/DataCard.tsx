@@ -39,7 +39,11 @@ export const DataCard = ({
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>
-					{description && <StyledText type="body">{description}</StyledText>}
+					{description && (
+						<StyledText type="body" className="line-clamp-1">
+							{description}
+						</StyledText>
+					)}
 					{extraContent && <View>{extraContent}</View>}
 				</View>
 				<View className={clsx('w-full items-end')}>
