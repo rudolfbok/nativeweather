@@ -1,7 +1,6 @@
 'use client';
 
 import { fetchWeather } from 'app/api/fetchWeather';
-import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { HeroSkeleton } from 'app/components/weather/hero/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 import { useStorageString } from 'app/database/useStorage';
@@ -9,7 +8,7 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import { countryCode } from 'app/utils/countryCode';
 import { buildSlug } from 'app/utils/weatherSlug';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const WeatherFeature = () => {
 	const [currentSource] = useStorageString('currentSource');
@@ -19,7 +18,6 @@ export const WeatherFeature = () => {
 	const searchParams = useSearchParams();
 	const region = searchParams.get('r');
 	const country = searchParams.get('cr');
-	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -32,7 +30,6 @@ export const WeatherFeature = () => {
 			const currentWeather = useWeather.getState().weatherData;
 			if (currentWeather && buildSlug(currentWeather) === currentPath) return;
 
-			setLoading(true);
 			const query = country || region ? `${city}, ${region ?? ''}, ${country ?? ''}` : city;
 			const data = await fetchWeather(query, currentSource, { signal: controller.signal });
 
@@ -42,7 +39,6 @@ export const WeatherFeature = () => {
 				setWeatherData(data);
 			}
 
-			if (!controller.signal.aborted) setLoading(false);
 		};
 
 		loadWeather();
@@ -57,11 +53,7 @@ export const WeatherFeature = () => {
 		document.title = `NativeWeather | ${weatherData.location.name} (${code})`;
 	}, [weatherData]);
 
-	if (loading || !weatherData) return <HeroSkeleton />;
+	if (!weatherData) return <HeroSkeleton />;
 
-	return (
-		<AnimatedView duration={20}>
-			<HeroWeather />
-		</AnimatedView>
-	);
+	return <HeroWeather />;
 };
