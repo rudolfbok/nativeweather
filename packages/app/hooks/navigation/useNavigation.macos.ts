@@ -1,14 +1,8 @@
 import { create } from 'zustand';
 
-type NavigationScreen = 'weather' | 'settings' | 'testing';
+type NavigationScreen = 'weather' | 'search' | 'settings' | 'testing';
 export type SettingsModalScreen =
-	| 'theme'
-	| 'language'
-	| 'temperature'
-	| 'units'
-	| 'settings-aqi'
-	| 'about'
-	| 'feedback';
+	'theme' | 'language' | 'temperature' | 'units' | 'settings-aqi' | 'about' | 'feedback';
 export type ModalScreen =
 	| SettingsModalScreen
 	| 'airquality'

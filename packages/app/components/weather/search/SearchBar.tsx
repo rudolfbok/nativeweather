@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 
-export const SearchBar = () => {
+export const SearchBar = ({ onFocusChange }: { onFocusChange?: (isFocused: boolean) => void }) => {
 	const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const {
 		searchValue,
@@ -40,6 +40,7 @@ export const SearchBar = () => {
 				onFocus={() => {
 					if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
 					setIsSearchBarFocused(true);
+					onFocusChange?.(true);
 				}}
 				performSearch={async () => {
 					await handleInputSearch(searchValue);
@@ -48,26 +49,32 @@ export const SearchBar = () => {
 					if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
 					blurTimeoutRef.current = setTimeout(() => {
 						setIsSearchBarFocused(false);
+						onFocusChange?.(false);
 						blurTimeoutRef.current = null;
 					}, 130);
 				}}
 			/>
 			{((Platform.OS === 'macos' && !showSuggestions) || showRecentSearches) && (
-				<AnimatedView duration={200} className={clsx('w-full')}>
-					<RecentSearches recentSearches={recentSearches} onSelect={(item) => handleCityPress(item)} />
-				</AnimatedView>
+				<RecentSearches
+					recentSearches={recentSearches}
+					onSelect={(item) => {
+						setIsSearchBarFocused(false);
+						onFocusChange?.(false);
+						handleCityPress(item);
+					}}
+				/>
 			)}
 			{showSuggestions && (
-				<AnimatedView duration={200} className={clsx('w-full')}>
-					<SuggestionsList
-						suggestions={suggestions}
-						onSelect={(item) => {
-							handleCityPress(item);
-							addToRecentSearches(item);
-							setSearchValue('');
-						}}
-					/>
-				</AnimatedView>
+				<SuggestionsList
+					suggestions={suggestions}
+					onSelect={(item) => {
+						setIsSearchBarFocused(false);
+						onFocusChange?.(false);
+						handleCityPress(item);
+						addToRecentSearches(item);
+						setSearchValue('');
+					}}
+				/>
 			)}
 		</>
 	);

@@ -10,6 +10,8 @@
 		199EF94DC96EDAA8B7E0819A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B965013F2EF4EDBAAB76FCD9 /* PrivacyInfo.xcprivacy */; };
 		392A82FD79BA7C0E3B5D71A9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B965013F2EF4EDBAAB76FCD9 /* PrivacyInfo.xcprivacy */; };
 		5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5142014C2437B4B30078DB4F /* AppDelegate.mm */; };
+		7D6B8A7C1F4E4D1A8B6C0A01 /* NWLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D6B8A7B1F4E4D1A8B6C0A01 /* NWLocation.mm */; };
+		7D6B8A7D1F4E4D1A8B6C0A01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6B8A7E1F4E4D1A8B6C0A01 /* CoreLocation.framework */; };
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		514201582437B4B40078DB4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 514201572437B4B40078DB4F /* main.m */; };
@@ -22,6 +24,8 @@
 		514201492437B4B30078DB4F /* nativeweather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nativeweather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5142014B2437B4B30078DB4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5142014C2437B4B30078DB4F /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		7D6B8A7B1F4E4D1A8B6C0A01 /* NWLocation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NWLocation.mm; sourceTree = "<group>"; };
+		7D6B8A7A1F4E4D1A8B6C0A01 /* NWLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWLocation.h; sourceTree = "<group>"; };
 		514201512437B4B40078DB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		514201542437B4B40078DB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		514201562437B4B40078DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 		7B57B0FB37D601BA17B643D6 /* Pods-nativeweather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nativeweather.debug.xcconfig"; path = "Target Support Files/Pods-nativeweather/Pods-nativeweather.debug.xcconfig"; sourceTree = "<group>"; };
 		B965013F2EF4EDBAAB76FCD9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		7D6B8A7E1F4E4D1A8B6C0A01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6B8A7D1F4E4D1A8B6C0A01 /* CoreLocation.framework in Frameworks */,
 				C518802A6B5D92DCAA82241E /* libPods-nativeweather.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +61,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D6B8A7E1F4E4D1A8B6C0A01 /* CoreLocation.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				631CE0DF8B681742FBF5D374 /* libPods-nativeweather.a */,
 			);
@@ -66,6 +73,8 @@
 			children = (
 				5142014B2437B4B30078DB4F /* AppDelegate.h */,
 				5142014C2437B4B30078DB4F /* AppDelegate.mm */,
+				7D6B8A7A1F4E4D1A8B6C0A01 /* NWLocation.h */,
+				7D6B8A7B1F4E4D1A8B6C0A01 /* NWLocation.mm */,
 				514201512437B4B40078DB4F /* Assets.xcassets */,
 				514201532437B4B40078DB4F /* Main.storyboard */,
 				514201562437B4B40078DB4F /* Info.plist */,
@@ -313,6 +322,7 @@
 			files = (
 				514201582437B4B40078DB4F /* main.m in Sources */,
 				5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */,
+				7D6B8A7C1F4E4D1A8B6C0A01 /* NWLocation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

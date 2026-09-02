@@ -13,6 +13,9 @@ module.exports = {
 	presets: [require('nativewind/preset')],
 	theme: {
 		extend: {
+			screens: {
+				xs: '321px',
+			},
 			colors: {
 				systemBackground: '#FFFFFF',
 				secondarySystemBackground: '#F2F2F7',

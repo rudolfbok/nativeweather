@@ -8,7 +8,7 @@ import { useSearchController } from 'app/hooks/search/useSearchController';
 import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { CityCard } from './CityCard';
 import { CityCardSkeleton } from './CityCardSkeleton';
 
@@ -20,10 +20,12 @@ export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData } = useLocalWeather();
 	const { handleCityPress } = useSearchController();
+	const containerClassName =
+		Platform.OS === 'web' ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'w-full gap-4';
 
 	if (error) {
 		return (
-			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+			<View className={clsx(containerClassName)}>
 				<RoundView className={clsx('min-h-[134px] justify-center gap-2 p-4 lg:w-fit')}>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t(`localweather.error.${error}.title`)}
@@ -38,14 +40,14 @@ export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
 
 	if (!localWeatherData) {
 		return (
-			<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+			<View className={clsx(containerClassName)}>
 				<CityCardSkeleton />
 			</View>
 		);
 	}
 
 	return (
-		<View className={clsx('grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4')}>
+		<View className={clsx(containerClassName)}>
 			<CityCard
 				onPress={() => handleCityPress(localWeatherData.location)}
 				city={localWeatherData.location.name}

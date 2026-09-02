@@ -6,7 +6,7 @@ import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useSearchController } from 'app/hooks/search/useSearchController';
 import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
-import { Edit, Trash2, XIcon } from 'lucide-react-native';
+import { Check, Edit, Trash2, XIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { CloseIcon } from '../icons/ui/CloseIcon';
@@ -14,9 +14,11 @@ import { CityCard } from './CityCard';
 import { CityCardSkeleton } from './CityCardSkeleton';
 import { EditIcon } from '../icons/ui/EditIcon';
 import { border } from 'app/constants/border';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');
+	const { text } = useThemeColors();
 	const [showDeleteCity, setShowDeleteCity] = useState(false);
 	const { favoritesData, favoriteCount, handleRemoveCity, loading } = hook;
 	const { handleCityPress } = useSearchController();
@@ -33,7 +35,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 							border
 						)}
 					>
-						{showDeleteCity ? <CloseIcon size={26} /> : <EditIcon />}
+						{showDeleteCity ? <Check size={26} color={text} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>

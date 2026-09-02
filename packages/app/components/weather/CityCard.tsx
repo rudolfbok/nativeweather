@@ -56,7 +56,7 @@ export const CityCard = ({
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'min-h-[134px] w-full flex-1 select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
+				'min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
 			)}
 			tintColor={`${tintColor}E6`}
 			liquidGlass={true}

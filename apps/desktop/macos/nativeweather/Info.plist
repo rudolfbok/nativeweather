@@ -39,6 +39,8 @@
  	</dict>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>NativeWeather needs your location to show the local weather forecast.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSSupportsAutomaticTermination</key>

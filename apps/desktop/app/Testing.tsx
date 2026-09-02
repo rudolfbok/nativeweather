@@ -4,8 +4,8 @@ import { View } from 'react-native';
 
 export const Testing = () => {
 	return (
-		<View className="w-full items-center gap-4 p-4">
-			<StyledText type="body" className="!text-3xl font-semibold">
+		<View className="w-full p-4">
+			<StyledText type="body" className="pb-4 !text-3xl font-semibold">
 				Search
 			</StyledText>
 			<SearchBar />
