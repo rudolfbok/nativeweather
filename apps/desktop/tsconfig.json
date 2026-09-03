@@ -1,11 +1,29 @@
 {
-	"extends": "@react-native/typescript-config/tsconfig.json",
-	"compilerOptions": {
-		"ignoreDeprecations": "6.0",
-		"types": ["react-native"],
-		"paths": {
-			"react-native": ["./node_modules/react-native"],
-			"react-native/*": ["./node_modules/react-native/*"]
-		}
-	}
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "strict": false,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "react-native"
+    ],
+    "paths": {
+      "app/*": [
+        "../../packages/app/*"
+      ],
+      "react-native": [
+        "./node_modules/react-native"
+      ],
+      "react-native/*": [
+        "./node_modules/react-native/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*",
+    "../../packages/app/global.d.ts",
+    "nativewind-env.d.ts"
+  ]
 }

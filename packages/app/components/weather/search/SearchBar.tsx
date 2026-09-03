@@ -1,11 +1,8 @@
-import { AnimatedView } from 'app/components/common/animated/AnimatedView';
 import { useSearchController } from 'app/hooks/search/useSearchController';
 import { RecentSearches } from './RecentSearches';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';
-import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
-import { Platform } from 'react-native';
 
 export const SearchBar = ({ onFocusChange }: { onFocusChange?: (isFocused: boolean) => void }) => {
 	const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -54,7 +51,7 @@ export const SearchBar = ({ onFocusChange }: { onFocusChange?: (isFocused: boole
 					}, 130);
 				}}
 			/>
-			{((Platform.OS === 'macos' && !showSuggestions) || showRecentSearches) && (
+			{showRecentSearches && (
 				<RecentSearches
 					recentSearches={recentSearches}
 					onSelect={(item) => {
@@ -67,12 +64,12 @@ export const SearchBar = ({ onFocusChange }: { onFocusChange?: (isFocused: boole
 			{showSuggestions && (
 				<SuggestionsList
 					suggestions={suggestions}
-					onSelect={(item) => {
-						setIsSearchBarFocused(false);
-						onFocusChange?.(false);
-						handleCityPress(item);
-						addToRecentSearches(item);
-						setSearchValue('');
+						onSelect={async (item) => {
+							setIsSearchBarFocused(false);
+							onFocusChange?.(false);
+							const loaded = await handleCityPress(item);
+							if (loaded) addToRecentSearches(item);
+							setSearchValue('');
 					}}
 				/>
 			)}

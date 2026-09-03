@@ -14,6 +14,7 @@ export const useWeatherAPIConditions = () => {
 			1006: t('condition.cloudy'),
 			1009: t('condition.overcast'),
 			1030: t('condition.fog'),
+			1036: t('condition.fog'),
 			1063: t('condition.lightrain'),
 			1066: t('condition.lightsnow'),
 			1069: t('condition.lightrain'),
@@ -71,7 +72,7 @@ export const useWeatherAPIConditions = () => {
 			return condition;
 		}
 
-		return '';
+		return t('condition.overcast');
 	};
 
 	return getWeatherAPICondition;

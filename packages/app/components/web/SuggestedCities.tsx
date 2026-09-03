@@ -21,7 +21,11 @@ export const SuggestedCities = () => {
 			<StyledText type="body" className="font-medium">
 				Suggested cities
 			</StyledText>
-			<View accessibilityLabel="Suggested cities" accessibilityRole="menu" className="flex-row flex-wrap justify-center gap-2">
+			<View
+				accessibilityLabel="Suggested cities"
+				accessibilityRole="menu"
+				className="flex-row flex-wrap justify-center gap-2"
+			>
 				{suggestedCities.map(({ name, href }) => (
 					<StyledButton key={href} className="w-auto px-6 py-3" onPress={() => router.push(href)} text={name} />
 				))}

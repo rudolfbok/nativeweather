@@ -24,8 +24,7 @@ export const useWeather = create<WeatherState>((set, get) => ({
 			return;
 		}
 
-		const sameLocation =
-			prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
+		const sameLocation = prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
 
 		set(sameLocation ? { weatherData: data } : { weatherData: data, airQualityData: null });
 

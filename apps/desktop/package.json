@@ -1,6 +1,6 @@
 {
 	"name": "nativeweather-macos",
-	"version": "0.0.1",
+	"version": "1.0",
 	"private": true,
 	"scripts": {
 		"dev": "react-native start --port 8081",

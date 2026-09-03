@@ -9,7 +9,13 @@ type LegendGradientProps = {
 
 export const LegendGradient = ({ colors, locations, children }: LegendGradientProps) => {
 	return (
-		<LinearGradient colors={colors} locations={locations} style={{ flex: 1 }} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+		<LinearGradient
+			colors={colors}
+			locations={locations}
+			style={{ flex: 1 }}
+			start={{ x: 0, y: 0 }}
+			end={{ x: 1, y: 0 }}
+		>
 			{children}
 		</LinearGradient>
 	);

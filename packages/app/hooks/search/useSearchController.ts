@@ -13,7 +13,7 @@ import { Platform } from 'react-native';
 
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
-	const setWeatherData = useWeather((state) => state.setWeatherData);
+	const { setWeatherData } = useWeather();
 	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches, setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
@@ -28,10 +28,11 @@ export const useSearchController = () => {
 
 	const router = useRouter();
 
-	const showRecentSearches =
-		Platform.OS === 'web' || Platform.OS === 'macos'
-			? isSearchBarFocused && (recentSearches || []).length > 0 && searchValue.length === 0
-			: (recentSearches || []).length > 0 && searchValue.length === 0;
+	const showRecentSearches = Platform.select({
+		macos: (recentSearches || []).length > 0 && searchValue.length === 0,
+		web: isSearchBarFocused && (recentSearches || []).length > 0 && searchValue.length === 0,
+		default: (recentSearches || []).length > 0 && searchValue.length === 0,
+	});
 
 	const showSuggestions = isSearchBarFocused && suggestions.length > 0;
 
@@ -43,7 +44,7 @@ export const useSearchController = () => {
 		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource, {
 			signal: controller.signal,
 		});
-		if (controller.signal.aborted) return;
+		if (controller.signal.aborted) return false;
 		if (weatherData) {
 			setWeatherData(weatherData);
 			if (Platform.OS === 'macos') {
@@ -60,6 +61,7 @@ export const useSearchController = () => {
 			console.error('Failed to fetch weather data for saved city');
 		}
 		setWeatherLoading(false);
+		return Boolean(weatherData);
 	};
 
 	const handleInputSearch = async (query: string) => {

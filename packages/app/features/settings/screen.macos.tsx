@@ -26,15 +26,11 @@ export const SettingsFeature = () => {
 						<AQIButton />
 					</RoundView>
 				</View>
-
 				<View className="flex-1 gap-4">
 					<RoundView>
 						<LocalWeatherToggle />
 						<WorldTimeToggle />
 					</RoundView>
-					{/* <RoundView>
-						<CompassButton />
-					</RoundView> */}
 					<RoundView>
 						<AboutButton />
 						<FeedbackButton />
@@ -44,7 +40,7 @@ export const SettingsFeature = () => {
 
 			<View className="items-center">
 				<StyledText type="bodysecondary">NativeWeather</StyledText>
-				<StyledText type="bodysecondary">Version: 0.0.1</StyledText>
+				<StyledText type="bodysecondary">Version: 1.0</StyledText>
 				<StyledText type="bodysecondary">© {new Date().getFullYear()}</StyledText>
 			</View>
 		</View>

@@ -1,11 +1,11 @@
 import { fetchAirQuality } from 'app/api/fetchAirQuality';
-import { OpenMeteoAQI } from 'app/types/openMeteo';
-import { CityCard } from 'app/types/cityCard';
+import type { NormalizedData } from 'app/types/normalizedData';
+import type { OpenMeteoAQI } from 'app/types/openMeteo';
 import { create } from 'zustand';
 
 interface LocalWeatherState {
-	localWeatherData: CityCard | null;
-	setLocalWeatherData: (data: CityCard | null) => Promise<void>;
+	localWeatherData: NormalizedData | null;
+	setLocalWeatherData: (data: NormalizedData | null) => Promise<void>;
 	localAQIData: OpenMeteoAQI | null;
 	setLocalAQIData: (data: OpenMeteoAQI | null) => void;
 }
@@ -25,8 +25,7 @@ export const useLocalWeather = create<LocalWeatherState>((set, get) => ({
 			return;
 		}
 
-		const sameLocation =
-			prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
+		const sameLocation = prev?.location.lat === data.location.lat && prev?.location.lon === data.location.lon;
 
 		set(sameLocation ? { localWeatherData: data } : { localWeatherData: data, localAQIData: null });
 

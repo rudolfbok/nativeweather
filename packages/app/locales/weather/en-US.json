@@ -265,13 +265,34 @@
 	"localtime": "Local time",
 	"localweather": {
 		"error": {
-			"permission": { "title": "Location access is blocked", "message": "Allow location access in your device or browser settings." },
-			"unavailable": { "title": "Location is unavailable", "message": "Your device could not determine your current location." },
-			"timeout": { "title": "Location request timed out", "message": "Try again somewhere with a clearer GPS or network signal." },
-			"network": { "title": "Weather service could not be reached", "message": "Check your internet connection and try again." },
-			"server": { "title": "Weather service is unavailable", "message": "The weather provider returned an error. Try again later." },
-			"source": { "title": "Weather source is not configured", "message": "Choose a weather source in Settings before loading local weather." },
-			"unknown": { "title": "Local weather failed", "message": "Something unexpected happened while loading local weather." },
+			"permission": {
+				"title": "Location access is blocked",
+				"message": "Allow location access in your device or browser settings."
+			},
+			"unavailable": {
+				"title": "Location is unavailable",
+				"message": "Your device could not determine your current location."
+			},
+			"timeout": {
+				"title": "Location request timed out",
+				"message": "Try again somewhere with a clearer GPS or network signal."
+			},
+			"network": {
+				"title": "Weather service could not be reached",
+				"message": "Check your internet connection and try again."
+			},
+			"server": {
+				"title": "Weather service is unavailable",
+				"message": "The weather provider returned an error. Try again later."
+			},
+			"source": {
+				"title": "Weather source is not configured",
+				"message": "Choose a weather source in Settings before loading local weather."
+			},
+			"unknown": {
+				"title": "Local weather failed",
+				"message": "Something unexpected happened while loading local weather."
+			},
 			"retry": "Try again"
 		},
 		"title": "Local weather"

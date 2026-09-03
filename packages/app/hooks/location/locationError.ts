@@ -1,14 +1,12 @@
 export type LocalWeatherErrorKind =
-	| 'source'
-	| 'permission'
-	| 'unavailable'
-	| 'timeout'
-	| 'network'
-	| 'server'
-	| 'unknown';
+	'source' | 'permission' | 'unavailable' | 'timeout' | 'network' | 'server' | 'unknown';
 
 export class LocalWeatherError extends Error {
-	constructor(readonly kind: LocalWeatherErrorKind, message: string, options?: { cause?: unknown }) {
+	constructor(
+		readonly kind: LocalWeatherErrorKind,
+		message: string,
+		options?: { cause?: unknown }
+	) {
 		super(message, options);
 		this.name = 'LocalWeatherError';
 	}

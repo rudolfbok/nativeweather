@@ -38,7 +38,6 @@ export const WeatherFeature = () => {
 				if (path !== currentPath) router.replace(path);
 				setWeatherData(data);
 			}
-
 		};
 
 		loadWeather();

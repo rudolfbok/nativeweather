@@ -3,7 +3,10 @@ import { fetchWeatherAPIOrThrow, WeatherRequestError } from './fetchWeatherAPI';
 import { mapWeatherApi } from './mapWeatherAPI';
 
 export class WeatherFetchError extends Error {
-	constructor(message: string, readonly cause?: unknown) {
+	constructor(
+		message: string,
+		readonly cause?: unknown
+	) {
 		super(message, { cause });
 		this.name = 'WeatherFetchError';
 	}

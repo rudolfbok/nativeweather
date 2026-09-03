@@ -48,10 +48,9 @@ export const MapWeatherPopup = ({
 			onLayout={handleLayout}
 			onPressIn={onInteraction}
 			className={clsx(
-				'bg-systemBackground absolute z-10 rounded-3xl border border-black/10 p-3',
-				border,
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark absolute z-10 rounded-3xl p-3',
 				weatherPoint.status === 'loading' && 'w-12',
-				'dark:bg-secondarySystemBackground_dark dark:border-white/10'
+				border
 			)}
 			style={{ left: point.x, top: point.y, maxWidth: Math.min(288, mapSize.width - OFFSET * 2) }}
 		>
@@ -89,7 +88,11 @@ export const MapWeatherPopup = ({
 					)}
 				</View>
 				{weatherPoint.status !== 'loading' && (
-					<StyledPressable onPressIn={onInteraction} onPress={onClose} className="h-fit rounded-full p-1">
+					<StyledPressable
+						onPressIn={onInteraction}
+						onPress={onClose}
+						className={clsx('h-fit rounded-full p-1', border)}
+					>
 						<CloseIcon color={text} size={20} />
 					</StyledPressable>
 				)}

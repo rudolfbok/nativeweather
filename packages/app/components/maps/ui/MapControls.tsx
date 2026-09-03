@@ -95,7 +95,7 @@ export const MapControls = ({
 			{showLegend && (
 				<View className="ios:bottom-28 absolute bottom-4 right-4 max-md:left-4">
 					<AnimatedView duration={250}>
-						<RoundView className={clsx('w-full border border-black/10 p-4 md:w-96 dark:border-white/10', border)}>
+						<RoundView className={clsx('w-full p-4 md:w-96', border)}>
 							<View className="flex w-full flex-row items-center justify-between">
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}
@@ -103,7 +103,7 @@ export const MapControls = ({
 								<StyledPressable
 									onPressIn={onInteraction}
 									onPress={() => onLegendChange(false)}
-									className="rounded-full p-1"
+									className={clsx('rounded-full p-1', border)}
 								>
 									<CloseIcon size={22} color={text} />
 								</StyledPressable>

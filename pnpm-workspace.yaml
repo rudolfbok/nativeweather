@@ -17,3 +17,4 @@ overrides:
 patchedDependencies:
   expo-router: patches/expo-router.patch
   react-native-macos: patches/react-native-macos.patch
+  react-native-mmkv@4.3.1: patches/react-native-mmkv@4.3.1.patch

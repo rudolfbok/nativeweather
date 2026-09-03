@@ -3,7 +3,15 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { Locate, Minus, Plus } from 'lucide-react-native';
 import { Platform, View } from 'react-native';
 
-const MapNavigationButton = ({ icon, onPress, onPressIn }: { icon: React.ReactNode; onPress: () => void; onPressIn: () => void }) => (
+const MapNavigationButton = ({
+	icon,
+	onPress,
+	onPressIn,
+}: {
+	icon: React.ReactNode;
+	onPress: () => void;
+	onPressIn: () => void;
+}) => (
 	<StyledPressable
 		onPress={onPress}
 		onPressIn={onPressIn}

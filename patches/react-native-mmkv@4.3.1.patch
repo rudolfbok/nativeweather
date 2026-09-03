@@ -1,0 +1,41 @@
+diff --git a/ios/HybridMMKVPlatformContext.swift b/ios/HybridMMKVPlatformContext.swift
+index 0d19d4ac7fd85bcbe4054a4c8009481824af9926..51b1d8c0fcc5503c8da8ab92158c0ff30ac66090 100644
+--- a/ios/HybridMMKVPlatformContext.swift
++++ b/ios/HybridMMKVPlatformContext.swift
+@@ -10,7 +10,9 @@ import NitroModules
+ 
+ class HybridMMKVPlatformContext: HybridMMKVPlatformContextSpec {
+   static var directory: FileManager.SearchPathDirectory {
+-#if os(tvOS)
++#if os(macOS)
++    return .applicationSupportDirectory
++#elseif os(tvOS)
+     return .cachesDirectory
+ #else
+     return .documentDirectory
+@@ -18,14 +20,20 @@ class HybridMMKVPlatformContext: HybridMMKVPlatformContextSpec {
+   }
+   
+   func getBaseDirectory() throws -> String {
+-    // Get user documents directory
++    // Keep app storage inside the sandbox's Application Support directory on macOS.
+     let paths = FileManager.default.urls(for: Self.directory, in: .userDomainMask)
+-    guard let documentsPath = paths.first else {
++    guard let baseDirectory = paths.first else {
+       throw RuntimeError.error(withMessage: "Cannot find base-path to store MMKV files!")
+     }
+-    
+-    // append /mmkv to it
+-    let basePath = documentsPath.appendingPathComponent("mmkv", conformingTo: .directory)
++
++#if os(macOS)
++    let appDirectory = Bundle.main.bundleIdentifier ?? "NativeWeather"
++    let basePath = baseDirectory
++      .appendingPathComponent(appDirectory, isDirectory: true)
++      .appendingPathComponent("mmkv", isDirectory: true)
++#else
++    let basePath = baseDirectory.appendingPathComponent("mmkv", conformingTo: .directory)
++#endif
+     return basePath.path
+   }
+   

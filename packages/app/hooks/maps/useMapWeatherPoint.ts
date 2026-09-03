@@ -108,13 +108,7 @@ export const useMapWeatherPoint = (gustLabel: string) => {
 			const lat = lngLat[1].toFixed(4);
 			const lon = lngLat[0].toFixed(4);
 			const weather = await fetchWeatherAPI(`${lat},${lon}`, { signal: controller.signal });
-			const formatted = formatWeatherPoint(
-				layer,
-				weather?.current ?? {},
-				currentTemp,
-				currentUnits,
-				gustLabel
-			);
+			const formatted = formatWeatherPoint(layer, weather?.current ?? {}, currentTemp, currentUnits, gustLabel);
 
 			if (!formatted) throw new Error('Weather data not available');
 			if (requestRef.current !== requestId) return;

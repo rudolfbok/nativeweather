@@ -11,7 +11,7 @@ export const Screens = () => {
 
 	return (
 		<View className="w-full flex-1">
-			<View className="flex-1" style={{ display: modalScreen ? 'none' : 'flex' }}>
+			<View className={modalScreen ? 'hidden' : 'flex-1'}>
 				{navigationScreen === 'search' ? (
 					<Search />
 				) : navigationScreen === 'settings' ? (
