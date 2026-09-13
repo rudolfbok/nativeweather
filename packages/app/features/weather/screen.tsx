@@ -1,6 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
+import { HeroSkeleton } from 'app/components/weather/hero/HeroSkeleton';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
@@ -11,7 +12,14 @@ import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, View } from 'react-native';
+import {
+	ActivityIndicator,
+	NativeScrollEvent,
+	NativeSyntheticEvent,
+	Platform,
+	RefreshControl,
+	View,
+} from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { textOutline } from 'app/constants/textOutline';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

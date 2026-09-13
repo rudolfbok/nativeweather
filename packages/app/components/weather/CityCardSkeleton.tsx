@@ -1,5 +1,5 @@
-import { View } from 'react-native';
+import { Skeleton } from 'app/components/common/loading/Skeleton';
 
 export const CityCardSkeleton = () => (
-	<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark web:animate-pulse h-[134px] w-full rounded-3xl" />
+	<Skeleton className="bg-systemBackground dark:bg-secondarySystemBackground_dark h-[134px] w-full rounded-3xl" />
 );
