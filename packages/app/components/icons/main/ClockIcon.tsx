@@ -11,7 +11,7 @@ export const ClockIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<Path d="M12 6v6l4 2" stroke="#000" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+			<Path d="M12 6v6l4 2" stroke="#007AFF" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
 		</Svg>
 	);
 };

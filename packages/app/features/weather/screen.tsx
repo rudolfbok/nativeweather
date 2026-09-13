@@ -4,6 +4,7 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useLocation } from 'app/hooks/location/useLocation';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useStorageString } from 'app/database/useStorage';
 import * as Burnt from 'burnt';
@@ -19,6 +20,7 @@ export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
+	const { getLocalWeather } = useLocation();
 	const { text } = useThemeColors();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
@@ -26,6 +28,21 @@ export const WeatherFeature = () => {
 	const [shouldChangeColor, setShouldChangeColor] = useState(false);
 	const refreshProgress = useSharedValue(0);
 	const navigation = useNavigation();
+
+	useEffect(() => {
+		if (weatherData || !currentSource) return;
+
+		const loadInitialWeather = async () => {
+			const localWeather = await getLocalWeather();
+			const initialWeather = localWeather ?? (await fetchWeather('New York', currentSource));
+
+			if (initialWeather && !useWeather.getState().weatherData) {
+				await setWeatherData(initialWeather);
+			}
+		};
+
+		loadInitialWeather();
+	}, [currentSource, getLocalWeather, setWeatherData, weatherData]);
 
 	useEffect(() => {
 		refreshProgress.value = withTiming(refreshing ? 1 : 0, { duration: 180 });
