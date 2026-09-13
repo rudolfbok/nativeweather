@@ -11,14 +11,16 @@ import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, View } from 'react-native';
-import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { textOutline } from 'app/constants/textOutline';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const { text } = useThemeColors();
+	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const [landscapeHeight, setLandscapeHeight] = useState(0);
 	const [shouldChangeColor, setShouldChangeColor] = useState(false);
@@ -28,6 +30,10 @@ export const WeatherFeature = () => {
 	useEffect(() => {
 		refreshProgress.value = withTiming(refreshing ? 1 : 0, { duration: 180 });
 	}, [refreshing, refreshProgress]);
+
+	const pullIndicatorStyle = useAnimatedStyle(() => ({
+		opacity: refreshProgress.value,
+	}));
 
 	useEffect(() => {
 		if (weatherData) {
@@ -97,26 +103,18 @@ export const WeatherFeature = () => {
 
 	return (
 		<View className={clsx('flex-1')}>
-			{/* <Animated.View
+			<Animated.View
 				pointerEvents="none"
 				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
 				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
 			>
-				<ActivityIndicator animating={true} size="large" color="#FFFFFF83" />
-			</Animated.View> */}
+				<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
+			</Animated.View>
 			<Animated.ScrollView
 				onScroll={handleScroll}
 				scrollEventThrottle={16}
 				contentInsetAdjustmentBehavior="automatic"
-				refreshControl={
-					<RefreshControl
-						tintColor="white"
-						colors={['white']}
-						progressBackgroundColor="transparent"
-						refreshing={refreshing}
-						onRefresh={onRefresh}
-					/>
-				}
+				refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
 			>
 				<HeroWeather onLandscapeLayout={setLandscapeHeight} />
 			</Animated.ScrollView>
