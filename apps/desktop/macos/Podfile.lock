@@ -1986,16 +1986,16 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native-macos/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  boost: cfbcbb8bc2c56d463f6d86d97a3dbd9324ed7fe8
-  DoubleConversion: ed6c63a23cb3837891303680be90877666542974
-  fast_float: 6fa249510dcb73b2f97571b9406c9df922712ce0
+  boost: 7d49a506d1ac47358fea28558d184dd6431170ca
+  DoubleConversion: 10f51d3e1238973c033faac2d84c0ea114942f53
+  fast_float: 44983b3bddb2d2ed3021a98be86f60ec8abc9ffd
   FBLazyVector: 9d061dde596c0d405ce66a93dabe1cf794e76e23
-  fmt: ef2b171741bf34950ac3da5dba2d2b940ae5dd6d
-  glog: 3b63484c2984372dfb8767969e2fdccb75adba78
+  fmt: f6af2d677a106e3e44c9536a4c0c7f03ab53c854
+  glog: ea1690290b2b90f923ffcce07436498f09b428ee
   MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
   NitroMmkv: 1d0a9f991bc4b5db3709904730a138bd7c7a2bb2
   NitroModules: cd0d440cf8a5fdeac4435b3ba30b6cd8420f1e1c
-  RCT-Folly: c5b90e7fb886348d62b16464ccd19b69d50fed07
+  RCT-Folly: e8b53d8c0d2d9df4a6a8b0a368a1a91fc62a88cb
   RCTDeprecation: 0418ac97b9f53b2e37f473da1663ef3061e46beb
   RCTRequired: 61528f74d9cf28b483de36e8ad1e157fa9e5c640
   RCTTypeSafety: 3a2dafe9eb7558083ed34aae7cc3f906cc5f8e2d
@@ -2059,7 +2059,7 @@ SPEC CHECKSUMS:
   ReactCommon: 4ca66b17cbe7d4ea2a7544aa5df3333f5d344888
   RNReanimated: 5fdee13ff78815a775239a16c08bf85d0dd83fcb
   RNSVG: c8ba193e7bea6983ebdf544a6ee7b0f706c64559
-  SocketRocket: 3fd9553741e0ac1c8fdc4e285a4f3482ff01dc06
+  SocketRocket: 03f7111df1a343b162bf5b06ead333be808e1e0a
   Yoga: be08366e61155f388be00b3943f4b3febdef8d30
 
 PODFILE CHECKSUM: f223220a54ab85033359d1154a2371b8c1ac494e

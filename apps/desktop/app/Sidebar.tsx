@@ -46,9 +46,9 @@ export const Sidebar = () => {
 					<Settings color={text} />
 				</StyledPressable>
 			</View>
-			<ScrollView className="flex-1" contentContainerClassName="px-4 gap-4">
+			<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4 gap-4">
 				{showLocalWeather && locationReady && (
-					<View className="mb-22 w-full gap-2">
+					<View className="w-full gap-2">
 						<StyledText type="maintitle">{t('localweather.title')}</StyledText>
 						<LocalWeather error={localWeatherError} />
 					</View>

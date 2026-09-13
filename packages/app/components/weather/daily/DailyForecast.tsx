@@ -80,7 +80,10 @@ export const DailyForecast = () => {
 							setSelectedDay(day);
 							navigateToForecast();
 						}}
-						className={clsx('items-center justify-center px-4', 'ios:bg-transparent ios:dark:bg-transparent', variants)}
+						className={clsx(
+							'items-center justify-center px-4',
+							'ios:bg-transparent ios:dark:bg-transparent ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark'
+						)}
 						style={{ cursor: 'pointer' }}
 					>
 						<View

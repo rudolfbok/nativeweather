@@ -12,6 +12,7 @@ import { useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, View } from 'react-native';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import { textOutline } from 'app/constants/textOutline';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -32,7 +33,7 @@ export const WeatherFeature = () => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: () => (
-					<StyledText type="title" style={{ color: shouldChangeColor ? text : 'white' }}>
+					<StyledText type="title" style={{ color: shouldChangeColor ? text : 'white' }} className={clsx(textOutline)}>
 						{weatherData.location.name}
 					</StyledText>
 				),
