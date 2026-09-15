@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: black;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: inherit;
+}
