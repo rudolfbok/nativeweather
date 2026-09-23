@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { HeroSkeleton } from 'app/components/weather/hero/HeroSkeleton';
+import { WeatherPullIndicator } from 'app/components/weather/WeatherPullIndicator';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
@@ -11,16 +11,16 @@ import { useStorageString } from 'app/database/useStorage';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-	ActivityIndicator,
-	NativeScrollEvent,
-	NativeSyntheticEvent,
-	Platform,
-	RefreshControl,
-	View,
-} from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { useHeaderHeight, useIsFocused } from 'expo-router/react-navigation';
+import { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, Platform, RefreshControl, View } from 'react-native';
+import Animated, {
+	runOnJS,
+	useAnimatedScrollHandler,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
+} from 'react-native-reanimated';
 import { textOutline } from 'app/constants/textOutline';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -35,6 +35,14 @@ export const WeatherFeature = () => {
 	const [landscapeHeight, setLandscapeHeight] = useState(0);
 	const [shouldChangeColor, setShouldChangeColor] = useState(false);
 	const refreshProgress = useSharedValue(0);
+	const pullProgress = useSharedValue(0);
+	const dragging = useSharedValue(false);
+	const refreshLocked = useSharedValue(false);
+	const headerColorChanged = useSharedValue(false);
+	const refreshInFlight = useRef(false);
+	const active = useRef(true);
+	const headerHeight = useHeaderHeight();
+	const focused = useIsFocused();
 	const navigation = useNavigation();
 
 	useEffect(() => {
@@ -53,11 +61,22 @@ export const WeatherFeature = () => {
 	}, [currentSource, getLocalWeather, setWeatherData, weatherData]);
 
 	useEffect(() => {
-		refreshProgress.value = withTiming(refreshing ? 1 : 0, { duration: 180 });
-	}, [refreshing, refreshProgress]);
+		refreshProgress.value = withTiming(refreshing && focused ? 1 : 0, { duration: 180 });
+	}, [refreshing, focused, refreshProgress]);
+
+	useEffect(() => {
+		active.current = focused;
+		dragging.value = false;
+		pullProgress.value = 0;
+		return () => {
+			active.current = false;
+			dragging.value = false;
+			pullProgress.value = 0;
+		};
+	}, [focused, headerHeight, dragging, pullProgress]);
 
 	const pullIndicatorStyle = useAnimatedStyle(() => ({
-		opacity: refreshProgress.value,
+		opacity: Math.max(Math.min(pullProgress.value * 12, 1), refreshProgress.value),
 	}));
 
 	useEffect(() => {
@@ -80,14 +99,15 @@ export const WeatherFeature = () => {
 		}
 	}, [navigation, shouldChangeColor, t, text, weatherData]);
 
-	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-		const changeColor = landscapeHeight - 50 > 0 && event.nativeEvent.contentOffset.y >= landscapeHeight - 50;
-		setShouldChangeColor((current) => (current === changeColor ? current : changeColor));
-	};
-
 	const onRefresh = async () => {
-		if (!weatherData) return;
+		if (refreshInFlight.current) return;
+		if (!weatherData || !active.current) {
+			refreshLocked.value = false;
+			refreshProgress.value = 0;
+			return;
+		}
 
+		refreshInFlight.current = true;
 		setRefreshing(true);
 
 		try {
@@ -105,16 +125,49 @@ export const WeatherFeature = () => {
 				title: t('toast.refreshed'),
 				from: 'bottom',
 			});
-		} catch (error) {
+		} catch {
 			Burnt.toast({
 				preset: 'error',
 				title: t('toast.notrefreshed'),
 				from: 'bottom',
 			});
 		} finally {
+			refreshInFlight.current = false;
+			refreshLocked.value = false;
+			refreshProgress.value = withTiming(0, { duration: 180 });
 			setRefreshing(false);
 		}
 	};
+
+	const handleScroll = useAnimatedScrollHandler({
+		onBeginDrag: () => {
+			dragging.value = focused && !refreshLocked.value;
+		},
+		onScroll: (event) => {
+			const changeColor = landscapeHeight - 50 > 0 && event.contentOffset.y >= landscapeHeight - 50;
+			if (changeColor !== headerColorChanged.value) {
+				headerColorChanged.value = changeColor;
+				runOnJS(setShouldChangeColor)(changeColor);
+			}
+			if (Platform.OS !== 'ios' || !dragging.value || refreshLocked.value) return;
+
+			// Automatic iOS header insets are absent from the scroll event's contentInset.
+			pullProgress.value = Math.min(Math.max(-(event.contentOffset.y + headerHeight), 0) / 80, 1);
+		},
+		onEndDrag: (event) => {
+			const releasedPull = -(event.contentOffset.y + headerHeight);
+			const shouldRefresh = Platform.OS === 'ios' && dragging.value && !refreshLocked.value && releasedPull >= 80;
+			dragging.value = false;
+			if (shouldRefresh) {
+				refreshLocked.value = true;
+				pullProgress.value = 0;
+				refreshProgress.value = 1;
+				runOnJS(onRefresh)();
+			} else {
+				pullProgress.value = withTiming(0, { duration: 180 });
+			}
+		},
+	});
 
 	if (!weatherData) {
 		return (
@@ -133,13 +186,20 @@ export const WeatherFeature = () => {
 				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
 				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
 			>
-				<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
+				{Platform.OS === 'ios' ? (
+					<WeatherPullIndicator progress={pullProgress} refreshing={refreshProgress} />
+				) : (
+					<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
+				)}
 			</Animated.View>
 			<Animated.ScrollView
 				onScroll={handleScroll}
 				scrollEventThrottle={16}
 				contentInsetAdjustmentBehavior="automatic"
-				refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+				alwaysBounceVertical={true}
+				refreshControl={
+					Platform.OS === 'ios' ? undefined : <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+				}
 			>
 				<HeroWeather onLandscapeLayout={setLandscapeHeight} />
 			</Animated.ScrollView>
