@@ -32,9 +32,6 @@ const MapButton = ({ onPress, onPressIn, icon }: { onPress: () => void; onPressI
 	<StyledPressable
 		onPress={onPress}
 		onPressIn={onPressIn}
-		liquidGlass={true}
-		glassEffectStyle="clear"
-		// colorScheme="auto"
 		className={clsx('ios:p-3 items-center rounded-full p-2', border)}
 	>
 		{icon}

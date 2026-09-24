@@ -26,7 +26,7 @@ import { AlertWeather } from '../../alerts/AlertWeather';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
 
-export const HeroWeather = ({ onLandscapeLayout }: { onLandscapeLayout?: (height: number) => void }) => {
+export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
 	const mapConditions = useMapConditions();
@@ -122,7 +122,7 @@ export const HeroWeather = ({ onLandscapeLayout }: { onLandscapeLayout?: (height
 		<View className={clsx('gap-4 pb-4')}>
 			<View className={clsx('flex-col gap-4 px-4')}>
 				<View className="gap-4">
-					<View onLayout={(event) => onLandscapeLayout?.(event.nativeEvent.layout.height)}>
+					<View>
 						<MainWeather
 							name={weatherData.location.name}
 							country={weatherData.location.country}

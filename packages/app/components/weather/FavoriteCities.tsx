@@ -34,7 +34,6 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 							'macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5',
 							border
 						)}
-						liquidGlass={true}
 					>
 						{showDeleteCity ? <Check size={26} color={text} /> : <EditIcon />}
 					</StyledPressable>
@@ -70,7 +69,6 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 								timeZone={weather.location.tzId}
 								region={city.region}
 								tintColor={tintColor}
-								colorScheme="auto"
 							/>
 							{showDeleteCity && (
 								<Pressable

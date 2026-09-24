@@ -1,15 +1,19 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from 'app/components/common/styled/RoundView';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ArrowDownIcon } from 'app/components/icons/ui/ArrowDownIcon';
 import { ArrowUpIcon } from 'app/components/icons/ui/ArrowUpIcon';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { border } from 'app/constants/border';
 import { textOutline } from 'app/constants/textOutline';
 import { useStorageString } from 'app/database/useStorage';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { WeatherLandscape } from 'app/utils/mappings/landscapes';
 import { clsx } from 'clsx';
+import { BlurView } from 'expo-blur';
+import { cssInterop } from 'nativewind';
 import { View } from 'react-native';
+
+const StyledBlurView = cssInterop(BlurView, { className: 'style' });
 
 interface MainWeatherProps {
 	name?: string;
@@ -105,15 +109,15 @@ export const MainWeather = ({
 						)}
 					</View>
 				</View>
-				<RoundView
-					liquidGlass={true}
-					glassEffectStyle="clear"
-					className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-xl')}
+				<StyledBlurView
+					className={clsx('relative z-10 overflow-hidden rounded-3xl px-4 py-2', border)}
+					tint="light"
+					intensity={30}
 				>
 					<StyledText type="title" className={clsx('!text-white')} style={textOutline}>
 						{condition}
 					</StyledText>
-				</RoundView>
+				</StyledBlurView>
 			</View>
 		</>
 	);

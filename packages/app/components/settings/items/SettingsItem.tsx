@@ -48,7 +48,6 @@ export const SettingsItem = ({
 	return (
 		<StyledPressable
 			onPress={Platform.OS === 'web' ? (variant === 'check' || variant === 'link' ? onPress : showModal) : onPress}
-			liquidGlass={false}
 			className={clsx(
 				'select-none px-4 pt-4',
 				variant !== 'toggle' && 'active:!bg-tertiarySystemBackground active:dark:!bg-tertiarySystemBackground_dark',

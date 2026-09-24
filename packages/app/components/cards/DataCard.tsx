@@ -31,11 +31,10 @@ export const DataCard = ({
 			<StyledPressable
 				onPress={onPress}
 				className={clsx(
-					'web:w-full ios:h-[173px] aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
-					Platform.OS !== 'ios' && border,
+					'web:w-full aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
+					border,
 					className
 				)}
-				liquidGlass={true}
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>

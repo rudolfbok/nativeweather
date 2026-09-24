@@ -22,7 +22,6 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 				'ios:w-[48%] ios:basis-[48%] macos:flex-grow web:w-full ios:h-[173px] macos:h-[130px] macos:aspect-video web:h-full aspect-square justify-between rounded-3xl p-4',
 				border
 			)}
-			liquidGlass={true}
 		>
 			<View>
 				<StyledText type="title">{item}</StyledText>

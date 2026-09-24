@@ -2,9 +2,9 @@ import { useTolgee } from '@tolgee/react';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
+import { border } from 'app/constants/border';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
-import { GlassColorScheme } from 'expo-glass-effect';
 import { DateTime } from 'luxon';
 import { GestureResponderEvent, View } from 'react-native';
 import { StyledPressable } from '../common/styled/StyledPressable';
@@ -21,7 +21,6 @@ interface CityCardProps {
 	displayTime: boolean;
 	region: string;
 	tintColor?: string;
-	colorScheme?: GlassColorScheme;
 }
 
 export const CityCard = ({
@@ -35,7 +34,6 @@ export const CityCard = ({
 	displayTime = true,
 	region,
 	tintColor,
-	colorScheme,
 }: CityCardProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
@@ -55,12 +53,8 @@ export const CityCard = ({
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx(
-				'min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl border border-transparent p-4'
-			)}
+			className={clsx('min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl p-4', border)}
 			tintColor={`${tintColor}E6`}
-			liquidGlass={true}
-			colorScheme={colorScheme}
 		>
 			<View className={clsx('flex-grow')}>
 				<StyledText

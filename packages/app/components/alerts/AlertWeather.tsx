@@ -46,7 +46,6 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 					'ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark w-full flex-row items-center justify-between rounded-3xl p-4',
 					border
 				)}
-				liquidGlass={false}
 			>
 				<CardHeader
 					icon={<AlertIcon mostSevere={alertIconColor} />}

@@ -1,9 +1,29 @@
-import { ActivityIndicator, View } from 'react-native';
-import Animated, { type SharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import { useEffect } from 'react';
+import { View } from 'react-native';
+import Animated, {
+	cancelAnimation,
+	Easing,
+	type SharedValue,
+	useAnimatedReaction,
+	useAnimatedStyle,
+	useSharedValue,
+	withRepeat,
+	withTiming,
+} from 'react-native-reanimated';
 
-const Spoke = ({ index, progress }: { index: number; progress: SharedValue<number> }) => {
+const Spoke = ({
+	index,
+	progress,
+	refreshing,
+}: {
+	index: number;
+	progress: SharedValue<number>;
+	refreshing: SharedValue<number>;
+}) => {
 	const style = useAnimatedStyle(() => ({
-		opacity: Math.min(Math.max(progress.value * 12 - index, 0), 1),
+		opacity:
+			Math.min(Math.max(progress.value * 12 - index, 0), 1) * (1 - refreshing.value) +
+			(1 - index / 16) * refreshing.value,
 	}));
 
 	return (
@@ -20,18 +40,31 @@ export const WeatherPullIndicator = ({
 	progress: SharedValue<number>;
 	refreshing: SharedValue<number>;
 }) => {
-	const spokesStyle = useAnimatedStyle(() => ({ opacity: 1 - refreshing.value }));
-	const spinnerStyle = useAnimatedStyle(() => ({ opacity: refreshing.value }));
+	const rotation = useSharedValue(0);
+
+	useAnimatedReaction(
+		() => refreshing.value > 0,
+		(spinning, previouslySpinning) => {
+			if (spinning === previouslySpinning) return;
+			if (spinning) {
+				rotation.value = withRepeat(withTiming(360, { duration: 1000, easing: Easing.linear }), -1);
+			} else {
+				cancelAnimation(rotation);
+				rotation.value = 0;
+			}
+		}
+	);
+
+	useEffect(() => () => cancelAnimation(rotation), [rotation]);
+
+	const spokesStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${rotation.value}deg` }] }));
 
 	return (
 		<View className="h-9 w-9" accessibilityElementsHidden={true} importantForAccessibility="no-hide-descendants">
 			<Animated.View className="absolute inset-0" style={spokesStyle}>
 				{Array.from({ length: 12 }, (_, index) => (
-					<Spoke key={index} index={index} progress={progress} />
+					<Spoke key={index} index={index} progress={progress} refreshing={refreshing} />
 				))}
-			</Animated.View>
-			<Animated.View className="absolute inset-0 items-center justify-center" style={spinnerStyle}>
-				<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
 			</Animated.View>
 		</View>
 	);

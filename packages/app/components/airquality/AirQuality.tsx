@@ -58,12 +58,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 		<>
 			<StyledPressable
 				onPress={navigateToAirQuality}
-				className={clsx(
-					'col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4',
-					Platform.OS !== 'ios' && border,
-					className
-				)}
-				liquidGlass={true}
+				className={clsx('col-span-3 gap-2 gap-4 overflow-hidden rounded-3xl p-4', border, className)}
 			>
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>

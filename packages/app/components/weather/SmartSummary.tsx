@@ -281,7 +281,7 @@ export const SmartSummary = ({
 	const summary = [tempText, comboText, ...details].filter(Boolean).join(' ');
 
 	return (
-		<RoundView className="w-full gap-2 p-4" liquidGlass>
+		<RoundView className="w-full gap-2 p-4">
 			<CardHeader icon={<SmartSummaryIcon />} header={t('title')} />
 			<StyledText type="body">{summary}</StyledText>
 		</RoundView>

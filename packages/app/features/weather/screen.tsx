@@ -32,13 +32,10 @@ export const WeatherFeature = () => {
 	const { text } = useThemeColors();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
-	const [landscapeHeight, setLandscapeHeight] = useState(0);
-	const [shouldChangeColor, setShouldChangeColor] = useState(false);
 	const refreshProgress = useSharedValue(0);
 	const pullProgress = useSharedValue(0);
 	const dragging = useSharedValue(false);
 	const refreshLocked = useSharedValue(false);
-	const headerColorChanged = useSharedValue(false);
 	const refreshInFlight = useRef(false);
 	const active = useRef(true);
 	const headerHeight = useHeaderHeight();
@@ -83,12 +80,12 @@ export const WeatherFeature = () => {
 		if (weatherData) {
 			navigation.setOptions({
 				headerTitle: () => (
-					<StyledText type="title" style={{ color: shouldChangeColor ? text : 'white' }} className={clsx(textOutline)}>
+					<StyledText type="title" style={{ color: 'white' }} className={clsx(textOutline)}>
 						{weatherData.location.name}
 					</StyledText>
 				),
-				headerTintColor: shouldChangeColor ? text : 'white',
-				headerTitleStyle: { color: shouldChangeColor ? text : 'white' },
+				headerTintColor: 'white',
+				headerTitleStyle: { color: 'white' },
 			});
 		} else {
 			navigation.setOptions({
@@ -97,7 +94,7 @@ export const WeatherFeature = () => {
 				headerTitleStyle: { color: text },
 			});
 		}
-	}, [navigation, shouldChangeColor, t, text, weatherData]);
+	}, [navigation, t, text, weatherData]);
 
 	const onRefresh = async () => {
 		if (refreshInFlight.current) return;
@@ -144,11 +141,6 @@ export const WeatherFeature = () => {
 			dragging.value = focused && !refreshLocked.value;
 		},
 		onScroll: (event) => {
-			const changeColor = landscapeHeight - 50 > 0 && event.contentOffset.y >= landscapeHeight - 50;
-			if (changeColor !== headerColorChanged.value) {
-				headerColorChanged.value = changeColor;
-				runOnJS(setShouldChangeColor)(changeColor);
-			}
 			if (Platform.OS !== 'ios' || !dragging.value || refreshLocked.value) return;
 
 			// Automatic iOS header insets are absent from the scroll event's contentInset.
@@ -201,7 +193,7 @@ export const WeatherFeature = () => {
 					Platform.OS === 'ios' ? undefined : <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 				}
 			>
-				<HeroWeather onLandscapeLayout={setLandscapeHeight} />
+				<HeroWeather />
 			</Animated.ScrollView>
 		</View>
 	);

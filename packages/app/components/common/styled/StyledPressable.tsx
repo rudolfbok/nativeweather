@@ -1,17 +1,6 @@
-import { border } from 'app/constants/border';
 import { variants } from 'app/constants/pressableVariants';
 import { clsx } from 'clsx';
-import {
-	GlassColorScheme,
-	GlassStyle,
-	GlassView,
-	isGlassEffectAPIAvailable,
-	isLiquidGlassAvailable,
-} from 'expo-glass-effect';
-import { cssInterop } from 'nativewind';
-import { GestureResponderEvent, Platform, Pressable } from 'react-native';
-
-const StyledGlassView = cssInterop(GlassView, { className: 'style' });
+import { GestureResponderEvent, Pressable } from 'react-native';
 
 interface StyledPressableProps {
 	onPress?: (event: GestureResponderEvent) => void | Promise<void>;
@@ -19,37 +8,9 @@ interface StyledPressableProps {
 	tintColor?: string;
 	children: React.ReactNode;
 	className?: string;
-	colorScheme?: GlassColorScheme;
-	glassEffectStyle?: GlassStyle;
-	liquidGlass?: boolean;
 }
 
-export const StyledPressable = ({
-	colorScheme,
-	glassEffectStyle,
-	tintColor,
-	className,
-	onPress,
-	onPressIn,
-	children,
-	liquidGlass = false,
-}: StyledPressableProps) => {
-	if (Platform.OS === 'ios' && liquidGlass && isLiquidGlassAvailable() && isGlassEffectAPIAvailable()) {
-		return (
-			<Pressable onPress={onPress}>
-				<StyledGlassView
-					className={className}
-					isInteractive={true}
-					tintColor={tintColor}
-					colorScheme={colorScheme}
-					glassEffectStyle={glassEffectStyle}
-				>
-					{children}
-				</StyledGlassView>
-			</Pressable>
-		);
-	}
-
+export const StyledPressable = ({ tintColor, className, onPress, onPressIn, children }: StyledPressableProps) => {
 	return (
 		<Pressable
 			onPress={onPress}
