@@ -59,7 +59,7 @@ export const HomeFeature = () => {
 				<ScrollView
 					contentInsetAdjustmentBehavior="never"
 					contentContainerClassName="px-4 pb-4"
-					contentInset={Platform.OS === 'ios' ? { top: headerHeight, bottom: insets.bottom } : undefined}
+					contentInset={Platform.OS === 'ios' ? { top: headerHeight } : undefined}
 					contentOffset={Platform.OS === 'ios' ? { x: 0, y: -headerHeight } : undefined}
 					contentContainerStyle={Platform.OS === 'android' ? { paddingTop: headerHeight } : undefined}
 					scrollIndicatorInsets={{ top: headerHeight, bottom: insets.bottom }}
