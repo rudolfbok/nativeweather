@@ -1,6 +1,6 @@
 import { border } from 'app/constants/border';
 import { clsx } from 'clsx';
-import { GestureResponderEvent, Platform, View } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 import { CardHeader } from '../common/layout/CardHeader';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';

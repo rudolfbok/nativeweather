@@ -4,10 +4,11 @@ import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { extractCity } from 'app/utils/extractCity';
+import { getAlerts, getMostSevereAlert } from 'app/utils/alertFilters';
+import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 import { weatherLandscapeBg, weatherLandscapeText } from 'app/utils/mappings/landscapeColors';
-import { clsx } from 'clsx';
 import { Stack } from 'expo-router';
-import { Share, Star } from 'lucide-react-native';
+import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 
@@ -16,6 +17,9 @@ export default function TabLayout() {
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const { background, text } = useThemeColors();
+	const alerts = weatherData ? getAlerts(weatherData.alerts.alert, weatherData.location) : [];
+	const mostSevereAlert = getMostSevereAlert(alerts);
+	const alertDotColor = mostSevereAlert ? getAlertSeverityDotColor(mostSevereAlert.severity) : undefined;
 	const headerBackgroundColor = weatherData
 		? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
 		: background;
@@ -29,43 +33,12 @@ export default function TabLayout() {
 		setIsFavorite(isCityInFavorites(city));
 	}, [setIsFavorite, weatherData]);
 
-	const LeftButton = () => {
-		return (
-			<Pressable
-				onPress={() => console.log('Shared button was clicked!')}
-				className={clsx('android:mr-2 h-fit w-10 items-center justify-center')}
-			>
-				<Share size={Platform.OS === 'ios' ? 22 : 28} color={headerTextColor} style={{ pointerEvents: 'none' }} />
-			</Pressable>
-		);
-	};
-
-	const RightButton = () => {
-		if (!weatherData) return null;
-
-		return (
-			<Pressable
-				onPress={() => handleFavoriteToggle(extractCity(weatherData))}
-				className={clsx('h-10 w-10 items-center justify-center')}
-			>
-				<Star
-					size={Platform.OS === 'ios' ? 22 : 28}
-					color={headerTextColor}
-					fill={isFavorite ? headerTextColor : 'transparent'}
-					style={{ pointerEvents: 'none' }}
-				/>
-			</Pressable>
-		);
-	};
-
 	return (
 		<Stack nativeContainerStyle={{ backgroundColor: background }}>
 			<Stack.Screen
 				name="[city]"
 				options={{
 					title: t('tab.weather'),
-					headerLeft: () => weatherData && <LeftButton />,
-					headerRight: () => weatherData && <RightButton />,
 					headerShadowVisible: false,
 					headerTransparent: true,
 					headerTintColor: headerTextColor,
@@ -76,7 +49,41 @@ export default function TabLayout() {
 						paddingHorizontal: 0,
 					},
 				}}
-			/>
+			>
+				<Stack.Toolbar placement="left">
+					{weatherData && (
+						<Stack.Toolbar.Button
+							accessibilityLabel={t('favorites.share')}
+							icon="square.and.arrow.up"
+							hidesSharedBackground
+							onPress={() => console.log('Shared button was clicked!')}
+							tintColor={headerTextColor}
+						/>
+					)}
+				</Stack.Toolbar>
+				{weatherData && (
+					<Stack.Toolbar placement="right" asChild>
+						<Pressable
+							accessibilityLabel={t(isFavorite ? 'favorites.delete' : 'favorites.title')}
+							onPress={() => handleFavoriteToggle(extractCity(weatherData))}
+							className="relative mr-4 h-10 w-10 items-center justify-center rounded-full bg-white/20 active:bg-white/30"
+						>
+							<Star
+								size={Platform.OS === 'ios' ? 22 : 28}
+								color={headerTextColor}
+								fill={isFavorite ? headerTextColor : 'transparent'}
+								style={{ pointerEvents: 'none' }}
+							/>
+							{alertDotColor && (
+								<View
+									className="absolute right-0 top-0 h-2.5 w-2.5 rounded-full"
+									style={{ backgroundColor: alertDotColor }}
+								/>
+							)}
+						</Pressable>
+					</Stack.Toolbar>
+				)}
+			</Stack.Screen>
 		</Stack>
 	);
 }

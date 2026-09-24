@@ -12,7 +12,7 @@ import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWidgets } from 'app/hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
 import { BlurTargetView, BlurView } from 'expo-blur';
-import { cssInterop, useColorScheme } from 'nativewind';
+import { cssInterop } from 'nativewind';
 import { useEffect, useRef, useState } from 'react';
 import { Platform, RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
