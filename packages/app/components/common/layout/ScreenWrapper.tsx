@@ -10,7 +10,7 @@ export const ScreenWrapper = ({ refreshControl, children }: ScreenWrapperProps) 
 	return (
 		<ScrollView
 			contentInsetAdjustmentBehavior="automatic"
-			contentContainerClassName="px-5 pb-4"
+			contentContainerClassName="px-4"
 			refreshControl={refreshControl}
 		>
 			{children}

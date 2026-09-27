@@ -9,10 +9,10 @@ import { clsx } from 'clsx';
 import { Check, Edit, Trash2, XIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
-import { CloseIcon } from '../icons/ui/CloseIcon';
-import { CityCard } from './CityCard';
-import { CityCardSkeleton } from './CityCardSkeleton';
-import { EditIcon } from '../icons/ui/EditIcon';
+import { CloseIcon } from '../../icons/ui/CloseIcon';
+import { Card } from '../card/Card';
+import { CardSkeleton } from '../card/CardSkeleton';
+import { EditIcon } from '../../icons/ui/EditIcon';
 import { border } from 'app/constants/border';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
@@ -53,12 +53,12 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 			>
 				{loading &&
 					favoritesData.length === 0 &&
-					Array.from({ length: favoriteCount }, (_, index) => <CityCardSkeleton key={index} />)}
+					Array.from({ length: favoriteCount }, (_, index) => <CardSkeleton key={index} />)}
 				{favoritesData.map(({ city, weather }, index) => {
 					const tintColor = weatherLandscapeBg({ isDay: weather.current.isDay, code: weather.current.condition.code });
 					return (
 						<View key={index} className={clsx('flex-row')}>
-							<CityCard
+							<Card
 								onPress={() => handleCityPress(city)}
 								city={city.name}
 								conditionCode={weather.current.condition.code}

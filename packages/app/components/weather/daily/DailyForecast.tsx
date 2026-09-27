@@ -2,9 +2,10 @@ import { useTolgee, useTranslate } from '@tolgee/react';
 import { CardHeader } from 'app/components/common/layout/CardHeader';
 import { StyledModal } from 'app/components/common/modal/StyledModal';
 import { RoundView } from 'app/components/common/styled/RoundView';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { CalendarIcon } from 'app/components/icons/main/CalendarIcon';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { useStorageString } from 'app/database/useStorage';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useModalNavigation } from 'app/hooks/navigation/useModalNavigation';
@@ -15,10 +16,9 @@ import { useWeather } from 'app/hooks/weather/useWeather';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
-import { variants } from 'app/constants/pressableVariants';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -73,7 +73,7 @@ export const DailyForecast = () => {
 				className={clsx('web:px-4 mb-1 px-4 pt-4')}
 			/>
 			{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
-				<Pressable
+				<StyledPressable
 					key={index}
 					onPress={() => {
 						setSelectedDay(day);
@@ -81,10 +81,8 @@ export const DailyForecast = () => {
 					}}
 					className={clsx(
 						'items-center justify-center px-4',
-						'ios:bg-transparent ios:dark:bg-transparent ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark',
-						variants
+						'ios:bg-transparent ios:dark:bg-transparent android:bg-transparent android:dark:bg-transparent'
 					)}
-					style={{ cursor: 'pointer' }}
 				>
 					<View
 						className={clsx(
@@ -130,7 +128,7 @@ export const DailyForecast = () => {
 							</StyledText>
 						</View>
 					</View>
-				</Pressable>
+				</StyledPressable>
 			))}
 			{Platform.OS === 'web' && selectedDay && (
 				<StyledModal
@@ -141,7 +139,7 @@ export const DailyForecast = () => {
 					onClose={() => setSelectedDay(null)}
 					daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={(day) => setSelectedDay(day)} />}
 				>
-					<DailyForecastMain day={selectedDay} />
+					<DailyForecastMain day={selectedDay} onCloseParent={() => setSelectedDay(null)} />
 				</StyledModal>
 			)}
 		</RoundView>

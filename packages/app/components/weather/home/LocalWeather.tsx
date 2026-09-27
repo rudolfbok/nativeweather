@@ -9,8 +9,8 @@ import { useLocalWeather } from 'app/hooks/weather/useLocalWeather';
 import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
-import { CityCard } from './CityCard';
-import { CityCardSkeleton } from './CityCardSkeleton';
+import { Card } from '../card/Card';
+import { CardSkeleton } from '../card/CardSkeleton';
 
 interface LocalWeatherProps {
 	error?: LocalWeatherErrorKind | null;
@@ -41,14 +41,14 @@ export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
 	if (!localWeatherData) {
 		return (
 			<View className={clsx(containerClassName)}>
-				<CityCardSkeleton />
+				<CardSkeleton />
 			</View>
 		);
 	}
 
 	return (
 		<View className={clsx(containerClassName)}>
-			<CityCard
+			<Card
 				onPress={() => handleCityPress(localWeatherData.location)}
 				city={localWeatherData.location.name}
 				conditionCode={localWeatherData.current.condition.code}

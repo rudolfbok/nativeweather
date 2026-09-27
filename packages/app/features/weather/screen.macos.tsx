@@ -1,6 +1,6 @@
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useWeather } from 'app/hooks/weather/useWeather';
 import { useLocation } from 'app/hooks/location/useLocation.macos';

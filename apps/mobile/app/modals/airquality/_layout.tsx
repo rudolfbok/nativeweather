@@ -5,7 +5,7 @@ import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
@@ -44,6 +44,9 @@ export default function ModalsLayout() {
 			<Stack.Screen
 				name="index"
 				options={{
+					scrollEdgeEffects: {
+						top: 'soft',
+					},
 					headerTitle: () => <ModalHeader icon={<AirQualityIcon />} title={t('airquality.title')} />,
 				}}
 			/>

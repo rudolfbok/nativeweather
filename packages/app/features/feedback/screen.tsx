@@ -2,13 +2,13 @@
 
 import { useTranslate } from '@tolgee/react';
 import { StyledButton } from 'app/components/common/styled/StyledButton';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from 'app/utils/notifications/showToast';
-import { variants } from 'app/constants/pressableVariants';
 import { border } from 'app/constants/border';
 
 export const FeedbackFeature = () => {
@@ -53,20 +53,19 @@ export const FeedbackFeature = () => {
 	const DropdownItem = ({ icon, title, variant }: { icon: ReactNode; title: string; variant: string }) => {
 		const isSelected = type === variant;
 		return (
-			<Pressable
+			<StyledPressable
 				onPress={() => {
 					setType(variant);
 					setOpen(false);
 				}}
-				className={clsx('flex-row items-center gap-4 p-4', variants)}
-				style={{ cursor: 'pointer' }}
+				className={clsx('flex-row items-center gap-4 p-4')}
 			>
 				<View className="h-6 w-6 items-center justify-center">{icon}</View>
 				<View className="flex-1">
 					<StyledText type="body">{title}</StyledText>
 				</View>
 				<View className="h-6 w-6 items-center justify-center">{isSelected && <Check color="#007AFF" size={20} />}</View>
-			</Pressable>
+			</StyledPressable>
 		);
 	};
 

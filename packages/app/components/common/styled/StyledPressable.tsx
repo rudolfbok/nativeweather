@@ -1,4 +1,3 @@
-import { variants } from 'app/constants/pressableVariants';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, Pressable } from 'react-native';
 
@@ -16,7 +15,10 @@ export const StyledPressable = ({ tintColor, className, onPress, onPressIn, chil
 			onPress={onPress}
 			onPressIn={onPressIn}
 			style={[tintColor ? { backgroundColor: tintColor } : undefined, { cursor: 'pointer' }]}
-			className={clsx(variants, className)}
+			className={clsx(
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark web:hover:bg-tertiarySystemBackground web:dark:hover:bg-tertiarySystemBackground_dark macos:hover:bg-tertiarySystemBackground macos:dark:hover:bg-tertiarySystemBackground_dark ios:active:bg-tertiarySystemBackground ios:active:dark:bg-tertiarySystemBackground_dark android:active:bg-tertiarySystemBackground android:active:dark:bg-tertiarySystemBackground_dark',
+				className
+			)}
 		>
 			{children}
 		</Pressable>

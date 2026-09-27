@@ -1,16 +1,14 @@
 import { useTolgee } from '@tolgee/react';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
 import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
-import { GestureResponderEvent, View } from 'react-native';
-import { StyledPressable } from '../common/styled/StyledPressable';
-import { StyledText } from '../common/styled/StyledText';
+import { View } from 'react-native';
+import { StyledText } from '../../common/styled/StyledText';
 
-interface CityCardProps {
-	onPress: (event?: GestureResponderEvent) => void;
+interface CardContentProps {
 	city: string;
 	conditionCode: number;
 	isDay: 0 | 1;
@@ -19,11 +17,9 @@ interface CityCardProps {
 	timeZone?: string;
 	displayTime: boolean;
 	region: string;
-	tintColor?: string;
 }
 
-export const CityCard = ({
-	onPress,
+export const CardContent = ({
 	city,
 	conditionCode,
 	isDay,
@@ -32,29 +28,22 @@ export const CityCard = ({
 	timeZone,
 	displayTime = true,
 	region,
-	tintColor,
-}: CityCardProps) => {
+}: CardContentProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showWorldTime] = useStorageBoolean('showWorldTime');
 	const [currentSource] = useStorageString('currentSource');
 	const mapConditions = useMapConditions();
-
 	const tolgee = useTolgee();
 
 	const getLocalTimeNow = (timezone: string): string => {
 		const lang = tolgee.getLanguage();
-		const localtime = DateTime.now()
+		return DateTime.now()
 			.setZone(timezone)
 			.toFormat(lang === 'en-US' ? 'hh:mm a' : 'HH:mm');
-		return localtime;
 	};
 
 	return (
-		<StyledPressable
-			onPress={onPress}
-			className={clsx('min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl p-4')}
-			tintColor={`${tintColor}E6`}
-		>
+		<>
 			<View className={clsx('flex-grow')}>
 				<StyledText
 					type="sectiontitle"
@@ -73,11 +62,7 @@ export const CityCard = ({
 					{region}
 				</StyledText>
 				<StyledText type="title" className={clsx('native:!text-white web:!text-white')}>
-					{switchTemp({
-						celsius: tempC,
-						fahrenheit: tempF,
-						currentTemp: currentTemperature,
-					})}
+					{switchTemp({ celsius: tempC, fahrenheit: tempF, currentTemp: currentTemperature })}
 				</StyledText>
 				<StyledText
 					type="body"
@@ -96,6 +81,6 @@ export const CityCard = ({
 					</StyledText>
 				)}
 			</View>
-		</StyledPressable>
+		</>
 	);
 };

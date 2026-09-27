@@ -14,9 +14,10 @@ interface RangeCardProps {
 	visKm: number;
 	visMiles: number;
 	showBackdrop?: boolean;
+	onCloseParent?: () => void;
 }
 
-export const RangeCard = ({ visKm, visMiles, showBackdrop }: RangeCardProps) => {
+export const RangeCard = ({ visKm, visMiles, showBackdrop, onCloseParent }: RangeCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -66,7 +67,12 @@ export const RangeCard = ({ visKm, visMiles, showBackdrop }: RangeCardProps) => 
 						visible={showModal}
 						icon={<RangeIcon />}
 						header={t('range.title')}
-						onClose={() => setShowModal(false)}
+						onClose={() => {
+							setShowModal(false);
+							onCloseParent?.();
+						}}
+						goBackHeader={Boolean(onCloseParent)}
+						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
 						<RangeModal />

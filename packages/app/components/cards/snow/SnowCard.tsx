@@ -16,9 +16,10 @@ interface SnowCardProps {
 	snowPrecipIn: number;
 	snowChance: number;
 	showBackdrop?: boolean;
+	onCloseParent?: () => void;
 }
 
-export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop }: SnowCardProps) => {
+export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop, onCloseParent }: SnowCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -68,7 +69,12 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop 
 						visible={showModal}
 						icon={<SnowIcon />}
 						header={t('snow.title')}
-						onClose={() => setShowModal(false)}
+						onClose={() => {
+							setShowModal(false);
+							onCloseParent?.();
+						}}
+						goBackHeader={Boolean(onCloseParent)}
+						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
 						<SnowModal />

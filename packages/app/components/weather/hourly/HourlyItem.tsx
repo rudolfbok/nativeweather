@@ -1,4 +1,4 @@
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
 import { StyledText } from 'app/components/common/styled/StyledText';

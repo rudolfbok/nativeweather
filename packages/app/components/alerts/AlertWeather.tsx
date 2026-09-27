@@ -13,7 +13,6 @@ import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { AlertModal } from './AlertModal';
-import { variants } from 'app/constants/pressableVariants';
 import { border } from 'app/constants/border';
 
 interface AlertWeatherProps {
@@ -43,7 +42,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 			<StyledPressable
 				onPress={navigateToAlerts}
 				className={clsx(
-					'ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark w-full flex-row items-center justify-between rounded-3xl p-4',
+					'w-full flex-row items-center justify-between rounded-3xl p-4',
 					border
 				)}
 			>

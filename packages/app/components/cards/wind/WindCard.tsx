@@ -25,6 +25,7 @@ interface WindCardProps {
 	details: boolean;
 	currentWind: boolean;
 	showBackdrop?: boolean;
+	onCloseParent?: () => void;
 }
 
 export const WindCard = ({
@@ -36,6 +37,7 @@ export const WindCard = ({
 	details,
 	currentWind,
 	showBackdrop,
+	onCloseParent,
 }: WindCardProps) => {
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -107,7 +109,12 @@ export const WindCard = ({
 						visible={showModal}
 						icon={<WindIcon />}
 						header={t('wind.title')}
-						onClose={() => setShowModal(false)}
+						onClose={() => {
+							setShowModal(false);
+							onCloseParent?.();
+						}}
+						goBackHeader={Boolean(onCloseParent)}
+						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
 						<WindModal currentWind={currentWind} degree={degree ?? 0} speed={displaySpeed} gust={displayGust} />

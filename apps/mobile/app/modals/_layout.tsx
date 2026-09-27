@@ -16,19 +16,30 @@ import {
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
-import { router, Stack } from 'expo-router';
+import { router, Stack, useNavigation } from 'expo-router';
 import { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
 	const { modalBg, text } = useThemeColors();
+	const navigation = useNavigation('/modals');
+	const closeModal = () => {
+		if (navigation.canGoBack()) {
+			navigation.goBack();
+			return;
+		}
+
+		router.replace('/(tabs)/(weather)/[city]');
+	};
 
 	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
 		return (
 			<View className={clsx('flex-row items-center gap-2')}>
 				{icon}
-				<StyledText type="title">{title}</StyledText>
+				<StyledText type="title" className="font-bold">
+					{title}
+				</StyledText>
 			</View>
 		);
 	};
@@ -39,11 +50,14 @@ export default function ModalsLayout() {
 			screenOptions={{
 				headerBackButtonDisplayMode: 'minimal',
 				headerTransparent: true,
+				scrollEdgeEffects: {
+					top: 'soft',
+				},
 				headerTitleStyle: {
 					color: text,
 				},
 				headerRight: () => (
-					<Pressable onPress={() => router.back()} className={clsx('h-10 w-10 items-center justify-center')}>
+					<Pressable onPress={closeModal} className={clsx('h-10 w-10 items-center justify-center')}>
 						<CloseIcon />
 					</Pressable>
 				),

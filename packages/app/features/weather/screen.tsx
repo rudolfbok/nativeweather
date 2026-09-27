@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { PullIndicator } from 'app/components/weather/PullIndicator';
+import { PullIndicator } from 'app/components/common/loading/PullIndicator';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useWeather } from 'app/hooks/weather/useWeather';
@@ -29,6 +29,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { textOutline } from 'app/constants/textOutline';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ErrorIcon } from 'app/components/icons/ui/ErrorIcon';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -170,10 +171,11 @@ export const WeatherFeature = () => {
 
 	if (!weatherData) {
 		return (
-			<View className={clsx('flex-1 items-center justify-center')}>
-				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={0.5} source={currentSource} />
-				<StyledText type="sectiontitle">Current weather data will be displayed here.</StyledText>
-				<StyledText type="sectiontitle">Search or click from favorites.</StyledText>
+			<View className={clsx('flex-1 items-center justify-center gap-4')}>
+				<ErrorIcon />
+				<StyledText type="body" className="text-center font-semibold">
+					Weather couldnt be fetched. Please check your internet connection and try again.
+				</StyledText>
 			</View>
 		);
 	}

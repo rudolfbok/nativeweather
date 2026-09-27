@@ -5,13 +5,13 @@ import { StyledText } from 'app/components/common/styled/StyledText';
 import { OpenFreeMapLogo } from 'app/components/icons/logos/OpenFreeMapLogo';
 import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
+import { StyledPressable } from 'app/components/common/styled/StyledPressable';
 import { LegalLinks } from 'app/components/settings/LegalLinks';
-import { variants } from 'app/constants/pressableVariants';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';
-import { Linking, Pressable, View } from 'react-native';
+import { Linking, View } from 'react-native';
 
 interface DataSourceItemProps {
 	name: string;
@@ -23,19 +23,16 @@ const DataSourceItem = ({ name, logo, url }: DataSourceItemProps) => {
 	const { text } = useThemeColors();
 
 	return (
-		<Pressable
+		<StyledPressable
 			onPress={() => Linking.openURL(url)}
-			className={clsx(
-				'ios:active:bg-tertiarySystemBackground ios:active:dark:bg-tertiarySystemBackground_dark flex-row items-center gap-2 px-4 py-3',
-				variants
-			)}
+			className={clsx('flex-row items-center gap-2 px-4 py-3')}
 		>
 			<View className={clsx('w-16 scale-75 items-center')}>{logo}</View>
 			<View className={clsx('flex-1')}>
 				<StyledText type="sectiontitle">{name}</StyledText>
 			</View>
 			<ChevronRight color={text} />
-		</Pressable>
+		</StyledPressable>
 	);
 };
 

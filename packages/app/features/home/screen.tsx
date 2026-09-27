@@ -3,9 +3,9 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo';
-import { FavoriteCities } from 'app/components/weather/FavoriteCities';
-import { LocalWeather } from 'app/components/weather/LocalWeather';
-import { PullIndicator } from 'app/components/weather/PullIndicator';
+import { FavoriteCities } from 'app/components/weather/home/FavoriteCities';
+import { LocalWeather } from 'app/components/weather/home/LocalWeather';
+import { PullIndicator } from 'app/components/common/loading/PullIndicator';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
 import { useLocation } from 'app/hooks/location/useLocation';

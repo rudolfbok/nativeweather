@@ -3,8 +3,8 @@
 import { useTranslate } from '@tolgee/react';
 import { AnimatedView } from 'app/components/common/animated/AnimatedView.web';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { FavoriteCities } from 'app/components/weather/FavoriteCities';
-import { LocalWeather } from 'app/components/weather/LocalWeather';
+import { FavoriteCities } from 'app/components/weather/home/FavoriteCities';
+import { LocalWeather } from 'app/components/weather/home/LocalWeather';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useStorageBoolean } from 'app/database/useStorage';

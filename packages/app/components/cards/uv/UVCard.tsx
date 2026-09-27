@@ -16,9 +16,10 @@ import { UVModal } from './UVModal';
 interface UVCardProps {
 	data: number;
 	showBackdrop?: boolean;
+	onCloseParent?: () => void;
 }
 
-export const UVCard = ({ data, showBackdrop }: UVCardProps) => {
+export const UVCard = ({ data, showBackdrop, onCloseParent }: UVCardProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
@@ -74,7 +75,12 @@ export const UVCard = ({ data, showBackdrop }: UVCardProps) => {
 						visible={showModal}
 						icon={<UVIcon />}
 						header="UV Index"
-						onClose={() => setShowModal(false)}
+						onClose={() => {
+							setShowModal(false);
+							onCloseParent?.();
+						}}
+						goBackHeader={Boolean(onCloseParent)}
+						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
 						<UVModal />

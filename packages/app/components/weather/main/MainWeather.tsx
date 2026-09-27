@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ArrowDownIcon } from 'app/components/icons/ui/ArrowDownIcon';
 import { ArrowUpIcon } from 'app/components/icons/ui/ArrowUpIcon';
-import { WeatherIcon } from 'app/components/weather/WeatherIcon';
+import { WeatherIcon } from 'app/components/icons/weather/WeatherIcon';
 import { border } from 'app/constants/border';
 import { textOutline } from 'app/constants/textOutline';
 import { useStorageString } from 'app/database/useStorage';

@@ -16,9 +16,10 @@ interface RainCardProps {
 	rainPrecipIn: number;
 	rainChance: number;
 	showBackdrop?: boolean;
+	onCloseParent?: () => void;
 }
 
-export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop }: RainCardProps) => {
+export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop, onCloseParent }: RainCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -69,7 +70,12 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop 
 						visible={showModal}
 						icon={<RainIcon />}
 						header={t('rain.title')}
-						onClose={() => setShowModal(false)}
+						onClose={() => {
+							setShowModal(false);
+							onCloseParent?.();
+						}}
+						goBackHeader={Boolean(onCloseParent)}
+						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
 						<RainModal />

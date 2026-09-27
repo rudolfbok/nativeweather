@@ -11,7 +11,13 @@ import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
 import { SmartSummary } from '../SmartSummary';
 
-export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['forecastday'][0] | null }) => {
+export const DailyForecastMain = ({
+	day,
+	onCloseParent,
+}: {
+	day: NormalizedData['forecast']['forecastday'][0] | null;
+	onCloseParent?: () => void;
+}) => {
 	const scrollRef = useRef<ScrollView>(null);
 	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();
@@ -94,6 +100,7 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 						snowPrecipCm={day.day.totalSnowCm}
 						snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
 						showBackdrop={false}
+						onCloseParent={onCloseParent}
 					/>
 				) : (
 					<RainCard
@@ -101,17 +108,19 @@ export const DailyForecastMain = ({ day }: { day: NormalizedData['forecast']['fo
 						rainPrecipMm={day.day.totalPrecipMm}
 						rainPrecipIn={day.day.totalPrecipIn}
 						showBackdrop={false}
+						onCloseParent={onCloseParent}
 					/>
 				)}
 
-				<UVCard data={day.day.uv} showBackdrop={false} />
-				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} showBackdrop={false} />
+				<UVCard data={day.day.uv} showBackdrop={false} onCloseParent={onCloseParent} />
+				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} showBackdrop={false} onCloseParent={onCloseParent} />
 				<WindCard
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}
 					details={false}
 					currentWind={false}
 					showBackdrop={false}
+					onCloseParent={onCloseParent}
 				/>
 			</View>
 		</View>

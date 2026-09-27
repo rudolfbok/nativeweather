@@ -1,4 +1,4 @@
-import Svg, { Path, G, Defs, ClipPath } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 export const ErrorIcon = () => {
 	return (

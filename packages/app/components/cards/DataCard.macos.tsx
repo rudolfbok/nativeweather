@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
-import { GestureResponderEvent, Pressable, View } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/layout/CardHeader';
-import { variants } from 'app/constants/pressableVariants';
+import { StyledPressable } from '../common/styled/StyledPressable';
 import { border } from 'app/constants/border';
 
 interface DataCardProps {
@@ -30,10 +30,13 @@ export const DataCard = ({
 
 	return (
 		<>
-			<Pressable
+			<StyledPressable
 				onPress={onPress}
-				className={clsx('justify-between overflow-hidden rounded-3xl p-4', border, !wide && 'aspect-square', variants)}
-				style={[{ width: wide ? '49%' : '23.5%', height: 180 }, { cursor: 'pointer' }]}
+				className={clsx(
+					'justify-between overflow-hidden rounded-3xl p-4 macos:h-[180px]',
+					wide ? 'macos:w-[49%]' : 'macos:w-[23.5%] aspect-square',
+					border
+				)}
 			>
 				<CardHeader icon={icon} header={title} />
 				<View>
@@ -45,7 +48,7 @@ export const DataCard = ({
 						{data}
 					</StyledText>
 				</View>
-			</Pressable>
+			</StyledPressable>
 			{modal}
 		</>
 	);

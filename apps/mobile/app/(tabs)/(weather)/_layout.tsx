@@ -11,7 +11,7 @@ import { GlassView } from 'expo-glass-effect';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
@@ -43,7 +43,7 @@ export default function TabLayout() {
 					headerShadowVisible: false,
 					headerTransparent: true,
 					headerTintColor: headerTextColor,
-					headerBackground: () => <View style={{ flex: 1, backgroundColor: headerBackgroundColor }} />,
+					headerStyle: { backgroundColor: headerBackgroundColor },
 					headerTitleStyle: { color: headerTextColor },
 					contentStyle: {
 						backgroundColor: background,
