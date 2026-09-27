@@ -39,8 +39,8 @@ export const WeatherFeature = () => {
 		return (
 			<View className={clsx('flex-1 items-center justify-center')}>
 				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={0.5} source={currentSource} />
-				<StyledText type="subtitle">No weather location selected.</StyledText>
-				<StyledText type="subtitle">Search for a city or choose a favorite.</StyledText>
+				<StyledText type="sectiontitle">No weather location selected.</StyledText>
+				<StyledText type="sectiontitle">Search for a city or choose a favorite.</StyledText>
 			</View>
 		);
 	}

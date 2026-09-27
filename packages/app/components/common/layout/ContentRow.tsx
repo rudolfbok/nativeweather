@@ -11,7 +11,7 @@ interface ContentRowProps {
 
 export const ContentRow = ({ title, children, className }: ContentRowProps) => (
 	<View className={clsx(className)}>
-		<StyledText type="subtitle" className={clsx('pb-2')}>
+		<StyledText type="sectiontitle" className={clsx('pb-2')}>
 			{title}
 		</StyledText>
 		<View

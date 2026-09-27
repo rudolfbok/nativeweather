@@ -44,7 +44,7 @@ export const SearchResult = ({ index, onPress, city, region, country, isLast }: 
 		>
 			<View className={clsx('pb-4', isLast && 'border-b border-gray-200 dark:border-zinc-800')}>
 				<StyledText type="body">{city}</StyledText>
-				<StyledText type="bodysecondary" className={clsx('opacity-70')}>
+				<StyledText type="caption" className={clsx('opacity-70')}>
 					{region || (!region && city)}
 				</StyledText>
 				<StyledText type="body">{country}</StyledText>

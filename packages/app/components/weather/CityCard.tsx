@@ -53,12 +53,12 @@ export const CityCard = ({
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx('min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl p-4', border)}
+			className={clsx('min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl p-4')}
 			tintColor={`${tintColor}E6`}
 		>
 			<View className={clsx('flex-grow')}>
 				<StyledText
-					type="subtitle"
+					type="sectiontitle"
 					className={clsx('native:!text-white web:!text-white truncate font-semibold')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
@@ -66,14 +66,14 @@ export const CityCard = ({
 					{city}
 				</StyledText>
 				<StyledText
-					type="bodysecondary"
+					type="caption"
 					className={clsx('native:!text-white web:!text-white line-clamp-1 truncate font-semibold opacity-70')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
 					{region}
 				</StyledText>
-				<StyledText type="title" className={clsx('native:!text-white web:!text-white !text-xl !font-bold')}>
+				<StyledText type="title" className={clsx('native:!text-white web:!text-white')}>
 					{switchTemp({
 						celsius: tempC,
 						fahrenheit: tempF,
@@ -92,7 +92,7 @@ export const CityCard = ({
 			<View className={clsx('items-center')}>
 				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
 				{showWorldTime && displayTime && (
-					<StyledText type="localtime" className={clsx('!text-white opacity-70')}>
+					<StyledText type="caption" className={clsx('!text-white opacity-70')}>
 						{getLocalTimeNow(timeZone)}
 					</StyledText>
 				)}

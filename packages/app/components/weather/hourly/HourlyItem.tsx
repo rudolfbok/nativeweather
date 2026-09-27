@@ -32,7 +32,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 					source={currentSource}
 				/>
 				{rainChance > 10 && (
-					<StyledText type="rainchance" className={clsx('!text-primaryblue')}>
+					<StyledText type="caption" className={clsx('!text-primaryblue font-semibold')}>
 						{Math.round(rainChance / 5) * 5}%
 					</StyledText>
 				)}

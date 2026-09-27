@@ -3,14 +3,15 @@ import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { extractCity } from 'app/utils/extractCity';
 import { getAlerts, getMostSevereAlert } from 'app/utils/alertFilters';
+import { extractCity } from 'app/utils/extractCity';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 import { weatherLandscapeBg, weatherLandscapeText } from 'app/utils/mappings/landscapeColors';
+import { GlassView } from 'expo-glass-effect';
 import { Stack } from 'expo-router';
-import { Star } from 'lucide-react-native';
+import { Share, Star } from 'lucide-react-native';
 import { useEffect } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
@@ -50,37 +51,33 @@ export default function TabLayout() {
 					},
 				}}
 			>
-				<Stack.Toolbar placement="left">
-					{weatherData && (
-						<Stack.Toolbar.Button
-							accessibilityLabel={t('favorites.share')}
-							icon="square.and.arrow.up"
-							hidesSharedBackground
-							onPress={() => console.log('Shared button was clicked!')}
-							tintColor={headerTextColor}
-						/>
-					)}
-				</Stack.Toolbar>
 				{weatherData && (
-					<Stack.Toolbar placement="right" asChild>
-						<Pressable
-							accessibilityLabel={t(isFavorite ? 'favorites.delete' : 'favorites.title')}
-							onPress={() => handleFavoriteToggle(extractCity(weatherData))}
-							className="relative mr-4 h-10 w-10 items-center justify-center rounded-full bg-white/20 active:bg-white/30"
-						>
-							<Star
-								size={Platform.OS === 'ios' ? 22 : 28}
-								color={headerTextColor}
-								fill={isFavorite ? headerTextColor : 'transparent'}
-								style={{ pointerEvents: 'none' }}
-							/>
-							{alertDotColor && (
-								<View
-									className="absolute right-0 top-0 h-2.5 w-2.5 rounded-full"
-									style={{ backgroundColor: alertDotColor }}
-								/>
-							)}
-						</Pressable>
+					<Stack.Toolbar placement="left">
+						<Stack.Toolbar.View hidesSharedBackground>
+							<Pressable onPress={() => console.log('Share button was pressed!')}>
+								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
+									<Share color={headerTextColor} />
+								</GlassView>
+							</Pressable>
+						</Stack.Toolbar.View>
+					</Stack.Toolbar>
+				)}
+				{weatherData && (
+					<Stack.Toolbar placement="right" backgroundColor="red">
+						<Stack.Toolbar.View hidesSharedBackground>
+							<Pressable
+								accessibilityLabel={t(isFavorite ? 'favorites.delete' : 'favorites.title')}
+								onPress={() => handleFavoriteToggle(extractCity(weatherData))}
+							>
+								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
+									<Star
+										color={headerTextColor}
+										fill={isFavorite ? headerTextColor : 'transparent'}
+										style={{ pointerEvents: 'none' }}
+									/>
+								</GlassView>
+							</Pressable>
+						</Stack.Toolbar.View>
 					</Stack.Toolbar>
 				)}
 			</Stack.Screen>

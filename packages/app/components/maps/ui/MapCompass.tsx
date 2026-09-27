@@ -47,7 +47,7 @@ export const MapCompass = ({
 				<View className="absolute h-2 w-2 rounded-full bg-black dark:bg-white" />
 			</StyledPressable>
 			<View className="bg-systemBackground dark:bg-secondarySystemBackground_dark items-center justify-center rounded-md p-0.5">
-				<StyledText type="bodysecondary" className="font-bold">
+				<StyledText type="caption" className="font-bold">
 					{t(`wind.label.short.${direction}`)}
 				</StyledText>
 			</View>

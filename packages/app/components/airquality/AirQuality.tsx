@@ -82,7 +82,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					</View>
 				</View>
 				<View className={clsx('flex-row items-center justify-between')}>
-					<StyledText type="subtitle">
+					<StyledText type="sectiontitle">
 						{aq
 							? `${currentAQI === 'EU' ? aq.european_aqi : aq.us_aqi} - ${currentAQI === 'EU' ? euBanding : usBanding}`
 							: 'Loading...'}

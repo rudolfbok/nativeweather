@@ -20,7 +20,7 @@ export const AlertItem = ({ title, area, severity, onPress }: AlertItemProps) =>
 				<DotIndicator fill={getAlertSeverityDotColor(severity)} />
 			</View>
 			<View className={clsx('flex-1')}>
-				<StyledText type="subtitle">{title}</StyledText>
+				<StyledText type="sectiontitle">{title}</StyledText>
 				{area.length > 0 && (
 					<StyledText type="body" numberOfLines={1} ellipsizeMode="tail" className={clsx('opacity-70')}>
 						{area}

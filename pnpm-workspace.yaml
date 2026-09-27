@@ -4,6 +4,7 @@ packages:
 
 onlyBuiltDependencies:
   - esbuild
+  - node-datachannel
   - node-pty
   - sharp
   - unrs-resolver

@@ -121,7 +121,7 @@ export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) 
 							<View className={clsx('flex-row items-center')}>
 								<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>{item.icon}</View>
 								<View className={clsx('flex-1 flex-row justify-between')}>
-									<StyledText type="subtitle">{item.label}</StyledText>
+									<StyledText type="sectiontitle">{item.label}</StyledText>
 									<StyledText type="body">{item.value}</StyledText>
 								</View>
 							</View>

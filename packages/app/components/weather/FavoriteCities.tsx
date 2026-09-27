@@ -26,7 +26,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 	return (
 		<View className={clsx('gap-2')}>
 			<View className={clsx('flex h-fit min-h-6 flex-row items-center justify-between')}>
-				<StyledText type="maintitle">{t('favorites.title')}</StyledText>
+				<StyledText type="sectiontitle">{t('favorites.title')}</StyledText>
 				{favoriteCount > 0 && (
 					<StyledPressable
 						onPress={() => setShowDeleteCity((prev) => !prev)}
@@ -35,7 +35,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 							border
 						)}
 					>
-						{showDeleteCity ? <Check size={26} color={text} /> : <EditIcon />}
+						{showDeleteCity ? <Check size={24} color={text} /> : <EditIcon />}
 					</StyledPressable>
 				)}
 			</View>

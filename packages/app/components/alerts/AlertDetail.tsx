@@ -78,7 +78,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 			<RoundView className={clsx('gap-2 p-4')}>
 				{severity && (
 					<View className={clsx('items-center gap-1')}>
-						<StyledText type="subtitle">{t('alerts.severity')}</StyledText>
+						<StyledText type="sectiontitle">{t('alerts.severity')}</StyledText>
 						<StyledText type="body" className={clsx('font-semibold', getAlertSeverityTextColor(severity))}>
 							{getLocaleSeverity(severity)}
 						</StyledText>
@@ -86,7 +86,7 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 				)}
 				<Separator />
 				<View className={clsx('items-center')}>
-					<StyledText type="subtitle">{t('alerts.expires')}</StyledText>
+					<StyledText type="sectiontitle">{t('alerts.expires')}</StyledText>
 					<StyledText type="body">
 						{getTime(expires)} - {formatDate(expires)}
 					</StyledText>

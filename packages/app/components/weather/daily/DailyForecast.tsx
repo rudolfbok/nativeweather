@@ -18,6 +18,7 @@ import { useEffect, useRef } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
+import { variants } from 'app/constants/pressableVariants';
 
 export const DailyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -80,7 +81,8 @@ export const DailyForecast = () => {
 					}}
 					className={clsx(
 						'items-center justify-center px-4',
-						'ios:bg-transparent ios:dark:bg-transparent ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark'
+						'ios:bg-transparent ios:dark:bg-transparent ios:active:bg-tertiarySystemBackground ios:dark:active:bg-tertiarySystemBackground_dark',
+						variants
 					)}
 					style={{ cursor: 'pointer' }}
 				>
@@ -97,7 +99,7 @@ export const DailyForecast = () => {
 							</StyledText>
 						</View>
 						<View className={clsx('flex flex-1 items-center text-center')}>
-							<StyledText type="bodysecondary" className={clsx('text-center')}>
+							<StyledText type="caption" className={clsx('text-center')}>
 								{mapConditions(day.day.condition.code, 1, currentSource).toLowerCase()}
 							</StyledText>
 						</View>

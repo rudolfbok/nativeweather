@@ -9,8 +9,8 @@ export const VersionInfo = () => {
 
 	return (
 		<View className={clsx('flex items-center')}>
-			<StyledText type="bodysecondary">NativeWeather</StyledText>
-			<StyledText type="bodysecondary">
+			<StyledText type="caption">NativeWeather</StyledText>
+			<StyledText type="caption">
 				{t('version')}: {Constants.expoConfig?.version}
 			</StyledText>
 			<StyledText type="body">© 2025</StyledText>

@@ -89,7 +89,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 								className={clsx('absolute items-center')}
 								style={{ left: `${getStopLocation(stop.value) * 100}%` }}
 							>
-								<StyledText type="bodysecondary" className={clsx('font-semibold !text-black')}>
+								<StyledText type="caption" className={clsx('font-semibold !text-black')}>
 									{formatLabel(stop.value)}
 								</StyledText>
 								<View className={clsx('h-4 w-[2px] bg-black')} />
@@ -99,7 +99,7 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 				</LegendGradient>
 			</View>
 			{!!unit && (
-				<StyledText type="bodysecondary" className={clsx('mt-1 text-right opacity-70')}>
+				<StyledText type="caption" className={clsx('mt-1 text-right opacity-70')}>
 					{unit}
 				</StyledText>
 			)}

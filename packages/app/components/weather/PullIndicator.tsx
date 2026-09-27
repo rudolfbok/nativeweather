@@ -33,7 +33,7 @@ const Spoke = ({
 	);
 };
 
-export const WeatherPullIndicator = ({
+export const PullIndicator = ({
 	progress,
 	refreshing,
 }: {

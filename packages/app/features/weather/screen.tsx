@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from 'app/api/fetchWeather';
 import { StyledText } from 'app/components/common/styled/StyledText';
-import { WeatherPullIndicator } from 'app/components/weather/WeatherPullIndicator';
+import { PullIndicator } from 'app/components/weather/PullIndicator';
 import { HeroWeather } from 'app/components/weather/hero/HeroWeather';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
@@ -13,9 +13,15 @@ import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useHeaderHeight, useIsFocused } from 'expo-router/react-navigation';
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Platform, RefreshControl, View } from 'react-native';
+import {
+	ActivityIndicator,
+	NativeScrollEvent,
+	NativeSyntheticEvent,
+	Platform,
+	RefreshControl,
+	View,
+} from 'react-native';
 import Animated, {
-	runOnJS,
 	useAnimatedScrollHandler,
 	useAnimatedStyle,
 	useSharedValue,
@@ -146,27 +152,28 @@ export const WeatherFeature = () => {
 			// Automatic iOS header insets are absent from the scroll event's contentInset.
 			pullProgress.value = Math.min(Math.max(-(event.contentOffset.y + headerHeight), 0) / 80, 1);
 		},
-		onEndDrag: (event) => {
-			const releasedPull = -(event.contentOffset.y + headerHeight);
-			const shouldRefresh = Platform.OS === 'ios' && dragging.value && !refreshLocked.value && releasedPull >= 80;
-			dragging.value = false;
-			if (shouldRefresh) {
-				refreshLocked.value = true;
-				pullProgress.value = 0;
-				refreshProgress.value = 1;
-				runOnJS(onRefresh)();
-			} else {
-				pullProgress.value = withTiming(0, { duration: 180 });
-			}
-		},
 	});
+
+	const handleEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+		const releasedPull = -(event.nativeEvent.contentOffset.y + headerHeight);
+		const shouldRefresh = Platform.OS === 'ios' && dragging.value && !refreshLocked.value && releasedPull >= 80;
+		dragging.value = false;
+		if (shouldRefresh) {
+			refreshLocked.value = true;
+			pullProgress.value = 0;
+			refreshProgress.value = 1;
+			onRefresh();
+		} else {
+			pullProgress.value = withTiming(0, { duration: 180 });
+		}
+	};
 
 	if (!weatherData) {
 		return (
 			<View className={clsx('flex-1 items-center justify-center')}>
 				<WeatherIcon isDay={1} width={150} height={150} code={1003} strokeWidth={0.5} source={currentSource} />
-				<StyledText type="subtitle">Current weather data will be displayed here.</StyledText>
-				<StyledText type="subtitle">Search or click from favorites.</StyledText>
+				<StyledText type="sectiontitle">Current weather data will be displayed here.</StyledText>
+				<StyledText type="sectiontitle">Search or click from favorites.</StyledText>
 			</View>
 		);
 	}
@@ -179,13 +186,14 @@ export const WeatherFeature = () => {
 				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
 			>
 				{Platform.OS === 'ios' ? (
-					<WeatherPullIndicator progress={pullProgress} refreshing={refreshProgress} />
+					<PullIndicator progress={pullProgress} refreshing={refreshProgress} />
 				) : (
 					<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
 				)}
 			</Animated.View>
 			<Animated.ScrollView
 				onScroll={handleScroll}
+				onScrollEndDrag={handleEndDrag}
 				scrollEventThrottle={16}
 				contentInsetAdjustmentBehavior="automatic"
 				alwaysBounceVertical={true}

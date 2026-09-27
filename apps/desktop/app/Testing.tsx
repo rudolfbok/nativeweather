@@ -5,7 +5,7 @@ import { View } from 'react-native';
 export const Testing = () => {
 	return (
 		<View className="w-full p-4">
-			<StyledText type="body" className="pb-4 !text-3xl font-semibold">
+			<StyledText type="sectiontitle" className="pb-4">
 				Search
 			</StyledText>
 			<SearchBar />

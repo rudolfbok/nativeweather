@@ -113,7 +113,7 @@ export const MoonModal = ({ phase, illumination, isMoonUp, moonrise, moonset }: 
 									: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
 							</StyledText>
 						</View>
-						<StyledText type="subtitle">
+						<StyledText type="sectiontitle">
 							{getLocalePhase[weatherData?.forecast.forecastday[0].astro.moonPhase]}
 						</StyledText>
 					</View>

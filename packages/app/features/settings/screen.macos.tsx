@@ -33,15 +33,17 @@ export const SettingsFeature = () => {
 					</RoundView>
 					<RoundView>
 						<AboutButton />
+					</RoundView>
+					<RoundView>
 						<FeedbackButton />
 					</RoundView>
 				</View>
 			</View>
 
 			<View className="items-center">
-				<StyledText type="bodysecondary">NativeWeather</StyledText>
-				<StyledText type="bodysecondary">Version: 1.0</StyledText>
-				<StyledText type="bodysecondary">© {new Date().getFullYear()}</StyledText>
+				<StyledText type="caption">NativeWeather</StyledText>
+				<StyledText type="caption">Version: 1.0</StyledText>
+			<StyledText type="caption">© {new Date().getFullYear()}</StyledText>
 			</View>
 		</View>
 	);

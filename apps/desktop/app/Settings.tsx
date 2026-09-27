@@ -6,7 +6,7 @@ export const Settings = () => {
 	return (
 		<View className="w-full flex-1">
 			<View className="p-4">
-				<StyledText type="body" className="!text-3xl font-semibold">
+				<StyledText type="sectiontitle">
 					Settings
 				</StyledText>
 			</View>

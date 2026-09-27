@@ -5,7 +5,7 @@ import { View } from 'react-native';
 export const Search = () => {
 	return (
 		<View className="flex w-full flex-col p-4">
-			<StyledText type="body" className="mb-4 !text-3xl font-semibold">
+			<StyledText type="sectiontitle" className="mb-4">
 				Search
 			</StyledText>
 			<SearchBar />

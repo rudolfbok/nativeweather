@@ -91,10 +91,10 @@ export const MainWeather = ({
 			</View>
 			{name && country && (
 				<View className="relative z-10 items-center">
-					<StyledText type="city" className="text-center !text-white" style={textOutline}>
+					<StyledText type="herotitle" className="text-center !text-white" style={textOutline}>
 						{name}
 					</StyledText>
-					<StyledText type="country" className="!text-white opacity-70" style={textOutline}>
+					<StyledText type="locationmeta" className="!text-white opacity-70" style={textOutline}>
 						{country}
 					</StyledText>
 				</View>
@@ -109,7 +109,7 @@ export const MainWeather = ({
 					source={currentSource ?? 'weatherapi'}
 				/>
 				<View className="items-center">
-					<StyledText type="maintemp" className="pl-3 !text-white" style={textOutline}>
+					<StyledText type="display" className="pl-3 !text-white" style={textOutline}>
 						{switchTemp({ celsius: currentTempC, fahrenheit: currentTempF, currentTemp: currentTemperature })}
 					</StyledText>
 					<View className="flex-row items-center gap-1">

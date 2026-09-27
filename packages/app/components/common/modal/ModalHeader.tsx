@@ -1,13 +1,12 @@
 import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
+import { border } from 'app/constants/border';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronLeft } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
+import { CardHeader } from '../layout/CardHeader';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
-import { CardHeader } from '../layout/CardHeader';
-import { useState } from 'react';
-import { border } from 'app/constants/border';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -28,7 +27,6 @@ export const ModalHeader = ({
 	onBackPress,
 	onClose,
 }: ModalHeaderProps) => {
-	const [hover, setHover] = useState(false);
 	const { text } = useThemeColors();
 
 	return (
@@ -38,7 +36,7 @@ export const ModalHeader = ({
 					{showBack ? (
 						<View className={clsx('flex-row items-center gap-2')}>
 							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5', border)}>
-								<ChevronLeft color={text} size={26} />
+								<ChevronLeft color={text} size={24} />
 							</StyledPressable>
 							<Pressable onPress={onBackPress}>
 								<StyledText type="title" className="hover:underline">
@@ -52,7 +50,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
-					<CloseIcon size={26} />
+					<CloseIcon />
 				</StyledPressable>
 			</View>
 			{daysToggle}

@@ -1,11 +1,9 @@
 import { Skeleton } from 'app/components/common/loading/Skeleton';
-import { View } from 'react-native';
 import { clsx } from 'clsx';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 
 export const HeroSkeleton = () => {
 	const styles = 'bg-white/50 dark:bg-[#0F0F11]';
-	const insets = useSafeAreaInsets();
 
 	return (
 		<View className={clsx('native:px-4 ios:mt-[110px] flex-1 pb-4')} role="status">

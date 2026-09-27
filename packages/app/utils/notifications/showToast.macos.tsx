@@ -60,7 +60,7 @@ export const Toast = () => {
 			)}
 		>
 			<Icon color={color} fill={toast.type === 'add' ? color : 'none'} />
-			<StyledText type="bodysecondary" className="flex-1 font-semibold" numberOfLines={3}>
+			<StyledText type="caption" className="flex-1 font-semibold" numberOfLines={3}>
 				{toast.message}
 			</StyledText>
 		</View>

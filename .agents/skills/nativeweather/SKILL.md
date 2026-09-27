@@ -1,0 +1,112 @@
+---
+name: nativeweather
+description: NativeWeather repository guidance for shared React Native code, Expo iOS and Android, React Native macOS, Next.js web, Cloudflare/OpenNext deployment, and project-specific architecture and style.
+---
+
+# NativeWeather
+
+Use this skill for changes anywhere in the NativeWeather monorepo, especially `packages/app`, `apps/mobile`, `apps/desktop`, `apps/web`, shared UI, storage, weather APIs, NativeWind styling, Expo Router, macOS navigation, or Cloudflare/OpenNext deployment.
+
+## Product and platform scope
+
+NativeWeather is one shared product delivered to four targets:
+
+- `apps/web`: Next.js web application using React Native Web.
+- `apps/mobile`: Expo application for iOS and Android. The current package is Expo SDK 57, React Native 0.86, React 19.2, and Expo Router.
+- `apps/desktop`: React Native macOS application. macOS-specific files and navigation are production code.
+- `packages/app`: shared UI, features, hooks, API access, storage, translations, types, and platform variants imported through `app/*`.
+
+Platform files currently used include `.web.tsx`, `.macos.tsx`, `.android.tsx`, and `.ios.tsx`. Check all relevant variants before changing shared behavior.
+
+The README may lag behind the manifests. Treat package manifests, app configuration, and existing scripts as the source of truth.
+
+## Architecture and folder boundaries
+
+Keep changes inside the existing architecture:
+
+- `packages/app/api`: weather/API requests, normalization, and API-level error handling.
+- `packages/app/components`: reusable UI and platform-specific component variants.
+- `packages/app/database`: MMKV initialization, defaults, persistence hooks, and storage CRUD.
+- `packages/app/features`: screen-level behavior and feature composition.
+- `packages/app/hooks`: reusable stateful behavior, location, weather, navigation, and Zustand-backed state.
+- `packages/app/locales`: Tolgee translations.
+- `packages/app/types`: shared public data boundaries.
+- `apps/mobile/app`: Expo Router routes and mobile app startup/configuration.
+- `apps/desktop/app` and `apps/desktop/macos`: macOS app composition and native integration.
+- `apps/web/app`: Next.js routes, metadata, and web-only entrypoints.
+
+Do not invent a service layer, design system, repository pattern, generic abstraction, or new folder boundary for a one-off change. Keep behavior with the component, feature, hook, or API layer that already owns it.
+
+## Coding style and UI rules
+
+Match the existing coding style every time: short direct components, tabs, semicolons, single quotes, trailing commas, inferred locals, and minimal unrelated churn.
+
+- Use `clsx` for every `className`, including static class strings, for project-wide consistency.
+- Use NativeWind/Tailwind classes for styling. Do not add inline `style` objects or `StyleSheet.create` in new or modified code.
+- Reuse existing wrappers such as `StyledText`, `StyledPressable`, `RoundView`, `ContentRow`, `ScreenWrapper`, and project constants before using raw primitives.
+- Keep visible strings in `StyledText` or an existing text wrapper and add user-facing copy to Tolgee locales.
+- Do not import types when ordinary inference or an existing exported type is sufficient. Type public props and data boundaries; avoid decorative or duplicated types.
+- Prefer `const`, early returns, direct `async`/`await`, and simple branches.
+- Do not add `useMemo`, `useCallback`, `memo`, reducers, context, or state machines without a demonstrated need.
+- Keep event handlers near the component that owns them. Extract a hook only when behavior is genuinely reused or materially simplifies a large screen.
+- Use `Pressable` or `StyledPressable` for interactions and preserve usable touch targets on native and web.
+- Do not refactor nearby code merely to make it look different. Preserve user changes and unrelated worktree edits.
+
+If an existing platform API forces a runtime style object, first look for an existing project wrapper or platform file. Do not expand inline-style usage; if it is unavoidable, call it out in the handoff.
+
+## React Native, Expo, and platform behavior
+
+Use the project’s installed versions and official versioned documentation. Mobile currently targets Expo SDK 57 and should remain upgradeable to SDK 58:
+
+- Do not use SDK APIs based only on latest documentation. Check the SDK 57 API and release notes first.
+- Before an SDK 58 upgrade or upgrade-sensitive change, read the Expo SDK 57→58 migration guidance, update dependencies incrementally, run `expo install --fix`, and run `expo-doctor` as part of the upgrade work.
+- Do not upgrade Expo, React Native, Router, or native modules unless the task explicitly includes the upgrade.
+- Preserve the New Architecture and existing Expo Router structure.
+- Keep native-only location, storage, map, widget, and permission code out of web bundles unless the web implementation needs an explicit equivalent.
+- Keep macOS behavior in `.macos` files and `apps/desktop` native integration; do not force mobile navigation assumptions onto macOS.
+- Keep web-only DOM behavior in `.web` files and use the existing web theme synchronization.
+
+Use the existing Zustand and MMKV hooks. MMKV defaults belong in `initStorageDefaults.ts`; persisted preferences should survive restarts unless a reset is explicitly requested. Be aware that startup code can intentionally clear storage on macOS, so inspect app entrypoints before diagnosing persistence.
+
+Weather UI consumes normalized data. Keep provider selection, request coordination, abort signals, authentication, response mapping, and provider errors in `packages/app/api` or the existing weather hooks. WeatherAPI search remains the canonical source for city identity; use its name, region, country, coordinates, and slugs consistently.
+
+## Web and Cloudflare/OpenNext
+
+The web app is `apps/web`, built with Next.js and deployed to Cloudflare Workers using `@opennextjs/cloudflare`.
+
+- Cloudflare config is `apps/web/wrangler.jsonc`; do not introduce TOML for this project.
+- The worker entry is `.open-next/worker.js`; assets are `.open-next/assets` with the `ASSETS` binding and `nodejs_compat` enabled.
+- Never hand-edit `.open-next`; it is generated output.
+- Keep secrets out of source and `wrangler.jsonc`.
+- For routing or metadata changes, verify home, unknown routes, city routes, `robots.txt`, `sitemap.xml`, and metadata behavior.
+- For production-impacting changes, build and preview before deploying. Deploy only when the user’s request authorizes deployment.
+- Use the project’s existing web scripts and ordinary HTTP/curl checks for smoke testing; do not assume browser-automation tooling is installed.
+
+Run from `apps/web` when relevant:
+
+```bash
+pnpm run typecheck
+pnpm run lint
+pnpm run build
+pnpm run preview
+pnpm run deploy
+```
+
+## Checks and handoff
+
+Run the narrowest relevant checks after changes:
+
+```bash
+pnpm --filter app typecheck
+pnpm --filter app lint
+pnpm --filter nativeweather-mobile typecheck
+pnpm --filter nativeweather-mobile lint
+pnpm --filter nativeweather-macos typecheck
+pnpm --filter nativeweather-macos lint
+pnpm --filter nativeweather-web typecheck
+pnpm --filter nativeweather-web lint
+```
+
+Use the package-specific check for the touched target. Root Turbo checks may surface unrelated workspace noise. Do not hide new errors with broad casts, `@ts-ignore`, or disabled lint rules; distinguish pre-existing failures from regressions in the handoff.
+
+Before submitting work for review or approval, report the changed areas, checks run, any pre-existing failures, and any platform or deployment behavior that could not be exercised locally.

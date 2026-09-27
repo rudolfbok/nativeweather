@@ -233,7 +233,7 @@ export const CompassFeature = () => {
 			) : (
 				<View className={clsx('flex items-center gap-2')}>
 					<View className="gap-2 md:w-1/2 lg:w-[40%]">
-						<StyledText type="maintitle">{t('compass.title')}</StyledText>
+						<StyledText type="sectiontitle">{t('compass.title')}</StyledText>
 						<StyledText type="body">{t('compass.text')}</StyledText>
 					</View>
 					<StyledButton

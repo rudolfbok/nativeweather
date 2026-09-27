@@ -57,7 +57,7 @@ export const MapWeatherPopup = ({
 			<View className="flex-row items-start justify-between gap-3">
 				<View className="min-w-0 shrink">
 					{weatherPoint.status !== 'loading' && (
-						<StyledText type="bodysecondary" className="opacity-70">
+						<StyledText type="caption" className="opacity-70">
 							{title}
 						</StyledText>
 					)}
@@ -65,7 +65,7 @@ export const MapWeatherPopup = ({
 						<ActivityIndicator className="self-center" size="small" color="#007AFF" />
 					)}
 					{weatherPoint.status === 'error' && (
-						<StyledText type="bodysecondary" className="mt-1 font-semibold">
+						<StyledText type="caption" className="mt-1 font-semibold">
 							{errorLabel}
 						</StyledText>
 					)}
@@ -75,12 +75,12 @@ export const MapWeatherPopup = ({
 								{weatherPoint.value}
 							</StyledText>
 							{!!weatherPoint.detail && (
-								<StyledText type="bodysecondary" className="opacity-70">
+								<StyledText type="caption" className="opacity-70">
 									{weatherPoint.detail}
 								</StyledText>
 							)}
 							{!!weatherPoint.location && (
-								<StyledText type="bodysecondary" className="opacity-70">
+								<StyledText type="caption" className="opacity-70">
 									{weatherPoint.location}
 								</StyledText>
 							)}

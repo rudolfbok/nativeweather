@@ -74,13 +74,13 @@ export const FeedbackFeature = () => {
 		<View className={clsx('items-center pb-4')}>
 			<View className="web:lg:w-3/4 web:xl:w-2/3 web:2xl:w-2/5 w-full gap-4">
 				<View className={clsx('ios:hidden flex w-full gap-2')}>
-					<StyledText type="maintitle" className="macos:hidden">
+					<StyledText type="sectiontitle" className="macos:hidden">
 						{t('feedback.title')}
 					</StyledText>
 					<StyledText type="body">{t('feedback.text')}</StyledText>
 				</View>
 				<View className={clsx('gap-2')}>
-					<StyledText type="subtitle">{t('feedback.type')}</StyledText>
+					<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
 					<View
 						className={clsx(
 							'bg-systemBackground dark:bg-secondarySystemBackground_dark web:md:w-[320px] w-full overflow-hidden rounded-3xl',
@@ -123,7 +123,7 @@ export const FeedbackFeature = () => {
 					</View>
 				</View>
 				<View className={clsx('gap-2')}>
-					<StyledText type="subtitle">{t('feedback.message')}</StyledText>
+					<StyledText type="sectiontitle">{t('feedback.message')}</StyledText>
 					<TextInput
 						//@ts-expect-error
 						enableFocusRing={false}

@@ -1,36 +1,35 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
 import { RoundView } from 'app/components/common/styled/RoundView';
-import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
+import { Separator } from 'app/components/common/styled/Separator';
+import { StyledText } from 'app/components/common/styled/StyledText';
 import { OpenFreeMapLogo } from 'app/components/icons/logos/OpenFreeMapLogo';
+import { OpenMeteoLogo } from 'app/components/icons/logos/OpenMeteoLogo';
 import { WeatherAPILogo } from 'app/components/icons/logos/WeatherAPILogo';
+import { LegalLinks } from 'app/components/settings/LegalLinks';
+import { variants } from 'app/constants/pressableVariants';
+import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
+import { ChevronRight } from 'lucide-react-native';
 import { ReactNode } from 'react';
 import { Linking, Pressable, View } from 'react-native';
-import { Separator } from 'app/components/common/styled/Separator';
-import { ContentRow } from 'app/components/common/layout/ContentRow';
 
 interface DataSourceItemProps {
 	name: string;
 	logo: ReactNode;
-	description: string;
 	url: string;
 }
 
-const DataSourceItem = ({ name, logo, description, url }: DataSourceItemProps) => {
+const DataSourceItem = ({ name, logo, url }: DataSourceItemProps) => {
+	const { text } = useThemeColors();
+
 	return (
-		<View className={clsx('items-center gap-2')}>
-			{logo}
-			<View className={clsx('items-center')}>
-				<StyledText type="subtitle">{name}</StyledText>
-				<StyledText type="body" className={clsx('text-center')}>
-					{description}
-				</StyledText>
+		<Pressable onPress={() => Linking.openURL(url)} className={clsx('flex-row items-center gap-2 px-4 py-3', variants)}>
+			<View className={clsx('w-16 scale-75 items-center')}>{logo}</View>
+			<View className={clsx('flex-1')}>
+				<StyledText type="sectiontitle">{name}</StyledText>
 			</View>
-			<Pressable onPress={() => Linking.openURL(url)}>
-				<StyledText type="link">{url}</StyledText>
-			</Pressable>
-		</View>
+			<ChevronRight color={text} />
+		</Pressable>
 	);
 };
 
@@ -41,19 +40,16 @@ export const AboutFeature = () => {
 		{
 			name: 'Weather API',
 			logo: <WeatherAPILogo />,
-			description: t('about.weatherapi'),
 			url: 'https://www.weatherapi.com/',
 		},
 		{
 			name: 'OpenMeteo API',
 			logo: <OpenMeteoLogo />,
-			description: t('about.openmeteo'),
 			url: 'https://open-meteo.com/',
 		},
 		{
 			name: 'OpenFreeMap',
 			logo: <OpenFreeMapLogo />,
-			description: t('about.openfreemap'),
 			url: 'https://openfreemap.org/',
 		},
 	];
@@ -63,16 +59,18 @@ export const AboutFeature = () => {
 			<RoundView className="p-4">
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</RoundView>
-			<ContentRow title={t('datasource.title')}>
-				<View className="gap-4">
-					{dataSourceItemValues.map(({ name, logo, description, url }, index) => (
-						<View key={name} className="gap-4">
-							<DataSourceItem name={name} logo={logo} description={description} url={url} />
-							{index < dataSourceItemValues.length - 1 && <Separator />}
+			<View className={clsx('gap-2')}>
+				<StyledText type="sectiontitle">{t('datasource.title')}</StyledText>
+				<RoundView>
+					{dataSourceItemValues.map(({ name, logo, url }, index) => (
+						<View key={name}>
+							<DataSourceItem name={name} logo={logo} url={url} />
+							{index < dataSourceItemValues.length - 1 && <Separator className="mx-4" />}
 						</View>
 					))}
-				</View>
-			</ContentRow>
+				</RoundView>
+			</View>
+			<LegalLinks />
 		</View>
 	);
 };

@@ -15,7 +15,6 @@ import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import pkg from '../../../../apps/web/package.json';
-import { ReactNode } from 'react';
 
 export const SettingsFeature = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -53,14 +52,13 @@ export const SettingsFeature = () => {
 					<FeedbackButton />
 				</RoundView>
 				<View className={clsx('flex items-center')}>
-					<StyledText type="bodysecondary">NativeWeather</StyledText>
-					<StyledText type="bodysecondary">
+					<StyledText type="caption">NativeWeather</StyledText>
+					<StyledText type="caption">
 						Version:&nbsp;
 						{Platform.OS === 'web' && pkg.version}
 						{(Platform.OS === 'ios' || Platform.OS === 'android') && Constants.expoConfig?.version}
-						{Platform.OS === 'macos' && '0.0.1'}
 					</StyledText>
-					<StyledText type="bodysecondary">© {new Date().getFullYear()}</StyledText>
+					<StyledText type="caption">© {new Date().getFullYear()}</StyledText>
 				</View>
 			</View>
 		</View>

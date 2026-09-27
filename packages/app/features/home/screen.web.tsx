@@ -34,8 +34,8 @@ export const HomeFeature = () => {
 				<View className={clsx('gap-2')}>
 					{showLocalWeather && (
 						<View className={clsx('gap-2')}>
-							<StyledText type="maintitle">{t('localweather.title')}</StyledText>
-							<LocalWeather error={localWeatherError} onRetry={getLocalWeather} />
+							<StyledText type="sectiontitle">{t('localweather.title')}</StyledText>
+							<LocalWeather error={localWeatherError} />
 						</View>
 					)}
 					<FavoriteCities hook={favoriteCitiesHook} />

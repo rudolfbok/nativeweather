@@ -1,10 +1,9 @@
+import { border } from 'app/constants/border';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { StyledPressable } from './StyledPressable';
 import { StyledText } from './StyledText';
-import { variants } from 'app/constants/pressableVariants';
-import { border } from 'app/constants/border';
 
 interface StyledButtonProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;

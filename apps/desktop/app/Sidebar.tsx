@@ -49,7 +49,7 @@ export const Sidebar = () => {
 			<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4 gap-4">
 				{showLocalWeather && locationReady && (
 					<View className="w-full gap-2">
-						<StyledText type="maintitle">{t('localweather.title')}</StyledText>
+						<StyledText type="sectiontitle">{t('localweather.title')}</StyledText>
 						<LocalWeather error={localWeatherError} />
 					</View>
 				)}
