@@ -6,10 +6,12 @@ import { NativeWeatherLogo } from 'app/components/icons/logos/NativeWeatherLogo'
 import { FavoriteCities } from 'app/components/weather/FavoriteCities';
 import { LocalWeather } from 'app/components/weather/LocalWeather';
 import { PullIndicator } from 'app/components/weather/PullIndicator';
+import { fetchWeather } from 'app/api/fetchWeather';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
 import { useLocation } from 'app/hooks/location/useLocation';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { useWidgets } from 'app/hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
@@ -26,6 +28,7 @@ export const HomeFeature = () => {
 	const { t } = useTranslate('weather');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [currentSource] = useStorageString('currentSource');
+	const { weatherData, setWeatherData } = useWeather();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
 	const refreshProgress = useSharedValue(0);
@@ -101,9 +104,27 @@ export const HomeFeature = () => {
 
 	useEffect(() => {
 		if (showLocalWeather && currentSource) {
-			getLocalWeather();
+			void getLocalWeather();
 		}
 	}, [showLocalWeather, currentSource, getLocalWeather]);
+
+	useEffect(() => {
+		if (Platform.OS !== 'ios' || weatherData || !currentSource) return;
+
+		let cancelled = false;
+		const loadInitialWeather = async () => {
+			const initialWeather = await fetchWeather('New York', currentSource);
+
+			if (!cancelled && initialWeather && !useWeather.getState().weatherData) {
+				await setWeatherData(initialWeather);
+			}
+		};
+
+		void loadInitialWeather();
+		return () => {
+			cancelled = true;
+		};
+	}, [currentSource, setWeatherData, weatherData]);
 
 	// useEffect(() => {
 	// 	if (!showLocalWeather || weatherData) return;
@@ -126,7 +147,7 @@ export const HomeFeature = () => {
 			<Animated.View
 				pointerEvents="none"
 				className="absolute left-0 right-0 z-20 h-9 items-center justify-center"
-				style={[{ top: headerHeight + 36 }, pullIndicatorStyle]}
+				style={[{ top: headerHeight + 50 }, pullIndicatorStyle]}
 			>
 				{Platform.OS === 'ios' && <PullIndicator progress={pullProgress} refreshing={refreshProgress} />}
 			</Animated.View>

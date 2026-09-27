@@ -1,8 +1,7 @@
 import { useTolgee } from '@tolgee/react';
 import { WeatherIcon } from 'app/components/weather/WeatherIcon';
-import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { useStorageBoolean, useStorageString } from 'app/database/useStorage';
-import { border } from 'app/constants/border';
+import { useMapConditions } from 'app/hooks/conditions/useMapConditions';
 import { switchTemp } from 'app/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';

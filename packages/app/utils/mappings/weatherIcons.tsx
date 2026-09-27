@@ -138,7 +138,7 @@ const nightIcons: Record<number, React.ComponentType<any>> = {
 
 export const WeatherAPIMainIcon = ({ isDay, code, width, height, strokeWidth }: WeatherAPIMainIconProps) => {
 	const icons = isDay === 1 ? dayIcons : nightIcons;
-	const IconComponent = icons[code] || OvercastDay;
+	const IconComponent = icons[code] ?? icons[1009];
 
 	return <IconComponent width={width} height={height} strokeWidth={strokeWidth!} />;
 };

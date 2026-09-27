@@ -49,7 +49,7 @@ export const WeatherFeature = () => {
 	const navigation = useNavigation();
 
 	useEffect(() => {
-		if (weatherData || !currentSource) return;
+		if (Platform.OS === 'ios' || weatherData || !currentSource) return;
 
 		const loadInitialWeather = async () => {
 			const localWeather = await getLocalWeather();

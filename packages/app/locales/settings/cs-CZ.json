@@ -31,8 +31,8 @@
 		"text": "Máte návrh nebo jste si všimli něčeho, co by mohlo být lepší? Opravdu ocením vaši zpětnou vazbu. Každá zpráva pomáhá zlepšovat aplikaci pro všechny.",
 		"title": "Poslat názor",
 		"toast": {
-			"error": "Chyba při posílání",
-			"sent": "Zprávy byla poslaná!"
+			"error": "Názor se nepodařilo odeslat",
+			"sent": "Názor odeslán"
 		},
 		"type": "Typ"
 	},

@@ -1,5 +1,11 @@
 import type { WeatherAPIResponse } from 'app/types/weatherAPI';
 import { NormalizedData } from 'app/types/normalizedData';
+import { normalizeWeatherConditionCode } from 'app/utils/mappings/weatherCondition';
+
+const mapCondition = (condition: { text?: unknown; code?: unknown } | null | undefined) => ({
+	text: typeof condition?.text === 'string' ? condition.text.trim() : '',
+	code: normalizeWeatherConditionCode(condition?.code),
+});
 
 export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 	return {
@@ -35,10 +41,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 			gustMph: data.current.gust_mph,
 			cloudCover: data.current.cloud,
 			isDay: data.current.is_day,
-			condition: {
-				text: data.current.condition.text,
-				code: data.current.condition.code,
-			},
+			condition: mapCondition(data.current.condition),
 		},
 		forecast: {
 			forecastday: data.forecast.forecastday.map((day) => ({
@@ -61,10 +64,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					totalPrecipMm: day.day.totalprecip_mm,
 					totalPrecipIn: day.day.totalprecip_in,
 					totalSnowCm: day.day.totalsnow_cm,
-					condition: {
-						text: day.day.condition.text,
-						code: day.day.condition.code,
-					},
+					condition: mapCondition(day.day.condition),
 				},
 				hour: day.hour.map((hour) => ({
 					timeEpoch: hour.time_epoch,
@@ -76,7 +76,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					chanceOfSnow: hour.chance_of_snow,
 					snowCm: hour.snow_cm,
 					condition: {
-						code: hour.condition.code,
+						code: normalizeWeatherConditionCode(hour.condition?.code),
 					},
 				})),
 				astro: {

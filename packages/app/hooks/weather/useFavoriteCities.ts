@@ -95,7 +95,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 
 		const success = removeFavoriteCity(city);
 		if (success) setFavoriteCount((count) => Math.max(0, count - 1));
-		showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
+		showFavoriteToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
 		if (!success) {
 			await refreshFavoriteCities();
 		}
@@ -108,12 +108,12 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 			const success = removeFavoriteCity(city);
 			if (success) setFavoriteCount((count) => Math.max(0, count - 1));
 			setIsFavorite(false);
-			showFavoriteToast({ message: `${city.name} ${t('toast.remove')}`, type: 'remove' });
+			showFavoriteToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
 		} else {
 			const success = addFavoriteCity(city);
 			if (success) setFavoriteCount((count) => count + 1);
 			setIsFavorite(true);
-			showFavoriteToast({ message: `${city.name} ${t('toast.add')}`, type: 'add' });
+			showFavoriteToast({ message: t('toast.add', { name: city.name }), type: 'add' });
 		}
 	};
 

@@ -23,7 +23,13 @@ const DataSourceItem = ({ name, logo, url }: DataSourceItemProps) => {
 	const { text } = useThemeColors();
 
 	return (
-		<Pressable onPress={() => Linking.openURL(url)} className={clsx('flex-row items-center gap-2 px-4 py-3', variants)}>
+		<Pressable
+			onPress={() => Linking.openURL(url)}
+			className={clsx(
+				'ios:active:bg-tertiarySystemBackground ios:active:dark:bg-tertiarySystemBackground_dark flex-row items-center gap-2 px-4 py-3',
+				variants
+			)}
+		>
 			<View className={clsx('w-16 scale-75 items-center')}>{logo}</View>
 			<View className={clsx('flex-1')}>
 				<StyledText type="sectiontitle">{name}</StyledText>

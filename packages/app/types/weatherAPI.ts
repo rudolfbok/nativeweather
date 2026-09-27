@@ -15,9 +15,9 @@ export interface WeatherAPIResponse {
 		temp_c: number;
 		temp_f: number;
 		is_day: 0 | 1;
-		condition: {
-			text: string;
-			code: number;
+		condition?: {
+			text?: string;
+			code?: number | string;
 		};
 		wind_mph: number;
 		wind_kph: number;
@@ -70,10 +70,10 @@ export interface WeatherAPIResponse {
 				daily_chance_of_rain: number;
 				daily_will_it_snow: 0 | 1;
 				daily_chance_of_snow: number;
-				condition: {
-					text: string;
-					icon: string;
-					code: number;
+				condition?: {
+					text?: string;
+					icon?: string;
+					code?: number | string;
 				};
 				uv: number;
 			};
@@ -93,9 +93,9 @@ export interface WeatherAPIResponse {
 				temp_c: number;
 				temp_f: number;
 				is_day: 0 | 1;
-				condition: {
-					text: string;
-					code: number;
+				condition?: {
+					text?: string;
+					code?: number | string;
 				};
 				wind_mph: number;
 				wind_kph: number;

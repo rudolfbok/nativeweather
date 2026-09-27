@@ -12,7 +12,7 @@
 	},
 	"search": {
 		"city": {
-			"error": "Chyba při načítání počasí pro vybrané město"
+			"error": "Počasí se nepodařilo načíst"
 		},
 		"input": {
 			"error": "Počasí se nepodařilo načíst"
@@ -35,10 +35,10 @@
 		"weather": "Počasí"
 	},
 	"toast": {
-		"add": "přidáno do oblíbených",
+		"add": "Přidáno do oblíbených: {name}",
 		"city": "Město",
-		"notrefreshed": "Data nelze obnovit, zkuste to znovu",
-		"refreshed": "Data byla aktualizována",
-		"remove": "odstraněno z oblíbených"
+		"notrefreshed": "Počasí se nepodařilo aktualizovat",
+		"refreshed": "Počasí aktualizováno",
+		"remove": "Odebráno z oblíbených: {name}"
 	}
 }

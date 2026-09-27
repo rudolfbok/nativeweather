@@ -111,7 +111,7 @@ const nightIcons: Record<number, number> = {
 
 const getWeatherIconAsset = ({ isDay, code }: WeatherAPIMainIcon): number => {
 	const icons = isDay === 1 ? dayIcons : nightIcons;
-	return icons[code] ?? dayIcons[1000];
+	return icons[code] ?? icons[1009];
 };
 
 export const getWeatherIconUri = async ({ isDay, code }: WeatherAPIMainIcon): Promise<string> => {

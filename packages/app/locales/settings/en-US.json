@@ -31,8 +31,8 @@
 		"text": "Have a suggestion or noticed something that could be better? I'd really appreciate your feedback. Every message helps improve the app for everyone.",
 		"title": "Send feedback",
 		"toast": {
-			"error": "Error while sending",
-			"sent": "Message was sent!"
+			"error": "Couldn't send feedback",
+			"sent": "Feedback sent"
 		},
 		"type": "Type"
 	},
