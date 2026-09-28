@@ -23,10 +23,7 @@ const DataSourceItem = ({ name, logo, url }: DataSourceItemProps) => {
 	const { text } = useThemeColors();
 
 	return (
-		<StyledPressable
-			onPress={() => Linking.openURL(url)}
-			className={clsx('flex-row items-center gap-2 px-4 py-3')}
-		>
+		<StyledPressable onPress={() => Linking.openURL(url)} className={clsx('flex-row items-center gap-4 px-4 py-3')}>
 			<View className={clsx('w-16 scale-75 items-center')}>{logo}</View>
 			<View className={clsx('flex-1')}>
 				<StyledText type="sectiontitle">{name}</StyledText>
