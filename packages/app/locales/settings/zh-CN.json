@@ -1,0 +1,75 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather 是一款跨平台天气应用，提供实时天气、短期和长期预报。你还可以查看当前空气污染数据，了解重要的空气质量指标。应用同时提供全球地图和多种气象图层。",
+		"title": "关于"
+	},
+	"airquality": {
+		"american": "美国标准",
+		"european": "欧洲标准",
+		"title": "空气质量",
+		"titlefull": "空气质量指数",
+		"titleshort": "空气质量"
+	},
+	"compass": {
+		"title": "指南针"
+	},
+	"datasource": {
+		"title": "数据来源"
+	},
+	"feedback": {
+		"bug": "问题反馈",
+		"button": {
+			"send": "发送反馈",
+			"sending": "正在发送反馈…"
+		},
+		"feature": "功能建议",
+		"feedback": "留言",
+		"message": "留言",
+		"placeholder": "请输入你的留言…",
+		"question": "咨询",
+		"select": "选择反馈类型",
+		"text": "有建议，或发现了可以改进的地方？欢迎告诉我。每一条反馈都能帮助我们把应用做得更好。",
+		"title": "发送反馈",
+		"toast": {
+			"error": "无法发送反馈",
+			"sent": "反馈已发送"
+		},
+		"type": "类型"
+	},
+	"language": {
+		"polish": "波兰语",
+		"italian": "意大利语",
+		"french": "法语",
+		"japanese": "日语",
+		"chinese": "简体中文",
+		"czech": "捷克语",
+		"deutsch": "德语",
+		"english": "英语",
+		"title": "语言"
+	},
+	"localweather": "本地天气",
+	"privacyPolicy": "隐私政策",
+	"settings": "设置",
+	"source": {
+		"title": "来源"
+	},
+	"temperatureScale": {
+		"celsius": "摄氏度",
+		"fahrenheit": "华氏度"
+	},
+	"temperature": "温度",
+	"theme": {
+		"dark": "深色",
+		"light": "浅色",
+		"system": "跟随系统",
+		"title": "外观"
+	},
+	"units": {
+		"imperial": "英制",
+		"metric": "公制",
+		"title": "单位"
+	},
+	"version": "版本",
+	"termsOfService": "服务条款",
+	"worldtime": "世界时间"
+}

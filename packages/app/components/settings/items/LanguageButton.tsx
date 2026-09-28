@@ -25,6 +25,12 @@ export const LanguageButton = () => {
 
 	const getLocale: Record<string, string> = {
 		'cs-CZ': t('language.czech'),
+		'de-DE': t('language.deutsch'),
+		'zh-CN': t('language.chinese'),
+		'ja-JP': t('language.japanese'),
+		'fr-FR': t('language.french'),
+		'it-IT': t('language.italian'),
+		'pl-PL': t('language.polish'),
 		'en-US': t('language.english'),
 	};
 

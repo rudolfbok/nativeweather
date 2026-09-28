@@ -57,7 +57,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop,
 			description={description}
 			extraContent={
 				(snowPrecipCm >= 0.1 || snowPrecipIn >= 0.1) && (
-					<StyledText type="body">
+					<StyledText type="body" className="min-w-0" numberOfLines={1} ellipsizeMode="tail">
 						{t('snow.snowfall')} {display}
 					</StyledText>
 				)

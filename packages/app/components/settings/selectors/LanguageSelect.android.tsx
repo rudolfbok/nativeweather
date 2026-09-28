@@ -2,6 +2,12 @@ import { useTolgee, useTranslate } from '@tolgee/react';
 import { RoundView } from 'app/components/common/styled/RoundView';
 import { CzechFlag } from 'app/components/icons/settings/CzechFlag';
 import { EnglishFlag } from 'app/components/icons/settings/EnglishFlag';
+import { GermanFlag } from 'app/components/icons/settings/GermanFlag';
+import { ChineseFlag } from 'app/components/icons/settings/ChineseFlag';
+import { JapaneseFlag } from 'app/components/icons/settings/JapaneseFlag';
+import { FrenchFlag } from 'app/components/icons/settings/FrenchFlag';
+import { ItalianFlag } from 'app/components/icons/settings/ItalianFlag';
+import { PolishFlag } from 'app/components/icons/settings/PolishFlag';
 import { useStorageString } from 'app/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 
@@ -33,6 +39,54 @@ export const LanguageSelect = () => {
 				title={t('language.czech')}
 				variant="check"
 				selected={currentLanguage === 'cs-CZ'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('de-DE')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<GermanFlag />}
+				title={t('language.deutsch')}
+				variant="check"
+				selected={currentLanguage === 'de-DE'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('zh-CN')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<ChineseFlag />}
+				title={t('language.chinese')}
+				variant="check"
+				selected={currentLanguage === 'zh-CN'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('ja-JP')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<JapaneseFlag />}
+				title={t('language.japanese')}
+				variant="check"
+				selected={currentLanguage === 'ja-JP'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('fr-FR')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<FrenchFlag />}
+				title={t('language.french')}
+				variant="check"
+				selected={currentLanguage === 'fr-FR'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('it-IT')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<ItalianFlag />}
+				title={t('language.italian')}
+				variant="check"
+				selected={currentLanguage === 'it-IT'}
+			/>
+			<SettingsItem
+				onPress={() => handleLanguageChange('pl-PL')}
+				iconbg="bg-black/20 dark:bg-black/60"
+				icon={<PolishFlag />}
+				title={t('language.polish')}
+				variant="check"
+				selected={currentLanguage === 'pl-PL'}
 			/>
 		</RoundView>
 	);

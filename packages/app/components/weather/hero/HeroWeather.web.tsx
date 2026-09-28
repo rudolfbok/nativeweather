@@ -2,6 +2,7 @@
 
 import { AirQuality } from 'app/components/airquality/AirQuality';
 import {
+	CloudsCard,
 	HumidityCard,
 	MoonCard,
 	PressureCard,
@@ -106,6 +107,7 @@ export const HeroWeather = () => {
 				<PressureCard pressureMb={weatherData.current.pressureMb} pressureIn={weatherData.current.pressureInHg} />
 				<SunriseCard data={weatherData.forecast.forecastday[0]?.astro.sunrise} />
 				<SunsetCard data={weatherData.forecast.forecastday[0]?.astro.sunset} />
+				<CloudsCard data={weatherData.current.cloudCover} />
 				<MoonCard
 					phase={weatherData.forecast.forecastday[0].astro.moonPhase}
 					illumination={weatherData.forecast.forecastday[0].astro.moonIllumination}

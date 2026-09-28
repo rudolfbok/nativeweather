@@ -29,7 +29,7 @@ export const SunsetCard = ({ data }: { data: string }) => {
 			icon={<SunsetIcon />}
 			title={t('sunset.title')}
 			data={formatTime(data, currentLanguage)}
-			extraContent={<StyledText type="body">{t('localtime')}</StyledText>}
+			extraContent={<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">{t('localtime')}</StyledText>}
 			modal={
 				showModal && (
 					<StyledModal

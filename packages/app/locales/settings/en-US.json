@@ -37,6 +37,11 @@
 		"type": "Type"
 	},
 	"language": {
+		"polish": "Polish",
+		"italian": "Italian",
+		"french": "French",
+		"japanese": "Japanese",
+		"chinese": "Chinese (Simplified)",
 		"czech": "Czech",
 		"deutsch": "German",
 		"english": "English",
@@ -47,6 +52,10 @@
 	"settings": "Settings",
 	"source": {
 		"title": "Source"
+	},
+	"temperatureScale": {
+		"celsius": "Celsius",
+		"fahrenheit": "Fahrenheit"
 	},
 	"temperature": "Temperature",
 	"theme": {

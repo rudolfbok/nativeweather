@@ -22,6 +22,7 @@ import { Pressable, View } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
+	const { t: settingsT } = useTranslate('settings');
 	const { modalBg, text } = useThemeColors();
 	const navigation = useNavigation('/modals');
 	const closeModal = () => {
@@ -131,6 +132,7 @@ export default function ModalsLayout() {
 			/>
 			<Stack.Screen name="airquality" options={{ headerShown: false }} />
 			<Stack.Screen name="alerts" options={{ headerShown: false }} />
+			<Stack.Screen name="feedback" options={{ title: settingsT('feedback.title') }} />
 		</Stack>
 	);
 }

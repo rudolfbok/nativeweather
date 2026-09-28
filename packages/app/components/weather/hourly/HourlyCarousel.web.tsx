@@ -76,14 +76,14 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 
 	return (
 		<RoundView className={clsx('group w-full py-4')}>
-			<View className={clsx('mb-4 flex-row items-center justify-between px-4')}>
-				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} />
-				<View className={clsx('h-full w-[70px] flex-row gap-2')}>
+			<View className={clsx('mb-4 min-w-0 flex-row items-center justify-between px-4')}>
+				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className="min-w-0 flex-1" />
+				<View className={clsx('h-full w-[70px] flex-shrink-0 flex-row gap-2')}>
 					<LeftArrow />
 					<RightArrow />
 				</View>
 			</View>
-			<div className={clsx('relative flex flex-row px-1')}>
+			<div className={clsx('relative flex min-w-0 flex-row px-1')}>
 				<div
 					ref={emblaRef}
 					role="region"

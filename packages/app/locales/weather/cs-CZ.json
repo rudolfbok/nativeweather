@@ -269,7 +269,10 @@
 				"title": "Přístup k poloze je zablokovaný",
 				"message": "Povolte přístup k poloze v nastavení zařízení nebo prohlížeče."
 			},
-			"unavailable": { "title": "Poloha není dostupná", "message": "Zařízení nedokázalo určit vaši aktuální polohu." },
+			"unavailable": {
+				"title": "Poloha není dostupná",
+				"message": "Zařízení nedokázalo určit vaši aktuální polohu."
+			},
 			"timeout": {
 				"title": "Požadavek na polohu vypršel",
 				"message": "Zkuste to znovu na místě s lepším GPS nebo síťovým signálem."
@@ -487,9 +490,6 @@
 			"title": "Aktuální údaje o větru"
 		},
 		"description": "Beaufortova škála je způsob klasifikace síly větru podle jeho účinků na okolní prostředí. Je používána meteorology, námořníky a letci po celém světě. Umožňuje rychlé a intuitivní hodnocení síly větru podle viditelných účinků. Škála obsahuje 13 stupňů (0-12), kde každý stupeň odpovídá určité rychlosti větru a charakteristickým projevům v krajině i na moři. ",
-		"direction": {
-			"main": "Směr:"
-		},
 		"label": {
 			"long": {
 				"E": "východ",

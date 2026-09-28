@@ -16,7 +16,11 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 
 	return (
 		<RoundView className="py-4">
-			<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className={clsx('mb-4 px-4')} />
+			<CardHeader
+				icon={<ClockIcon />}
+				header={t('hourlyforecast.title')}
+				className={clsx('mb-4 min-w-0 flex-1 px-4')}
+			/>
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}

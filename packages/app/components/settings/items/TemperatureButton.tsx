@@ -22,8 +22,8 @@ export const TemperatureButton = () => {
 	});
 
 	const getUpperCaseTemp: Record<string, string> = {
-		celsius: 'Celsius',
-		fahrenheit: 'Fahrenheit',
+		celsius: t('temperatureScale.celsius'),
+		fahrenheit: t('temperatureScale.fahrenheit'),
 	};
 
 	return (

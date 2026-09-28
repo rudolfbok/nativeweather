@@ -81,7 +81,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 	return (
 		<RoundView className="py-4">
 			<View className="mb-4 flex-row items-center justify-between px-4">
-				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} />
+				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className="min-w-0 flex-1" />
 				{hasOverflow && (
 					<View className="flex-row gap-1">
 						<CarouselButton

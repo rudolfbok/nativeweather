@@ -1,0 +1,75 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather è un’app multipiattaforma che mostra il meteo attuale e le previsioni a breve e lungo termine. Permette anche di consultare i livelli di inquinamento atmosferico e i principali indicatori della qualità dell’aria. Include mappe globali e livelli meteorologici per tutto il mondo.",
+		"title": "Informazioni"
+	},
+	"airquality": {
+		"american": "Americano",
+		"european": "Europeo",
+		"title": "Qualità dell’aria",
+		"titlefull": "Indice di qualità dell’aria",
+		"titleshort": "Qualità dell’aria"
+	},
+	"compass": {
+		"title": "Bussola"
+	},
+	"datasource": {
+		"title": "Fonti dei dati"
+	},
+	"feedback": {
+		"bug": "Segnala un problema",
+		"button": {
+			"send": "Invia un commento",
+			"sending": "Invio del commento…"
+		},
+		"feature": "Proposta di funzionalità",
+		"feedback": "Messaggio",
+		"message": "Messaggio",
+		"placeholder": "Scrivi qui il tuo messaggio…",
+		"question": "Domanda",
+		"select": "Scegli il tipo di messaggio",
+		"text": "Hai un suggerimento o hai notato qualcosa da migliorare? Le tue opinioni sono benvenute. Ogni messaggio aiuta a rendere l’app più utile per tutti.",
+		"title": "Invia un commento",
+		"toast": {
+			"error": "Impossibile inviare il commento",
+			"sent": "Commento inviato"
+		},
+		"type": "Tipo"
+	},
+	"language": {
+		"polish": "Polacco",
+		"italian": "Italiano",
+		"french": "Francese",
+		"japanese": "Giapponese",
+		"chinese": "Cinese semplificato",
+		"czech": "Ceco",
+		"deutsch": "Tedesco",
+		"english": "Inglese",
+		"title": "Lingua"
+	},
+	"localweather": "Meteo locale",
+	"privacyPolicy": "Informativa sulla privacy",
+	"settings": "Impostazioni",
+	"source": {
+		"title": "Fonte"
+	},
+	"temperatureScale": {
+		"celsius": "Celsius",
+		"fahrenheit": "Fahrenheit"
+	},
+	"temperature": "Temperatura",
+	"theme": {
+		"dark": "Scuro",
+		"light": "Chiaro",
+		"system": "Segui il sistema",
+		"title": "Aspetto"
+	},
+	"units": {
+		"imperial": "Imperiali",
+		"metric": "Metriche",
+		"title": "Unità"
+	},
+	"version": "Versione",
+	"termsOfService": "Termini di servizio",
+	"worldtime": "Ora nel mondo"
+}

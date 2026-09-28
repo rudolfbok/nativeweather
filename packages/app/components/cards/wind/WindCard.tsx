@@ -96,8 +96,9 @@ export const WindCard = ({
 			extraContent={
 				details && (
 					<View className={clsx('flex flex-row items-center gap-1')}>
-						<StyledText type="body">{t('wind.direction.main')}</StyledText>
-						<StyledText type="body">{getDirection(degree, 'short', t)}</StyledText>
+						<StyledText type="body" className="min-w-0 shrink" numberOfLines={1} ellipsizeMode="tail">
+							{getDirection(degree, 'short', t)}
+						</StyledText>
 						<WindArrowIcon degree={degree ?? 0} />
 					</View>
 				)

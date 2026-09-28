@@ -1,0 +1,75 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather は、さまざまな端末で現在の天気や短期・長期の天気予報を確認できるアプリです。大気汚染の最新データや、空気の状態を知るための重要な指標も確認できます。世界各地のマップと気象情報のレイヤーも利用できます。",
+		"title": "このアプリについて"
+	},
+	"airquality": {
+		"american": "米国基準",
+		"european": "欧州基準",
+		"title": "空気の質",
+		"titlefull": "大気質指数",
+		"titleshort": "空気の質"
+	},
+	"compass": {
+		"title": "コンパス"
+	},
+	"datasource": {
+		"title": "データ提供元"
+	},
+	"feedback": {
+		"bug": "不具合",
+		"button": {
+			"send": "フィードバックを送信",
+			"sending": "フィードバックを送信中…"
+		},
+		"feature": "機能の提案",
+		"feedback": "メッセージ",
+		"message": "メッセージ",
+		"placeholder": "メッセージを入力…",
+		"question": "質問",
+		"select": "メッセージの種類を選択",
+		"text": "ご提案や改善してほしい点はありますか？ぜひご意見をお聞かせください。いただいたメッセージは、アプリをより使いやすくするために役立てます。",
+		"title": "フィードバックを送信",
+		"toast": {
+			"error": "フィードバックを送信できませんでした",
+			"sent": "フィードバックを送信しました"
+		},
+		"type": "種類"
+	},
+	"language": {
+		"polish": "ポーランド語",
+		"italian": "イタリア語",
+		"french": "フランス語",
+		"japanese": "日本語",
+		"chinese": "中国語（簡体字）",
+		"czech": "チェコ語",
+		"deutsch": "ドイツ語",
+		"english": "英語",
+		"title": "言語"
+	},
+	"localweather": "現在地の天気",
+	"privacyPolicy": "プライバシーポリシー",
+	"settings": "設定",
+	"source": {
+		"title": "提供元"
+	},
+	"temperatureScale": {
+		"celsius": "摂氏",
+		"fahrenheit": "華氏"
+	},
+	"temperature": "気温",
+	"theme": {
+		"dark": "ダーク",
+		"light": "ライト",
+		"system": "システム設定に合わせる",
+		"title": "外観"
+	},
+	"units": {
+		"imperial": "ヤード・ポンド法",
+		"metric": "メートル法",
+		"title": "単位"
+	},
+	"version": "バージョン",
+	"termsOfService": "利用規約",
+	"worldtime": "世界時計"
+}

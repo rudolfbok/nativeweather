@@ -76,10 +76,10 @@ export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: M
 				<View className={clsx('flex-row items-center max-xl:mt-4 max-xl:gap-4')}>
 					<View className="xl:hidden">{moonPhaseComponents[phase]}</View>
 					<View>
-						<StyledText type="body">
+						<StyledText type="body" className="min-w-0" numberOfLines={1} ellipsizeMode="tail">
 							{t('moon.illumination')} {illumination}%
 						</StyledText>
-						<StyledText type="body" className="xl:hidden">
+						<StyledText type="body" className="min-w-0 xl:hidden" numberOfLines={1} ellipsizeMode="tail">
 							{isMoonUp === 0
 								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
 								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}

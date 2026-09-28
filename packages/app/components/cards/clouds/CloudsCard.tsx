@@ -37,7 +37,7 @@ export const CloudsCard = ({ data }: { data: number }) => {
 			description={description}
 			data={data + '%'}
 			className={clsx(
-				'native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto web:xl:hidden native:!aspect-auto min-w-full gap-6 md:h-full'
+				'native:!basis-[100%] web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto web:max-md:hidden web:xl:hidden native:!aspect-auto min-w-full gap-6 md:h-full'
 			)}
 			modal={
 				showModal && (

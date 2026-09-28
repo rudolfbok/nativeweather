@@ -37,16 +37,16 @@ export const DataCard = ({
 				)}
 			>
 				<CardHeader icon={icon} header={title} />
-				<View>
+				<View className="min-w-0">
 					{description && (
-						<StyledText type="body" className="line-clamp-1">
+						<StyledText type="body" className="line-clamp-1" numberOfLines={1} ellipsizeMode="tail">
 							{description}
 						</StyledText>
 					)}
-					{extraContent && <View>{extraContent}</View>}
+					{extraContent && <View className="min-w-0">{extraContent}</View>}
 				</View>
-				<View className={clsx('w-full items-end')}>
-					<StyledText type="data" className={clsx('text-end')}>
+				<View className={clsx('w-full min-w-0 items-end')}>
+					<StyledText type="data" className={clsx('w-full text-end')} numberOfLines={1} ellipsizeMode="tail">
 						{data}
 					</StyledText>
 				</View>

@@ -1,0 +1,534 @@
+{
+	"airquality": {
+		"euaqi": {
+			"main": "L’indice europeo di qualità dell’aria (EU AQI) descrive la qualità attuale dell’aria in Europa. Le persone con malattie cardiache o respiratorie sono più vulnerabili agli effetti dell’inquinamento.\n\nPer consultare le indicazioni ufficiali dell’Unione europea e i dati sull’inquinamento in tempo reale, visita questo sito:",
+			"text": {
+				"0": "Qualità dell’aria eccellente, senza rischi per la salute. Ideale per tutte le attività e gli sport all’aperto.",
+				"1": "Qualità dell’aria soddisfacente per la maggior parte delle persone. Rischio minimo per le persone particolarmente sensibili.",
+				"2": "Qualità accettabile per la maggior parte delle persone, ma chi è sensibile potrebbe avvertire sintomi lievi. In questo caso, riduci l’attività fisica intensa all’aperto.",
+				"3": "Possibili effetti sulla salute delle persone sensibili. Anche gli altri potrebbero avvertire effetti lievi. Limita le attività prolungate all’aperto.",
+				"4": "Rischi per la salute di tutti. Evita attività prolungate e sforzi all’aperto. Le persone sensibili dovrebbero restare al chiuso.",
+				"5": "Gravi rischi per la salute di tutti. Evita le attività all’aperto. Resta al chiuso e tieni le finestre chiuse."
+			},
+			"value": {
+				"0": "Buona",
+				"1": "Discreta",
+				"2": "Moderata",
+				"3": "Scarsa",
+				"4": "Molto scarsa",
+				"5": "Estremamente scarsa"
+			}
+		},
+		"index": {
+			"values": "Valori dell’indice"
+		},
+		"item": {
+			"euaqi": "Indice europeo",
+			"no2": "Biossido di azoto",
+			"ozone": "Ozono",
+			"pm10": "Particolato PM10",
+			"pm25": "Polveri sottili PM2,5",
+			"usaqi": "Indice americano"
+		},
+		"no2": {
+			"main": "Il biossido di azoto (NO₂) è un gas tossico che proviene soprattutto dagli scarichi dei veicoli e dalle centrali elettriche. Può irritare le vie respiratorie, aggravare l’asma e aumentare la suscettibilità alle infezioni respiratorie. L’esposizione prolungata può danneggiare i tessuti polmonari e ridurre la funzione respiratoria.",
+			"text": {
+				"0": "Qualità dell’aria eccellente, con rischi minimi per la salute di tutti.",
+				"1": "Qualità dell’aria accettabile per la maggior parte delle persone, ma chi è sensibile potrebbe avvertire effetti lievi.",
+				"2": "Le persone con asma o problemi respiratori dovrebbero limitare le attività all’aperto vicino a strade trafficate e zone industriali.",
+				"3": "Tutti potrebbero avvertire difficoltà respiratorie. Evita di fare esercizio vicino al traffico e alle zone industriali.",
+				"4": "Gravi conseguenze per la salute di tutti. Stai lontano dalle strade trafficate e dalle zone industriali.",
+				"5": "Situazione di emergenza. Tutti dovrebbero evitare di stare all’aperto, soprattutto vicino al traffico."
+			}
+		},
+		"o3": {
+			"main": "L’ozono al livello del suolo è nocivo e si forma quando la luce solare reagisce con le emissioni del traffico e dell’industria. Può causare dolore al petto e tosse, e aggravare l’asma. Le concentrazioni sono generalmente più alte nei pomeriggi caldi e soleggiati. Bambini, anziani e persone che fanno sport all’aperto sono più vulnerabili.",
+			"text": {
+				"0": "Qualità dell’aria eccellente, con rischi minimi per la salute di tutti.",
+				"1": "Qualità dell’aria accettabile per la maggior parte delle persone, ma chi è particolarmente sensibile potrebbe avvertire un lieve fastidio respiratorio.",
+				"2": "Bambini e adulti attivi, oltre alle persone con malattie polmonari, dovrebbero limitare le attività prolungate all’aperto, soprattutto nelle ore soleggiate.",
+				"3": "Tutti potrebbero avere problemi di salute. Limita le attività all’aperto nelle ore di maggiore insolazione.",
+				"4": "Gravi conseguenze per la salute di tutti. Evita le attività all’aperto, soprattutto nel pomeriggio.",
+				"5": "Situazione di emergenza. Tutti dovrebbero evitare di stare all’aperto. È in vigore un’allerta sanitaria."
+			}
+		},
+		"pm10": {
+			"main": "Il PM10 comprende particelle con un diametro non superiore a 10 micrometri. Possono irritare occhi, naso e gola e aggravare l’asma. Provengono spesso da polvere, traffico stradale, cantieri e pollini. Quando le concentrazioni sono elevate, restare al chiuso con le finestre chiuse può ridurre l’esposizione.",
+			"text": {
+				"0": "Qualità dell’aria eccellente, con rischi minimi per la salute di tutti.",
+				"1": "Qualità dell’aria accettabile per la maggior parte delle persone, ma chi è sensibile potrebbe avvertire disturbi lievi.",
+				"2": "Bambini, anziani e persone con asma o problemi respiratori dovrebbero limitare le attività all’aperto.",
+				"3": "Tutti potrebbero avvertire difficoltà respiratorie. Limita le attività all’aperto e valuta l’uso di una maschera protettiva.",
+				"4": "Gravi conseguenze per la salute di tutti. Evita le attività all’aperto. Resta al chiuso con le finestre chiuse.",
+				"5": "Situazione di emergenza. Tutti dovrebbero evitare di stare all’aperto. È in vigore un’allerta sanitaria."
+			}
+		},
+		"pm25": {
+			"main": "Il PM2,5 comprende particelle fini con un diametro non superiore a 2,5 micrometri. Possono penetrare in profondità nei polmoni e nel sangue, causando gravi problemi di salute. Provengono soprattutto dalla combustione, inclusi traffico, riscaldamento, incendi boschivi e attività industriali. Essendo molto piccole, possono restare nell’aria più a lungo e viaggiare più lontano delle particelle più grandi.",
+			"text": {
+				"0": "Qualità dell’aria eccellente, con rischi minimi per la salute di tutti.",
+				"1": "Qualità dell’aria accettabile per la maggior parte delle persone, ma chi è sensibile potrebbe avvertire disturbi lievi.",
+				"2": "Bambini, anziani e persone con malattie cardiache o polmonari dovrebbero limitare le attività all’aperto.",
+				"3": "Tutti potrebbero risentirne. Limita le attività all’aperto e valuta l’uso di una maschera protettiva.",
+				"4": "Gravi conseguenze per la salute di tutti. Evita le attività all’aperto. Resta al chiuso con le finestre chiuse.",
+				"5": "Situazione di emergenza. Tutti dovrebbero evitare l’esposizione all’aria esterna. Sono in vigore allerte sanitarie."
+			}
+		},
+		"pollutant": {
+			"values": "Livelli di concentrazione"
+		},
+		"provider": "Dati forniti da ",
+		"title": "Qualità dell’aria",
+		"usaqi": {
+			"main": "L’indice americano di qualità dell’aria (US AQI) descrive la qualità dell’aria negli Stati Uniti. Il valore va da 0 a 500: più è alto, maggiori sono l’inquinamento e i rischi per la salute. Serve ad avvisare la popolazione quando l’inquinamento diventa pericoloso. Le persone con malattie cardiache o respiratorie sono particolarmente vulnerabili.\n\nPer consultare le indicazioni ufficiali dell’Agenzia statunitense per la protezione dell’ambiente (EPA) e i dati sull’inquinamento in tempo reale, visita questo sito:",
+			"text": {
+				"0": "Qualità dell’aria eccellente, senza rischi per la salute. Ideale per tutte le attività e gli sport all’aperto.",
+				"1": "Qualità dell’aria accettabile per la maggior parte delle persone. Chi è particolarmente sensibile potrebbe avvertire sintomi respiratori lievi.",
+				"2": "Le persone sensibili, inclusi bambini, anziani e persone con malattie cardiache o polmonari, potrebbero risentirne. Il resto della popolazione dovrebbe essere poco coinvolto.",
+				"3": "Tutti potrebbero iniziare ad avvertire effetti sulla salute, più gravi per le persone sensibili. Evita gli sforzi prolungati all’aperto.",
+				"4": "Allerta sanitaria. Tutti potrebbero subire gravi effetti sulla salute. Evita tutte le attività all’aperto, soprattutto lo sport.",
+				"5": "Situazione di emergenza che riguarda l’intera popolazione. Resta al chiuso con porte e finestre chiuse. Evita tutte le attività all’aperto."
+			},
+			"value": {
+				"0": "Buona",
+				"1": "Moderata",
+				"2": "Nociva per le persone sensibili",
+				"3": "Nociva",
+				"4": "Molto nociva",
+				"5": "Pericolosa"
+			}
+		},
+		"value": {
+			"0": "Buona",
+			"1": "Moderata",
+			"2": "Nociva per le persone sensibili",
+			"3": "Nociva",
+			"4": "Molto nociva",
+			"5": "Pericolosa"
+		}
+	},
+	"alerts": {
+		"area": "Area",
+		"description": "Descrizione del fenomeno",
+		"disclaimer": "Le allerte sono emesse dalle autorità locali",
+		"expires": "Valida fino a",
+		"instructions": "Indicazioni",
+		"modaltitle": "Allerte meteo",
+		"severity": "Gravità",
+		"severity.extreme": "Estrema",
+		"severity.minor": "Lieve",
+		"severity.moderate": "Moderata",
+		"severity.severe": "Grave",
+		"severity.unknown": "Sconosciuta",
+		"title": "allerta meteo"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "In meteorologia, la copertura nuvolosa indica la parte del cielo coperta dalle nuvole. I professionisti usano gli ottavi, ma spesso si ricorre a percentuali o descrizioni per facilitarne la lettura.",
+			"title": "Copertura nuvolosa in percentuale",
+			"values": "Livello di copertura"
+		},
+		"title": "Nuvole"
+	},
+	"compass": {
+		"button": {
+			"location": "Consenti l’accesso alla posizione"
+		},
+		"text": "La bussola richiede un dispositivo Apple compatibile dotato di magnetometro.\n\niOS potrebbe chiedere un’autorizzazione prima di usare questo sensore.",
+		"title": "Bussola"
+	},
+	"condition": {
+		"blizzard": "Bufera di neve",
+		"clear": {
+			"day": "Soleggiato",
+			"night": "Sereno"
+		},
+		"cloudy": "Nuvoloso",
+		"fog": "Nebbia",
+		"freezingfog": "Nebbia congelantesi",
+		"freezingrain": "Pioggia gelata",
+		"freezingthunder": "Temporale con precipitazioni gelate",
+		"lightrain": "Pioggia debole",
+		"lightsnow": "Neve debole",
+		"overcast": "Coperto",
+		"partlycloudy": "Parzialmente nuvoloso",
+		"rain": "Pioggia",
+		"snow": "Neve",
+		"thunderstorm": "Temporale"
+	},
+	"dailyforecast": {
+		"title": "Previsioni giornaliere",
+		"today": "oggi"
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Sereno",
+			"1": "Parzialmente nuvoloso",
+			"2": "Nuvoloso",
+			"3": "Coperto"
+		},
+		"humidity": {
+			"0": "Molto secco",
+			"1": "Piacevole",
+			"2": "Umido",
+			"3": "Molto umido",
+			"4": "Estremamente umido"
+		},
+		"moon": {
+			"firstquarter": "Primo quarto",
+			"fullmoon": "Luna piena",
+			"lastquarter": "Ultimo quarto",
+			"newmoon": "Luna nuova",
+			"waningcrescent": "Falce calante",
+			"waninggibbous": "Gibbosa calante",
+			"waxingcrescent": "Falce crescente",
+			"waxinggibbous": "Gibbosa crescente"
+		},
+		"precip": {
+			"rain": {
+				"0": "Pioggia debole",
+				"1": "Pioggia moderata",
+				"2": "Pioggia forte"
+			},
+			"snow": {
+				"0": "Neve debole",
+				"1": "Neve moderata",
+				"2": "Nevicata intensa"
+			}
+		},
+		"pressure": {
+			"0": "Estremamente bassa",
+			"1": "Molto bassa",
+			"2": "Bassa",
+			"3": "Leggermente bassa",
+			"4": "Normale",
+			"5": "Leggermente alta",
+			"6": "Alta",
+			"7": "Molto alta",
+			"8": "Estremamente alta"
+		},
+		"snow": {
+			"0": "Non prevista",
+			"1": "Bassa probabilità",
+			"2": "Probabilità moderata",
+			"3": "Neve prevista"
+		},
+		"uv": {
+			"0": "Basso",
+			"1": "Moderato",
+			"2": "Alto",
+			"3": "Molto alto",
+			"4": "Estremo"
+		},
+		"range": {
+			"0": "Nebbia fitta",
+			"1": "Foschia",
+			"2": "Nebbia leggera",
+			"3": "Foschia leggera",
+			"4": "Buona",
+			"5": "Molto buona",
+			"6": "Eccezionale"
+		},
+		"windspeed": {
+			"0": "Calma",
+			"1": "Bava di vento",
+			"10": "Tempesta",
+			"11": "Tempesta violenta",
+			"12": "Uragano",
+			"2": "Brezza leggera",
+			"3": "Brezza tesa",
+			"4": "Vento moderato",
+			"5": "Vento teso",
+			"6": "Vento fresco",
+			"7": "Vento forte",
+			"8": "Burrasca",
+			"9": "Burrasca forte"
+		}
+	},
+	"feelslike": "Percepita:",
+	"hourlyforecast": {
+		"now": "ora",
+		"title": "Previsioni orarie"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "Il punto di rugiada è la temperatura alla quale il vapore acqueo nell’aria inizia a condensarsi in goccioline. Più è alto, maggiore è l’umidità presente nell’aria. Descrive la sensazione di afa meglio dell’umidità relativa.",
+			"title": "Punto di rugiada"
+		},
+		"relativehumidity": {
+			"text": "L’umidità relativa indica la quantità di vapore acqueo nell’aria rispetto al massimo possibile alla temperatura attuale. Si esprime in percentuale e influisce sulla percezione del tempo.",
+			"title": "Umidità relativa",
+			"values": "Valori percentuali"
+		},
+		"title": "Umidità"
+	},
+	"localtime": "Ora locale",
+	"localweather": {
+		"error": {
+			"permission": {
+				"title": "Accesso alla posizione bloccato",
+				"message": "Consenti l’accesso alla posizione nelle impostazioni del dispositivo o del browser."
+			},
+			"unavailable": {
+				"title": "Posizione non disponibile",
+				"message": "Il dispositivo non è riuscito a determinare la tua posizione attuale."
+			},
+			"timeout": {
+				"title": "La richiesta di posizione è scaduta",
+				"message": "Riprova in un luogo con un segnale GPS o di rete migliore."
+			},
+			"network": {
+				"title": "Impossibile raggiungere il servizio meteo",
+				"message": "Controlla la connessione Internet e riprova."
+			},
+			"server": {
+				"title": "Servizio meteo non disponibile",
+				"message": "Il fornitore meteo ha restituito un errore. Riprova più tardi."
+			},
+			"source": {
+				"title": "Fonte meteo non configurata",
+				"message": "Scegli una fonte meteo nelle impostazioni prima di caricare il meteo locale."
+			},
+			"unknown": {
+				"title": "Impossibile caricare il meteo locale",
+				"message": "Si è verificato un errore imprevisto durante il caricamento del meteo locale."
+			},
+			"retry": "Riprova"
+		},
+		"title": "Meteo locale"
+	},
+	"maps": {
+		"layer": {
+			"0": "Temperatura",
+			"1": "Precipitazioni",
+			"2": "Vento"
+		},
+		"legend": {
+			"precipitation": "Fai clic sulla mappa per vedere le precipitazioni attuali.",
+			"temperature": "Fai clic sulla mappa per vedere la temperatura attuale.",
+			"title": "Legenda",
+			"wind": "Fai clic sulla mappa per vedere la velocità attuale del vento."
+		},
+		"loading": "Caricamento della mappa…",
+		"loadError": "Impossibile caricare la mappa. Controlla la connessione e riprova.",
+		"currentTemperature": "Temperatura attuale",
+		"temperatureUnavailable": "Temperatura non disponibile",
+		"weatherUnavailable": "Dati meteo non disponibili",
+		"title": "Mappe"
+	},
+	"modal": {
+		"description": "Descrizione"
+	},
+	"moon": {
+		"cycle": "Ciclo lunare",
+		"description": "La Luna segue un ciclo regolare di otto fasi che dura circa 29,5 giorni. Le fasi cambiano mentre la Luna orbita intorno alla Terra e varia l’angolo con cui viene illuminata dal Sole. Ogni fase corrisponde a una diversa porzione della superficie illuminata visibile dalla Terra. Le fasi lunari influenzano le maree.",
+		"illumination": "Illuminazione:",
+		"moonrise": "Sorgere della Luna:",
+		"moonset": "Tramonto della Luna:",
+		"now": "Dati lunari attuali",
+		"phase": "Fase lunare",
+		"phase.firstquarter": "Primo quarto",
+		"phase.fullmoon": "Luna piena",
+		"phase.lastquarter": "Ultimo quarto",
+		"phase.newmoon": "Luna nuova",
+		"phase.waningcrescent": "Falce calante",
+		"phase.waninggibbous": "Gibbosa calante",
+		"phase.waxingcrescent": "Falce crescente",
+		"phase.waxinggibbous": "Gibbosa crescente",
+		"text": {
+			"firstquarter": "La metà destra della Luna è illuminata",
+			"fullmoon": "La Luna è completamente illuminata e raggiunge la massima luminosità",
+			"lastquarter": "La metà sinistra della Luna è illuminata",
+			"newmoon": "La Luna non è visibile e inizia un nuovo ciclo lunare",
+			"waningcrescent": "Una sottile falce è illuminata sul lato sinistro",
+			"waninggibbous": "Più della metà è illuminata, ma la parte illuminata diminuisce",
+			"waxingcrescent": "Una sottile falce è illuminata sul lato destro",
+			"waxinggibbous": "Più della metà è illuminata e si avvicina la luna piena"
+		},
+		"title": "Luna"
+	},
+	"precipitation": {
+		"chance": {
+			"0": "Non previste",
+			"1": "Bassa probabilità",
+			"2": "Possibili rovesci",
+			"3": "Probabili",
+			"4": "Molto probabili",
+			"5": "Quasi certe",
+			"6": "Certe"
+		},
+		"rainfall": {
+			"0": "Pioggia debole",
+			"1": "Pioggia moderata",
+			"2": "Pioggia forte",
+			"3": "Pioggia molto forte",
+			"4": "Pioggia estrema"
+		},
+		"snow": {
+			"chance": {
+				"2": "Possibili rovesci di neve"
+			}
+		},
+		"snowfall": {
+			"0": "Qualche fiocco",
+			"1": "Nevicata debole",
+			"2": "Nevicata intensa",
+			"3": "Nevicata molto intensa",
+			"4": "Nevicata estrema"
+		}
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "La scala barometrica classifica la pressione atmosferica in base al valore e alle condizioni meteo tipiche associate. Comprende nove livelli, ciascuno corrispondente a un intervallo di pressione e a condizioni caratteristiche.",
+			"title": "Scala barometrica",
+			"values": "Valori della scala"
+		},
+		"text": {
+			"0": "Tempeste violente, piogge intense",
+			"1": "Tempo instabile, rovesci frequenti",
+			"2": "Cielo nuvoloso, tempo variabile",
+			"3": "Schiarite con possibili precipitazioni deboli",
+			"4": "Tempo stabile, condizioni piacevoli",
+			"5": "Tempo prevalentemente sereno e calmo",
+			"6": "Da sereno a parzialmente nuvoloso, vento debole",
+			"7": "Tempo molto calmo, possibile nebbia",
+			"8": "Tempo eccezionalmente stabile e sereno"
+		},
+		"title": "Pressione"
+	},
+	"rain": {
+		"chance": {
+			"description": "La percentuale indica la probabilità che piova in un determinato luogo durante il periodo di previsione. Non descrive l’intensità o la quantità di pioggia attesa.",
+			"text": {
+				"0": "Pioggia molto poco probabile",
+				"1": "Possibili rovesci isolati, la maggior parte delle zone resterà asciutta",
+				"2": "Probabili piogge sparse, alcune zone saranno interessate",
+				"3": "Pioggia molto probabile, prevista su gran parte dell’area",
+				"4": "Pioggia quasi certa, prevista sulla maggior parte dell’area",
+				"5": "Pioggia praticamente certa, probabilmente su tutta l’area"
+			},
+			"title": "Probabilità di precipitazioni",
+			"values": "Probabilità in percentuale"
+		},
+		"rainfall": "Accumulo di pioggia:",
+		"rainfall.description": "L’accumulo di pioggia, espresso in millimetri, indica la quantità prevista durante il periodo di previsione. Un millimetro corrisponde a un litro d’acqua per metro quadrato. Questo valore descrive la quantità attesa, mentre la probabilità indica quanto è probabile che piova.",
+		"rainfall.title": "Accumulo di pioggia",
+		"rainfall.values": "Accumuli di pioggia",
+		"title": "Pioggia"
+	},
+	"smartsummary": {
+		"title": "Riepilogo meteo"
+	},
+	"snow": {
+		"chance": {
+			"description": "La percentuale indica la probabilità che nevichi in un determinato luogo durante il periodo di previsione. Non descrive l’intensità o la quantità di neve attesa.",
+			"text": {
+				"0": "Neve molto poco probabile",
+				"1": "Possibili rovesci di neve isolati, la maggior parte delle zone resterà senza neve",
+				"2": "Probabili nevicate sparse, alcune zone saranno interessate",
+				"3": "Neve molto probabile, prevista su gran parte dell’area",
+				"4": "Neve quasi certa, prevista sulla maggior parte dell’area",
+				"5": "Neve praticamente certa, probabilmente su tutta l’area"
+			},
+			"title": "Probabilità di precipitazioni",
+			"values": "Probabilità in percentuale"
+		},
+		"snowfall": "Accumulo di neve:",
+		"snowfall.description": "L’accumulo di neve, espresso in centimetri, indica lo spessore di neve fresca previsto durante il periodo di previsione. Questo valore descrive quanta neve potrebbe accumularsi, mentre la probabilità indica quanto è probabile che nevichi.",
+		"snowfall.title": "Accumulo di neve",
+		"snowfall.values": "Accumuli di neve",
+		"title": "Neve"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "L’alba è il periodo in cui il cielo si schiarisce gradualmente prima che sorga il Sole. Annuncia una nuova giornata e dura spesso da 20 a 40 minuti, a seconda della stagione e della latitudine.",
+			"title": "Alba"
+		},
+		"modaltitle": "Sorgere del Sole",
+		"text": "Il sorgere del Sole è il momento in cui il Sole appare sopra l’orizzonte. Il cielo inizia a schiarirsi già prima. L’orario cambia nel corso dell’anno. Nell’emisfero nord, il Sole sorge più tardi in inverno e prima in estate. Le albe più precoci si verificano intorno al solstizio d’estate a giugno, quelle più tarde intorno al solstizio d’inverno a dicembre.",
+		"title": "Sorgere del Sole"
+	},
+	"sunset": {
+		"modaltitle": "Tramonto",
+		"text": "Il tramonto è il momento in cui il Sole scompare sotto l’orizzonte. Il cielo resta luminoso ancora per un po’. L’orario cambia nel corso dell’anno. Nell’emisfero nord, il Sole tramonta prima in inverno e più tardi in estate. I tramonti più tardivi si verificano intorno al solstizio d’estate a giugno, quelli più precoci intorno al solstizio d’inverno a dicembre.",
+		"title": "Tramonto",
+		"twilight": {
+			"text": "Il crepuscolo è il periodo in cui il cielo si scurisce gradualmente dopo il tramonto. In questa fase può assumere colori caldi. Dura spesso da 20 a 40 minuti, a seconda della stagione e della latitudine.",
+			"title": "Crepuscolo"
+		}
+	},
+	"uv": {
+		"index": {
+			"description": "L’indice UV è un indicatore internazionale dell’intensità della radiazione ultravioletta che raggiunge la superficie terrestre. Aiuta a valutare il rischio di danni alla pelle dovuti al sole e a scegliere misure di protezione adeguate.",
+			"title": "Informazioni sull’indice UV",
+			"values": "Valori dell’indice"
+		},
+		"radiation": {
+			"description": "La radiazione ultravioletta (UV) è una radiazione elettromagnetica invisibile all’occhio umano. È presente naturalmente nella luce solare, ma può anche essere prodotta artificialmente. In piccole quantità favorisce, ad esempio, la produzione di vitamina D. Un’esposizione eccessiva è però dannosa.",
+			"title": "Radiazione ultravioletta"
+		},
+		"text": {
+			"0": "Non è necessaria una protezione solare particolare",
+			"1": "Indossa un cappello e usa una crema solare con SPF 15 o superiore. Evita il sole nelle ore centrali della giornata.",
+			"2": "Indossa un cappello e occhiali da sole. Usa una crema solare con SPF 30 o superiore e resta all’ombra nelle ore centrali della giornata. La pelle non protetta può scottarsi in 15–20 minuti.",
+			"3": "Indossa un cappello, occhiali da sole e abiti protettivi. Usa una crema solare con SPF 50 o superiore e limita il tempo all’aperto nelle ore centrali della giornata. La pelle non protetta può scottarsi in meno di 15 minuti.",
+			"4": "È necessaria una protezione solare completa. Non restare all’aperto senza protezione."
+		}
+	},
+	"range": {
+		"about": "Definizione",
+		"text": "La visibilità indica la distanza massima alla quale gli oggetti possono essere distinti a occhio nudo. È influenzata da nebbia, umidità, inquinamento e precipitazioni. È importante per la sicurezza stradale, aerea e marittima.",
+		"title": "Visibilità",
+		"values": "Scala della visibilità"
+	},
+	"wind": {
+		"beaufortscale": "Scala Beaufort",
+		"current": {
+			"direction": "Direzione:",
+			"gust": "Raffiche:",
+			"speed": "Velocità:",
+			"title": "Dati attuali del vento"
+		},
+		"description": "La scala Beaufort classifica la forza del vento in base agli effetti sull’ambiente circostante. È usata in tutto il mondo in meteorologia, navigazione e aviazione. Permette di stimare rapidamente la forza del vento osservandone gli effetti. Comprende tredici gradi, da 0 a 12, ciascuno corrispondente a un intervallo di velocità e a condizioni caratteristiche sulla terraferma e in mare.",
+		"label": {
+			"long": {
+				"E": "est",
+				"ENE": "est-nord-est",
+				"ESE": "est-sud-est",
+				"N": "nord",
+				"NE": "nord-est",
+				"NNE": "nord-nord-est",
+				"NNW": "nord-nord-ovest",
+				"NW": "nord-ovest",
+				"S": "sud",
+				"SE": "sud-est",
+				"SSE": "sud-sud-est",
+				"SSW": "sud-sud-ovest",
+				"SW": "sud-ovest",
+				"W": "ovest",
+				"WNW": "ovest-nord-ovest",
+				"WSW": "ovest-sud-ovest"
+			},
+			"short": {
+				"E": "E",
+				"ENE": "ENE",
+				"ESE": "ESE",
+				"N": "N",
+				"NE": "NE",
+				"NNE": "NNE",
+				"NNW": "NNO",
+				"NW": "NO",
+				"S": "S",
+				"SE": "SE",
+				"SSE": "SSE",
+				"SSW": "SSO",
+				"SW": "SO",
+				"W": "O",
+				"WNW": "ONO",
+				"WSW": "OSO"
+			}
+		},
+		"title": "Vento",
+		"values": "Valori della scala"
+	}
+}

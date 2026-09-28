@@ -56,7 +56,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 			description={description}
 			extraContent={
 				dewPoint && (
-					<StyledText type="body">
+					<StyledText type="body" className="min-w-0" numberOfLines={1} ellipsizeMode="tail">
 						{t('humidity.dewpoint.title')}: {dewPointValue}
 					</StyledText>
 				)

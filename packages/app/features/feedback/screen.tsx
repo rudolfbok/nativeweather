@@ -12,7 +12,7 @@ import { showToast } from 'app/utils/notifications/showToast';
 import { border } from 'app/constants/border';
 import { RoundView } from 'app/components/common/styled/RoundView';
 
-export const FeedbackFeature = () => {
+export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	const { t } = useTranslate('settings');
 	const [open, setOpen] = useState(false);
 	const [type, setType] = useState('');
@@ -72,14 +72,16 @@ export const FeedbackFeature = () => {
 
 	return (
 		<View className={clsx('items-center pb-4')}>
-			<View className={clsx('web:flex-col web:md:flex-row w-full flex-1 gap-4 lg:w-2/3 lg:flex-row')}>
+			<View className={clsx('w-full flex-1 gap-4')}>
 				<View className={clsx('ios:hidden web:flex-1 flex gap-2')}>
-					<StyledText type="screentitle" className="macos:hidden">
-						{t('feedback.title')}
-					</StyledText>
+					{!modal && (
+						<StyledText type="screentitle" className="macos:hidden">
+							{t('feedback.title')}
+						</StyledText>
+					)}
 					<StyledText type="body">{t('feedback.text')}</StyledText>
 				</View>
-				<View className={clsx('bg-systemBackground dark:bg-tertiarySystemBackground_dark web:flex-1 rounded-3xl p-4')}>
+				<View>
 					<View className={clsx('gap-3')}>
 						<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
 						<View

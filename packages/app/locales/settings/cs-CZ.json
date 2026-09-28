@@ -37,6 +37,11 @@
 		"type": "Typ"
 	},
 	"language": {
+		"polish": "Polština",
+		"italian": "Italština",
+		"french": "Francouzština",
+		"japanese": "Japonština",
+		"chinese": "Čínština (zjednodušená)",
 		"czech": "Čeština",
 		"deutsch": "Němčina",
 		"english": "Angličtina",
@@ -47,6 +52,10 @@
 	"settings": "Nastavení",
 	"source": {
 		"title": "Zdroj"
+	},
+	"temperatureScale": {
+		"celsius": "Celsia",
+		"fahrenheit": "Fahrenheita"
 	},
 	"temperature": "Teplota",
 	"theme": {
