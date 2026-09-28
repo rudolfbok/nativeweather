@@ -2,13 +2,15 @@ packages:
   - apps/*
   - packages/*
 
-onlyBuiltDependencies:
-  - esbuild
-  - node-datachannel
-  - node-pty
-  - sharp
-  - unrs-resolver
-  - workerd
+nodeLinker: hoisted
+
+allowBuilds:
+  esbuild: true
+  node-datachannel: true
+  node-pty: true
+  sharp: true
+  unrs-resolver: true
+  workerd: true
 
 overrides:
   react-dom: 19.2.3

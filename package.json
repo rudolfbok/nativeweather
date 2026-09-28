@@ -16,7 +16,7 @@
 	},
 	"keywords": [],
 	"author": "Rudolf Bok",
-	"packageManager": "pnpm@10.26.2",
+	"packageManager": "pnpm@12.6.0",
 	"devDependencies": {
 		"prettier": "^3.9.5",
 		"prettier-plugin-tailwindcss": "^0.8.1",

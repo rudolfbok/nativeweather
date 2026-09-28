@@ -15,9 +15,9 @@ export const MapsView = () => {
 
 	return (
 		<RoundView className={clsx('min-h-[320px] w-full flex-grow flex-col px-4 pb-4 pt-3')}>
-			<View className={clsx('mb-2 flex flex-row items-center justify-between')}>
-				<CardHeader icon={<MapIcon />} header={t('maps.title')} />
-				<StyledPressable onPress={() => setModalScreen('maps')} className="rounded-full p-1.5">
+			<View className={clsx('mb-2 min-w-0 flex-row items-center justify-between')}>
+				<CardHeader icon={<MapIcon />} header={t('maps.title')} className={clsx('min-w-0 flex-1')} />
+				<StyledPressable onPress={() => setModalScreen('maps')} className={clsx('flex-shrink-0 rounded-full p-1.5')}>
 					<MaximizeIcon />
 				</StyledPressable>
 			</View>
