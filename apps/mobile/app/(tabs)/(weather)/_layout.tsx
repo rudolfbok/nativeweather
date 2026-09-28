@@ -3,10 +3,9 @@ import { isCityInFavorites } from 'app/database/crudMMKVService';
 import { useThemeColors } from 'app/hooks/theme/useThemeColors';
 import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
 import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts, getMostSevereAlert } from 'app/utils/alertFilters';
+import { getAlerts } from 'app/utils/alertFilters';
 import { extractCity } from 'app/utils/extractCity';
-import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
-import { weatherLandscapeBg, weatherLandscapeText } from 'app/utils/mappings/landscapeColors';
+import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
 import { GlassView } from 'expo-glass-effect';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
@@ -19,14 +18,9 @@ export default function TabLayout() {
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const { background, text } = useThemeColors();
 	const alerts = weatherData ? getAlerts(weatherData.alerts.alert, weatherData.location) : [];
-	const mostSevereAlert = getMostSevereAlert(alerts);
-	const alertDotColor = mostSevereAlert ? getAlertSeverityDotColor(mostSevereAlert.severity) : undefined;
 	const headerBackgroundColor = weatherData
 		? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
 		: background;
-	const headerTextColor = weatherData
-		? weatherLandscapeText({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
-		: text;
 	useEffect(() => {
 		if (!weatherData) return;
 
@@ -42,9 +36,9 @@ export default function TabLayout() {
 					title: t('tab.weather'),
 					headerShadowVisible: false,
 					headerTransparent: true,
-					headerTintColor: headerTextColor,
+					headerTintColor: weatherData ? 'white' : text,
 					headerStyle: { backgroundColor: headerBackgroundColor },
-					headerTitleStyle: { color: headerTextColor },
+					headerTitleStyle: { color: weatherData ? 'white' : text },
 					contentStyle: {
 						backgroundColor: background,
 						paddingHorizontal: 0,
@@ -56,7 +50,7 @@ export default function TabLayout() {
 						<Stack.Toolbar.View hidesSharedBackground>
 							<Pressable onPress={() => console.log('Share button was pressed!')}>
 								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
-									<Share color={headerTextColor} />
+									<Share color="#FFFFFF" />
 								</GlassView>
 							</Pressable>
 						</Stack.Toolbar.View>
@@ -71,8 +65,8 @@ export default function TabLayout() {
 							>
 								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
 									<Star
-										color={headerTextColor}
-										fill={isFavorite ? headerTextColor : 'transparent'}
+										color="#FFFFFF"
+										fill={isFavorite ? '#FFFFFF' : 'transparent'}
 										style={{ pointerEvents: 'none' }}
 									/>
 								</GlassView>

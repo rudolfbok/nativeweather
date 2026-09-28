@@ -17,12 +17,12 @@ export const StyledButton = ({ onPress, icon, className, text }: StyledButtonPro
 		<StyledPressable
 			onPress={onPress}
 			className={clsx(
-				'w-full select-none flex-row items-center justify-center gap-2 rounded-3xl p-4 lg:w-fit lg:px-6',
+				'!bg-primaryblue w-full select-none flex-row items-center justify-center gap-2 rounded-3xl p-4 lg:px-6',
 				border,
 				className
 			)}
 		>
-			<StyledText type="body" className={clsx('text-center font-semibold')}>
+			<StyledText type="body" className={clsx('text-center font-semibold text-white')}>
 				{text}
 			</StyledText>
 			{icon}

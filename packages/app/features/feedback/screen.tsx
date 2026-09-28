@@ -10,6 +10,7 @@ import { ReactNode, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from 'app/utils/notifications/showToast';
 import { border } from 'app/constants/border';
+import { RoundView } from 'app/components/common/styled/RoundView';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
@@ -71,79 +72,82 @@ export const FeedbackFeature = () => {
 
 	return (
 		<View className={clsx('items-center pb-4')}>
-			<View className="web:lg:w-3/4 web:xl:w-2/3 web:2xl:w-2/5 w-full gap-4">
-				<View className={clsx('ios:hidden flex w-full gap-2')}>
-					<StyledText type="sectiontitle" className="macos:hidden">
+			<View className={clsx('web:flex-col web:md:flex-row w-full flex-1 gap-4 lg:w-2/3 lg:flex-row')}>
+				<View className={clsx('ios:hidden web:flex-1 flex gap-2')}>
+					<StyledText type="screentitle" className="macos:hidden">
 						{t('feedback.title')}
 					</StyledText>
 					<StyledText type="body">{t('feedback.text')}</StyledText>
 				</View>
-				<View className={clsx('gap-2')}>
-					<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
-					<View
-						className={clsx(
-							'bg-systemBackground dark:bg-secondarySystemBackground_dark web:md:w-[320px] w-full overflow-hidden rounded-3xl',
-							open && border
-						)}
-					>
-						<Pressable
-							onPress={() => setOpen((prev) => !prev)}
+				<View className={clsx('bg-systemBackground dark:bg-tertiarySystemBackground_dark web:flex-1 rounded-3xl p-4')}>
+					<View className={clsx('gap-3')}>
+						<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
+						<View
 							className={clsx(
-								'hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden rounded-3xl p-4',
-								!open && border,
-								open && '!rounded-bl-none !rounded-br-none'
+								'bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark w-full overflow-hidden rounded-3xl',
+								open && border
 							)}
-							style={{ cursor: 'pointer' }}
 						>
-							<View className="flex-row items-center gap-3">
-								{selectedIcon[type]}
-								<StyledText type="body" className="font-semibold">
-									{type ? t(`feedback.${type}`) : t('feedback.select')}
-								</StyledText>
-							</View>
-							{open ? <ChevronDown color="#007AFF" /> : <ChevronRight color="#007AFF" />}
-						</Pressable>
-						{open && (
-							<View>
-								<DropdownItem icon={<Bug color="#007AFF" />} title={t('feedback.bug')} variant="bug" />
-								<DropdownItem icon={<Cog color="#007AFF" />} title={t('feedback.feature')} variant="feature" />
-								<DropdownItem
-									icon={<MessageCircle color="#007AFF" />}
-									title={t('feedback.message')}
-									variant="message"
-								/>
-								<DropdownItem
-									icon={<CircleQuestionMark color="#007AFF" />}
-									title={t('feedback.question')}
-									variant="question"
-								/>
-							</View>
-						)}
+							<Pressable
+								onPress={() => setOpen((prev) => !prev)}
+								className={clsx(
+									'hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden rounded-3xl p-4',
+									!open && border,
+									open && '!rounded-bl-none !rounded-br-none'
+								)}
+								style={{ cursor: 'pointer' }}
+							>
+								<View className="flex-row items-center gap-3">
+									{selectedIcon[type]}
+									<StyledText type="body" className="font-semibold">
+										{type ? t(`feedback.${type}`) : t('feedback.select')}
+									</StyledText>
+								</View>
+								{open ? <ChevronDown color="#007AFF" /> : <ChevronRight color="#007AFF" />}
+							</Pressable>
+							{open && (
+								<View>
+									<DropdownItem icon={<Bug color="#007AFF" />} title={t('feedback.bug')} variant="bug" />
+									<DropdownItem icon={<Cog color="#007AFF" />} title={t('feedback.feature')} variant="feature" />
+									<DropdownItem
+										icon={<MessageCircle color="#007AFF" />}
+										title={t('feedback.message')}
+										variant="message"
+									/>
+									<DropdownItem
+										icon={<CircleQuestionMark color="#007AFF" />}
+										title={t('feedback.question')}
+										variant="question"
+									/>
+								</View>
+							)}
+						</View>
 					</View>
-				</View>
-				<View className={clsx('gap-2')}>
-					<StyledText type="sectiontitle">{t('feedback.message')}</StyledText>
-					<TextInput
-						//@ts-expect-error
-						enableFocusRing={false}
-						placeholder={t('feedback.placeholder')}
-						value={message}
-						onChangeText={setMessage}
-						multiline={true}
-						textAlignVertical="top"
-						placeholderTextColor="#8E8E93"
-						className={clsx(
-							'bg-systemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl p-4 text-base outline-none',
-							border
-						)}
-					/>
-				</View>
-				<View className="w-full items-start">
-					<StyledButton
-						onPress={handleSubmit}
-						text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
-						// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
-					/>
+					<View className={clsx('mt-4 gap-3')}>
+						<StyledText type="sectiontitle">{t('feedback.message')}</StyledText>
+						<TextInput
+							//@ts-expect-error
+							enableFocusRing={false}
+							placeholder={t('feedback.placeholder')}
+							value={message}
+							onChangeText={setMessage}
+							multiline={true}
+							textAlignVertical="top"
+							placeholderTextColor="#8E8E93"
+							className={clsx(
+								'bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl p-4 text-base outline-none',
+								border
+							)}
+						/>
+					</View>
+					<View className="mt-4">
+						<StyledButton
+							onPress={handleSubmit}
+							text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
+
+							// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
+						/>
+					</View>
 				</View>
 			</View>
 		</View>
