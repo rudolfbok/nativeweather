@@ -1,6 +1,7 @@
 import { useTolgee } from '@tolgee/react';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useState } from 'react';
@@ -36,7 +37,8 @@ export const WeatherChart = ({
 	const tolgee = useTolgee();
 	const { text } = useThemeColors();
 	const surface = text === '#FFFFFF' ? '#1C1C1E' : '#FFFFFF';
-	const isWeb = Platform.OS === 'web';
+	const selectedDay = useSelectedDay((state) => state.selectedDay);
+	const fitsFullDay = Platform.OS === 'web' || Platform.OS === 'macos';
 	const { width: windowWidth } = useWindowDimensions();
 	const [containerWidth, setContainerWidth] = useState(0);
 	const chartWidth = Math.max(1, (containerWidth || windowWidth - 32) - 32);
@@ -47,7 +49,8 @@ export const WeatherChart = ({
 		timeZone,
 	}).formatToParts(new Date(currentTimeEpoch * 1000));
 	const localDate = `${localDateParts.find((part) => part.type === 'year')?.value}-${localDateParts.find((part) => part.type === 'month')?.value}-${localDateParts.find((part) => part.type === 'day')?.value}`;
-	const currentDayHours = forecastDays.find((day) => day.date === localDate)?.hour ?? [];
+	const chartDate = selectedDay?.date ?? localDate;
+	const currentDayHours = forecastDays.find((day) => day.date === chartDate)?.hour ?? [];
 	const chartData = currentDayHours.map((hour) => ({ time: hour.timeEpoch, value: getValue(hour) }));
 	const values = chartData.map((point) => point.value);
 	const dataMin = Math.min(...values);
@@ -55,11 +58,9 @@ export const WeatherChart = ({
 	const padding = (dataMax - dataMin) * 0.1 || domainStep;
 	const yMin = Math.max(0, Math.floor((dataMin - padding) / domainStep) * domainStep);
 	const yMax = maxValue ?? Math.ceil((dataMax + padding) / domainStep) * domainStep;
-	const hourFormatter = new Intl.DateTimeFormat(tolgee.getLanguage(), { hour: 'numeric', timeZone });
+	const hourFormatter = new Intl.DateTimeFormat(tolgee.getLanguage(), { hour: 'numeric', hourCycle: 'h23', timeZone });
 	const formatHour = (time: string | number | Date) =>
-		hourFormatter
-			.formatToParts(new Date(Number(time) * 1000))
-			.find((part) => part.type === 'hour')?.value ?? '';
+		hourFormatter.formatToParts(new Date(Number(time) * 1000)).find((part) => part.type === 'hour')?.value ?? '';
 
 	if (chartData.length === 0) return null;
 
@@ -70,7 +71,9 @@ export const WeatherChart = ({
 					data={chartData}
 					xKey="time"
 					yKey="value"
-					series={[{ yKey: 'value', label: seriesLabel, color, strokeWidth: 3 }]}
+					series={[{ yKey: 'value', label: seriesLabel, color, strokeOpacity: 0 }]}
+					area
+					areaFill={{ fromColor: color, toColor: color, fromOpacity: 1, toOpacity: 1 }}
 					width={chartWidth}
 					height={250}
 					theme={{
@@ -84,15 +87,16 @@ export const WeatherChart = ({
 						tooltip: { background: 'transparent', border: 'transparent', text, mutedText: text },
 					}}
 					curve="monotone"
-					scrollable={!isWeb}
-					visiblePoints={isWeb ? chartData.length : 8}
+					scrollable={!fitsFullDay}
+					visiblePoints={chartData.length}
 					initialIndex="start"
-					showDots={true}
+					showDots={false}
 					showHorizontalGridLines
 					yDomain={{ min: maxValue === undefined ? yMin : 0, max: yMax }}
 					formatXLabel={formatHour}
 					formatYLabel={formatValue}
-					labelStrategy="show"
+					labelStrategy="skip"
+					labelMinGap={windowWidth < 768 ? 24 : chartWidth / 12}
 					interaction={{ mode: 'scrub', selectionPersistence: 'whileActive' }}
 					crosshair
 					tooltip={{ shared: true, anchor: 'pointer', placement: 'above', width: 64 }}

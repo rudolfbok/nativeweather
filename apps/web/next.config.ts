@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
 	transpilePackages: [
 		'react-native',
 		'react-native-web',
+		'react-native-chart-kit',
 		'react-native-css-interop',
 		'react-native-mmkv',
 		'react-native-nitro-modules',

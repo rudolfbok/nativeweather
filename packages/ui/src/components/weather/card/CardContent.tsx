@@ -43,7 +43,7 @@ export const CardContent = ({
 	};
 
 	return (
-		<View className="flex-row">
+		<View className="flex-1 flex-row">
 			<View className={clsx('flex-1')}>
 				<StyledText
 					type="sectiontitle"

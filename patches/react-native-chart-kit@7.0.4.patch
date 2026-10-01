@@ -19,21 +19,3 @@ index 64ffb62ab09f307efe9f6d9d8d3bef57be879280..6a1a7008d04c513885997387c9a7b3c9
 -export const getStickyYAxisBackgroundHeight = ({ fadeY, mainHeight }) => Math.min(mainHeight, fadeY + 4);
 +export const getStickyYAxisBackgroundHeight = ({ mainHeight }) => mainHeight;
  export const getStickyYAxisFadeOpacity = (scrollOffset) => scrollOffset > 0.5 ? 1 : 0;
-diff --git a/dist/v2/react-native/charts/line/xScale.js b/dist/v2/react-native/charts/line/xScale.js
-index 34a9b3ee7eaac47e5549672ffa7c0b1768f88a5f..939828d22a5d883690a6f3294835f6e47f21a777 100644
---- a/dist/v2/react-native/charts/line/xScale.js
-+++ b/dist/v2/react-native/charts/line/xScale.js
-@@ -1,9 +1,11 @@
- import { createLinearScale, createPointScale, createTimeScale } from "../../../core/index";
- import { getXKey, getXScaleType, unique } from "./utils";
- export const buildLineChartXScale = ({ boxes, xValues }) => {
-+    // Keep endpoint dots and hour labels clear of the fixed axis and plot edges.
-+    const inset = Math.min(12, boxes.plot.width / 2);
-     const range = [
--        boxes.plot.x,
--        boxes.plot.x + boxes.plot.width
-+        boxes.plot.x + inset,
-+        boxes.plot.x + boxes.plot.width - inset
-     ];
-     const xScaleType = getXScaleType(xValues);
-     if (xScaleType === "time") {
