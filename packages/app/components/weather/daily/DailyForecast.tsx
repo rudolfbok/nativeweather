@@ -92,7 +92,7 @@ export const DailyForecast = () => {
 						style={index !== items.length - 1 ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined} /// THIS
 					>
 						<View className={clsx('flex w-14')}>
-							<StyledText type="body" className={clsx('font-semibold')}>
+							<StyledText type="body" className={clsx('w-full font-semibold')} numberOfLines={1}>
 								{index === 0 ? t('dailyforecast.today') : getDayName(day.date, 'short')}
 							</StyledText>
 						</View>

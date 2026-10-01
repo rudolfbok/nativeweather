@@ -2,14 +2,19 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
+import { WeatherChart } from 'app/components/weather/WeatherChart';
 import { useStorageString } from 'app/database/useStorage';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 export const RainModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
+	const { weatherData } = useWeather();
 	const switchUnits = (mm: string, inches: string) => (currentUnits === 'metric' ? mm + 'mm' : inches + 'in');
+	const nowEpoch = weatherData?.location.localtimeEpoch ?? 0;
+	const timeZone = weatherData?.location.tzId ?? 'UTC';
 
 	const rainChanceValues = [
 		{
@@ -69,6 +74,17 @@ export const RainModal = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={nowEpoch}
+					timeZone={timeZone}
+					getValue={(hour) => Math.round(hour.chanceOfRain / 5) * 5}
+					seriesLabel={t('rain.title')}
+					maxValue={100}
+					valueSuffix="%"
+				/>
+			)}
 			<ContentRow title={t('rain.chance.title')}>
 				<StyledText type="body">{t('rain.chance.description')}</StyledText>
 			</ContentRow>

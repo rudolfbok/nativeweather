@@ -44,7 +44,7 @@ export const DataCard = ({
 					{extraContent && <View>{extraContent}</View>}
 				</View>
 				<View className="w-full items-end">
-					<StyledText type="data" className="text-end">
+					<StyledText type="data" className="text-right">
 						{data}
 					</StyledText>
 				</View>

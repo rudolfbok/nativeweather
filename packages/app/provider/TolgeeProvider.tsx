@@ -52,16 +52,7 @@ export const TolgeeProvider = ({ children }: { children: ReactNode }) => {
 			.use(FormatIcu())
 			.init({
 				language: currentLang || 'en-US',
-				availableLanguages: [
-					'en-US',
-					'cs-CZ',
-					'de-DE',
-					'zh-CN',
-					'ja-JP',
-					'fr-FR',
-					'it-IT',
-					'pl-PL',
-				],
+				availableLanguages: ['en-US', 'cs-CZ', 'de-DE', 'zh-CN', 'ja-JP', 'fr-FR', 'it-IT', 'pl-PL'],
 				staticData: {
 					'en-US:common': CommonEN,
 					'de-DE:common': CommonDE,

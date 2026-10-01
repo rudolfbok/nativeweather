@@ -19,5 +19,15 @@ overrides:
 
 patchedDependencies:
   expo-router: patches/expo-router.patch
+  react-native-chart-kit@7.0.4: patches/react-native-chart-kit@7.0.4.patch
   react-native-macos: patches/react-native-macos.patch
   react-native-mmkv@4.3.1: patches/react-native-mmkv@4.3.1.patch
+
+minimumReleaseAgeExclude:
+  - '@turbo/darwin-64@2.11.5'
+  - '@turbo/darwin-arm64@2.11.5'
+  - '@turbo/linux-64@2.11.5'
+  - '@turbo/linux-arm64@2.11.5'
+  - '@turbo/windows-64@2.11.5'
+  - '@turbo/windows-arm64@2.11.5'
+  - turbo@2.11.5

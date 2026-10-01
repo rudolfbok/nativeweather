@@ -158,7 +158,7 @@
 	},
 	"dailyforecast": {
 		"title": "Prognoza dzienna",
-		"today": "dzisiaj"
+		"today": "dziś"
 	},
 	"description": {
 		"cloudcover": {

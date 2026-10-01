@@ -247,7 +247,7 @@
 	},
 	"feelslike": "体感温度：",
 	"hourlyforecast": {
-		"now": "現在",
+		"now": "今",
 		"title": "時間別予報"
 	},
 	"humidity": {

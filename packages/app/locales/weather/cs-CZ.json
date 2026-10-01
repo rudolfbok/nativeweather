@@ -247,7 +247,7 @@
 	},
 	"feelslike": "Pocitově:",
 	"hourlyforecast": {
-		"now": "nyní",
+		"now": "teď",
 		"title": "Hodinová předpověď"
 	},
 	"humidity": {

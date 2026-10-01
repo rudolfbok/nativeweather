@@ -47,6 +47,7 @@
 		"lucide-react-native": "^0.562.0",
 		"luxon": "^3.7.2",
 		"nativewind": "4.2.6",
+		"react-native-chart-kit": "^7.0.4",
 		"solito": "^5.0.0",
 		"zustand": "^5.0.9"
 	}

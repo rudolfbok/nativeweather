@@ -19,7 +19,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, tempC, tempF }: Hour
 	const [currentSource] = useStorageString('currentSource');
 	return (
 		<View className={clsx('min-h-[130px] w-14 select-none items-center justify-center gap-2')}>
-			<StyledText type="body" className={clsx('font-medium')}>
+			<StyledText type="body" className={clsx('w-full text-center font-medium')} numberOfLines={1}>
 				{hour}
 			</StyledText>
 			<View className={clsx('flex-1 items-center justify-center gap-1')}>

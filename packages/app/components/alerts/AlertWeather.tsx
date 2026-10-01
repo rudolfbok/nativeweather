@@ -12,6 +12,7 @@ import { getMostSevereAlert } from 'app/utils/alertFilters';
 import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
+import { View } from 'react-native';
 import { AlertModal } from './AlertModal';
 import { border } from 'app/constants/border';
 
@@ -49,8 +50,11 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 				<CardHeader
 					icon={<AlertIcon mostSevere={alertIconColor} />}
 					header={`${alertsLength} ${t('alerts.title')}${tolgee.getLanguage() === 'en-US' && alertsLength > 1 ? 's' : ''}`}
+					className={clsx('min-w-0 flex-1')}
 				/>
-				<ChevronIcon />
+				<View className={clsx('flex-shrink-0')}>
+					<ChevronIcon />
+				</View>
 			</StyledPressable>
 			{showAlertModal && (
 				<StyledModal

@@ -75,6 +75,13 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					chanceOfRain: hour.chance_of_rain,
 					chanceOfSnow: hour.chance_of_snow,
 					snowCm: hour.snow_cm,
+					humidity: hour.humidity,
+					pressureMb: hour.pressure_mb,
+					pressureInHg: hour.pressure_in,
+					rangeKm: hour.vis_km,
+					rangeMiles: hour.vis_miles,
+					windKph: hour.wind_kph,
+					windMph: hour.wind_mph,
 					condition: {
 						code: normalizeWeatherConditionCode(hour.condition?.code),
 					},

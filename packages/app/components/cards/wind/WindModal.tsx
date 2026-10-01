@@ -1,10 +1,12 @@
 import { useTranslate } from '@tolgee/react';
+import { WeatherChart } from 'app/components/weather/WeatherChart';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { Separator } from 'app/components/common/styled/Separator';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { WindDirectionIcon } from 'app/components/icons/ui/WindDirectionIcon';
 import { useStorageString } from 'app/database/useStorage';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { getDirection } from 'app/utils/mappings/windDirection';
 import { clsx } from 'clsx';
 import { Gauge, Wind } from 'lucide-react-native';
@@ -20,6 +22,7 @@ interface WindModalProps {
 export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
+	const { weatherData } = useWeather();
 
 	const switchUnits = (kilometeres: string, miles: string) =>
 		currentUnits === 'metric' ? kilometeres + 'km/h' : miles + 'mph';
@@ -92,50 +95,58 @@ export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) 
 		},
 	];
 
-	const RenderCurrentWind = () => {
-		if (!currentWind) return null;
-
-		const windData = [
-			{
-				icon: <Gauge color="white" />,
-				label: t('wind.current.speed'),
-				value: speed,
-			},
-			{
-				icon: <Wind color="white" />,
-				label: t('wind.current.gust'),
-				value: gust,
-			},
-			{
-				icon: <WindDirectionIcon />,
-				label: t('wind.current.direction'),
-				value: `${getDirection(degree, 'long', t)} / ${degree}°`,
-			},
-		];
-
-		return (
-			<ContentRow title={t('wind.current.title')}>
-				<View className={clsx('w-full justify-between gap-4')}>
-					{windData.map((item, index) => (
-						<View key={index} className={clsx('gap-4')}>
-							<View className={clsx('flex-row items-center')}>
-								<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>{item.icon}</View>
-								<View className={clsx('flex-1 flex-row justify-between')}>
-									<StyledText type="sectiontitle">{item.label}</StyledText>
-									<StyledText type="body">{item.value}</StyledText>
-								</View>
-							</View>
-							{index < windData.length - 1 && <Separator />}
-						</View>
-					))}
-				</View>
-			</ContentRow>
-		);
-	};
+	const windData = [
+		{
+			icon: <Gauge color="white" />,
+			label: t('wind.current.speed'),
+			value: speed,
+		},
+		{
+			icon: <Wind color="white" />,
+			label: t('wind.current.gust'),
+			value: gust,
+		},
+		{
+			icon: <WindDirectionIcon />,
+			label: t('wind.current.direction'),
+			value: `${getDirection(degree, 'long', t)} / ${degree}°`,
+		},
+	];
 
 	return (
 		<View className={clsx('gap-2')}>
-			<RenderCurrentWind />
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={weatherData.location.localtimeEpoch}
+					timeZone={weatherData.location.tzId}
+					getValue={(hour) => (currentUnits === 'metric' ? hour.windKph : hour.windMph)}
+					seriesLabel={t('wind.title')}
+					valueSuffix={currentUnits === 'metric' ? 'km/h' : 'mph'}
+					domainStep={5}
+					color="#737373"
+				/>
+			)}
+			{currentWind && (
+				<ContentRow title={t('wind.current.title')}>
+					<View className={clsx('w-full justify-between gap-4')}>
+						{windData.map((item, index) => (
+							<View key={index} className={clsx('gap-4')}>
+								<View className={clsx('flex-row items-center')}>
+									<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>
+										{item.icon}
+									</View>
+									<View className={clsx('flex-1 flex-row justify-between')}>
+										<StyledText type="sectiontitle">{item.label}</StyledText>
+										<StyledText type="body">{item.value}</StyledText>
+									</View>
+								</View>
+								{index < windData.length - 1 && <Separator />}
+							</View>
+						))}
+					</View>
+				</ContentRow>
+			)}
 			<ContentRow title={t('wind.beaufortscale')}>
 				<StyledText type="body">{t('wind.description')}</StyledText>
 			</ContentRow>

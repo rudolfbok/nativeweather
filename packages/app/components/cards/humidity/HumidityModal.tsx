@@ -1,12 +1,15 @@
 import { useTranslate } from '@tolgee/react';
+import { WeatherChart } from 'app/components/weather/WeatherChart';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
-import { GestureResponderEvent, ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 
 export const HumidityModal = () => {
 	const { t } = useTranslate('weather');
+	const { weatherData } = useWeather();
 
 	const humidityScaleValues = [
 		{
@@ -33,6 +36,18 @@ export const HumidityModal = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={weatherData.location.localtimeEpoch}
+					timeZone={weatherData.location.tzId}
+					getValue={(hour) => hour.humidity}
+					seriesLabel={t('humidity.title')}
+					maxValue={100}
+					valueSuffix="%"
+					color="#3DA443"
+				/>
+			)}
 			<ContentRow title={t('humidity.relativehumidity.title')}>
 				<StyledText type="body">{t('humidity.relativehumidity.text')}</StyledText>
 			</ContentRow>

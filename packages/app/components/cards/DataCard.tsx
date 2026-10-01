@@ -46,7 +46,7 @@ export const DataCard = ({
 					{extraContent && <View className="min-w-0">{extraContent}</View>}
 				</View>
 				<View className={clsx('w-full min-w-0 items-end')}>
-					<StyledText type="data" className={clsx('w-full text-end')} numberOfLines={1} ellipsizeMode="tail">
+					<StyledText type="data" className={clsx('w-full text-right')} numberOfLines={1} ellipsizeMode="tail">
 						{data}
 					</StyledText>
 				</View>

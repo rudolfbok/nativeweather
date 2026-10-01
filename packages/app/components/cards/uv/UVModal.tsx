@@ -2,11 +2,16 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
+import { WeatherChart } from 'app/components/weather/WeatherChart';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 export const UVModal = () => {
 	const { t } = useTranslate('weather');
+	const { weatherData } = useWeather();
+	const nowEpoch = weatherData?.location.localtimeEpoch ?? 0;
+	const timeZone = weatherData?.location.tzId ?? 'UTC';
 
 	const uvValues = [
 		{
@@ -43,6 +48,17 @@ export const UVModal = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={nowEpoch}
+					timeZone={timeZone}
+					getValue={(hour) => Math.round(hour.uv)}
+					seriesLabel={t('uv.index.title')}
+					maxValue={12}
+					color="#7A007B"
+				/>
+			)}
 			<ContentRow title={t('uv.radiation.title')}>
 				<StyledText type="body">{t('uv.radiation.description')}</StyledText>
 			</ContentRow>

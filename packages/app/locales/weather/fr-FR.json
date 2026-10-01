@@ -158,7 +158,7 @@
 	},
 	"dailyforecast": {
 		"title": "Prévisions quotidiennes",
-		"today": "aujourd’hui"
+		"today": "auj."
 	},
 	"description": {
 		"cloudcover": {
@@ -247,7 +247,7 @@
 	},
 	"feelslike": "Ressenti :",
 	"hourlyforecast": {
-		"now": "maintenant",
+		"now": "maint.",
 		"title": "Prévisions horaires"
 	},
 	"humidity": {

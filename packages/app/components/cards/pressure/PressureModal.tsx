@@ -1,14 +1,17 @@
 import { useTranslate } from '@tolgee/react';
+import { WeatherChart } from 'app/components/weather/WeatherChart';
 import { StyledText } from 'app/components/common/styled/StyledText';
 import { ContentRow } from 'app/components/common/layout/ContentRow';
 import { ValuesList } from 'app/components/common/modal/ValuesList';
 import { useStorageString } from 'app/database/useStorage';
+import { useWeather } from 'app/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 export const PressureModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
+	const { weatherData } = useWeather();
 	const switchUnits = (hectopascals: string, inchesofmercury: string) =>
 		currentUnits === 'metric' ? hectopascals + 'hPa' : inchesofmercury + 'inHg';
 
@@ -71,6 +74,19 @@ export const PressureModal = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={weatherData.location.localtimeEpoch}
+					timeZone={weatherData.location.tzId}
+					getValue={(hour) => (currentUnits === 'metric' ? hour.pressureMb : hour.pressureInHg)}
+					seriesLabel={t('pressure.title')}
+					valueSuffix={currentUnits === 'metric' ? 'hPa' : 'inHg'}
+					domainStep={currentUnits === 'metric' ? 5 : 0.1}
+					formatValue={(value) => (currentUnits === 'metric' ? `${Math.round(value)}` : value.toFixed(1))}
+					color="#0048FF"
+				/>
+			)}
 			<ContentRow title={t('pressure.barometricscale.title')}>
 				<StyledText type="body">{t('pressure.barometricscale.text')}</StyledText>
 			</ContentRow>

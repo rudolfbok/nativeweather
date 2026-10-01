@@ -73,6 +73,13 @@ export interface NormalizedData {
 				chanceOfRain: number;
 				chanceOfSnow: number;
 				snowCm: number;
+				humidity: number;
+				pressureMb: number;
+				pressureInHg: number;
+				rangeKm: number;
+				rangeMiles: number;
+				windKph: number;
+				windMph: number;
 				condition: {
 					code: number;
 				};
