@@ -1,4 +1,4 @@
-const nativewindPreset = require('@nativeweather/tailwind-config');
+const nativewindPreset = require('@nativeweather/ui/tailwind.config');
 
 module.exports = {
 	darkMode: 'class',

@@ -135,7 +135,6 @@ nativeweather/
 │   ├── core/         # Shared storage, constants, and utilities
 │   ├── api/          # Weather API clients and response mapping
 │   ├── types/        # Shared data types
-│   └── tailwind-config/ # Shared NativeWind preset and theme tokens
 ├── package.json
 ├── pnpm-workspace.yaml
 └── turbo.json
