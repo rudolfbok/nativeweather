@@ -16,7 +16,7 @@ Next.js web application with React Native Web integration for cross-platform com
 pnpm dev          # Start development server (localhost:3000)
 pnpm build        # Build for production
 pnpm start        # Start production server
-pnpm lint         # Run ESLint
+pnpm lint         # Run Oxlint
 pnpm typecheck  # TypeScript type checking
 ```
 

@@ -1,0 +1,35 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "import", "nextjs", "jest"],
+	"categories": {
+		"correctness": "error",
+		"suspicious": "warn"
+	},
+	"rules": {
+		"unicorn/no-empty-file": "error",
+		"unicorn/no-useless-fallback-in-spread": "off",
+		"eslint/no-unused-vars": "warn",
+		"react/react-in-jsx-scope": "off",
+		"react/immutability": "warn",
+		"react/purity": "warn",
+		"react/set-state-in-effect": "warn",
+		"react/static-components": "warn",
+		"react-hooks/exhaustive-deps": "warn"
+	},
+	"ignorePatterns": [
+		"**/node_modules/**",
+		"apps/mobile/dist/**",
+		"apps/web/.next/**",
+		"apps/web/.open-next/**",
+		"apps/web/out/**",
+		"apps/web/build/**",
+		"apps/web/next-env.d.ts",
+		"**/*.d.ts"
+	],
+	"overrides": [
+		{
+			"files": ["apps/web/**/*.{js,jsx,ts,tsx}"],
+			"plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "import", "nextjs", "jsx-a11y", "jest"]
+		}
+	]
+}

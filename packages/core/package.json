@@ -2,9 +2,7 @@
 	"name": "@nativeweather/core",
 	"version": "0.0.0",
 	"private": true,
-	"types": "./src/index.ts",
 	"exports": {
-		".": "./src/index.ts",
 		"./*": "./src/*"
 	},
 	"dependencies": {
@@ -16,8 +14,8 @@
 		"react-native": "0.79.6 || 0.83.4 || 0.86.2",
 		"nativewind": "4.2.6"
 	},
-	"main": "./src/index.ts",
 	"scripts": {
+		"lint": "oxlint --config ../../.oxlintrc.json .",
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
