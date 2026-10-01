@@ -1,5 +1,5 @@
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
-import { USAQIDetail } from 'app/components/airquality/USAQIDetail';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
+import { USAQIDetail } from '@nativeweather/ui/components/airquality/USAQIDetail';
 
 export default function USAQIModalScreen() {
 	return (

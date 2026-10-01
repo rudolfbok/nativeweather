@@ -1,9 +1,9 @@
 'use client';
 
-import { StatusPage } from 'app/components/web/StatusPage';
-import { RefreshButton } from 'app/components/web/RefreshButton';
+import { StatusPage } from '@nativeweather/ui/components/web/StatusPage';
+import { RefreshButton } from '@nativeweather/ui/components/web/RefreshButton';
 import { useEffect } from 'react';
-import { ErrorIcon } from 'app/components/icons/ui/ErrorIcon';
+import { ErrorIcon } from '@nativeweather/ui/components/icons/ui/ErrorIcon';
 
 export default function ErrorPage({ error }: { error: Error & { digest?: string } }) {
 	useEffect(() => {

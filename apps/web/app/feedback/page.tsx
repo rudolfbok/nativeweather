@@ -1,4 +1,4 @@
-import { FeedbackFeature } from 'app/features/feedback/screen';
+import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

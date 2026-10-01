@@ -1,8 +1,8 @@
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
-import { AlertDetail } from 'app/components/alerts/AlertDetail';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts } from 'app/utils/alertFilters';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
+import { AlertDetail } from '@nativeweather/ui/components/alerts/AlertDetail';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { useEffect } from 'react';
 
 export default function AlertDetailScreen() {

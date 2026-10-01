@@ -1,5 +1,5 @@
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { SettingsFeature } from 'app/features/settings/screen';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { SettingsFeature } from '@nativeweather/ui/features/settings/screen';
 import { View } from 'react-native';
 
 export const Settings = () => {

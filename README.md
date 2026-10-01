@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/logo_dark.png" width="200">
-    <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/logo_light.png" width="200">
-    <img alt="nativeweather logo" src="packages/app/assets/readme/logo_light.png" width="200">
+    <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/logo_dark.png" width="200">
+    <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/logo_light.png" width="200">
+    <img alt="nativeweather logo" src="packages/@nativeweather/ui/assets/readme/logo_light.png" width="200">
   </picture>
 </p>
 
@@ -28,26 +28,26 @@
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/web_1_dark.png" width="600">
-    <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/web_1_light.png" width="600">
-    <img alt="Web screenshot" src="packages/app/assets/readme/web_1_light.png" width="600">
+    <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/web_1_dark.png" width="600">
+    <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/web_1_light.png" width="600">
+    <img alt="Web screenshot" src="packages/@nativeweather/ui/assets/readme/web_1_light.png" width="600">
   </picture>
 </div>
 
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="packages/app/assets/readme/ios_1.png" width="195">
-  <source media="(prefers-color-scheme: light)" srcset="packages/app/assets/readme/ios_3.png" width="195">
-  <img alt="iOS screenshot" src="packages/app/assets/readme/ios_1.png" width="195">
+  <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/ios_1.png" width="195">
+  <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/ios_3.png" width="195">
+  <img alt="iOS screenshot" src="packages/@nativeweather/ui/assets/readme/ios_1.png" width="195">
 </picture>
-<!-- <img src="packages/app/assets/readme/ios_3.png" alt="iOS screeshot no. 1" width="195" /> -->
+<!-- <img src="packages/@nativeweather/ui/assets/readme/ios_3.png" alt="iOS screeshot no. 1" width="195" /> -->
 &nbsp;
-<img src="packages/app/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="195" />
+<img src="packages/@nativeweather/ui/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="195" />
 &nbsp;
-<img src="packages/app/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="195" />
+<img src="packages/@nativeweather/ui/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="195" />
 <!-- &nbsp;
-<img src="packages/app/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="195" /> -->
+<img src="packages/@nativeweather/ui/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="195" /> -->
 </div>
 
 <!-- <br/><br/>
@@ -118,7 +118,7 @@ This started as my first long-term project and has grown into a real weather pro
 
 ## Monorepo Structure
 
-This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS, Expo frameworks and bare React Native project with a shared code from `packages/app` folder
+This is a monorepo project laced with Turborepo managed by PNPM workspaces connecting NextJS, Expo frameworks and bare React Native project with shared code split across scoped workspace packages
 
 Special thanks to [@gurselcakar](https://github.com/gurselcakar) for the excellent guide:
 <br/>
@@ -131,7 +131,11 @@ nativeweather/
 │   └── mobile/       # Expo mobile app
 │   └── desktop/      # macOS desktop app
 ├── packages/
-│   └── app/          # Shared app code, components, hooks, storage, API, types
+│   ├── ui/           # Shared screens, components, hooks, and assets
+│   ├── core/         # Shared storage, constants, and utilities
+│   ├── api/          # Weather API clients and response mapping
+│   ├── types/        # Shared data types
+│   └── tailwind-config/ # Shared NativeWind preset and theme tokens
 ├── package.json
 ├── pnpm-workspace.yaml
 └── turbo.json

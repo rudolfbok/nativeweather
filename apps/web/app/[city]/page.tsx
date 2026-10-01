@@ -1,5 +1,5 @@
-import { WeatherFeature } from 'app/features/weather/screen.web';
-import { fetchWeatherAPIOrThrow, WeatherRequestError } from 'app/api/fetchWeatherAPI';
+import { WeatherFeature } from '@nativeweather/ui/features/weather/screen.web';
+import { fetchWeatherAPIOrThrow, WeatherRequestError } from '@nativeweather/api/fetchWeatherAPI';
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';

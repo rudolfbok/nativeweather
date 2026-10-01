@@ -1,5 +1,5 @@
-import { SnowModal } from 'app/components/cards/snow/SnowModal';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { SnowModal } from '@nativeweather/ui/components/cards/snow/SnowModal';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
 
 export default function SnowModalScreen() {
 	return (

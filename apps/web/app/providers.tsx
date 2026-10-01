@@ -1,9 +1,9 @@
 'use client';
 
-import { ThemeSync } from 'app/components/web/ThemeSync.web';
-import { TolgeeProvider } from 'app/provider/TolgeeProvider';
-import { initStorageDefaults } from 'app/database/initStorageDefaults';
-import { useStorageString } from 'app/database/useStorage';
+import { ThemeSync } from '@nativeweather/ui/components/web/ThemeSync.web';
+import { TolgeeProvider } from '@nativeweather/ui/provider/TolgeeProvider';
+import { initStorageDefaults } from '@nativeweather/core/database/initStorageDefaults';
+import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { Toaster } from 'burnt/web';
 import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';

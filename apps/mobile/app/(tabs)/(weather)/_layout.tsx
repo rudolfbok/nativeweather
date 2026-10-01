@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { isCityInFavorites } from 'app/database/crudMMKVService';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
-import { useFavoriteCities } from 'app/hooks/weather/useFavoriteCities';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts } from 'app/utils/alertFilters';
-import { extractCity } from 'app/utils/extractCity';
-import { weatherLandscapeBg } from 'app/utils/mappings/landscapeColors';
+import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { getAlerts } from '@nativeweather/core/utils/alertFilters';
+import { extractCity } from '@nativeweather/core/utils/extractCity';
+import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { GlassView } from 'expo-glass-effect';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';

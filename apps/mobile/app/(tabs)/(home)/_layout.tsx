@@ -1,4 +1,4 @@
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { Stack } from 'expo-router';
 
 export default function HomeLayout() {

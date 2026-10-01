@@ -1,0 +1,47 @@
+import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
+import { useState } from 'react';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { SunsetIcon } from '@nativeweather/ui/components/icons/main/SunsetIcon';
+import { DataCard } from '../DataCard';
+import { SunsetModal } from './SunsetModal';
+
+export const SunsetCard = ({ data }: { data: string }) => {
+	const [currentLanguage] = useStorageString('currentLang');
+	const { t } = useTranslate('weather');
+	const [showModal, setShowModal] = useState(false);
+	const { setModalScreen } = useNavigationScreen();
+	const router = useRouter();
+	const navigateToSunset = useModalNavigation({
+		mobile: () => router.push('/modals/sunset'),
+		macos: () => setModalScreen('sunset'),
+		web: () => setShowModal(true),
+	});
+
+	return (
+		<DataCard
+			onPress={navigateToSunset}
+			icon={<SunsetIcon />}
+			title={t('sunset.title')}
+			data={formatTime(data, currentLanguage)}
+			extraContent={<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">{t('localtime')}</StyledText>}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<SunsetIcon />}
+						header={t('sunset.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<SunsetModal />
+					</StyledModal>
+				)
+			}
+		/>
+	);
+};

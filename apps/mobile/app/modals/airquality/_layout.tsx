@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { AirQualityIcon } from 'app/components/icons/main/AirQualityIcon';
-import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { AirQualityIcon } from '@nativeweather/ui/components/icons/main/AirQualityIcon';
+import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
 import { ReactNode } from 'react';

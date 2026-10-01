@@ -1,5 +1,5 @@
-import { SunsetModal } from 'app/components/cards/sunset/SunsetModal';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { SunsetModal } from '@nativeweather/ui/components/cards/sunset/SunsetModal';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
 
 export default function SunsetModalScreen() {
 	return (

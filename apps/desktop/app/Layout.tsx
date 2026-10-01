@@ -1,4 +1,4 @@
-import { Toast } from 'app/utils/notifications/showToast.macos';
+import { Toast } from '@nativeweather/ui/utils/notifications/showToast.macos';
 import { View } from 'react-native';
 import { Sidebar } from './Sidebar';
 import { Screens } from './Screens';

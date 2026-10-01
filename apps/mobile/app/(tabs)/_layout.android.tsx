@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { Tabs } from 'expo-router';
 import { Cog, House, Search, Sun } from 'lucide-react-native';
 import React from 'react';

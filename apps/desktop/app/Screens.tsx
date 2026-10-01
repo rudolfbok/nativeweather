@@ -1,4 +1,4 @@
-import { useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { Modals } from './Modals';
 import { Search } from './Search';
 import { Settings } from './Settings';

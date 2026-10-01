@@ -1,29 +1,38 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
-  "compilerOptions": {
-    "strict": false,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "react-native"
-    ],
-    "paths": {
-      "app/*": [
-        "../../packages/app/*"
-      ],
-      "react-native": [
-        "./node_modules/react-native"
-      ],
-      "react-native/*": [
-        "./node_modules/react-native/*"
-      ]
-    }
-  },
-  "include": [
-    "**/*",
-    "../../packages/app/global.d.ts",
-    "nativewind-env.d.ts"
-  ]
+	"extends": "@react-native/typescript-config/tsconfig.json",
+	"compilerOptions": {
+		"strict": false,
+		"lib": [
+			"esnext",
+			"dom"
+		],
+		"types": [
+			"react-native"
+		],
+		"paths": {
+			"react-native": [
+				"./node_modules/react-native"
+			],
+			"react-native/*": [
+				"./node_modules/react-native/*"
+			],
+			"@nativeweather/ui/*": [
+				"../../packages/ui/src/*"
+			],
+			"@nativeweather/core/*": [
+				"../../packages/core/src/*"
+			],
+			"@nativeweather/api/*": [
+				"../../packages/api/src/*"
+			],
+			"@nativeweather/types/*": [
+				"../../packages/types/src/*"
+			]
+		}
+	},
+	"include": [
+		"**/*",
+		"../../packages/ui/src/global.d.ts",
+		"nativewind-env.d.ts"
+	]
 }

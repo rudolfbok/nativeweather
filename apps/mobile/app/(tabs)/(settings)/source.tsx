@@ -1,5 +1,5 @@
-import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
-import { SourceSelect } from 'app/components/settings/selectors/SourceSelect';
+import { ScreenWrapper } from '@nativeweather/ui/components/common/layout/ScreenWrapper';
+import { SourceSelect } from '@nativeweather/ui/components/settings/selectors/SourceSelect';
 
 export default function SourceScreen() {
 	return (

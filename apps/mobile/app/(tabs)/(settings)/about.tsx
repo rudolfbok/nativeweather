@@ -1,5 +1,5 @@
-import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
-import { AboutFeature } from 'app/features/about/screen';
+import { ScreenWrapper } from '@nativeweather/ui/components/common/layout/ScreenWrapper';
+import { AboutFeature } from '@nativeweather/ui/features/about/screen';
 
 export default function AboutScreen() {
 	return (

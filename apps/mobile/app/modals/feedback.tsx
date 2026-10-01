@@ -1,5 +1,5 @@
-import { FeedbackFeature } from 'app/features/feedback/screen';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
 
 export default function FeedbackModalScreen() {
 	return (

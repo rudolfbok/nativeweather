@@ -1,5 +1,5 @@
-import { RainModal } from 'app/components/cards/rain/RainModal';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { RainModal } from '@nativeweather/ui/components/cards/rain/RainModal';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
 
 export default function RainModalScreen() {
 	return (

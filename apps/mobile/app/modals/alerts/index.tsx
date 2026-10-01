@@ -1,8 +1,8 @@
-import { ModalHeader } from 'app/components/common/modal/ModalHeader';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
-import { AlertModal } from 'app/components/alerts/AlertModal';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts } from 'app/utils/alertFilters';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
+import { AlertModal } from '@nativeweather/ui/components/alerts/AlertModal';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { useNavigation } from 'expo-router';
 import React from 'react';
 import { useTranslate } from '@tolgee/react';

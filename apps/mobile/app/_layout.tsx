@@ -1,9 +1,9 @@
 'use client';
 
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
-import { TolgeeProvider } from 'app/provider/TolgeeProvider';
-import { initStorageDefaults } from 'app/database/initStorageDefaults';
-import { initThemeFromStorage } from 'app/database/initTheme';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { TolgeeProvider } from '@nativeweather/ui/provider/TolgeeProvider';
+import { initStorageDefaults } from '@nativeweather/core/database/initStorageDefaults';
+import { initThemeFromStorage } from '@nativeweather/core/database/initTheme';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';

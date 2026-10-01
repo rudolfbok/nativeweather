@@ -1,5 +1,5 @@
-import { ScreenWrapper } from 'app/components/common/layout/ScreenWrapper';
-import { LanguageSelect } from 'app/components/settings/selectors/LanguageSelect';
+import { ScreenWrapper } from '@nativeweather/ui/components/common/layout/ScreenWrapper';
+import { LanguageSelect } from '@nativeweather/ui/components/settings/selectors/LanguageSelect';
 
 export default function LanguageScreen() {
 	return (

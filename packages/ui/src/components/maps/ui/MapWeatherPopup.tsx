@@ -1,0 +1,102 @@
+import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
+import { border } from '@nativeweather/core/constants/border';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import type { MapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
+import { clsx } from 'clsx';
+import { useState } from 'react';
+import { ActivityIndicator, LayoutChangeEvent, Pressable, View } from 'react-native';
+
+type Size = { width: number; height: number };
+type Point = { x: number; y: number };
+
+const OFFSET = 12;
+
+const clampPopup = (anchor: Point, mapSize: Size, popupSize: Size) => ({
+	x: Math.min(Math.max(anchor.x + OFFSET, OFFSET), Math.max(OFFSET, mapSize.width - popupSize.width - OFFSET)),
+	y:
+		anchor.y >= popupSize.height + OFFSET * 2
+			? anchor.y - popupSize.height - OFFSET
+			: Math.min(anchor.y + OFFSET, Math.max(OFFSET, mapSize.height - popupSize.height - OFFSET)),
+});
+
+export const MapWeatherPopup = ({
+	weatherPoint,
+	anchor,
+	mapSize,
+	title,
+	errorLabel,
+	onClose,
+	onInteraction = () => {},
+}: {
+	weatherPoint: MapWeatherPoint;
+	anchor: Point;
+	mapSize: Size;
+	title: string;
+	errorLabel: string;
+	onClose: () => void;
+	onInteraction?: () => void;
+}) => {
+	const { text } = useThemeColors();
+	const [popupSize, setPopupSize] = useState<Size>({ width: 220, height: 96 });
+	const point = clampPopup(anchor, mapSize, popupSize);
+	const handleLayout = (event: LayoutChangeEvent) => setPopupSize(event.nativeEvent.layout);
+
+	return (
+		<Pressable
+			onLayout={handleLayout}
+			onPressIn={onInteraction}
+			className={clsx(
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark absolute z-10 rounded-3xl p-3',
+				weatherPoint.status === 'loading' && 'w-12',
+				border
+			)}
+			style={{ left: point.x, top: point.y, maxWidth: Math.min(288, mapSize.width - OFFSET * 2) }}
+		>
+			<View className="flex-row items-start justify-between gap-3">
+				<View className="min-w-0 shrink">
+					{weatherPoint.status !== 'loading' && (
+						<StyledText type="caption" className="opacity-70">
+							{title}
+						</StyledText>
+					)}
+					{weatherPoint.status === 'loading' && (
+						<ActivityIndicator className="self-center" size="small" color="#007AFF" />
+					)}
+					{weatherPoint.status === 'error' && (
+						<StyledText type="caption" className="mt-1 font-semibold">
+							{errorLabel}
+						</StyledText>
+					)}
+					{weatherPoint.status === 'ready' && (
+						<View>
+							<StyledText type="title" className="font-bold">
+								{weatherPoint.value}
+							</StyledText>
+							{!!weatherPoint.detail && (
+								<StyledText type="caption" className="opacity-70">
+									{weatherPoint.detail}
+								</StyledText>
+							)}
+							{!!weatherPoint.location && (
+								<StyledText type="caption" className="opacity-70">
+									{weatherPoint.location}
+								</StyledText>
+							)}
+						</View>
+					)}
+				</View>
+				{weatherPoint.status !== 'loading' && (
+					<StyledPressable
+						onPressIn={onInteraction}
+						onPress={onClose}
+						className={clsx('h-fit rounded-full p-1', border)}
+					>
+						<CloseIcon color={text} size={20} />
+					</StyledPressable>
+				)}
+			</View>
+		</Pressable>
+	);
+};

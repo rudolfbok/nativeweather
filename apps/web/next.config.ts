@@ -13,7 +13,10 @@ const nextConfig: NextConfig = {
 		'nativewind',
 		'burnt',
 		'expo-modules-core',
-		'app',
+		'@nativeweather/ui',
+		'@nativeweather/core',
+		'@nativeweather/api',
+		'@nativeweather/types',
 	],
 	compiler: {
 		define: {
@@ -33,7 +36,6 @@ const nextConfig: NextConfig = {
 		}
 		config.resolve.alias = {
 			...(config.resolve.alias || {}),
-			app: '../../packages/app',
 			// "react-native-mmkv": false,
 			'react-native$': require.resolve('react-native-web'),
 		};

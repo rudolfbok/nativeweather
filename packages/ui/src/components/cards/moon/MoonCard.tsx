@@ -1,0 +1,110 @@
+import { useTranslate } from '@tolgee/react';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
+import { clsx } from 'clsx';
+import { JSX, useState } from 'react';
+import { View } from 'react-native';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { FirstQuarter } from '@nativeweather/ui/components/icons/moonphases/FirstQuarter';
+import { FullMoon } from '@nativeweather/ui/components/icons/moonphases/FullMoon';
+import { LastQuarter } from '@nativeweather/ui/components/icons/moonphases/LastQuarter';
+import { NewMoon } from '@nativeweather/ui/components/icons/moonphases/NewMoon';
+import { WaningCrescent } from '@nativeweather/ui/components/icons/moonphases/WaningCrescent';
+import { WaningGibbous } from '@nativeweather/ui/components/icons/moonphases/WaningGibbous';
+import { WaxingCrescent } from '@nativeweather/ui/components/icons/moonphases/WaxingCrescent';
+import { WaxingGibbous } from '@nativeweather/ui/components/icons/moonphases/WaxingGibbous';
+import { DataCard } from '../DataCard';
+import { MoonModal } from './MoonModal';
+import { MoonIcon } from '@nativeweather/ui/components/icons/main/MoonIcon';
+
+interface MoonCardProps {
+	phase: string;
+	illumination: number;
+	isMoonUp: 0 | 1;
+	moonrise: string;
+	moonset: string;
+}
+
+const moonPhaseComponents: Record<string, JSX.Element> = {
+	'New Moon': <NewMoon />,
+	'Waxing Crescent': <WaxingCrescent />,
+	'First Quarter': <FirstQuarter />,
+	'Waxing Gibbous': <WaxingGibbous />,
+	'Full Moon': <FullMoon />,
+	'Waning Gibbous': <WaningGibbous />,
+	'Last Quarter': <LastQuarter />,
+	'Waning Crescent': <WaningCrescent />,
+};
+
+export const MoonCard = ({ phase, illumination, isMoonUp, moonrise, moonset }: MoonCardProps) => {
+	const { t } = useTranslate('weather');
+	const [showModal, setShowModal] = useState(false);
+	const [currentLanguage] = useStorageString('currentLang');
+	const { setModalScreen } = useNavigationScreen();
+	const router = useRouter();
+	const navigateToMoon = useModalNavigation({
+		mobile: () => router.push('/modals/moon'),
+		macos: () => setModalScreen('moon'),
+		web: () => setShowModal(true),
+	});
+
+	const getLocalePhase: Record<string, string> = {
+		'New Moon': t('moon.phase.newmoon'),
+		'Waxing Crescent': t('moon.phase.waxingcrescent'),
+		'First Quarter': t('moon.phase.firstquarter'),
+		'Waxing Gibbous': t('moon.phase.waxinggibbous'),
+		'Full Moon': t('moon.phase.fullmoon'),
+		'Waning Gibbous': t('moon.phase.waninggibbous'),
+		'Last Quarter': t('moon.phase.lastquarter'),
+		'Waning Crescent': t('moon.phase.waningcrescent'),
+	};
+
+	return (
+		<DataCard
+			onPress={navigateToMoon}
+			icon={<MoonIcon />}
+			title={t('moon.title')}
+			data={getLocalePhase[phase]}
+			className={clsx(
+				'native:!aspect-auto web:!col-span-1 web:max-xl:!col-span-2 web:max-xl:!aspect-auto min-w-full flex-1'
+			)}
+			extraContent={
+				<View className={clsx('flex-row items-center max-xl:mt-4 max-xl:gap-4')}>
+					<View className="xl:hidden">{moonPhaseComponents[phase]}</View>
+					<View>
+						<StyledText type="body" className="min-w-0" numberOfLines={1} ellipsizeMode="tail">
+							{t('moon.illumination')} {illumination}%
+						</StyledText>
+						<StyledText type="body" className="min-w-0 xl:hidden" numberOfLines={1} ellipsizeMode="tail">
+							{isMoonUp === 0
+								? `${t('moon.moonset')} ${formatTime(moonset, currentLanguage)}`
+								: `${t('moon.moonrise')} ${formatTime(moonrise, currentLanguage)}`}
+						</StyledText>
+					</View>
+				</View>
+			}
+			modal={
+				showModal && (
+					<StyledModal
+						visible={showModal}
+						icon={<MoonIcon />}
+						header={t('moon.title')}
+						onClose={() => setShowModal(false)}
+					>
+						<MoonModal
+							phase={phase}
+							illumination={illumination}
+							isMoonUp={isMoonUp}
+							moonrise={moonrise}
+							moonset={moonset}
+						/>
+					</StyledModal>
+				)
+			}
+		/>
+	);
+};

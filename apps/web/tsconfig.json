@@ -13,20 +13,20 @@
 		"isolatedModules": true,
 		"jsx": "react-jsx",
 		"incremental": true,
+		"paths": {
+			"@nativeweather/ui/*": ["../../packages/ui/src/*"],
+			"@nativeweather/core/*": ["../../packages/core/src/*"],
+			"@nativeweather/api/*": ["../../packages/api/src/*"],
+			"@nativeweather/types/*": ["../../packages/types/src/*"],
+		},
 		"plugins": [
 			{
 				"name": "next"
 			}
 		],
-		"paths": {
-			// "@/*": ["./app/*"],
-			"app/*": ["../../packages/app/*"]
-			// "react-native": ["../../node_modules/react-native"],
-			// "react-native/*": ["../../node_modules/react-native/*"]
-		},
 		"jsxImportSource": "nativewind",
 		"types": ["nativewind/types"]
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "../../packages/ui/src/global.d.ts"],
 	"exclude": ["node_modules", ".next/dev/types"]
 }

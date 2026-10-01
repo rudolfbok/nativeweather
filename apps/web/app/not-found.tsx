@@ -1,6 +1,6 @@
-import { CrashIcon } from 'app/components/icons/ui/CrashIcon';
-import { StatusPage } from 'app/components/web/StatusPage';
-import { SuggestedCities } from 'app/components/web/SuggestedCities';
+import { CrashIcon } from '@nativeweather/ui/components/icons/ui/CrashIcon';
+import { StatusPage } from '@nativeweather/ui/components/web/StatusPage';
+import { SuggestedCities } from '@nativeweather/ui/components/web/SuggestedCities';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
-import { NO2Detail } from 'app/components/airquality/NO2Detail';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
+import { NO2Detail } from '@nativeweather/ui/components/airquality/NO2Detail';
 
 export default function NO2ModalScreen() {
 	return (

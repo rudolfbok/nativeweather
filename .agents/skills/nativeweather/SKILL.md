@@ -5,7 +5,7 @@ description: NativeWeather repository guidance for shared React Native code, Exp
 
 # NativeWeather
 
-Use this skill for changes anywhere in the NativeWeather monorepo, especially `packages/app`, `apps/mobile`, `apps/desktop`, `apps/web`, shared UI, storage, weather APIs, NativeWind styling, Expo Router, macOS navigation, or Cloudflare/OpenNext deployment.
+Use this skill for changes anywhere in the NativeWeather monorepo, especially `packages/ui`, `packages/core`, `packages/api`, `packages/types`, `packages/tailwind-config`, `apps/mobile`, `apps/desktop`, `apps/web`, shared UI, storage, weather APIs, NativeWind styling, Expo Router, macOS navigation, or Cloudflare/OpenNext deployment.
 
 ## Product and platform scope
 
@@ -14,7 +14,11 @@ NativeWeather is one shared product delivered to four targets:
 - `apps/web`: Next.js web application using React Native Web.
 - `apps/mobile`: Expo application for iOS and Android. The current package is Expo SDK 57, React Native 0.86, React 19.2, and Expo Router.
 - `apps/desktop`: React Native macOS application. macOS-specific files and navigation are production code.
-- `packages/app`: shared UI, features, hooks, API access, storage, translations, types, and platform variants imported through `app/*`.
+- `packages/ui`: shared components, features, hooks, providers, UI assets, and platform variants imported through `@nativeweather/ui/*`.
+- `packages/core`: shared storage, constants, and platform independent utilities imported through `@nativeweather/core/*`.
+- `packages/api`: weather requests, response normalization, and API-level error handling imported through `@nativeweather/api/*`.
+- `packages/types`: shared public data types imported through `@nativeweather/types/*`.
+- `packages/tailwind-config`: shared Tailwind theme tokens and NativeWind preset.
 
 Platform files currently used include `.web.tsx`, `.macos.tsx`, `.android.tsx`, and `.ios.tsx`. Check all relevant variants before changing shared behavior.
 
@@ -24,13 +28,14 @@ The README may lag behind the manifests. Treat package manifests, app configurat
 
 Keep changes inside the existing architecture:
 
-- `packages/app/api`: weather/API requests, normalization, and API-level error handling.
-- `packages/app/components`: reusable UI and platform-specific component variants.
-- `packages/app/database`: MMKV initialization, defaults, persistence hooks, and storage CRUD.
-- `packages/app/features`: screen-level behavior and feature composition.
-- `packages/app/hooks`: reusable stateful behavior, location, weather, navigation, and Zustand-backed state.
-- `packages/app/locales`: Tolgee translations.
-- `packages/app/types`: shared public data boundaries.
+- `packages/api/src`: weather/API requests, normalization, and API-level error handling.
+- `packages/ui/src/components`: reusable UI and platform-specific component variants.
+- `packages/core/src/database`: MMKV initialization, defaults, persistence hooks, and storage CRUD.
+- `packages/ui/src/features`: screen-level behavior and feature composition.
+- `packages/ui/src/hooks`: reusable stateful behavior, location, weather, navigation, and Zustand-backed state.
+- `packages/core/src/locales`: Tolgee translations.
+- `packages/types/src`: shared public data boundaries.
+- `packages/tailwind-config`: shared theme tokens; app Tailwind configs still own source scanning and CSS integration.
 - `apps/mobile/app`: Expo Router routes and mobile app startup/configuration.
 - `apps/desktop/app` and `apps/desktop/macos`: macOS app composition and native integration.
 - `apps/web/app`: Next.js routes, metadata, and web-only entrypoints.
@@ -68,7 +73,7 @@ Use the project’s installed versions and official versioned documentation. Mob
 
 Use the existing Zustand and MMKV hooks. MMKV defaults belong in `initStorageDefaults.ts`; persisted preferences should survive restarts unless a reset is explicitly requested. Be aware that startup code can intentionally clear storage on macOS, so inspect app entrypoints before diagnosing persistence.
 
-Weather UI consumes normalized data. Keep provider selection, request coordination, abort signals, authentication, response mapping, and provider errors in `packages/app/api` or the existing weather hooks. WeatherAPI search remains the canonical source for city identity; use its name, region, country, coordinates, and slugs consistently.
+Weather UI consumes normalized data. Keep provider selection, request coordination, abort signals, authentication, response mapping, and provider errors in `packages/api/src` or the existing weather hooks in `packages/ui/src/hooks`. WeatherAPI search remains the canonical source for city identity; use its name, region, country, coordinates, and slugs consistently.
 
 ## Web and Cloudflare/OpenNext
 
@@ -94,11 +99,11 @@ pnpm run deploy
 
 ## Checks and handoff
 
+Shared packages have their own TypeScript projects, including all platform variants. Run `pnpm typecheck` from the root to check all four shared packages and all three apps.
+
 Run the narrowest relevant checks after changes:
 
 ```bash
-pnpm --filter app typecheck
-pnpm --filter app lint
 pnpm --filter nativeweather-mobile typecheck
 pnpm --filter nativeweather-mobile lint
 pnpm --filter nativeweather-macos typecheck

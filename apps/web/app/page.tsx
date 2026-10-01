@@ -1,4 +1,4 @@
-import { HomeFeature } from 'app/features/home/screen';
+import { HomeFeature } from '@nativeweather/ui/features/home/screen';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

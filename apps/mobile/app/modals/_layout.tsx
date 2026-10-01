@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import {
 	CloudsIcon,
 	HumidityIcon,
@@ -12,9 +12,9 @@ import {
 	SunsetIcon,
 	UVIcon,
 	WindIcon,
-} from 'app/components/icons/main';
-import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
+} from '@nativeweather/ui/components/icons/main';
+import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack, useNavigation } from 'expo-router';
 import { ReactNode } from 'react';

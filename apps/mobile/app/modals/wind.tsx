@@ -1,5 +1,5 @@
-import { WindModal } from 'app/components/cards/wind/WindModal';
-import { ModalScrollView } from 'app/components/common/modal/ModalScrollView';
+import { WindModal } from '@nativeweather/ui/components/cards/wind/WindModal';
+import { ModalScrollView } from '@nativeweather/ui/components/common/modal/ModalScrollView';
 
 export default function WindModalScreen() {
 	return (

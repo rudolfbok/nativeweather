@@ -1,0 +1,10 @@
+{
+  "name": "@nativeweather/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./tailwind.config.js",
+  "dependencies": {
+    "nativewind": "4.2.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

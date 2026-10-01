@@ -11,7 +11,7 @@ import {
 	SunsetModal,
 	UVModal,
 	WindModal,
-} from 'app/components/cards';
+} from '@nativeweather/ui/components/cards';
 import {
 	AlertIcon,
 	CloudsIcon,
@@ -26,26 +26,26 @@ import {
 	SunsetIcon,
 	UVIcon,
 	WindIcon,
-} from 'app/components/icons/main';
-import { ModalHeader } from 'app/components/common/modal/ModalHeader';
-import { AirQualityModal } from 'app/components/airquality/AirQualityModal';
-import { AlertModal } from 'app/components/alerts/AlertModal';
-import { AQISelect } from 'app/components/settings/selectors/AQISelect';
-import { LanguageSelect } from 'app/components/settings/selectors/LanguageSelect';
-import { TemperatureSelect } from 'app/components/settings/selectors/TemperatureSelect';
-import { ThemeSelect } from 'app/components/settings/selectors/ThemeSelect';
-import { UnitsSelect } from 'app/components/settings/selectors/UnitsSelect';
-import { MapLibreView } from 'app/components/maps/views/MapLibreView';
-import { AboutFeature } from 'app/features/about/screen';
-import { FeedbackFeature } from 'app/features/feedback/screen';
-import { DailyForecastMain } from 'app/components/weather/daily/DailyForecastMain';
-import { DaysToggle } from 'app/components/weather/daily/DaysToggle';
-import { ModalScreen, SettingsModalScreen, useNavigationScreen } from 'app/hooks/navigation/useNavigation.macos';
-import { useSelectedDay } from 'app/hooks/weather/useSelectedDay';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { WeatherAlert } from 'app/types/weatherAPI';
-import { getAlerts } from 'app/utils/alertFilters';
-import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
+} from '@nativeweather/ui/components/icons/main';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
+import { AirQualityModal } from '@nativeweather/ui/components/airquality/AirQualityModal';
+import { AlertModal } from '@nativeweather/ui/components/alerts/AlertModal';
+import { AQISelect } from '@nativeweather/ui/components/settings/selectors/AQISelect';
+import { LanguageSelect } from '@nativeweather/ui/components/settings/selectors/LanguageSelect';
+import { TemperatureSelect } from '@nativeweather/ui/components/settings/selectors/TemperatureSelect';
+import { ThemeSelect } from '@nativeweather/ui/components/settings/selectors/ThemeSelect';
+import { UnitsSelect } from '@nativeweather/ui/components/settings/selectors/UnitsSelect';
+import { MapLibreView } from '@nativeweather/ui/components/maps/views/MapLibreView';
+import { AboutFeature } from '@nativeweather/ui/features/about/screen';
+import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
+import { DailyForecastMain } from '@nativeweather/ui/components/weather/daily/DailyForecastMain';
+import { DaysToggle } from '@nativeweather/ui/components/weather/daily/DaysToggle';
+import { ModalScreen, SettingsModalScreen, useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { WeatherAlert } from '@nativeweather/types/weatherAPI';
+import { getAlerts } from '@nativeweather/core/utils/alertFilters';
+import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { ReactNode, useState } from 'react';
 import { GestureResponderEvent, ScrollView, View } from 'react-native';
 

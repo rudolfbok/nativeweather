@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from 'app/components/common/styled/StyledText';
-import { AlertIcon } from 'app/components/icons/main/AlertIcon';
-import { CloseIcon } from 'app/components/icons/ui/CloseIcon';
-import { useThemeColors } from 'app/hooks/theme/useThemeColors';
-import { useWeather } from 'app/hooks/weather/useWeather';
-import { getAlerts, getMostSevereAlert } from 'app/utils/alertFilters';
-import { getAlertSeverityDotColor } from 'app/utils/mappings/alertSeverity';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { AlertIcon } from '@nativeweather/ui/components/icons/main/AlertIcon';
+import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { getAlerts, getMostSevereAlert } from '@nativeweather/core/utils/alertFilters';
+import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { Stack, useRouter } from 'expo-router';
 import { ReactNode } from 'react';
