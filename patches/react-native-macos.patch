@@ -61,3 +61,19 @@ index a8076b5b9ef14eec7096d88349b9138c70047cb3..c543aed8a35b49ce4e5d035496fe5dd6
  }
  #endif // macOS]
  
+@@ -741,6 +751,15 @@ - (void)viewDidMoveToWindow
+ }
+ #endif // macOS]
+ 
++#if TARGET_OS_OSX // [macOS]
++- (void)setAutomaticallyAdjustContentInsets:(BOOL)automaticallyAdjustContentInsets
++{
++  _automaticallyAdjustContentInsets = automaticallyAdjustContentInsets;
++  _scrollView.automaticallyAdjustsContentInsets = automaticallyAdjustContentInsets;
++  [self refreshContentInset];
++}
++#endif // [macOS]
++
+ - (void)setContentInset:(UIEdgeInsets)contentInset
+ {
+   if (UIEdgeInsetsEqualToEdgeInsets(contentInset, _contentInset)) {

@@ -170,7 +170,7 @@ overrides:
 patchedDependencies:
   expo-router: b39219202d9f26cc04d8cfcd8d89274f9fa99988cecc364e2074c19e7b5a221e
   react-native-chart-kit@7.0.4: 4dbdccbdd0608f3e41510fc5229f0ffd9632b4f18e4568a0542033c97ff7ae17
-  react-native-macos: 827e377ff591fd21a179985781cf7d2511d2c588880c43165f72e46e07a9fd1d
+  react-native-macos: 3517ee661775797d3024849bcbd6f487c6ad8521ad3e8068651f44715e1ef51f
   react-native-mmkv@4.3.1: ba58216708f1bfebf82fc6080f66ac87b72e928b3960be841f1e61b6f5574550
 
 importers:
@@ -227,7 +227,7 @@ importers:
         version: 0.2.6(de1593ed856a09eda1691f55dc688a88)
       react-native-macos:
         specifier: 0.79.4
-        version: 0.79.4(patch_hash=827e377ff591fd21a179985781cf7d2511d2c588880c43165f72e46e07a9fd1d)(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)(supports-color@10.2.2)
+        version: 0.79.4(patch_hash=3517ee661775797d3024849bcbd6f487c6ad8521ad3e8068651f44715e1ef51f)(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)(supports-color@10.2.2)
       react-native-mmkv:
         specifier: 4.3.1
         version: 4.3.1(patch_hash=ba58216708f1bfebf82fc6080f66ac87b72e928b3960be841f1e61b6f5574550)(react-native-nitro-modules@0.35.4(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0))(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)
@@ -16484,7 +16484,7 @@ snapshots:
       react: 19.2.3
       react-native: 0.86.2(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@6.0.3))(@react-native/metro-config@0.86.2(@babel/core@7.29.0(supports-color@10.2.2))(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.3)(supports-color@10.2.2)
 
-  react-native-macos@0.79.4(patch_hash=827e377ff591fd21a179985781cf7d2511d2c588880c43165f72e46e07a9fd1d)(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)(supports-color@10.2.2):
+  react-native-macos@0.79.4(patch_hash=3517ee661775797d3024849bcbd6f487c6ad8521ad3e8068651f44715e1ef51f)(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)(supports-color@10.2.2):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native-macos/virtualized-lists': 0.79.4(@types/react@19.2.14)(react-native@0.79.6(@babel/core@7.29.0(supports-color@10.2.2))(@react-native-community/cli@18.0.0(supports-color@10.2.2)(typescript@5.9.3))(@types/react@19.2.14)(react@19.0.0)(supports-color@10.2.2))(react@19.0.0)

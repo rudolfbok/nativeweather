@@ -15,6 +15,9 @@
   
   [super applicationDidFinishLaunching:notification];
   self.window.title = @"NativeWeather";
+  self.window.titleVisibility = NSWindowTitleHidden;
+  self.window.titlebarAppearsTransparent = YES;
+  self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
   const NSSize windowSize = NSMakeSize(1125, 789);
   [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y,
                                    windowSize.width, windowSize.height)

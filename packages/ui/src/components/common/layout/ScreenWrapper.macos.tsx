@@ -20,7 +20,7 @@ export const ScreenWrapper = ({ className, children }: ScreenWrapperProps) => {
 	return (
 		<ScrollView
 			ref={scrollRef}
-			contentInsetAdjustmentBehavior="automatic"
+			automaticallyAdjustContentInsets={false}
 			contentContainerClassName={clsx('p-4', className)}
 			onContentSizeChange={() => {
 				if (!resetPending.current) return;

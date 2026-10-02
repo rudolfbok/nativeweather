@@ -31,13 +31,8 @@ export const Sidebar = () => {
 	}, [showLocalWeather, currentSource, getLocalWeather]);
 
 	return (
-		<View
-			className={clsx(
-				'my-4 ml-4 w-[340px] rounded-3xl bg-systemBackground dark:bg-secondarySystemBackground_dark',
-				border
-			)}
-		>
-			<View className="flex-row items-center justify-between p-4">
+		<View className={clsx('w-[340px] bg-systemBackground dark:bg-secondarySystemBackground_dark')}>
+			<View className="flex-row items-center justify-between px-4 pb-4 pt-10">
 				<NativeWeatherLogo />
 				<StyledPressable
 					onPress={() => setNavigationScreen(navigationScreen === 'settings' ? 'weather' : 'settings')}

@@ -20,7 +20,7 @@ export const Header = () => {
 		<>
 			<View
 				className={clsx(
-					'z-10 flex w-full max-w-full flex-row flex-wrap items-center justify-between bg-secondarySystemBackground pb-3 pt-2 dark:bg-systemBackground_dark'
+					'z-10 flex w-full max-w-full flex-row flex-wrap items-center justify-between bg-secondarySystemBackground pb-3 md:pt-2 dark:bg-systemBackground_dark'
 				)}
 			>
 				<View className={clsx('order-1 justify-center md:w-1/4 xl:w-1/3')}>
@@ -47,7 +47,7 @@ export const Header = () => {
 					openDrawer ? 'translate-x-0' : 'translate-x-full'
 				)}
 			>
-				<View className={clsx('absolute right-0 z-50 mr-2 mt-2')}>
+				<View className={clsx('absolute right-0 z-50 mr-2 md:mt-2')}>
 					<Hamburger toggled={openDrawer} size={22} color={text} onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
 				<ScrollView
