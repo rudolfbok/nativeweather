@@ -2,6 +2,8 @@ import { useTolgee, useTranslate } from '@tolgee/react';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { HourlyCarousel } from './HourlyCarousel';
 import { HourlyItem } from './HourlyItem';
+import { getHour24FromEpoch } from './getHour24FromEpoch';
+import { useState } from 'react';
 
 export const HourlyForecast = () => {
 	const { t } = useTranslate('weather');
@@ -9,18 +11,6 @@ export const HourlyForecast = () => {
 
 	const tolgee = useTolgee();
 	const tolgeeLang = tolgee.getLanguage();
-
-	const getHour24FromEpoch = (epochTime: number, timezone: string) => {
-		const date = new Date(epochTime * 1000);
-		return parseInt(
-			new Intl.DateTimeFormat('en-US', {
-				hour: '2-digit',
-				hour12: false,
-				timeZone: timezone,
-			}).format(date),
-			10
-		);
-	};
 
 	const getDisplayHourFromEpoch = (epochTime: number, timezone: string) => {
 		const date = new Date(epochTime * 1000);
@@ -46,7 +36,7 @@ export const HourlyForecast = () => {
 
 	const tzId = weatherData?.location?.tzId ?? 'UTC';
 
-	const now = new Date();
+	const [now] = useState(() => new Date());
 	const currentHour24 = parseInt(
 		new Intl.DateTimeFormat('en-US', {
 			hour: '2-digit',

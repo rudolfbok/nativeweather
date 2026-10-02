@@ -24,29 +24,19 @@ import { View } from 'react-native';
 import { AlertWeather } from '../../alerts/AlertWeather';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
+import { getHour24FromEpoch } from '../hourly/getHour24FromEpoch';
+import { useState } from 'react';
 
 export const HeroWeather = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, airQualityData } = useWeather();
 	const mapConditions = useMapConditions();
+	const [now] = useState(() => new Date());
 
 	if (!weatherData) return null;
 
-	const getHour24FromEpoch = (epochTime: number, timezone: string) => {
-		const date = new Date(epochTime * 1000);
-		return parseInt(
-			new Intl.DateTimeFormat('en-US', {
-				hour: '2-digit',
-				hour12: false,
-				timeZone: timezone,
-			}).format(date),
-			10
-		);
-	};
-
 	const tzId = weatherData.location.tzId || 'UTC';
 
-	const now = new Date();
 	const currentHour24 = parseInt(
 		new Intl.DateTimeFormat('en-US', {
 			hour: '2-digit',
@@ -103,8 +93,16 @@ export const HeroWeather = () => {
 					dewPointF={weatherData.current.dewPointF}
 				/>
 				<PressureCard pressureMb={weatherData.current.pressureMb} pressureIn={weatherData.current.pressureInHg} />
-				<SunriseCard data={weatherData.forecast.forecastday[0]?.astro.sunrise} />
-				<SunsetCard data={weatherData.forecast.forecastday[0]?.astro.sunset} />
+				<SunriseCard
+					data={weatherData.forecast.forecastday[0]?.astro.sunrise}
+					tomorrowData={weatherData.forecast.forecastday[1]?.astro.sunrise}
+					timeZone={weatherData.location.tzId || 'UTC'}
+				/>
+				<SunsetCard
+					data={weatherData.forecast.forecastday[0]?.astro.sunset}
+					tomorrowData={weatherData.forecast.forecastday[1]?.astro.sunset}
+					timeZone={weatherData.location.tzId || 'UTC'}
+				/>
 				<MoonCard
 					phase={weatherData.forecast.forecastday[0].astro.moonPhase}
 					illumination={weatherData.forecast.forecastday[0].astro.moonIllumination}

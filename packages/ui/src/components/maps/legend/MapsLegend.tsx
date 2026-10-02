@@ -1,4 +1,3 @@
-import { useTranslate } from '@tolgee/react';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
@@ -60,14 +59,13 @@ type GradientStop = {
 };
 
 type GradientLegendProps = {
-	description: string;
 	stops: GradientStop[];
 	labelStops?: GradientStop[];
 	formatLabel: (value: number) => string;
 	unit?: string;
 };
 
-const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, unit }: GradientLegendProps) => {
+const GradientLegend = ({ stops, labelStops = stops, formatLabel, unit }: GradientLegendProps) => {
 	const minValue = stops[0].value;
 	const maxValue = stops[stops.length - 1].value;
 	const getStopLocation = (value: number) => (value - minValue) / (maxValue - minValue);
@@ -109,21 +107,18 @@ const GradientLegend = ({ description, stops, labelStops = stops, formatLabel, u
 
 export const MapsLegend = () => {
 	const [currentTemp] = useStorageString('currentTemp');
-	const { t } = useTranslate('weather');
 	const stops = currentTemp === 'celsius' ? celsiusStops : fahrenheitStops;
 
 	return (
-		<GradientLegend description={t('maps.legend.temperature')} stops={stops} formatLabel={(value) => `${value}°`} />
+		<GradientLegend stops={stops} formatLabel={(value) => `${value}°`} />
 	);
 };
 
 export const PrecipitationInfo = () => {
 	const [currentUnits] = useStorageString('currentUnits');
-	const { t } = useTranslate('weather');
 
 	return (
 		<GradientLegend
-			description={t('maps.legend.precipitation')}
 			stops={precipitationStops}
 			labelStops={precipitationLabelStops}
 			formatLabel={(value) =>
@@ -140,11 +135,9 @@ export const PrecipitationInfo = () => {
 
 export const WindInfo = () => {
 	const [currentUnits] = useStorageString('currentUnits');
-	const { t } = useTranslate('weather');
 
 	return (
 		<GradientLegend
-			description={t('maps.legend.wind')}
 			stops={windStops}
 			labelStops={windLabelStops}
 			formatLabel={(value) =>

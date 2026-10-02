@@ -37,50 +37,43 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 
 	useEffect(() => {
 		if (!emblaApi) return;
-		updateButtons();
+		const frame = requestAnimationFrame(updateButtons);
 		emblaApi.on('select', updateButtons);
 		emblaApi.on('reInit', updateButtons);
 		return () => {
+			cancelAnimationFrame(frame);
 			emblaApi.off('select', updateButtons);
-			emblaApi.off('reInit', updateButtons);
+		emblaApi.off('reInit', updateButtons);
 		};
 	}, [emblaApi, updateButtons]);
 
 	const { text } = useThemeColors();
-
-	const LeftArrow = () => (
-		<button
-			type="button"
-			onClick={() => emblaApi?.scrollPrev()}
-			disabled={!canPrev}
-			aria-label={t('carousel.previous')}
-			aria-disabled={!canPrev}
-			className={clsx(arrowBase, !canPrev && 'opacity-20')}
-		>
-			<ChevronLeftCircle size={28} color={text} />
-		</button>
-	);
-
-	const RightArrow = () => (
-		<button
-			type="button"
-			onClick={() => emblaApi?.scrollNext()}
-			disabled={!canNext}
-			aria-label={t('carousel.next')}
-			aria-disabled={!canNext}
-			className={clsx(arrowBase, !canNext && 'opacity-20')}
-		>
-			<ChevronRightCircle size={28} color={text} />
-		</button>
-	);
 
 	return (
 		<RoundView className={clsx('group w-full py-4')}>
 			<View className={clsx('mb-4 min-w-0 flex-row items-center justify-between px-4')}>
 				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className="min-w-0 flex-1" />
 				<View className={clsx('h-full w-[70px] flex-shrink-0 flex-row gap-2')}>
-					<LeftArrow />
-					<RightArrow />
+					<button
+						type="button"
+						onClick={() => emblaApi?.scrollPrev()}
+						disabled={!canPrev}
+						aria-label={t('carousel.previous')}
+						aria-disabled={!canPrev}
+						className={clsx(arrowBase, !canPrev && 'opacity-20')}
+					>
+						<ChevronLeftCircle size={28} color={text} />
+					</button>
+					<button
+						type="button"
+						onClick={() => emblaApi?.scrollNext()}
+						disabled={!canNext}
+						aria-label={t('carousel.next')}
+						aria-disabled={!canNext}
+						className={clsx(arrowBase, !canNext && 'opacity-20')}
+					>
+						<ChevronRightCircle size={28} color={text} />
+					</button>
 				</View>
 			</View>
 			<div className={clsx('relative flex min-w-0 flex-row px-1')}>

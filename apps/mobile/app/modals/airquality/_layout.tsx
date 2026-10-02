@@ -1,25 +1,15 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
 import { AirQualityIcon } from '@nativeweather/ui/components/icons/main/AirQualityIcon';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack } from 'expo-router';
-import { ReactNode } from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
 	const { modalBg, text } = useThemeColors();
-
-	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
-		return (
-			<View className={clsx('flex-row items-center gap-2')}>
-				{icon}
-				<StyledText type="title">{title}</StyledText>
-			</View>
-		);
-	};
 
 	return (
 		<Stack
@@ -47,7 +37,7 @@ export default function ModalsLayout() {
 					scrollEdgeEffects: {
 						top: 'soft',
 					},
-					headerTitle: () => <ModalHeader icon={<AirQualityIcon />} title={t('airquality.title')} />,
+					headerTitle: () => <ModalHeader icon={<AirQualityIcon />} header={t('airquality.title')} />,
 				}}
 			/>
 			<Stack.Screen

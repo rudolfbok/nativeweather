@@ -263,6 +263,7 @@
 		"title": "Vlhkost"
 	},
 	"localtime": "Místní čas",
+	"remainingtime": "Za {time}",
 	"localweather": {
 		"error": {
 			"permission": {

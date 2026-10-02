@@ -30,7 +30,8 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	const [markerAnchor, setMarkerAnchor] = useState<Point | null>(null);
 	const [bearing, setBearing] = useState(0);
 	const [showLegend, setShowLegend] = useState(false);
-	const [showLoading, setShowLoading] = useState(false);
+	const [loadingDelayPassed, setLoadingDelayPassed] = useState(false);
+	const showLoading = status === 'loading' && loadingDelayPassed;
 	const [mapReady, setMapReady] = useState(false);
 	const mapRef = useRef<MapRef | null>(null);
 	const cameraRef = useRef<CameraRef | null>(null);
@@ -41,11 +42,8 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	);
 
 	useEffect(() => {
-		if (status !== 'loading') {
-			setShowLoading(false);
-			return;
-		}
-		const timeout = setTimeout(() => setShowLoading(true), 2000);
+		if (status !== 'loading') return;
+		const timeout = setTimeout(() => setLoadingDelayPassed(true), 2000);
 		return () => clearTimeout(timeout);
 	}, [status]);
 
@@ -75,6 +73,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 	};
 
 	const handleLayerChange = (nextLayer: WeatherMapLayer) => {
+		setLoadingDelayPassed(false);
 		setStatus('loading');
 		setLayer(nextLayer);
 		clearWeatherPoint();
@@ -191,6 +190,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 				showInfo={showCompass}
 				onLayerChange={handleLayerChange}
 				onBaseMapChange={(style) => {
+					setLoadingDelayPassed(false);
 					setStatus('loading');
 					setBaseMap(style);
 				}}

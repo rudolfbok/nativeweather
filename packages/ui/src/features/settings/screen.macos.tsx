@@ -10,8 +10,10 @@ import { ThemeButton } from '@nativeweather/ui/components/settings/items/ThemeBu
 import { UnitsButton } from '@nativeweather/ui/components/settings/items/UnitsButton';
 import { WorldTimeToggle } from '@nativeweather/ui/components/settings/items/WorldTimeToggle';
 import { View } from 'react-native';
+import { useState } from 'react';
 
 export const SettingsFeature = () => {
+	const [year] = useState(() => new Date().getFullYear());
 	return (
 		<View className="w-full gap-4">
 			<View className="w-full flex-row items-start gap-4">
@@ -41,7 +43,7 @@ export const SettingsFeature = () => {
 			<View className="items-center">
 				<StyledText type="caption">NativeWeather</StyledText>
 				<StyledText type="caption">Version: 1.0</StyledText>
-				<StyledText type="caption">© {new Date().getFullYear()}</StyledText>
+				<StyledText type="caption">© {year}</StyledText>
 			</View>
 		</View>
 	);

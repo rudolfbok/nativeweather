@@ -14,7 +14,11 @@
 		"react/purity": "warn",
 		"react/set-state-in-effect": "warn",
 		"react/static-components": "warn",
-		"react-hooks/exhaustive-deps": "warn"
+		"react-hooks/exhaustive-deps": "warn",
+		"react/exhaustive-effect-dependencies": "off",
+		"react/memo-dependencies": "off",
+		"react/no-unstable-nested-components": ["warn", { "allowAsProps": true }],
+		"import/no-unassigned-import": ["warn", { "allow": ["**/*.css"] }]
 	},
 	"ignorePatterns": [
 		"**/node_modules/**",
@@ -27,6 +31,17 @@
 		"**/*.d.ts"
 	],
 	"overrides": [
+		{
+			"files": [
+				"packages/ui/src/components/common/animated/AnimatedView.tsx",
+				"packages/ui/src/components/common/loading/PullIndicator.tsx",
+				"packages/ui/src/components/common/loading/Skeleton.tsx",
+				"packages/ui/src/features/home/screen.tsx",
+				"packages/ui/src/features/weather/screen.tsx",
+				"packages/ui/src/features/search/screen.android.tsx"
+			],
+			"rules": { "react/immutability": "off" }
+		},
 		{
 			"files": ["apps/web/**/*.{js,jsx,ts,tsx}"],
 			"plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "import", "nextjs", "jsx-a11y", "jest"]

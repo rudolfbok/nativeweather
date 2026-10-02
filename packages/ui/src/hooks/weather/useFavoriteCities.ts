@@ -12,7 +12,7 @@ import { CityCard } from '@nativeweather/types/cityCard';
 import type { City } from '@nativeweather/types/city';
 import { showFavoriteToast } from '@nativeweather/ui/utils/notifications/showFavoriteToast';
 import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocalWeather } from './useLocalWeather';
 
 export interface FavoriteCity {
@@ -33,21 +33,20 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
-	const [favoriteCount, setFavoriteCount] = useState(() => getFavoriteCities().length);
+	const favoriteCount = favoriteCitiesValue === undefined ? 0 : getFavoriteCities().length;
 	const [loading, setLoading] = useState(refresh);
 	const [isFavorite, setIsFavorite] = useState<boolean | undefined>(undefined);
 	const refreshAbortRef = useRef<AbortController | null>(null);
 
-	const refreshFavoriteCities = async ({ displayToast = true, setRefreshing }: RefreshFavoritesProps = {}) => {
+	const refreshFavoriteCities = useCallback(async ({ displayToast = true, setRefreshing }: RefreshFavoritesProps = {}) => {
 		refreshAbortRef.current?.abort();
 		const controller = new AbortController();
 		refreshAbortRef.current = controller;
-		setLoading(true);
+		if (displayToast) setLoading(true);
 		setRefreshing?.(true);
 
 		try {
 			const cities = getFavoriteCities();
-			setFavoriteCount(cities.length);
 			let localRefreshFailed = false;
 
 			if (showLocalWeather && localWeatherData) {
@@ -88,13 +87,12 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 				setLoading(false);
 			}
 		}
-	};
+	}, [currentSource, localWeatherData, setLocalWeatherData, showLocalWeather, t]);
 
 	const handleRemoveCity = async (city: City) => {
 		setFavoritesData((prev) => prev.filter((item) => !isSameCity(item.city, city)));
 
 		const success = removeFavoriteCity(city);
-		if (success) setFavoriteCount((count) => Math.max(0, count - 1));
 		showFavoriteToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
 		if (!success) {
 			await refreshFavoriteCities();
@@ -105,22 +103,21 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 		const isAlreadyFavorite = isCityInFavorites(city);
 
 		if (isAlreadyFavorite) {
-			const success = removeFavoriteCity(city);
-			if (success) setFavoriteCount((count) => Math.max(0, count - 1));
+			removeFavoriteCity(city);
 			setIsFavorite(false);
 			showFavoriteToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
 		} else {
-			const success = addFavoriteCity(city);
-			if (success) setFavoriteCount((count) => count + 1);
+			addFavoriteCity(city);
 			setIsFavorite(true);
 			showFavoriteToast({ message: t('toast.add', { name: city.name }), type: 'add' });
 		}
 	};
 
 	useEffect(() => {
-		if (favoriteCitiesValue !== undefined) setFavoriteCount(getFavoriteCities().length);
-		if (refresh) refreshFavoriteCities({ displayToast: false });
-	}, [currentSource, favoriteCitiesValue, refresh]);
+		if (!refresh || favoriteCitiesValue === undefined) return;
+		const timeout = setTimeout(() => void refreshFavoriteCities({ displayToast: false }), 0);
+		return () => clearTimeout(timeout);
+	}, [favoriteCitiesValue, refresh, refreshFavoriteCities]);
 
 	useEffect(
 		() => () => {

@@ -263,6 +263,7 @@
 		"title": "Humidité"
 	},
 	"localtime": "Heure locale",
+	"remainingtime": "Dans {time}",
 	"localweather": {
 		"error": {
 			"permission": {

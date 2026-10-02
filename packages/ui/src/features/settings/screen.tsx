@@ -14,9 +14,11 @@ import { WorldTimeToggle } from '@nativeweather/ui/components/settings/items/Wor
 import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
+import { useState } from 'react';
 import pkg from '../../../../../apps/web/package.json';
 
 export const SettingsFeature = () => {
+	const [year] = useState(() => new Date().getFullYear());
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 	const { t } = useTranslate('settings');
 
@@ -58,7 +60,7 @@ export const SettingsFeature = () => {
 						{Platform.OS === 'web' && pkg.version}
 						{(Platform.OS === 'ios' || Platform.OS === 'android') && Constants.expoConfig?.version}
 					</StyledText>
-					<StyledText type="caption">© {new Date().getFullYear()}</StyledText>
+					<StyledText type="caption">© {year}</StyledText>
 				</View>
 			</View>
 		</View>

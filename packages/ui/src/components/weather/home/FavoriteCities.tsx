@@ -6,10 +6,9 @@ import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCi
 import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { clsx } from 'clsx';
-import { Check, Edit, Trash2, XIcon } from 'lucide-react-native';
+import { Check, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
-import { CloseIcon } from '../../icons/ui/CloseIcon';
 import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
 import { EditIcon } from '../../icons/ui/EditIcon';

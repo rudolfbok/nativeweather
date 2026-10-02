@@ -3,6 +3,7 @@ import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalN
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
+import { useSunEventCountdown } from '@nativeweather/ui/hooks/weather/useSunEventCountdown';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -11,9 +12,18 @@ import { SunriseIcon } from '@nativeweather/ui/components/icons/main/SunriseIcon
 import { DataCard } from '../DataCard';
 import { SunriseModal } from './SunriseModal';
 
-export const SunriseCard = ({ data }: { data: string }) => {
+export const SunriseCard = ({
+	data,
+	tomorrowData,
+	timeZone = 'UTC',
+}: {
+	data: string;
+	tomorrowData?: string;
+	timeZone?: string;
+}) => {
 	const [currentLanguage] = useStorageString('currentLang');
 	const { t } = useTranslate('weather');
+	const countdown = useSunEventCountdown({ data, tomorrowData, timeZone });
 	const [showModal, setShowModal] = useState(false);
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
@@ -29,7 +39,13 @@ export const SunriseCard = ({ data }: { data: string }) => {
 			icon={<SunriseIcon />}
 			title={t('sunrise.title')}
 			data={formatTime(data, currentLanguage)}
-			extraContent={<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">{t('localtime')}</StyledText>}
+			extraContent={
+				countdown && (
+					<StyledText type="body" numberOfLines={1} ellipsizeMode="tail">
+						{t('remainingtime', countdown)}
+					</StyledText>
+				)
+			}
 			modal={
 				showModal && (
 					<StyledModal

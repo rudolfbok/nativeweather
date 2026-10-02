@@ -3,7 +3,6 @@ import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService'
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { GlassView } from 'expo-glass-effect';
@@ -17,7 +16,6 @@ export default function TabLayout() {
 	const { weatherData } = useWeather();
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 	const { background, text } = useThemeColors();
-	const alerts = weatherData ? getAlerts(weatherData.alerts.alert, weatherData.location) : [];
 	const headerBackgroundColor = weatherData
 		? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
 		: background;

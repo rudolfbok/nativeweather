@@ -6,7 +6,6 @@ import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
 import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
 import { clsx } from 'clsx';
-import { Wind } from 'lucide-react-native';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';

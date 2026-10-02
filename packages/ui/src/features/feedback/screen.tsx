@@ -6,11 +6,10 @@ import { StyledPressable } from '@nativeweather/ui/components/common/styled/Styl
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
 import { border } from '@nativeweather/core/constants/border';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 
 export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	const { t } = useTranslate('settings');
@@ -52,25 +51,6 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 		setLoading(false);
 	};
 
-	const DropdownItem = ({ icon, title, variant }: { icon: ReactNode; title: string; variant: Exclude<typeof type, ''> }) => {
-		const isSelected = type === variant;
-		return (
-			<StyledPressable
-				onPress={() => {
-					setType(variant);
-					setOpen(false);
-				}}
-				className={clsx('flex-row items-center gap-4 p-4')}
-			>
-				<View className="h-6 w-6 items-center justify-center">{icon}</View>
-				<View className="flex-1">
-					<StyledText type="body">{title}</StyledText>
-				</View>
-				<View className="h-6 w-6 items-center justify-center">{isSelected && <Check color="#007AFF" size={20} />}</View>
-			</StyledPressable>
-		);
-	};
-
 	return (
 		<View className={clsx('items-center pb-4')}>
 			<View className={clsx('w-full flex-1 gap-4')}>
@@ -110,18 +90,34 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 							</Pressable>
 							{open && (
 								<View>
-									<DropdownItem icon={<Bug color="#007AFF" />} title={t('feedback.bug')} variant="bug" />
-									<DropdownItem icon={<Cog color="#007AFF" />} title={t('feedback.feature')} variant="feature" />
-									<DropdownItem
-										icon={<MessageCircle color="#007AFF" />}
-										title={t('feedback.message')}
-										variant="message"
-									/>
-									<DropdownItem
-										icon={<CircleQuestionMark color="#007AFF" />}
-										title={t('feedback.question')}
-										variant="question"
-									/>
+								{(['bug', 'feature', 'message', 'question'] as const).map((variant) => (
+									<StyledPressable
+										key={variant}
+										onPress={() => {
+											setType(variant);
+											setOpen(false);
+										}}
+										className={clsx('flex-row items-center gap-4 p-4')}
+									>
+										<View className="h-6 w-6 items-center justify-center">
+											{variant === 'bug' ? (
+												<Bug color="#007AFF" />
+											) : variant === 'feature' ? (
+												<Cog color="#007AFF" />
+											) : variant === 'message' ? (
+												<MessageCircle color="#007AFF" />
+											) : (
+												<CircleQuestionMark color="#007AFF" />
+											)}
+										</View>
+										<View className="flex-1">
+											<StyledText type="body">{t(`feedback.${variant}`)}</StyledText>
+										</View>
+										<View className="h-6 w-6 items-center justify-center">
+											{type === variant && <Check color="#007AFF" size={20} />}
+										</View>
+									</StyledPressable>
+								))}
 								</View>
 							)}
 						</View>

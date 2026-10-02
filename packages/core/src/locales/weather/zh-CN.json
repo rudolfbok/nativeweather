@@ -263,6 +263,7 @@
 		"title": "湿度"
 	},
 	"localtime": "当地时间",
+	"remainingtime": "还有 {time}",
 	"localweather": {
 		"error": {
 			"permission": {

@@ -5,7 +5,6 @@ import { TolgeeProvider } from '@nativeweather/ui/provider/TolgeeProvider';
 import { initStorageDefaults } from '@nativeweather/core/database/initStorageDefaults';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { Toaster } from 'burnt/web';
-import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 
 type ThemeMode = 'light' | 'dark' | 'system';
@@ -19,7 +18,6 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
 		initStorageDefaults();
 	}, []);
 
-	const NWTheme = useColorScheme();
 
 	return (
 		<TolgeeProvider>

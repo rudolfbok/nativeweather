@@ -3,7 +3,6 @@ import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
 import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
-import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';

@@ -1,4 +1,3 @@
-import { CircleGauge } from 'lucide-react-native';
 import Svg, { Path } from 'react-native-svg';
 
 export const PressureIcon = () => {

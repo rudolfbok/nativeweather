@@ -21,27 +21,23 @@ export const ModalValueItem = ({
 	moonPhase,
 	showItemIndex = true,
 }: ModalValueItemProps) => {
-	const RenderIndex = () => {
-		if (!showItemIndex) return moonPhase;
-
-		return (
-			<View className={clsx('w-8')}>
-				<View
-					className={clsx(
-						'bg-tertiarySystemBackground dark:bg-tertiarySystemBackground_dark aspect-square items-center justify-center rounded-full'
-					)}
-				>
-					<StyledText type="body" className={clsx('font-medium')}>
-						{index}
-					</StyledText>
-				</View>
-			</View>
-		);
-	};
-
 	return (
 		<View className={clsx('w-full flex-row items-center gap-4')}>
-			<RenderIndex />
+			{!showItemIndex ? (
+				moonPhase
+			) : (
+				<View className={clsx('w-8')}>
+					<View
+						className={clsx(
+							'bg-tertiarySystemBackground dark:bg-tertiarySystemBackground_dark aspect-square items-center justify-center rounded-full'
+						)}
+					>
+						<StyledText type="body" className={clsx('font-medium')}>
+							{index}
+						</StyledText>
+					</View>
+				</View>
+			)}
 			<View className={clsx('flex-1')}>
 				<StyledText type="body" className={clsx('font-semibold', textColor)}>
 					{name}

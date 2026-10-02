@@ -1,20 +1,19 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
 import { AirQualityIcon } from '@nativeweather/ui/components/icons/main/AirQualityIcon';
 import { OpenMeteoAQI } from '@nativeweather/types/openMeteo';
 import {
-	EUAQIIndicatorColor,
-	NO2IndicatorColor,
-	OzoneIndicatorColor,
-	PM10IndicatorColor,
-	PM25IndicatorColor,
-	USAQIIndicatorColor,
+	EUAQIIndicatorColor as euaqiIndicatorColor,
+	NO2IndicatorColor as no2IndicatorColor,
+	OzoneIndicatorColor as ozoneIndicatorColor,
+	PM10IndicatorColor as pm10IndicatorColor,
+	PM25IndicatorColor as pm25IndicatorColor,
+	USAQIIndicatorColor as usaqiIndicatorColor,
 } from '@nativeweather/core/utils/mappings/airQuality';
 import { clsx } from 'clsx';
-import { JSX, ReactNode, useState } from 'react';
-import { Linking, Platform, Pressable, ScrollView, View } from 'react-native';
+import { JSX, useState } from 'react';
+import { Platform, ScrollView, View } from 'react-native';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { AirQualityItem } from './AirQualityItem';
 import { EUAQIDetail } from './EUAQIDetail';
@@ -60,93 +59,48 @@ export const AirQualityModal = ({ visible = false, onClose, airQualityData }: Ai
 			name: 'euaqi',
 			description: t('airquality.item.euaqi'),
 			data: airQualityData.current.european_aqi,
-			colorIndicator: EUAQIIndicatorColor(airQualityData.current.european_aqi),
+			colorIndicator: euaqiIndicatorColor(airQualityData.current.european_aqi),
 			units: '',
 		},
 		{
 			name: 'usaqi',
 			description: t('airquality.item.usaqi'),
 			data: airQualityData.current.us_aqi,
-			colorIndicator: USAQIIndicatorColor(airQualityData.current.us_aqi),
+			colorIndicator: usaqiIndicatorColor(airQualityData.current.us_aqi),
 			units: '',
 		},
 		{
 			name: 'pm25',
 			description: t('airquality.item.pm25'),
 			data: airQualityData.current.pm2_5,
-			colorIndicator: PM25IndicatorColor(airQualityData.current.pm2_5),
+			colorIndicator: pm25IndicatorColor(airQualityData.current.pm2_5),
 			units: 'μg/m³',
 		},
 		{
 			name: 'pm10',
 			description: t('airquality.item.pm10'),
 			data: airQualityData.current.pm10,
-			colorIndicator: PM10IndicatorColor(airQualityData.current.pm10),
+			colorIndicator: pm10IndicatorColor(airQualityData.current.pm10),
 			units: 'μg/m³',
 		},
 		{
 			name: 'o3',
 			description: t('airquality.item.ozone'),
 			data: airQualityData.current.ozone,
-			colorIndicator: OzoneIndicatorColor(airQualityData.current.ozone),
+			colorIndicator: ozoneIndicatorColor(airQualityData.current.ozone),
 			units: 'μg/m³',
 		},
 		{
 			name: 'no2',
 			description: t('airquality.item.no2'),
 			data: airQualityData.current.nitrogen_dioxide,
-			colorIndicator: NO2IndicatorColor(airQualityData.current.nitrogen_dioxide),
+			colorIndicator: no2IndicatorColor(airQualityData.current.nitrogen_dioxide),
 			units: 'μg/m³',
 		},
 	];
 
-	const Wrapper = ({ children }: { children: ReactNode }) => {
-		if (Platform.OS === 'ios') {
-			return <>{children}</>;
-		}
-
-		if (Platform.OS === 'macos') {
-			return (
-				<View className="w-full flex-1 pt-4">
-					<ModalHeader
-						icon={showAirQualityMetric ? undefined : <AirQualityIcon />}
-						header={
-							showAirQualityMetric === null
-								? t('airquality.title')
-								: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '')
-						}
-						showBack={Boolean(showAirQualityMetric)}
-						onBackPress={() => setShowAirQualityMetric(null)}
-						onClose={() => onClose?.()}
-					/>
-					<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={false}>
-						{children}
-					</ScrollView>
-				</View>
-			);
-		}
-
-		return (
-			<StyledModal
-				visible={visible}
-				airQualityModal={!showAirQualityMetric && true}
-				goBackHeader={showAirQualityMetric ? true : false}
-				goBackOnPress={() => setShowAirQualityMetric(null)}
-				icon={showAirQualityMetric ? undefined : <AirQualityIcon />}
-				header={
-					showAirQualityMetric === null
-						? t('airquality.title')
-						: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '')
-				}
-				onClose={() => onClose?.()}
-			>
-				{children}
-			</StyledModal>
-		);
-	};
-
-	return (
-		<Wrapper>
+	const modalContent = (
+		<>
 			{showAirQualityMetric === null && (
 				<View>
 					<View
@@ -170,19 +124,47 @@ export const AirQualityModal = ({ visible = false, onClose, airQualityData }: Ai
 							/>
 						))}
 					</View>
-					{/* <View className={clsx('mt-4 flex w-full flex-row items-center justify-center gap-1')}>
-						<StyledText type="caption" className={clsx('opacity-70')}>
-							{t('airquality.provider')}
-						</StyledText>
-						<Pressable onPress={() => Linking.openURL('https://open-meteo.com/')}>
-							<StyledText type="link">
-								OpenMeteoAPI
-							</StyledText>
-						</Pressable>
-					</View> */}
 				</View>
 			)}
 			{detailComponents[showAirQualityMetric ?? ''] ?? null}
-		</Wrapper>
+		</>
+	);
+	const header =
+		showAirQualityMetric === null
+			? t('airquality.title')
+			: (airQualityItemsList.find((item) => item.name === showAirQualityMetric)?.description ?? '');
+	const icon = showAirQualityMetric ? undefined : <AirQualityIcon />;
+
+	if (Platform.OS === 'ios') return modalContent;
+
+	if (Platform.OS === 'macos') {
+		return (
+			<View className="w-full flex-1 pt-4">
+				<ModalHeader
+					icon={icon}
+					header={header}
+					showBack={Boolean(showAirQualityMetric)}
+					onBackPress={() => setShowAirQualityMetric(null)}
+					onClose={() => onClose?.()}
+				/>
+				<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={false}>
+					{modalContent}
+				</ScrollView>
+			</View>
+		);
+	}
+
+	return (
+		<StyledModal
+			visible={visible}
+			airQualityModal={!showAirQualityMetric}
+			goBackHeader={Boolean(showAirQualityMetric)}
+			goBackOnPress={() => setShowAirQualityMetric(null)}
+			icon={icon}
+			header={header}
+			onClose={() => onClose?.()}
+		>
+			{modalContent}
+		</StyledModal>
 	);
 };

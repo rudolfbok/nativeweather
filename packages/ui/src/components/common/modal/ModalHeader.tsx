@@ -15,7 +15,7 @@ interface ModalHeaderProps {
 	daysToggle?: React.ReactNode;
 	showBack?: boolean;
 	onBackPress?: (e: GestureResponderEvent) => void;
-	onClose: (e: GestureResponderEvent) => void;
+	onClose?: (e: GestureResponderEvent) => void;
 }
 
 export const ModalHeader = ({
@@ -49,9 +49,11 @@ export const ModalHeader = ({
 					)}
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
-				<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
-					<CloseIcon />
-				</StyledPressable>
+				{onClose && (
+					<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
+						<CloseIcon />
+					</StyledPressable>
+				)}
 			</View>
 			{daysToggle}
 		</View>

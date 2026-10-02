@@ -8,25 +8,26 @@ import { useEffect } from 'react';
 import { useNavigation } from 'expo-router';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
 
+const getDayName = (date: string, short: boolean, language: string) =>
+	new Date(date).toLocaleString(language, {
+		weekday: short ? 'short' : 'long',
+		day: 'numeric',
+		month: 'long',
+	});
+
 export default function ForecastModalScreen() {
 	const { weatherData } = useWeather();
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const tolgee = useTolgee();
 	const navigation = useNavigation();
-
-	const getDayName = (date: string, short: boolean) =>
-		new Date(date).toLocaleString(tolgee.getLanguage(), {
-			weekday: short ? 'short' : 'long',
-			day: 'numeric',
-			month: 'long',
-		});
+	const language = tolgee.getLanguage();
 
 	useEffect(() => {
 		if (!selectedDay) return;
 		navigation.setOptions({
-			headerTitle: getDayName(selectedDay.date, false),
+			headerTitle: getDayName(selectedDay.date, false, language ?? 'en-US'),
 		});
-	}, [selectedDay]);
+	}, [language, navigation, selectedDay]);
 
 	if (!weatherData || !selectedDay) return null;
 

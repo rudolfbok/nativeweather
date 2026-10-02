@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
 import {
 	CloudsIcon,
 	HumidityIcon,
@@ -17,8 +17,7 @@ import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { router, Stack, useNavigation } from 'expo-router';
-import { ReactNode } from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
@@ -32,17 +31,6 @@ export default function ModalsLayout() {
 		}
 
 		router.replace('/(tabs)/(weather)/[city]');
-	};
-
-	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
-		return (
-			<View className={clsx('flex-row items-center gap-2')}>
-				{icon}
-				<StyledText type="title" className="font-bold">
-					{title}
-				</StyledText>
-			</View>
-		);
 	};
 
 	return (
@@ -67,67 +55,67 @@ export default function ModalsLayout() {
 			<Stack.Screen
 				name="humidity"
 				options={{
-					headerTitle: () => <ModalHeader icon={<HumidityIcon />} title={t('humidity.title')} />,
+					headerTitle: () => <ModalHeader icon={<HumidityIcon />} header={t('humidity.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="moon"
 				options={{
-					headerTitle: () => <ModalHeader icon={<MoonIcon />} title={t('moon.title')} />,
+					headerTitle: () => <ModalHeader icon={<MoonIcon />} header={t('moon.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="pressure"
 				options={{
-					headerTitle: () => <ModalHeader icon={<PressureIcon />} title={t('pressure.title')} />,
+					headerTitle: () => <ModalHeader icon={<PressureIcon />} header={t('pressure.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="rain"
 				options={{
-					headerTitle: () => <ModalHeader icon={<RainIcon />} title={t('rain.title')} />,
+					headerTitle: () => <ModalHeader icon={<RainIcon />} header={t('rain.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="snow"
 				options={{
-					headerTitle: () => <ModalHeader icon={<SnowIcon />} title={t('snow.title')} />,
+					headerTitle: () => <ModalHeader icon={<SnowIcon />} header={t('snow.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="sunrise"
 				options={{
-					headerTitle: () => <ModalHeader icon={<SunriseIcon />} title={t('sunrise.title')} />,
+					headerTitle: () => <ModalHeader icon={<SunriseIcon />} header={t('sunrise.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="sunset"
 				options={{
-					headerTitle: () => <ModalHeader icon={<SunsetIcon />} title={t('sunset.title')} />,
+					headerTitle: () => <ModalHeader icon={<SunsetIcon />} header={t('sunset.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="uv"
 				options={{
-					headerTitle: () => <ModalHeader icon={<UVIcon />} title="UV Index" />,
+					headerTitle: () => <ModalHeader icon={<UVIcon />} header="UV Index" />,
 				}}
 			/>
 			<Stack.Screen
 				name="range"
 				options={{
-					headerTitle: () => <ModalHeader icon={<RangeIcon />} title={t('range.title')} />,
+					headerTitle: () => <ModalHeader icon={<RangeIcon />} header={t('range.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="wind"
 				options={{
-					headerTitle: () => <ModalHeader icon={<WindIcon />} title={t('wind.title')} />,
+					headerTitle: () => <ModalHeader icon={<WindIcon />} header={t('wind.title')} />,
 				}}
 			/>
 			<Stack.Screen
 				name="clouds"
 				options={{
-					headerTitle: () => <ModalHeader icon={<CloudsIcon />} title={t('cloudcover.title')} />,
+					headerTitle: () => <ModalHeader icon={<CloudsIcon />} header={t('cloudcover.title')} />,
 				}}
 			/>
 			<Stack.Screen name="airquality" options={{ headerShown: false }} />

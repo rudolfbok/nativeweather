@@ -4,7 +4,7 @@ import { useNavigation } from 'expo-router';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { SearchBar } from '@nativeweather/ui/components/weather/search/SearchBar';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { clsx } from 'clsx';
 
@@ -12,19 +12,11 @@ export const SearchFeature = () => {
 	const { t } = useTranslate('common');
 	const navigation = useNavigation();
 
-	const [primaryTitle, setPrimaryTitle] = useState('');
+	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	const headerCollapsed = useSharedValue(false);
 
-	const updateHeader = (collapsed: boolean) => {
-		if (collapsed) {
-			navigation.setOptions({ headerTitle: t('search.title') });
-			setPrimaryTitle('');
-		} else {
-			navigation.setOptions({ headerTransparent: true, headerTitle: '', headerBackground: undefined });
-			setPrimaryTitle(t('search.title'));
-		}
-	};
+	const updateHeader = useCallback((collapsed: boolean) => setIsCollapsed(collapsed), []);
 
 	const scrollHandler = useAnimatedScrollHandler({
 		onScroll: (event) => {
@@ -37,8 +29,12 @@ export const SearchFeature = () => {
 	});
 
 	useEffect(() => {
-		updateHeader(false);
-	}, [navigation, t]);
+		navigation.setOptions(
+			isCollapsed
+				? { headerTitle: t('search.title'), headerTransparent: false }
+				: { headerTransparent: true, headerTitle: '', headerBackground: undefined }
+		);
+	}, [isCollapsed, navigation, t]);
 
 	return (
 		<Animated.ScrollView
@@ -48,7 +44,7 @@ export const SearchFeature = () => {
 			contentContainerClassName={clsx('px-4 pb-4')}
 		>
 			<StyledText type="screentitle" className={clsx('mb-3')}>
-				{primaryTitle}
+				{isCollapsed ? '' : t('search.title')}
 			</StyledText>
 			<SearchBar />
 		</Animated.ScrollView>

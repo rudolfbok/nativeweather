@@ -11,7 +11,7 @@ import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SolitoImage } from 'solito/image';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
@@ -27,7 +27,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 	const navigateToAirQuality = useModalNavigation({
 		mobile: () => router.push('/modals/airquality'),
 		macos: () => setModalScreen('airquality'),
-		web: () => setShowModal((showModal) => !showModal),
+		web: () => setShowModal((isOpen) => !isOpen),
 	});
 
 	const aq = airQualityData?.current;

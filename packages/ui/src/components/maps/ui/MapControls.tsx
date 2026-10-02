@@ -41,7 +41,6 @@ const MapButton = ({ onPress, onPressIn, icon }: { onPress: () => void; onPressI
 export const MapControls = ({
 	layer,
 	weatherLayerVisible = true,
-	baseMap,
 	onLayerChange,
 	onClearLayer,
 	onBaseMapChange,

@@ -1,5 +1,5 @@
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { Check, Star, StarOff, X } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { View } from 'react-native';

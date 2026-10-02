@@ -16,6 +16,8 @@ interface AlertDetailProps {
 	instructions: string;
 }
 
+const removeDoubleSpaces = (text: string) => text.replace(/(?<!\n)\n(?!\n)/g, ' ');
+
 export const AlertDetail = ({ expires, area, severity, description, instructions }: AlertDetailProps) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
@@ -41,7 +43,6 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 			hour12: tolgee.getLanguage() === 'en-US',
 		});
 	};
-	const removeDoubleSpaces = (text: string) => text.replace(/(?<!\n)\n(?!\n)/g, ' ');
 
 	const extractWhatAndImpacts = (text: string): string => {
 		const ALLOWED_SECTIONS = ['WHAT', 'IMPACTS'];
@@ -56,8 +57,8 @@ export const AlertDetail = ({ expires, area, severity, description, instructions
 		return extracted ? removeDoubleSpaces(extracted) : text;
 	};
 
-	const getLocaleSeverity = (severity: string) => {
-		switch (severity) {
+	const getLocaleSeverity = (value: string) => {
+		switch (value) {
 			case 'Unknown':
 				return t('alerts.severity.unknown');
 			case 'Minor':

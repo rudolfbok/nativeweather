@@ -260,7 +260,7 @@ export const SmartSummary = ({
 	addCandidate('tempRange', 90, t(`range_${getTempRangeBucket(tempRangeC)}_${variant}`, { amount: displayTempRange }));
 
 	const available = candidates.filter(({ category }) => !combo?.excludes.includes(category));
-	const byPriority = [...available].sort((a, b) => a.priority - b.priority);
+	const byPriority = available.toSorted((a, b) => a.priority - b.priority);
 	const preferred = [
 		...byPriority.filter(({ priority }) => priority <= 18),
 		...(hasRain || hasSnow || !combo ? available.filter(({ category }) => category === 'precip') : []),

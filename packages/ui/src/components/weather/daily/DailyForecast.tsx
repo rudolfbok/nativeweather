@@ -15,7 +15,7 @@ import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { DailyForecastMain } from './DailyForecastMain';
 import { DaysToggle } from './DaysToggle';
@@ -28,7 +28,7 @@ export const DailyForecast = () => {
 	const [currentSource] = useStorageString('currentSource');
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
-	const { modalScreen, setModalScreen } = useNavigationScreen();
+	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToForecast = useModalNavigation({
 		mobile: () => router.push('/modals/forecast'),
@@ -36,11 +36,14 @@ export const DailyForecast = () => {
 		web: () => undefined,
 	});
 
-	useEffect(() => {
-		if (scrollRef.current) {
-			scrollRef.current.scrollTo({ y: 0, animated: false });
-		}
-	}, [selectedDay]);
+	const handleSelectDay = (day: NonNullable<typeof selectedDay>) => {
+		scrollRef.current?.scrollTo({ y: 0, animated: false });
+		setSelectedDay(day);
+	};
+	const handleCloseForecast = () => {
+		scrollRef.current?.scrollTo({ y: 0, animated: false });
+		setSelectedDay(null);
+	};
 
 	const tolgee = useTolgee();
 
@@ -76,7 +79,7 @@ export const DailyForecast = () => {
 				<StyledPressable
 					key={index}
 					onPress={() => {
-						setSelectedDay(day);
+						handleSelectDay(day);
 						navigateToForecast();
 					}}
 					className={clsx(
@@ -136,10 +139,10 @@ export const DailyForecast = () => {
 					ref={scrollRef}
 					header={getDayNameSecond(selectedDay.date, false)}
 					subHeader={formatDate(selectedDay.date)}
-					onClose={() => setSelectedDay(null)}
-					daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={(day) => setSelectedDay(day)} />}
+					onClose={handleCloseForecast}
+					daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={handleSelectDay} />}
 				>
-					<DailyForecastMain day={selectedDay} onCloseParent={() => setSelectedDay(null)} />
+					<DailyForecastMain day={selectedDay} onCloseParent={handleCloseForecast} />
 				</StyledModal>
 			)}
 		</RoundView>

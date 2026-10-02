@@ -18,6 +18,6 @@ export const formatTime = (timeStr: string, lang = 'en-US'): string => {
 	return new Intl.DateTimeFormat(lang, {
 		hour: '2-digit',
 		minute: '2-digit',
-		hour12: lang === 'en-US' ? true : false,
+        hour12: lang === 'en-US',
 	}).format(date);
 };

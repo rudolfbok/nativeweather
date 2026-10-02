@@ -62,7 +62,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	const [bearing, setBearing] = useState(0);
 	const [weatherLayerVisible, setWeatherLayerVisible] = useState(true);
 	const [showLegend, setShowLegend] = useState(false);
-	const [showLoading, setShowLoading] = useState(false);
+	const [loadingDelayPassed, setLoadingDelayPassed] = useState(false);
+	const showLoading = status === 'loading' && loadingDelayPassed;
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const activeStyleRef = useRef<BaseMapStyle>('liberty');
 	const mapLatitude = weatherData?.location?.lat;
@@ -72,11 +73,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	);
 
 	useEffect(() => {
-		if (status !== 'loading') {
-			setShowLoading(false);
-			return;
-		}
-		const timeout = setTimeout(() => setShowLoading(true), 2000);
+		if (status !== 'loading') return;
+		const timeout = setTimeout(() => setLoadingDelayPassed(true), 2000);
 		return () => clearTimeout(timeout);
 	}, [status]);
 
@@ -101,6 +99,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			instance.on('error', () => {
 				if (mounted && !instance?.isStyleLoaded()) setStatus('error');
 			});
+			instance.resize();
 			setMap(instance);
 		};
 
@@ -110,7 +109,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			mounted = false;
 			instance?.remove();
 		};
-	}, [showCompass]);
+	}, [mapLatitude, mapLongitude, showCompass]);
 
 	useEffect(() => {
 		if (!map) return;
@@ -124,11 +123,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			else clearWeatherLayer(map);
 			map.once('idle', handleReady);
 		};
-		setStatus('loading');
-
 		if (activeStyleRef.current !== baseMap) {
 			activeStyleRef.current = baseMap;
-			setStatus('loading');
 			map.once('style.load', updateLayer);
 			map.setStyle(getBaseMapUrl(baseMap));
 		} else if (map.isStyleLoaded()) {
@@ -154,11 +150,6 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 		initializedLocation.current = null;
 		map.easeTo({ center: [mapLongitude, mapLatitude], zoom: 7, duration: 500 });
 	}, [map, mapLatitude, mapLongitude]);
-
-	useEffect(() => {
-		if (!map) return;
-		map.resize();
-	}, [map, mapSize]);
 
 	useEffect(() => {
 		if (!map) return;
@@ -196,6 +187,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	}, [layer, map, requestWeatherPoint, showCompass, weatherLayerVisible]);
 
 	const handleLayerChange = (nextLayer: WeatherMapLayer) => {
+		setLoadingDelayPassed(false);
+		setStatus('loading');
 		setWeatherLayerVisible(true);
 		setLayer(nextLayer);
 		clearWeatherPoint();
@@ -208,6 +201,8 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	};
 
 	const handleClearLayer = () => {
+		setLoadingDelayPassed(false);
+		setStatus('loading');
 		setWeatherLayerVisible(false);
 		setShowLegend(false);
 		closePopup();
@@ -220,6 +215,13 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 
 	const handleLayout = (event: LayoutChangeEvent) => {
 		setMapSize({ width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height });
+		map?.resize();
+	};
+
+	const handleBaseMapChange = (style: BaseMapStyle) => {
+		setLoadingDelayPassed(false);
+		setStatus('loading');
+		setBaseMap(style);
 	};
 
 	return (
@@ -276,7 +278,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 				showInfo={showCompass}
 				onLayerChange={handleLayerChange}
 				onClearLayer={showCompass ? handleClearLayer : undefined}
-				onBaseMapChange={setBaseMap}
+				onBaseMapChange={handleBaseMapChange}
 				showLegend={showLegend}
 				onLegendChange={handleLegendChange}
 			/>

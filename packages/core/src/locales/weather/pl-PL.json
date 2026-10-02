@@ -263,6 +263,7 @@
 		"title": "Wilgotność"
 	},
 	"localtime": "Czas lokalny",
+	"remainingtime": "Za {time}",
 	"localweather": {
 		"error": {
 			"permission": {

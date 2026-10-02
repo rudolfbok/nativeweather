@@ -96,7 +96,6 @@ export const useSearchController = () => {
 		if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
 
 		if (!searchValue.trim()) {
-			setSuggestions([]);
 			return;
 		}
 
@@ -142,7 +141,7 @@ export const useSearchController = () => {
 		handleInputSearch,
 		showRecentSearches,
 		showSuggestions,
-		suggestions,
+		suggestions: searchValue.trim() ? suggestions : [],
 		addToRecentSearches,
 		weatherLoading,
 	};

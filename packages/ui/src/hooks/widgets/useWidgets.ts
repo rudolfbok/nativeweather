@@ -13,14 +13,32 @@ import {
 	PM25IndicatorColor,
 } from '@nativeweather/core/utils/mappings/airQuality';
 
+const isIOS = Platform.OS === 'ios';
+
+const updateWidgetSnapshot = async (
+	loadWidget: () => Promise<{ default: { updateSnapshot: (props: any) => void } }>,
+	props: object,
+	name: string
+) => {
+	try {
+		const { default: widget } = await loadWidget();
+		widget.updateSnapshot(props);
+	} catch (error) {
+		console.error(`Failed to update ${name} widget snapshot`, error);
+	}
+};
+
 export const useWidgets = () => {
 	const { localWeatherData, localAQIData } = useLocalWeather();
 	const [currentTemp] = useStorageString('currentTemp');
 	const [currentSource] = useStorageString('currentSource');
 	const [currentAQI] = useStorageString('currentAQI');
-	const [imagePathURI, setImagePathURI] = useState<string | null>(null);
+	const [imagePath, setImagePath] = useState<{ key: string; uri: string | null } | null>(null);
 	const mapConditions = useMapConditions();
-	const isIOS = Platform.OS === 'ios';
+	const iconKey = localWeatherData
+		? `${localWeatherData.current.isDay}:${localWeatherData.current.condition.code}`
+		: '';
+	const imagePathURI = imagePath?.key === iconKey ? imagePath.uri : null;
 
 	const localTemp = localWeatherData
 		? switchTemp({
@@ -65,25 +83,9 @@ export const useWidgets = () => {
 		? mapConditions(localWeatherData.current.condition.code, localWeatherData.current.isDay, currentSource)
 		: null;
 
-	const updateWidgetSnapshot = async (
-		loadWidget: () => Promise<{ default: { updateSnapshot: (props: any) => void } }>,
-		props: object,
-		name: string
-	) => {
-		try {
-			const { default: widget } = await loadWidget();
-			widget.updateSnapshot(props);
-		} catch (error) {
-			console.error(`Failed to update ${name} widget snapshot`, error);
-		}
-	};
-
 	useEffect(() => {
 		if (!isIOS) return;
-		if (!localWeatherData) {
-			setImagePathURI(null);
-			return;
-		}
+		if (!localWeatherData) return;
 
 		let cancelled = false;
 		getWeatherIconUri({
@@ -91,18 +93,18 @@ export const useWidgets = () => {
 			code: localWeatherData.current.condition.code,
 		})
 			.then((uri) => {
-				if (!cancelled) setImagePathURI(uri);
+			if (!cancelled) setImagePath({ key: iconKey, uri });
 			})
 			.catch((error) => {
 				if (cancelled) return;
 				console.error('Failed to resolve widget weather icon URI', error);
-				setImagePathURI(null);
+				setImagePath({ key: iconKey, uri: null });
 			});
 
 		return () => {
 			cancelled = true;
 		};
-	}, [localWeatherData?.current.isDay, localWeatherData?.current.condition.code]);
+	}, [iconKey, localWeatherData]);
 
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor || !condition) return;
@@ -133,7 +135,8 @@ export const useWidgets = () => {
 		localTempMax,
 		feelsLikeTemperature,
 		currentSource,
-		mapConditions,
+		bgColor,
+		condition,
 	]);
 
 	useEffect(() => {

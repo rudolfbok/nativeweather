@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
 import { AlertIcon } from '@nativeweather/ui/components/icons/main/AlertIcon';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
@@ -8,8 +8,7 @@ import { getAlerts, getMostSevereAlert } from '@nativeweather/core/utils/alertFi
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { Stack, useRouter } from 'expo-router';
-import { ReactNode } from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 
 export default function ModalsLayout() {
 	const { t } = useTranslate('weather');
@@ -18,15 +17,6 @@ export default function ModalsLayout() {
 	const router = useRouter();
 	const filteredAlerts = getAlerts(weatherData?.alerts.alert, weatherData?.location);
 	const alertIconColor = getAlertSeverityDotColor(getMostSevereAlert(filteredAlerts)?.severity ?? 'Unknown');
-
-	const ModalHeader = ({ icon, title }: { icon: ReactNode; title: string }) => {
-		return (
-			<View className={clsx('flex-row items-center gap-2')}>
-				{icon}
-				<StyledText type="title">{title}</StyledText>
-			</View>
-		);
-	};
 
 	return (
 		<Stack
@@ -52,7 +42,7 @@ export default function ModalsLayout() {
 				name="index"
 				options={{
 					headerTitle: () => (
-						<ModalHeader icon={<AlertIcon mostSevere={alertIconColor} />} title={t('alerts.modaltitle')} />
+						<ModalHeader icon={<AlertIcon mostSevere={alertIconColor} />} header={t('alerts.modaltitle')} />
 					),
 				}}
 			/>

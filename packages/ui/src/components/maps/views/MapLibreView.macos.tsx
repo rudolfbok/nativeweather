@@ -10,7 +10,7 @@ import {
 import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, type LayoutChangeEvent, View } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 import { MapCompass } from '../ui/MapCompass';
@@ -193,10 +193,10 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 	const mapLatitude = weatherData?.location?.lat;
 	const mapLongitude = weatherData?.location?.lon;
 
-	const send = (command: MapCommand) => {
+	const send = useCallback((command: MapCommand) => {
 		const payload = JSON.stringify(command).replaceAll('<', '\\u003c');
 		webViewRef.current?.injectJavaScript(`window.NativeWeatherMap.receive(${payload}); true;`);
-	};
+	}, []);
 
 	useEffect(() => {
 		if (status !== 'loading') return;
@@ -215,7 +215,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			center: mapLatitude != null && mapLongitude != null ? [mapLongitude, mapLatitude] : [0, 0],
 			zoom: mapLatitude != null && mapLongitude != null ? 7 : 2,
 		});
-	}, [baseMap, bridgeReady, layer, mapLatitude, mapLongitude, showCompass, weatherLayerVisible]);
+	}, [baseMap, bridgeReady, layer, mapLatitude, mapLongitude, send, showCompass, weatherLayerVisible]);
 
 	const closePopup = () => {
 		clearWeatherPoint();

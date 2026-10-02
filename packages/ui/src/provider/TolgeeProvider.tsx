@@ -35,20 +35,22 @@ import SettingsFR from '@nativeweather/core/locales/settings/fr-FR.json';
 import SettingsIT from '@nativeweather/core/locales/settings/it-IT.json';
 import SettingsPL from '@nativeweather/core/locales/settings/pl-PL.json';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useSyncExternalStore } from 'react';
+
+const subscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 export const TolgeeProvider = ({ children }: { children: ReactNode }) => {
-	const [mounted, setMounted] = useState(false);
+	const mounted = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
 	const [currentLang] = useStorageString('currentLang');
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	const tolgee = useMemo(() => {
 		if (!mounted) return null;
 
+		// oxlint-disable-next-line react/capitalized-calls -- Tolgee exposes capitalized factory functions.
 		return Tolgee()
+			// oxlint-disable-next-line react/capitalized-calls -- FormatIcu is a Tolgee factory function.
 			.use(FormatIcu())
 			.init({
 				language: currentLang || 'en-US',

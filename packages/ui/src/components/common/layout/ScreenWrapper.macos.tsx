@@ -1,7 +1,6 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 
 interface ScreenWrapperProps {
 	className?: string;
@@ -9,8 +8,7 @@ interface ScreenWrapperProps {
 	resetKey?: string;
 }
 
-export const ScreenWrapper = ({ className, children, resetKey }: ScreenWrapperProps) => {
-	const { navigationScreen } = useNavigationScreen();
+export const ScreenWrapper = ({ className, children }: ScreenWrapperProps) => {
 	const scrollRef = useRef<ScrollView>(null);
 	const resetPending = useRef(false);
 

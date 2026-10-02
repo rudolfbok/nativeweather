@@ -1,5 +1,4 @@
 import { useTranslate } from '@tolgee/react';
-import { useOpenDrawer } from '@nativeweather/ui/hooks/navigation/useOpenDrawer';
 import { MessageCircle } from 'lucide-react-native';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';

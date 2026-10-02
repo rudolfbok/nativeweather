@@ -61,7 +61,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 					visible={showAlertModal}
 					icon={selectedAlert ? undefined : <AlertIcon mostSevere={alertIconColor} />}
 					header={selectedAlert === null ? t('alerts.modaltitle') : selectedAlert.event}
-					goBackHeader={selectedAlert ? true : false}
+					goBackHeader={Boolean(selectedAlert)}
 					goBackOnPress={() => setSelectedAlert(null)}
 					onClose={() => {
 						setShowAlertModal(false);
