@@ -240,7 +240,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			)}
 			{showCompass && <MapCompass bearing={bearing} onPress={() => map?.resetNorth({ duration: 300 })} />}
 			{showLoading && (
-				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
+				<View className={clsx('pointer-events-none absolute inset-0 z-20 items-center justify-center')}>
 					<View
 						className={clsx(
 							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',

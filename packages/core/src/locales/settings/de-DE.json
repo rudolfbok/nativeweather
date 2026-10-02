@@ -28,7 +28,6 @@
 		"placeholder": "Schreib hier deine Nachricht…",
 		"question": "Frage",
 		"select": "Art der Nachricht auswählen",
-		"text": "Hast du einen Vorschlag oder ist dir etwas aufgefallen, das besser sein könnte? Ich freue mich über dein Feedback. Jede Nachricht hilft dabei, die App für alle zu verbessern.",
 		"title": "Feedback senden",
 		"toast": {
 			"error": "Feedback konnte nicht gesendet werden",
@@ -37,15 +36,10 @@
 		"type": "Art"
 	},
 	"language": {
-		"polish": "Polnisch",
-		"italian": "Italienisch",
-		"french": "Französisch",
-		"japanese": "Japanisch",
-		"chinese": "Chinesisch (vereinfacht)",
-		"czech": "Tschechisch",
-		"deutsch": "Deutsch",
-		"english": "Englisch",
 		"title": "Sprache"
+	},
+	"legal": {
+		"title": "Rechtliche Hinweise"
 	},
 	"localweather": "Wetter am Standort",
 	"privacyPolicy": "Datenschutzerklärung",
@@ -71,5 +65,5 @@
 	},
 	"version": "Version",
 	"termsOfService": "Nutzungsbedingungen",
-	"worldtime": "Weltzeit"
+	"localtime": "Ortszeit"
 }

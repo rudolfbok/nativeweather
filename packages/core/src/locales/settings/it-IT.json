@@ -28,7 +28,6 @@
 		"placeholder": "Scrivi qui il tuo messaggio…",
 		"question": "Domanda",
 		"select": "Scegli il tipo di messaggio",
-		"text": "Hai un suggerimento o hai notato qualcosa da migliorare? Le tue opinioni sono benvenute. Ogni messaggio aiuta a rendere l’app più utile per tutti.",
 		"title": "Invia un commento",
 		"toast": {
 			"error": "Impossibile inviare il commento",
@@ -37,15 +36,10 @@
 		"type": "Tipo"
 	},
 	"language": {
-		"polish": "Polacco",
-		"italian": "Italiano",
-		"french": "Francese",
-		"japanese": "Giapponese",
-		"chinese": "Cinese semplificato",
-		"czech": "Ceco",
-		"deutsch": "Tedesco",
-		"english": "Inglese",
 		"title": "Lingua"
+	},
+	"legal": {
+		"title": "Informazioni legali"
 	},
 	"localweather": "Meteo locale",
 	"privacyPolicy": "Informativa sulla privacy",
@@ -71,5 +65,5 @@
 	},
 	"version": "Versione",
 	"termsOfService": "Termini di servizio",
-	"worldtime": "Ora nel mondo"
+	"localtime": "Ora locale"
 }

@@ -8,7 +8,7 @@ import { LocalWeatherToggle } from '@nativeweather/ui/components/settings/items/
 import { TemperatureButton } from '@nativeweather/ui/components/settings/items/TemperatureButton';
 import { ThemeButton } from '@nativeweather/ui/components/settings/items/ThemeButton';
 import { UnitsButton } from '@nativeweather/ui/components/settings/items/UnitsButton';
-import { WorldTimeToggle } from '@nativeweather/ui/components/settings/items/WorldTimeToggle';
+import { LocalTimeToggle } from '@nativeweather/ui/components/settings/items/LocalTimeToggle';
 import { View } from 'react-native';
 import { useState } from 'react';
 
@@ -31,7 +31,7 @@ export const SettingsFeature = () => {
 				<View className="flex-1 gap-4">
 					<RoundView>
 						<LocalWeatherToggle />
-						<WorldTimeToggle />
+						<LocalTimeToggle />
 					</RoundView>
 					<RoundView>
 						<AboutButton />

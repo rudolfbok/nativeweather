@@ -1,16 +1,28 @@
 import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
 import { fetchWeatherOrThrow } from '@nativeweather/api/fetchWeather';
-import { LocalWeatherError, toLocalWeatherError } from './locationError';
+import {
+	clearLocationRequestFailures,
+	getLocationRequestFailure,
+	isExpectedLocationError,
+	LocalWeatherError,
+	markLocationRequestFailed,
+	toLocalWeatherError,
+} from './locationError';
 import type { LocalWeatherErrorKind } from './locationError';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 
 export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
+	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
 	const { setLocalWeatherData } = useLocalWeather();
 	const isFetchingRef = useRef(false);
+
+	useEffect(() => {
+		if (!showLocalWeather) clearLocationRequestFailures();
+	}, [showLocalWeather]);
 
 	const getLocalWeather = useCallback(async () => {
 		if (isFetchingRef.current) {
@@ -23,6 +35,11 @@ export const useLocation = () => {
 		try {
 			if (!currentSource) {
 				throw new LocalWeatherError('source', 'No weather source is configured.');
+			}
+			const previousFailure = getLocationRequestFailure(currentSource);
+			if (previousFailure) {
+				setError(previousFailure);
+				return null;
 			}
 
 			const { status: authStatus } = await requestForegroundPermissionsAsync();
@@ -43,8 +60,11 @@ export const useLocation = () => {
 			return result;
 		} catch (caughtError) {
 			const nextError = toLocalWeatherError(caughtError);
+			if (isExpectedLocationError(nextError) && currentSource) {
+				markLocationRequestFailed(currentSource, nextError.kind);
+			}
 			setError(nextError.kind);
-			console.error('Local weather fetch failed:', caughtError);
+			if (!isExpectedLocationError(nextError)) console.error('Local weather fetch failed:', caughtError);
 			return null;
 		} finally {
 			isFetchingRef.current = false;

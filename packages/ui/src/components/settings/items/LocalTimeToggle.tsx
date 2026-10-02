@@ -4,17 +4,17 @@ import { ClockFadingIcon } from '@nativeweather/ui/components/icons/settings/Clo
 import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from './SettingsItem';
 
-export const WorldTimeToggle = () => {
+export const LocalTimeToggle = () => {
 	const { t } = useTranslate('settings');
-	const [showWorldTime, setShowWorldTime] = useStorageBoolean('showWorldTime');
+	const [showLocalTime, setShowLocalTime] = useStorageBoolean('showWorldTime');
 
 	return (
 		<SettingsItem
 			icon={<ClockFadingIcon />}
 			iconbg="bg-primaryblue"
-			title={t('worldtime')}
+			title={t('localtime')}
 			variant="toggle"
-			toggle={<StyledSwitch value={showWorldTime} onValueChange={setShowWorldTime} />}
+			toggle={<StyledSwitch value={showLocalTime} onValueChange={setShowLocalTime} />}
 		/>
 	);
 };

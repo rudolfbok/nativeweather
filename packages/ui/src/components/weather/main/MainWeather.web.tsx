@@ -4,7 +4,6 @@ import { StyledText } from '@nativeweather/ui/components/common/styled/StyledTex
 import { ArrowDownIcon } from '@nativeweather/ui/components/icons/ui/ArrowDownIcon';
 import { ArrowUpIcon } from '@nativeweather/ui/components/icons/ui/ArrowUpIcon';
 import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
-import { textOutline } from '@nativeweather/core/constants/textOutline';
 import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
@@ -70,7 +69,7 @@ export const MainWeather = ({
 
 	return (
 		<View className={clsx('relative flex items-center gap-2 overflow-hidden rounded-3xl p-4', dailyModal && 'gap-0')}>
-			<View pointerEvents="none" className={clsx('absolute inset-0 z-0')}>
+			<View className={clsx('pointer-events-none absolute inset-0 z-0')}>
 				<View
 					className={clsx(
 						'absolute -bottom-[10px] left-1/2 -translate-x-1/2 scale-x-[2]',
@@ -82,10 +81,10 @@ export const MainWeather = ({
 			</View>
 			{name && country && (
 				<View className={clsx('relative z-10 flex-col items-center')}>
-					<StyledText type="herotitle" className={clsx('text-center !text-white')} style={textOutline}>
+					<StyledText type="herotitle" className={clsx('text-center !text-white', '[text-shadow:0_0_1px_#000000]')}>
 						{name}
 					</StyledText>
-					<StyledText type="locationmeta" className={clsx('!text-white opacity-70')} style={textOutline}>
+					<StyledText type="locationmeta" className={clsx('!text-white opacity-70', '[text-shadow:0_0_1px_#000000]')}>
 						{country}
 					</StyledText>
 				</View>
@@ -93,7 +92,7 @@ export const MainWeather = ({
 			<View className={clsx('relative z-10 flex-row items-center justify-center gap-4')}>
 				<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} source={currentSource} />
 				<View className={clsx('items-center')}>
-					<StyledText type="display" className={clsx('pl-3', '!text-white')} style={textOutline}>
+					<StyledText type="display" className={clsx('pl-3', '!text-white', '[text-shadow:0_0_1px_#000000]')}>
 						{switchTemp({
 							celsius: currentTempC,
 							fahrenheit: currentTempF,
@@ -103,7 +102,7 @@ export const MainWeather = ({
 					<View className={clsx('flex flex-row items-center gap-1')}>
 						<View className={clsx('flex flex-row items-center')}>
 							<ArrowDownIcon />
-							<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
+							<StyledText type="body" className={clsx('!text-white', '[text-shadow:0_0_1px_#000000]')}>
 								{switchTemp({
 									celsius: minTempC,
 									fahrenheit: minTempF,
@@ -113,7 +112,7 @@ export const MainWeather = ({
 						</View>
 						<View className={clsx('flex flex-row items-center')}>
 							<ArrowUpIcon />
-							<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
+							<StyledText type="body" className={clsx('!text-white', '[text-shadow:0_0_1px_#000000]')}>
 								{switchTemp({
 									celsius: maxTempC,
 									fahrenheit: maxTempF,
@@ -123,7 +122,7 @@ export const MainWeather = ({
 						</View>
 					</View>
 					{feelslike && (
-						<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
+						<StyledText type="body" className={clsx('!text-white', '[text-shadow:0_0_1px_#000000]')}>
 							{t('feelslike')}{' '}
 							{switchTemp({
 								celsius: feelsLikeC ?? 0,
@@ -135,7 +134,7 @@ export const MainWeather = ({
 				</View>
 			</View>
 			<RoundView className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-lg', conditionStyle)}>
-				<StyledText type="title" className={clsx('!text-white')} style={textOutline}>
+				<StyledText type="title" className={clsx('!text-white', '[text-shadow:0_0_1px_#000000]')}>
 					{condition}
 				</StyledText>
 			</RoundView>

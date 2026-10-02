@@ -10,6 +10,7 @@ import { ItalianFlag } from '@nativeweather/ui/components/icons/settings/Italian
 import { PolishFlag } from '@nativeweather/ui/components/icons/settings/PolishFlag';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
+import { languageNames } from '../languageNames';
 
 export const LanguageSelect = () => {
 	const tolgee = useTolgee();
@@ -27,7 +28,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('en-US')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<EnglishFlag />}
-				title={t('language.english')}
+				title={languageNames['en-US']}
 				variant="check"
 				selected={currentLanguage === 'en-US'}
 				border={true}
@@ -36,7 +37,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('cs-CZ')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<CzechFlag />}
-				title={t('language.czech')}
+				title={languageNames['cs-CZ']}
 				variant="check"
 				selected={currentLanguage === 'cs-CZ'}
 			/>
@@ -44,7 +45,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('de-DE')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<GermanFlag />}
-				title={t('language.deutsch')}
+				title={languageNames['de-DE']}
 				variant="check"
 				selected={currentLanguage === 'de-DE'}
 			/>
@@ -52,7 +53,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('zh-CN')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<ChineseFlag />}
-				title={t('language.chinese')}
+				title={languageNames['zh-CN']}
 				variant="check"
 				selected={currentLanguage === 'zh-CN'}
 			/>
@@ -60,7 +61,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('ja-JP')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<JapaneseFlag />}
-				title={t('language.japanese')}
+				title={languageNames['ja-JP']}
 				variant="check"
 				selected={currentLanguage === 'ja-JP'}
 			/>
@@ -68,7 +69,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('fr-FR')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<FrenchFlag />}
-				title={t('language.french')}
+				title={languageNames['fr-FR']}
 				variant="check"
 				selected={currentLanguage === 'fr-FR'}
 			/>
@@ -76,7 +77,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('it-IT')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<ItalianFlag />}
-				title={t('language.italian')}
+				title={languageNames['it-IT']}
 				variant="check"
 				selected={currentLanguage === 'it-IT'}
 			/>
@@ -84,7 +85,7 @@ export const LanguageSelect = () => {
 				onPress={() => handleLanguageChange('pl-PL')}
 				iconbg="bg-black/20 dark:bg-black/60"
 				icon={<PolishFlag />}
-				title={t('language.polish')}
+				title={languageNames['pl-PL']}
 				variant="check"
 				selected={currentLanguage === 'pl-PL'}
 			/>

@@ -1,29 +1,27 @@
-import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { AboutButton } from '@nativeweather/ui/components/settings/items/AboutButton';
 import { AQIButton } from '@nativeweather/ui/components/settings/items/AQIButton';
 import { CompassButton } from '@nativeweather/ui/components/settings/items/CompassButton';
 import { FeedbackButton } from '@nativeweather/ui/components/settings/items/FeedbackButton';
 import { LanguageButton } from '@nativeweather/ui/components/settings/items/LanguageButton';
+import { LocalTimeToggle } from '@nativeweather/ui/components/settings/items/LocalTimeToggle';
 import { LocalWeatherToggle } from '@nativeweather/ui/components/settings/items/LocalWeatherToggle';
 import { TemperatureButton } from '@nativeweather/ui/components/settings/items/TemperatureButton';
 import { ThemeButton } from '@nativeweather/ui/components/settings/items/ThemeButton';
 import { UnitsButton } from '@nativeweather/ui/components/settings/items/UnitsButton';
-import { WorldTimeToggle } from '@nativeweather/ui/components/settings/items/WorldTimeToggle';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
-import { useState } from 'react';
 import pkg from '../../../../../apps/web/package.json';
 
 export const SettingsFeature = () => {
-	const [year] = useState(() => new Date().getFullYear());
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 	const { t } = useTranslate('settings');
 
 	return (
-		<View className={clsx('web:px-4 pb-4')}>
+		<View className={clsx('pb-4 web:px-4')}>
 			<StyledText type="screentitle" className={clsx('native:hidden mb-3')}>
 				{t('settings')}
 			</StyledText>
@@ -42,7 +40,7 @@ export const SettingsFeature = () => {
 				</RoundView>
 				<RoundView>
 					<LocalWeatherToggle />
-					<WorldTimeToggle />
+					<LocalTimeToggle />
 				</RoundView>
 				{isIOS && (
 					<RoundView>
@@ -60,7 +58,6 @@ export const SettingsFeature = () => {
 						{Platform.OS === 'web' && pkg.version}
 						{(Platform.OS === 'ios' || Platform.OS === 'android') && Constants.expoConfig?.version}
 					</StyledText>
-					<StyledText type="caption">© {year}</StyledText>
 				</View>
 			</View>
 		</View>

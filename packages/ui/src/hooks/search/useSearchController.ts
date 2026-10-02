@@ -96,6 +96,7 @@ export const useSearchController = () => {
 		if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
 
 		if (!searchValue.trim()) {
+			setSuggestions([]);
 			return;
 		}
 

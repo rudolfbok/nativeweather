@@ -30,7 +30,7 @@ export const CardContent = ({
 	region,
 }: CardContentProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
-	const [showWorldTime] = useStorageBoolean('showWorldTime');
+	const [showLocalTime] = useStorageBoolean('showWorldTime');
 	const [currentSource] = useStorageString('currentSource');
 	const mapConditions = useMapConditions();
 	const tolgee = useTolgee();
@@ -75,7 +75,7 @@ export const CardContent = ({
 			</View>
 			<View className={clsx('items-center')}>
 				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
-				{showWorldTime && displayTime && timeZone && (
+				{showLocalTime && displayTime && timeZone && (
 					<StyledText type="caption" className={clsx('!text-white opacity-70')}>
 						{getLocalTimeNow(timeZone)}
 					</StyledText>

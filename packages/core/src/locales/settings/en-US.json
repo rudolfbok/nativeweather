@@ -28,7 +28,6 @@
 		"placeholder": "Write your message here..",
 		"question": "Question",
 		"select": "Select message type",
-		"text": "Have a suggestion or noticed something that could be better? I'd really appreciate your feedback. Every message helps improve the app for everyone.",
 		"title": "Send feedback",
 		"toast": {
 			"error": "Couldn't send feedback",
@@ -37,15 +36,10 @@
 		"type": "Type"
 	},
 	"language": {
-		"polish": "Polish",
-		"italian": "Italian",
-		"french": "French",
-		"japanese": "Japanese",
-		"chinese": "Chinese (Simplified)",
-		"czech": "Czech",
-		"deutsch": "German",
-		"english": "English",
 		"title": "Language"
+	},
+	"legal": {
+		"title": "Legal"
 	},
 	"localweather": "Local weather",
 	"privacyPolicy": "Privacy Policy",
@@ -71,5 +65,5 @@
 	},
 	"version": "version",
 	"termsOfService": "Terms of Service",
-	"worldtime": "World time"
+	"localtime": "Local time"
 }

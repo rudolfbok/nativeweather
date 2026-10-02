@@ -3,7 +3,7 @@
 import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 const suggestedCities = [
 	{ name: 'Prague', href: '/prague' },
@@ -27,7 +27,15 @@ export const SuggestedCities = () => {
 				className="flex-row flex-wrap justify-center gap-2"
 			>
 				{suggestedCities.map(({ name, href }) => (
-					<StyledButton key={href} className="w-auto px-6 py-3" onPress={() => router.push(href)} text={name} />
+					<Pressable
+						key={href}
+						className="w-auto rounded-3xl bg-primaryblue px-4 py-3"
+						onPress={() => router.push(href)}
+					>
+						<StyledText type="body" className="!text-white">
+							{name}
+						</StyledText>
+					</Pressable>
 				))}
 			</View>
 		</View>

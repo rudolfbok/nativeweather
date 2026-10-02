@@ -72,6 +72,7 @@ RCT_REMAP_METHOD(getCurrentPosition,
 {
   CLLocation *location = locations.lastObject;
   if (!location) {
+    [manager stopUpdatingLocation];
     [self rejectWithCode:@"unavailable" message:@"Your Mac could not determine its location."];
     return;
   }
@@ -96,6 +97,7 @@ RCT_REMAP_METHOD(getCurrentPosition,
 
 - (void)rejectWithCode:(NSString *)code message:(NSString *)message
 {
+  [self.locationManager stopUpdatingLocation];
   RCTPromiseRejectBlock reject = self.reject;
   self.resolve = nil;
   self.reject = nil;

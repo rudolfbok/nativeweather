@@ -41,6 +41,7 @@ export default function TabLayout() {
 						backgroundColor: background,
 						paddingHorizontal: 0,
 					},
+					gestureEnabled: false,
 				}}
 			>
 				{weatherData && (
@@ -55,18 +56,14 @@ export default function TabLayout() {
 					</Stack.Toolbar>
 				)}
 				{weatherData && (
-					<Stack.Toolbar placement="right" backgroundColor="red">
+					<Stack.Toolbar placement="right">
 						<Stack.Toolbar.View hidesSharedBackground>
 							<Pressable
 								accessibilityLabel={t(isFavorite ? 'favorites.delete' : 'favorites.title')}
 								onPress={() => handleFavoriteToggle(extractCity(weatherData))}
 							>
 								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
-									<Star
-										color="#FFFFFF"
-										fill={isFavorite ? '#FFFFFF' : 'transparent'}
-										style={{ pointerEvents: 'none' }}
-									/>
+									<Star color="#FFFFFF" fill={isFavorite ? '#FFFFFF' : 'transparent'} />
 								</GlassView>
 							</Pressable>
 						</Stack.Toolbar.View>

@@ -1,10 +1,17 @@
 import { fetchWeatherOrThrow } from '@nativeweather/api/fetchWeather';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
 import type { LocalWeatherErrorKind } from './locationError';
-import { LocalWeatherError, toLocalWeatherError } from './locationError';
+import {
+	clearLocationRequestFailures,
+	getLocationRequestFailure,
+	isExpectedLocationError,
+	LocalWeatherError,
+	markLocationRequestFailed,
+	toLocalWeatherError,
+} from './locationError';
 import { NativeModules } from 'react-native';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface NativeLocation {
 	getCurrentPosition: () => Promise<{ latitude: number; longitude: number }>;
@@ -14,10 +21,15 @@ const nativeLocation = NativeModules.NWLocation as NativeLocation | undefined;
 
 export const useLocation = () => {
 	const [currentSource] = useStorageString('currentSource');
+	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const { setLocalWeatherData } = useLocalWeather();
 	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
 	const [locationReady, setLocationReady] = useState(false);
 	const isFetchingRef = useRef(false);
+
+	useEffect(() => {
+		if (!showLocalWeather) clearLocationRequestFailures();
+	}, [showLocalWeather]);
 
 	const getLocalWeather = useCallback(async () => {
 		if (isFetchingRef.current) return null;
@@ -28,6 +40,12 @@ export const useLocation = () => {
 
 		try {
 			if (!currentSource) throw new LocalWeatherError('source', 'No weather source is configured.');
+			const previousFailure = getLocationRequestFailure(currentSource);
+			if (previousFailure) {
+				setError(previousFailure);
+				setLocationReady(true);
+				return null;
+			}
 			if (!nativeLocation) throw new LocalWeatherError('unavailable', 'Location is not available on this Mac.');
 
 			await setLocalWeatherData(null);
@@ -52,8 +70,11 @@ export const useLocation = () => {
 			const nextError = nativeErrorKind
 				? new LocalWeatherError(nativeErrorKind, String(caughtError))
 				: toLocalWeatherError(caughtError);
+			if (isExpectedLocationError(nextError) && currentSource) {
+				markLocationRequestFailed(currentSource, nextError.kind);
+			}
 			setError(nextError.kind);
-			console.error('Local weather fetch failed:', caughtError);
+			if (!isExpectedLocationError(nextError)) console.error('Local weather fetch failed:', caughtError);
 			return null;
 		} finally {
 			isFetchingRef.current = false;

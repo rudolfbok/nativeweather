@@ -38,7 +38,7 @@ export const SearchResult = ({ index, onPress, city, region, country, isLast }: 
 			onPress={handlePress}
 			onPressIn={handlePressIn}
 			className={clsx(
-				'web:bg-secondarySystemBackground dark:hover:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground px-4 pt-4',
+				'px-4 pt-4 hover:bg-tertiarySystemBackground web:bg-systemBackground dark:hover:bg-tertiarySystemBackground_dark',
 				'active:!bg-tertiarySystemBackground active:dark:!bg-tertiarySystemBackground_dark'
 			)}
 		>

@@ -7,8 +7,8 @@ interface ModalNavigationProps {
 }
 
 export const useModalNavigation = ({ mobile, macos, web }: ModalNavigationProps) => {
-	if (Platform.OS === 'ios' || Platform.OS === 'android') return mobile;
+	if (Platform.OS === 'web') return web;
 	if (Platform.OS === 'macos') return macos;
 
-	return web;
+	return mobile;
 };

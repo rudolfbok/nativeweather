@@ -28,7 +28,6 @@
 		"placeholder": "Wpisz wiadomość…",
 		"question": "Pytanie",
 		"select": "Wybierz rodzaj wiadomości",
-		"text": "Masz pomysł lub zauważasz coś, co można poprawić? Podziel się swoją opinią. Każda wiadomość pomaga ulepszać aplikację dla wszystkich.",
 		"title": "Wyślij opinię",
 		"toast": {
 			"error": "Nie udało się wysłać opinii",
@@ -37,15 +36,10 @@
 		"type": "Rodzaj"
 	},
 	"language": {
-		"polish": "Polski",
-		"italian": "Włoski",
-		"french": "Francuski",
-		"japanese": "Japoński",
-		"chinese": "Chiński uproszczony",
-		"czech": "Czeski",
-		"deutsch": "Niemiecki",
-		"english": "Angielski",
 		"title": "Język"
+	},
+	"legal": {
+		"title": "Informacje prawne"
 	},
 	"localweather": "Pogoda w mojej lokalizacji",
 	"privacyPolicy": "Polityka prywatności",
@@ -71,5 +65,5 @@
 	},
 	"version": "Wersja",
 	"termsOfService": "Warunki korzystania",
-	"worldtime": "Czas na świecie"
+	"localtime": "Czas lokalny"
 }

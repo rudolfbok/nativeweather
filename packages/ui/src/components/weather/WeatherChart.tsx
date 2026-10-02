@@ -101,7 +101,7 @@ export const WeatherChart = ({
 					crosshair
 					tooltip={{ shared: true, anchor: 'pointer', placement: 'above', width: 64 }}
 					renderTooltip={({ x, y, width, height, xLabel, series }) => (
-						<G pointerEvents="none">
+						<G pointerEvents={Platform.OS === 'web' ? undefined : 'none'} className={clsx('web:pointer-events-none')}>
 							<Rect x={x} y={y + height - 48} width={width} height={48} rx={8} fill={surface} stroke={`${text}33`} />
 							<Text x={x + width / 2} y={y + height - 29} fill={text} fontSize={12} textAnchor="middle">
 								{xLabel}

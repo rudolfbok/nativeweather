@@ -28,7 +28,6 @@
 		"placeholder": "Sem napište zprávu..",
 		"question": "Otázka",
 		"select": "Zvolte typ zprávy",
-		"text": "Máte návrh nebo jste si všimli něčeho, co by mohlo být lepší? Opravdu ocením vaši zpětnou vazbu. Každá zpráva pomáhá zlepšovat aplikaci pro všechny.",
 		"title": "Poslat názor",
 		"toast": {
 			"error": "Názor se nepodařilo odeslat",
@@ -37,15 +36,10 @@
 		"type": "Typ"
 	},
 	"language": {
-		"polish": "Polština",
-		"italian": "Italština",
-		"french": "Francouzština",
-		"japanese": "Japonština",
-		"chinese": "Čínština (zjednodušená)",
-		"czech": "Čeština",
-		"deutsch": "Němčina",
-		"english": "Angličtina",
 		"title": "Jazyk"
+	},
+	"legal": {
+		"title": "Právní informace"
 	},
 	"localweather": "Místní počasí",
 	"privacyPolicy": "Ochrana osobních údajů",
@@ -71,5 +65,5 @@
 	},
 	"version": "verze",
 	"termsOfService": "Podmínky služby",
-	"worldtime": "Světový čas"
+	"localtime": "Místní čas"
 }

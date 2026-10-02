@@ -56,14 +56,11 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	return (
 		<View className={clsx('items-center pb-4')}>
 			<View className={clsx('w-full flex-1 gap-4')}>
-				<View className={clsx('ios:hidden flex gap-2 web:flex-1')}>
-					{!modal && (
-						<StyledText type="screentitle" className="macos:hidden">
-							{t('feedback.title')}
-						</StyledText>
-					)}
-					<StyledText type="body">{t('feedback.text')}</StyledText>
-				</View>
+				{!modal && (
+					<StyledText type="screentitle" className={clsx('ios:hidden macos:hidden')}>
+						{t('feedback.title')}
+					</StyledText>
+				)}
 				<View>
 					<View className={clsx('gap-3')}>
 						<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
@@ -88,7 +85,7 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 										{type ? t(`feedback.${type}`) : t('feedback.select')}
 									</StyledText>
 								</View>
-								{open ? <ChevronDown color={text} /> : <ChevronRight color={text} />}
+								<ChevronDown color={text} />
 							</Pressable>
 							{open && (
 								<View>

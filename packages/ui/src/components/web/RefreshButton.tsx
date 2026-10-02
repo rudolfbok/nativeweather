@@ -7,12 +7,5 @@ import { RefreshCw } from 'lucide-react-native';
 export const RefreshButton = () => {
 	const router = useRouter();
 
-	return (
-		<StyledButton
-			className="px-6 py-3"
-			icon={<RefreshCw color="#007AFF" size={22} />}
-			onPress={() => router.push('/')}
-			text="Refresh"
-		/>
-	);
+	return <StyledButton className="px-6 py-3" onPress={() => router.push('/')} text="Refresh" />;
 };

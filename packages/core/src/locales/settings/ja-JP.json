@@ -28,7 +28,6 @@
 		"placeholder": "メッセージを入力…",
 		"question": "質問",
 		"select": "メッセージの種類を選択",
-		"text": "ご提案や改善してほしい点はありますか？ぜひご意見をお聞かせください。いただいたメッセージは、アプリをより使いやすくするために役立てます。",
 		"title": "フィードバックを送信",
 		"toast": {
 			"error": "フィードバックを送信できませんでした",
@@ -37,15 +36,10 @@
 		"type": "種類"
 	},
 	"language": {
-		"polish": "ポーランド語",
-		"italian": "イタリア語",
-		"french": "フランス語",
-		"japanese": "日本語",
-		"chinese": "中国語（簡体字）",
-		"czech": "チェコ語",
-		"deutsch": "ドイツ語",
-		"english": "英語",
 		"title": "言語"
+	},
+	"legal": {
+		"title": "法的情報"
 	},
 	"localweather": "現在地の天気",
 	"privacyPolicy": "プライバシーポリシー",
@@ -71,5 +65,5 @@
 	},
 	"version": "バージョン",
 	"termsOfService": "利用規約",
-	"worldtime": "世界時計"
+	"localtime": "現地時間"
 }

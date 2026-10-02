@@ -32,7 +32,7 @@ export const SearchFeature = () => {
 			<Stack.SearchBar
 				ref={searchBarRef}
 				placeholder={t('search.searchbar.native')}
-				placement="automatic"
+				placement="stacked"
 				hideWhenScrolling={false}
 				obscureBackground={false}
 				onChangeText={(event) => setSearchValue(event.nativeEvent.text)}

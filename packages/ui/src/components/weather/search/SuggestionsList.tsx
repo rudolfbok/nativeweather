@@ -13,10 +13,10 @@ export const SuggestionsList = ({ suggestions, onSelect }: SuggestionsListProps)
 	const visibleSuggestions = Platform.OS === 'macos' ? suggestions.slice(0, 5) : suggestions;
 
 	return (
-		<View className={clsx('web:px-6 macos:mt-4 w-full items-center')}>
+		<View className={clsx('macos:mt-4 w-full items-center web:px-6')}>
 			<View
 				className={clsx(
-					'ios:bg-systemBackground bg-secondarySystemBackground web:mt-3 dark:bg-secondarySystemBackground_dark web:absolute w-full overflow-hidden rounded-3xl',
+					'ios:bg-systemBackground w-full overflow-hidden rounded-3xl bg-secondarySystemBackground web:absolute web:mt-3 dark:bg-secondarySystemBackground_dark',
 					border
 				)}
 			>

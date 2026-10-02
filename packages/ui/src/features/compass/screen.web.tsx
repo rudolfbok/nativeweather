@@ -231,16 +231,12 @@ export const CompassFeature = () => {
 					</div>
 				</div>
 			) : (
-				<View className={clsx('flex items-center gap-2')}>
+				<View className={clsx('flex items-center gap-4')}>
 					<View className="gap-2 md:w-1/2 lg:w-[40%]">
-						<StyledText type="sectiontitle">{t('compass.title')}</StyledText>
+						<StyledText type="screentitle">{t('compass.title')}</StyledText>
 						<StyledText type="body">{t('compass.text')}</StyledText>
 					</View>
-					<StyledButton
-						onPress={requestPermission}
-						text={t('compass.button.location')}
-						icon={<ArrowRight color="#007AFF" />}
-					/>
+					<StyledButton onPress={requestPermission} text={t('compass.button.location')} />
 				</View>
 			)}
 		</div>
