@@ -1,13 +1,11 @@
 'use client';
 
-import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { fetchWeather } from '@nativeweather/api/fetchWeather';
+import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
+import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
 import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWeather';
-import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
-import { fetchWeather } from '@nativeweather/api/fetchWeather';
-import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
@@ -25,7 +23,6 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const HomeFeature = () => {
-	const { t } = useTranslate('weather');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
@@ -176,12 +173,7 @@ export const HomeFeature = () => {
 				}
 			>
 				<View className={clsx('gap-2')}>
-					{showLocalWeather && (
-						<View className={clsx('gap-2')}>
-							<StyledText type="sectiontitle">{t('localweather.title')}</StyledText>
-							<LocalWeather error={localWeatherError} />
-						</View>
-					)}
+					{showLocalWeather && <LocalWeather error={localWeatherError} />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
 			</Animated.ScrollView>

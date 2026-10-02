@@ -295,8 +295,7 @@
 				"message": "Při načítání místního počasí došlo k neočekávané chybě."
 			},
 			"retry": "Zkusit znovu"
-		},
-		"title": "Místní počasí"
+		}
 	},
 	"maps": {
 		"layer": {

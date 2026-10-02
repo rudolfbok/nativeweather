@@ -136,7 +136,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('relative z-10 rounded-full bg-black/10 px-4 py-2', border)}>
+			<View className={clsx('relative z-10 rounded-full bg-white/10 px-4 py-2', border)}>
 				<StyledText type="title" className="!text-white" style={textOutline}>
 					{condition}
 				</StyledText>

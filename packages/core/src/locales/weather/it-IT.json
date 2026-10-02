@@ -295,8 +295,7 @@
 				"message": "Si è verificato un errore imprevisto durante il caricamento del meteo locale."
 			},
 			"retry": "Riprova"
-		},
-		"title": "Meteo locale"
+		}
 	},
 	"maps": {
 		"layer": {

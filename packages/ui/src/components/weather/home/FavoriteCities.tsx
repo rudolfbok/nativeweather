@@ -1,19 +1,19 @@
-import { useTranslate } from '@tolgee/react';
+import { border } from '@nativeweather/core/constants/border';
+import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
+import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
 import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
-import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Check, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
+import { EditIcon } from '../../icons/ui/EditIcon';
 import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
-import { EditIcon } from '../../icons/ui/EditIcon';
-import { border } from '@nativeweather/core/constants/border';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');

@@ -295,8 +295,7 @@
 				"message": "Something unexpected happened while loading local weather."
 			},
 			"retry": "Try again"
-		},
-		"title": "Local weather"
+		}
 	},
 	"maps": {
 		"layer": {

@@ -295,8 +295,7 @@
 				"message": "Podczas wczytywania pogody dla lokalizacji wystąpił nieoczekiwany błąd."
 			},
 			"retry": "Spróbuj ponownie"
-		},
-		"title": "Pogoda w mojej lokalizacji"
+		}
 	},
 	"maps": {
 		"layer": {

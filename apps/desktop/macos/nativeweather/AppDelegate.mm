@@ -3,6 +3,8 @@
 #import <React/RCTBundleURLProvider.h>
 #import <ReactAppDependencyProvider/RCTAppDependencyProvider.h>
 
+static const CGFloat kWindowControlInset = 14.0;
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
@@ -28,6 +30,43 @@
   self.window.collectionBehavior =
       NSWindowCollectionBehaviorFullScreenNone | NSWindowCollectionBehaviorFullScreenDisallowsTiling;
   [self.window standardWindowButton:NSWindowZoomButton].enabled = YES;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self positionWindowControls];
+  });
+}
+
+- (void)positionWindowControls
+{
+  NSButton *closeButton = [self.window standardWindowButton:NSWindowCloseButton];
+  NSButton *miniaturizeButton = [self.window standardWindowButton:NSWindowMiniaturizeButton];
+  NSButton *zoomButton = [self.window standardWindowButton:NSWindowZoomButton];
+  NSView *buttonContainer = closeButton.superview;
+
+  if (!buttonContainer || miniaturizeButton.superview != buttonContainer || zoomButton.superview != buttonContainer) {
+    return;
+  }
+
+  NSRect closeFrame = closeButton.frame;
+  const CGFloat targetY = NSMaxY(buttonContainer.bounds) - kWindowControlInset - NSHeight(closeFrame);
+  const CGFloat deltaX = kWindowControlInset - NSMinX(closeFrame);
+  const CGFloat deltaY = targetY - NSMinY(closeFrame);
+
+  for (NSButton *button in @[closeButton, miniaturizeButton, zoomButton]) {
+    NSRect frame = button.frame;
+    frame.origin.x += deltaX;
+    frame.origin.y += deltaY;
+    button.frame = frame;
+  }
+}
+
+- (void)windowDidResize:(NSNotification *)notification
+{
+  [self positionWindowControls];
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+  [self positionWindowControls];
 }
 
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize

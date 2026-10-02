@@ -1,11 +1,9 @@
-import { useTranslate } from '@tolgee/react';
+import { border } from '@nativeweather/core/constants/border';
+import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
 import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWeather';
-import { border } from '@nativeweather/core/constants/border';
-import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { useLocation } from '@nativeweather/ui/hooks/location/useLocation.macos';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
@@ -16,7 +14,6 @@ import { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 
 export const Sidebar = () => {
-	const { t } = useTranslate('weather');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [currentSource] = useStorageString('currentSource');
 	const favoriteHook = useFavoriteCities({ refresh: true });
@@ -41,13 +38,8 @@ export const Sidebar = () => {
 					<Settings color={text} />
 				</StyledPressable>
 			</View>
-			<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4 gap-4">
-				{showLocalWeather && locationReady && (
-					<View className="w-full gap-2">
-						<StyledText type="sectiontitle">{t('localweather.title')}</StyledText>
-						<LocalWeather error={localWeatherError} />
-					</View>
-				)}
+			<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4 gap-2">
+				{showLocalWeather && locationReady && <LocalWeather error={localWeatherError} />}
 				<FavoriteCities hook={favoriteHook} />
 			</ScrollView>
 			<View className="absolute bottom-6 right-6 z-20">

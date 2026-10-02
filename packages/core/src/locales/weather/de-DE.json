@@ -295,8 +295,7 @@
 				"message": "Beim Laden des Wetters am Standort ist ein unerwarteter Fehler aufgetreten."
 			},
 			"retry": "Erneut versuchen"
-		},
-		"title": "Wetter am Standort"
+		}
 	},
 	"maps": {
 		"layer": {
