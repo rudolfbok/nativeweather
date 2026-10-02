@@ -12,7 +12,8 @@ const normalizeSlug = (value: string) =>
 
 export const buildSlug = (weatherData: NormalizedData): string => {
 	const citySlug = normalizeSlug(weatherData.location.name);
-	const regionSlug = normalizeSlug(weatherData.location.region) || citySlug;
+	const regionSlug =
+		normalizeSlug(weatherData.location.region) || normalizeSlug(weatherData.location.country) || citySlug;
 	const code = countryCode(weatherData.location.country);
 
 	return `/${citySlug}?r=${encodeURIComponent(regionSlug)}&cr=${encodeURIComponent(code)}`;

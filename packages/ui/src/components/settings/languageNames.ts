@@ -6,5 +6,4 @@ export const languageNames: Record<string, string> = {
 	'fr-FR': 'Français',
 	'it-IT': 'Italiano',
 	'zh-CN': '简体中文',
-	'ja-JP': '日本語',
 };

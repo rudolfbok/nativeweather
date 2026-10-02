@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Beaufort scale",
 		"current": {
-			"direction": "Direction:",
-			"gust": "Gust:",
-			"speed": "Speed:",
+			"direction": "Direction",
+			"gust": "Gust",
+			"speed": "Speed",
 			"title": "Current wind data"
 		},
 		"description": "The Beaufort scale is a method of classifying wind strength based on its effects on the surrounding environment. It is used by meteorologists, sailors, and aviators around the world. It allows for quick and intuitive assessment of wind strength based on visible effects. The scale has 13 degrees (0-12), where each degree corresponds to a certain wind speed and characteristic conditions on land and at sea.",

@@ -1,10 +1,9 @@
-import { useTolgee, useTranslate } from '@tolgee/react';
+import { useTolgee } from '@tolgee/react';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 import { CzechFlag } from '@nativeweather/ui/components/icons/settings/CzechFlag';
 import { EnglishFlag } from '@nativeweather/ui/components/icons/settings/EnglishFlag';
 import { GermanFlag } from '@nativeweather/ui/components/icons/settings/GermanFlag';
 import { ChineseFlag } from '@nativeweather/ui/components/icons/settings/ChineseFlag';
-import { JapaneseFlag } from '@nativeweather/ui/components/icons/settings/JapaneseFlag';
 import { FrenchFlag } from '@nativeweather/ui/components/icons/settings/FrenchFlag';
 import { ItalianFlag } from '@nativeweather/ui/components/icons/settings/ItalianFlag';
 import { PolishFlag } from '@nativeweather/ui/components/icons/settings/PolishFlag';
@@ -14,7 +13,6 @@ import { languageNames } from '../languageNames';
 
 export const LanguageSelect = () => {
 	const tolgee = useTolgee();
-	const { t } = useTranslate('settings');
 	const [currentLanguage, setCurrentLanguage] = useStorageString('currentLang');
 
 	const handleLanguageChange = async (lang: string) => {
@@ -56,14 +54,6 @@ export const LanguageSelect = () => {
 				title={languageNames['zh-CN']}
 				variant="check"
 				selected={currentLanguage === 'zh-CN'}
-			/>
-			<SettingsItem
-				onPress={() => handleLanguageChange('ja-JP')}
-				iconbg="bg-black/20 dark:bg-black/60"
-				icon={<JapaneseFlag />}
-				title={languageNames['ja-JP']}
-				variant="check"
-				selected={currentLanguage === 'ja-JP'}
 			/>
 			<SettingsItem
 				onPress={() => handleLanguageChange('fr-FR')}

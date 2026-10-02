@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Beaufortskala",
 		"current": {
-			"direction": "Richtung:",
-			"gust": "Böen:",
-			"speed": "Geschwindigkeit:",
+			"direction": "Richtung",
+			"gust": "Böen",
+			"speed": "Geschwindigkeit",
 			"title": "Aktuelle Winddaten"
 		},
 		"description": "Die Beaufortskala ordnet die Windstärke anhand ihrer Auswirkungen auf die Umgebung ein. Sie wird weltweit in der Meteorologie, der Schifffahrt und der Luftfahrt verwendet. Sichtbare Auswirkungen ermöglichen eine schnelle Einschätzung der Windstärke. Die Skala umfasst 13 Stufen von 0 bis 12. Jede Stufe entspricht einem bestimmten Geschwindigkeitsbereich und typischen Auswirkungen an Land und auf See.",

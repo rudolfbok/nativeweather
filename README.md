@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/logo_dark.png" width="200">
-    <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/logo_light.png" width="200">
-    <img alt="nativeweather logo" src="packages/@nativeweather/ui/assets/readme/logo_light.png" width="200">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo_dark.png" width="200">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/logo_light.png" width="200">
+    <img alt="nativeweather logo" src="docs/images/logo_light.png" width="200">
   </picture>
 </p>
 
@@ -24,30 +24,6 @@
 
 [![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](https://pnpm.io/) [![Turborepo](https://img.shields.io/badge/Turborepo-EF4444.svg?logo=turborepo&logoColor=white)](https://turbo.build/repo)
 
-</div>
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/web_1_dark.png" width="600">
-    <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/web_1_light.png" width="600">
-    <img alt="Web screenshot" src="packages/@nativeweather/ui/assets/readme/web_1_light.png" width="600">
-  </picture>
-</div>
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="packages/@nativeweather/ui/assets/readme/ios_1.png" width="195">
-  <source media="(prefers-color-scheme: light)" srcset="packages/@nativeweather/ui/assets/readme/ios_3.png" width="195">
-  <img alt="iOS screenshot" src="packages/@nativeweather/ui/assets/readme/ios_1.png" width="195">
-</picture>
-<!-- <img src="packages/@nativeweather/ui/assets/readme/ios_3.png" alt="iOS screeshot no. 1" width="195" /> -->
-&nbsp;
-<img src="packages/@nativeweather/ui/assets/readme/ios_4.png" alt="iOS screeshot no. 2" width="195" />
-&nbsp;
-<img src="packages/@nativeweather/ui/assets/readme/ios_2.png" alt="iOS screeshot no. 3" width="195" />
-<!-- &nbsp;
-<img src="packages/@nativeweather/ui/assets/readme/web_1.png" alt="iOS screeshot no. 2" width="195" /> -->
 </div>
 
 <!-- <br/><br/>

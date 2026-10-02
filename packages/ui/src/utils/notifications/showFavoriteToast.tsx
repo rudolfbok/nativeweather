@@ -1,5 +1,5 @@
-import * as Burnt from 'burnt';
-import { Star, StarOff } from 'lucide-react-native';
+import { NotificationToast } from '@nativeweather/ui/components/common/notifications/NotificationToast';
+import { customToast } from './sonner';
 
 interface ShowFavoriteToastProps {
 	message: string;
@@ -7,14 +7,5 @@ interface ShowFavoriteToastProps {
 }
 
 export const showFavoriteToast = ({ message, type }: ShowFavoriteToastProps) => {
-	const starIcon =
-		type === 'add' ? <Star size={22} color="#FE9804" fill="#FE9804" /> : <StarOff size={22} color="#FE9804" />;
-	const iosStarIconName = type === 'add' ? 'star.fill' : 'star.slash';
-
-	Burnt.toast({
-		preset: 'custom',
-		title: message,
-		from: 'bottom',
-		icon: { ios: { name: iosStarIconName, color: '#FE9804' }, web: starIcon },
-	});
+	customToast(<NotificationToast message={message} type={type} />);
 };

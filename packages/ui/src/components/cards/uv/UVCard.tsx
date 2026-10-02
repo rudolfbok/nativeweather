@@ -1,12 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import UVScale from '@nativeweather/ui/assets/uvscale.png';
+import { GradientScale } from '@nativeweather/ui/components/weather/GradientScale';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { SolitoImage } from 'solito/image';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
 import { UVIcon } from '@nativeweather/ui/components/icons/main/UVIcon';
@@ -55,7 +54,7 @@ export const UVCard = ({ data, showBackdrop, onCloseParent }: UVCardProps) => {
 				<View className={clsx('relative mt-3 flex w-[100%] items-center justify-center')}>
 					{roundUV !== 0 && (
 						<Text
-							className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
+							className={clsx('absolute -top-[13px] z-10 text-xl font-bold text-label dark:text-label_dark')}
 							style={{
 								left: `${scaleUV}%`,
 							}}
@@ -63,8 +62,8 @@ export const UVCard = ({ data, showBackdrop, onCloseParent }: UVCardProps) => {
 							|
 						</Text>
 					)}
-					<View className={clsx('h-[3px] w-full')}>
-						<SolitoImage alt="Air quality scale" src={UVScale} fill style={{ objectFit: 'fill' }} contentFit="fill" />
+					<View className={clsx('h-2 w-full')}>
+						<GradientScale type="uv" label="UV index scale" />
 					</View>
 				</View>
 			}

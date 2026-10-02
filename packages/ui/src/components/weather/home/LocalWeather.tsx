@@ -1,6 +1,7 @@
 'use client';
 
 import { border } from '@nativeweather/core/constants/border';
+import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import type { LocalWeatherErrorKind } from '@nativeweather/ui/hooks/location/locationError';
@@ -58,7 +59,7 @@ export const LocalWeather = ({ error = null }: { error?: LocalWeatherErrorKind |
 				tempF={localWeatherData.current.tempF}
 				displayTime={true}
 				timeZone={localWeatherData.location.tzId}
-				region={localWeatherData.location.region}
+				region={extractCity(localWeatherData).region}
 				tintColor={weatherLandscapeBg({
 					isDay: localWeatherData.current.isDay,
 					code: localWeatherData.current.condition.code,

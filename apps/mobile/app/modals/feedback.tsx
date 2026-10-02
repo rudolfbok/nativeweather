@@ -4,7 +4,7 @@ import { ModalScrollView } from '@nativeweather/ui/components/common/modal/Modal
 export default function FeedbackModalScreen() {
 	return (
 		<ModalScrollView>
-			<FeedbackFeature modal={true} />
+			<FeedbackFeature />
 		</ModalScrollView>
 	);
 }

@@ -1,4 +1,5 @@
 import { border } from '@nativeweather/core/constants/border';
+import { getCityRegion } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
@@ -66,7 +67,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 								tempF={weather.current.tempF}
 								displayTime={true}
 								timeZone={weather.location.tzId}
-								region={city.region}
+								region={getCityRegion(city)}
 								tintColor={tintColor}
 							/>
 							{showDeleteCity && (

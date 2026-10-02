@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Scala Beaufort",
 		"current": {
-			"direction": "Direzione:",
-			"gust": "Raffiche:",
-			"speed": "Velocità:",
+			"direction": "Direzione",
+			"gust": "Raffiche",
+			"speed": "Velocità",
 			"title": "Dati attuali del vento"
 		},
 		"description": "La scala Beaufort classifica la forza del vento in base agli effetti sull’ambiente circostante. È usata in tutto il mondo in meteorologia, navigazione e aviazione. Permette di stimare rapidamente la forza del vento osservandone gli effetti. Comprende tredici gradi, da 0 a 12, ciascuno corrispondente a un intervallo di velocità e a condizioni caratteristiche sulla terraferma e in mare.",

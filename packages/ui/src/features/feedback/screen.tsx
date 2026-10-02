@@ -1,18 +1,18 @@
 'use client';
 
-import { useTranslate } from '@tolgee/react';
+import { border } from '@nativeweather/core/constants/border';
 import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
-import { Bug, Check, ChevronDown, ChevronRight, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
+import { Bug, Check, ChevronDown, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
-import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
-import { border } from '@nativeweather/core/constants/border';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 
-export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
+export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
 	const { text } = useThemeColors();
 	const [open, setOpen] = useState(false);
@@ -56,17 +56,12 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	return (
 		<View className={clsx('items-center pb-4')}>
 			<View className={clsx('w-full flex-1 gap-4')}>
-				{!modal && (
-					<StyledText type="screentitle" className={clsx('ios:hidden macos:hidden')}>
-						{t('feedback.title')}
-					</StyledText>
-				)}
 				<View>
 					<View className={clsx('gap-3')}>
-						<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
+						{/* <StyledText type="sectiontitle">{t('feedback.type')}</StyledText> */}
 						<View
 							className={clsx(
-								'w-full overflow-hidden rounded-3xl bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark',
+								'w-full overflow-hidden rounded-3xl bg-systemBackground dark:bg-secondarySystemBackground_dark',
 								border
 							)}
 						>
@@ -133,7 +128,7 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 							textAlignVertical="top"
 							placeholderTextColor="#8E8E93"
 							className={clsx(
-								'label h-[200px] rounded-3xl bg-secondarySystemBackground p-4 text-base outline-none dark:bg-secondarySystemBackground_dark dark:text-label_dark',
+								'label h-[200px] rounded-3xl bg-systemBackground p-4 text-base outline-none dark:bg-secondarySystemBackground_dark dark:text-label_dark',
 								border
 							)}
 						/>

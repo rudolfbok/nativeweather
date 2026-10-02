@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Beaufortova škála",
 		"current": {
-			"direction": "Směr:",
-			"gust": "V nárazech:",
-			"speed": "Rychlost:",
+			"direction": "Směr",
+			"gust": "V nárazech",
+			"speed": "Rychlost",
 			"title": "Aktuální údaje o větru"
 		},
 		"description": "Beaufortova škála je způsob klasifikace síly větru podle jeho účinků na okolní prostředí. Je používána meteorology, námořníky a letci po celém světě. Umožňuje rychlé a intuitivní hodnocení síly větru podle viditelných účinků. Škála obsahuje 13 stupňů (0-12), kde každý stupeň odpovídá určité rychlosti větru a charakteristickým projevům v krajině i na moři. ",

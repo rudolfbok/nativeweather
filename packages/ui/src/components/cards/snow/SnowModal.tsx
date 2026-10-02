@@ -2,13 +2,16 @@ import { useTranslate } from '@tolgee/react';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
 import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
+import { WeatherChart } from '@nativeweather/ui/components/weather/WeatherChart';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
 export const SnowModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
+	const { weatherData } = useWeather();
 	const switchUnits = (cm: string, inches: string) => (currentUnits === 'metric' ? cm + 'cm' : inches + 'in');
 
 	const snowChanceValues = [
@@ -69,6 +72,18 @@ export const SnowModal = () => {
 
 	return (
 		<View className={clsx('gap-2')}>
+			{weatherData && (
+				<WeatherChart
+					forecastDays={weatherData.forecast.forecastday}
+					currentTimeEpoch={weatherData.location.localtimeEpoch}
+					timeZone={weatherData.location.tzId}
+					getValue={(hour) => Math.round(hour.chanceOfSnow / 5) * 5}
+					seriesLabel={t('snow.title')}
+					maxValue={100}
+					valueSuffix="%"
+					color="#3796B8"
+				/>
+			)}
 			<ContentRow title={t('snow.chance.title')}>
 				<StyledText type="body">{t('snow.chance.description')}</StyledText>
 			</ContentRow>

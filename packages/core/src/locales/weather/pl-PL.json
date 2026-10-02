@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Skala Beauforta",
 		"current": {
-			"direction": "Kierunek:",
-			"gust": "Porywy:",
-			"speed": "Prędkość:",
+			"direction": "Kierunek",
+			"gust": "Porywy",
+			"speed": "Prędkość",
 			"title": "Aktualne dane wiatru"
 		},
 		"description": "Skala Beauforta klasyfikuje siłę wiatru na podstawie jego wpływu na otoczenie. Jest używana na całym świecie w meteorologii, żegludze i lotnictwie. Pozwala szybko ocenić siłę wiatru na podstawie widocznych skutków. Obejmuje trzynaście stopni, od 0 do 12, z których każdy odpowiada określonemu zakresowi prędkości i typowym warunkom na lądzie i morzu.",

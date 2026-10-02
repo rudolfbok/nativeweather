@@ -1,6 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import EUAQIScale from '@nativeweather/ui/assets/euaqiscale.png';
-import USAQIScale from '@nativeweather/ui/assets/usaqiscale.png';
+import { GradientScale } from '@nativeweather/ui/components/weather/GradientScale';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
@@ -12,7 +11,6 @@ import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { SolitoImage } from 'solito/image';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
 import { border } from '@nativeweather/core/constants/border';
@@ -63,7 +61,7 @@ export const AirQuality = ({ className }: { className?: string }) => {
 				<CardHeader icon={<AirQualityIcon />} header={t('airquality.title')} />
 				<View className={clsx('native:my-2 w-full')}>
 					<Text
-						className={clsx('text-label dark:text-label_dark absolute -top-[13px] z-10 text-xl font-bold')}
+						className={clsx('absolute -top-[13px] z-10 text-xl font-bold text-label dark:text-label_dark')}
 						style={{
 							left: aq ? `${Math.min(currentAQI === 'EU' ? aq.european_aqi : (aq.us_aqi / 300) * 100, 100)}%` : '0%',
 							zIndex: 20,
@@ -71,14 +69,8 @@ export const AirQuality = ({ className }: { className?: string }) => {
 					>
 						|
 					</Text>
-					<View className={clsx('h-[3px] w-full')}>
-						<SolitoImage
-							alt="Air quality scale"
-							src={currentAQI === 'EU' ? EUAQIScale : USAQIScale}
-							fill
-							style={{ objectFit: 'fill' }}
-							contentFit="fill"
-						/>
+					<View className={clsx('h-2 w-full')}>
+						<GradientScale type={currentAQI === 'EU' ? 'eu-aqi' : 'us-aqi'} label="Air quality scale" />
 					</View>
 				</View>
 				<View className={clsx('flex-row items-center justify-between')}>

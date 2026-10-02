@@ -9,7 +9,7 @@ import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { useTranslate } from '@tolgee/react';
-import * as Burnt from 'burnt';
+import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
 import { useHeaderHeight, useIsFocused } from 'expo-router/react-navigation';
@@ -123,17 +123,9 @@ export const WeatherFeature = () => {
 
 			setWeatherData(refreshedData);
 
-			Burnt.toast({
-				preset: 'done',
-				title: t('toast.refreshed'),
-				from: 'bottom',
-			});
+			showToast({ message: t('toast.refreshed'), preset: 'done' });
 		} catch {
-			Burnt.toast({
-				preset: 'error',
-				title: t('toast.notrefreshed'),
-				from: 'bottom',
-			});
+			showToast({ message: t('toast.notrefreshed'), preset: 'error' });
 		} finally {
 			refreshInFlight.current = false;
 			refreshLocked.value = false;

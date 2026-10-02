@@ -34,7 +34,7 @@ export const FeedbackButton = () => {
 					header={t('feedback.title')}
 					onClose={() => setShowFeedbackModal(false)}
 				>
-					<FeedbackFeature modal={true} />
+					<FeedbackFeature />
 				</StyledModal>
 			)}
 		</>

@@ -73,6 +73,7 @@ export const countryCode = (name: string): string => {
 		Guyana: 'gy',
 		Haiti: 'ht',
 		Honduras: 'hn',
+		'Hong Kong': 'hk',
 		Hungary: 'hu',
 		Iceland: 'is',
 		India: 'in',

@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
 		'react-native-worklets',
 		'react-native-svg',
 		'nativewind',
-		'burnt',
+		'sonner',
 		'expo-modules-core',
 		'@nativeweather/ui',
 		'@nativeweather/core',

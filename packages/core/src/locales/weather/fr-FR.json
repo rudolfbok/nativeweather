@@ -484,9 +484,9 @@
 	"wind": {
 		"beaufortscale": "Échelle de Beaufort",
 		"current": {
-			"direction": "Direction :",
-			"gust": "Rafales :",
-			"speed": "Vitesse :",
+			"direction": "Direction",
+			"gust": "Rafales",
+			"speed": "Vitesse",
 			"title": "Données actuelles du vent"
 		},
 		"description": "L’échelle de Beaufort classe la force du vent selon ses effets sur l’environnement. Elle est utilisée dans le monde entier en météorologie, en navigation et en aviation. Elle permet d’estimer rapidement la force du vent à partir de ses effets visibles. Elle comprend treize degrés, de 0 à 12, chacun correspondant à une plage de vitesse et à des conditions caractéristiques sur terre et en mer.",

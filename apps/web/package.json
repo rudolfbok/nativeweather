@@ -16,7 +16,6 @@
 		"@nativeweather/core": "workspace:*",
 		"@nativeweather/types": "workspace:*",
 		"@nativeweather/ui": "workspace:*",
-		"burnt": "^0.13.0",
 		"clsx": "^2.1.1",
 		"embla-carousel-react": "^8.6.0",
 		"gsap": "^3.14.2",

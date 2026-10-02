@@ -4,6 +4,7 @@ import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { TolgeeProvider } from '@nativeweather/ui/provider/TolgeeProvider';
 import { initStorageDefaults } from '@nativeweather/core/database/initStorageDefaults';
 import { initThemeFromStorage } from '@nativeweather/core/database/initTheme';
+import { Toaster } from '@nativeweather/ui/components/common/notifications/Toaster';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
@@ -36,6 +37,7 @@ export default function RootLayout() {
 						<Stack.Screen name="modals" options={{ headerShown: false, presentation: 'modal' }} />
 					</Stack>
 				</ThemeProvider>
+				<Toaster />
 			</GestureHandlerRootView>
 		</TolgeeProvider>
 	);
