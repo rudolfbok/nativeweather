@@ -10,9 +10,11 @@ import { useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
 import { border } from '@nativeweather/core/constants/border';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 
 export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	const { t } = useTranslate('settings');
+	const { text } = useThemeColors();
 	const [open, setOpen] = useState(false);
 	const [type, setType] = useState<'' | 'bug' | 'feature' | 'message' | 'question'>('');
 	const [message, setMessage] = useState('');
@@ -54,7 +56,7 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 	return (
 		<View className={clsx('items-center pb-4')}>
 			<View className={clsx('w-full flex-1 gap-4')}>
-				<View className={clsx('ios:hidden web:flex-1 flex gap-2')}>
+				<View className={clsx('ios:hidden flex gap-2 web:flex-1')}>
 					{!modal && (
 						<StyledText type="screentitle" className="macos:hidden">
 							{t('feedback.title')}
@@ -67,16 +69,16 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 						<StyledText type="sectiontitle">{t('feedback.type')}</StyledText>
 						<View
 							className={clsx(
-								'bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark w-full overflow-hidden rounded-3xl',
-								open && border
+								'w-full overflow-hidden rounded-3xl bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark',
+								border
 							)}
 						>
 							<Pressable
 								onPress={() => setOpen((prev) => !prev)}
 								className={clsx(
-									'hover:dark:bg-tertiarySystemBackground_dark hover:bg-tertiarySystemBackground flex-row items-center justify-between gap-2 overflow-hidden rounded-3xl p-4',
-									!open && border,
-									open && '!rounded-bl-none !rounded-br-none'
+									'flex-row items-center justify-between gap-2 p-4 hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark',
+									!open && 'border-transparent',
+									open && 'rounded-b-none'
 								)}
 								style={{ cursor: 'pointer' }}
 							>
@@ -86,38 +88,38 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 										{type ? t(`feedback.${type}`) : t('feedback.select')}
 									</StyledText>
 								</View>
-								{open ? <ChevronDown color="#007AFF" /> : <ChevronRight color="#007AFF" />}
+								{open ? <ChevronDown color={text} /> : <ChevronRight color={text} />}
 							</Pressable>
 							{open && (
 								<View>
-								{(['bug', 'feature', 'message', 'question'] as const).map((variant) => (
-									<StyledPressable
-										key={variant}
-										onPress={() => {
-											setType(variant);
-											setOpen(false);
-										}}
-										className={clsx('flex-row items-center gap-4 p-4')}
-									>
-										<View className="h-6 w-6 items-center justify-center">
-											{variant === 'bug' ? (
-												<Bug color="#007AFF" />
-											) : variant === 'feature' ? (
-												<Cog color="#007AFF" />
-											) : variant === 'message' ? (
-												<MessageCircle color="#007AFF" />
-											) : (
-												<CircleQuestionMark color="#007AFF" />
-											)}
-										</View>
-										<View className="flex-1">
-											<StyledText type="body">{t(`feedback.${variant}`)}</StyledText>
-										</View>
-										<View className="h-6 w-6 items-center justify-center">
-											{type === variant && <Check color="#007AFF" size={20} />}
-										</View>
-									</StyledPressable>
-								))}
+									{(['bug', 'feature', 'message', 'question'] as const).map((variant) => (
+										<StyledPressable
+											key={variant}
+											onPress={() => {
+												setType(variant);
+												setOpen(false);
+											}}
+											className={clsx('flex-row items-center gap-4 p-4')}
+										>
+											<View className="h-6 w-6 items-center justify-center">
+												{variant === 'bug' ? (
+													<Bug color="#007AFF" />
+												) : variant === 'feature' ? (
+													<Cog color="#007AFF" />
+												) : variant === 'message' ? (
+													<MessageCircle color="#007AFF" />
+												) : (
+													<CircleQuestionMark color="#007AFF" />
+												)}
+											</View>
+											<View className="flex-1">
+												<StyledText type="body">{t(`feedback.${variant}`)}</StyledText>
+											</View>
+											<View className="h-6 w-6 items-center justify-center">
+												{type === variant && <Check color={text} size={20} />}
+											</View>
+										</StyledPressable>
+									))}
 								</View>
 							)}
 						</View>
@@ -134,7 +136,7 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 							textAlignVertical="top"
 							placeholderTextColor="#8E8E93"
 							className={clsx(
-								'bg-secondarySystemBackground dark:bg-secondarySystemBackground_dark label dark:text-label_dark h-[200px] rounded-3xl p-4 text-base outline-none',
+								'label h-[200px] rounded-3xl bg-secondarySystemBackground p-4 text-base outline-none dark:bg-secondarySystemBackground_dark dark:text-label_dark',
 								border
 							)}
 						/>
@@ -144,7 +146,7 @@ export const FeedbackFeature = ({ modal = false }: { modal?: boolean }) => {
 							onPress={handleSubmit}
 							text={loading ? t('feedback.button.sending') : t('feedback.button.send')}
 
-							// icon={loading ? <ActivityIndicator size="small" color="#007AFF" /> : <SendHorizonal color="#007AFF" />}
+							// icon={loading ? <ActivityIndicator size="small" color={text} /> : <SendHorizonal color={text} />}
 						/>
 					</View>
 				</View>

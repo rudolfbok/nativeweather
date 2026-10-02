@@ -17,7 +17,7 @@ const MapNavigationButton = ({
 	<StyledPressable
 		onPress={onPress}
 		onPressIn={onPressIn}
-		className={clsx('ios:p-3 items-center rounded-full p-2.5', border)}
+		className={clsx('ios:p-3 items-center rounded-full p-2', border)}
 	>
 		{icon}
 	</StyledPressable>
@@ -35,7 +35,7 @@ export const MapNavigationControls = ({
 	onInteraction?: () => void;
 }) => {
 	const { text } = useThemeColors();
-	const iconProps = { color: Platform.OS === 'ios' ? 'black' : text, size: 22, strokeWidth: 2.5 };
+	const iconProps = { color: Platform.OS === 'ios' ? 'black' : text, size: 24, strokeWidth: 2.5 };
 
 	return (
 		<View className="ios:top-6 ios:left-6 absolute left-4 top-4 gap-2">

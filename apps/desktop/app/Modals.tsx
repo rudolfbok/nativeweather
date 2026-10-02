@@ -40,7 +40,11 @@ import { AboutFeature } from '@nativeweather/ui/features/about/screen';
 import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
 import { DailyForecastMain } from '@nativeweather/ui/components/weather/daily/DailyForecastMain';
 import { DaysToggle } from '@nativeweather/ui/components/weather/daily/DaysToggle';
-import { ModalScreen, SettingsModalScreen, useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import {
+	ModalScreen,
+	SettingsModalScreen,
+	useNavigationScreen,
+} from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { WeatherAlert } from '@nativeweather/types/weatherAPI';
@@ -65,7 +69,7 @@ const ModalContent = ({
 	goBackHeader?: boolean;
 	goBackOnPress?: (event: GestureResponderEvent) => void;
 }) => (
-	<View className="w-full flex-1 pt-4 xl:px-24 2xl:px-56">
+	<View className="w-full flex-1 pt-4">
 		<ModalHeader {...headerProps} daysToggle={daysToggle} showBack={goBackHeader} onBackPress={goBackOnPress} />
 		<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={true}>
 			{children}

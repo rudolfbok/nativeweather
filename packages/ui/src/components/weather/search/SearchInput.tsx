@@ -33,7 +33,7 @@ export const SearchInput = ({
 	return (
 		<RoundView
 			className={clsx(
-				'bg-tertiarySystemBackground dark:bg-secondarySystemBackground_dark w-full flex-row items-center justify-center px-4',
+				'w-full flex-row items-center justify-center bg-tertiarySystemBackground px-4 dark:bg-secondarySystemBackground_dark',
 				isFocused && '!border-primaryblue'
 			)}
 		>
@@ -51,7 +51,7 @@ export const SearchInput = ({
 				onFocus={onFocus}
 				onBlur={onBlur}
 				className={clsx(
-					'text-label web:h-11 dark:text-label_dark mx-2 flex h-14 flex-1 flex-row truncate text-[16px] leading-[20px] outline-none'
+					'mx-2 flex h-14 flex-1 flex-row truncate text-[16px] leading-[20px] text-label outline-none web:h-11 dark:text-label_dark'
 				)}
 			/>
 			{searchValue.length > 0 && (

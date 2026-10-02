@@ -9,11 +9,11 @@ interface StyledTextProps extends TextProps {
 }
 
 const textStyles = {
-	screentitle: 'text-4xl web:text-xl font-bold',
+	screentitle: 'text-4xl web:text-xl font-bold macos:font-semibold',
 	herotitle: 'text-4xl web:text-2xl web:md:text-3xl font-medium max-xs:text-xl',
 	display: 'text-5xl web:text-4xl max-xs:text-3xl',
 	locationmeta: 'text-2xl web:text-lg web:md:text-xl opacity-70 max-xs:text-base',
-	sectiontitle: 'text-xl web:text-base web:md:text-lg font-semibold native:font-bold max-xs:text-[15px]',
+	sectiontitle: 'text-xl web:text-base web:md:text-lg font-semibold max-xs:text-[15px]',
 	title: 'text-xl web:text-lg font-semibold max-xs:text-[16px]',
 	body: 'text-lg web:text-base max-xs:text-base max-xs:text-[14px]',
 	caption: 'text-base web:text-sm',

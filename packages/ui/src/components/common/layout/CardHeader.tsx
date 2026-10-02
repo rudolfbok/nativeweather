@@ -15,7 +15,7 @@ export const CardHeader = ({ header, icon, underline, className }: CardHeaderPro
 			{icon}
 			<StyledText
 				type="title"
-				className={clsx('min-w-0 flex-1 line-clamp-1 truncate', underline && 'web:hover:underline')}
+				className={clsx('line-clamp-1 min-w-0 flex-1 truncate', underline && 'web:hover:underline')}
 				numberOfLines={1}
 				ellipsizeMode="tail"
 			>

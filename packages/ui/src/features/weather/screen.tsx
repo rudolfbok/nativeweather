@@ -1,12 +1,14 @@
-import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
-import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { textOutline } from '@nativeweather/core/constants/textOutline';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSkeleton';
+import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
+import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useTranslate } from '@tolgee/react';
 import * as Burnt from 'burnt';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
@@ -26,9 +28,7 @@ import Animated, {
 	useSharedValue,
 	withTiming,
 } from 'react-native-reanimated';
-import { textOutline } from '@nativeweather/core/constants/textOutline';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ErrorIcon } from '@nativeweather/ui/components/icons/ui/ErrorIcon';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
@@ -169,14 +169,7 @@ export const WeatherFeature = () => {
 	};
 
 	if (!weatherData) {
-		return (
-			<View className={clsx('flex-1 items-center justify-center gap-4')}>
-				<ErrorIcon />
-				<StyledText type="body" className="text-center font-semibold">
-					Weather couldnt be fetched. Please check your internet connection and try again.
-				</StyledText>
-			</View>
-		);
+		return <HeroSkeleton />;
 	}
 
 	return (

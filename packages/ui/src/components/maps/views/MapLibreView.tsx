@@ -3,7 +3,12 @@ import type { CameraRef, MapProps, MapRef } from '@maplibre/maplibre-react-nativ
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { border } from '@nativeweather/core/constants/border';
-import { getBaseMapUrl, getWeatherTileUrl, MapLoadStatus, weatherRasterPaint } from '@nativeweather/core/constants/weatherMap';
+import {
+	getBaseMapUrl,
+	getWeatherTileUrl,
+	MapLoadStatus,
+	weatherRasterPaint,
+} from '@nativeweather/core/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
 import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
@@ -156,7 +161,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
 					<View
 						className={clsx(
-							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
+							'flex-row items-center gap-3 rounded-full bg-systemBackground px-5 py-3 dark:bg-secondarySystemBackground_dark',
 							border
 						)}
 					>
@@ -168,7 +173,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 				</View>
 			)}
 			{status === 'error' && (
-				<View className="bg-systemBackground/90 dark:bg-systemBackground_dark/90 absolute inset-0 items-center justify-center p-6">
+				<View className="absolute inset-0 items-center justify-center bg-systemBackground/90 p-6 dark:bg-systemBackground_dark/90">
 					<StyledText type="body" className="text-center font-semibold">
 						{t('maps.loadError')}
 					</StyledText>

@@ -30,8 +30,6 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 	const [currentSource] = useStorageString('currentSource');
 	const [favoriteCitiesValue] = useStorageString('favoriteCities');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
-	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
-	const setLocalWeatherData = useLocalWeather((state) => state.setLocalWeatherData);
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
 	const favoriteCount = favoriteCitiesValue === undefined ? 0 : getFavoriteCities().length;
 	const [loading, setLoading] = useState(refresh);
@@ -49,6 +47,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 			const cities = getFavoriteCities();
 			let localRefreshFailed = false;
 
+			const localWeatherData = useLocalWeather.getState().localWeatherData;
 			if (showLocalWeather && localWeatherData) {
 				const weatherData = await fetchWeather(
 					[localWeatherData.location.lat, localWeatherData.location.lon],
@@ -56,9 +55,10 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 					{ signal: controller.signal }
 				);
 				if (controller.signal.aborted) return;
-				if (weatherData) await setLocalWeatherData(weatherData);
+				if (weatherData) await useLocalWeather.getState().setLocalWeatherData(weatherData);
 				else localRefreshFailed = true;
 			}
+			if (controller.signal.aborted) return;
 
 			const results = await Promise.all(
 				cities.map(async (city: City) => {
@@ -87,7 +87,7 @@ export const useFavoriteCities = ({ refresh = false }: { refresh?: boolean } = {
 				setLoading(false);
 			}
 		}
-	}, [currentSource, localWeatherData, setLocalWeatherData, showLocalWeather, t]);
+	}, [currentSource, showLocalWeather, t]);
 
 	const handleRemoveCity = async (city: City) => {
 		setFavoritesData((prev) => prev.filter((item) => !isSameCity(item.city, city)));

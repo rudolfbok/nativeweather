@@ -3,16 +3,6 @@ import type { WeatherAPIResponse } from '@nativeweather/types/weatherAPI';
 
 const BASE_URL = 'https://nativeweather-api.bitwebs.workers.dev';
 
-export class WeatherRequestError extends Error {
-	constructor(
-		message: string,
-		readonly status: number
-	) {
-		super(message);
-		this.name = 'WeatherRequestError';
-	}
-}
-
 export const fetchWeatherAPIOrThrow = async (
 	query: string | number[],
 	options?: { signal?: AbortSignal; cache?: RequestCache }
@@ -28,7 +18,9 @@ export const fetchWeatherAPIOrThrow = async (
 		const upstreamStatus = Number(errorBody.match(/\b[45]\d{2}\b/)?.[0]);
 		const status = upstreamStatus || response.status;
 
-		throw new WeatherRequestError(`Weather request failed (${status})`, status);
+		const error = new Error(`Weather request failed (${status})`);
+		Object.assign(error, { status });
+		throw error;
 	}
 
 	return (await response.json()) as WeatherAPIResponse;

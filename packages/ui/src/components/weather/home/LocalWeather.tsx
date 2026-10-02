@@ -1,22 +1,18 @@
 'use client';
 
-import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
+import { border } from '@nativeweather/core/constants/border';
+import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import type { LocalWeatherErrorKind } from '@nativeweather/ui/hooks/location/locationError';
 import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
 
-interface LocalWeatherProps {
-	error?: LocalWeatherErrorKind | null;
-}
-
-export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
+export const LocalWeather = ({ error = null }: { error?: LocalWeatherErrorKind | null }) => {
 	const { t } = useTranslate('weather');
 	const { localWeatherData } = useLocalWeather();
 	const { handleCityPress } = useSearchController();
@@ -26,14 +22,19 @@ export const LocalWeather = ({ error = null }: LocalWeatherProps) => {
 	if (error) {
 		return (
 			<View className={clsx(containerClassName)}>
-				<RoundView className={clsx('min-h-[134px] justify-center gap-2 p-4 lg:w-fit')}>
+				<View
+					className={clsx(
+						'macos:dark:bg-tertiarySystemBackground_dark flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-secondarySystemBackground p-4 lg:w-fit',
+						border
+					)}
+				>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t(`localweather.error.${error}.title`)}
 					</StyledText>
 					<StyledText type="body" className={clsx('text-center')}>
 						{t(`localweather.error.${error}.message`)}
 					</StyledText>
-				</RoundView>
+				</View>
 			</View>
 		);
 	}

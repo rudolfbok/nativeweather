@@ -35,10 +35,10 @@
 		"weather": "天气"
 	},
 	"toast": {
-		"add": "已将{name}添加到收藏",
+		"add": "已将 {name} 添加到收藏",
 		"city": "城市",
 		"notrefreshed": "无法更新天气",
 		"refreshed": "天气已更新",
-		"remove": "已将{name}从收藏中移除"
+		"remove": "已将 {name} 从收藏中移除"
 	}
 }

@@ -1,5 +1,5 @@
 import { WeatherFeature } from '@nativeweather/ui/features/weather/screen.web';
-import { fetchWeatherAPIOrThrow, WeatherRequestError } from '@nativeweather/api/fetchWeatherAPI';
+import { fetchWeatherAPIOrThrow } from '@nativeweather/api/fetchWeatherAPI';
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -29,7 +29,7 @@ const validateCity = async (query: string) => {
 	try {
 		await fetchWeatherAPIOrThrow(query, { cache: 'no-store' });
 	} catch (error) {
-		if (error instanceof WeatherRequestError && [400, 404].includes(error.status)) notFound();
+		if (error instanceof Error && 'status' in error && [400, 404].includes(Number(error.status))) notFound();
 		throw error;
 	}
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
-import { HeroSkeleton } from '@nativeweather/ui/components/weather/hero/HeroSkeleton';
+import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSkeleton.web';
 import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';

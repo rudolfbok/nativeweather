@@ -14,11 +14,8 @@ export class LocalWeatherError extends Error {
 
 export const toLocalWeatherError = (error: unknown) => {
 	if (error instanceof LocalWeatherError) return error;
-	if (error instanceof WeatherRequestError) {
+	if (error instanceof Error && 'status' in error && typeof error.status === 'number') {
 		return new LocalWeatherError(error.status >= 500 ? 'server' : 'network', error.message, { cause: error });
 	}
-	if (error instanceof WeatherFetchError) return new LocalWeatherError('unknown', error.message, { cause: error });
 	return new LocalWeatherError('network', 'Unable to load local weather.', { cause: error });
 };
-import { WeatherFetchError } from '@nativeweather/api/fetchWeather';
-import { WeatherRequestError } from '@nativeweather/api/fetchWeatherAPI';

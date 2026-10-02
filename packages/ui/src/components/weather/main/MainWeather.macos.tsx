@@ -15,6 +15,7 @@ import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
+import { border } from '@nativeweather/core/constants/border';
 
 interface MainWeatherProps {
 	name?: string;
@@ -78,10 +79,7 @@ export const MainWeather = ({
 	}, [setIsFavorite, weatherData]);
 
 	return (
-		<View
-			className="relative items-center justify-center overflow-hidden rounded-3xl p-4"
-			// style={{ backgroundColor: isDay === 1 ? '#3979b8' : '#091331' }}
-		>
+		<View className="relative items-center justify-center overflow-hidden rounded-3xl p-4">
 			<View
 				pointerEvents="none"
 				className="absolute -bottom-10"
@@ -138,7 +136,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className="relative z-10 rounded-full bg-black/10 px-4 py-2">
+			<View className={clsx('relative z-10 rounded-full bg-black/10 px-4 py-2', border)}>
 				<StyledText type="title" className="!text-white" style={textOutline}>
 					{condition}
 				</StyledText>
