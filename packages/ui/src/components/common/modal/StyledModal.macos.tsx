@@ -48,7 +48,7 @@ export const StyledModal = ({
 			<Pressable className="absolute inset-0 h-screen w-screen" onPress={onClose} />
 			<View
 				className={clsx(
-					'no-modal-scroll overflow-hidden',
+					'no-overlay-scroll overflow-hidden',
 					'-mt-6 pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'max-h-[80vh] w-full',

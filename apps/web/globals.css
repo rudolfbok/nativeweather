@@ -12,7 +12,7 @@
 	}
 }
 
-:root:has(.no-modal-scroll) {
+:root:has(.no-overlay-scroll) {
 	overflow: hidden;
 }
 

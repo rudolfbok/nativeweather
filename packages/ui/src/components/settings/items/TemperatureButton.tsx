@@ -30,7 +30,7 @@ export const TemperatureButton = () => {
 		<>
 			<SettingsItem
 				icon={<Thermometer size={20} color="white" />}
-				iconbg="bg-primaryblue"
+				iconbg="bg-[#FF9500]"
 				title={t('temperature')}
 				variant="value"
 				onPress={navigateToTemperature}

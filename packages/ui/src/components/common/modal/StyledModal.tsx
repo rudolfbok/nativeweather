@@ -52,7 +52,7 @@ export const StyledModal = ({
 			/>
 			<View
 				className={clsx(
-					'no-modal-scroll overflow-hidden',
+					'no-overlay-scroll overflow-hidden',
 					'px-4 pt-4',
 					'bg-secondarySystemBackground dark:bg-systemBackground_dark',
 					'h-[100dvh] w-full md:h-fit',

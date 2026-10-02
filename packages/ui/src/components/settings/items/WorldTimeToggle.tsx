@@ -11,7 +11,7 @@ export const WorldTimeToggle = () => {
 	return (
 		<SettingsItem
 			icon={<ClockFadingIcon />}
-			iconbg="bg-primaryblue"
+			iconbg="bg-[#5856D6]"
 			title={t('worldtime')}
 			variant="toggle"
 			toggle={<StyledSwitch value={showWorldTime} onValueChange={setShowWorldTime} />}

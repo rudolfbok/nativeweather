@@ -24,7 +24,7 @@ export const LocalWeather = ({ error = null }: { error?: LocalWeatherErrorKind |
 			<View className={clsx(containerClassName)}>
 				<View
 					className={clsx(
-						'macos:dark:bg-tertiarySystemBackground_dark flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-secondarySystemBackground p-4 lg:w-fit',
+						'macos:dark:bg-tertiarySystemBackground_dark macos:bg-secondarySystemBackground flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-systemBackground p-4 lg:w-fit dark:bg-secondarySystemBackground_dark',
 						border
 					)}
 				>

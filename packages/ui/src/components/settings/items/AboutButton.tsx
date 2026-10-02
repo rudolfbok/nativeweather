@@ -24,7 +24,7 @@ export const AboutButton = () => {
 		<>
 			<SettingsItem
 				icon={<Info size={20} color="#FFFFFF" />}
-				iconbg="bg-primaryblue"
+				iconbg="bg-[#8E8E93]"
 				title={t('about.title')}
 				variant="value"
 				showModal={() => setShowModal(true)}

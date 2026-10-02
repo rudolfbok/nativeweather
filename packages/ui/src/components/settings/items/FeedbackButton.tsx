@@ -23,7 +23,7 @@ export const FeedbackButton = () => {
 		<>
 			<SettingsItem
 				icon={<MessageCircle color="white" size={20} />}
-				iconbg="bg-primaryblue"
+				iconbg="bg-[#FF453A]"
 				title={t('feedback.title')}
 				variant="link"
 				onPress={navigateToFeedback}

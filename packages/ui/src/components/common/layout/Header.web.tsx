@@ -20,7 +20,7 @@ export const Header = () => {
 		<>
 			<View
 				className={clsx(
-					'bg-secondarySystemBackground dark:bg-systemBackground_dark z-10 flex w-full max-w-full flex-row flex-wrap items-center justify-between pb-3 pt-2'
+					'z-10 flex w-full max-w-full flex-row flex-wrap items-center justify-between bg-secondarySystemBackground pb-3 pt-2 dark:bg-systemBackground_dark'
 				)}
 			>
 				<View className={clsx('order-1 justify-center md:w-1/4 xl:w-1/3')}>
@@ -43,15 +43,15 @@ export const Header = () => {
 			</View>
 			<View
 				className={clsx(
-					'bg-secondarySystemBackground dark:bg-systemBackground_dark fixed bottom-0 right-0 top-0 z-50 w-full transition-transform duration-300 ease-out md:w-[340px]',
+					'fixed bottom-0 right-0 top-0 z-50 w-full bg-secondarySystemBackground transition-transform duration-300 ease-out md:w-[340px] dark:bg-systemBackground_dark',
 					openDrawer ? 'translate-x-0' : 'translate-x-full'
 				)}
 			>
 				<View className={clsx('absolute right-0 z-50 mr-2 mt-2')}>
-					<Hamburger toggled={openDrawer} size={22} color="#007AFF" onToggle={() => setOpenDrawer(!openDrawer)} />
+					<Hamburger toggled={openDrawer} size={22} color={text} onToggle={() => setOpenDrawer(!openDrawer)} />
 				</View>
 				<ScrollView
-					className={clsx('flex-1')}
+					className={clsx('flex-1', openDrawer && 'no-overlay-scroll')}
 					showsVerticalScrollIndicator={false}
 					contentContainerClassName={clsx('pt-10')}
 				>
