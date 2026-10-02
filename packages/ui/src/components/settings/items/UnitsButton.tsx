@@ -30,7 +30,7 @@ export const UnitsButton = () => {
 		<>
 			<SettingsItem
 				icon={<Ruler size={20} color="white" />}
-				iconbg="bg-[#38BDF8]"
+				iconbg="bg-[#00C4CA]"
 				title={t('units.title')}
 				variant="value"
 				onPress={navigateToUnits}

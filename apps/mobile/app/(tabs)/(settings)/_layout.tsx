@@ -68,14 +68,12 @@ export default function SettingsLayout() {
 				name="about"
 				options={{
 					headerTitle: t('about.title'),
-					headerLargeTitleEnabled: true,
 				}}
 			/>
 			<Stack.Screen
 				name="feedback"
 				options={{
 					title: t('feedback.title'),
-					headerLargeTitleEnabled: true,
 				}}
 			/>
 		</Stack>

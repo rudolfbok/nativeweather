@@ -1,10 +1,6 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
-interface SkeletonProps {
-	className?: string;
-}
-
-export const Skeleton = ({ className }: SkeletonProps) => (
-	<View className={clsx('animate-pulse', className)} />
+export const Skeleton = ({ className }: { className?: string }) => (
+	<View className={clsx('w-full animate-pulse rounded-3xl bg-white/50 dark:bg-[#0F0F11]', className)} />
 );

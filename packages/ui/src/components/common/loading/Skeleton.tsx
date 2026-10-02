@@ -1,12 +1,9 @@
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
+import { View } from 'react-native';
 
-interface SkeletonProps {
-	className?: string;
-}
-
-export const Skeleton = ({ className }: SkeletonProps) => {
+export const Skeleton = ({ className }: { className?: string }) => {
 	const opacity = useSharedValue(1);
 
 	useEffect(() => {
@@ -17,5 +14,9 @@ export const Skeleton = ({ className }: SkeletonProps) => {
 		opacity: opacity.value,
 	}));
 
-	return <Animated.View style={animatedStyle} className={clsx(className)} />;
+	return (
+		<Animated.View style={animatedStyle}>
+			<View className={clsx('w-full rounded-3xl bg-white/50 dark:bg-[#0F0F11]', className)} />
+		</Animated.View>
+	);
 };
