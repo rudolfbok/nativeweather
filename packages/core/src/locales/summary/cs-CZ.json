@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "Americký index dosahuje {value}; venkovní námahu omezte na minimum.",
 	"aqi_us_6_1": "US IKO je {value}, což znamená nebezpečnou kvalitu ovzduší.",
 	"aqi_us_6_2": "Americká hodnota kvality ovzduší je závažná: {value}.",
-	"aqi_us_6_3": "US IKO {value} dělá z venkovní aktivity vážné zdravotní riziko."
+	"aqi_us_6_3": "US IKO {value} dělá z venkovní aktivity vážné zdravotní riziko.",
+	"precip_both_1": "Během dne se očekává déšť i sněžení.",
+	"precip_both_2": "Předpověď zahrnuje déšť i sníh.",
+	"precip_both_3": "Během dne se mohou střídat déšť a sníh.",
+	"precip_other_1": "Mohou se objevit zimní srážky.",
+	"precip_other_2": "Předpověď zahrnuje zimní srážky.",
+	"precip_other_3": "Zimní srážky mohou způsobit kluzký povrch.",
+	"precip_total_1": "Celkové srážky dosáhnou {amount}; jejich druh není určen.",
+	"precip_total_2": "Očekává se {amount} srážek bez určení jejich druhu.",
+	"precip_total_3": "Předpověď uvádí {amount} srážek bez určení druhu.",
+	"precip_unknown": "Předpověď obsahuje stav, který zatím nelze klasifikovat.",
+	"precip_thunder": "Předpověď zahrnuje bouřky; čas a druh srážek upřesňuje hodinová předpověď.",
+	"precip_possible": "Je možný místy se vyskytující déšť nebo sníh, jeho čas a množství jsou nejisté."
 }

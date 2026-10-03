@@ -1,3 +1,3 @@
 import { Toaster as NativeToaster } from 'sonner-native';
 
-export const Toaster = () => <NativeToaster position="bottom-center" offset={100} />;
+export const Toaster = () => <NativeToaster position="bottom-center" offset={90} />;

@@ -35,7 +35,7 @@ export interface NormalizedData {
 		isDay: 0 | 1;
 		condition: {
 			text: string;
-			code: number;
+			code: number | null;
 		};
 	};
 	forecast: {
@@ -61,11 +61,12 @@ export interface NormalizedData {
 				totalSnowCm: number;
 				condition: {
 					text: string;
-					code: number;
+					code: number | null;
 				};
 			};
 			hour: {
 				timeEpoch: number;
+				time: string;
 				tempC: number;
 				tempF: number;
 				isDay: 0 | 1;
@@ -73,6 +74,7 @@ export interface NormalizedData {
 				chanceOfRain: number;
 				chanceOfSnow: number;
 				snowCm: number;
+				precipMm: number;
 				humidity: number;
 				pressureMb: number;
 				pressureInHg: number;
@@ -81,7 +83,8 @@ export interface NormalizedData {
 				windKph: number;
 				windMph: number;
 				condition: {
-					code: number;
+					text: string;
+					code: number | null;
 				};
 			}[];
 			astro: {

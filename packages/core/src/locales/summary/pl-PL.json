@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "Amerykański indeks osiągnie {value}. Ogranicz wysiłek na zewnątrz do minimum.",
 	"aqi_us_6_1": "Amerykański indeks jakości powietrza wynosi {value} i oznacza niebezpieczne warunki.",
 	"aqi_us_6_2": "Zanieczyszczenie jest poważne według skali amerykańskiej, z indeksem {value}.",
-	"aqi_us_6_3": "Przy amerykańskim indeksie wynoszącym {value} aktywność na zewnątrz stanowi poważne zagrożenie dla zdrowia."
+	"aqi_us_6_3": "Przy amerykańskim indeksie wynoszącym {value} aktywność na zewnątrz stanowi poważne zagrożenie dla zdrowia.",
+	"precip_both_1": "Deszcz i śnieg są prognozowane w ciągu dnia.",
+	"precip_both_2": "Prognoza przewiduje zarówno deszcz, jak i śnieg.",
+	"precip_both_3": "W ciągu dnia mogą wystąpić okresy deszczu i śniegu.",
+	"precip_other_1": "Możliwe są opady zimowe.",
+	"precip_other_2": "Prognoza obejmuje opady zimowe.",
+	"precip_other_3": "Opady zimowe mogą sprawić, że nawierzchnie będą śliskie.",
+	"precip_total_1": "Suma opadów wyniesie {amount}; ich rodzaj nie jest określony.",
+	"precip_total_2": "Prognozowana suma opadów to {amount}, bez określenia rodzaju.",
+	"precip_total_3": "Prognoza podaje {amount} opadów, ale nie określa ich rodzaju.",
+	"precip_unknown": "Prognoza obejmuje warunki, których nie można jeszcze sklasyfikować.",
+	"precip_thunder": "Prognoza przewiduje burze; godzinowa prognoza wskazuje czas i rodzaj opadów.",
+	"precip_possible": "Możliwe są przelotne opady, ale ich czas i ilość są niepewne."
 }

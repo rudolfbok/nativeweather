@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "L’indice americano raggiunge {value}. Riduci al minimo gli sforzi all’aperto.",
 	"aqi_us_6_1": "L’indice americano di qualità dell’aria è di {value}, un livello pericoloso.",
 	"aqi_us_6_2": "L’inquinamento è grave secondo la scala americana, con un indice di {value}.",
-	"aqi_us_6_3": "Con un indice americano di {value}, le attività all’aperto comportano un serio rischio per la salute."
+	"aqi_us_6_3": "Con un indice americano di {value}, le attività all’aperto comportano un serio rischio per la salute.",
+	"precip_both_1": "Sono previsti pioggia e neve in momenti diversi.",
+	"precip_both_2": "Le previsioni includono sia pioggia sia neve.",
+	"precip_both_3": "Durante la giornata sono possibili pioggia e neve.",
+	"precip_other_1": "Sono possibili precipitazioni invernali.",
+	"precip_other_2": "Le previsioni includono precipitazioni invernali.",
+	"precip_other_3": "Le precipitazioni invernali possono rendere le superfici scivolose.",
+	"precip_total_1": "Le precipitazioni totali sono {amount}, senza indicazione del tipo.",
+	"precip_total_2": "Sono previsti {amount} di precipitazioni, senza specificarne il tipo.",
+	"precip_total_3": "Le previsioni indicano {amount} di precipitazioni senza indicarne il tipo.",
+	"precip_unknown": "Le previsioni includono una condizione non ancora classificabile.",
+	"precip_thunder": "Sono previsti temporali; l’orario e il tipo di precipitazione sono indicati nelle previsioni orarie.",
+	"precip_possible": "Sono possibili precipitazioni sparse, ma tempi e quantità sono incerti."
 }

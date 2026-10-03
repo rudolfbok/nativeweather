@@ -9,7 +9,7 @@ const StyledGlassView = cssInterop(GlassView, { className: 'style' });
 interface CardProps {
 	onPress: (event?: GestureResponderEvent) => void;
 	city: string;
-	conditionCode: number;
+	conditionCode: number | null;
 	isDay: 0 | 1;
 	tempC: number;
 	tempF: number;

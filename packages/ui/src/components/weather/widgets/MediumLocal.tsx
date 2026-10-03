@@ -11,7 +11,7 @@ type MediumLocalWidgetProps = {
 	feelsLikeTemperature: string;
 	condition: string;
 	isDay: 0 | 1;
-	code: number;
+	code: number | null;
 	currentSource: string;
 	bgColor: string;
 	imagePath: string;

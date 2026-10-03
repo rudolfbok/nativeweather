@@ -25,7 +25,6 @@ export const DailyForecast = () => {
 	const weatherData = useWeather((state) => state.weatherData);
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [currentTemp] = useStorageString('currentTemp');
-	const [currentSource] = useStorageString('currentSource');
 	const scrollRef = useRef<ScrollView>(null);
 	const mapConditions = useMapConditions();
 	const { setModalScreen } = useNavigationScreen();
@@ -73,7 +72,7 @@ export const DailyForecast = () => {
 			<CardHeader
 				icon={<CalendarIcon />}
 				header={t('dailyforecast.title')}
-				className={clsx('web:px-4 mb-1 px-4 pt-4')}
+				className={clsx('mb-1 px-4 pt-4 web:px-4')}
 			/>
 			{weatherData?.forecast.forecastday?.slice(0, 7).map((day, index, items) => (
 				<StyledPressable
@@ -101,7 +100,7 @@ export const DailyForecast = () => {
 						</View>
 						<View className={clsx('flex flex-1 items-center text-center')}>
 							<StyledText type="caption" className={clsx('text-center')}>
-								{mapConditions(day.day.condition.code, 1, currentSource).toLowerCase()}
+								{mapConditions(day.day.condition.code, 1).toLowerCase()}
 							</StyledText>
 						</View>
 						<View className={clsx('w-fit flex-row items-center justify-between')}>
@@ -119,7 +118,6 @@ export const DailyForecast = () => {
 									width={35}
 									height={35}
 									strokeWidth={StyleSheet.hairlineWidth}
-									source={currentSource}
 								/>
 							</View>
 							<StyledText type="body" className={clsx('w-10 text-center font-semibold')}>

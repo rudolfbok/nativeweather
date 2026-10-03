@@ -16,7 +16,6 @@ import {
 } from '@nativeweather/ui/components/cards';
 import { DailyForecast } from '@nativeweather/ui/components/weather/daily/DailyForecast';
 import { MainWeather } from '@nativeweather/ui/components/weather/main/MainWeather';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
@@ -30,8 +29,7 @@ import { getHour24FromEpoch } from '../hourly/getHour24FromEpoch';
 import { useState } from 'react';
 
 export const HeroWeather = () => {
-	const [currentSource] = useStorageString('currentSource');
-	const { weatherData, airQualityData } = useWeather();
+	const { weatherData } = useWeather();
 	const mapConditions = useMapConditions();
 	const [now] = useState(() => new Date());
 
@@ -59,7 +57,7 @@ export const HeroWeather = () => {
 	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 	const filteredAlerts = getAlerts(weatherData.alerts.alert, weatherData.location);
 	const alertsLength = filteredAlerts.length ?? 0;
-	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay, currentSource!);
+	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay);
 
 	const renderDataCardGrid = () => {
 		return (
@@ -150,14 +148,12 @@ export const HeroWeather = () => {
 						rainPrecipIn={weatherData.forecast.forecastday[0].day.totalPrecipIn}
 						snowPrecipCm={weatherData.forecast.forecastday[0].day.totalSnowCm}
 						snowPrecipIn={Number((weatherData.forecast.forecastday[0].day.totalSnowCm * 0.393701).toFixed(2))}
-						cloudCover={weatherData.current.cloudCover}
-						airQualityEU={airQualityData?.current.european_aqi}
-						airQualityUS={airQualityData?.current.us_aqi}
-						uv={weatherData.current.uv}
+						uv={weatherData.forecast.forecastday[0].day.uv}
 						maxWindKph={weatherData.forecast.forecastday[0].day.maxWindKph}
-						avgRangeKm={weatherData.current.rangeKm}
-						avgRangeMiles={weatherData.current.rangeMiles}
+						avgRangeKm={weatherData.forecast.forecastday[0].day.avgVisKm}
+						avgRangeMiles={weatherData.forecast.forecastday[0].day.avgVisMiles}
 						dateEpoch={weatherData.forecast.forecastday[0].date_epoch}
+						conditionCodes={weatherData.forecast.forecastday[0].hour.map((hour) => hour.condition.code)}
 					/>
 					<HourlyForecast />
 					<AirQuality className={clsx('xl:hidden')} />

@@ -8,6 +8,7 @@ import { SmartSummaryIcon } from '@nativeweather/ui/components/icons/main/SmartS
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
 
 type Variant = 1 | 2 | 3;
 type AQIType = 'eu' | 'us';
@@ -42,6 +43,7 @@ interface SmartSummaryProps {
 	avgRangeKm?: number;
 	avgRangeMiles?: number;
 	dateEpoch?: number;
+	conditionCodes: (number | null)[];
 }
 
 const getVariant = (...values: (number | undefined)[]): Variant => {
@@ -54,8 +56,8 @@ const getVariant = (...values: (number | undefined)[]): Variant => {
 	return ((seed % 3) + 1) as Variant;
 };
 
-const getTempBucket = (minTempC: number, maxTempC: number) => {
-	if (maxTempC <= 0 || minTempC <= -3) return 'freezing';
+const getTempBucket = (maxTempC: number) => {
+	if (maxTempC <= 0) return 'freezing';
 	if (maxTempC < 10) return 'cold';
 	if (maxTempC < 18) return 'cool';
 	if (maxTempC < 24) return 'mild';
@@ -117,6 +119,7 @@ export const SmartSummary = ({
 	avgRangeKm,
 	avgRangeMiles,
 	dateEpoch,
+	conditionCodes,
 }: SmartSummaryProps) => {
 	const { t } = useTranslate('summary');
 	const [currentTemp] = useStorageString('currentTemp');
@@ -124,10 +127,16 @@ export const SmartSummary = ({
 	const [currentAQI] = useStorageString('currentAQI');
 
 	const variant = getVariant(dateEpoch, maxTempC, minTempC, rainPrecipMm, snowPrecipCm, cloudCover);
-	const tempBucket = getTempBucket(minTempC, maxTempC);
+	const tempBucket = getTempBucket(maxTempC);
 	const tempRangeC = Math.max(0, maxTempC - minTempC);
-	const hasRain = rainPrecipMm > 0.1;
-	const hasSnow = snowPrecipCm > 0.1;
+	const conditionKinds = conditionCodes.map((code) => getWeatherCondition(code)?.precipitation);
+	const hasUnknownCondition = conditionCodes.some((code) => code == null || !getWeatherCondition(code));
+	const hasPossibleCondition = conditionCodes.some((code) => getWeatherCondition(code)?.possible);
+	const hasThunderCondition = conditionCodes.some((code) => getWeatherCondition(code)?.thunder);
+	const hasRain = conditionKinds.some((kind) => kind === 'rain' || kind === 'thunder_rain');
+	const hasSnow = snowPrecipCm > 0.1 || conditionKinds.some((kind) => kind === 'snow' || kind === 'thunder_snow');
+	const hasOtherPrecip = conditionKinds.some((kind) => kind === 'sleet' || kind === 'freezing' || kind === 'ice');
+	const hasAnyPrecip = hasRain || hasSnow || hasOtherPrecip || hasUnknownCondition || hasPossibleCondition;
 	const cloudBucket = getCloudBucket(cloudCover);
 	const windBucket = maxWindKph == null ? null : maxWindKph >= 40 ? 'strong' : maxWindKph >= 20 ? 'breezy' : 'light';
 	const uvBucket = uv == null ? null : uv >= 8 ? 'very_high' : uv > 5 ? 'high' : 'low';
@@ -165,7 +174,6 @@ export const SmartSummary = ({
 	});
 
 	const combos: SummaryCombo[] = [
-		{ matches: hasRain && hasSnow && isCold, key: 'mixed_freezing', excludes: ['precip'] },
 		{ matches: hasSnow && isCold, key: 'snow_cold', excludes: ['precip'] },
 		{
 			matches: hasSnow && (windBucket === 'strong' || windBucket === 'breezy'),
@@ -191,14 +199,14 @@ export const SmartSummary = ({
 			key: 'clear_uv',
 			excludes: ['cloud', 'uv'],
 		},
-		{ matches: !hasRain && !hasSnow && cloudBucket === 'overcast', key: 'dry_overcast', excludes: ['cloud'] },
+		{ matches: !hasAnyPrecip && cloudBucket === 'overcast', key: 'dry_overcast', excludes: ['cloud'] },
 		{
-			matches: !hasRain && !hasSnow && getTempRangeBucket(tempRangeC) === 'wide',
+			matches: !hasAnyPrecip && getTempRangeBucket(tempRangeC) === 'wide',
 			key: 'dry_wide',
 			excludes: ['tempRange'],
 		},
 		{
-			matches: !hasRain && !hasSnow && windBucket === 'light' && uvBucket === 'low' && aqi != null && aqi.level <= 2,
+			matches: !hasAnyPrecip && windBucket === 'light' && uvBucket === 'low' && aqi != null && aqi.level <= 2,
 			key: 'calm',
 			excludes: [],
 		},
@@ -220,12 +228,22 @@ export const SmartSummary = ({
 	const addCandidate = (category: SummaryCategory, priority: number, text: string) =>
 		candidates.push({ category, priority, text });
 
-	if (hasRain && hasSnow) {
-		addCandidate('precip', 10, t(`precip_mixed_${variant}`, { rain, snow }));
+	if (hasThunderCondition) {
+		addCandidate('precip', 8, t('precip_thunder'));
+	} else if (hasPossibleCondition) {
+		addCandidate('precip', 12, t('precip_possible'));
+	} else if (hasRain && hasSnow) {
+		addCandidate('precip', 10, t(`precip_both_${variant}`));
 	} else if (hasSnow) {
 		addCandidate('precip', 11, t(`precip_snow_${variant}`, { amount: snow }));
 	} else if (hasRain) {
-		addCandidate('precip', rainPrecipMm >= 5 ? 12 : 28, t(`precip_rain_${variant}`, { amount: rain }));
+		addCandidate('precip', rainPrecipMm >= 5 ? 12 : 28, t(`precip_rain_total_${variant}`, { amount: rain }));
+	} else if (hasOtherPrecip) {
+		addCandidate('precip', 11, t(`precip_other_${variant}`));
+	} else if (hasUnknownCondition && rainPrecipMm <= 0.1) {
+		addCandidate('precip', 20, t('precip_unknown'));
+	} else if (rainPrecipMm > 0.1) {
+		addCandidate('precip', 30, t(`precip_total_${variant}`, { amount: rain }));
 	} else {
 		addCandidate('precip', 50, t(`precip_none_${variant}`));
 	}
@@ -260,6 +278,7 @@ export const SmartSummary = ({
 	addCandidate('tempRange', 90, t(`range_${getTempRangeBucket(tempRangeC)}_${variant}`, { amount: displayTempRange }));
 
 	const available = candidates.filter(({ category }) => !combo?.excludes.includes(category));
+	// oxlint-disable-next-line unicorn/no-array-sort -- Hermes does not support Array#toSorted on all targets.
 	const byPriority = [...available].sort((a, b) => a.priority - b.priority);
 	const preferred = [
 		...byPriority.filter(({ priority }) => priority <= 18),

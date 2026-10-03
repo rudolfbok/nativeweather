@@ -55,7 +55,7 @@ export const PullIndicator = ({
 	useAnimatedReaction(
 		() => refreshing.value > 0,
 		(spinning, previouslySpinning) => {
-			if (spinning === previouslySpinning) return;
+			if (previouslySpinning === null || spinning === previouslySpinning) return;
 			if (spinning) {
 				rotation.value = withRepeat(withTiming(360, { duration: 1000, easing: Easing.linear }), -1);
 			} else {

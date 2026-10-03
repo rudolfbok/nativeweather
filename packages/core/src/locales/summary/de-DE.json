@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "Der amerikanische Index erreicht {value}. Beschränke körperliche Anstrengungen im Freien auf ein Minimum.",
 	"aqi_us_6_1": "Der amerikanische Luftqualitätsindex liegt bei {value}. Die Luftqualität ist gefährlich.",
 	"aqi_us_6_2": "Mit einem amerikanischen Luftqualitätsindex von {value} ist die Luft stark belastet.",
-	"aqi_us_6_3": "Bei einem amerikanischen Luftqualitätsindex von {value} stellen Aktivitäten im Freien ein erhebliches Gesundheitsrisiko dar."
+	"aqi_us_6_3": "Bei einem amerikanischen Luftqualitätsindex von {value} stellen Aktivitäten im Freien ein erhebliches Gesundheitsrisiko dar.",
+	"precip_both_1": "Regen und Schnee sind im Tagesverlauf vorhergesagt.",
+	"precip_both_2": "Die Vorhersage enthält Regen und Schnee zu verschiedenen Zeiten.",
+	"precip_both_3": "Im Tagesverlauf sind Phasen mit Regen und Schnee möglich.",
+	"precip_other_1": "Winterliche Niederschläge sind möglich.",
+	"precip_other_2": "Die Vorhersage enthält winterliche Niederschläge.",
+	"precip_other_3": "Winterliche Niederschläge können Flächen rutschig machen.",
+	"precip_total_1": "Die Gesamtniederschlagsmenge beträgt {amount}; die Art ist nicht angegeben.",
+	"precip_total_2": "Etwa {amount} Niederschlag sind vorhergesagt, ohne nähere Artangabe.",
+	"precip_total_3": "Die Vorhersage nennt {amount} Niederschlag, aber keine Niederschlagsart.",
+	"precip_unknown": "Die Vorhersage enthält eine Bedingung, die noch nicht eingeordnet werden kann.",
+	"precip_thunder": "Gewitter sind vorhergesagt; Zeitpunkt und Niederschlagsart stehen in der Stundenprognose.",
+	"precip_possible": "Vereinzelte Niederschläge sind möglich, Zeitpunkt und Menge sind unsicher."
 }

@@ -147,7 +147,6 @@
 		"fog": "Mlha",
 		"freezingfog": "Mrznoucí mlha",
 		"freezingrain": "Mrznoucí déšť",
-		"freezingthunder": "Mrznoucí bouřky",
 		"lightrain": "Lehký déšť",
 		"lightsnow": "Lehký sníh",
 		"overcast": "Zataženo",
@@ -410,9 +409,9 @@
 			"title": "Pravděpodobnost srážek",
 			"values": "Procentuální šance"
 		},
-		"rainfall": "Srážky:",
-		"rainfall.description": "Množství srážek (uváděné v milimetrech) vyjadřuje očekávanou výšku vodní hladiny v milimetrech na jeden metr čtvereční. Na rozdíl od pravděpodobnosti tento údaj popisuje intenzitu a vydatnost deště – tedy kolik vody skutečně naprší, nikoliv jak velkou část území srážky zasáhnou.",
-		"rainfall.title": "Úhrn srážek",
+		"rainfall": "Celkové srážky:",
+		"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi. Pravděpodobnost deště a sněžení je uvedena zvlášť.",
+		"rainfall.title": "Celkové srážky",
 		"rainfall.values": "Hodnoty srážek",
 		"title": "Déšť"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "Vítr",
 		"values": "Hodnoty škály"
-	}
+	},
+	"rainfall": "Celkové srážky:",
+	"rainfall.title": "Celkové srážky",
+	"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi."
 }

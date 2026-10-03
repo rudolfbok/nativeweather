@@ -8,6 +8,7 @@
 		"./*": "./src/*"
 	},
 	"dependencies": {
+		"@nativeweather/core": "workspace:*",
 		"@nativeweather/types": "workspace:*"
 	},
 	"main": "./src/index.ts",

@@ -80,7 +80,7 @@ export const useWidgets = () => {
 		: null;
 
 	const condition = localWeatherData
-		? mapConditions(localWeatherData.current.condition.code, localWeatherData.current.isDay, currentSource)
+		? mapConditions(localWeatherData.current.condition.code, localWeatherData.current.isDay)
 		: null;
 
 	useEffect(() => {

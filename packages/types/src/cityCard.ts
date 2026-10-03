@@ -16,7 +16,7 @@ export interface CityCard {
 		isDay: 0 | 1;
 		condition: {
 			text: string;
-			code: number;
+			code: number | null;
 		};
 	};
 	forecast: {

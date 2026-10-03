@@ -1,7 +1,6 @@
 import { useTolgee } from '@tolgee/react';
 import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from '@nativeweather/ui/components/cards';
 import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
@@ -19,7 +18,6 @@ export const DailyForecastMain = ({
 	onCloseParent?: () => void;
 }) => {
 	const scrollRef = useRef<ScrollView>(null);
-	const [currentSource] = useStorageString('currentSource');
 	const tolgee = useTolgee();
 	const mapConditions = useMapConditions();
 
@@ -53,7 +51,7 @@ export const DailyForecastMain = ({
 				maxTempF={day.day.maxTempF}
 				isDay={1}
 				code={day.day.condition.code}
-				condition={mapConditions(day.day.condition.code, 1, currentSource)}
+				condition={mapConditions(day.day.condition.code, 1)}
 				feelslike={false}
 				displayShadow={false}
 				dailyModal={true}
@@ -72,6 +70,7 @@ export const DailyForecastMain = ({
 				avgRangeKm={day.day.avgVisKm}
 				avgRangeMiles={day.day.avgVisMiles}
 				dateEpoch={day.date_epoch}
+				conditionCodes={day.hour.map((hour) => hour.condition.code)}
 			/>
 			{!day.hour || day.hour.length === 0 ? null : (
 				<HourlyCarousel
@@ -81,6 +80,7 @@ export const DailyForecastMain = ({
 							key={index}
 							hour={getDisplayHourFromIndex(index)}
 							rainChance={hour.chanceOfRain}
+							snowChance={hour.chanceOfSnow}
 							isDay={hour.isDay}
 							code={hour.condition.code}
 							tempC={hour.tempC}
@@ -91,10 +91,27 @@ export const DailyForecastMain = ({
 			)}
 			<View
 				className={clsx(
-					'web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4 ios:flex-wrap flex w-full flex-row justify-between gap-4'
+					'ios:flex-wrap flex w-full flex-row justify-between gap-4 web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4'
 				)}
 			>
-				{day.day.dailySnowChance > day.day.dailyRainChance ? (
+				{day.day.dailySnowChance > 10 && day.day.dailyRainChance > 10 ? (
+					<>
+						<RainCard
+							rainChance={day.day.dailyRainChance}
+							rainPrecipMm={day.day.totalPrecipMm}
+							rainPrecipIn={day.day.totalPrecipIn}
+							showBackdrop={false}
+							onCloseParent={onCloseParent}
+						/>
+						<SnowCard
+							snowChance={day.day.dailySnowChance}
+							snowPrecipCm={day.day.totalSnowCm}
+							snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
+							showBackdrop={false}
+							onCloseParent={onCloseParent}
+						/>
+					</>
+				) : day.day.dailySnowChance > day.day.dailyRainChance ? (
 					<SnowCard
 						snowChance={day.day.dailySnowChance}
 						snowPrecipCm={day.day.totalSnowCm}
@@ -113,7 +130,12 @@ export const DailyForecastMain = ({
 				)}
 
 				<UVCard data={day.day.uv} showBackdrop={false} onCloseParent={onCloseParent} />
-				<RangeCard visKm={day.day.avgVisKm} visMiles={day.day.avgVisMiles} showBackdrop={false} onCloseParent={onCloseParent} />
+				<RangeCard
+					visKm={day.day.avgVisKm}
+					visMiles={day.day.avgVisMiles}
+					showBackdrop={false}
+					onCloseParent={onCloseParent}
+				/>
 				<WindCard
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}

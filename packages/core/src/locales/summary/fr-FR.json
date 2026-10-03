@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "L’indice américain atteint {value}. Limitez au minimum les efforts en plein air.",
 	"aqi_us_6_1": "L’indice américain de qualité de l’air est de {value}, un niveau dangereux.",
 	"aqi_us_6_2": "La pollution est sévère selon l’échelle américaine, avec un indice de {value}.",
-	"aqi_us_6_3": "Avec un indice américain de {value}, les activités en plein air présentent un risque important pour la santé."
+	"aqi_us_6_3": "Avec un indice américain de {value}, les activités en plein air présentent un risque important pour la santé.",
+	"precip_both_1": "Pluie et neige sont prévues à différents moments.",
+	"precip_both_2": "Les prévisions annoncent de la pluie et de la neige.",
+	"precip_both_3": "Des périodes de pluie et de neige sont attendues.",
+	"precip_other_1": "Des précipitations hivernales sont possibles.",
+	"precip_other_2": "La prévision inclut des précipitations hivernales.",
+	"precip_other_3": "Les précipitations hivernales peuvent rendre les surfaces glissantes.",
+	"precip_total_1": "Le total des précipitations est de {amount}, sans type précisé.",
+	"precip_total_2": "Environ {amount} de précipitations sont prévues, sans type précisé.",
+	"precip_total_3": "Le total prévu est de {amount}, sans indication du type.",
+	"precip_unknown": "Les prévisions incluent une condition qui ne peut pas encore être classée.",
+	"precip_thunder": "Des orages sont prévus ; consultez les prévisions horaires pour connaître leur horaire et le type de précipitations.",
+	"precip_possible": "Des précipitations éparses sont possibles, mais leur horaire et leur quantité restent incertains."
 }

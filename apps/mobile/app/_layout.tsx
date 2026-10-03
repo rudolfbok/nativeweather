@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import '../global.css';
 
+initThemeFromStorage();
+
 export const unstable_settings = {
 	// Ensure that reloading on `/modal` keeps a back button present.
 	initialRouteName: '(tabs)',
@@ -22,7 +24,6 @@ export default function RootLayout() {
 
 	useEffect(() => {
 		initStorageDefaults();
-		initThemeFromStorage();
 	}, []);
 
 	return (

@@ -62,6 +62,7 @@ export const HourlyForecast = () => {
 		tempC: hour.tempC,
 		tempF: hour.tempF,
 		chanceOfRain: hour.chanceOfRain,
+		chanceOfSnow: hour.chanceOfSnow,
 		code: hour.condition.code,
 		isDay: hour.isDay,
 		timeEpoch: hour.timeEpoch,
@@ -76,6 +77,7 @@ export const HourlyForecast = () => {
 					key={index}
 					hour={hour.hourLabel}
 					rainChance={hour.chanceOfRain}
+					snowChance={hour.chanceOfSnow}
 					isDay={hour.isDay}
 					code={hour.code}
 					tempC={hour.tempC}

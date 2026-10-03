@@ -6,7 +6,7 @@ import { CardContent } from './CardContent';
 interface CardProps {
 	onPress: (event?: GestureResponderEvent) => void;
 	city: string;
-	conditionCode: number;
+	conditionCode: number | null;
 	isDay: 0 | 1;
 	tempC: number;
 	tempF: number;

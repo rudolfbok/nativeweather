@@ -146,5 +146,17 @@
 	"aqi_us_5_3": "The US index reaches {value}; keep outdoor exertion to a minimum.",
 	"aqi_us_6_1": "US AQI is {value}, which is hazardous air quality.",
 	"aqi_us_6_2": "The US air-quality reading is severe at {value}.",
-	"aqi_us_6_3": "US AQI at {value} makes outdoor activity a serious health risk."
+	"aqi_us_6_3": "US AQI at {value} makes outdoor activity a serious health risk.",
+	"precip_both_1": "Rain and snow are both forecast during the day.",
+	"precip_both_2": "The forecast includes rain and snow at different times.",
+	"precip_both_3": "Expect periods of rain and snow through the day.",
+	"precip_other_1": "Wintry precipitation is possible.",
+	"precip_other_2": "The forecast includes wintry precipitation.",
+	"precip_other_3": "Wintry precipitation may make surfaces slippery.",
+	"precip_total_1": "Total precipitation is about {amount}; its type is unspecified.",
+	"precip_total_2": "About {amount} of precipitation is forecast, without a specified type.",
+	"precip_total_3": "The forecast gives {amount} total precipitation but does not specify its type.",
+	"precip_unknown": "The forecast includes a condition that cannot be classified yet.",
+	"precip_thunder": "Thunderstorm activity is in the forecast; check the hourly outlook for timing and precipitation type.",
+	"precip_possible": "Patchy precipitation is possible, but its timing and amount are uncertain."
 }

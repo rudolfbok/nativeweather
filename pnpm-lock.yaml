@@ -504,6 +504,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@nativeweather/core':
+        specifier: workspace:*
+        version: link:../core
       '@nativeweather/types':
         specifier: workspace:*
         version: link:../types

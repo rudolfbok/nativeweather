@@ -147,7 +147,6 @@
 		"fog": "雾",
 		"freezingfog": "冻雾",
 		"freezingrain": "冻雨",
-		"freezingthunder": "雷暴伴冻雨",
 		"lightrain": "小雨",
 		"lightsnow": "小雪",
 		"overcast": "阴",
@@ -410,9 +409,9 @@
 			"title": "降水概率",
 			"values": "概率百分比"
 		},
-		"rainfall": "降雨量:",
-		"rainfall.description": "降雨量以毫米表示，说明预报时段内预计的累计雨量。1 毫米降雨相当于每平方米 1 升水。降雨量描述预计有多少雨，降水概率则表示下雨的可能性。",
-		"rainfall.title": "降雨量",
+		"rainfall": "总降水量：",
+		"rainfall.description": "总降水量表示预报时段内预计的降水量。降雨和降雪概率分别显示。",
+		"rainfall.title": "总降水量",
 		"rainfall.values": "降雨量范围",
 		"title": "雨"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "风",
 		"values": "风级范围"
-	}
+	},
+	"rainfall": "总降水量：",
+	"rainfall.title": "总降水量",
+	"rainfall.description": "总降水量表示预报时段内预计的降水总量。"
 }

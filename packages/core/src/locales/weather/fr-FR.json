@@ -147,7 +147,6 @@
 		"fog": "Brouillard",
 		"freezingfog": "Brouillard givrant",
 		"freezingrain": "Pluie verglaçante",
-		"freezingthunder": "Orage avec précipitations verglaçantes",
 		"lightrain": "Pluie faible",
 		"lightsnow": "Neige faible",
 		"overcast": "Couvert",
@@ -410,9 +409,9 @@
 			"title": "Probabilité de précipitations",
 			"values": "Probabilité en pourcentage"
 		},
-		"rainfall": "Cumul de pluie :",
-		"rainfall.description": "Le cumul de pluie, exprimé en millimètres, indique la quantité de pluie attendue pendant la période de prévision. Un millimètre correspond à un litre d’eau par mètre carré. Cette valeur décrit la quantité attendue, tandis que la probabilité indique les chances qu’il pleuve.",
-		"rainfall.title": "Cumul de pluie",
+		"rainfall": "Précipitations totales :",
+		"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision. Les probabilités de pluie et de neige sont indiquées séparément.",
+		"rainfall.title": "Précipitations totales",
 		"rainfall.values": "Cumuls de pluie",
 		"title": "Pluie"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "Vent",
 		"values": "Valeurs de l’échelle"
-	}
+	},
+	"rainfall": "Précipitations totales :",
+	"rainfall.title": "Précipitations totales",
+	"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision."
 }

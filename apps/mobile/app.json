@@ -72,7 +72,6 @@
 			],
 			"expo-font",
 			"expo-web-browser",
-			"@maplibre/maplibre-react-native",
 			[
 				"expo-build-properties",
 				{

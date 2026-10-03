@@ -10,7 +10,7 @@ import { StyledText } from '../../common/styled/StyledText';
 
 interface CardContentProps {
 	city: string;
-	conditionCode: number;
+	conditionCode: number | null;
 	isDay: 0 | 1;
 	tempC: number;
 	tempF: number;
@@ -31,7 +31,6 @@ export const CardContent = ({
 }: CardContentProps) => {
 	const [currentTemperature] = useStorageString('currentTemp');
 	const [showLocalTime] = useStorageBoolean('showWorldTime');
-	const [currentSource] = useStorageString('currentSource');
 	const mapConditions = useMapConditions();
 	const tolgee = useTolgee();
 
@@ -47,7 +46,7 @@ export const CardContent = ({
 			<View className={clsx('flex-1')}>
 				<StyledText
 					type="sectiontitle"
-					className={clsx('native:!text-white web:!text-white truncate font-semibold')}
+					className={clsx('native:!text-white truncate font-semibold web:!text-white')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -55,7 +54,7 @@ export const CardContent = ({
 				</StyledText>
 				<StyledText
 					type="caption"
-					className={clsx('native:!text-white web:!text-white line-clamp-1 truncate font-semibold opacity-70')}
+					className={clsx('native:!text-white line-clamp-1 truncate font-semibold opacity-70 web:!text-white')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
@@ -66,15 +65,15 @@ export const CardContent = ({
 				</StyledText>
 				<StyledText
 					type="body"
-					className={clsx('native:!text-white web:!text-white line-clamp-1 truncate font-semibold')}
+					className={clsx('native:!text-white line-clamp-1 truncate font-semibold web:!text-white')}
 					numberOfLines={1}
 					ellipsizeMode="tail"
 				>
-					{mapConditions(conditionCode, isDay, currentSource)}
+					{mapConditions(conditionCode, isDay)}
 				</StyledText>
 			</View>
 			<View className={clsx('items-center')}>
-				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} source={currentSource} />
+				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} />
 				{showLocalTime && displayTime && timeZone && (
 					<StyledText type="caption" className={clsx('!text-white opacity-70')}>
 						{getLocalTimeNow(timeZone)}

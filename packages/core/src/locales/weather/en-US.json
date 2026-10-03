@@ -147,7 +147,6 @@
 		"fog": "Fog",
 		"freezingfog": "Freezing fog",
 		"freezingrain": "Freezing rain",
-		"freezingthunder": "Freezing thunder",
 		"lightrain": "Light rain",
 		"lightsnow": "Light snow",
 		"overcast": "Overcast",
@@ -410,9 +409,9 @@
 			"title": "Precipitation probability",
 			"values": "Percentage chance"
 		},
-		"rainfall": "Rainfall:",
-		"rainfall.description": "Precipitation (in millimeters) is the expected water level in millimeters per square meter. Unlike probability, this figure describes the intensity and amount of rain – that is, how much water will actually fall, not how much of an area will be affected by the precipitation.",
-		"rainfall.title": "Rainfall",
+		"rainfall": "Total precipitation:",
+		"rainfall.description": "Total precipitation in millimeters is the expected amount during the forecast period. One millimeter equals one liter per square meter. Rain and snow probabilities are shown separately.",
+		"rainfall.title": "Total precipitation",
 		"rainfall.values": "Rainfall values",
 		"title": "Rain"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "Wind",
 		"values": "Scale values"
-	}
+	},
+	"rainfall": "Total precipitation:",
+	"rainfall.title": "Total precipitation",
+	"rainfall.description": "Total precipitation in millimeters is the expected amount of precipitation during the forecast period. One millimeter equals one liter per square meter. The amount and rain or snow probabilities describe different forecast details."
 }

@@ -3,7 +3,7 @@ import { NormalizedData } from '@nativeweather/types/normalizedData';
 import { normalizeWeatherConditionCode } from '@nativeweather/api/utils/weatherCondition';
 
 const mapCondition = (condition: { text?: unknown; code?: unknown } | null | undefined) => ({
-	text: typeof condition?.text === 'string' ? condition.text.trim() : '',
+	text: '',
 	code: normalizeWeatherConditionCode(condition?.code),
 });
 
@@ -68,6 +68,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 				},
 				hour: day.hour.map((hour) => ({
 					timeEpoch: hour.time_epoch,
+					time: hour.time,
 					tempC: hour.temp_c,
 					tempF: hour.temp_f,
 					isDay: hour.is_day,
@@ -75,6 +76,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					chanceOfRain: hour.chance_of_rain,
 					chanceOfSnow: hour.chance_of_snow,
 					snowCm: hour.snow_cm,
+					precipMm: hour.precip_mm,
 					humidity: hour.humidity,
 					pressureMb: hour.pressure_mb,
 					pressureInHg: hour.pressure_in,
@@ -82,9 +84,7 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					rangeMiles: hour.vis_miles,
 					windKph: hour.wind_kph,
 					windMph: hour.wind_mph,
-					condition: {
-						code: normalizeWeatherConditionCode(hour.condition?.code),
-					},
+					condition: mapCondition(hour.condition),
 				})),
 				astro: {
 					sunrise: day.astro.sunrise,

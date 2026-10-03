@@ -147,7 +147,6 @@
 		"fog": "Mgła",
 		"freezingfog": "Mgła marznąca",
 		"freezingrain": "Marznący deszcz",
-		"freezingthunder": "Burza z marznącymi opadami",
 		"lightrain": "Słaby deszcz",
 		"lightsnow": "Słaby śnieg",
 		"overcast": "Całkowite zachmurzenie",
@@ -410,9 +409,9 @@
 			"title": "Prawdopodobieństwo opadów",
 			"values": "Prawdopodobieństwo w procentach"
 		},
-		"rainfall": "Suma opadów deszczu:",
-		"rainfall.description": "Suma opadów deszczu w milimetrach określa ilość deszczu oczekiwaną w okresie objętym prognozą. Jeden milimetr odpowiada jednemu litrowi wody na metr kwadratowy. Ten wskaźnik opisuje ilość deszczu, a prawdopodobieństwo opadów określa szansę jego wystąpienia.",
-		"rainfall.title": "Suma opadów deszczu",
+		"rainfall": "Suma opadów:",
+		"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy. Prawdopodobieństwo deszczu i śniegu podano osobno.",
+		"rainfall.title": "Suma opadów",
 		"rainfall.values": "Zakresy sumy opadów",
 		"title": "Deszcz"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "Wiatr",
 		"values": "Wartości skali"
-	}
+	},
+	"rainfall": "Suma opadów:",
+	"rainfall.title": "Suma opadów",
+	"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy."
 }

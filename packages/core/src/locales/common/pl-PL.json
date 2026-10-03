@@ -35,10 +35,10 @@
 		"weather": "Pogoda"
 	},
 	"toast": {
-		"add": "Dodano {name} do ulubionych",
+		"add": "{name} dodano do ulubionych",
 		"city": "Miasto",
 		"notrefreshed": "Nie udało się zaktualizować pogody",
 		"refreshed": "Pogoda została zaktualizowana",
-		"remove": "Usunięto {name} z ulubionych"
+		"remove": "{name} usunięto z ulubionych"
 	}
 }

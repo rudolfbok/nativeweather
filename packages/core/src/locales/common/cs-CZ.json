@@ -35,10 +35,10 @@
 		"weather": "Počasí"
 	},
 	"toast": {
-		"add": "Přidáno do oblíbených: {name}",
+		"add": "{name} přidáno do oblíbených",
 		"city": "Město",
 		"notrefreshed": "Počasí se nepodařilo aktualizovat",
 		"refreshed": "Počasí aktualizováno",
-		"remove": "Odebráno z oblíbených: {name}"
+		"remove": "{name} odebráno z oblíbených"
 	}
 }

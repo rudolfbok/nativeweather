@@ -30,7 +30,7 @@ interface MainWeatherProps {
 	feelsLikeC?: number;
 	feelsLikeF?: number;
 	isDay: 0 | 1;
-	code: number;
+	code: number | null;
 	condition: string;
 	displayShadow?: boolean;
 	conditionStyle?: string;
@@ -68,7 +68,6 @@ export const MainWeather = ({
 	const weatherData = useWeather((state) => state.weatherData);
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
-	const [currentSource] = useStorageString('currentSource');
 	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
 
 	useEffect(() => {
@@ -98,14 +97,7 @@ export const MainWeather = ({
 				</View>
 			)}
 			<View className="relative z-10 my-4 flex-row items-center justify-center gap-4">
-				<WeatherIcon
-					isDay={isDay}
-					code={code}
-					width={100}
-					height={100}
-					strokeWidth={0}
-					source={currentSource ?? 'weatherapi'}
-				/>
+				<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} />
 				<View className="items-center">
 					<StyledText type="display" className="pl-3 !text-white" style={textOutline}>
 						{switchTemp({ celsius: currentTempC, fahrenheit: currentTempF, currentTemp: currentTemperature })}

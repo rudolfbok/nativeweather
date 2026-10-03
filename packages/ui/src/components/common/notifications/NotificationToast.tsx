@@ -18,7 +18,7 @@ export const NotificationToast = ({ message, type }: { message: string; type: No
 	return (
 		<View
 			className={clsx(
-				'native:mx-4 flex-row items-center gap-3 rounded-xl border border-black/10 bg-white p-4 web:w-80 dark:border-white/10 dark:bg-neutral-900'
+				'native:mx-4 bg-primarySystemBackground flex-row items-center gap-3 rounded-xl border border-black/15 p-4 web:w-full web:md:w-[350px] dark:border-white/15 dark:bg-black'
 			)}
 		>
 			<Icon color={color} fill={fill ?? 'none'} size={20} />

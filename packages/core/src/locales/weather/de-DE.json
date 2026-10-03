@@ -147,7 +147,6 @@
 		"fog": "Nebel",
 		"freezingfog": "Gefrierender Nebel",
 		"freezingrain": "Gefrierender Regen",
-		"freezingthunder": "Gewitter mit gefrierendem Niederschlag",
 		"lightrain": "Leichter Regen",
 		"lightsnow": "Leichter Schneefall",
 		"overcast": "Bedeckt",
@@ -410,9 +409,9 @@
 			"title": "Niederschlagswahrscheinlichkeit",
 			"values": "Wahrscheinlichkeit in Prozent"
 		},
-		"rainfall": "Regenmenge:",
-		"rainfall.description": "Die Regenmenge in Millimetern gibt an, wie viel Regen im Vorhersagezeitraum erwartet wird. Ein Millimeter entspricht einem Liter Wasser pro Quadratmeter. Der Wert beschreibt die erwartete Menge, während die Niederschlagswahrscheinlichkeit angibt, wie wahrscheinlich Regen ist.",
-		"rainfall.title": "Regenmenge",
+		"rainfall": "Gesamtniederschlag:",
+		"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an. Regen- und Schneewahrscheinlichkeit werden getrennt angegeben.",
+		"rainfall.title": "Gesamtniederschlag",
 		"rainfall.values": "Regenmengen",
 		"title": "Regen"
 	},
@@ -530,5 +529,8 @@
 		},
 		"title": "Wind",
 		"values": "Skalenwerte"
-	}
+	},
+	"rainfall": "Gesamtniederschlag:",
+	"rainfall.title": "Gesamtniederschlag",
+	"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an."
 }
