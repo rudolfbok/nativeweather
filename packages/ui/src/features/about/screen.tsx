@@ -10,7 +10,7 @@ import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronRight, FileText, ShieldCheck } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
-import { Linking, View } from 'react-native';
+import { Linking, Pressable, View } from 'react-native';
 import { SettingsItem } from '@nativeweather/ui/components/settings/items/SettingsItem';
 
 interface DataSourceItemProps {
@@ -92,8 +92,13 @@ export const AboutFeature = () => {
 					/>
 				</RoundView>
 			</View>
-			<View className="mt-2 items-center">
-				<StyledText type="caption">© {year} BitApps</StyledText>
+			<View className="mt-2 flex-row items-center justify-center gap-1">
+				<StyledText type="caption">© {year}</StyledText>
+				<Pressable onPress={() => Linking.openURL('https://bitwebs.pages.dev')}>
+					<StyledText type="caption" className="hover:underline">
+						bitwebs
+					</StyledText>
+				</Pressable>
 			</View>
 		</View>
 	);

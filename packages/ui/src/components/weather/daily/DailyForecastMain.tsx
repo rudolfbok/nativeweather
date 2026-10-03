@@ -94,24 +94,7 @@ export const DailyForecastMain = ({
 					'ios:flex-wrap flex w-full flex-row justify-between gap-4 web:grid web:h-fit web:grid-cols-2 web:md:grid-cols-4'
 				)}
 			>
-				{day.day.dailySnowChance > 10 && day.day.dailyRainChance > 10 ? (
-					<>
-						<RainCard
-							rainChance={day.day.dailyRainChance}
-							rainPrecipMm={day.day.totalPrecipMm}
-							rainPrecipIn={day.day.totalPrecipIn}
-							showBackdrop={false}
-							onCloseParent={onCloseParent}
-						/>
-						<SnowCard
-							snowChance={day.day.dailySnowChance}
-							snowPrecipCm={day.day.totalSnowCm}
-							snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
-							showBackdrop={false}
-							onCloseParent={onCloseParent}
-						/>
-					</>
-				) : day.day.dailySnowChance > day.day.dailyRainChance ? (
+				{day.day.dailySnowChance > day.day.dailyRainChance ? (
 					<SnowCard
 						snowChance={day.day.dailySnowChance}
 						snowPrecipCm={day.day.totalSnowCm}

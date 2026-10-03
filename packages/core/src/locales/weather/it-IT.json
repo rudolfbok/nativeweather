@@ -409,7 +409,7 @@
 			"title": "Probabilità di precipitazioni",
 			"values": "Probabilità in percentuale"
 		},
-		"rainfall": "Precipitazioni totali:",
+		"rainfall": "Pioggia:",
 		"rainfall.description": "Il totale delle precipitazioni indica la quantità prevista nel periodo della previsione. Le probabilità di pioggia e neve sono indicate separatamente.",
 		"rainfall.title": "Precipitazioni totali",
 		"rainfall.values": "Accumuli di pioggia",

@@ -409,7 +409,7 @@
 			"title": "Niederschlagswahrscheinlichkeit",
 			"values": "Wahrscheinlichkeit in Prozent"
 		},
-		"rainfall": "Gesamtniederschlag:",
+		"rainfall": "Regen:",
 		"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an. Regen- und Schneewahrscheinlichkeit werden getrennt angegeben.",
 		"rainfall.title": "Gesamtniederschlag",
 		"rainfall.values": "Regenmengen",

@@ -409,7 +409,7 @@
 			"title": "Pravděpodobnost srážek",
 			"values": "Procentuální šance"
 		},
-		"rainfall": "Celkové srážky:",
+		"rainfall": "Srážky:",
 		"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi. Pravděpodobnost deště a sněžení je uvedena zvlášť.",
 		"rainfall.title": "Celkové srážky",
 		"rainfall.values": "Hodnoty srážek",

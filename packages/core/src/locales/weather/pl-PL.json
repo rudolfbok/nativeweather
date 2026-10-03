@@ -409,7 +409,7 @@
 			"title": "Prawdopodobieństwo opadów",
 			"values": "Prawdopodobieństwo w procentach"
 		},
-		"rainfall": "Suma opadów:",
+		"rainfall": "Deszcz:",
 		"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy. Prawdopodobieństwo deszczu i śniegu podano osobno.",
 		"rainfall.title": "Suma opadów",
 		"rainfall.values": "Zakresy sumy opadów",

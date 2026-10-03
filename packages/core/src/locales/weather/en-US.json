@@ -409,7 +409,7 @@
 			"title": "Precipitation probability",
 			"values": "Percentage chance"
 		},
-		"rainfall": "Total precipitation:",
+		"rainfall": "Rainfall:",
 		"rainfall.description": "Total precipitation in millimeters is the expected amount during the forecast period. One millimeter equals one liter per square meter. Rain and snow probabilities are shown separately.",
 		"rainfall.title": "Total precipitation",
 		"rainfall.values": "Rainfall values",
