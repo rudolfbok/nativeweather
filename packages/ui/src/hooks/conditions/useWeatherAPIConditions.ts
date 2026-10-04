@@ -4,6 +4,7 @@ import { getWeatherCondition } from '@nativeweather/core/constants/weatherCondit
 
 export const useWeatherAPIConditions = () => {
 	const { t } = useTranslate('weather');
+
 	return (code: number | null, isDay: 0 | 1): string => {
 		const normalizedCode = normalizeWeatherConditionCode(code);
 		const icon = getWeatherCondition(normalizedCode)?.icon;
@@ -17,6 +18,7 @@ export const useWeatherAPIConditions = () => {
 		if (icon === 'lightsnow') return t('condition.lightsnow');
 		if (icon === 'snow' || icon === 'blizzard') return t('condition.snow');
 		if (icon === 'thunder') return t('condition.thunderstorm');
+
 		return t('condition.rain');
 	};
 };

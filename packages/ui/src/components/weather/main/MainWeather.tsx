@@ -6,7 +6,7 @@ import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherI
 import { border } from '@nativeweather/core/constants/border';
 import { textOutline } from '@nativeweather/core/constants/textOutline';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { WeatherLandscape } from '@nativeweather/ui/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { BlurView } from 'expo-blur';
@@ -68,7 +68,7 @@ export const MainWeather = ({
 					<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} />
 					<View className={clsx('items-center')}>
 						<StyledText type="display" className={clsx('pl-3', '!text-white')} style={textOutline}>
-							{switchTemp({
+							{formatTemperature({
 								celsius: currentTempC,
 								fahrenheit: currentTempF,
 								currentTemp: currentTemperature,
@@ -78,7 +78,7 @@ export const MainWeather = ({
 							<View className={clsx('flex flex-row items-center')}>
 								<ArrowDownIcon />
 								<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
-									{switchTemp({
+									{formatTemperature({
 										celsius: minTempC,
 										fahrenheit: minTempF,
 										currentTemp: currentTemperature,
@@ -88,7 +88,7 @@ export const MainWeather = ({
 							<View className={clsx('flex flex-row items-center')}>
 								<ArrowUpIcon />
 								<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
-									{switchTemp({
+									{formatTemperature({
 										celsius: maxTempC,
 										fahrenheit: maxTempF,
 										currentTemp: currentTemperature,
@@ -99,7 +99,7 @@ export const MainWeather = ({
 						{feelslike && (
 							<StyledText type="body" className={clsx('!text-white')} style={textOutline}>
 								{t('feelslike')}{' '}
-								{switchTemp({
+								{formatTemperature({
 									celsius: feelsLikeC ?? 0,
 									fahrenheit: feelsLikeF ?? 0,
 									currentTemp: currentTemperature,

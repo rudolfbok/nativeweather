@@ -60,7 +60,6 @@ export const AboutFeature = () => {
 			<RoundView className="p-4">
 				<StyledText type="body">{t('about.aboutapp')}</StyledText>
 			</RoundView>
-
 			<View className={clsx('gap-2')}>
 				<StyledText type="sectiontitle">{t('datasource.title')}</StyledText>
 				<RoundView>

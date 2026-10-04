@@ -3,6 +3,7 @@ import { StyledText } from '@nativeweather/ui/components/common/styled/StyledTex
 import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
 import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
@@ -10,38 +11,14 @@ export const RangeModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 
-	const switchUnits = (kilometeres: string, miles: string) =>
-		currentUnits === 'metric' ? kilometeres + 'km' : miles + 'mil';
-
 	const rangeValues = [
-		{
-			name: t('description.range.0'),
-			value: switchUnits('0 - 1', '0 - 1'),
-		},
-		{
-			name: t('description.range.1'),
-			value: switchUnits('1 - 2', '1 - 2'),
-		},
-		{
-			name: t('description.range.2'),
-			value: switchUnits('2 - 4', '2 - 3'),
-		},
-		{
-			name: t('description.range.3'),
-			value: switchUnits('4 - 10', '3 - 6'),
-		},
-		{
-			name: t('description.range.4'),
-			value: switchUnits('10 - 20', '6 - 12'),
-		},
-		{
-			name: t('description.range.5'),
-			value: switchUnits('20 - 50', '12 - 30'),
-		},
-		{
-			name: t('description.range.6'),
-			value: switchUnits('> 50', '> 30'),
-		},
+		{ name: t('description.range.0'), value: selectUnit({ metric: '0 - 1km', imperial: '0 - 1mil', currentUnits }) },
+		{ name: t('description.range.1'), value: selectUnit({ metric: '1 - 2km', imperial: '1 - 2mil', currentUnits }) },
+		{ name: t('description.range.2'), value: selectUnit({ metric: '2 - 4km', imperial: '2 - 3mil', currentUnits }) },
+		{ name: t('description.range.3'), value: selectUnit({ metric: '4 - 10km', imperial: '3 - 6mil', currentUnits }) },
+		{ name: t('description.range.4'), value: selectUnit({ metric: '10 - 20km', imperial: '6 - 12mil', currentUnits }) },
+		{ name: t('description.range.5'), value: selectUnit({ metric: '20 - 50km', imperial: '12 - 30mil', currentUnits }) },
+		{ name: t('description.range.6'), value: selectUnit({ metric: '> 50km', imperial: '> 30mil', currentUnits }) },
 	];
 
 	return (

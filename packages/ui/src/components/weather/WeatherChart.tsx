@@ -1,5 +1,7 @@
-import { useTolgee } from '@tolgee/react';
+import { useTolgee, useTranslate } from '@tolgee/react';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
+import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
+import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
@@ -8,8 +10,9 @@ import { useState } from 'react';
 import { Platform, useWindowDimensions, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit/v2';
 import { G, Rect, Text } from 'react-native-svg';
+import { border } from '@nativeweather/core/constants/border';
 
-type WeatherChartProps = {
+interface WeatherChartProps {
 	forecastDays: NormalizedData['forecast']['forecastday'];
 	currentTimeEpoch: number;
 	timeZone: string;
@@ -20,7 +23,10 @@ type WeatherChartProps = {
 	formatValue?: (value: number) => string;
 	valueSuffix?: string;
 	color?: string;
-};
+	toggleLabel?: string;
+	selectedMetric?: string;
+	onToggle?: (metric: string) => void;
+}
 
 export const WeatherChart = ({
 	forecastDays,
@@ -33,8 +39,12 @@ export const WeatherChart = ({
 	formatValue = (value) => `${Math.round(value)}`,
 	valueSuffix = '',
 	color = '#2793FF',
+	toggleLabel,
+	selectedMetric,
+	onToggle,
 }: WeatherChartProps) => {
 	const tolgee = useTolgee();
+	const { t } = useTranslate('weather');
 	const { text } = useThemeColors();
 	const surface = text === '#FFFFFF' ? '#1C1C1E' : '#FFFFFF';
 	const selectedDay = useSelectedDay((state) => state.selectedDay);
@@ -52,12 +62,19 @@ export const WeatherChart = ({
 	const chartDate = selectedDay?.date ?? localDate;
 	const currentDayHours = forecastDays.find((day) => day.date === chartDate)?.hour ?? [];
 	const chartData = currentDayHours.map((hour) => ({ time: hour.timeEpoch, value: getValue(hour) }));
+	const currentPoint = chartData.reduce<{ time: number; value: number } | undefined>((closest, point) => {
+		if (!closest || Math.abs(point.time - currentTimeEpoch) < Math.abs(closest.time - currentTimeEpoch)) {
+			return point;
+		}
+
+		return closest;
+	}, undefined);
 	const values = chartData.map((point) => point.value);
 	const dataMin = Math.min(...values);
 	const dataMax = Math.max(...values);
 	const padding = (dataMax - dataMin) * 0.1 || domainStep;
 	const yMin = Math.max(0, Math.floor((dataMin - padding) / domainStep) * domainStep);
-	const yMax = maxValue ?? Math.ceil((dataMax + padding) / domainStep) * domainStep;
+	const yMax = maxValue ?? Math.max(domainStep, Math.ceil(dataMax / domainStep) * domainStep);
 	const hourFormatter = new Intl.DateTimeFormat(tolgee.getLanguage(), { hour: 'numeric', hourCycle: 'h23', timeZone });
 	const formatHour = (time: string | number | Date) =>
 		hourFormatter.formatToParts(new Date(Number(time) * 1000)).find((part) => part.type === 'hour')?.value ?? '';
@@ -66,7 +83,7 @@ export const WeatherChart = ({
 
 	return (
 		<View className={clsx('w-full')} onLayout={(event) => setContainerWidth(event.nativeEvent.layout.width + 15)}>
-			<RoundView className={clsx('w-full py-4 pl-2')}>
+			<RoundView className={clsx('relative w-full gap-2 py-4 pl-2')}>
 				<LineChart
 					data={chartData}
 					xKey="time"
@@ -121,6 +138,41 @@ export const WeatherChart = ({
 						</G>
 					)}
 				/>
+				{toggleLabel && selectedMetric && onToggle && (
+					<View className="flex-1 flex-row items-center justify-between px-4">
+						<StyledText type="caption" className={clsx('font-semibold')}>
+							{t('hourlyforecast.now')}: {currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
+						</StyledText>
+						<View
+							className={clsx(
+								'w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark',
+								border
+							)}
+						>
+							<StyledPressable
+								onPress={() => onToggle('%')}
+								tintColor={selectedMetric === '%' ? color : undefined}
+								className="flex-1 items-center rounded-full py-1.5"
+							>
+								<StyledText type="caption" className={clsx('font-semibold', selectedMetric === '%' && 'text-white')}>
+									%
+								</StyledText>
+							</StyledPressable>
+							<StyledPressable
+								onPress={() => onToggle(toggleLabel)}
+								tintColor={selectedMetric === toggleLabel ? color : undefined}
+								className="flex-1 items-center rounded-full py-1.5"
+							>
+								<StyledText
+									type="caption"
+									className={clsx('font-semibold', selectedMetric === toggleLabel && 'text-white')}
+								>
+									{toggleLabel}
+								</StyledText>
+							</StyledPressable>
+						</View>
+					</View>
+				)}
 			</RoundView>
 		</View>
 	);

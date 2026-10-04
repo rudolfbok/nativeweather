@@ -5,7 +5,7 @@ import { StyledText } from '@nativeweather/ui/components/common/styled/StyledTex
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useTranslate } from '@tolgee/react';
 import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 
 interface HourlyItemProps {
 	hour: number | string;
@@ -44,7 +44,7 @@ export const HourlyItem = ({ hour, isDay, code, rainChance, snowChance, tempC, t
 				)}
 			</View>
 			<StyledText type="body" className={clsx('font-semibold')}>
-				{switchTemp({
+				{formatTemperature({
 					celsius: tempC,
 					fahrenheit: tempF,
 					currentTemp: currentTemp,

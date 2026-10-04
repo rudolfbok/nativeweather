@@ -4,6 +4,7 @@ import { StyledText } from '@nativeweather/ui/components/common/styled/StyledTex
 import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
 import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
@@ -12,61 +13,58 @@ export const PressureModal = () => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const { weatherData } = useWeather();
-	const switchUnits = (hectopascals: string, inchesofmercury: string) =>
-		currentUnits === 'metric' ? hectopascals + 'hPa' : inchesofmercury + 'inHg';
-
 	const barometricScaleValues = [
 		{
 			name: t('description.pressure.0'),
-			value: switchUnits('< 980', '< 28,94'),
+			value: selectUnit({ metric: '< 980hPa', imperial: '< 28,94inHg', currentUnits }),
 			textColor: '!text-[#E53935]',
 			description: t('pressure.text.0'),
 		},
 		{
 			name: t('description.pressure.1'),
-			value: switchUnits('980 - 995', '28,94 - 29,38'),
+			value: selectUnit({ metric: '980 - 995hPa', imperial: '28,94 - 29,38inHg', currentUnits }),
 			textColor: '!text-[#FB8C00]',
 			description: t('pressure.text.1'),
 		},
 		{
 			name: t('description.pressure.2'),
-			value: switchUnits('996 - 1005', '29,41 - 29,68'),
+			value: selectUnit({ metric: '996 - 1005hPa', imperial: '29,41 - 29,68inHg', currentUnits }),
 			textColor: '!text-[#FDD835]',
 			description: t('pressure.text.2'),
 		},
 		{
 			name: t('description.pressure.3'),
-			value: switchUnits('1006 - 1012', '29,71 - 29,88'),
+			value: selectUnit({ metric: '1006 - 1012hPa', imperial: '29,71 - 29,88inHg', currentUnits }),
 			textColor: '!text-[#43A047]',
 			description: t('pressure.text.3'),
 		},
 		{
 			name: t('description.pressure.4'),
-			value: switchUnits('1013 - 1020', '29,91 - 30,12'),
+			value: selectUnit({ metric: '1013 - 1020hPa', imperial: '29,91 - 30,12inHg', currentUnits }),
 			textColor: '!text-[#1E88E5]',
 			description: t('pressure.text.4'),
 		},
 		{
 			name: t('description.pressure.5'),
-			value: switchUnits('1021 - 1025', '30,15 - 30,27'),
+			value: selectUnit({ metric: '1021 - 1025hPa', imperial: '30,15 - 30,27inHg', currentUnits }),
 			textColor: '!text-[#3949AB]',
 			description: t('pressure.text.5'),
 		},
 		{
 			name: t('description.pressure.6'),
-			value: switchUnits('1026 - 1035', '30,30 - 30,56'),
+			value: selectUnit({ metric: '1026 - 1035hPa', imperial: '30,30 - 30,56inHg', currentUnits }),
 			textColor: '!text-[#6A1B9A]',
 			description: t('pressure.text.6'),
 		},
 		{
 			name: t('description.pressure.7'),
-			value: switchUnits('1036 - 1045', '30,59 - 30,86'),
+			value: selectUnit({ metric: '1036 - 1045hPa', imperial: '30,59 - 30,86inHg', currentUnits }),
 			textColor: '!text-[#8E24AA]',
 			description: t('pressure.text.7'),
 		},
 		{
 			name: t('description.pressure.8'),
-			value: switchUnits('> 1045 ', '> 30,86'),
+			value: selectUnit({ metric: '> 1045 hPa', imperial: '> 30,86inHg', currentUnits }),
 			textColor: '!text-[#5D4037]',
 			description: t('pressure.text.8'),
 		},

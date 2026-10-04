@@ -1,11 +1,11 @@
-interface SwitchTempProps {
+interface FormatTemperatureProps {
 	celsius: number;
 	fahrenheit: number;
 	currentTemp: string | undefined;
 	includeUnit?: boolean;
 }
 
-export const switchTemp = ({ celsius, fahrenheit, currentTemp, includeUnit = false }: SwitchTempProps) => {
+export const formatTemperature = ({ celsius, fahrenheit, currentTemp, includeUnit = false }: FormatTemperatureProps) => {
 	const isFahrenheit = currentTemp === 'fahrenheit';
 	const value = isFahrenheit ? fahrenheit : celsius;
 	const unit = includeUnit ? (isFahrenheit ? 'F' : 'C') : '';

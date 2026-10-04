@@ -13,7 +13,7 @@ import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavig
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { useRef } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
@@ -105,7 +105,7 @@ export const DailyForecast = () => {
 						</View>
 						<View className={clsx('w-fit flex-row items-center justify-between')}>
 							<StyledText type="body" className={clsx('w-10 text-center')}>
-								{switchTemp({
+								{formatTemperature({
 									celsius: day.day.minTempC,
 									fahrenheit: day.day.minTempF,
 									currentTemp: currentTemp,
@@ -121,7 +121,7 @@ export const DailyForecast = () => {
 								/>
 							</View>
 							<StyledText type="body" className={clsx('w-10 text-center font-semibold')}>
-								{switchTemp({
+								{formatTemperature({
 									celsius: day.day.maxTempC,
 									fahrenheit: day.day.maxTempF,
 									currentTemp: currentTemp,

@@ -12,26 +12,11 @@ export const HumidityModal = () => {
 	const { weatherData } = useWeather();
 
 	const humidityScaleValues = [
-		{
-			name: t('description.humidity.0'),
-			value: '0 - 20%',
-		},
-		{
-			name: t('description.humidity.1'),
-			value: '20 - 40%',
-		},
-		{
-			name: t('description.humidity.2'),
-			value: '40 - 60%',
-		},
-		{
-			name: t('description.humidity.3'),
-			value: '60 - 80%',
-		},
-		{
-			name: t('description.humidity.4'),
-			value: '80 - 100%',
-		},
+		{ name: t('description.humidity.0'), value: '0 - 20%' },
+		{ name: t('description.humidity.1'), value: '20 - 40%' },
+		{ name: t('description.humidity.2'), value: '40 - 60%' },
+		{ name: t('description.humidity.3'), value: '60 - 80%' },
+		{ name: t('description.humidity.4'), value: '80 - 100%' },
 	];
 
 	return (

@@ -3,7 +3,7 @@ import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { getWeatherIconUri } from '@nativeweather/ui/utils/mappings/weatherIconAssets';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import {
@@ -41,7 +41,7 @@ export const useWidgets = () => {
 	const imagePathURI = imagePath?.key === iconKey ? imagePath.uri : null;
 
 	const localTemp = localWeatherData
-		? switchTemp({
+		? formatTemperature({
 				celsius: localWeatherData.current.tempC,
 				fahrenheit: localWeatherData.current.tempF,
 				currentTemp,
@@ -49,7 +49,7 @@ export const useWidgets = () => {
 		: null;
 
 	const localTempMin = localWeatherData
-		? switchTemp({
+		? formatTemperature({
 				celsius: localWeatherData.forecast.forecastday[0].day.minTempC,
 				fahrenheit: localWeatherData.forecast.forecastday[0].day.minTempF,
 				currentTemp,
@@ -57,7 +57,7 @@ export const useWidgets = () => {
 		: null;
 
 	const localTempMax = localWeatherData
-		? switchTemp({
+		? formatTemperature({
 				celsius: localWeatherData.forecast.forecastday[0].day.maxTempC,
 				fahrenheit: localWeatherData.forecast.forecastday[0].day.maxTempF,
 				currentTemp,
@@ -65,7 +65,7 @@ export const useWidgets = () => {
 		: null;
 
 	const feelsLikeTemperature = localWeatherData
-		? switchTemp({
+		? formatTemperature({
 				celsius: localWeatherData.current.feelsLikeC,
 				fahrenheit: localWeatherData.current.feelsLikeF,
 				currentTemp,

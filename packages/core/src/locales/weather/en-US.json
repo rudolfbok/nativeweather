@@ -246,7 +246,7 @@
 	},
 	"feelslike": "Feels like:",
 	"hourlyforecast": {
-		"now": "now",
+		"now": "Now",
 		"title": "Hourly forecast"
 	},
 	"humidity": {

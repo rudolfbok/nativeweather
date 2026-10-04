@@ -6,8 +6,8 @@ import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView'
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { SmartSummaryIcon } from '@nativeweather/ui/components/icons/main/SmartSummaryIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
 
 type Variant = 1 | 2 | 3;
@@ -145,29 +145,29 @@ export const SmartSummary = ({
 	const isHot = tempBucket === 'warm' || tempBucket === 'hot';
 	const aqi = getAQI(currentAQI, airQualityEU, airQualityUS);
 
-	const displayMin = switchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp });
-	const displayMax = switchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
-	const displayTempRange = switchTemp({
+	const displayMin = formatTemperature({ celsius: minTempC, fahrenheit: minTempF, currentTemp });
+	const displayMax = formatTemperature({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp });
+	const displayTempRange = formatTemperature({
 		celsius: tempRangeC,
 		fahrenheit: Math.max(0, maxTempF - minTempF),
 		currentTemp,
 	});
-	const rain = switchMetrics({
+	const rain = selectUnit({
 		metric: `${Math.round(rainPrecipMm)} mm`,
 		imperial: `${rainPrecipIn.toFixed(2)} in`,
 		currentUnits,
 	});
-	const snow = switchMetrics({
+	const snow = selectUnit({
 		metric: `${snowPrecipCm.toFixed(1)} cm`,
 		imperial: `${snowPrecipIn.toFixed(2)} in`,
 		currentUnits,
 	});
-	const visibility = switchMetrics({
+	const visibility = selectUnit({
 		metric: `${Math.round(avgRangeKm ?? 0)} km`,
 		imperial: `${Math.round(avgRangeMiles ?? 0)} mi`,
 		currentUnits,
 	});
-	const wind = switchMetrics({
+	const wind = selectUnit({
 		metric: `${Math.round(maxWindKph ?? 0)} km/h`,
 		imperial: `${Math.round((maxWindKph ?? 0) * 0.621371)} mph`,
 		currentUnits,

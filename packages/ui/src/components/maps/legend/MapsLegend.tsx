@@ -1,6 +1,6 @@
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { LegendGradient } from './LegendGradient';
@@ -122,13 +122,13 @@ export const PrecipitationInfo = () => {
 			stops={precipitationStops}
 			labelStops={precipitationLabelStops}
 			formatLabel={(value) =>
-				switchMetrics({
+				selectUnit({
 					metric: `${value}`,
 					imperial: `${(value / 25.4).toFixed(1)}`,
 					currentUnits,
 				})
 			}
-			unit={switchMetrics({ metric: 'mm/h', imperial: 'in/h', currentUnits })}
+			unit={selectUnit({ metric: 'mm/h', imperial: 'in/h', currentUnits })}
 		/>
 	);
 };
@@ -141,13 +141,13 @@ export const WindInfo = () => {
 			stops={windStops}
 			labelStops={windLabelStops}
 			formatLabel={(value) =>
-				switchMetrics({
+				selectUnit({
 					metric: `${Math.round(value * 3.6)}`,
 					imperial: `${Math.round(value * 3.6 * 0.621371)}`,
 					currentUnits,
 				})
 			}
-			unit={switchMetrics({ metric: 'km/h', imperial: 'mph', currentUnits })}
+			unit={selectUnit({ metric: 'km/h', imperial: 'mph', currentUnits })}
 		/>
 	);
 };

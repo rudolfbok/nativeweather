@@ -9,7 +9,7 @@ import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { WeatherLandscape } from '@nativeweather/ui/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
@@ -100,26 +100,26 @@ export const MainWeather = ({
 				<WeatherIcon isDay={isDay} code={code} width={100} height={100} strokeWidth={0} />
 				<View className="items-center">
 					<StyledText type="display" className="pl-3 !text-white" style={textOutline}>
-						{switchTemp({ celsius: currentTempC, fahrenheit: currentTempF, currentTemp: currentTemperature })}
+						{formatTemperature({ celsius: currentTempC, fahrenheit: currentTempF, currentTemp: currentTemperature })}
 					</StyledText>
 					<View className="flex-row items-center gap-1">
 						<View className="flex-row items-center">
 							<ArrowDownIcon />
 							<StyledText type="body" className="!text-white" style={textOutline}>
-								{switchTemp({ celsius: minTempC, fahrenheit: minTempF, currentTemp: currentTemperature })}
+								{formatTemperature({ celsius: minTempC, fahrenheit: minTempF, currentTemp: currentTemperature })}
 							</StyledText>
 						</View>
 						<View className="flex-row items-center">
 							<ArrowUpIcon />
 							<StyledText type="body" className="!text-white" style={textOutline}>
-								{switchTemp({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp: currentTemperature })}
+								{formatTemperature({ celsius: maxTempC, fahrenheit: maxTempF, currentTemp: currentTemperature })}
 							</StyledText>
 						</View>
 					</View>
 					{feelslike && (
 						<StyledText type="body" className="!text-white" style={textOutline}>
 							{t('feelslike')}{' '}
-							{switchTemp({
+							{formatTemperature({
 								celsius: feelsLikeC ?? 0,
 								fahrenheit: feelsLikeF ?? 0,
 								currentTemp: currentTemperature,

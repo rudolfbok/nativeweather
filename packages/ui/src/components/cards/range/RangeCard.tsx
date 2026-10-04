@@ -3,7 +3,7 @@ import { RangeIcon } from '@nativeweather/ui/components/icons/main/RangeIcon';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -29,7 +29,7 @@ export const RangeCard = ({ visKm, visMiles, showBackdrop, onCloseParent }: Rang
 		web: () => setShowModal(true),
 	});
 
-	const display = switchMetrics({
+	const display = selectUnit({
 		metric: `${Math.round(visKm)}km`,
 		imperial: `${Math.round(visMiles)}mil`,
 		currentUnits: currentUnits,

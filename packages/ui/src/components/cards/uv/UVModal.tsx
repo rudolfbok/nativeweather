@@ -14,36 +14,11 @@ export const UVModal = () => {
 	const timeZone = weatherData?.location.tzId ?? 'UTC';
 
 	const uvValues = [
-		{
-			name: t('description.uv.0'),
-			textColor: '!text-[#009900]',
-			value: '0 - 2',
-			description: t('uv.text.0'),
-		},
-		{
-			name: t('description.uv.1'),
-			textColor: '!text-[#FFC100]',
-			value: '3 - 5',
-			description: t('uv.text.1'),
-		},
-		{
-			name: t('description.uv.2'),
-			textColor: '!text-[#FF6F00]',
-			value: '6 - 7',
-			description: t('uv.text.2'),
-		},
-		{
-			name: t('description.uv.3'),
-			textColor: '!text-[#FF0000]',
-			value: '8 - 10',
-			description: t('uv.text.3'),
-		},
-		{
-			name: t('description.uv.4'),
-			textColor: '!text-[#990099]',
-			value: '11+',
-			description: t('uv.text.4'),
-		},
+		{ name: t('description.uv.0'), textColor: '!text-[#009900]', value: '0 - 2', description: t('uv.text.0') },
+		{ name: t('description.uv.1'), textColor: '!text-[#FFC100]', value: '3 - 5', description: t('uv.text.1') },
+		{ name: t('description.uv.2'), textColor: '!text-[#FF6F00]', value: '6 - 7', description: t('uv.text.2') },
+		{ name: t('description.uv.3'), textColor: '!text-[#FF0000]', value: '8 - 10', description: t('uv.text.3') },
+		{ name: t('description.uv.4'), textColor: '!text-[#990099]', value: '11+', description: t('uv.text.4') },
 	];
 
 	return (

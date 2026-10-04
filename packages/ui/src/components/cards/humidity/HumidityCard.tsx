@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -31,7 +31,7 @@ export const HumidityCard = ({ data, dewPoint, dewPointC, dewPointF }: HumidityC
 	});
 
 	const dewPointValue = dewPoint
-		? switchTemp({
+		? formatTemperature({
 				celsius: Math.round(dewPointC ?? 0),
 				fahrenheit: Math.round(dewPointF ?? 0),
 				currentTemp: currentTemp,

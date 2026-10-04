@@ -246,7 +246,7 @@
 	},
 	"feelslike": "Percepita:",
 	"hourlyforecast": {
-		"now": "ora",
+		"now": "Ora",
 		"title": "Previsioni orarie"
 	},
 	"humidity": {

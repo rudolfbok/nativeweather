@@ -4,7 +4,7 @@ import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalN
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -49,13 +49,13 @@ export const WindCard = ({
 		web: () => setShowModal(true),
 	});
 
-	const displaySpeed = switchMetrics({
+	const displaySpeed = selectUnit({
 		metric: `${Math.round(windKm)}km/h`,
 		imperial: `${Math.round(windMil)}mph`,
 		currentUnits: currentUnits,
 	});
 
-	const displayGust = switchMetrics({
+	const displayGust = selectUnit({
 		metric: `${Math.round(gustKm ?? 0)}km/h`,
 		imperial: `${Math.round(gustMil ?? 0)}mph`,
 		currentUnits: currentUnits,

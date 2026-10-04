@@ -1,12 +1,11 @@
 'use client';
 
-import { useTranslate } from '@tolgee/react';
+import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
-import { ArrowRight } from 'lucide-react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
 type DeviceOrientationEventWithPermission = typeof DeviceOrientationEvent & {

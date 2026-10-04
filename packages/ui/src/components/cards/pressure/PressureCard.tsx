@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -27,7 +27,7 @@ export const PressureCard = ({ pressureMb, pressureIn }: PressureCardProps) => {
 		web: () => setShowModal(true),
 	});
 
-	const display = switchMetrics({
+	const display = selectUnit({
 		metric: `${Math.round(pressureMb)}hPa`,
 		imperial: `${pressureIn.toFixed(1)}inHg`,
 		currentUnits: currentUnits,

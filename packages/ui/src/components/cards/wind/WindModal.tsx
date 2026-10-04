@@ -6,6 +6,7 @@ import { Separator } from '@nativeweather/ui/components/common/styled/Separator'
 import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
 import { WindDirectionIcon } from '@nativeweather/ui/components/icons/ui/WindDirectionIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
 import { clsx } from 'clsx';
@@ -24,75 +25,20 @@ export const WindModal = ({ currentWind, degree, speed, gust }: WindModalProps) 
 	const [currentUnits] = useStorageString('currentUnits');
 	const { weatherData } = useWeather();
 
-	const switchUnits = (kilometeres: string, miles: string) =>
-		currentUnits === 'metric' ? kilometeres + 'km/h' : miles + 'mph';
-
 	const beaufortScaleValues = [
-		{
-			name: t('description.windspeed.0'),
-			textColor: '',
-			value: switchUnits('< 1', '< 1'),
-		},
-		{
-			name: t('description.windspeed.1'),
-			textColor: '!text-[#0891B2]',
-			value: switchUnits('1 - 5', '0 - 2'),
-		},
-		{
-			name: t('description.windspeed.2'),
-			textColor: '!text-[#059669]',
-			value: switchUnits('6 - 11', '4 - 7'),
-		},
-		{
-			name: t('description.windspeed.3'),
-			textColor: '!text-[#16A34A]',
-			value: switchUnits('12 - 19', '8 - 12'),
-		},
-		{
-			name: t('description.windspeed.4'),
-			textColor: '!text-[#22C55E]',
-			value: switchUnits('20 - 28', '13 - 18'),
-		},
-		{
-			name: t('description.windspeed.5'),
-			textColor: '!text-[#65A30D]',
-			value: switchUnits('29 - 38', '19 - 24'),
-		},
-		{
-			name: t('description.windspeed.6'),
-			textColor: '!text-[#84CC16]',
-			value: switchUnits('39 - 49', '25 - 31'),
-		},
-		{
-			name: t('description.windspeed.7'),
-			textColor: '!text-[#A3A300]',
-			value: switchUnits('50 - 61', '32 - 38'),
-		},
-		{
-			name: t('description.windspeed.8'),
-			textColor: '!text-[#CA8A04]',
-			value: switchUnits('62 - 74', '39 - 46'),
-		},
-		{
-			name: t('description.windspeed.9'),
-			textColor: '!text-[#EA580C]',
-			value: switchUnits('75 - 88', '47 - 54'),
-		},
-		{
-			name: t('description.windspeed.10'),
-			textColor: '!text-[#DC2626]',
-			value: switchUnits('89 - 102', '55 - 63'),
-		},
-		{
-			name: t('description.windspeed.11'),
-			textColor: '!text-[#B91C1C]',
-			value: switchUnits('103 - 117', '64 - 72'),
-		},
-		{
-			name: t('description.windspeed.12'),
-			textColor: '!text-[#991B1B]',
-			value: switchUnits('> 118', '> 73'),
-		},
+		{ name: t('description.windspeed.0'), textColor: '', value: selectUnit({ metric: '< 1km/h', imperial: '< 1mph', currentUnits }) },
+		{ name: t('description.windspeed.1'), textColor: '!text-[#0891B2]', value: selectUnit({ metric: '1 - 5km/h', imperial: '0 - 2mph', currentUnits }) },
+		{ name: t('description.windspeed.2'), textColor: '!text-[#059669]', value: selectUnit({ metric: '6 - 11km/h', imperial: '4 - 7mph', currentUnits }) },
+		{ name: t('description.windspeed.3'), textColor: '!text-[#16A34A]', value: selectUnit({ metric: '12 - 19km/h', imperial: '8 - 12mph', currentUnits }) },
+		{ name: t('description.windspeed.4'), textColor: '!text-[#22C55E]', value: selectUnit({ metric: '20 - 28km/h', imperial: '13 - 18mph', currentUnits }) },
+		{ name: t('description.windspeed.5'), textColor: '!text-[#65A30D]', value: selectUnit({ metric: '29 - 38km/h', imperial: '19 - 24mph', currentUnits }) },
+		{ name: t('description.windspeed.6'), textColor: '!text-[#84CC16]', value: selectUnit({ metric: '39 - 49km/h', imperial: '25 - 31mph', currentUnits }) },
+		{ name: t('description.windspeed.7'), textColor: '!text-[#A3A300]', value: selectUnit({ metric: '50 - 61km/h', imperial: '32 - 38mph', currentUnits }) },
+		{ name: t('description.windspeed.8'), textColor: '!text-[#CA8A04]', value: selectUnit({ metric: '62 - 74km/h', imperial: '39 - 46mph', currentUnits }) },
+		{ name: t('description.windspeed.9'), textColor: '!text-[#EA580C]', value: selectUnit({ metric: '75 - 88km/h', imperial: '47 - 54mph', currentUnits }) },
+		{ name: t('description.windspeed.10'), textColor: '!text-[#DC2626]', value: selectUnit({ metric: '89 - 102km/h', imperial: '55 - 63mph', currentUnits }) },
+		{ name: t('description.windspeed.11'), textColor: '!text-[#B91C1C]', value: selectUnit({ metric: '103 - 117km/h', imperial: '64 - 72mph', currentUnits }) },
+		{ name: t('description.windspeed.12'), textColor: '!text-[#991B1B]', value: selectUnit({ metric: '> 118km/h', imperial: '> 73mph', currentUnits }) },
 	];
 
 	const windData = [

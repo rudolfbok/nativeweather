@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -31,7 +31,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop,
 		web: () => setShowModal(true),
 	});
 
-	const display = switchMetrics({
+	const display = selectUnit({
 		metric: `${snowPrecipCm ?? (0).toFixed(1)}cm`,
 		imperial: `${snowPrecipIn ?? (0).toFixed(2)}in`,
 		currentUnits: currentUnits,

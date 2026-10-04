@@ -2,7 +2,7 @@ import { useTolgee } from '@tolgee/react';
 import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
 import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';
 import { View } from 'react-native';
@@ -61,7 +61,7 @@ export const CardContent = ({
 					{region}
 				</StyledText>
 				<StyledText type="title" className={clsx('native:!text-white web:!text-white')}>
-					{switchTemp({ celsius: tempC, fahrenheit: tempF, currentTemp: currentTemperature })}
+					{formatTemperature({ celsius: tempC, fahrenheit: tempF, currentTemp: currentTemperature })}
 				</StyledText>
 				<StyledText
 					type="body"

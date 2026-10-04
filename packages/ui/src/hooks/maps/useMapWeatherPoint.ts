@@ -1,7 +1,7 @@
 import { fetchWeatherAPI } from '@nativeweather/api/fetchWeatherAPI';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { switchMetrics } from '@nativeweather/core/utils/formatting/selectUnitValue';
-import { switchTemp } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
+import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { useEffect, useRef, useState } from 'react';
 import type { WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
 
@@ -37,7 +37,7 @@ const formatWeatherPoint = (
 		if (current.precip_mm == null || current.precip_in == null) return null;
 
 		return {
-			value: switchMetrics({
+			value: selectUnit({
 				metric: `${current.precip_mm.toFixed(1)} mm`,
 				imperial: `${current.precip_in.toFixed(2)} in`,
 				currentUnits,
@@ -48,7 +48,7 @@ const formatWeatherPoint = (
 	if (layer === 'wind') {
 		if (current.wind_kph == null || current.wind_mph == null) return null;
 
-		const value = switchMetrics({
+		const value = selectUnit({
 			metric: `${Math.round(current.wind_kph)} km/h`,
 			imperial: `${Math.round(current.wind_mph)} mph`,
 			currentUnits,
@@ -56,7 +56,7 @@ const formatWeatherPoint = (
 		const gust =
 			current.gust_kph == null || current.gust_mph == null
 				? null
-				: `${gustLabel} ${switchMetrics({
+				: `${gustLabel} ${selectUnit({
 						metric: `${Math.round(current.gust_kph)} km/h`,
 						imperial: `${Math.round(current.gust_mph)} mph`,
 						currentUnits,
@@ -68,7 +68,7 @@ const formatWeatherPoint = (
 	if (current.temp_c == null || current.temp_f == null) return null;
 
 	return {
-		value: switchTemp({
+		value: formatTemperature({
 			celsius: current.temp_c,
 			fahrenheit: current.temp_f,
 			currentTemp,
