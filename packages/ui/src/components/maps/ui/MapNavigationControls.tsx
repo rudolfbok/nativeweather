@@ -1,5 +1,4 @@
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { border } from '@nativeweather/core/constants/border';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Locate, Minus, Plus } from 'lucide-react-native';
@@ -17,7 +16,7 @@ const MapNavigationButton = ({
 	<StyledPressable
 		onPress={onPress}
 		onPressIn={onPressIn}
-		className={clsx('ios:p-3 items-center rounded-full p-2', border)}
+		className={clsx('ios:p-3 items-center rounded-full p-2')}
 	>
 		{icon}
 	</StyledPressable>

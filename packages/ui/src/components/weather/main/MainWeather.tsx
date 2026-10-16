@@ -3,7 +3,6 @@ import { StyledText } from '@nativeweather/ui/components/common/styled/StyledTex
 import { ArrowDownIcon } from '@nativeweather/ui/components/icons/ui/ArrowDownIcon';
 import { ArrowUpIcon } from '@nativeweather/ui/components/icons/ui/ArrowUpIcon';
 import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
-import { border } from '@nativeweather/core/constants/border';
 import { textOutline } from '@nativeweather/core/constants/textOutline';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
@@ -109,7 +108,7 @@ export const MainWeather = ({
 					</View>
 				</View>
 				<StyledBlurView
-					className={clsx('relative z-10 overflow-hidden rounded-3xl px-4 py-2', border)}
+					className={clsx('relative z-10 overflow-hidden rounded-3xl px-4 py-2')}
 					tint="light"
 					intensity={30}
 				>

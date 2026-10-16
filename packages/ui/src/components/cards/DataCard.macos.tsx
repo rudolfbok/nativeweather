@@ -3,7 +3,6 @@ import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/layout/CardHeader';
 import { StyledPressable } from '../common/styled/StyledPressable';
-import { border } from '@nativeweather/core/constants/border';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -35,7 +34,6 @@ export const DataCard = ({
 				className={clsx(
 					'justify-between overflow-hidden rounded-3xl p-4 macos:h-[180px]',
 					wide ? 'macos:w-[49%]' : 'macos:w-[23.5%] aspect-square',
-					border
 				)}
 			>
 				<CardHeader icon={icon} header={title} />

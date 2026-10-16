@@ -1,6 +1,5 @@
 'use client';
 
-import { border } from '@nativeweather/core/constants/border';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
@@ -24,10 +23,7 @@ export const LocalWeather = ({ error = null }: { error?: LocalWeatherErrorKind |
 		return (
 			<View className={clsx(containerClassName)}>
 				<View
-					className={clsx(
-						'macos:dark:bg-tertiarySystemBackground_dark macos:bg-secondarySystemBackground flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-systemBackground p-4 lg:w-fit dark:bg-secondarySystemBackground_dark',
-						border
-					)}
+					className={clsx('macos:dark:bg-tertiarySystemBackground_dark macos:bg-secondarySystemBackground flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-systemBackground p-4 lg:w-fit dark:bg-secondarySystemBackground_dark')}
 				>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t(`localweather.error.${error}.title`)}

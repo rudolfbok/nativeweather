@@ -9,7 +9,6 @@ import { NoColorMapIcon } from '@nativeweather/ui/components/icons/maps/NoColorM
 import { ThermometerIcon } from '@nativeweather/ui/components/icons/maps/ThermometerIcon';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
-import { border } from '@nativeweather/core/constants/border';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { CloudOff, InfoIcon } from 'lucide-react-native';
@@ -32,7 +31,7 @@ const MapButton = ({ onPress, onPressIn, icon }: { onPress: () => void; onPressI
 	<StyledPressable
 		onPress={onPress}
 		onPressIn={onPressIn}
-		className={clsx('ios:p-3 items-center rounded-full p-2', border)}
+		className={clsx('ios:p-3 items-center rounded-full p-2')}
 	>
 		{icon}
 	</StyledPressable>
@@ -91,7 +90,7 @@ export const MapControls = ({
 			{showLegend && (
 				<View className="ios:bottom-28 absolute bottom-4 right-4 max-md:left-4">
 					<AnimatedView duration={250}>
-						<RoundView className={clsx('w-full p-4 md:w-96', border)}>
+						<RoundView className={clsx('w-full p-4 md:w-96')}>
 							<View className="flex w-full flex-row items-center justify-between">
 								<StyledText type="body" className="font-semibold">
 									{t('maps.legend.title')}
@@ -99,7 +98,7 @@ export const MapControls = ({
 								<StyledPressable
 									onPressIn={onInteraction}
 									onPress={() => onLegendChange(false)}
-									className={clsx('rounded-full p-1', border)}
+									className={clsx('rounded-full p-1')}
 								>
 									<CloseIcon size={22} color={text} />
 								</StyledPressable>

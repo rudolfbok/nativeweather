@@ -15,7 +15,6 @@ import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { border } from '@nativeweather/core/constants/border';
 
 interface MainWeatherProps {
 	name?: string;
@@ -128,7 +127,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<View className={clsx('relative z-10 rounded-full bg-white/10 px-4 py-2', border)}>
+			<View className={clsx('relative z-10 rounded-full bg-white/10 px-4 py-2')}>
 				<StyledText type="title" className="!text-white" style={textOutline}>
 					{condition}
 				</StyledText>

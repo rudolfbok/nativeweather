@@ -9,7 +9,6 @@ import {
 	WEATHER_SOURCE_ID,
 } from '@nativeweather/core/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
-import { border } from '@nativeweather/core/constants/border';
 import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
@@ -242,10 +241,7 @@ export const MapLibreView = ({ showCompass = false }: { showCompass?: boolean })
 			{showLoading && (
 				<View className={clsx('pointer-events-none absolute inset-0 z-20 items-center justify-center')}>
 					<View
-						className={clsx(
-							'bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3',
-							border
-						)}
+						className={clsx('bg-systemBackground dark:bg-secondarySystemBackground_dark flex-row items-center gap-3 rounded-full px-5 py-3')}
 					>
 						<ActivityIndicator size="small" color="#007AFF" />
 						<StyledText type="body" className="font-semibold">

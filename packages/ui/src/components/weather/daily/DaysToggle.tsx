@@ -4,7 +4,6 @@ import { StyledPressable } from '@nativeweather/ui/components/common/styled/Styl
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
 import { useTolgee } from '@tolgee/react';
-import { border } from '@nativeweather/core/constants/border';
 
 interface DaysToggleProps {
 	days: NormalizedData['forecast']['forecastday'];
@@ -25,7 +24,7 @@ export const DaysToggle = ({ days, onSelectDay }: DaysToggleProps) => {
 					<StyledPressable
 						key={day.date}
 						onPress={() => onSelectDay(day)}
-						className={clsx('min-h-10 w-[45px] flex-1 items-center justify-center rounded-3xl py-2', border)}
+						className={clsx('min-h-10 w-[45px] flex-1 items-center justify-center rounded-3xl py-2')}
 					>
 						<StyledText type="body" className={clsx('font-semibold')}>
 							{getDayName(day.date, true)}

@@ -14,7 +14,6 @@ import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { AlertModal } from './AlertModal';
-import { border } from '@nativeweather/core/constants/border';
 
 interface AlertWeatherProps {
 	filteredAlerts: WeatherAlert[];
@@ -42,10 +41,7 @@ export const AlertWeather = ({ filteredAlerts, alertsLength }: AlertWeatherProps
 		<>
 			<StyledPressable
 				onPress={navigateToAlerts}
-				className={clsx(
-					'w-full flex-row items-center justify-between rounded-3xl p-4',
-					border
-				)}
+				className={clsx('w-full flex-row items-center justify-between rounded-3xl p-4')}
 			>
 				<CardHeader
 					icon={<AlertIcon mostSevere={alertIconColor} />}

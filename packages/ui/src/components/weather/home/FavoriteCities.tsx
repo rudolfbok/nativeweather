@@ -1,4 +1,3 @@
-import { border } from '@nativeweather/core/constants/border';
 import { getCityRegion } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
@@ -30,10 +29,7 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 				{favoriteCount > 0 && (
 					<StyledPressable
 						onPress={() => setShowDeleteCity((prev) => !prev)}
-						className={clsx(
-							'macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5',
-							border
-						)}
+						className={clsx('macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5')}
 					>
 						{showDeleteCity ? <Check size={24} color={text} /> : <EditIcon />}
 					</StyledPressable>

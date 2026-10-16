@@ -2,7 +2,6 @@ import { Camera, Layer, Map, RasterSource } from '@maplibre/maplibre-react-nativ
 import type { CameraRef, MapProps, MapRef } from '@maplibre/maplibre-react-native';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { border } from '@nativeweather/core/constants/border';
 import {
 	getBaseMapUrl,
 	getWeatherTileUrl,
@@ -160,10 +159,7 @@ export const MapLibreView = ({ showCompass = true }: { showCompass?: boolean }) 
 			{showLoading && (
 				<View pointerEvents="none" className="absolute inset-0 z-20 items-center justify-center">
 					<View
-						className={clsx(
-							'flex-row items-center gap-3 rounded-full bg-systemBackground px-5 py-3 dark:bg-secondarySystemBackground_dark',
-							border
-						)}
+						className={clsx('flex-row items-center gap-3 rounded-full bg-systemBackground px-5 py-3 dark:bg-secondarySystemBackground_dark')}
 					>
 						<ActivityIndicator size="small" color="#007AFF" />
 						<StyledText type="body" className="font-semibold">

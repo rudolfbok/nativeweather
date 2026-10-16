@@ -1,4 +1,3 @@
-import { border } from '@nativeweather/core/constants/border';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 import { CardHeader } from '../common/layout/CardHeader';
@@ -32,7 +31,6 @@ export const DataCard = ({
 				onPress={onPress}
 				className={clsx(
 					'web:w-full aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
-					border,
 					className
 				)}
 			>

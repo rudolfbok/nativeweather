@@ -1,4 +1,3 @@
-import { border } from '@nativeweather/core/constants/border';
 import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
@@ -33,7 +32,7 @@ export const Sidebar = () => {
 				<NativeWeatherLogo />
 				<StyledPressable
 					onPress={() => setNavigationScreen(navigationScreen === 'settings' ? 'weather' : 'settings')}
-					className={clsx('h-10 w-10 items-center justify-center self-end rounded-full p-1', border)}
+					className={clsx('h-10 w-10 items-center justify-center self-end rounded-full p-1')}
 				>
 					<Settings color={text} />
 				</StyledPressable>
@@ -45,7 +44,7 @@ export const Sidebar = () => {
 			<View className="absolute bottom-6 right-6 z-20">
 				<StyledPressable
 					onPress={() => setNavigationScreen('search')}
-					className={clsx('items-center rounded-full !bg-primaryblue p-3', border)}
+					className={clsx('items-center rounded-full !bg-primaryblue p-3')}
 				>
 					<SearchIcon size={22} color="white" strokeWidth={3} />
 				</StyledPressable>

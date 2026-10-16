@@ -1,7 +1,6 @@
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
-import { border } from '@nativeweather/core/constants/border';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
@@ -50,7 +49,6 @@ export const MapWeatherPopup = ({
 			className={clsx(
 				'bg-systemBackground dark:bg-secondarySystemBackground_dark absolute z-10 rounded-3xl p-3',
 				weatherPoint.status === 'loading' && 'w-12',
-				border
 			)}
 			style={{ left: point.x, top: point.y, maxWidth: Math.min(288, mapSize.width - OFFSET * 2) }}
 		>
@@ -91,7 +89,7 @@ export const MapWeatherPopup = ({
 					<StyledPressable
 						onPressIn={onInteraction}
 						onPress={onClose}
-						className={clsx('h-fit rounded-full p-1', border)}
+						className={clsx('h-fit rounded-full p-1')}
 					>
 						<CloseIcon color={text} size={20} />
 					</StyledPressable>

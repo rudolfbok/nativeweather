@@ -1,6 +1,5 @@
 'use client';
 
-import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { Pressable, View } from 'react-native';

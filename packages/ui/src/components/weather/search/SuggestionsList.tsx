@@ -1,4 +1,3 @@
-import { border } from '@nativeweather/core/constants/border';
 import type { City } from '@nativeweather/types/city';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
@@ -15,10 +14,7 @@ export const SuggestionsList = ({ suggestions, onSelect }: SuggestionsListProps)
 	return (
 		<View className={clsx('macos:mt-4 w-full items-center web:px-6')}>
 			<View
-				className={clsx(
-					'ios:bg-systemBackground w-full overflow-hidden rounded-3xl bg-secondarySystemBackground web:absolute web:mt-3 dark:bg-secondarySystemBackground_dark',
-					border
-				)}
+				className={clsx('ios:bg-systemBackground w-full overflow-hidden rounded-3xl bg-secondarySystemBackground web:absolute web:mt-3 dark:bg-secondarySystemBackground_dark')}
 			>
 				{visibleSuggestions.map((item, index) => (
 					<SearchResult

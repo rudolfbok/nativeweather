@@ -1,6 +1,5 @@
 'use client';
 
-import { border } from '@nativeweather/core/constants/border';
 import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
@@ -60,10 +59,7 @@ export const FeedbackFeature = () => {
 					<View className={clsx('gap-3')}>
 						{/* <StyledText type="sectiontitle">{t('feedback.type')}</StyledText> */}
 						<View
-							className={clsx(
-								'w-full overflow-hidden rounded-3xl bg-systemBackground dark:bg-secondarySystemBackground_dark',
-								border
-							)}
+							className={clsx('w-full overflow-hidden rounded-3xl bg-systemBackground dark:bg-secondarySystemBackground_dark')}
 						>
 							<Pressable
 								onPress={() => setOpen((prev) => !prev)}
@@ -127,10 +123,7 @@ export const FeedbackFeature = () => {
 							multiline={true}
 							textAlignVertical="top"
 							placeholderTextColor="#8E8E93"
-							className={clsx(
-								'label h-[200px] rounded-3xl bg-systemBackground p-4 text-base outline-none dark:bg-secondarySystemBackground_dark dark:text-label_dark',
-								border
-							)}
+							className={clsx('label h-[200px] rounded-3xl bg-systemBackground p-4 text-base outline-none dark:bg-secondarySystemBackground_dark dark:text-label_dark')}
 						/>
 					</View>
 					<View className="mt-4">

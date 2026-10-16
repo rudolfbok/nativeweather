@@ -1,5 +1,4 @@
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
-import { border } from '@nativeweather/core/constants/border';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronLeft } from 'lucide-react-native';
@@ -35,7 +34,7 @@ export const ModalHeader = ({
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<View className={clsx('flex-row items-center gap-2')}>
-							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5', border)}>
+							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5')}>
 								<ChevronLeft color={text} size={24} />
 							</StyledPressable>
 							<Pressable onPress={onBackPress}>
@@ -50,7 +49,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				{onClose && (
-					<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
+					<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5')}>
 						<CloseIcon />
 					</StyledPressable>
 				)}

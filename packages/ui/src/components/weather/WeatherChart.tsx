@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { Platform, useWindowDimensions, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit/v2';
 import { G, Rect, Text } from 'react-native-svg';
-import { border } from '@nativeweather/core/constants/border';
 
 interface WeatherChartProps {
 	forecastDays: NormalizedData['forecast']['forecastday'];
@@ -144,10 +143,7 @@ export const WeatherChart = ({
 							{t('hourlyforecast.now')}: {currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
 						</StyledText>
 						<View
-							className={clsx(
-								'w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark',
-								border
-							)}
+							className={clsx('w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark')}
 						>
 							<StyledPressable
 								onPress={() => onToggle('%')}

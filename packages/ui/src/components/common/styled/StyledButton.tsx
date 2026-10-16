@@ -1,4 +1,3 @@
-import { border } from '@nativeweather/core/constants/border';
 import { clsx } from 'clsx';
 import { GestureResponderEvent } from 'react-native';
 import { StyledPressable } from './StyledPressable';
@@ -16,7 +15,6 @@ export const StyledButton = ({ onPress, className, text }: StyledButtonProps) =>
 			onPress={onPress}
 			className={clsx(
 				'w-full select-none flex-row items-center justify-center gap-2 rounded-3xl !bg-primaryblue p-4 lg:px-6',
-				border,
 				className
 			)}
 		>
