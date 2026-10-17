@@ -3,6 +3,7 @@ import { GestureResponderEvent, View } from 'react-native';
 import { CardHeader } from '../common/layout/CardHeader';
 import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;
@@ -30,7 +31,8 @@ export const DataCard = ({
 			<StyledPressable
 				onPress={onPress}
 				className={clsx(
-					'web:w-full aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 md:p-4',
+					'aspect-square h-fit basis-[48%] justify-between rounded-3xl p-4 web:w-full md:p-4',
+					border,
 					className
 				)}
 			>

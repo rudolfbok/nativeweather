@@ -1,4 +1,4 @@
-import { colors } from '@nativeweather/core/constants/colors';
+import { colors } from '@nativeweather/ui/constants/colors';
 import { useColorScheme } from 'nativewind';
 
 export function useThemeColors() {

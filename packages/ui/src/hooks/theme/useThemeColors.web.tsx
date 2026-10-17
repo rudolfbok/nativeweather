@@ -2,7 +2,7 @@
 
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useEffect, useState } from 'react';
-import { colors } from '@nativeweather/core/constants/colors';
+import { colors } from '@nativeweather/ui/constants/colors';
 
 export function useThemeColors() {
 	const [currentTheme] = useStorageString('currentTheme');

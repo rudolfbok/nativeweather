@@ -1,5 +1,5 @@
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
-import { textOutline } from '@nativeweather/core/constants/textOutline';
+import { textOutline } from '@nativeweather/ui/constants/textOutline';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';

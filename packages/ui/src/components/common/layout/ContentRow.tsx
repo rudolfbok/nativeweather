@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { StyledText } from '../styled/StyledText';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface ContentRowProps {
 	title: string;
@@ -14,7 +15,10 @@ export const ContentRow = ({ title, children, className }: ContentRowProps) => (
 			{title}
 		</StyledText>
 		<View
-			className={clsx('bg-systemBackground dark:bg-secondarySystemBackground_dark flex overflow-hidden rounded-3xl p-4')}
+			className={clsx(
+				'flex overflow-hidden rounded-3xl bg-systemBackground p-4 dark:bg-secondarySystemBackground_dark',
+				border
+			)}
 		>
 			{children}
 		</View>

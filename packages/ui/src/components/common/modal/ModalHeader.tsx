@@ -6,6 +6,7 @@ import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { CardHeader } from '../layout/CardHeader';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;
@@ -34,7 +35,7 @@ export const ModalHeader = ({
 				<View className={clsx('flex-1', subHeader && 'flex-col')}>
 					{showBack ? (
 						<View className={clsx('flex-row items-center gap-2')}>
-							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5')}>
+							<StyledPressable onPress={onBackPress} className={clsx('rounded-full p-1.5', border)}>
 								<ChevronLeft color={text} size={24} />
 							</StyledPressable>
 							<Pressable onPress={onBackPress}>
@@ -49,7 +50,7 @@ export const ModalHeader = ({
 					{subHeader && <StyledText type="body">{subHeader}</StyledText>}
 				</View>
 				{onClose && (
-					<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5')}>
+					<StyledPressable onPress={onClose} className={clsx('rounded-full p-1.5', border)}>
 						<CloseIcon />
 					</StyledPressable>
 				)}

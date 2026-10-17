@@ -1,6 +1,7 @@
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { DotIndicator } from '@nativeweather/ui/components/icons/ui/DotIndicator';
+import { border } from '@nativeweather/ui/constants/border';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
 
@@ -17,7 +18,10 @@ export const AirQualityItem = ({ onPress, item, data, units, description, colorI
 	return (
 		<StyledPressable
 			onPress={onPress}
-			className={clsx('ios:w-[48%] ios:basis-[48%] macos:flex-grow web:w-full ios:h-[173px] macos:h-[130px] macos:aspect-video web:h-full aspect-square justify-between rounded-3xl p-4')}
+			className={clsx(
+				'ios:w-[48%] ios:basis-[48%] macos:flex-grow ios:h-[173px] macos:h-[130px] macos:aspect-video aspect-square justify-between rounded-3xl p-4 web:h-full web:w-full',
+				border
+			)}
 		>
 			<View>
 				<StyledText type="title">{item}</StyledText>

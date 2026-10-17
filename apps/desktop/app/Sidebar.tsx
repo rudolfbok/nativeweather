@@ -27,7 +27,11 @@ export const Sidebar = () => {
 	}, [showLocalWeather, currentSource, getLocalWeather]);
 
 	return (
-		<View className={clsx('w-[340px] bg-systemBackground dark:bg-secondarySystemBackground_dark')}>
+		<View
+			className={clsx(
+				'w-[340px] border-r border-black/10 bg-systemBackground dark:border-white/10 dark:bg-secondarySystemBackground_dark'
+			)}
+		>
 			<View className="flex-row items-center justify-between px-4 pb-4 pt-10">
 				<NativeWeatherLogo />
 				<StyledPressable

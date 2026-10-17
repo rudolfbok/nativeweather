@@ -8,7 +8,7 @@ import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
-import { Check, Trash2 } from 'lucide-react-native';
+import { Check, Edit, Pencil, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { EditIcon } from '../../icons/ui/EditIcon';
