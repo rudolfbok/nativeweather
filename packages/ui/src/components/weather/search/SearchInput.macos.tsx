@@ -87,7 +87,7 @@ export const SearchInput = ({
 				selectionColor="#007AFF"
 				accessibilityLabel="Search for a city or coordinates"
 				className={clsx(
-					'mx-1 h-[18px] flex-1 text-[16px] leading-5 text-label outline-none ring-0 dark:text-label_dark'
+					'line-height-[18px] mx-1 h-[18px] flex-1 text-[16px] text-label outline-none ring-0 dark:text-label_dark'
 				)}
 			/>
 

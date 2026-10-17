@@ -43,34 +43,38 @@ export const CardContent = ({
 
 	return (
 		<View className="flex-1 flex-row">
-			<View className={clsx('flex-1')}>
-				<StyledText
-					type="sectiontitle"
-					className={clsx('native:!text-white truncate font-semibold web:!text-white')}
-					numberOfLines={1}
-					ellipsizeMode="tail"
-				>
-					{city}
-				</StyledText>
-				<StyledText
-					type="caption"
-					className={clsx('native:!text-white line-clamp-1 truncate font-semibold opacity-70 web:!text-white')}
-					numberOfLines={1}
-					ellipsizeMode="tail"
-				>
-					{region}
-				</StyledText>
-				<StyledText type="title" className={clsx('native:!text-white web:!text-white')}>
-					{formatTemperature({ celsius: tempC, fahrenheit: tempF, currentTemp: currentTemperature })}
-				</StyledText>
-				<StyledText
-					type="body"
-					className={clsx('native:!text-white line-clamp-1 truncate font-semibold web:!text-white')}
-					numberOfLines={1}
-					ellipsizeMode="tail"
-				>
-					{mapConditions(conditionCode, isDay)}
-				</StyledText>
+			<View className={clsx('flex-1 gap-1')}>
+				<View>
+					<StyledText
+						type="sectiontitle"
+						className={clsx('native:!text-white truncate font-semibold web:!text-white')}
+						numberOfLines={1}
+						ellipsizeMode="tail"
+					>
+						{city}
+					</StyledText>
+					<StyledText
+						type="caption"
+						className={clsx('native:!text-white line-clamp-1 truncate font-semibold opacity-70 web:!text-white')}
+						numberOfLines={1}
+						ellipsizeMode="tail"
+					>
+						{region}
+					</StyledText>
+				</View>
+				<View>
+					<StyledText type="title" className={clsx('native:!text-white web:!text-white')}>
+						{formatTemperature({ celsius: tempC, fahrenheit: tempF, currentTemp: currentTemperature })}
+					</StyledText>
+					<StyledText
+						type="body"
+						className={clsx('native:!text-white line-clamp-1 truncate font-semibold web:!text-white')}
+						numberOfLines={1}
+						ellipsizeMode="tail"
+					>
+						{mapConditions(conditionCode, isDay)}
+					</StyledText>
+				</View>
 			</View>
 			<View className={clsx('items-center')}>
 				<WeatherIcon isDay={isDay} code={conditionCode} width={80} height={80} strokeWidth={0} />

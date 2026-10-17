@@ -4,16 +4,14 @@ import { AboutButton } from '@nativeweather/ui/components/settings/items/AboutBu
 import { AQIButton } from '@nativeweather/ui/components/settings/items/AQIButton';
 import { FeedbackButton } from '@nativeweather/ui/components/settings/items/FeedbackButton';
 import { LanguageButton } from '@nativeweather/ui/components/settings/items/LanguageButton';
+import { LocalTimeToggle } from '@nativeweather/ui/components/settings/items/LocalTimeToggle';
 import { LocalWeatherToggle } from '@nativeweather/ui/components/settings/items/LocalWeatherToggle';
 import { TemperatureButton } from '@nativeweather/ui/components/settings/items/TemperatureButton';
 import { ThemeButton } from '@nativeweather/ui/components/settings/items/ThemeButton';
 import { UnitsButton } from '@nativeweather/ui/components/settings/items/UnitsButton';
-import { LocalTimeToggle } from '@nativeweather/ui/components/settings/items/LocalTimeToggle';
 import { View } from 'react-native';
-import { useState } from 'react';
 
 export const SettingsFeature = () => {
-	const [year] = useState(() => new Date().getFullYear());
 	return (
 		<View className="w-full gap-4">
 			<View className="w-full flex-row items-start gap-4">
@@ -43,7 +41,6 @@ export const SettingsFeature = () => {
 			<View className="items-center">
 				<StyledText type="caption">NativeWeather</StyledText>
 				<StyledText type="caption">Version: 1.0</StyledText>
-				<StyledText type="caption">© {year}</StyledText>
 			</View>
 		</View>
 	);
