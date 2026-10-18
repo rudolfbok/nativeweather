@@ -234,8 +234,8 @@ export const CompassFeature = () => {
 					<View className="gap-2 md:w-1/2 lg:w-[40%]">
 						<StyledText type="screentitle">{t('compass.title')}</StyledText>
 						<StyledText type="body">{t('compass.text')}</StyledText>
+						<StyledButton onPress={requestPermission} text={t('compass.button.location')} />
 					</View>
-					<StyledButton onPress={requestPermission} text={t('compass.button.location')} />
 				</View>
 			)}
 		</div>
