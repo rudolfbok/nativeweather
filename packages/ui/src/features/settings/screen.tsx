@@ -2,7 +2,6 @@ import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView'
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { AboutButton } from '@nativeweather/ui/components/settings/items/AboutButton';
 import { AQIButton } from '@nativeweather/ui/components/settings/items/AQIButton';
-import { CompassButton } from '@nativeweather/ui/components/settings/items/CompassButton';
 import { FeedbackButton } from '@nativeweather/ui/components/settings/items/FeedbackButton';
 import { LanguageButton } from '@nativeweather/ui/components/settings/items/LanguageButton';
 import { LocalTimeToggle } from '@nativeweather/ui/components/settings/items/LocalTimeToggle';
@@ -13,11 +12,9 @@ import { UnitsButton } from '@nativeweather/ui/components/settings/items/UnitsBu
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import Constants from 'expo-constants';
-import { Platform, View } from 'react-native';
-import pkg from '../../../../../apps/web/package.json';
+import { View } from 'react-native';
 
 export const SettingsFeature = () => {
-	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 	const { t } = useTranslate('settings');
 
 	return (
@@ -42,11 +39,6 @@ export const SettingsFeature = () => {
 					<LocalWeatherToggle />
 					<LocalTimeToggle />
 				</RoundView>
-				{isIOS && (
-					<RoundView>
-						<CompassButton />
-					</RoundView>
-				)}
 				<RoundView>
 					<AboutButton />
 					<FeedbackButton />
@@ -55,8 +47,7 @@ export const SettingsFeature = () => {
 					<StyledText type="caption">NativeWeather</StyledText>
 					<StyledText type="caption">
 						Version:&nbsp;
-						{Platform.OS === 'web' && pkg.version}
-						{(Platform.OS === 'ios' || Platform.OS === 'android') && Constants.expoConfig?.version}
+						{Constants.expoConfig?.version}
 					</StyledText>
 				</View>
 			</View>

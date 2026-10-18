@@ -37,7 +37,6 @@ export const SettingsFeature = () => {
 					</RoundView>
 				</View>
 			</View>
-
 			<View className="items-center">
 				<StyledText type="caption">NativeWeather</StyledText>
 				<StyledText type="caption">Version: 1.0</StyledText>
