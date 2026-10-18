@@ -51,7 +51,7 @@ export const SettingsFeature = () => {
 				</RoundView>
 				<View className={clsx('flex items-center')}>
 					<StyledText type="caption">NativeWeather</StyledText>
-					<StyledText type="caption">Version: 1.2.</StyledText>
+					<StyledText type="caption">Version: 1.2</StyledText>
 				</View>
 			</View>
 		</View>
