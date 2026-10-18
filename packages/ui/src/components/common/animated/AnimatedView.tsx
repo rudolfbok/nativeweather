@@ -1,7 +1,10 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
+import { cssInterop } from 'nativewind';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+
+const StyledAnimatedView = cssInterop(Animated.View, { className: 'style' });
 
 interface AnimatedViewProps {
 	children: ReactNode;
@@ -22,8 +25,8 @@ export const AnimatedView = ({ children, duration = 200, visible = true, classNa
 	}));
 
 	return (
-		<Animated.View style={animatedStyle} className={className}>
+		<StyledAnimatedView style={animatedStyle} className={className}>
 			{children}
-		</Animated.View>
+		</StyledAnimatedView>
 	);
 };

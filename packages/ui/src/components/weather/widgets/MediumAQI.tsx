@@ -20,12 +20,15 @@ const MediumAQIWidget = (props: MediumAQIWidgetProps) => {
 	'widget';
 
 	return (
-		<VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity }), background(`${props.bgColor}`)]}>
+		<VStack
+			spacing={0}
+			modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity }), background(`${props.bgColor}`)]}
+		>
 			<VStack spacing={2} modifiers={[frame({ alignment: 'leading' }), padding({ all: 16 })]}>
-				<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
+				<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
 					<Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle('#FFFFFF')]}>{props.city}</Text>
 				</HStack>
-				<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity }), padding({ bottom: 6 })]}>
+				<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity }), padding({ bottom: 6 })]}>
 					<Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle('##FFFFFFCC')]}>{props.region}</Text>
 				</HStack>
 				<HStack spacing={6} modifiers={[frame({ alignment: 'center', maxWidth: Infinity })]}>

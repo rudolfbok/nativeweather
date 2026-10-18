@@ -12,16 +12,17 @@ const SmallAQIWidget = (props: SmallAQIWidgetProps) => {
 
 	return (
 		<HStack
+			spacing={0}
 			modifiers={[
 				frame({ alignment: 'center', maxWidth: Infinity, maxHeight: Infinity }),
 				background(`${props.bgColor}`),
 			]}
 		>
-			<VStack modifiers={[frame({ maxWidth: Infinity })]}>
-				<HStack modifiers={[frame({ maxWidth: Infinity })]}>
+			<VStack spacing={0} modifiers={[frame({ maxWidth: Infinity })]}>
+				<HStack spacing={0} modifiers={[frame({ maxWidth: Infinity })]}>
 					<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>Air Quality</Text>
 				</HStack>
-				<HStack modifiers={[frame({ maxWidth: Infinity })]}>
+				<HStack spacing={0} modifiers={[frame({ maxWidth: Infinity })]}>
 					<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>{props.AQI}</Text>
 				</HStack>
 			</VStack>

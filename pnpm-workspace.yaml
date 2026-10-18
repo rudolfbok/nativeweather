@@ -13,12 +13,11 @@ allowBuilds:
   workerd: true
 
 overrides:
-  react-dom: 19.2.3
-  react-native-web: 0.21.2
+  react-dom: 19.3.0
+  react-native-web: ~0.21.4
   tailwindcss: 3.4.18
 
 patchedDependencies:
-  expo-router: patches/expo-router.patch
   react-native-chart-kit@7.0.4: patches/react-native-chart-kit@7.0.4.patch
   react-native-macos: patches/react-native-macos.patch
   react-native-mmkv@4.3.1: patches/react-native-mmkv@4.3.1.patch

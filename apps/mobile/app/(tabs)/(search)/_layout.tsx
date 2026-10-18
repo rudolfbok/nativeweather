@@ -7,7 +7,7 @@ export default function TabLayout() {
 	const { background, text } = useThemeColors();
 
 	return (
-		<Stack nativeContainerStyle={{ backgroundColor: background }}>
+		<Stack unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}>
 			<Stack.Screen
 				name="index"
 				options={{

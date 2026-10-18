@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { cssInterop } from 'nativewind';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import Animated, {
@@ -11,6 +12,8 @@ import Animated, {
 	withRepeat,
 	withTiming,
 } from 'react-native-reanimated';
+
+const StyledAnimatedView = cssInterop(Animated.View, { className: 'style' });
 
 const Spoke = ({
 	index,
@@ -30,14 +33,14 @@ const Spoke = ({
 	}));
 
 	return (
-		<Animated.View className="absolute inset-0" style={[{ transform: [{ rotate: `${index * 30}deg` }] }, style]}>
+		<StyledAnimatedView className="absolute inset-0" style={[{ transform: [{ rotate: `${index * 30}deg` }] }, style]}>
 			<View
 				className={clsx(
 					'absolute left-[16.5px] top-0 h-[9px] w-[3px] rounded-full bg-black dark:bg-white',
 					alwaysWhite && '!bg-white'
 				)}
 			/>
-		</Animated.View>
+		</StyledAnimatedView>
 	);
 };
 
@@ -71,11 +74,11 @@ export const PullIndicator = ({
 
 	return (
 		<View className="h-9 w-9" accessibilityElementsHidden={true} importantForAccessibility="no-hide-descendants">
-			<Animated.View className="absolute inset-0" style={spokesStyle}>
+			<StyledAnimatedView className="absolute inset-0" style={spokesStyle}>
 				{Array.from({ length: 12 }, (_, index) => (
 					<Spoke key={index} index={index} progress={progress} refreshing={refreshing} alwaysWhite={alwaysWhite} />
 				))}
-			</Animated.View>
+			</StyledAnimatedView>
 		</View>
 	);
 };

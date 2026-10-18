@@ -1,5 +1,5 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { clsx } from 'clsx';
-import { Ref } from 'react';
 import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
 import { ModalHeader } from './ModalHeader';
 
@@ -9,8 +9,10 @@ interface StyledModalProps {
 	header: string;
 	subHeader?: React.ReactNode;
 	daysToggle?: React.ReactNode;
-	onClose: (event: GestureResponderEvent) => void | Promise<void>;
-	ref?: Ref<ScrollView>;
+	onClose: () => void | Promise<void>;
+	ref?:
+		| { readonly current: NativeInstance<typeof ScrollView> | null }
+		| ((instance: NativeInstance<typeof ScrollView> | null) => void);
 	goBackHeader?: boolean;
 	goBackOnPress?: (event: GestureResponderEvent) => void | Promise<void>;
 	settingsModal?: boolean;

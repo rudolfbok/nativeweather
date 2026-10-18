@@ -21,17 +21,20 @@ const MediumLocalWidget = (props: MediumLocalWidgetProps) => {
 	'widget';
 
 	return (
-		<VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity }), background(`${props.bgColor}`)]}>
-			<HStack modifiers={[frame({ maxWidth: Infinity }), padding({ all: 16 })]}>
+		<VStack
+			spacing={0}
+			modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity }), background(`${props.bgColor}`)]}
+		>
+			<HStack spacing={0} modifiers={[frame({ maxWidth: Infinity }), padding({ all: 16 })]}>
 				<VStack spacing={2} modifiers={[frame({ alignment: 'leading' }), padding({ top: 8, bottom: 8 })]}>
-					<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
+					<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
 						<Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle('#FFFFFF')]}>{props.city}</Text>
 					</HStack>
-					<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
+					<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
 						<Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle('#FFFFFFCC')]}>{props.region}</Text>
 					</HStack>
 					{/* <Spacer /> */}
-					<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
+					<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
 						<Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle('#FFFFFF')]}>
 							{props.temperature}
 						</Text>
@@ -42,20 +45,20 @@ const MediumLocalWidget = (props: MediumLocalWidgetProps) => {
 						</Text>
 					</HStack> */}
 					<HStack spacing={4} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
-						<HStack>
+						<HStack spacing={0}>
 							<Image systemName="arrow.down" size={14} color="white" />
 							<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 								{props.minTemperature}
 							</Text>
 						</HStack>
-						<HStack>
+						<HStack spacing={0}>
 							<Image systemName="arrow.up" size={14} color="white" />
 							<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 								{props.maxTemperature}
 							</Text>
 						</HStack>
 					</HStack>
-					<HStack modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
+					<HStack spacing={0} modifiers={[frame({ alignment: 'leading', maxWidth: Infinity })]}>
 						<Text modifiers={[font({ size: 16, weight: 'bold' }), foregroundStyle('#FFFFFF')]}>{props.condition}</Text>
 					</HStack>
 				</VStack>

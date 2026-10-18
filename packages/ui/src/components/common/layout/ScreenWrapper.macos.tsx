@@ -1,3 +1,4 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { ReactNode, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';
@@ -9,7 +10,7 @@ interface ScreenWrapperProps {
 }
 
 export const ScreenWrapper = ({ className, children }: ScreenWrapperProps) => {
-	const scrollRef = useRef<ScrollView>(null);
+	const scrollRef = useRef<NativeInstance<typeof ScrollView>>(null);
 	const resetPending = useRef(false);
 
 	// useEffect(() => {

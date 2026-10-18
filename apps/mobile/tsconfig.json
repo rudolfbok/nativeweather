@@ -3,34 +3,14 @@
 	"compilerOptions": {
 		"strict": true,
 		"paths": {
-			"@/*": [
-				"./*"
-			],
-			"react-native": [
-				"../../node_modules/react-native"
-			],
-			"react-native/*": [
-				"../../node_modules/react-native/*"
-			],
-			"@nativeweather/ui/*": [
-				"../../packages/ui/src/*"
-			],
-			"@nativeweather/core/*": [
-				"../../packages/core/src/*"
-			],
-			"@nativeweather/api/*": [
-				"../../packages/api/src/*"
-			],
-			"@nativeweather/types/*": [
-				"../../packages/types/src/*"
-			]
+			"@/*": ["./*"],
+			"@nativeweather/ui/*": ["../../packages/ui/src/*"],
+			"@nativeweather/core/*": ["../../packages/core/src/*"],
+			"@nativeweather/api/*": ["../../packages/api/src/*"],
+			"@nativeweather/types/*": ["../../packages/types/src/*"],
+			"react-native": ["./node_modules/react-native/types_generated/index.d.ts"],
+			"react-native/*": ["./node_modules/react-native/types_generated/*"]
 		}
 	},
-	"include": [
-		"**/*.ts",
-		"**/*.tsx",
-		"babel.config.js",
-		"nativewind-env.d.ts",
-		"../../packages/ui/src/global.d.ts"
-	]
+	"include": ["**/*.ts", "**/*.tsx", "babel.config.js", "nativewind-env.d.ts", "../../packages/ui/src/global.d.ts"]
 }

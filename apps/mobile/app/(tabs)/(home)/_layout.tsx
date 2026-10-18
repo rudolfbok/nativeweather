@@ -6,7 +6,7 @@ export default function HomeLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: background }}
+			unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}
 			screenOptions={{
 				headerShown: false,
 				contentStyle: {

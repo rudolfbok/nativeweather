@@ -1,3 +1,4 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTranslate } from '@tolgee/react';
 import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
@@ -42,7 +43,7 @@ const CarouselButton = ({
 export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>) => {
 	const { t } = useTranslate('weather');
 	const { text } = useThemeColors();
-	const scrollRef = useRef<ScrollView>(null);
+	const scrollRef = useRef<NativeInstance<typeof ScrollView>>(null);
 	const scrollX = useRef(0);
 	const viewportWidth = useRef(0);
 	const contentWidth = useRef(0);

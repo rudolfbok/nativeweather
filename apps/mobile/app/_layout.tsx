@@ -15,7 +15,7 @@ initThemeFromStorage();
 
 export const unstable_settings = {
 	// Ensure that reloading on `/modal` keeps a back button present.
-	initialRouteName: '(tabs)',
+	anchor: '(tabs)',
 };
 
 export default function RootLayout() {
@@ -30,7 +30,7 @@ export default function RootLayout() {
 		<TolgeeProvider>
 			<GestureHandlerRootView>
 				<ThemeProvider value={colorScheme === 'light' ? DefaultTheme : DarkTheme}>
-					<Stack nativeContainerStyle={{ backgroundColor: background }}>
+					<Stack unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}>
 						<Stack.Screen
 							name="(tabs)"
 							options={{ headerShown: false, contentStyle: { backgroundColor: background } }}

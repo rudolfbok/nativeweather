@@ -29,7 +29,7 @@ export default function ModalsLayout() {
 					backgroundColor: modalBg,
 				},
 			}}
-			nativeContainerStyle={{ backgroundColor: modalBg }}
+			unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: modalBg } }}
 		>
 			<Stack.Screen
 				name="index"

@@ -24,6 +24,7 @@
 		},
 		"plugins": [
 			"expo-router",
+			"@maplibre/maplibre-react-native",
 			[
 				"expo-splash-screen",
 				{
@@ -72,14 +73,6 @@
 			],
 			"expo-font",
 			"expo-web-browser",
-			[
-				"expo-build-properties",
-				{
-					"ios": {
-						"enableSceneSupport": true
-					}
-				}
-			],
 			"expo-image"
 		],
 		"experiments": {

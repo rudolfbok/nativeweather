@@ -16,25 +16,26 @@ const SmallLocalWidget = (props: SmallLocalWidgetProps) => {
 
 	return (
 		<HStack
+			spacing={0}
 			modifiers={[
 				frame({ alignment: 'center', maxWidth: Infinity, maxHeight: Infinity }),
 				background(`${props.bgColor}`),
 			]}
 		>
-			<VStack modifiers={[frame({ maxWidth: Infinity })]}>
-				<HStack modifiers={[frame({ maxWidth: Infinity })]}>
+			<VStack spacing={0} modifiers={[frame({ maxWidth: Infinity })]}>
+				<HStack spacing={0} modifiers={[frame({ maxWidth: Infinity })]}>
 					<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>{props.location}</Text>
 				</HStack>
 				<Image uiImage={props.imagePath} modifiers={[resizable(), frame({ width: 70, height: 70 })]} />
 				<Text modifiers={[font({ size: 22, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>{props.temp}</Text>
 				<HStack spacing={4} modifiers={[frame({ maxWidth: Infinity })]}>
-					<HStack>
+					<HStack spacing={0}>
 						<Image systemName="arrow.down" size={14} color="white" />
 						<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 							{props.minTemperature}
 						</Text>
 					</HStack>
-					<HStack>
+					<HStack spacing={0}>
 						<Image systemName="arrow.up" size={14} color="white" />
 						<Text modifiers={[font({ size: 16, weight: 'semibold' }), foregroundStyle('#FFFFFF')]}>
 							{props.maxTemperature}

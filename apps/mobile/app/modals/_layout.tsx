@@ -35,7 +35,7 @@ export default function ModalsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: modalBg }}
+			unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: modalBg } }}
 			screenOptions={{
 				headerBackButtonDisplayMode: 'minimal',
 				headerTransparent: true,

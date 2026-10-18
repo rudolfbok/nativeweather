@@ -61,11 +61,11 @@ If an existing platform API forces a runtime style object, first look for an exi
 
 ## React Native, Expo, and platform behavior
 
-Use the project’s installed versions and official versioned documentation. Mobile currently targets Expo SDK 57 and should remain upgradeable to SDK 58:
+Use the project’s installed versions and official versioned documentation. Mobile currently targets Expo SDK 58:
 
-- Do not use SDK APIs based only on latest documentation. Check the SDK 57 API and release notes first.
-- Before an SDK 58 upgrade or upgrade-sensitive change, read the Expo SDK 57→58 migration guidance, update dependencies incrementally, run `expo install --fix`, and run `expo-doctor` as part of the upgrade work.
-- Do not upgrade Expo, React Native, Router, or native modules unless the task explicitly includes the upgrade.
+- Do not use SDK APIs based only on latest documentation. Check the SDK 58 API and release notes first.
+- For upgrade-sensitive changes, check the Expo SDK 58 documentation and run `expo-doctor` when dependency compatibility is affected.
+- Keep Expo, React Native, Router, and native modules aligned to the SDK 58 release matrix.
 - Preserve the New Architecture and existing Expo Router structure.
 - Keep native-only location, storage, map, widget, and permission code out of web bundles unless the web implementation needs an explicit equivalent.
 - Keep macOS behavior in `.macos` files and `apps/desktop` native integration; do not force mobile navigation assumptions onto macOS.

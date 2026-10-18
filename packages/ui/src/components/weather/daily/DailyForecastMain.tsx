@@ -1,3 +1,4 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTolgee } from '@tolgee/react';
 import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from '@nativeweather/ui/components/cards';
 import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
@@ -17,7 +18,7 @@ export const DailyForecastMain = ({
 	day: NormalizedData['forecast']['forecastday'][0] | null;
 	onCloseParent?: () => void;
 }) => {
-	const scrollRef = useRef<ScrollView>(null);
+	const scrollRef = useRef<NativeInstance<typeof ScrollView>>(null);
 	const tolgee = useTolgee();
 	const mapConditions = useMapConditions();
 

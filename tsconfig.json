@@ -2,24 +2,10 @@
 	"compilerOptions": {
 		"strict": true,
 		"paths": {
-			"react-native": [
-				"./node_modules/react-native"
-			],
-			"react-native/*": [
-				"./node_modules/react-native/*"
-			],
-			"@nativeweather/ui/*": [
-				"./packages/ui/src/*"
-			],
-			"@nativeweather/core/*": [
-				"./packages/core/src/*"
-			],
-			"@nativeweather/api/*": [
-				"./packages/api/src/*"
-			],
-			"@nativeweather/types/*": [
-				"./packages/types/src/*"
-			]
+			"@nativeweather/ui/*": ["./packages/ui/src/*"],
+			"@nativeweather/core/*": ["./packages/core/src/*"],
+			"@nativeweather/api/*": ["./packages/api/src/*"],
+			"@nativeweather/types/*": ["./packages/types/src/*"]
 		}
 	},
 	"extends": "expo/tsconfig.base",

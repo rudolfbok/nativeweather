@@ -12,16 +12,10 @@ import { useTranslate } from '@tolgee/react';
 import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
 import { clsx } from 'clsx';
 import { useNavigation } from 'expo-router';
-import { useHeaderHeight, useIsFocused } from 'expo-router/react-navigation';
+import { useIsFocused } from 'expo-router';
+import { useHeaderHeight } from 'expo-router/react-navigation';
 import { useEffect, useRef, useState } from 'react';
-import {
-	ActivityIndicator,
-	NativeScrollEvent,
-	NativeSyntheticEvent,
-	Platform,
-	RefreshControl,
-	View,
-} from 'react-native';
+import { ActivityIndicator, Platform, RefreshControl, View } from 'react-native';
 import Animated, {
 	useAnimatedScrollHandler,
 	useAnimatedStyle,
@@ -146,7 +140,7 @@ export const WeatherFeature = () => {
 		},
 	});
 
-	const handleEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+	const handleEndDrag = (event: { nativeEvent: { contentOffset: { y: number } } }) => {
 		const releasedPull = -(event.nativeEvent.contentOffset.y + headerHeight);
 		const shouldRefresh = Platform.OS === 'ios' && dragging.value && !refreshLocked.value && releasedPull >= 80;
 		dragging.value = false;

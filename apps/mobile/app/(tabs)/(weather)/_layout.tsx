@@ -27,7 +27,7 @@ export default function TabLayout() {
 	}, [setIsFavorite, weatherData]);
 
 	return (
-		<Stack nativeContainerStyle={{ backgroundColor: background }}>
+		<Stack unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}>
 			<Stack.Screen
 				name="[city]"
 				options={{

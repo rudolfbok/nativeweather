@@ -1,5 +1,7 @@
 'use client';
 
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
+
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
 import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
@@ -12,8 +14,9 @@ import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCi
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { useWidgets } from '@nativeweather/ui/hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
+import { cssInterop } from 'nativewind';
 import { useEffect, useRef, useState } from 'react';
-import { NativeScrollEvent, NativeSyntheticEvent, Platform, RefreshControl, View } from 'react-native';
+import { Platform, RefreshControl, View } from 'react-native';
 import Animated, {
 	useAnimatedScrollHandler,
 	useAnimatedStyle,
@@ -21,6 +24,11 @@ import Animated, {
 	withTiming,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+const StyledAnimatedView = cssInterop(Animated.View, { className: 'style' });
+const StyledAnimatedScrollView = cssInterop(Animated.ScrollView, {
+	contentContainerClassName: 'contentContainerStyle',
+});
 
 export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
@@ -35,7 +43,7 @@ export const HomeFeature = () => {
 	const refreshInFlight = useRef(false);
 	const active = useRef(true);
 	const headerHeight = insets.top;
-	const blurTarget = useRef<View>(null);
+	const blurTarget = useRef<NativeInstance<typeof View>>(null);
 	const favoriteCitiesHook = useFavoriteCities({ refresh: true });
 	const { getLocalWeather, error: localWeatherError } = useLocation();
 	const { text } = useThemeColors();
@@ -83,7 +91,7 @@ export const HomeFeature = () => {
 		},
 	});
 
-	const handleEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+	const handleEndDrag = (event: { nativeEvent: { contentOffset: { y: number } } }) => {
 		const releasedPull = -(event.nativeEvent.contentOffset.y + headerHeight);
 		const shouldRefresh = Platform.OS === 'ios' && dragging.value && !refreshLocked.value && releasedPull >= 80;
 		dragging.value = false;
@@ -141,14 +149,14 @@ export const HomeFeature = () => {
 			<View className="px-4 pb-4 pt-2">
 				<NativeWeatherLogo />
 			</View>
-			<Animated.View
+			<StyledAnimatedView
 				pointerEvents="none"
 				className="absolute left-0 right-0 z-20 h-9 items-center justify-center"
 				style={[{ top: headerHeight + 50 }, pullIndicatorStyle]}
 			>
 				{Platform.OS === 'ios' && <PullIndicator progress={pullProgress} refreshing={refreshProgress} />}
-			</Animated.View>
-			<Animated.ScrollView
+			</StyledAnimatedView>
+			<StyledAnimatedScrollView
 				onScroll={handleScroll}
 				onScrollEndDrag={handleEndDrag}
 				scrollEventThrottle={16}
@@ -176,7 +184,7 @@ export const HomeFeature = () => {
 					{showLocalWeather && <LocalWeather error={localWeatherError} />}
 					<FavoriteCities hook={favoriteCitiesHook} />
 				</View>
-			</Animated.ScrollView>
+			</StyledAnimatedScrollView>
 		</View>
 	);
 };

@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { NativeTabs } from 'expo-router/native-tabs';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');

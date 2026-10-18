@@ -8,7 +8,7 @@ export default function SettingsLayout() {
 
 	return (
 		<Stack
-			nativeContainerStyle={{ backgroundColor: background }}
+			unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}
 			screenOptions={{
 				headerTransparent: true,
 				headerTintColor: text,

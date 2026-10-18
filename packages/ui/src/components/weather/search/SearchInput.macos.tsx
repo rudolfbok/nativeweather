@@ -1,3 +1,4 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTranslate } from '@tolgee/react';
 import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
@@ -28,7 +29,7 @@ export const SearchInput = ({
 	onBlur,
 }: SearchInputProps) => {
 	const { t } = useTranslate('common');
-	const inputRef = useRef<TextInput>(null);
+	const inputRef = useRef<NativeInstance<typeof TextInput>>(null);
 	const [isClearHovered, setIsClearHovered] = useState(false);
 	const { text, unfocusedSearch } = useThemeColors();
 

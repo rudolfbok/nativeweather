@@ -1,3 +1,4 @@
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
 import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
@@ -25,7 +26,7 @@ export const DailyForecast = () => {
 	const weatherData = useWeather((state) => state.weatherData);
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [currentTemp] = useStorageString('currentTemp');
-	const scrollRef = useRef<ScrollView>(null);
+	const scrollRef = useRef<NativeInstance<typeof ScrollView>>(null);
 	const mapConditions = useMapConditions();
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
