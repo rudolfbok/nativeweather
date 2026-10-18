@@ -4,7 +4,7 @@ Next.js web application with React Native Web integration for cross-platform com
 
 ## Tech Stack
 
-- **Next.js 16.1.0** - React framework with App Router
+- **Next.js 16.4.2** - React framework with App Router and Turbopack
 - **React 19** - Latest React with Server Components
 - **React Native Web** - Renders React Native components as HTML
 - **NativeWind** - Cross-platform Tailwind CSS styling
@@ -43,6 +43,7 @@ The `next.config.ts` handles React Native Web integration:
 - Transpiles React Native packages
 - Aliases `react-native` to `react-native-web`
 - Supports platform-specific extensions (`.web.tsx`, `.web.ts`)
+- Uses Turbopack for development and production builds
 
 ### NativeWind Styling
 

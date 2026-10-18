@@ -1,7 +1,26 @@
+import { resolve } from 'node:path';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	allowedDevOrigins: ['172.20.10.5'],
+	turbopack: {
+		root: resolve(__dirname, '../..'),
+		resolveAlias: {
+			'react-native': 'react-native-web',
+		},
+		resolveExtensions: [
+			'.web.ts',
+			'.web.tsx',
+			'.web.js',
+			'.tsx',
+			'.ts',
+			'.jsx',
+			'.js',
+			'.mjs',
+			'.json',
+			'.node',
+		],
+	},
 	transpilePackages: [
 		'react-native',
 		'react-native-web',
@@ -9,6 +28,7 @@ const nextConfig: NextConfig = {
 		'react-native-css-interop',
 		'react-native-mmkv',
 		'react-native-nitro-modules',
+		'react-native-safe-area-context',
 		'react-native-worklets',
 		'react-native-svg',
 		'nativewind',
@@ -26,23 +46,6 @@ const nextConfig: NextConfig = {
 		removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
 	},
 	reactStrictMode: false, // reanimated doesn't support this on web
-	webpack: (config, { isServer }) => {
-		// Only for the client (browser) bundle
-		if (!isServer) {
-			// config.plugins.push(
-			// 	new webpack.DefinePlugin({
-			// 		global: 'window', // <-- this makes "global" point to window
-			// 	})
-			// );
-		}
-		config.resolve.alias = {
-			...(config.resolve.alias || {}),
-			// "react-native-mmkv": false,
-			'react-native$': require.resolve('react-native-web'),
-		};
-		config.resolve.extensions = ['.web.ts', '.web.tsx', '.web.js', ...config.resolve.extensions];
-		return config;
-	},
 };
 
 export default nextConfig;
