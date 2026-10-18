@@ -1,32 +1,14 @@
 import { CrashIcon } from '@nativeweather/ui/components/icons/ui/CrashIcon';
 import { StatusPage } from '@nativeweather/ui/components/web/StatusPage';
 import { SuggestedCities } from '@nativeweather/ui/components/web/SuggestedCities';
-import { Metadata } from 'next';
+import { createPageMetadata } from './metadata';
 
-export const metadata: Metadata = {
-	title: 'NativeWeather | Not found',
-	// description: 'Web compass in your browser',
-	// twitter: {
-	// 	card: 'summary',
-	// 	title: 'NativeWeather | Compass',
-	// 	description: 'Web compass in your browser',
-	// 	siteId: '1467726470533754880',
-	// 	creator: '@nextjs',
-	// 	creatorId: '1467726470533754880',
-	// 	images: ['https://nativeweather.app/preview-image.png'],
-	// },
-	// openGraph: {
-	// 	type: 'website',
-	// 	title: 'NativeWeather | Compass',
-	// 	description: 'Web compass in your browser',
-	// 	url: 'https://nativeweather.app/compass',
-	// 	siteName: 'NativeWeather - Compass ',
-	// 	images: [
-	// 		{
-	// 			url: 'https://nativeweather.app/preview-image.png',
-	// 		},
-	// 	],
-	// },
+export const metadata = {
+	...createPageMetadata({
+		title: 'Page not found',
+		description: "We couldn't find that location or page. Search for another city with NativeWeather.",
+	}),
+	robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

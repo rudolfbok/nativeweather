@@ -1,31 +1,11 @@
 import { CompassFeature } from '@nativeweather/ui/features/compass/screen.web';
-import { Metadata } from 'next';
+import { createPageMetadata } from '../metadata';
 
-export const metadata: Metadata = {
-	title: 'NativeWeather | Compass',
-	description: 'Web compass in your browser',
-	twitter: {
-		card: 'summary',
-		title: 'NativeWeather | Compass',
-		description: 'Web compass in your browser',
-		siteId: '1467726470533754880',
-		creator: '@nextjs',
-		creatorId: '1467726470533754880',
-		images: ['https://nativeweather.app/preview-image.png'],
-	},
-	openGraph: {
-		type: 'website',
-		title: 'NativeWeather | Compass',
-		description: 'Web compass in your browser',
-		url: 'https://nativeweather.app/compass',
-		siteName: 'NativeWeather - Compass ',
-		images: [
-			{
-				url: 'https://nativeweather.app/preview-image.png',
-			},
-		],
-	},
-};
+export const metadata = createPageMetadata({
+	title: 'Compass',
+	description: 'Find your direction with the NativeWeather compass in your browser.',
+	path: '/compass',
+});
 
 export default function CompassPage() {
 	return <CompassFeature />;

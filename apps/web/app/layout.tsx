@@ -1,9 +1,26 @@
 import { Header } from '@nativeweather/ui/components/common/layout/Header.web';
 import { ClientOnly } from '@nativeweather/ui/components/web/ClientOnly';
 import { clsx } from 'clsx';
+import { Metadata } from 'next';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import '../globals.css';
 import { Providers } from './providers';
+import { createPageMetadata, siteDescription, siteUrl } from './metadata';
+
+export const metadata: Metadata = {
+	...createPageMetadata({ title: 'NativeWeather', description: siteDescription }),
+	metadataBase: new URL(siteUrl),
+	applicationName: 'NativeWeather',
+	title: { default: 'NativeWeather', template: '%s | NativeWeather' },
+	manifest: '/site.webmanifest',
+	icons: {
+		icon: [
+			{ url: '/favicon.svg', type: 'image/svg+xml' },
+			{ url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+		],
+		apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
+	},
+};
 
 export default function RootLayout({
 	children,
@@ -11,7 +28,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html>
+		<html lang="en">
 			<head>
 				<link rel="preconnect" href="https://tiles.openfreemap.org" />
 				<link rel="preconnect" href="https://weathermaps.weatherapi.com" />

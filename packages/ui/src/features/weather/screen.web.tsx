@@ -5,7 +5,6 @@ import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSk
 import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { countryCode } from '@nativeweather/core/utils/countryCode';
 import { buildSlug } from '@nativeweather/core/utils/weatherSlug';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -43,14 +42,6 @@ export const WeatherFeature = () => {
 		loadWeather();
 		return () => controller.abort();
 	}, [country, currentSource, params.city, region, router, setWeatherData]);
-
-	useEffect(() => {
-		document.title = 'NativeWeather';
-		if (!weatherData) return;
-
-		const code = countryCode(weatherData.location.country)?.toUpperCase();
-		document.title = `NativeWeather | ${weatherData.location.name} (${code})`;
-	}, [weatherData]);
 
 	if (!weatherData) return <HeroSkeleton />;
 
