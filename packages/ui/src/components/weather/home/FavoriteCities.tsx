@@ -14,6 +14,7 @@ import { Platform, Pressable, View } from 'react-native';
 import { EditIcon } from '../../icons/ui/EditIcon';
 import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
+import { border } from '@nativeweather/ui/constants/border';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
 	const { t } = useTranslate('common');
@@ -29,7 +30,10 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 				{favoriteCount > 0 && (
 					<StyledPressable
 						onPress={() => setShowDeleteCity((prev) => !prev)}
-						className={clsx('macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5')}
+						className={clsx(
+							'macos:p-1 macos:h-10 macos:w-10 items-center justify-center self-end rounded-full p-1.5',
+							border
+						)}
 					>
 						{showDeleteCity ? <Check size={24} color={text} /> : <EditIcon />}
 					</StyledPressable>

@@ -7,7 +7,7 @@ import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Platform, useWindowDimensions, View } from 'react-native';
+import { Platform, Pressable, useWindowDimensions, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit/v2';
 import { G, Rect, Text } from 'react-native-svg';
 
@@ -143,21 +143,26 @@ export const WeatherChart = ({
 							{t('hourlyforecast.now')}: {currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
 						</StyledText>
 						<View
-							className={clsx('w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark')}
+							className={clsx(
+								'w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark'
+							)}
 						>
-							<StyledPressable
+							<Pressable
 								onPress={() => onToggle('%')}
-								tintColor={selectedMetric === '%' ? color : undefined}
-								className="flex-1 items-center rounded-full py-1.5"
+
+								className={clsx(
+									'flex-1 items-center rounded-full bg-secondarySystemBackground py-1.5',
+									selectedMetric === '%' ? `bg-[${color}]` : undefined
+								)}
 							>
 								<StyledText type="caption" className={clsx('font-semibold', selectedMetric === '%' && 'text-white')}>
 									%
 								</StyledText>
-							</StyledPressable>
-							<StyledPressable
+							</Pressable>
+							<Pressable
 								onPress={() => onToggle(toggleLabel)}
-								tintColor={selectedMetric === toggleLabel ? color : undefined}
-								className="flex-1 items-center rounded-full py-1.5"
+								// tintColor={selectedMetric === toggleLabel ? color : undefined}
+								className="flex-1 items-center rounded-full bg-secondarySystemBackground py-1.5"
 							>
 								<StyledText
 									type="caption"
@@ -165,7 +170,7 @@ export const WeatherChart = ({
 								>
 									{toggleLabel}
 								</StyledText>
-							</StyledPressable>
+							</Pressable>
 						</View>
 					</View>
 				)}

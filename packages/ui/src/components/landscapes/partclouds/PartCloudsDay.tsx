@@ -1,39 +1,58 @@
-import { ClipPath, Defs, G, Mask, Path } from 'react-native-svg';
+import { Defs, G, Path } from 'react-native-svg';
 
 export const PartCloudsDayLandscape = () => {
 	return (
 		<>
-			<G clipPath="url(#clip0_1_155)">
-				<Mask
-					id="a"
-					style={{
-						maskType: 'luminance',
-					}}
-					maskUnits="userSpaceOnUse"
-					x={0}
-					y={0}
-					width={600}
-					height={710}
-				>
-					<Path d="M0 0h600v710H0V0z" fill="#fff" />
-				</Mask>
-				<G mask="url(#a)">
-					<Path d="M0 0h600v710H0V0z" fill="#54A0C9" />
-					<Path
-						d="M53.966 718.627c170.614-75.156 672.848-142.831 925.774-91.669 252.93 51.163 8.711 87.976 8.711 87.976L62.678 806.602l-8.712-87.975z"
-						fill="#7DB835"
-					/>
-					<Path
-						d="M-203.562 711.725c-242.232-184.695 630.267-62.195 818.768 93.304 188.501 155.498-228.194 102.416-228.194 102.416l-603.258-53.988s254.916 42.962 12.684-141.732z"
-						fill="#6BA92E"
-					/>
-				</G>
+			<Path
+				d="M25 19a4 4 0 100-8 4 4 0 000 8z"
+				fill="#FFC002"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				stroke="#FFC002"
+			/>
+			<Path d="M25 5v2z" fill="#FFC002" />
+			<Path d="M25 5v2" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<Path d="M25 23v2z" fill="#FFC002" />
+			<Path d="M25 23v2" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<Path d="M17.93 7.93l1.41 1.41z" fill="#FFC002" />
+			<Path d="M17.93 7.93l1.41 1.41" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<Path d="M30.656 20.656l1.41 1.41z" fill="#FFC002" />
+			<Path
+				d="M30.656 20.656l1.41 1.41"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				stroke="#FFC002"
+			/>
+			<Path d="M15 15h2z" fill="#FFC002" />
+			<Path d="M15 15h2" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<Path d="M33 15h2z" fill="#FFC002" />
+			<Path d="M33 15h2" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<Path d="M19.34 20.656l-1.41 1.41z" fill="#FFC002" />
+			<Path
+				d="M19.34 20.656l-1.41 1.41"
+				strokeWidth={2}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				stroke="#FFC002"
+			/>
+			<Path d="M32.066 7.93l-1.41 1.41z" fill="#FFC002" />
+			<Path d="M32.066 7.93l-1.41 1.41" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="#FFC002" />
+			<G filter="url(#filter0_i_474_2)">
+				<Path
+					d="M26.924 29H15.448c-1.752 0-3.47-.49-4.962-1.416a9.482 9.482 0 01-3.483-3.825 9.542 9.542 0 01.871-9.937 9.457 9.457 0 014.095-3.154 9.405 9.405 0 019.772 1.742 9.506 9.506 0 012.767 4.376h2.416a6.06 6.06 0 014.297 1.788A6.123 6.123 0 0133 22.893c0 1.62-.64 3.173-1.78 4.318A6.06 6.06 0 0126.925 29z"
+					fill="#fff"
+				/>
 			</G>
-			<Defs>
-				<ClipPath id="clip0_1_155">
-					<Path fill="#fff" d="M0 0H600V710H0z" />
-				</ClipPath>
-			</Defs>
+			<Path
+				d="M26.924 29H15.448c-1.752 0-3.47-.49-4.962-1.416a9.482 9.482 0 01-3.483-3.825 9.542 9.542 0 01.871-9.937 9.457 9.457 0 014.095-3.154 9.405 9.405 0 019.772 1.742 9.506 9.506 0 012.767 4.376h2.416a6.06 6.06 0 014.297 1.788A6.123 6.123 0 0133 22.893c0 1.62-.64 3.173-1.78 4.318A6.06 6.06 0 0126.925 29z"
+				stroke="#000"
+				strokeWidth={0.1}
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<Defs></Defs>
 		</>
 	);
 };
