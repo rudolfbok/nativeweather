@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { Platform, Pressable, useWindowDimensions, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit/v2';
 import { G, Rect, Text } from 'react-native-svg';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface WeatherChartProps {
 	forecastDays: NormalizedData['forecast']['forecastday'];
@@ -139,21 +140,24 @@ export const WeatherChart = ({
 				/>
 				{toggleLabel && selectedMetric && onToggle && (
 					<View className="flex-1 flex-row items-center justify-between px-4">
-						<StyledText type="caption" className={clsx('font-semibold')}>
-							{t('hourlyforecast.now')}: {currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
-						</StyledText>
+						<View>
+							<StyledText type="body" className={clsx('font-semibold')}>
+								{t('hourlyforecast.now')}
+							</StyledText>
+							<StyledText type="caption">
+								{currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
+							</StyledText>
+						</View>
 						<View
 							className={clsx(
-								'w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark'
+								'w-24 flex-row gap-1 rounded-full bg-secondarySystemBackground p-1 dark:bg-secondarySystemBackground_dark',
+								border
 							)}
 						>
 							<Pressable
 								onPress={() => onToggle('%')}
-
-								className={clsx(
-									'flex-1 items-center rounded-full bg-secondarySystemBackground py-1.5',
-									selectedMetric === '%' ? `bg-[${color}]` : undefined
-								)}
+								style={{ backgroundColor: selectedMetric === '%' ? color : undefined }}
+								className={clsx('flex-1 items-center rounded-full py-1.5')}
 							>
 								<StyledText type="caption" className={clsx('font-semibold', selectedMetric === '%' && 'text-white')}>
 									%
@@ -161,8 +165,8 @@ export const WeatherChart = ({
 							</Pressable>
 							<Pressable
 								onPress={() => onToggle(toggleLabel)}
-								// tintColor={selectedMetric === toggleLabel ? color : undefined}
-								className="flex-1 items-center rounded-full bg-secondarySystemBackground py-1.5"
+								style={{ backgroundColor: selectedMetric === toggleLabel ? color : undefined }}
+								className="flex-1 items-center rounded-full py-1.5"
 							>
 								<StyledText
 									type="caption"

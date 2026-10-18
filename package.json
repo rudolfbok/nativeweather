@@ -9,10 +9,14 @@
 		"lint": "turbo lint",
 		"format": "prettier --write .",
 		"typecheck": "turbo typecheck",
-		"web": "cd apps/web && turbo dev",
-		"mobile": "cd apps/mobile && turbo dev",
-		"macos": "cd apps/desktop && stmux -- [ \"turbo dev\" .. \"wait-on tcp:localhost:8081 && pnpm macos\" ]",
-		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+		"dev:web": "turbo run dev --filter=nativeweather-web",
+		"dev:mobile": "turbo run dev --filter=nativeweather-mobile",
+		"dev:macos": "stmux -- [ \"turbo run dev --filter=nativeweather-macos\" .. \"wait-on tcp:localhost:8081 && turbo run macos --filter=nativeweather-macos\" ]",
+		"build:web": "turbo run build --filter=nativeweather-web",
+		"build:ios": "turbo run build:ios --filter=nativeweather-mobile",
+		"build:android": "turbo run build:android --filter=nativeweather-mobile",
+		"build:macos": "turbo run build:macos --filter=nativeweather-macos",
+		"deploy": "turbo run deploy --filter=nativeweather-web"
 	},
 	"keywords": [],
 	"author": "Rudolf Bok",

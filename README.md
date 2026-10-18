@@ -136,13 +136,13 @@ pnpm install
 #### Run the web app
 
 ```txt
-pnpm web
+pnpm dev:web
 ```
 
 #### Run the mobile app
 
 ```txt
-pnpm mobile
+pnpm dev:mobile
 ```
 
 #### Run the macOS desktop app
@@ -157,5 +157,23 @@ pod install
 Run the desktop app from root
 
 ```txt
-pnpm macos
+pnpm dev:macos
 ```
+
+`dev:macos` starts Metro and builds and launches the desktop app once port 8081 is ready.
+
+### Build commands
+
+Run these commands from the monorepo root:
+
+| Command              | Behavior                                                  |
+| -------------------- | --------------------------------------------------------- |
+| `pnpm build:web`     | Build the Next.js web app for production.                 |
+| `pnpm build:ios`     | Build and launch the iOS development app on `iPhone 16e`. |
+| `pnpm build:android` | Build and launch the Android development app.             |
+| `pnpm build:macos`   | Build the macOS Release app using Xcode.                  |
+| `pnpm deploy`        | Build and deploy the web app to Cloudflare.               |
+
+Platform commands use Turbo package filters. Native build and deployment tasks are uncached.
+The macOS Release app targets Apple Silicon (`arm64`) only and is written to `apps/desktop/release/nativeweather.app`.
+`pnpm build` keeps its existing behavior and does not run the native build-and-launch tasks.

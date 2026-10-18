@@ -7,10 +7,30 @@
 			"inputs": ["$TURBO_DEFAULTS$", ".env*"],
 			"outputs": [".next/**", "!.next/cache/**", "dist/**"]
 		},
-		"web#build": {
+		"nativeweather-web#build": {
 			"dependsOn": ["^build"],
 			"inputs": ["$TURBO_DEFAULTS$", ".env*"],
 			"outputs": [".next/**", "!.next/cache/**", "dist/**", ".open-next/**"]
+		},
+		"build:ios": {
+			"cache": false,
+			"interactive": true
+		},
+		"build:android": {
+			"cache": false,
+			"interactive": true
+		},
+		"build:macos": {
+			"cache": false,
+			"interactive": true
+		},
+		"macos": {
+			"cache": false,
+			"interactive": true
+		},
+		"deploy": {
+			"cache": false,
+			"interactive": true
 		},
 		"typecheck": {
 			"dependsOn": ["^typecheck"]

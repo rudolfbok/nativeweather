@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "react-native start --port 8081",
+		"build:macos": "xcodebuild -workspace macos/nativeweather.xcworkspace -scheme nativeweather -configuration Release -destination 'platform=macOS,arch=arm64' -derivedDataPath build ARCHS=arm64 build && mkdir -p release && rm -rf release/nativeweather.app && ditto build/Build/Products/Release/nativeweather.app release/nativeweather.app",
 		"macos": "react-native run-macos --scheme nativeweather",
 		"format": "prettier --write .",
 		"lint": "oxlint --config ../../.oxlintrc.json .",

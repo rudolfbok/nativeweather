@@ -5,6 +5,8 @@
 	"scripts": {
 		"reset-project": "node ./scripts/reset-project.js",
 		"dev": "expo start",
+		"build:ios": "expo run:ios --device \"iPhone 16e\"",
+		"build:android": "expo run:android",
 		"android": "expo run:android",
 		"ios": "expo run:ios",
 		"web": "expo start --web",
