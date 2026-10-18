@@ -21,7 +21,6 @@ out/
 **/.open-next/
 **/.turbo/
 **/.wrangler/
-**/.screenatlas/
 
 # Expo / React Native generated native folders
 **/ios/

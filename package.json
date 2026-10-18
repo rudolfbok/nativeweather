@@ -11,8 +11,6 @@
 		"typecheck": "turbo typecheck",
 		"web": "cd apps/web && turbo dev",
 		"mobile": "cd apps/mobile && turbo dev",
-		"atlas": "pnpm --dir apps/web exec screenatlas serve",
-		"atlas:capture": "pnpm --dir apps/web exec screenatlas capture",
 		"macos": "cd apps/desktop && stmux -- [ \"turbo dev\" .. \"wait-on tcp:localhost:8081 && pnpm macos\" ]",
 		"deploy": "cd apps/web && opennextjs-cloudflare build && opennextjs-cloudflare deploy"
 	},
@@ -21,10 +19,8 @@
 	"packageManager": "pnpm@12.6.0",
 	"devDependencies": {
 		"oxlint": "^1.86.0",
-		"playwright": "^1.64.1",
 		"prettier": "^3.9.5",
 		"prettier-plugin-tailwindcss": "^0.8.1",
-		"screenatlas": "github:TomasSestak/screenatlas#d22d688d207c9d8faa0468ae9f0ff85152b655f7",
 		"stmux": "^2.0.0",
 		"turbo": "^2.11.5",
 		"wait-on": "^9.0.10"

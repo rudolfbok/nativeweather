@@ -5,7 +5,6 @@ packages:
 nodeLinker: hoisted
 
 allowBuilds:
-  screenatlas@git+https://github.com/TomasSestak/screenatlas.git#d22d688d207c9d8faa0468ae9f0ff85152b655f7: true
   esbuild: true
   node-datachannel: true
   node-pty: true

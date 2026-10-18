@@ -139,19 +139,6 @@ pnpm install
 pnpm web
 ```
 
-#### Open the ScreenAtlas canvas
-
-ScreenAtlas captures the web app at phone and desktop sizes using installed Google Chrome. Capture the screens, then open the canvas at http://localhost:4600:
-
-```sh
-pnpm atlas:capture
-pnpm atlas
-```
-
-For live captures as you edit, keep `pnpm web` running in another terminal. Configure journeys in `apps/web/screenatlas.config.ts`. Screenshots and baselines stay in the ignored `apps/web/.screenatlas/` folder. Captures use live weather data, so weather changes can appear in comparisons.
-
-ScreenAtlas is pinned to a GitHub commit because its npm package was unavailable during setup. Installing from source also requires Bun for its build script.
-
 #### Run the mobile app
 
 ```txt
