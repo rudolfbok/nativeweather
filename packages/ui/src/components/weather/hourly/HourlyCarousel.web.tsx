@@ -43,7 +43,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		return () => {
 			cancelAnimationFrame(frame);
 			emblaApi.off('select', updateButtons);
-		emblaApi.off('reInit', updateButtons);
+			emblaApi.off('reInit', updateButtons);
 		};
 	}, [emblaApi, updateButtons]);
 
@@ -76,13 +76,13 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 					</button>
 				</View>
 			</View>
-			<div className={clsx('relative flex min-w-0 flex-row px-1')}>
+			<div className={clsx('relative flex min-w-0 flex-row')}>
 				<div
 					ref={emblaRef}
 					role="region"
 					aria-roledescription="carousel"
 					aria-label={t('hourlyforecast.title')}
-					className={clsx('w-full cursor-grab overflow-hidden active:cursor-grabbing')}
+					className={clsx('w-full cursor-grab overflow-hidden px-2 active:cursor-grabbing')}
 				>
 					<div className={clsx('flex flex-row gap-2')}>{data.map((item, index) => renderItem(item, index))}</div>
 				</div>
