@@ -11,7 +11,7 @@
 		"typecheck": "turbo typecheck",
 		"dev:web": "turbo run dev --filter=nativeweather-web",
 		"dev:mobile": "turbo run dev --filter=nativeweather-mobile",
-		"dev:macos": "stmux -- [ \"turbo run dev --filter=nativeweather-macos\" .. \"wait-on tcp:localhost:8081 && turbo run macos --filter=nativeweather-macos\" ]",
+		"dev:macos": "stmux -- [ \"pnpm --filter nativeweather-macos dev\" .. \"wait-on tcp:localhost:8081 && pnpm --filter nativeweather-macos macos --no-packager\" ]",
 		"build:web": "turbo run build --filter=nativeweather-web",
 		"build:ios": "pnpm --filter nativeweather-mobile build:ios",
 		"build:android": "turbo run build:android --filter=nativeweather-mobile",
