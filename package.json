@@ -16,7 +16,7 @@
 		"build:ios": "pnpm --filter nativeweather-mobile build:ios",
 		"build:android": "turbo run build:android --filter=nativeweather-mobile",
 		"build:macos": "turbo run build:macos --filter=nativeweather-macos",
-		"deploy": "turbo run deploy --filter=nativeweather-web"
+		"deploy": "pnpm --filter nativeweather-web deploy"
 	},
 	"keywords": [],
 	"author": "Rudolf Bok",
