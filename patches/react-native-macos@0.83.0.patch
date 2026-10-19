@@ -1,0 +1,43 @@
+diff --git a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
+--- a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
++++ b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
+@@ -61,6 +61,27 @@
+ 
+   return self;
+ }
++
++#if TARGET_OS_OSX // [macOS]
++- (void)scrollWheel:(NSEvent *)event
++{
++  if (!self.isScrollEnabled) {
++    [[self nextResponder] scrollWheel:event];
++    return;
++  }
++
++  CGSize viewportSize = self.contentView.bounds.size;
++  BOOL scrollsHorizontally = self.contentSize.width > viewportSize.width + 1.0;
++  BOOL scrollsVertically = self.contentSize.height > viewportSize.height + 1.0;
++
++  if (scrollsHorizontally && !scrollsVertically && fabs(event.scrollingDeltaY) > fabs(event.scrollingDeltaX)) {
++    [[self nextResponder] scrollWheel:event];
++    return;
++  }
++
++  [super scrollWheel:event];
++}
++#endif // macOS
+ 
+ - (void)preserveContentOffsetWithBlock:(void (^)())block
+ {
+diff --git a/Libraries/Animated/shouldUseTurboAnimatedModule.js b/Libraries/Animated/shouldUseTurboAnimatedModule.js
+--- a/Libraries/Animated/shouldUseTurboAnimatedModule.js
++++ b/Libraries/Animated/shouldUseTurboAnimatedModule.js
+@@ -15,7 +15,7 @@
+   if (ReactNativeFeatureFlags.cxxNativeAnimatedEnabled()) {
+     return false;
+   } else {
+-    return Platform.OS === 'ios' && global.RN$Bridgeless === true;
++    return (Platform.OS === 'ios' || Platform.OS === 'macos') && global.RN$Bridgeless === true;
+   }
+ }
+ 

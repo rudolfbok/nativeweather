@@ -3,6 +3,15 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { withNativeWind } = require('nativewind/dist/metro');
 
 const workspaceRoot = path.resolve(__dirname, '../..');
+const desktopNodeModules = path.join(__dirname, 'node_modules');
+const reactNativeMacOSPath = path.resolve(workspaceRoot, 'node_modules/react-native-macos');
+const desktopPackages = {
+	react: path.join(desktopNodeModules, 'react'),
+	'react-native': reactNativeMacOSPath,
+	'react-native-macos': reactNativeMacOSPath,
+	'react-native-reanimated': path.join(desktopNodeModules, 'react-native-reanimated'),
+	'react-native-worklets': path.join(desktopNodeModules, 'react-native-worklets'),
+};
 const sharedPackages = ['ui', 'core', 'api', 'types'].map((name) => ({
 	name: `@nativeweather/${name}`,
 	sourceRoot: path.join(workspaceRoot, 'packages', name, 'src'),
@@ -17,9 +26,15 @@ const sharedPackages = ['ui', 'core', 'api', 'types'].map((name) => ({
 const config = mergeConfig(getDefaultConfig(__dirname), {
 	watchFolders: [workspaceRoot],
 	resolver: {
+		platforms: ['ios', 'android', 'native', 'macos'],
 		disableHierarchicalLookup: true,
-		nodeModulesPaths: [path.resolve(__dirname, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')],
+		nodeModulesPaths: [desktopNodeModules, path.join(workspaceRoot, 'node_modules')],
 		resolveRequest: (context, moduleName, platform) => {
+			if (platform === 'macos' && (moduleName === 'react-native' || moduleName.startsWith('react-native/'))) {
+				const macOSModuleName = `react-native-macos${moduleName.slice('react-native'.length)}`;
+				return context.resolveRequest(context, macOSModuleName, platform);
+			}
+
 			// Resolve shared source with Metro so .macos/.native variants remain eligible.
 			const sharedPackage = sharedPackages.find(
 				(pkg) => moduleName === pkg.name || moduleName.startsWith(`${pkg.name}/`)
@@ -36,19 +51,9 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
 				};
 			}
 
-			if (platform === 'macos' && moduleName === 'react-native-worklets') {
-				return {
-					filePath: path.resolve(__dirname, 'stubs/react-native-worklets.js'),
-					type: 'sourceFile',
-				};
-			}
-
 			return context.resolveRequest(context, moduleName, platform);
 		},
-		extraNodeModules: {
-			react: path.resolve(__dirname, 'node_modules/react'),
-			'react-native': path.resolve(__dirname, 'node_modules/react-native'),
-		},
+		extraNodeModules: desktopPackages,
 	},
 });
 

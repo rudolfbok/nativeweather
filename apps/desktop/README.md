@@ -9,8 +9,10 @@ The NativeWeather macOS app, built with React Native macOS, Nativewind, Reanimat
 - macOS
 - Xcode
 - CocoaPods
-- Node.js 18+
-- pnpm 10+
+- Node.js 20.19.4 or newer
+- pnpm 12.6.0
+- Xcode 16.1 or newer
+- Ruby and Bundler versions in `Gemfile.lock`
 
 ## How to get started
 
@@ -20,18 +22,19 @@ Install the monorepo dependencies from the repository root:
 pnpm install
 ```
 
-Install CocoaPods
+Install the locked CocoaPods dependencies:
 
 ```bash
 cd apps/desktop/macos
-pod install
+bundle install
+bundle exec pod install
 cd ../../..
 ```
 
-From the repository root, start the macOS Metro server:
+Start Metro in one terminal:
 
 ```bash
-pnpm macos
+pnpm --filter nativeweather-macos dev
 ```
 
 Then, in another terminal, build and start the macOS app:
@@ -40,6 +43,4 @@ Then, in another terminal, build and start the macOS app:
 pnpm --filter nativeweather-macos macos
 ```
 
-## Known issues
-
-- CocoaPods installation may fail multiple times due to some problems that are disclosed in the log. Try again and repeat till it installs correctly
+The desktop target requires Fabric and Hermes. Keep `Podfile.lock` and `Pods/Manifest.lock` in sync; after dependency changes, reinstall pods once with the locked Bundler environment and resolve the first reported error before retrying.
