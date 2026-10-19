@@ -1,11 +1,24 @@
-import { resolve } from 'node:path';
+import { createRequire } from 'node:module';
+import { dirname, relative, resolve } from 'node:path';
 import type { NextConfig } from 'next';
+
+const webRequire = createRequire(resolve(__dirname, 'package.json'));
+const workspaceRoot = resolve(__dirname, '../..');
+const webPackage = (name: string) =>
+	`./${relative(__dirname, dirname(webRequire.resolve(`${name}/package.json`)))}`;
 
 const nextConfig: NextConfig = {
 	allowedDevOrigins: ['172.20.10.5'],
 	turbopack: {
-		root: resolve(__dirname, '../..'),
+		root: workspaceRoot,
 		resolveAlias: {
+			// Shared packages must use the web app's versions in the hoisted workspace.
+			react: webPackage('react'),
+			'react/*': `${webPackage('react')}/*`,
+			'react-dom': webPackage('react-dom'),
+			'react-dom/*': `${webPackage('react-dom')}/*`,
+			'react-native-svg': webPackage('react-native-svg'),
+			'react-native-svg/*': `${webPackage('react-native-svg')}/*`,
 			'react-native': 'react-native-web',
 		},
 		resolveExtensions: [
