@@ -13,7 +13,7 @@
 		"dev:mobile": "turbo run dev --filter=nativeweather-mobile",
 		"dev:macos": "stmux -- [ \"turbo run dev --filter=nativeweather-macos\" .. \"wait-on tcp:localhost:8081 && turbo run macos --filter=nativeweather-macos\" ]",
 		"build:web": "turbo run build --filter=nativeweather-web",
-		"build:ios": "turbo run build:ios --filter=nativeweather-mobile",
+		"build:ios": "pnpm --filter nativeweather-mobile build:ios",
 		"build:android": "turbo run build:android --filter=nativeweather-mobile",
 		"build:macos": "turbo run build:macos --filter=nativeweather-macos",
 		"deploy": "turbo run deploy --filter=nativeweather-web"

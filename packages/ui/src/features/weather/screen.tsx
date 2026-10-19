@@ -160,17 +160,19 @@ export const WeatherFeature = () => {
 
 	return (
 		<View className={clsx('flex-1')}>
-			<Animated.View
+			<View
 				pointerEvents="none"
 				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
-				style={[{ top: insets.top + 60 }, pullIndicatorStyle]}
+				style={{ top: insets.top + 60 }}
 			>
-				{Platform.OS === 'ios' ? (
-					<PullIndicator progress={pullProgress} refreshing={refreshProgress} alwaysWhite={true} />
-				) : (
-					<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
-				)}
-			</Animated.View>
+				<Animated.View cssInterop={false} style={pullIndicatorStyle}>
+					{Platform.OS === 'ios' ? (
+						<PullIndicator progress={pullProgress} refreshing={refreshProgress} alwaysWhite={true} />
+					) : (
+						<ActivityIndicator animating={true} size="large" color="#FFFFFF" />
+					)}
+				</Animated.View>
+			</View>
 			<Animated.ScrollView
 				onScroll={handleScroll}
 				onScrollEndDrag={handleEndDrag}

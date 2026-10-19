@@ -11,6 +11,7 @@ import { clsx } from 'clsx';
 import { BlurView } from 'expo-blur';
 import { cssInterop } from 'nativewind';
 import { View } from 'react-native';
+import { border } from '@nativeweather/ui/constants/border';
 
 const StyledBlurView = cssInterop(BlurView, { className: 'style' });
 
@@ -108,7 +109,7 @@ export const MainWeather = ({
 					</View>
 				</View>
 				<StyledBlurView
-					className={clsx('relative z-10 overflow-hidden rounded-3xl px-4 py-2')}
+					className={clsx('relative z-10 overflow-hidden rounded-3xl px-4 py-2', border)}
 					tint="light"
 					intensity={30}
 				>

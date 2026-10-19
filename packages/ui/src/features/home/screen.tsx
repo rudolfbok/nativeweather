@@ -25,7 +25,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const StyledAnimatedView = cssInterop(Animated.View, { className: 'style' });
 const StyledAnimatedScrollView = cssInterop(Animated.ScrollView, {
 	contentContainerClassName: 'contentContainerStyle',
 });
@@ -149,13 +148,15 @@ export const HomeFeature = () => {
 			<View className="px-4 pb-4 pt-2">
 				<NativeWeatherLogo />
 			</View>
-			<StyledAnimatedView
+			<View
 				pointerEvents="none"
-				className="absolute left-0 right-0 z-20 h-9 items-center justify-center"
-				style={[{ top: headerHeight + 50 }, pullIndicatorStyle]}
+				className={clsx('absolute left-0 right-0 z-20 h-9 items-center justify-center')}
+				style={{ top: headerHeight + 50 }}
 			>
-				{Platform.OS === 'ios' && <PullIndicator progress={pullProgress} refreshing={refreshProgress} />}
-			</StyledAnimatedView>
+				<Animated.View cssInterop={false} style={pullIndicatorStyle}>
+					{Platform.OS === 'ios' && <PullIndicator progress={pullProgress} refreshing={refreshProgress} />}
+				</Animated.View>
+			</View>
 			<StyledAnimatedScrollView
 				onScroll={handleScroll}
 				onScrollEndDrag={handleEndDrag}

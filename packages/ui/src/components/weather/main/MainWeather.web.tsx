@@ -15,6 +15,7 @@ import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Pressable, View } from 'react-native';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface MainWeatherProps {
 	name?: string;
@@ -132,7 +133,7 @@ export const MainWeather = ({
 					)}
 				</View>
 			</View>
-			<RoundView className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-lg', conditionStyle)}>
+			<RoundView className={clsx('relative z-10 rounded-3xl px-4 py-2 backdrop-blur-lg', border, conditionStyle)}>
 				<StyledText type="title" className={clsx('!text-white', '[text-shadow:0_0_1px_#000000]')}>
 					{condition}
 				</StyledText>
