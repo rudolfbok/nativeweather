@@ -141,7 +141,7 @@ export const WeatherChart = ({
 					<View className="flex-1 flex-row items-center justify-between px-4">
 						<View>
 							<StyledText type="body" className={clsx('font-semibold')}>
-								{t('hourlyforecast.now')}
+								{t('hourlyforecast.now').charAt(0).toUpperCase() + t('hourlyforecast.now').slice(1)}
 							</StyledText>
 							<StyledText type="caption">
 								{currentPoint ? `${formatValue(currentPoint.value)}${valueSuffix}` : '--'}
