@@ -16,7 +16,11 @@ export const StyledPressable = ({ tintColor, className, onPress, onPressIn, chil
 			onPressIn={onPressIn}
 			style={[tintColor ? { backgroundColor: tintColor } : undefined, { cursor: 'pointer' }]}
 			className={clsx(
-				'bg-systemBackground dark:bg-secondarySystemBackground_dark web:hover:bg-tertiarySystemBackground web:dark:hover:bg-tertiarySystemBackground_dark macos:hover:bg-tertiarySystemBackground macos:dark:hover:bg-tertiarySystemBackground_dark ios:active:bg-tertiarySystemBackground ios:active:dark:bg-tertiarySystemBackground_dark android:active:bg-tertiarySystemBackground android:active:dark:bg-tertiarySystemBackground_dark',
+				'bg-systemBackground dark:bg-secondarySystemBackground_dark',
+				'web:hover:bg-tertiarySystemBackground web:dark:hover:bg-tertiarySystemBackground_dark',
+				'macos:hover:bg-tertiarySystemBackground macos:dark:hover:bg-tertiarySystemBackground_dark',
+				'ios:active:bg-tertiarySystemBackground ios:active:dark:bg-tertiarySystemBackground_dark',
+				'android:active:bg-tertiarySystemBackground android:active:dark:bg-tertiarySystemBackground_dark',
 				className
 			)}
 		>

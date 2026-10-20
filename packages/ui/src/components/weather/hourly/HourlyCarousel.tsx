@@ -36,6 +36,7 @@ const CarouselButton = ({
 		disabled={disabled}
 		onPress={onPress}
 		className={clsx('h-8 w-8 cursor-pointer items-center justify-center rounded-full', disabled && 'opacity-20')}
+		style={{ cursor: disabled ? undefined : 'pointer' }}
 	>
 		{icon}
 	</Pressable>
@@ -69,7 +70,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 		const nextX = Math.min(maxScrollX, Math.max(0, scrollX.current + direction * itemStep));
 
 		scrollX.current = nextX;
-		updateControls(nextX);
+		// Let onScroll update the buttons when the animation actually reaches the edge.
 		scrollRef.current?.scrollTo({ x: nextX, animated: true });
 	};
 
@@ -87,7 +88,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 			<View className={clsx('mb-4 flex-row items-center justify-between px-4')}>
 				<CardHeader icon={<ClockIcon />} header={t('hourlyforecast.title')} className={clsx('min-w-0 flex-1')} />
 				{showArrows && (canPrev || canNext) && (
-					<View className={clsx('w-[70px] flex-row justify-end gap-1')}>
+					<View className={clsx('w-[70px] flex-row justify-end gap-2')}>
 						<CarouselButton
 							label={t('carousel.previous')}
 							disabled={!canPrev}
