@@ -126,13 +126,7 @@
 			},
 			"default": "./src/components/weather/hero/HeroWeather.web.tsx"
 		},
-		"./components/weather/hourly/HourlyCarousel": {
-			"react-native": {
-				"macos": "./src/components/weather/hourly/HourlyCarousel.macos.tsx",
-				"default": "./src/components/weather/hourly/HourlyCarousel.tsx"
-			},
-			"default": "./src/components/weather/hourly/HourlyCarousel.web.tsx"
-		},
+		"./components/weather/hourly/HourlyCarousel": "./src/components/weather/hourly/HourlyCarousel.tsx",
 		"./components/weather/main/MainWeather": {
 			"react-native": {
 				"macos": "./src/components/weather/main/MainWeather.macos.tsx",
@@ -226,7 +220,6 @@
 		"react-native-safe-area-context": "~5.10.1",
 		"react-native-screens": "~4.30.0",
 		"@expo/ui": "~58.0.20",
-		"embla-carousel-react": "^8.6.0",
 		"gsap": "^3.14.2",
 		"hamburger-react": "^2.5.2"
 	},

@@ -2,6 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { shareLink } from '@nativeweather/ui/utils/shareWeather';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
@@ -42,7 +43,11 @@ export default function TabLayout() {
 				{weatherData && (
 					<Stack.Toolbar placement="left">
 						<Stack.Toolbar.View hidesSharedBackground>
-							<Pressable onPress={() => console.log('Share button was pressed!')}>
+							<Pressable
+								accessibilityLabel={t('favorites.share')}
+								accessibilityRole="button"
+								onPress={() => shareLink(weatherData)}
+							>
 								<GlassView glassEffectStyle="clear" isInteractive style={{ borderRadius: 999, padding: 10 }}>
 									<Share color="#FFFFFF" />
 								</GlassView>

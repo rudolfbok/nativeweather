@@ -1,15 +1,12 @@
 import type { NormalizedData } from '@nativeweather/types/normalizedData';
-import { Share } from 'react-native';
+import { Platform, Share } from 'react-native';
 import { buildSlug } from '@nativeweather/core/utils/weatherSlug';
 
 export const shareLink = async (weatherData: NormalizedData) => {
-	const url = `https://nativeweather.app/${buildSlug(weatherData)}`;
+	const url = new URL(buildSlug(weatherData), 'https://nativeweather.app').href;
 
 	try {
-		await Share.share({
-			url, // misto message
-			title: `Weather in ${weatherData.location.name}`,
-		});
+		await Share.share(Platform.OS === 'ios' ? { url } : { message: url });
 	} catch (error) {
 		console.error('Error sharing:', error);
 	}
