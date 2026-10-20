@@ -1,6 +1,13 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	presets: [require('nativewind/preset')],
+	plugins: [
+		plugin(({ addVariant }) => {
+			addVariant('mouse-hover', '@media (hover: hover) and (pointer: fine) { &:hover }');
+		}),
+	],
 	theme: {
 		extend: {
 			screens: {

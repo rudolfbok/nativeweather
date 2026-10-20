@@ -51,7 +51,7 @@ export const SettingsItem = ({
 			className={clsx(
 				'select-none px-4 pt-4',
 				variant !== 'toggle' && 'active:!bg-tertiarySystemBackground active:dark:!bg-tertiarySystemBackground_dark',
-				variant === 'toggle' && 'hover:!bg-transparent active:!bg-transparent'
+				variant === 'toggle' && 'web:mouse-hover:!bg-transparent web:active:!bg-transparent active:!bg-transparent'
 				// 'macos:bg-secondarySystemBackground macos:dark:bg-tertiarySystemBackground_dark/70'
 			)}
 		>

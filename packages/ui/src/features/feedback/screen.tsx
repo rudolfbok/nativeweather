@@ -10,7 +10,7 @@ import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
 import { useState } from 'react';
-import { Pressable, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 export const FeedbackFeature = () => {
 	const { t } = useTranslate('settings');
@@ -65,14 +65,13 @@ export const FeedbackFeature = () => {
 								border
 							)}
 						>
-							<Pressable
+							<StyledPressable
 								onPress={() => setOpen((prev) => !prev)}
 								className={clsx(
-									'flex-row items-center justify-between gap-2 p-4 hover:bg-tertiarySystemBackground hover:dark:bg-tertiarySystemBackground_dark',
+									'flex-row items-center justify-between gap-2 p-4',
 									!open && 'border-transparent',
 									open && 'rounded-b-none'
 								)}
-								style={{ cursor: 'pointer' }}
 							>
 								<View className="flex-row items-center gap-3">
 									{type ? selectedIcon[type] : null}
@@ -81,7 +80,7 @@ export const FeedbackFeature = () => {
 									</StyledText>
 								</View>
 								<ChevronDown color={text} />
-							</Pressable>
+							</StyledPressable>
 							{open && (
 								<View>
 									{(['bug', 'feature', 'message', 'question'] as const).map((variant) => (

@@ -74,11 +74,11 @@ export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCi
 								<Pressable
 									onPress={() => handleRemoveCity(city)}
 									className={clsx(
-										'absolute -bottom-1 right-0 h-fit w-fit justify-center rounded-full bg-red-600 p-1 hover:bg-red-800'
+										'absolute -bottom-2 right-0 h-fit w-fit justify-center rounded-full bg-red-600 p-[4px] hover:bg-red-800'
 									)}
 									style={{ cursor: 'pointer' }}
 								>
-									<Trash2 color="white" size={20} />
+									<Trash2 color="white" size={22} />
 								</Pressable>
 							)}
 						</View>
