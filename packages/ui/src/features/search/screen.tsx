@@ -2,9 +2,9 @@
 
 import { Stack } from 'expo-router';
 import { useTranslate } from '@tolgee/react';
-import { RecentSearches } from '@nativeweather/ui/components/weather/search/RecentSearches';
-import { SuggestionsList } from '@nativeweather/ui/components/weather/search/SuggestionsList';
-import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
+import { RecentSearches } from '../../components/weather/search/RecentSearches';
+import { SuggestionsList } from '../../components/weather/search/SuggestionsList';
+import { useSearchController } from '../../hooks/search/useSearchController';
 import { clsx } from 'clsx';
 import { useRef } from 'react';
 import { View } from 'react-native';

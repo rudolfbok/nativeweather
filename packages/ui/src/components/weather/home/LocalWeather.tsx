@@ -2,10 +2,10 @@
 
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import type { LocalWeatherErrorKind } from '@nativeweather/ui/hooks/location/locationError';
-import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
-import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
+import { StyledText } from '../../common/styled/StyledText';
+import type { LocalWeatherErrorKind } from '@nativeweather/core/hooks/location/locationError';
+import { useSearchController } from '../../../hooks/search/useSearchController';
+import { useLocalWeather } from '@nativeweather/core/hooks/weather/useLocalWeather';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';

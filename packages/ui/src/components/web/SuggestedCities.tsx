@@ -1,7 +1,7 @@
 'use client';
 
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { StyledText } from '../common/styled/StyledText';
+import { useRouter } from '../../hooks/navigation/useRouter';
 import { Pressable, View } from 'react-native';
 
 const suggestedCities = [

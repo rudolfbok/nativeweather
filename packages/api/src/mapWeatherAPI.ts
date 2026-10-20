@@ -1,6 +1,6 @@
 import type { WeatherAPIResponse } from '@nativeweather/types/weatherAPI';
-import { NormalizedData } from '@nativeweather/types/normalizedData';
-import { normalizeWeatherConditionCode } from '@nativeweather/api/utils/weatherCondition';
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
+import { normalizeWeatherConditionCode } from './utils/weatherCondition';
 
 const mapCondition = (condition: { text?: unknown; code?: unknown } | null | undefined) => ({
 	text: '',

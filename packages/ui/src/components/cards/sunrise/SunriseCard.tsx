@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
-import { useSunEventCountdown } from '@nativeweather/ui/hooks/weather/useSunEventCountdown';
+import { useSunEventCountdown } from '@nativeweather/core/hooks/weather/useSunEventCountdown';
 import { useState } from 'react';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { SunriseIcon } from '@nativeweather/ui/components/icons/main/SunriseIcon';
+import { useRouter } from '../../../hooks/navigation/useRouter';
+import { StyledModal } from '../../common/modal/StyledModal';
+import { StyledText } from '../../common/styled/StyledText';
+import { SunriseIcon } from '../../icons/main/SunriseIcon';
 import { DataCard } from '../DataCard';
 import { SunriseModal } from './SunriseModal';
 

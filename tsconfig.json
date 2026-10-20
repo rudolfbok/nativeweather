@@ -1,12 +1,6 @@
 {
 	"compilerOptions": {
-		"strict": true,
-		"paths": {
-			"@nativeweather/ui/*": ["./packages/ui/src/*"],
-			"@nativeweather/core/*": ["./packages/core/src/*"],
-			"@nativeweather/api/*": ["./packages/api/src/*"],
-			"@nativeweather/types/*": ["./packages/types/src/*"]
-		}
+		"strict": true
 	},
 	"extends": "expo/tsconfig.base",
 	"files": []

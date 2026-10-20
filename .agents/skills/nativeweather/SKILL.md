@@ -5,7 +5,7 @@ description: NativeWeather repository guidance for shared React Native code, Exp
 
 # NativeWeather
 
-Use this skill for changes anywhere in the NativeWeather monorepo, especially `packages/ui`, `packages/core`, `packages/api`, `packages/types`, `packages/tailwind-config`, `apps/mobile`, `apps/desktop`, `apps/web`, shared UI, storage, weather APIs, NativeWind styling, Expo Router, macOS navigation, or Cloudflare/OpenNext deployment.
+Use this skill for changes anywhere in the NativeWeather monorepo, especially `packages/ui`, `packages/core`, `packages/api`, `packages/types`, `apps/mobile`, `apps/desktop`, `apps/web`, shared UI, storage, weather APIs, NativeWind styling, Expo Router, macOS navigation, or Cloudflare/OpenNext deployment.
 
 ## Product and platform scope
 
@@ -14,11 +14,11 @@ NativeWeather is one shared product delivered to four targets:
 - `apps/web`: Next.js web application using React Native Web.
 - `apps/mobile`: Expo application for iOS and Android. The current package is Expo SDK 57, React Native 0.86, React 19.2, and Expo Router.
 - `apps/desktop`: React Native macOS application. macOS-specific files and navigation are production code.
-- `packages/ui`: shared components, features, hooks, providers, UI assets, and platform variants imported through `@nativeweather/ui/*`.
-- `packages/core`: shared storage, constants, and platform independent utilities imported through `@nativeweather/core/*`.
+- `packages/ui`: shared components, features, presentation hooks, providers, UI assets, and platform variants imported through `@nativeweather/ui/*`.
+- `packages/core`: shared storage, data hooks, weather stores, location behavior, constants, and utilities imported through `@nativeweather/core/*`.
 - `packages/api`: weather requests, response normalization, and API-level error handling imported through `@nativeweather/api/*`.
 - `packages/types`: shared public data types imported through `@nativeweather/types/*`.
-- `packages/tailwind-config`: shared Tailwind theme tokens and NativeWind preset.
+- `packages/ui/tailwind.config.js`: shared Tailwind theme tokens and NativeWind preset.
 
 Platform files currently used include `.web.tsx`, `.macos.tsx`, `.android.tsx`, and `.ios.tsx`. Check all relevant variants before changing shared behavior.
 
@@ -32,13 +32,18 @@ Keep changes inside the existing architecture:
 - `packages/ui/src/components`: reusable UI and platform-specific component variants.
 - `packages/core/src/database`: MMKV initialization, defaults, persistence hooks, and storage CRUD.
 - `packages/ui/src/features`: screen-level behavior and feature composition.
-- `packages/ui/src/hooks`: reusable stateful behavior, location, weather, navigation, and Zustand-backed state.
+- `packages/core/src/hooks`: shared weather and favorite data, location platform variants, map data requests, and countdown behavior.
+- `packages/ui/src/hooks`: navigation, theme, selection state, translated conditions, widget rendering, screen controllers, and favorite notification wrappers.
 - `packages/core/src/locales`: Tolgee translations.
 - `packages/types/src`: shared public data boundaries.
-- `packages/tailwind-config`: shared theme tokens; app Tailwind configs still own source scanning and CSS integration.
+- `packages/ui/tailwind.config.js`: shared theme tokens; app Tailwind configs own source scanning and CSS integration.
 - `apps/mobile/app`: Expo Router routes and mobile app startup/configuration.
 - `apps/desktop/app` and `apps/desktop/macos`: macOS app composition and native integration.
 - `apps/web/app`: Next.js routes, metadata, and web-only entrypoints.
+
+Workspace dependencies flow from apps to UI, core, API, and types. Apps and packages may import any lower layer directly. Core must not import UI; API must not import core or UI; types has no runtime dependencies. Translations stay in core as JSON data; translation providers and hooks stay in UI. Theme initialization and native sharing belong in UI.
+
+Use `@nativeweather/<package>/<module>` for cross-package imports and relative imports inside a package. Import shared contracts with `import type`. Package exports point to source files and select platform variants; do not bypass them with TypeScript workspace aliases or direct imports into another package's `src`. Declare every imported dependency in the consuming package. React and native platform runtimes remain app-owned peers. There are no package root barrels or compilation steps. When adding a platform variant for a public module, update its conditional export; Metro asserts `ios`, `android`, or `macos` conditions inside `react-native`, while the default selects web where available.
 
 Do not invent a service layer, design system, repository pattern, generic abstraction, or new folder boundary for a one-off change. Keep behavior with the component, feature, hook, or API layer that already owns it.
 
@@ -73,7 +78,7 @@ Use the project’s installed versions and official versioned documentation. Mob
 
 Use the existing Zustand and MMKV hooks. MMKV defaults belong in `initStorageDefaults.ts`; persisted preferences should survive restarts unless a reset is explicitly requested. Be aware that startup code can intentionally clear storage on macOS, so inspect app entrypoints before diagnosing persistence.
 
-Weather UI consumes normalized data. Keep provider selection, request coordination, abort signals, authentication, response mapping, and provider errors in `packages/api/src` or the existing weather hooks in `packages/ui/src/hooks`. WeatherAPI search remains the canonical source for city identity; use its name, region, country, coordinates, and slugs consistently.
+Weather UI consumes normalized data. Keep requests, authentication, normalization, provider errors, and the canonical weather condition catalog in `packages/api/src`. Shared data hooks and request coordination belong in `packages/core/src/hooks`; UI owns translated notifications and rendering. WeatherAPI search remains the canonical source for city identity; use its name, region, country, coordinates, and slugs consistently.
 
 ## Web and Cloudflare/OpenNext
 

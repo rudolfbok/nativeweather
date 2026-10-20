@@ -46,8 +46,8 @@ import {
 	useNavigationScreen,
 } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { WeatherAlert } from '@nativeweather/types/weatherAPI';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
+import type { WeatherAlert } from '@nativeweather/types/weatherAPI';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';

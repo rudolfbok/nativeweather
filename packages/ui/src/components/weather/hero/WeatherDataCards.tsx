@@ -10,7 +10,7 @@ import {
 	UVCard,
 	WindCard,
 	CloudsCard,
-} from '@nativeweather/ui/components/cards';
+} from '../../cards';
 import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { getHour24FromEpoch } from '../hourly/getHour24FromEpoch';
 import { useState } from 'react';

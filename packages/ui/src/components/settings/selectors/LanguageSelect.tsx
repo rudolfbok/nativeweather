@@ -1,15 +1,15 @@
 import { useTolgee } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { ChineseFlag } from '@nativeweather/ui/components/icons/settings/ChineseFlag';
-import { CzechFlag } from '@nativeweather/ui/components/icons/settings/CzechFlag';
-import { EnglishFlag } from '@nativeweather/ui/components/icons/settings/EnglishFlag';
-import { FrenchFlag } from '@nativeweather/ui/components/icons/settings/FrenchFlag';
-import { GermanFlag } from '@nativeweather/ui/components/icons/settings/GermanFlag';
-import { ItalianFlag } from '@nativeweather/ui/components/icons/settings/ItalianFlag';
+import { RoundView } from '../../common/styled/RoundView';
+import { ChineseFlag } from '../../icons/settings/ChineseFlag';
+import { CzechFlag } from '../../icons/settings/CzechFlag';
+import { EnglishFlag } from '../../icons/settings/EnglishFlag';
+import { FrenchFlag } from '../../icons/settings/FrenchFlag';
+import { GermanFlag } from '../../icons/settings/GermanFlag';
+import { ItalianFlag } from '../../icons/settings/ItalianFlag';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 import { languageNames } from '../languageNames';
-import { PolishFlag } from '@nativeweather/ui/components/icons/settings/PolishFlag';
+import { PolishFlag } from '../../icons/settings/PolishFlag';
 
 export const LanguageSelect = () => {
 	const tolgee = useTolgee();

@@ -2,11 +2,203 @@
 	"name": "@nativeweather/ui",
 	"version": "0.0.0",
 	"private": true,
-	"types": "./src/index.ts",
 	"exports": {
-		".": "./src/index.ts",
 		"./tailwind.config": "./tailwind.config.js",
-		"./*": "./src/*"
+		"./components/*": "./src/components/*.tsx",
+		"./features/*": "./src/features/*.tsx",
+		"./provider/*": "./src/provider/*.tsx",
+		"./constants/*": "./src/constants/*.ts",
+		"./hooks/*": "./src/hooks/*.ts",
+		"./utils/*": "./src/utils/*.ts",
+		"./components/settings/languageNames": "./src/components/settings/languageNames.ts",
+		"./components/weather/hourly/getHour24FromEpoch": "./src/components/weather/hourly/getHour24FromEpoch.ts",
+		"./utils/mappings/landscapes": "./src/utils/mappings/landscapes.tsx",
+		"./utils/mappings/weatherIcons": "./src/utils/mappings/weatherIcons.tsx",
+		"./utils/notifications/showFavoriteToast": {
+			"react-native": {
+				"macos": "./src/utils/notifications/showFavoriteToast.macos.tsx",
+				"default": "./src/utils/notifications/showFavoriteToast.tsx"
+			},
+			"default": "./src/utils/notifications/showFavoriteToast.tsx"
+		},
+		"./utils/notifications/showToast": {
+			"react-native": {
+				"macos": "./src/utils/notifications/showToast.macos.tsx",
+				"default": "./src/utils/notifications/showToast.tsx"
+			},
+			"default": "./src/utils/notifications/showToast.tsx"
+		},
+		"./components/cards/DataCard": {
+			"react-native": {
+				"macos": "./src/components/cards/DataCard.macos.tsx",
+				"default": "./src/components/cards/DataCard.tsx"
+			},
+			"default": "./src/components/cards/DataCard.tsx"
+		},
+		"./components/common/animated/AnimatedView": {
+			"react-native": {
+				"default": "./src/components/common/animated/AnimatedView.tsx"
+			},
+			"default": "./src/components/common/animated/AnimatedView.web.tsx"
+		},
+		"./components/common/layout/Header": {
+			"default": "./src/components/common/layout/Header.web.tsx"
+		},
+		"./components/common/layout/ScreenWrapper": {
+			"react-native": {
+				"macos": "./src/components/common/layout/ScreenWrapper.macos.tsx",
+				"default": "./src/components/common/layout/ScreenWrapper.tsx"
+			},
+			"default": "./src/components/common/layout/ScreenWrapper.tsx"
+		},
+		"./components/common/loading/HeroSkeleton": {
+			"react-native": {
+				"macos": "./src/components/common/loading/HeroSkeleton.macos.tsx",
+				"default": "./src/components/common/loading/HeroSkeleton.tsx"
+			},
+			"default": "./src/components/common/loading/HeroSkeleton.web.tsx"
+		},
+		"./components/common/loading/Skeleton": {
+			"react-native": {
+				"default": "./src/components/common/loading/Skeleton.tsx"
+			},
+			"default": "./src/components/common/loading/Skeleton.web.tsx"
+		},
+		"./components/common/modal/ModalHeader": {
+			"react-native": {
+				"ios": "./src/components/common/modal/ModalHeader.ios.tsx",
+				"default": "./src/components/common/modal/ModalHeader.tsx"
+			},
+			"default": "./src/components/common/modal/ModalHeader.tsx"
+		},
+		"./components/common/modal/StyledModal": {
+			"react-native": {
+				"macos": "./src/components/common/modal/StyledModal.macos.tsx",
+				"default": "./src/components/common/modal/StyledModal.tsx"
+			},
+			"default": "./src/components/common/modal/StyledModal.tsx"
+		},
+		"./components/common/notifications/Toaster": {
+			"react-native": {
+				"default": "./src/components/common/notifications/Toaster.tsx"
+			},
+			"default": "./src/components/common/notifications/Toaster.web.tsx"
+		},
+		"./components/maps/legend/LegendGradient": {
+			"react-native": {
+				"macos": "./src/components/maps/legend/LegendGradient.macos.tsx",
+				"default": "./src/components/maps/legend/LegendGradient.tsx"
+			},
+			"default": "./src/components/maps/legend/LegendGradient.web.tsx"
+		},
+		"./components/maps/views/MapLibreView": {
+			"react-native": {
+				"macos": "./src/components/maps/views/MapLibreView.macos.tsx",
+				"default": "./src/components/maps/views/MapLibreView.tsx"
+			},
+			"default": "./src/components/maps/views/MapLibreView.web.tsx"
+		},
+		"./components/maps/views/MapsView": {
+			"react-native": {
+				"macos": "./src/components/maps/views/MapsView.macos.tsx",
+				"default": "./src/components/maps/views/MapsView.tsx"
+			},
+			"default": "./src/components/maps/views/MapsView.web.tsx"
+		},
+		"./components/settings/selectors/LanguageSelect": {
+			"react-native": {
+				"android": "./src/components/settings/selectors/LanguageSelect.android.tsx",
+				"default": "./src/components/settings/selectors/LanguageSelect.tsx"
+			},
+			"default": "./src/components/settings/selectors/LanguageSelect.tsx"
+		},
+		"./components/weather/card/Card": {
+			"react-native": {
+				"ios": "./src/components/weather/card/Card.ios.tsx",
+				"default": "./src/components/weather/card/Card.tsx"
+			},
+			"default": "./src/components/weather/card/Card.tsx"
+		},
+		"./components/weather/hero/HeroWeather": {
+			"react-native": {
+				"macos": "./src/components/weather/hero/HeroWeather.macos.tsx",
+				"default": "./src/components/weather/hero/HeroWeather.tsx"
+			},
+			"default": "./src/components/weather/hero/HeroWeather.web.tsx"
+		},
+		"./components/weather/hourly/HourlyCarousel": {
+			"react-native": {
+				"macos": "./src/components/weather/hourly/HourlyCarousel.macos.tsx",
+				"default": "./src/components/weather/hourly/HourlyCarousel.tsx"
+			},
+			"default": "./src/components/weather/hourly/HourlyCarousel.web.tsx"
+		},
+		"./components/weather/main/MainWeather": {
+			"react-native": {
+				"macos": "./src/components/weather/main/MainWeather.macos.tsx",
+				"default": "./src/components/weather/main/MainWeather.tsx"
+			},
+			"default": "./src/components/weather/main/MainWeather.web.tsx"
+		},
+		"./components/weather/search/SearchInput": {
+			"react-native": {
+				"macos": "./src/components/weather/search/SearchInput.macos.tsx",
+				"default": "./src/components/weather/search/SearchInput.tsx"
+			},
+			"default": "./src/components/weather/search/SearchInput.tsx"
+		},
+		"./components/web/ThemeSync": {
+			"default": "./src/components/web/ThemeSync.web.tsx"
+		},
+		"./features/compass/screen": {
+			"default": "./src/features/compass/screen.web.tsx"
+		},
+		"./features/home/screen": {
+			"react-native": {
+				"default": "./src/features/home/screen.tsx"
+			},
+			"default": "./src/features/home/screen.web.tsx"
+		},
+		"./features/settings/screen": {
+			"react-native": {
+				"macos": "./src/features/settings/screen.macos.tsx",
+				"default": "./src/features/settings/screen.tsx"
+			},
+			"default": "./src/features/settings/screen.web.tsx"
+		},
+		"./features/weather/screen": {
+			"react-native": {
+				"macos": "./src/features/weather/screen.macos.tsx",
+				"default": "./src/features/weather/screen.tsx"
+			},
+			"default": "./src/features/weather/screen.web.tsx"
+		},
+		"./hooks/navigation/useNavigation": {
+			"react-native": {
+				"macos": "./src/hooks/navigation/useNavigation.macos.ts"
+			}
+		},
+		"./hooks/navigation/useRouter": {
+			"react-native": {
+				"macos": "./src/hooks/navigation/useRouter.macos.ts",
+				"default": "./src/hooks/navigation/useRouter.ts"
+			},
+			"default": "./src/hooks/navigation/useRouter.web.ts"
+		},
+		"./hooks/theme/useThemeColors": {
+			"react-native": {
+				"default": "./src/hooks/theme/useThemeColors.ts"
+			},
+			"default": "./src/hooks/theme/useThemeColors.web.tsx"
+		},
+		"./utils/notifications/sonner": {
+			"react-native": {
+				"default": "./src/utils/notifications/sonner.ts"
+			},
+			"default": "./src/utils/notifications/sonner.web.ts"
+		},
+		"./components/cards": "./src/components/cards/index.ts",
+		"./components/icons/main": "./src/components/icons/main/index.ts"
 	},
 	"dependencies": {
 		"@nativeweather/api": "workspace:*",
@@ -18,7 +210,6 @@
 		"expo-asset": "~58.0.16",
 		"lucide-react-native": "^0.562.0",
 		"luxon": "^3.7.2",
-		"nativewind": "4.2.6",
 		"sonner": "^2.0.8",
 		"sonner-native": "^0.27.0",
 		"react-native-chart-kit": "^7.0.4",
@@ -30,13 +221,14 @@
 		"expo-constants": "~58.0.12",
 		"expo-glass-effect": "~58.0.4",
 		"expo-linear-gradient": "~58.0.3",
-		"expo-location": "~58.0.17",
 		"expo-router": "~58.0.23",
 		"expo-widgets": "~58.0.20",
 		"react-native-safe-area-context": "~5.10.1",
 		"react-native-screens": "~4.30.0",
 		"@expo/ui": "~58.0.20",
-		"react-native-reanimated": "~4.7.1"
+		"embla-carousel-react": "^8.6.0",
+		"gsap": "^3.14.2",
+		"hamburger-react": "^2.5.2"
 	},
 	"peerDependencies": {
 		"react": "19.0.0 || ^19.2.0",
@@ -46,7 +238,8 @@
 		"react-native-svg": "^15.15.4 || ^15.16.0",
 		"@maplibre/maplibre-react-native": "^11.2.1",
 		"maplibre-gl": "^5.24.0",
-		"react-native-webview": "^13.16.0"
+		"react-native-webview": "^13.16.0",
+		"next": "16.4.2"
 	},
 	"peerDependenciesMeta": {
 		"@maplibre/maplibre-react-native": {
@@ -60,14 +253,17 @@
 		},
 		"react-native-webview": {
 			"optional": true
+		},
+		"next": {
+			"optional": true
 		}
 	},
 	"devDependencies": {
 		"@types/luxon": "^3.7.5",
 		"@types/react": "~19.2.14",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"tailwindcss": "^3.4.18"
 	},
-	"main": "./src/index.ts",
 	"scripts": {
 		"lint": "oxlint --config ../../.oxlintrc.json .",
 		"typecheck": "tsc --noEmit"

@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { GlassView } from 'expo-glass-effect';

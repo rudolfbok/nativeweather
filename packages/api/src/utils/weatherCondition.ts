@@ -1,4 +1,4 @@
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '../constants/weatherConditions';
 
 export const normalizeWeatherConditionCode = (code: unknown): number => {
 	if (typeof code === 'number' || (typeof code === 'string' && code.trim() !== '')) {

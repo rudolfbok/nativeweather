@@ -1,4 +1,4 @@
-import { NotificationToast } from '@nativeweather/ui/components/common/notifications/NotificationToast';
+import { NotificationToast } from '../../components/common/notifications/NotificationToast';
 import { customToast } from './sonner';
 
 interface ShowFavoriteToastProps {

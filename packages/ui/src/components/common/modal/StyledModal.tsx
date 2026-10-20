@@ -1,4 +1,4 @@
-import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
+import { NativeInstance } from '../../../utils/nativeInstance';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, Modal, Pressable, ScrollView, View } from 'react-native';
 import { ModalHeader } from './ModalHeader';

@@ -1,6 +1,7 @@
 {
 	"$schema": "./node_modules/turbo/schema.json",
 	"ui": "tui",
+	"globalDependencies": ["tsconfig.json", ".oxlintrc.json"],
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],

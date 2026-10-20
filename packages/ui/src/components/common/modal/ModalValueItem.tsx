@@ -1,4 +1,4 @@
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledText } from '../styled/StyledText';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

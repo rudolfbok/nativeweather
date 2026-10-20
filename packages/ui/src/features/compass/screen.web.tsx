@@ -1,8 +1,8 @@
 'use client';
 
 import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
-import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledButton } from '../../components/common/styled/StyledButton';
+import { StyledText } from '../../components/common/styled/StyledText';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';

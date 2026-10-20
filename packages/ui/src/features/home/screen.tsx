@@ -1,18 +1,18 @@
 'use client';
 
-import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
+import { NativeInstance } from '../../utils/nativeInstance';
 
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
-import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
-import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
-import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
-import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWeather';
-import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
-import { useWidgets } from '@nativeweather/ui/hooks/widgets/useWidgets';
+import { PullIndicator } from '../../components/common/loading/PullIndicator';
+import { NativeWeatherLogo } from '../../components/icons/logos/NativeWeatherLogo';
+import { FavoriteCities } from '../../components/weather/home/FavoriteCities';
+import { LocalWeather } from '../../components/weather/home/LocalWeather';
+import { useLocation } from '@nativeweather/core/hooks/location/useLocation';
+import { useThemeColors } from '../../hooks/theme/useThemeColors';
+import { useFavoriteCityWeather } from '../../hooks/weather/useFavoriteCityWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
+import { useWidgets } from '../../hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
 import { cssInterop } from 'nativewind';
 import { useEffect, useRef, useState } from 'react';

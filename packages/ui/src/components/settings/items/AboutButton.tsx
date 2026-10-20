@@ -1,13 +1,13 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
+import { StyledModal } from '../../common/modal/StyledModal';
 import { Info } from 'lucide-react-native';
 import { useState } from 'react';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../../hooks/navigation/useRouter';
 
 import { SettingsItem } from './SettingsItem';
-import { AboutFeature } from '@nativeweather/ui/features/about/screen';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { AboutFeature } from '../../../features/about/screen';
+import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
 
 export const AboutButton = () => {
 	const { t } = useTranslate('settings');

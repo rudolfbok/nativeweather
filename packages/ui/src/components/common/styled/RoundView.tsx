@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import React from 'react';
 import { View } from 'react-native';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../../constants/border';
 
 interface RoundViewProps {
 	children: React.ReactNode;

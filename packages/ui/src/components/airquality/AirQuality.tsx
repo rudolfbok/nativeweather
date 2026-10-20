@@ -1,19 +1,19 @@
 import { useTranslate } from '@tolgee/react';
-import { GradientScale } from '@nativeweather/ui/components/weather/GradientScale';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { AirQualityIcon } from '@nativeweather/ui/components/icons/main/AirQualityIcon';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { GradientScale } from '../weather/GradientScale';
+import { StyledPressable } from '../common/styled/StyledPressable';
+import { StyledText } from '../common/styled/StyledText';
+import { CardHeader } from '../common/layout/CardHeader';
+import { AirQualityIcon } from '../icons/main/AirQualityIcon';
+import { useModalNavigation } from '../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../hooks/navigation/useNavigation.macos';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../hooks/navigation/useRouter';
 import { AirQualityModal } from './AirQualityModal';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../constants/border';
 
 export const AirQuality = ({ className }: { className?: string }) => {
 	const airQualityData = useWeather((state) => state.airQualityData);

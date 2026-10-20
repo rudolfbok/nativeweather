@@ -1,7 +1,7 @@
 import { useTolgee } from '@tolgee/react';
-import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
+import { WeatherIcon } from '../../icons/weather/WeatherIcon';
 import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
-import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
+import { useMapConditions } from '../../../hooks/conditions/useMapConditions';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { clsx } from 'clsx';
 import { DateTime } from 'luxon';

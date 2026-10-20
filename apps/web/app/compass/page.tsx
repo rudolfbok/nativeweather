@@ -1,4 +1,4 @@
-import { CompassFeature } from '@nativeweather/ui/features/compass/screen.web';
+import { CompassFeature } from '@nativeweather/ui/features/compass/screen';
 import { createPageMetadata } from '../metadata';
 
 export const metadata = createPageMetadata({

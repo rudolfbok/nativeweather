@@ -1,5 +1,5 @@
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Locate, Minus, Plus } from 'lucide-react-native';
 import { Platform, View } from 'react-native';

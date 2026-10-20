@@ -45,6 +45,39 @@
 		{
 			"files": ["apps/web/**/*.{js,jsx,ts,tsx}"],
 			"plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "import", "nextjs", "jsx-a11y", "jest"]
+		},
+		{
+			"files": ["packages/core/**/*.{ts,tsx}"],
+			"rules": {
+				"no-restricted-imports": ["error", {
+					"patterns": [{
+						"group": ["@nativeweather/ui", "@nativeweather/ui/*"],
+						"message": "Import lower package layers only: ui → core → api → types."
+					}]
+				}]
+			}
+		},
+		{
+			"files": ["packages/api/**/*.{ts,tsx}"],
+			"rules": {
+				"no-restricted-imports": ["error", {
+					"patterns": [{
+						"group": ["@nativeweather/ui", "@nativeweather/ui/*", "@nativeweather/core", "@nativeweather/core/*"],
+						"message": "Import lower package layers only: ui → core → api → types."
+					}]
+				}]
+			}
+		},
+		{
+			"files": ["packages/types/**/*.{ts,tsx}"],
+			"rules": {
+				"no-restricted-imports": ["error", {
+					"patterns": [{
+						"group": ["@nativeweather/ui", "@nativeweather/ui/*", "@nativeweather/core", "@nativeweather/core/*", "@nativeweather/api", "@nativeweather/api/*"],
+						"message": "Import lower package layers only: ui → core → api → types."
+					}]
+				}]
+			}
 		}
 	]
 }

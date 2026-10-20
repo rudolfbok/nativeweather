@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { InchesIcon } from '@nativeweather/ui/components/icons/settings/InchesIcon';
-import { MillimetresIcon } from '@nativeweather/ui/components/icons/settings/MillimetresIcon';
+import { RoundView } from '../../common/styled/RoundView';
+import { InchesIcon } from '../../icons/settings/InchesIcon';
+import { MillimetresIcon } from '../../icons/settings/MillimetresIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 

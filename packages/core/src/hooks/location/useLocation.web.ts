@@ -1,7 +1,7 @@
 import { fetchWeatherOrThrow } from '@nativeweather/api/fetchWeather';
 import { LocalWeatherError, toLocalWeatherError } from './locationError';
 import type { LocalWeatherErrorKind } from './locationError';
-import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
+import { useLocalWeather } from '../weather/useLocalWeather';
 import { useCallback, useRef, useState } from 'react';
 
 const positionErrorKinds: Record<number, LocalWeatherErrorKind> = {

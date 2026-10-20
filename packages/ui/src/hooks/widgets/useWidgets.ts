@@ -1,7 +1,7 @@
-import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
-import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
+import { useMapConditions } from '../conditions/useMapConditions';
+import { useLocalWeather } from '@nativeweather/core/hooks/weather/useLocalWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { getWeatherIconUri } from '@nativeweather/ui/utils/mappings/weatherIconAssets';
+import { getWeatherIconUri } from '../../utils/mappings/weatherIconAssets';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { useEffect, useState } from 'react';
@@ -109,7 +109,7 @@ export const useWidgets = () => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor || !condition) return;
 
 		updateWidgetSnapshot(
-			() => import('@nativeweather/ui/components/weather/widgets/MediumLocal'),
+			() => import('../../components/weather/widgets/MediumLocal'),
 			{
 				imagePath: imagePathURI,
 				bgColor,
@@ -131,7 +131,7 @@ export const useWidgets = () => {
 		if (!isIOS || !localWeatherData || !localAQIData || !bgColor) return;
 
 		updateWidgetSnapshot(
-			() => import('@nativeweather/ui/components/weather/widgets/MediumAQI'),
+			() => import('../../components/weather/widgets/MediumAQI'),
 			{
 				PM25: localAQIData.current.pm2_5,
 				PM25Indicator: PM25IndicatorColor(localAQIData.current.pm2_5),
@@ -153,7 +153,7 @@ export const useWidgets = () => {
 		if (!isIOS || !localWeatherData || !imagePathURI || !bgColor) return;
 
 		updateWidgetSnapshot(
-			() => import('@nativeweather/ui/components/weather/widgets/SmallLocal'),
+			() => import('../../components/weather/widgets/SmallLocal'),
 			{
 				temp: localTemp,
 				imagePath: imagePathURI,
@@ -172,7 +172,7 @@ export const useWidgets = () => {
 		const currentAQISelected = currentAQI === 'EU' ? localAQIData.current.european_aqi : localAQIData.current.us_aqi;
 
 		updateWidgetSnapshot(
-			() => import('@nativeweather/ui/components/weather/widgets/SmallAQI'),
+			() => import('../../components/weather/widgets/SmallAQI'),
 			{
 				AQI: currentAQISelected,
 				bgColor,

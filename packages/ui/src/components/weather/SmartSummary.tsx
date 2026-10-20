@@ -1,14 +1,14 @@
 'use client';
 
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { SmartSummaryIcon } from '@nativeweather/ui/components/icons/main/SmartSummaryIcon';
+import { CardHeader } from '../common/layout/CardHeader';
+import { RoundView } from '../common/styled/RoundView';
+import { StyledText } from '../common/styled/StyledText';
+import { SmartSummaryIcon } from '../icons/main/SmartSummaryIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '@nativeweather/api/constants/weatherConditions';
 
 type Variant = 1 | 2 | 3;
 type AQIType = 'eu' | 'us';

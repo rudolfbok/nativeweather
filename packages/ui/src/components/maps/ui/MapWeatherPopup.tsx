@@ -1,8 +1,8 @@
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import type { MapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
+import { CloseIcon } from '../../icons/ui/CloseIcon';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import type { MapWeatherPoint } from '@nativeweather/core/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, Pressable, View } from 'react-native';

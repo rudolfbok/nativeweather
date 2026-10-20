@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { normalizeWeatherConditionCode } from '@nativeweather/api/utils/weatherCondition';
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '@nativeweather/api/constants/weatherConditions';
 
 export const useWeatherAPIConditions = () => {
 	const { t } = useTranslate('weather');

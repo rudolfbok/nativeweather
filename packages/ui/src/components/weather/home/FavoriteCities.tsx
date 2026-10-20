@@ -1,11 +1,11 @@
 import { getCityRegion } from '@nativeweather/core/utils/extractCity';
 import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscapeColors';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';
+import { RoundView } from '../../common/styled/RoundView';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
+import { useSearchController } from '../../../hooks/search/useSearchController';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useFavoriteCityWeather } from '../../../hooks/weather/useFavoriteCityWeather';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Check, Edit, Pencil, Trash2 } from 'lucide-react-native';
@@ -14,7 +14,7 @@ import { Platform, Pressable, View } from 'react-native';
 import { EditIcon } from '../../icons/ui/EditIcon';
 import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../../constants/border';
 
 export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCityWeather> }) => {
 	const { t } = useTranslate('common');

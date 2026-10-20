@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { ClockIcon } from '@nativeweather/ui/components/icons/main/ClockIcon';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { CardHeader } from '../../common/layout/CardHeader';
+import { RoundView } from '../../common/styled/RoundView';
+import { ClockIcon } from '../../icons/main/ClockIcon';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';

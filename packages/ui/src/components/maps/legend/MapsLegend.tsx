@@ -1,4 +1,4 @@
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledText } from '../../common/styled/StyledText';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { clsx } from 'clsx';

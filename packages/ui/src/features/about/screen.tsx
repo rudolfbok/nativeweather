@@ -1,17 +1,17 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { Separator } from '@nativeweather/ui/components/common/styled/Separator';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { OpenFreeMapLogo } from '@nativeweather/ui/components/icons/logos/OpenFreeMapLogo';
-import { OpenMeteoLogo } from '@nativeweather/ui/components/icons/logos/OpenMeteoLogo';
-import { WeatherAPILogo } from '@nativeweather/ui/components/icons/logos/WeatherAPILogo';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { RoundView } from '../../components/common/styled/RoundView';
+import { Separator } from '../../components/common/styled/Separator';
+import { StyledText } from '../../components/common/styled/StyledText';
+import { OpenFreeMapLogo } from '../../components/icons/logos/OpenFreeMapLogo';
+import { OpenMeteoLogo } from '../../components/icons/logos/OpenMeteoLogo';
+import { WeatherAPILogo } from '../../components/icons/logos/WeatherAPILogo';
+import { StyledPressable } from '../../components/common/styled/StyledPressable';
+import { useThemeColors } from '../../hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronRight, FileText, ShieldCheck } from 'lucide-react-native';
 import { ReactNode, useState } from 'react';
 import { Linking, Pressable, View } from 'react-native';
-import { SettingsItem } from '@nativeweather/ui/components/settings/items/SettingsItem';
+import { SettingsItem } from '../../components/settings/items/SettingsItem';
 
 interface DataSourceItemProps {
 	name: string;

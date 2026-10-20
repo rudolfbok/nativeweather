@@ -1,20 +1,20 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { AlertIcon } from '@nativeweather/ui/components/icons/main/AlertIcon';
-import { ChevronIcon } from '@nativeweather/ui/components/icons/ui/ChevronIcon';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
-import { WeatherAlert } from '@nativeweather/types/weatherAPI';
+import { StyledModal } from '../common/modal/StyledModal';
+import { StyledPressable } from '../common/styled/StyledPressable';
+import { CardHeader } from '../common/layout/CardHeader';
+import { AlertIcon } from '../icons/main/AlertIcon';
+import { ChevronIcon } from '../icons/ui/ChevronIcon';
+import { useModalNavigation } from '../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../hooks/navigation/useNavigation.macos';
+import { useRouter } from '../../hooks/navigation/useRouter';
+import type { WeatherAlert } from '@nativeweather/types/weatherAPI';
 import { getMostSevereAlert } from '@nativeweather/core/utils/alertFilters';
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { AlertModal } from './AlertModal';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../constants/border';
 
 interface AlertWeatherProps {
 	filteredAlerts: WeatherAlert[];

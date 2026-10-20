@@ -1,9 +1,9 @@
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { ChevronIcon } from '@nativeweather/ui/components/icons/ui/ChevronIcon';
+import { StyledPressable } from '../common/styled/StyledPressable';
+import { ChevronIcon } from '../icons/ui/ChevronIcon';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, View } from 'react-native';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { DotIndicator } from '@nativeweather/ui/components/icons/ui/DotIndicator';
+import { StyledText } from '../common/styled/StyledText';
+import { DotIndicator } from '../icons/ui/DotIndicator';
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 
 interface AlertItemProps {

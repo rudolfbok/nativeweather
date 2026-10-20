@@ -1,7 +1,7 @@
 'use client';
 
-import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { StyledButton } from '../common/styled/StyledButton';
+import { useRouter } from '../../hooks/navigation/useRouter';
 
 export const RefreshButton = () => {
 	const router = useRouter();

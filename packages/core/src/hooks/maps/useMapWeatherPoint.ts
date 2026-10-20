@@ -1,9 +1,9 @@
 import { fetchWeatherAPI } from '@nativeweather/api/fetchWeatherAPI';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
-import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
+import { useStorageString } from '../../database/useStorage';
+import { selectUnit } from '../../utils/formatting/selectUnit';
+import { formatTemperature } from '../../utils/formatting/formatTemperature';
 import { useEffect, useRef, useState } from 'react';
-import type { WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
+import type { WeatherMapLayer } from '../../constants/weatherMap';
 
 type WeatherApiCurrent = {
 	temp_c?: number;

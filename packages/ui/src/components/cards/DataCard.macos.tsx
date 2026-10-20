@@ -3,7 +3,7 @@ import { GestureResponderEvent, View } from 'react-native';
 import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/layout/CardHeader';
 import { StyledPressable } from '../common/styled/StyledPressable';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../constants/border';
 
 interface DataCardProps {
 	onPress: (event: GestureResponderEvent) => void | Promise<void>;

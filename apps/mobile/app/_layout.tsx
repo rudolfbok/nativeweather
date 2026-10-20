@@ -3,7 +3,7 @@
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { TolgeeProvider } from '@nativeweather/ui/provider/TolgeeProvider';
 import { initStorageDefaults } from '@nativeweather/core/database/initStorageDefaults';
-import { initThemeFromStorage } from '@nativeweather/core/database/initTheme';
+import { initThemeFromStorage } from '@nativeweather/ui/utils/initTheme';
 import { Toaster } from '@nativeweather/ui/components/common/notifications/Toaster';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { useColorScheme } from 'nativewind';

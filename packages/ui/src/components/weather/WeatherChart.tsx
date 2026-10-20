@@ -1,16 +1,16 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
-import { NormalizedData } from '@nativeweather/types/normalizedData';
+import { RoundView } from '../common/styled/RoundView';
+import { StyledPressable } from '../common/styled/StyledPressable';
+import { StyledText } from '../common/styled/StyledText';
+import { useThemeColors } from '../../hooks/theme/useThemeColors';
+import { useSelectedDay } from '../../hooks/weather/useSelectedDay';
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Platform, Pressable, useWindowDimensions, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit/v2';
 import { G, Rect, Text } from 'react-native-svg';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../constants/border';
 
 interface WeatherChartProps {
 	forecastDays: NormalizedData['forecast']['forecastday'];

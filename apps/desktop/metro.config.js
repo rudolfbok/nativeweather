@@ -12,10 +12,6 @@ const desktopPackages = {
 	'react-native-reanimated': path.join(desktopNodeModules, 'react-native-reanimated'),
 	'react-native-worklets': path.join(desktopNodeModules, 'react-native-worklets'),
 };
-const sharedPackages = ['ui', 'core', 'api', 'types'].map((name) => ({
-	name: `@nativeweather/${name}`,
-	sourceRoot: path.join(workspaceRoot, 'packages', name, 'src'),
-}));
 
 /**
  * Metro configuration
@@ -27,21 +23,17 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
 	watchFolders: [workspaceRoot],
 	resolver: {
 		platforms: ['ios', 'android', 'native', 'macos'],
+		unstable_conditionsByPlatform: {
+			ios: ['ios'],
+			android: ['android'],
+			macos: ['macos'],
+		},
 		disableHierarchicalLookup: true,
 		nodeModulesPaths: [desktopNodeModules, path.join(workspaceRoot, 'node_modules')],
 		resolveRequest: (context, moduleName, platform) => {
 			if (platform === 'macos' && (moduleName === 'react-native' || moduleName.startsWith('react-native/'))) {
 				const macOSModuleName = `react-native-macos${moduleName.slice('react-native'.length)}`;
 				return context.resolveRequest(context, macOSModuleName, platform);
-			}
-
-			// Resolve shared source with Metro so .macos/.native variants remain eligible.
-			const sharedPackage = sharedPackages.find(
-				(pkg) => moduleName === pkg.name || moduleName.startsWith(`${pkg.name}/`)
-			);
-			if (sharedPackage) {
-				const subpath = moduleName === sharedPackage.name ? 'index' : moduleName.slice(sharedPackage.name.length + 1);
-				return context.resolveRequest(context, path.join(sharedPackage.sourceRoot, subpath), platform);
 			}
 
 			if (platform === 'macos' && moduleName === 'expo-image') {

@@ -1,4 +1,4 @@
-import { WeatherFeature } from '@nativeweather/ui/features/weather/screen.web';
+import { WeatherFeature } from '@nativeweather/ui/features/weather/screen';
 import { fetchWeatherAPIOrThrow } from '@nativeweather/api/fetchWeatherAPI';
 import { mapWeatherApi } from '@nativeweather/api/mapWeatherAPI';
 import { buildSlug } from '@nativeweather/core/utils/weatherSlug';

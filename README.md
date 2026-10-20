@@ -107,14 +107,20 @@ nativeweather/
 │   └── mobile/       # Expo mobile app
 │   └── desktop/      # macOS desktop app
 ├── packages/
-│   ├── ui/           # Shared screens, components, hooks, and assets
-│   ├── core/         # Shared storage, constants, and utilities
-│   ├── api/          # Weather API clients and response mapping
+│   ├── ui/           # Screens, components, presentation hooks, and assets
+│   ├── core/         # Storage, data hooks, weather stores, and utilities
+│   ├── api/          # API clients, normalization, and condition catalog
 │   ├── types/        # Shared data types
 ├── package.json
 ├── pnpm-workspace.yaml
 └── turbo.json
 ```
+
+Packages consume lower layers: `apps → ui → core → api → types`. Apps and packages can import any lower layer directly; dependency cycles are not allowed. `types` contains data contracts only. Core owns shared data and location behavior; UI owns navigation, selection state, translations, notifications, and rendering. Translation JSON remains in core.
+
+Use module imports such as `@nativeweather/core/hooks/weather/useWeather` across packages and relative imports within a package. Import contracts from `@nativeweather/types/*` with `import type`. Declare dependencies where they are used; app manifests own React and native runtime versions. Shared packages export TypeScript source directly, without a package build step or root barrels.
+
+Package exports define concrete source files and platform variants. Metro selects `ios`, `android`, or `macos` exports under the `react-native` condition; other consumers select web implementations where available. Add a conditional export when introducing a public platform variant. TypeScript and bundlers resolve the same exports without workspace source aliases. The shared Tailwind preset lives at `@nativeweather/ui/tailwind.config`.
 
 ## Getting Started
 

@@ -1,10 +1,10 @@
-import { WeatherIcon } from '@nativeweather/ui/components/icons/weather/WeatherIcon';
+import { WeatherIcon } from '../../icons/weather/WeatherIcon';
 import { clsx } from 'clsx';
 import { StyleSheet, View } from 'react-native';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledText } from '../../common/styled/StyledText';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useTranslate } from '@tolgee/react';
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '@nativeweather/api/constants/weatherConditions';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
 
 interface HourlyItemProps {

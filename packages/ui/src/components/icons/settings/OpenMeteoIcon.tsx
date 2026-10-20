@@ -1,4 +1,4 @@
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
 import * as React from 'react';
 import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
 

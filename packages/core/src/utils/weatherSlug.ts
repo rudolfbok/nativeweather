@@ -1,4 +1,4 @@
-import { NormalizedData } from '@nativeweather/types/normalizedData';
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { countryCode } from './countryCode';
 
 const normalizeSlug = (value: string) =>

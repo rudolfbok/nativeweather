@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { WeatherChart } from '@nativeweather/ui/components/weather/WeatherChart';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
-import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
+import { WeatherChart } from '../../weather/WeatherChart';
+import { StyledText } from '../../common/styled/StyledText';
+import { ContentRow } from '../../common/layout/ContentRow';
+import { ValuesList } from '../../common/modal/ValuesList';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

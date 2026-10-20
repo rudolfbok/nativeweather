@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledSwitch } from '@nativeweather/ui/components/common/styled/StyledSwitch';
+import { StyledSwitch } from '../../common/styled/StyledSwitch';
 import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { MapPinHouse } from 'lucide-react-native';
 import { SettingsItem } from './SettingsItem';

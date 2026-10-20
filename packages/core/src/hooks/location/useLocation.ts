@@ -10,8 +10,8 @@ import {
 } from './locationError';
 import type { LocalWeatherErrorKind } from './locationError';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
+import { useLocalWeather } from '../weather/useLocalWeather';
+import { useStorageBoolean } from '../../database/useStorage';
 
 export const useLocation = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');

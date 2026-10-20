@@ -3,7 +3,7 @@ import { StyledPressable } from '@nativeweather/ui/components/common/styled/Styl
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
 import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWeather';
-import { useLocation } from '@nativeweather/ui/hooks/location/useLocation.macos';
+import { useLocation } from '@nativeweather/core/hooks/location/useLocation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';

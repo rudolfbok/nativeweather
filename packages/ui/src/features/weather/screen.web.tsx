@@ -1,9 +1,9 @@
 'use client';
 
 import type { NormalizedData } from '@nativeweather/types/normalizedData';
-import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSkeleton.web';
-import { HeroWeather } from '@nativeweather/ui/components/weather/hero/HeroWeather';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { HeroSkeleton } from '../../components/common/loading/HeroSkeleton.web';
+import { HeroWeather } from '../../components/weather/hero/HeroWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { buildSlug } from '@nativeweather/core/utils/weatherSlug';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';

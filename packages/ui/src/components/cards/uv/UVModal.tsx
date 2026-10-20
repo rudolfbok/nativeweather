@@ -1,9 +1,9 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
-import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
-import { WeatherChart } from '@nativeweather/ui/components/weather/WeatherChart';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { StyledText } from '../../common/styled/StyledText';
+import { ContentRow } from '../../common/layout/ContentRow';
+import { ValuesList } from '../../common/modal/ValuesList';
+import { WeatherChart } from '../../weather/WeatherChart';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

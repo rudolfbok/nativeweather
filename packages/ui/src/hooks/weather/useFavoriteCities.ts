@@ -1,31 +1,19 @@
 import { useTranslate } from '@tolgee/react';
-import {
-	addFavoriteCity,
-	getFavoriteCities,
-	isCityInFavorites,
-	removeFavoriteCity,
-} from '@nativeweather/core/database/crudMMKVService';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { useFavoriteCities as useFavoriteCitiesData } from '@nativeweather/core/hooks/weather/useFavoriteCities';
 import type { City } from '@nativeweather/types/city';
-import { showFavoriteToast } from '@nativeweather/ui/utils/notifications/showFavoriteToast';
+import { showFavoriteToast } from '../../utils/notifications/showFavoriteToast';
 
 export const useFavoriteCities = () => {
 	const { t } = useTranslate('common');
-	const [favoriteCitiesValue] = useStorageString('favoriteCities');
+	const favorites = useFavoriteCitiesData();
 
 	const handleFavoriteToggle = (city: City) => {
-		if (isCityInFavorites(city)) {
-			removeFavoriteCity(city);
-			showFavoriteToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
-		} else {
-			addFavoriteCity(city);
-			showFavoriteToast({ message: t('toast.add', { name: city.name }), type: 'add' });
-		}
+		const type = favorites.handleFavoriteToggle(city);
+		showFavoriteToast({ message: t(`toast.${type}`, { name: city.name }), type });
 	};
 
 	return {
-		favoriteCitiesValue,
-		favoriteCount: favoriteCitiesValue === undefined ? 0 : getFavoriteCities().length,
+		...favorites,
 		handleFavoriteToggle,
 	};
 };

@@ -1,4 +1,4 @@
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '@nativeweather/api/constants/weatherConditions';
 
 const colors = {
 	clear: ['#49AADF', '#1A3861'],

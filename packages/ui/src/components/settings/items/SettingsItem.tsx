@@ -1,7 +1,7 @@
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { CheckIcon } from '@nativeweather/ui/components/icons/ui/CheckIcon';
-import { ChevronIcon } from '@nativeweather/ui/components/icons/ui/ChevronIcon';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
+import { CheckIcon } from '../../icons/ui/CheckIcon';
+import { ChevronIcon } from '../../icons/ui/ChevronIcon';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { GestureResponderEvent, Platform, StyleSheet, View } from 'react-native';

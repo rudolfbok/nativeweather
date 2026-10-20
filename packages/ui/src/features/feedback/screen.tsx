@@ -1,11 +1,11 @@
 'use client';
 
-import { StyledButton } from '@nativeweather/ui/components/common/styled/StyledButton';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { border } from '@nativeweather/ui/constants/border';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { showToast } from '@nativeweather/ui/utils/notifications/showToast';
+import { StyledButton } from '../../components/common/styled/StyledButton';
+import { StyledPressable } from '../../components/common/styled/StyledPressable';
+import { StyledText } from '../../components/common/styled/StyledText';
+import { border } from '../../constants/border';
+import { useThemeColors } from '../../hooks/theme/useThemeColors';
+import { showToast } from '../../utils/notifications/showToast';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Bug, Check, ChevronDown, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';

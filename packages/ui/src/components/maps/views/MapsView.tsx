@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { MapIcon } from '@nativeweather/ui/components/icons/main';
+import { CardHeader } from '../../common/layout/CardHeader';
+import { RoundView } from '../../common/styled/RoundView';
+import { MapIcon } from '../../icons/main';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { MapLibreView } from './MapLibreView';

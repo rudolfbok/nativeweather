@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
-import { ValuesList } from '@nativeweather/ui/components/common/modal/ValuesList';
+import { StyledText } from '../../common/styled/StyledText';
+import { ContentRow } from '../../common/layout/ContentRow';
+import { ValuesList } from '../../common/modal/ValuesList';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 

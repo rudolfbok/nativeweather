@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { StyledText } from '../styled/StyledText';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../../constants/border';
 
 interface ContentRowProps {
 	title: string;

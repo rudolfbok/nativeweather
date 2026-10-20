@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledText } from '../../common/styled/StyledText';
 import { clsx } from 'clsx';
 import Constants from 'expo-constants';
 import { View } from 'react-native';

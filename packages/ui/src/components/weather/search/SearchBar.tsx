@@ -1,4 +1,4 @@
-import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
+import { useSearchController } from '../../../hooks/search/useSearchController';
 import { RecentSearches } from './RecentSearches';
 import { SearchInput } from './SearchInput';
 import { SuggestionsList } from './SuggestionsList';

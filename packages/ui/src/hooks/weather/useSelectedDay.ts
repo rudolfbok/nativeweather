@@ -1,4 +1,4 @@
-import { NormalizedData } from '@nativeweather/types/normalizedData';
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { create } from 'zustand';
 
 type ForecastDay = NormalizedData['forecast']['forecastday'][0];

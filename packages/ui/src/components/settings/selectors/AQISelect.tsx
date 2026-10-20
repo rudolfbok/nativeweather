@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { EUFLag } from '@nativeweather/ui/components/icons/settings/EUFlag';
-import { USAFlag } from '@nativeweather/ui/components/icons/settings/USAFlag';
+import { RoundView } from '../../common/styled/RoundView';
+import { EUFLag } from '../../icons/settings/EUFlag';
+import { USAFlag } from '../../icons/settings/USAFlag';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 

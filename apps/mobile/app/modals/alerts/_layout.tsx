@@ -3,7 +3,7 @@ import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHead
 import { AlertIcon } from '@nativeweather/ui/components/icons/main/AlertIcon';
 import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { getAlerts, getMostSevereAlert } from '@nativeweather/core/utils/alertFilters';
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';

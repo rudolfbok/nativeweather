@@ -19,7 +19,6 @@
 		"@expo/ui": "~58.0.20",
 		"@expo/vector-icons": "^15.0.3",
 		"@maplibre/maplibre-react-native": "^11.2.1",
-		"@nativeweather/api": "workspace:*",
 		"@nativeweather/core": "workspace:*",
 		"@nativeweather/types": "workspace:*",
 		"@nativeweather/ui": "workspace:*",

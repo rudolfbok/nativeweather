@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { CelsiusIcon } from '@nativeweather/ui/components/icons/settings/CelsiusIcon';
-import { FahrenheitIcon } from '@nativeweather/ui/components/icons/settings/FahrenheitIcon';
+import { RoundView } from '../../common/styled/RoundView';
+import { CelsiusIcon } from '../../icons/settings/CelsiusIcon';
+import { FahrenheitIcon } from '../../icons/settings/FahrenheitIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { SettingsItem } from '../items/SettingsItem';
 

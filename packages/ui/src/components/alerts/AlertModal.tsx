@@ -1,9 +1,9 @@
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { Separator } from '@nativeweather/ui/components/common/styled/Separator';
-import { WeatherAlert } from '@nativeweather/types/weatherAPI';
+import { RoundView } from '../common/styled/RoundView';
+import { Separator } from '../common/styled/Separator';
+import type { WeatherAlert } from '@nativeweather/types/weatherAPI';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../hooks/navigation/useRouter';
 import { AlertDetail } from './AlertDetail';
 import { AlertItem } from './AlertItem';
 

@@ -1,4 +1,4 @@
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
 import { X } from 'lucide-react-native';
 
 interface CloseIconProps {

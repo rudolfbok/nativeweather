@@ -1,7 +1,7 @@
 import { Camera, Layer, Map, RasterSource } from '@maplibre/maplibre-react-native';
 import type { CameraRef, MapProps, MapRef } from '@maplibre/maplibre-react-native';
 import { useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledText } from '../../common/styled/StyledText';
 import {
 	getBaseMapUrl,
 	getWeatherTileUrl,
@@ -9,9 +9,9 @@ import {
 	weatherRasterPaint,
 } from '@nativeweather/core/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
-import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
-import { useMapWeatherPoint } from '@nativeweather/ui/hooks/maps/useMapWeatherPoint';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useMapLayer } from '../../../hooks/maps/useMapLayer';
+import { useMapWeatherPoint } from '@nativeweather/core/hooks/maps/useMapWeatherPoint';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, LayoutChangeEvent, Platform, View } from 'react-native';

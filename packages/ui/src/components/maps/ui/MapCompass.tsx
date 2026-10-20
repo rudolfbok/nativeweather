@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
 import { View } from 'react-native';
 const directions = [
 	'N',

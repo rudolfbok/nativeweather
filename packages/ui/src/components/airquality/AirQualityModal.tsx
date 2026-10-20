@@ -1,8 +1,8 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
-import { AirQualityIcon } from '@nativeweather/ui/components/icons/main/AirQualityIcon';
-import { OpenMeteoAQI } from '@nativeweather/types/openMeteo';
+import { StyledModal } from '../common/modal/StyledModal';
+import { ModalHeader } from '../common/modal/ModalHeader';
+import { AirQualityIcon } from '../icons/main/AirQualityIcon';
+import type { OpenMeteoAQI } from '@nativeweather/types/openMeteo';
 import {
 	EUAQIIndicatorColor as euaqiIndicatorColor,
 	NO2IndicatorColor as no2IndicatorColor,
@@ -14,7 +14,7 @@ import {
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { Platform, ScrollView, View } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../hooks/navigation/useRouter';
 import { AirQualityItem } from './AirQualityItem';
 import { EUAQIDetail } from './EUAQIDetail';
 import { NO2Detail } from './NO2Detail';

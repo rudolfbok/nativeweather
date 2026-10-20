@@ -1,9 +1,9 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { ContentRow } from '@nativeweather/ui/components/common/layout/ContentRow';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { Separator } from '@nativeweather/ui/components/common/styled/Separator';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { StyledText } from '../common/styled/StyledText';
+import { ContentRow } from '../common/layout/ContentRow';
+import { RoundView } from '../common/styled/RoundView';
+import { Separator } from '../common/styled/Separator';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { getAlertSeverityTextColor } from '@nativeweather/core/utils/mappings/alertSeverity';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

@@ -1,5 +1,5 @@
-import { ScreenWrapper } from '@nativeweather/ui/components/common/layout/ScreenWrapper.macos';
-import { WeatherFeature } from '@nativeweather/ui/features/weather/screen.macos';
+import { ScreenWrapper } from '@nativeweather/ui/components/common/layout/ScreenWrapper';
+import { WeatherFeature } from '@nativeweather/ui/features/weather/screen';
 
 export const Weather = () => {
 	return (

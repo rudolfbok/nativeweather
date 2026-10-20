@@ -1,10 +1,10 @@
 import { useTranslate } from '@tolgee/react';
-import { CardHeader } from '@nativeweather/ui/components/common/layout/CardHeader';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { MapIcon } from '@nativeweather/ui/components/icons/main';
-import { MaximizeIcon } from '@nativeweather/ui/components/icons/ui/MaximizeIcon';
+import { CardHeader } from '../../common/layout/CardHeader';
+import { RoundView } from '../../common/styled/RoundView';
+import { StyledModal } from '../../common/modal/StyledModal';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { MapIcon } from '../../icons/main';
+import { MaximizeIcon } from '../../icons/ui/MaximizeIcon';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';

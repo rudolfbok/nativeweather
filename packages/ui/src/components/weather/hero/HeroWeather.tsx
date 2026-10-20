@@ -1,10 +1,10 @@
 'use client';
 
-import { AirQuality } from '@nativeweather/ui/components/airquality/AirQuality';
-import { DailyForecast } from '@nativeweather/ui/components/weather/daily/DailyForecast';
-import { MainWeather } from '@nativeweather/ui/components/weather/main/MainWeather';
-import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { AirQuality } from '../../airquality/AirQuality';
+import { DailyForecast } from '../daily/DailyForecast';
+import { MainWeather } from '../main/MainWeather';
+import { useMapConditions } from '../../../hooks/conditions/useMapConditions';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { clsx } from 'clsx';
 import { View } from 'react-native';

@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { AirQualitySettingsIcon } from '@nativeweather/ui/components/icons/settings/AirQualitySettingsIcon';
+import { StyledModal } from '../../common/modal/StyledModal';
+import { AirQualitySettingsIcon } from '../../icons/settings/AirQualitySettingsIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useState } from 'react';
 import { Platform } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../../hooks/navigation/useRouter';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
 
 export const AQIButton = () => {
 	const { t } = useTranslate('settings');

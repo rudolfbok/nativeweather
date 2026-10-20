@@ -1,4 +1,4 @@
-import { Header } from '@nativeweather/ui/components/common/layout/Header.web';
+import { Header } from '@nativeweather/ui/components/common/layout/Header';
 import { ClientOnly } from '@nativeweather/ui/components/web/ClientOnly';
 import { clsx } from 'clsx';
 import { Metadata } from 'next';

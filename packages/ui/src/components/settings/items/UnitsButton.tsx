@@ -1,13 +1,13 @@
 import { useTranslate } from '@tolgee/react';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { Ruler } from 'lucide-react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useRouter } from '../../../hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
 import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { StyledModal } from '../../common/modal/StyledModal';
+import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
 
 export const UnitsButton = () => {
 	const { t } = useTranslate('settings');

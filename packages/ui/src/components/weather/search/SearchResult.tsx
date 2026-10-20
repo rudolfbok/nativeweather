@@ -1,5 +1,5 @@
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
 import { clsx } from 'clsx';
 import { useRef } from 'react';
 import { GestureResponderEvent, Platform, View } from 'react-native';

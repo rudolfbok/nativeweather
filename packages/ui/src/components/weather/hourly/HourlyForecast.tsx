@@ -1,5 +1,5 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { HourlyCarousel } from './HourlyCarousel';
 import { HourlyItem } from './HourlyItem';
 import { getHour24FromEpoch } from './getHour24FromEpoch';

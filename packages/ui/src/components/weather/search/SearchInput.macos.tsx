@@ -1,9 +1,9 @@
-import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
+import { NativeInstance } from '../../../utils/nativeInstance';
 import { useTranslate } from '@tolgee/react';
-import { RoundView } from '@nativeweather/ui/components/common/styled/RoundView';
-import { CloseIcon } from '@nativeweather/ui/components/icons/ui/CloseIcon';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
-import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
+import { RoundView } from '../../common/styled/RoundView';
+import { CloseIcon } from '../../icons/ui/CloseIcon';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useThemeColors } from '../../../hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Search } from 'lucide-react-native';
 import { useEffect, useRef, useState } from 'react';

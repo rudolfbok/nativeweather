@@ -1,10 +1,10 @@
 import { clsx } from 'clsx';
 import { View } from 'react-native';
-import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
-import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
-import { NormalizedData } from '@nativeweather/types/normalizedData';
+import { StyledPressable } from '../../common/styled/StyledPressable';
+import { StyledText } from '../../common/styled/StyledText';
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { useTolgee } from '@tolgee/react';
-import { border } from '@nativeweather/ui/constants/border';
+import { border } from '../../../constants/border';
 
 interface DaysToggleProps {
 	days: NormalizedData['forecast']['forecastday'];

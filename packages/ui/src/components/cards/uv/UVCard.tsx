@@ -1,14 +1,14 @@
 import { useTranslate } from '@tolgee/react';
-import { GradientScale } from '@nativeweather/ui/components/weather/GradientScale';
-import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
-import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
+import { GradientScale } from '../../weather/GradientScale';
+import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
-import { StyledModal } from '@nativeweather/ui/components/common/modal/StyledModal';
-import { UVIcon } from '@nativeweather/ui/components/icons/main/UVIcon';
+import { useRouter } from '../../../hooks/navigation/useRouter';
+import { StyledModal } from '../../common/modal/StyledModal';
+import { UVIcon } from '../../icons/main/UVIcon';
 import { DataCard } from '../DataCard';
 import { UVModal } from './UVModal';
 

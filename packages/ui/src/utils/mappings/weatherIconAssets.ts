@@ -1,5 +1,5 @@
 import { Asset } from 'expo-asset';
-import { getWeatherCondition } from '@nativeweather/core/constants/weatherConditions';
+import { getWeatherCondition } from '@nativeweather/api/constants/weatherConditions';
 
 export interface WeatherAPIMainIcon {
 	isDay: 0 | 1;

@@ -1,4 +1,4 @@
-import { Skeleton } from '@nativeweather/ui/components/common/loading/Skeleton';
+import { Skeleton } from './Skeleton';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
