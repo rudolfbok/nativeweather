@@ -1,6 +1,5 @@
 import { useTolgee, useTranslate } from '@tolgee/react';
 import { RoundView } from '../common/styled/RoundView';
-import { StyledPressable } from '../common/styled/StyledPressable';
 import { StyledText } from '../common/styled/StyledText';
 import { useThemeColors } from '../../hooks/theme/useThemeColors';
 import { useSelectedDay } from '../../hooks/weather/useSelectedDay';
