@@ -1,4 +1,4 @@
-import { NativeInstance } from '../../../utils/nativeInstance';
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { ReactNode, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { clsx } from 'clsx';

@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { CompassIcon } from '../../icons/settings/CompassIcon';
-import { useOpenDrawer } from '../../../hooks/navigation/useOpenDrawer';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useOpenDrawer } from '@nativeweather/ui/hooks/navigation/useOpenDrawer';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
 
 export const CompassButton = () => {

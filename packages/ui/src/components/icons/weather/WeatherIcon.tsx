@@ -1,4 +1,4 @@
-import { WeatherAPIMainIcon } from '../../../utils/mappings/weatherIcons';
+import { WeatherAPIMainIcon } from '@nativeweather/ui/utils/mappings/weatherIcons';
 
 interface MapWeatherIconsProps {
 	code: number | null;

@@ -1,12 +1,12 @@
 import { CloseIcon } from '../../icons/ui/CloseIcon';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronLeft } from 'lucide-react-native';
 import { GestureResponderEvent, Pressable, View } from 'react-native';
 import { CardHeader } from '../layout/CardHeader';
 import { StyledPressable } from '../styled/StyledPressable';
 import { StyledText } from '../styled/StyledText';
-import { border } from '../../../constants/border';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface ModalHeaderProps {
 	icon?: React.ReactNode;

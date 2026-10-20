@@ -4,7 +4,7 @@ import { AirQuality } from '../../airquality/AirQuality';
 import { AlertWeather } from '../../alerts/AlertWeather';
 import { DailyForecast } from '../daily/DailyForecast';
 import { MainWeather } from '../main/MainWeather';
-import { useMapConditions } from '../../../hooks/conditions/useMapConditions';
+import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { View } from 'react-native';

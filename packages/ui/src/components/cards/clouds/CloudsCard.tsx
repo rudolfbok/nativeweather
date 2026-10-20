@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { CloudsIcon } from '../../icons/main';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { clsx } from 'clsx';
 import { useState } from 'react';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { DataCard } from '../DataCard';
 import { CloudsModal } from './CloudsModal';
 

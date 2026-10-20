@@ -1,12 +1,12 @@
 import { useTranslate } from '@tolgee/react';
 import { GradientScale } from '../../weather/GradientScale';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { UVIcon } from '../../icons/main/UVIcon';
 import { DataCard } from '../DataCard';

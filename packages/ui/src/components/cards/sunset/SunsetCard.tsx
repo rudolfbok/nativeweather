@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
 import { useSunEventCountdown } from '@nativeweather/core/hooks/weather/useSunEventCountdown';
 import { useState } from 'react';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { StyledText } from '../../common/styled/StyledText';
 import { SunsetIcon } from '../../icons/main/SunsetIcon';

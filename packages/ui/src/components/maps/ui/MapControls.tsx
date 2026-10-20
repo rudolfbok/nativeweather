@@ -9,7 +9,7 @@ import { NoColorMapIcon } from '../../icons/maps/NoColorMapIcon';
 import { ThermometerIcon } from '../../icons/maps/ThermometerIcon';
 import { CloseIcon } from '../../icons/ui/CloseIcon';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { CloudOff, InfoIcon } from 'lucide-react-native';
 import { ReactNode } from 'react';

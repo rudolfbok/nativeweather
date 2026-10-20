@@ -1,8 +1,8 @@
-import { NativeInstance } from '../../../utils/nativeInstance';
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { clsx } from 'clsx';
 import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { ModalHeader } from './ModalHeader';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 
 interface StyledModalProps {
 	visible: boolean;

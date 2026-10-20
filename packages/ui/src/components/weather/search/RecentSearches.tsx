@@ -2,7 +2,7 @@ import type { City } from '@nativeweather/types/city';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { SearchResult } from './SearchResult';
-import { border } from '../../../constants/border';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface RecentSearchesProps {
 	recentSearches: City[];

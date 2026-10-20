@@ -1,7 +1,7 @@
 import { StyledPressable } from '../../common/styled/StyledPressable';
 import { StyledText } from '../../common/styled/StyledText';
 import { CloseIcon } from '../../icons/ui/CloseIcon';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import type { MapWeatherPoint } from '@nativeweather/core/hooks/maps/useMapWeatherPoint';
 import { clsx } from 'clsx';
 import { useState } from 'react';

@@ -1,9 +1,9 @@
-import type { NativeInstance } from '../../../utils/nativeInstance';
+import type { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTranslate } from '@tolgee/react';
 import { CardHeader } from '../../common/layout/CardHeader';
 import { RoundView } from '../../common/styled/RoundView';
 import { ClockIcon } from '../../icons/main/ClockIcon';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';
 import { useRef, useState } from 'react';

@@ -1,12 +1,12 @@
 'use client';
 
-import { SettingsFeature } from '../../../features/settings/screen';
-import { useOpenDrawer } from '../../../hooks/navigation/useOpenDrawer';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { SettingsFeature } from '@nativeweather/ui/features/settings/screen';
+import { useOpenDrawer } from '@nativeweather/ui/hooks/navigation/useOpenDrawer';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import { clsx } from 'clsx';
 import { Squash as Hamburger } from 'hamburger-react';
 import { Pressable, ScrollView, View } from 'react-native';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { NativeWeatherLogo } from '../../icons/logos/NativeWeatherLogo';
 import { SearchBar } from '../../weather/search/SearchBar';
 import { AnimatedView } from '../animated/AnimatedView.web';

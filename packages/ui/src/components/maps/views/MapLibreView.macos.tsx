@@ -7,7 +7,7 @@ import {
 	type MapLoadStatus,
 	type WeatherMapLayer,
 } from '@nativeweather/core/constants/weatherMap';
-import { useMapLayer } from '../../../hooks/maps/useMapLayer';
+import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from '@nativeweather/core/hooks/maps/useMapWeatherPoint';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { useCallback, useEffect, useRef, useState } from 'react';

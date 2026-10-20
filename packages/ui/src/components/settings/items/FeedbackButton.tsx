@@ -1,11 +1,11 @@
 import { useTranslate } from '@tolgee/react';
 import { MessageCircle } from 'lucide-react-native';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { StyledModal } from '../../common/modal/StyledModal';
-import { FeedbackFeature } from '../../../features/feedback/screen';
+import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
 import { useState } from 'react';
 
 export const FeedbackButton = () => {

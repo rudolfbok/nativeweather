@@ -9,7 +9,7 @@ import {
 	WEATHER_SOURCE_ID,
 } from '@nativeweather/core/constants/weatherMap';
 import type { BaseMapStyle, WeatherMapLayer } from '@nativeweather/core/constants/weatherMap';
-import { useMapLayer } from '../../../hooks/maps/useMapLayer';
+import { useMapLayer } from '@nativeweather/ui/hooks/maps/useMapLayer';
 import { useMapWeatherPoint } from '@nativeweather/core/hooks/maps/useMapWeatherPoint';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import type { Map as MapLibreMap, MapMouseEvent } from 'maplibre-gl';

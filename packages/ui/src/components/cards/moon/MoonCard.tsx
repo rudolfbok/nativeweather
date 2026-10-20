@@ -1,12 +1,12 @@
 import { useTranslate } from '@tolgee/react';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
 import { clsx } from 'clsx';
 import { JSX, useState } from 'react';
 import { View } from 'react-native';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { StyledText } from '../../common/styled/StyledText';
 import { FirstQuarter } from '../../icons/moonphases/FirstQuarter';

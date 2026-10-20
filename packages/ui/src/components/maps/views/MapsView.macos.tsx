@@ -4,7 +4,7 @@ import { CardHeader } from '../../common/layout/CardHeader';
 import { RoundView } from '../../common/styled/RoundView';
 import { MapIcon } from '../../icons/main';
 import { MaximizeIcon } from '../../icons/ui/MaximizeIcon';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 import { MapLibreView } from './MapLibreView';

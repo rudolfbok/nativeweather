@@ -1,4 +1,4 @@
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
 
 export const OpenMeteoLogo = () => {

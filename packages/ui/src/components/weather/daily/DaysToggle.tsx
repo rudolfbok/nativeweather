@@ -4,7 +4,7 @@ import { StyledPressable } from '../../common/styled/StyledPressable';
 import { StyledText } from '../../common/styled/StyledText';
 import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { useTolgee } from '@tolgee/react';
-import { border } from '../../../constants/border';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface DaysToggleProps {
 	days: NormalizedData['forecast']['forecastday'];

@@ -6,15 +6,15 @@ import { ArrowUpIcon } from '../../icons/ui/ArrowUpIcon';
 import { WeatherIcon } from '../../icons/weather/WeatherIcon';
 import { isCityInFavorites } from '@nativeweather/core/database/crudMMKVService';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { useFavoriteCities } from '../../../hooks/weather/useFavoriteCities';
+import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { extractCity } from '@nativeweather/core/utils/extractCity';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
-import { WeatherLandscape } from '../../../utils/mappings/landscapes';
+import { WeatherLandscape } from '@nativeweather/ui/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
-import { border } from '../../../constants/border';
+import { border } from '@nativeweather/ui/constants/border';
 
 interface MainWeatherProps {
 	name?: string;

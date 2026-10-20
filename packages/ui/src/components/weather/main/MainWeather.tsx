@@ -3,15 +3,15 @@ import { StyledText } from '../../common/styled/StyledText';
 import { ArrowDownIcon } from '../../icons/ui/ArrowDownIcon';
 import { ArrowUpIcon } from '../../icons/ui/ArrowUpIcon';
 import { WeatherIcon } from '../../icons/weather/WeatherIcon';
-import { textOutline } from '../../../constants/textOutline';
+import { textOutline } from '@nativeweather/ui/constants/textOutline';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTemperature';
-import { WeatherLandscape } from '../../../utils/mappings/landscapes';
+import { WeatherLandscape } from '@nativeweather/ui/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { BlurView } from 'expo-blur';
 import { cssInterop } from 'nativewind';
 import { View } from 'react-native';
-import { border } from '../../../constants/border';
+import { border } from '@nativeweather/ui/constants/border';
 
 const StyledBlurView = cssInterop(BlurView, { className: 'style' });
 

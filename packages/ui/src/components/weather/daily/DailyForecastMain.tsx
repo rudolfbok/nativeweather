@@ -1,7 +1,7 @@
-import { NativeInstance } from '../../../utils/nativeInstance';
+import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTolgee } from '@tolgee/react';
 import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from '../../cards';
-import { useMapConditions } from '../../../hooks/conditions/useMapConditions';
+import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
 import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';

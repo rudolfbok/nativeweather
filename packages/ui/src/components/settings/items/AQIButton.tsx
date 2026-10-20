@@ -4,11 +4,11 @@ import { AirQualitySettingsIcon } from '../../icons/settings/AirQualitySettingsI
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useState } from 'react';
 import { Platform } from 'react-native';
-import { useRouter } from '../../../hooks/navigation/useRouter';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
-import { useModalNavigation } from '../../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../../hooks/navigation/useNavigation.macos';
+import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 
 export const AQIButton = () => {
 	const { t } = useTranslate('settings');

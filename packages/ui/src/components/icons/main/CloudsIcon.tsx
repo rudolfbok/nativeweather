@@ -1,5 +1,5 @@
 import { Cloud } from 'lucide-react-native';
-import { useThemeColors } from '../../../hooks/theme/useThemeColors';
+import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
 
 export const CloudsIcon = () => {
 	const { text } = useThemeColors();
