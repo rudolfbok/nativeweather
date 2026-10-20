@@ -5,7 +5,7 @@ import { StyledPressable } from '@nativeweather/ui/components/common/styled/Styl
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { useSearchController } from '@nativeweather/ui/hooks/search/useSearchController';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { Check, Edit, Pencil, Trash2 } from 'lucide-react-native';
@@ -16,7 +16,7 @@ import { Card } from '../card/Card';
 import { CardSkeleton } from '../card/CardSkeleton';
 import { border } from '@nativeweather/ui/constants/border';
 
-export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCities> }) => {
+export const FavoriteCities = ({ hook }: { hook: ReturnType<typeof useFavoriteCityWeather> }) => {
 	const { t } = useTranslate('common');
 	const { text } = useThemeColors();
 	const [showDeleteCity, setShowDeleteCity] = useState(false);

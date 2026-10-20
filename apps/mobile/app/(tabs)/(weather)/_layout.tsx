@@ -8,23 +8,18 @@ import { weatherLandscapeBg } from '@nativeweather/core/utils/mappings/landscape
 import { GlassView } from 'expo-glass-effect';
 import { Stack } from 'expo-router';
 import { Share, Star } from 'lucide-react-native';
-import { useEffect } from 'react';
 import { Pressable } from 'react-native';
 
 export default function TabLayout() {
 	const { t } = useTranslate('common');
 	const { weatherData } = useWeather();
-	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
+	const { handleFavoriteToggle, favoriteCitiesValue } = useFavoriteCities();
 	const { background, text } = useThemeColors();
 	const headerBackgroundColor = weatherData
 		? weatherLandscapeBg({ isDay: weatherData.current.isDay, code: weatherData.current.condition.code })
 		: background;
-	useEffect(() => {
-		if (!weatherData) return;
-
-		const city = extractCity(weatherData);
-		setIsFavorite(isCityInFavorites(city));
-	}, [setIsFavorite, weatherData]);
+	const isFavorite =
+		favoriteCitiesValue !== undefined && weatherData !== null && isCityInFavorites(extractCity(weatherData));
 
 	return (
 		<Stack unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}>

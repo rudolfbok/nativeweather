@@ -50,6 +50,7 @@ import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { WeatherAlert } from '@nativeweather/types/weatherAPI';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { getAlertSeverityDotColor } from '@nativeweather/core/utils/mappings/alertSeverity';
+import { clsx } from 'clsx';
 import { ReactNode, useState } from 'react';
 import { GestureResponderEvent, ScrollView, View } from 'react-native';
 
@@ -71,7 +72,12 @@ const ModalContent = ({
 }) => (
 	<View className="w-full flex-1 pt-4">
 		<ModalHeader {...headerProps} daysToggle={daysToggle} showBack={goBackHeader} onBackPress={goBackOnPress} />
-		<ScrollView className="flex-1" contentContainerClassName="px-4 pb-4" showsVerticalScrollIndicator={true}>
+		<ScrollView
+			className={clsx('flex-1')}
+			contentContainerClassName={clsx('px-4 pb-4')}
+			alwaysBounceVertical={false}
+			showsVerticalScrollIndicator={true}
+		>
 			{children}
 		</ScrollView>
 	</View>

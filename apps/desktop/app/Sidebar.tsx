@@ -1,4 +1,4 @@
-import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { StyledPressable } from '@nativeweather/ui/components/common/styled/StyledPressable';
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
@@ -6,7 +6,7 @@ import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWea
 import { useLocation } from '@nativeweather/ui/hooks/location/useLocation.macos';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';
 import { clsx } from 'clsx';
 import { SearchIcon, Settings } from 'lucide-react-native';
 import { useEffect } from 'react';
@@ -14,17 +14,16 @@ import { ScrollView, View } from 'react-native';
 
 export const Sidebar = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
-	const [currentSource] = useStorageString('currentSource');
-	const favoriteHook = useFavoriteCities({ refresh: true });
+	const favoriteHook = useFavoriteCityWeather({ refresh: true });
 	const { navigationScreen, setNavigationScreen } = useNavigationScreen();
 	const { text } = useThemeColors();
 	const { getLocalWeather, error: localWeatherError, locationReady } = useLocation();
 
 	useEffect(() => {
-		if (showLocalWeather && currentSource) {
+		if (showLocalWeather) {
 			getLocalWeather();
 		}
-	}, [showLocalWeather, currentSource, getLocalWeather]);
+	}, [showLocalWeather, getLocalWeather]);
 
 	return (
 		<View

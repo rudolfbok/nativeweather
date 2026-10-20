@@ -2,7 +2,6 @@ import { fetchWeatherOrThrow } from '@nativeweather/api/fetchWeather';
 import { LocalWeatherError, toLocalWeatherError } from './locationError';
 import type { LocalWeatherErrorKind } from './locationError';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useCallback, useRef, useState } from 'react';
 
 const positionErrorKinds: Record<number, LocalWeatherErrorKind> = {
@@ -32,7 +31,6 @@ const getCoordinates = (): Promise<GeolocationPosition> => {
 };
 
 export const useLocation = () => {
-	const [currentSource] = useStorageString('currentSource');
 	const { setLocalWeatherData } = useLocalWeather();
 	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
 	const isFetchingRef = useRef(false);
@@ -46,11 +44,10 @@ export const useLocation = () => {
 		setError(null);
 
 		try {
-			if (!currentSource) throw new LocalWeatherError('source', 'No weather source is configured.');
 			const position = await getCoordinates();
 
 			const { coords } = position;
-			const result = await fetchWeatherOrThrow([coords.latitude, coords.longitude], currentSource);
+			const result = await fetchWeatherOrThrow([coords.latitude, coords.longitude]);
 
 			await setLocalWeatherData(result);
 			return result;
@@ -62,7 +59,7 @@ export const useLocation = () => {
 		} finally {
 			isFetchingRef.current = false;
 		}
-	}, [currentSource, setLocalWeatherData]);
+	}, [setLocalWeatherData]);
 
 	return { getLocalWeather, error };
 };

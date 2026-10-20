@@ -13,7 +13,6 @@ import { formatTemperature } from '@nativeweather/core/utils/formatting/formatTe
 import { WeatherLandscape } from '@nativeweather/ui/utils/mappings/landscapes';
 import { clsx } from 'clsx';
 import { Star } from 'lucide-react-native';
-import { useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 interface MainWeatherProps {
@@ -67,14 +66,9 @@ export const MainWeather = ({
 	const weatherData = useWeather((state) => state.weatherData);
 	const { t } = useTranslate('weather');
 	const [currentTemperature] = useStorageString('currentTemp');
-	const { handleFavoriteToggle, isFavorite, setIsFavorite } = useFavoriteCities();
-
-	useEffect(() => {
-		if (!weatherData) return;
-
-		const city = extractCity(weatherData);
-		setIsFavorite(isCityInFavorites(city));
-	}, [setIsFavorite, weatherData]);
+	const { handleFavoriteToggle, favoriteCitiesValue } = useFavoriteCities();
+	const isFavorite =
+		favoriteCitiesValue !== undefined && weatherData !== null && isCityInFavorites(extractCity(weatherData));
 
 	return (
 		<View className="relative items-center justify-center overflow-hidden rounded-3xl p-4">

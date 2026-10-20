@@ -3,13 +3,11 @@ import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSk
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { clsx } from 'clsx';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 
 export const WeatherFeature = () => {
-	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const localWeatherData = useLocalWeather((state) => state.localWeatherData);
 
@@ -18,10 +16,10 @@ export const WeatherFeature = () => {
 	}, [localWeatherData, setWeatherData, weatherData]);
 
 	useEffect(() => {
-		if (weatherData || !currentSource) return;
+		if (weatherData) return;
 
 		const loadInitialWeather = async () => {
-			const initialWeather = await fetchWeather('New York', currentSource);
+			const initialWeather = await fetchWeather('New York');
 
 			if (initialWeather && !useWeather.getState().weatherData) {
 				await setWeatherData(initialWeather);
@@ -29,7 +27,7 @@ export const WeatherFeature = () => {
 		};
 
 		void loadInitialWeather();
-	}, [currentSource, setWeatherData, weatherData]);
+	}, [setWeatherData, weatherData]);
 
 	if (!weatherData) {
 		return <HeroSkeleton />;

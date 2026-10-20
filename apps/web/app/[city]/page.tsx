@@ -51,6 +51,6 @@ export async function generateMetadata(props: WeatherPageProps) {
 }
 
 export default async function WeatherPage(props: WeatherPageProps) {
-	await getCity(props);
-	return <WeatherFeature />;
+	const weather = mapWeatherApi(await getCity(props));
+	return <WeatherFeature initialWeather={weather} />;
 }

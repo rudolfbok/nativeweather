@@ -1,6 +1,5 @@
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { textOutline } from '@nativeweather/ui/constants/textOutline';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
 import { StyledText } from '@nativeweather/ui/components/common/styled/StyledText';
 import { HeroSkeleton } from '@nativeweather/ui/components/common/loading/HeroSkeleton';
@@ -26,7 +25,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const WeatherFeature = () => {
 	const { t } = useTranslate('common');
-	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const { getLocalWeather } = useLocation();
 	const { text } = useThemeColors();
@@ -43,11 +41,11 @@ export const WeatherFeature = () => {
 	const navigation = useNavigation();
 
 	useEffect(() => {
-		if (Platform.OS === 'ios' || weatherData || !currentSource) return;
+		if (Platform.OS === 'ios' || weatherData) return;
 
 		const loadInitialWeather = async () => {
 			const localWeather = await getLocalWeather();
-			const initialWeather = localWeather ?? (await fetchWeather('New York', currentSource));
+			const initialWeather = localWeather ?? (await fetchWeather('New York'));
 
 			if (initialWeather && !useWeather.getState().weatherData) {
 				await setWeatherData(initialWeather);
@@ -55,7 +53,7 @@ export const WeatherFeature = () => {
 		};
 
 		loadInitialWeather();
-	}, [currentSource, getLocalWeather, setWeatherData, weatherData]);
+	}, [getLocalWeather, setWeatherData, weatherData]);
 
 	useEffect(() => {
 		refreshProgress.value = withTiming(refreshing && focused ? 1 : 0, { duration: 180 });
@@ -109,8 +107,7 @@ export const WeatherFeature = () => {
 
 		try {
 			const refreshedData = await fetchWeather(
-				`${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`,
-				currentSource
+				`${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`
 			);
 
 			if (!refreshedData) throw new Error('No fresh weather data');

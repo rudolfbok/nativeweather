@@ -12,7 +12,6 @@ type MediumLocalWidgetProps = {
 	condition: string;
 	isDay: 0 | 1;
 	code: number | null;
-	currentSource: string;
 	bgColor: string;
 	imagePath: string;
 };

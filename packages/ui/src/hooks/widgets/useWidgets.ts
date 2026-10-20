@@ -31,7 +31,6 @@ const updateWidgetSnapshot = async (
 export const useWidgets = () => {
 	const { localWeatherData, localAQIData } = useLocalWeather();
 	const [currentTemp] = useStorageString('currentTemp');
-	const [currentSource] = useStorageString('currentSource');
 	const [currentAQI] = useStorageString('currentAQI');
 	const [imagePath, setImagePath] = useState<{ key: string; uri: string | null } | null>(null);
 	const mapConditions = useMapConditions();
@@ -93,7 +92,7 @@ export const useWidgets = () => {
 			code: localWeatherData.current.condition.code,
 		})
 			.then((uri) => {
-			if (!cancelled) setImagePath({ key: iconKey, uri });
+				if (!cancelled) setImagePath({ key: iconKey, uri });
 			})
 			.catch((error) => {
 				if (cancelled) return;
@@ -123,21 +122,10 @@ export const useWidgets = () => {
 				condition,
 				isDay: localWeatherData.current.isDay,
 				code: localWeatherData.current.condition.code,
-				currentSource,
 			},
 			'MediumLocal'
 		);
-	}, [
-		localWeatherData,
-		imagePathURI,
-		localTemp,
-		localTempMin,
-		localTempMax,
-		feelsLikeTemperature,
-		currentSource,
-		bgColor,
-		condition,
-	]);
+	}, [localWeatherData, imagePathURI, localTemp, localTempMin, localTempMax, feelsLikeTemperature, bgColor, condition]);
 
 	useEffect(() => {
 		if (!isIOS || !localWeatherData || !localAQIData || !bgColor) return;

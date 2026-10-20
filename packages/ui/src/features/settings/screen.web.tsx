@@ -28,9 +28,6 @@ export const SettingsFeature = () => {
 					<ThemeButton />
 					<LanguageButton />
 				</RoundView>
-				{/* <RoundView>
-					<SourceButton />
-				</RoundView> */}
 				<RoundView>
 					<TemperatureButton />
 					<UnitsButton />

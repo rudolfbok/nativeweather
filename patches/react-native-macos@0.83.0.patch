@@ -1,7 +1,16 @@
 diff --git a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
 --- a/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
 +++ b/React/Fabric/Mounting/ComponentViews/ScrollView/RCTEnhancedScrollView.mm
-@@ -61,6 +61,27 @@
+@@ -49,5 +49,8 @@
+     self.automaticallyAdjustsContentInsets = NO;
+     self.hasHorizontalScroller = YES;
+     self.hasVerticalScroller = YES;
++    // Match the Fabric prop default so an explicit false works on first mount.
++    self.verticalScrollElasticity = NSScrollElasticityNone;
++    self.horizontalScrollElasticity = NSScrollElasticityNone;
+     self.autohidesScrollers = YES;
+ #endif // macOS]
+@@ -61,6 +64,27 @@
  
    return self;
  }
@@ -40,4 +49,26 @@ diff --git a/Libraries/Animated/shouldUseTurboAnimatedModule.js b/Libraries/Anim
 +    return (Platform.OS === 'ios' || Platform.OS === 'macos') && global.RN$Bridgeless === true;
    }
  }
+ 
+diff --git a/Libraries/Components/ScrollView/ScrollView.js b/Libraries/Components/ScrollView/ScrollView.js
+--- a/Libraries/Components/ScrollView/ScrollView.js
++++ b/Libraries/Components/ScrollView/ScrollView.js
+@@ -1772,12 +1772,16 @@ class ScrollView extends React.Component<ScrollViewProps, ScrollViewState> {
+     const alwaysBounceHorizontal =
+       this.props.alwaysBounceHorizontal !== undefined
+         ? this.props.alwaysBounceHorizontal
+-        : this.props.horizontal;
++        : Platform.OS === 'macos'
++          ? false
++          : this.props.horizontal;
+ 
+     const alwaysBounceVertical =
+       this.props.alwaysBounceVertical !== undefined
+         ? this.props.alwaysBounceVertical
+-        : !this.props.horizontal;
++        : Platform.OS === 'macos'
++          ? false
++          : !this.props.horizontal;
+ 
+     const baseStyle = horizontal ? styles.baseHorizontal : styles.baseVertical;
  

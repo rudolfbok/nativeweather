@@ -3,14 +3,14 @@
 import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
-import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { PullIndicator } from '@nativeweather/ui/components/common/loading/PullIndicator';
 import { NativeWeatherLogo } from '@nativeweather/ui/components/icons/logos/NativeWeatherLogo';
 import { FavoriteCities } from '@nativeweather/ui/components/weather/home/FavoriteCities';
 import { LocalWeather } from '@nativeweather/ui/components/weather/home/LocalWeather';
 import { useLocation } from '@nativeweather/ui/hooks/location/useLocation';
 import { useThemeColors } from '@nativeweather/ui/hooks/theme/useThemeColors';
-import { useFavoriteCities } from '@nativeweather/ui/hooks/weather/useFavoriteCities';
+import { useFavoriteCityWeather } from '@nativeweather/ui/hooks/weather/useFavoriteCityWeather';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { useWidgets } from '@nativeweather/ui/hooks/widgets/useWidgets';
 import { clsx } from 'clsx';
@@ -31,7 +31,6 @@ const StyledAnimatedScrollView = cssInterop(Animated.ScrollView, {
 
 export const HomeFeature = () => {
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
-	const [currentSource] = useStorageString('currentSource');
 	const { weatherData, setWeatherData } = useWeather();
 	const insets = useSafeAreaInsets();
 	const [refreshing, setRefreshing] = useState(false);
@@ -43,7 +42,7 @@ export const HomeFeature = () => {
 	const active = useRef(true);
 	const headerHeight = insets.top;
 	const blurTarget = useRef<NativeInstance<typeof View>>(null);
-	const favoriteCitiesHook = useFavoriteCities({ refresh: true });
+	const favoriteCitiesHook = useFavoriteCityWeather({ refresh: true });
 	const { getLocalWeather, error: localWeatherError } = useLocation();
 	const { text } = useThemeColors();
 
@@ -107,17 +106,17 @@ export const HomeFeature = () => {
 	useWidgets();
 
 	useEffect(() => {
-		if (showLocalWeather && currentSource) {
+		if (showLocalWeather) {
 			void getLocalWeather();
 		}
-	}, [showLocalWeather, currentSource, getLocalWeather]);
+	}, [showLocalWeather, getLocalWeather]);
 
 	useEffect(() => {
-		if (Platform.OS !== 'ios' || weatherData || !currentSource) return;
+		if (Platform.OS !== 'ios' || weatherData) return;
 
 		let cancelled = false;
 		const loadInitialWeather = async () => {
-			const initialWeather = await fetchWeather('New York', currentSource);
+			const initialWeather = await fetchWeather('New York');
 
 			if (!cancelled && initialWeather && !useWeather.getState().weatherData) {
 				await setWeatherData(initialWeather);
@@ -128,20 +127,7 @@ export const HomeFeature = () => {
 		return () => {
 			cancelled = true;
 		};
-	}, [currentSource, setWeatherData, weatherData]);
-
-	// useEffect(() => {
-	// 	if (!showLocalWeather || weatherData) return;
-
-	// 	(async () => {
-	// 		const data = await fetchWeather(
-	// 			`${localWeatherData.location.name}${localWeatherData.location.region}${localWeatherData.location.country}`,
-	// 			currentSource
-	// 		);
-
-	// 		setWeatherData(data);
-	// 	})();
-	// }, [showLocalWeather, weatherData, localWeatherData, currentSource]);
+	}, [setWeatherData, weatherData]);
 
 	return (
 		<View ref={blurTarget} className="flex-1" style={{ paddingTop: headerHeight }}>

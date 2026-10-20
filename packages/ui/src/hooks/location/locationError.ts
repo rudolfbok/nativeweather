@@ -1,5 +1,4 @@
-export type LocalWeatherErrorKind =
-	'source' | 'permission' | 'unavailable' | 'timeout' | 'network' | 'server' | 'unknown';
+export type LocalWeatherErrorKind = 'permission' | 'unavailable' | 'timeout' | 'network' | 'server' | 'unknown';
 
 export class LocalWeatherError extends Error {
 	constructor(
@@ -12,14 +11,13 @@ export class LocalWeatherError extends Error {
 	}
 }
 
-const failedLocationSources = new Map<string, LocalWeatherErrorKind>();
+let failedLocationRequest: LocalWeatherErrorKind | undefined;
 
-export const getLocationRequestFailure = (source: string) => failedLocationSources.get(source);
+export const getLocationRequestFailure = () => failedLocationRequest;
 
-export const markLocationRequestFailed = (source: string, kind: LocalWeatherErrorKind) =>
-	failedLocationSources.set(source, kind);
+export const markLocationRequestFailed = (kind: LocalWeatherErrorKind) => (failedLocationRequest = kind);
 
-export const clearLocationRequestFailures = () => failedLocationSources.clear();
+export const clearLocationRequestFailures = () => (failedLocationRequest = undefined);
 
 export const isExpectedLocationError = (error: LocalWeatherError) =>
 	error.kind === 'permission' || error.kind === 'unavailable' || error.kind === 'timeout';

@@ -11,10 +11,9 @@ import {
 import type { LocalWeatherErrorKind } from './locationError';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocalWeather } from '@nativeweather/ui/hooks/weather/useLocalWeather';
-import { useStorageBoolean, useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 
 export const useLocation = () => {
-	const [currentSource] = useStorageString('currentSource');
 	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [error, setError] = useState<LocalWeatherErrorKind | null>(null);
 	const { setLocalWeatherData } = useLocalWeather();
@@ -33,10 +32,7 @@ export const useLocation = () => {
 		setError(null);
 
 		try {
-			if (!currentSource) {
-				throw new LocalWeatherError('source', 'No weather source is configured.');
-			}
-			const previousFailure = getLocationRequestFailure(currentSource);
+			const previousFailure = getLocationRequestFailure();
 			if (previousFailure) {
 				setError(previousFailure);
 				return null;
@@ -54,22 +50,20 @@ export const useLocation = () => {
 				),
 			]);
 
-			const result = await fetchWeatherOrThrow(`${coords.latitude},${coords.longitude}`, currentSource);
+			const result = await fetchWeatherOrThrow(`${coords.latitude},${coords.longitude}`);
 
 			await setLocalWeatherData(result);
 			return result;
 		} catch (caughtError) {
 			const nextError = toLocalWeatherError(caughtError);
-			if (isExpectedLocationError(nextError) && currentSource) {
-				markLocationRequestFailed(currentSource, nextError.kind);
-			}
+			if (isExpectedLocationError(nextError)) markLocationRequestFailed(nextError.kind);
 			setError(nextError.kind);
 			if (!isExpectedLocationError(nextError)) console.error('Local weather fetch failed:', caughtError);
 			return null;
 		} finally {
 			isFetchingRef.current = false;
 		}
-	}, [currentSource, setLocalWeatherData]);
+	}, [setLocalWeatherData]);
 
 	return { getLocalWeather, error };
 };

@@ -59,12 +59,6 @@ export default function SettingsLayout() {
 				}}
 			/>
 			<Stack.Screen
-				name="source"
-				options={{
-					headerTitle: t('source.title'),
-				}}
-			/>
-			<Stack.Screen
 				name="about"
 				options={{
 					headerTitle: t('about.title'),

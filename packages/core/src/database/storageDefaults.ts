@@ -1,5 +1,4 @@
 export const stringStorageDefaults = {
-	currentSource: 'weatherapi',
 	currentLang: 'en-US',
 	currentTheme: 'system',
 	currentUnits: 'metric',

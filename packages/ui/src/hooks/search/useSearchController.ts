@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { fetchLocation } from '@nativeweather/api/fetchWeatherAPI';
-import { useStorageObject, useStorageString } from '@nativeweather/core/database/useStorage';
+import { useStorageObject } from '@nativeweather/core/database/useStorage';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
@@ -14,7 +14,6 @@ import { Platform } from 'react-native';
 export const useSearchController = () => {
 	const { t } = useTranslate('common');
 	const { setWeatherData } = useWeather();
-	const [currentSource] = useStorageString('currentSource');
 	const [recentSearches = [], setRecentSearches] = useStorageObject<City[]>('savedRecents');
 	const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
@@ -41,7 +40,7 @@ export const useSearchController = () => {
 		const controller = new AbortController();
 		weatherAbortRef.current = controller;
 		setWeatherLoading(true);
-		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, currentSource, {
+		const weatherData = await fetchWeather(`${city.name}, ${city.region}, ${city.country}`, {
 			signal: controller.signal,
 		});
 		if (controller.signal.aborted) return false;
@@ -69,7 +68,7 @@ export const useSearchController = () => {
 		const controller = new AbortController();
 		weatherAbortRef.current = controller;
 		setWeatherLoading(true);
-		const weatherData = await fetchWeather(query, currentSource, { signal: controller.signal });
+		const weatherData = await fetchWeather(query, { signal: controller.signal });
 		if (controller.signal.aborted) return false;
 		if (weatherData) {
 			setWeatherData(weatherData);

@@ -1,18 +1,5 @@
 'use client';
 
-import {
-	HumidityCard,
-	MoonCard,
-	PressureCard,
-	RainCard,
-	SnowCard,
-	SunriseCard,
-	SunsetCard,
-	UVCard,
-	RangeCard,
-	WindCard,
-	CloudsCard,
-} from '@nativeweather/ui/components/cards';
 import { AirQuality } from '@nativeweather/ui/components/airquality/AirQuality';
 import { AlertWeather } from '../../alerts/AlertWeather';
 import { DailyForecast } from '@nativeweather/ui/components/weather/daily/DailyForecast';
@@ -21,96 +8,20 @@ import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapCondi
 import { useWeather } from '@nativeweather/ui/hooks/weather/useWeather';
 import { getAlerts } from '@nativeweather/core/utils/alertFilters';
 import { View } from 'react-native';
+import { WeatherDataCards } from './WeatherDataCards';
 import { HourlyForecast } from '../hourly/HourlyForecast';
 import { SmartSummary } from '../SmartSummary';
 import { MapsView } from '../../maps/views/MapsView';
-import { getHour24FromEpoch } from '../hourly/getHour24FromEpoch';
-import { useState } from 'react';
 
 export const HeroWeather = () => {
 	const { weatherData } = useWeather();
 	const mapConditions = useMapConditions();
-	const [now] = useState(() => new Date());
 
 	if (!weatherData) return null;
 
-	const tzId = weatherData.location.tzId || 'UTC';
-
-	const currentHour24 = parseInt(
-		new Intl.DateTimeFormat('en-US', {
-			hour: '2-digit',
-			hour12: false,
-			timeZone: tzId,
-		}).format(now),
-		10
-	);
-
-	const currentHour = weatherData.forecast.forecastday[0].hour.find(
-		(hour) => getHour24FromEpoch(hour.timeEpoch, tzId) === currentHour24
-	);
-	const currentRainChance = currentHour?.chanceOfRain ?? 0;
-	const currentSnowChance = currentHour?.chanceOfSnow ?? 0;
-	const currentSnowPrecipCm = currentHour?.snowCm ?? 0;
-	const currentSnowPrecipIn = (currentSnowPrecipCm * 0.393701).toFixed(2);
 	const filteredAlerts = getAlerts(weatherData.alerts.alert, weatherData.location);
 	const alertsLength = filteredAlerts.length ?? 0;
 	const conditionLabel = mapConditions(weatherData.current.condition.code, weatherData.current.isDay);
-
-	const renderDataCardGrid = () => {
-		return (
-			<>
-				{currentSnowChance > currentRainChance ? (
-					<SnowCard
-						snowChance={currentSnowChance}
-						snowPrecipCm={currentSnowPrecipCm}
-						snowPrecipIn={Number(currentSnowPrecipIn)}
-					/>
-				) : (
-					<RainCard
-						rainChance={currentRainChance}
-						rainPrecipMm={weatherData.current.precipMm}
-						rainPrecipIn={weatherData.current.precipIn}
-					/>
-				)}
-				<WindCard
-					windKm={Math.round(weatherData.current.windKph)}
-					windMil={Math.round(weatherData.current.windMph)}
-					gustKm={Math.round(weatherData.current.gustKph)}
-					gustMil={Math.round(weatherData.current.gustMph)}
-					degree={weatherData.current.windDegree}
-					details={true}
-					currentWind={true}
-				/>
-				<UVCard data={weatherData.current.uv} />
-				<RangeCard visKm={weatherData.current.rangeKm} visMiles={weatherData.current.rangeMiles} />
-				<HumidityCard
-					data={weatherData.current.humidity}
-					dewPoint={true}
-					dewPointC={weatherData.current.dewPointC}
-					dewPointF={weatherData.current.dewPointF}
-				/>
-				<PressureCard pressureMb={weatherData.current.pressureMb} pressureIn={weatherData.current.pressureInHg} />
-				<SunriseCard
-					data={weatherData.forecast.forecastday[0]?.astro.sunrise}
-					tomorrowData={weatherData.forecast.forecastday[1]?.astro.sunrise}
-					timeZone={weatherData.location.tzId || 'UTC'}
-				/>
-				<SunsetCard
-					data={weatherData.forecast.forecastday[0]?.astro.sunset}
-					tomorrowData={weatherData.forecast.forecastday[1]?.astro.sunset}
-					timeZone={weatherData.location.tzId || 'UTC'}
-				/>
-				<CloudsCard data={weatherData.current.cloudCover} />
-				<MoonCard
-					phase={weatherData.forecast.forecastday[0].astro.moonPhase}
-					illumination={weatherData.forecast.forecastday[0].astro.moonIllumination}
-					isMoonUp={weatherData.forecast.forecastday[0].astro.isMoonUp}
-					moonrise={weatherData.forecast.forecastday[0].astro.moonRise ?? ''}
-					moonset={weatherData.forecast.forecastday[0].astro.moonSet ?? ''}
-				/>
-			</>
-		);
-	};
 
 	return (
 		<View className="w-full gap-4 self-center">
@@ -160,7 +71,9 @@ export const HeroWeather = () => {
 					<MapsView />
 				</View>
 			</View>
-			<View className="flex-row flex-wrap items-center justify-between gap-4">{renderDataCardGrid()}</View>
+			<View className="flex-row flex-wrap items-center justify-between gap-4">
+				<WeatherDataCards weatherData={weatherData} includeClouds={true} />
+			</View>
 		</View>
 	);
 };
