@@ -246,7 +246,7 @@
 	},
 	"feelslike": "Odczuwalna:",
 	"hourlyforecast": {
-		"now": "Teraz",
+		"now": "teraz",
 		"title": "Prognoza godzinowa"
 	},
 	"humidity": {

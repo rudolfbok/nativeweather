@@ -246,7 +246,7 @@
 	},
 	"feelslike": "Ressenti :",
 	"hourlyforecast": {
-		"now": "Maint.",
+		"now": "maint.",
 		"title": "Prévisions horaires"
 	},
 	"humidity": {

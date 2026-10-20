@@ -116,7 +116,7 @@ export const HourlyCarousel = <T,>({ data, renderItem }: HourlyCarouselProps<T>)
 				onScroll={handleScroll}
 				scrollEventThrottle={16}
 				showsHorizontalScrollIndicator={false}
-				contentContainerClassName={clsx('gap-4 pl-[10px] pr-4')}
+				contentContainerClassName={clsx('gap-4 px-3')}
 			>
 				{data.map((item, index) => renderItem(item, index))}
 			</ScrollView>
