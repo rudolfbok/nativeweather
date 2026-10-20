@@ -22,6 +22,8 @@ patchedDependencies:
   react-native-macos@0.83.0: patches/react-native-macos@0.83.0.patch
   react-native-mmkv@4.3.1: patches/react-native-mmkv@4.3.1.patch
   react-native-nitro-modules@0.35.4: patches/react-native-nitro-modules@0.35.4.patch
+  # React Native macOS 0.83 codegen requires direct imports instead of CodegenTypes.*.
+  react-native-svg@15.16.0: patches/react-native-svg@15.16.0.patch
 
 minimumReleaseAgeExclude:
   - '@turbo/darwin-64@2.11.5'

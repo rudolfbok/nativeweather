@@ -1,7 +1,7 @@
 {
 	"name": "nativeweather",
 	"version": "1.0.0",
-	"description": "NativeWeather monorepo Expo and NextJS",
+	"description": "NativeWeather monorepo",
 	"main": "index.js",
 	"scripts": {
 		"dev": "turbo dev",
