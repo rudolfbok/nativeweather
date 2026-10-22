@@ -17,13 +17,15 @@ export const LocalWeather = ({ error = null }: { error?: LocalWeatherErrorKind |
 	const { localWeatherData } = useLocalWeather();
 	const { handleCityPress } = useSearchController();
 	const containerClassName =
-		Platform.OS === 'web' ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'w-full gap-4';
+		Platform.OS === 'web' ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'pt-1 w-full gap-4';
 
 	if (error) {
 		return (
 			<View className={clsx(containerClassName)}>
 				<View
-					className={clsx('macos:dark:bg-tertiarySystemBackground_dark macos:bg-secondarySystemBackground flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-systemBackground p-4 lg:w-fit dark:bg-secondarySystemBackground_dark')}
+					className={clsx(
+						'macos:dark:bg-tertiarySystemBackground_dark macos:bg-secondarySystemBackground flex min-h-[134px] justify-center gap-2 overflow-hidden rounded-3xl bg-systemBackground p-4 lg:w-fit dark:bg-secondarySystemBackground_dark'
+					)}
 				>
 					<StyledText type="body" className={clsx('text-center font-semibold !text-red-500')}>
 						{t(`localweather.error.${error}.title`)}
