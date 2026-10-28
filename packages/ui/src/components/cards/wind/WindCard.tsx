@@ -117,7 +117,7 @@ export const WindCard = ({
 						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
-						<WindModal currentWind={currentWind} degree={degree ?? 0} speed={displaySpeed} gust={displayGust} />
+						<WindModal />
 					</StyledModal>
 				)
 			}
