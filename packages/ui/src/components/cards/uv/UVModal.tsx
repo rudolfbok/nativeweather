@@ -30,7 +30,6 @@ export const UVModal = () => {
 					timeZone={timeZone}
 					getValue={(hour) => Math.round(hour.uv)}
 					seriesLabel={t('uv.index.title')}
-					maxValue={12}
 					color="#7A007B"
 				/>
 			)}
