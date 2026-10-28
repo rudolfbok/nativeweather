@@ -1,4 +1,7 @@
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
+import { useState } from 'react';
 import {
+	CloudsCard,
 	HumidityCard,
 	MoonCard,
 	PressureCard,
@@ -9,11 +12,8 @@ import {
 	SunsetCard,
 	UVCard,
 	WindCard,
-	CloudsCard,
 } from '../../cards';
-import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { getHour24FromEpoch } from '../hourly/getHour24FromEpoch';
-import { useState } from 'react';
 
 export const WeatherDataCards = ({
 	weatherData,
@@ -52,11 +52,8 @@ export const WeatherDataCards = ({
 			<WindCard
 				windKm={Math.round(weatherData.current.windKph)}
 				windMil={Math.round(weatherData.current.windMph)}
-				gustKm={Math.round(weatherData.current.gustKph)}
-				gustMil={Math.round(weatherData.current.gustMph)}
 				degree={weatherData.current.windDegree}
 				details={true}
-				currentWind={true}
 			/>
 			<UVCard data={weatherData.current.uv} />
 			<RangeCard visKm={weatherData.current.rangeKm} visMiles={weatherData.current.rangeMiles} />

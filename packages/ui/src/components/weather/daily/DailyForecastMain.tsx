@@ -1,11 +1,11 @@
+import type { NormalizedData } from '@nativeweather/types/normalizedData';
+import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
 import { NativeInstance } from '@nativeweather/ui/utils/nativeInstance';
 import { useTolgee } from '@tolgee/react';
-import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from '../../cards';
-import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
-import type { NormalizedData } from '@nativeweather/types/normalizedData';
 import { clsx } from 'clsx';
 import { useEffect, useRef } from 'react';
 import { ScrollView, View } from 'react-native';
+import { RainCard, RangeCard, SnowCard, UVCard, WindCard } from '../../cards';
 import { HourlyCarousel } from '../hourly/HourlyCarousel';
 import { HourlyItem } from '../hourly/HourlyItem';
 import { MainWeather } from '../main/MainWeather';
@@ -127,7 +127,6 @@ export const DailyForecastMain = ({
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}
 					details={false}
-					currentWind={false}
 					showBackdrop={false}
 					onCloseParent={onCloseParent}
 				/>
