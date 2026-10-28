@@ -1,3 +1,4 @@
+import { useChartDay } from '../../../hooks/weather/useChartDay';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from '../../common/styled/StyledText';
 import { ContentRow } from '../../common/layout/ContentRow';
@@ -10,12 +11,22 @@ import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';
 
-export const RainModal = () => {
+export const RainModal = ({ initialDate }: { initialDate?: string }) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const { weatherData } = useWeather();
+	const { date, selectDay } = useChartDay(weatherData, initialDate);
 	const [showRainfall, setShowRainfall] = useState(false);
 	const rainfallUnit = currentUnits === 'metric' ? 'mm' : 'in';
+	const selectedDay = weatherData?.forecast.forecastday.find((day) => day.date === date);
+	const dailySummary = selectedDay
+		? {
+				label: t(showRainfall ? 'chart.dailyTotal' : 'chart.dailyChance'),
+				value: showRainfall
+					? `${(currentUnits === 'metric' ? selectedDay.day.totalPrecipMm : selectedDay.day.totalPrecipIn).toFixed(currentUnits === 'metric' ? 1 : 2)}${rainfallUnit}`
+					: `${Math.round(selectedDay.day.dailyRainChance)}%`,
+			}
+		: undefined;
 	const nowEpoch = weatherData?.location.localtimeEpoch ?? 0;
 	const timeZone = weatherData?.location.tzId ?? 'UTC';
 
@@ -29,17 +40,35 @@ export const RainModal = () => {
 	];
 
 	const rainPrecipValues = [
-		{ name: t('precipitation.rainfall.0'), value: selectUnit({ metric: '0,1 - 2mm', imperial: '0.01 - 0.08in', currentUnits }) },
-		{ name: t('precipitation.rainfall.1'), value: selectUnit({ metric: '2 - 10mm', imperial: '0.08 - 0.40in', currentUnits }) },
-		{ name: t('precipitation.rainfall.2'), value: selectUnit({ metric: '10 - 30mm', imperial: '0.40 - 1.20in', currentUnits }) },
-		{ name: t('precipitation.rainfall.3'), value: selectUnit({ metric: '30 - 50mm', imperial: '1.20 - 2.00in', currentUnits }) },
-		{ name: t('precipitation.rainfall.4'), value: selectUnit({ metric: '> 50mm', imperial: '> 2.00in', currentUnits }) },
+		{
+			name: t('precipitation.rainfall.0'),
+			value: selectUnit({ metric: '0,1 - 2mm', imperial: '0.01 - 0.08in', currentUnits }),
+		},
+		{
+			name: t('precipitation.rainfall.1'),
+			value: selectUnit({ metric: '2 - 10mm', imperial: '0.08 - 0.40in', currentUnits }),
+		},
+		{
+			name: t('precipitation.rainfall.2'),
+			value: selectUnit({ metric: '10 - 30mm', imperial: '0.40 - 1.20in', currentUnits }),
+		},
+		{
+			name: t('precipitation.rainfall.3'),
+			value: selectUnit({ metric: '30 - 50mm', imperial: '1.20 - 2.00in', currentUnits }),
+		},
+		{
+			name: t('precipitation.rainfall.4'),
+			value: selectUnit({ metric: '> 50mm', imperial: '> 2.00in', currentUnits }),
+		},
 	];
 
 	return (
 		<View className={clsx('gap-2')}>
 			{weatherData && (
 				<WeatherChart
+					dailySummary={dailySummary}
+					selectedDate={date}
+					onSelectDay={selectDay}
 					forecastDays={weatherData.forecast.forecastday}
 					currentTimeEpoch={nowEpoch}
 					timeZone={timeZone}

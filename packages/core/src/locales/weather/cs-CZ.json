@@ -1,4 +1,9 @@
 {
+	"chart": {
+		"unavailable": "Graf pro tento den není dostupný",
+		"dailyTotal": "Denní úhrn",
+		"dailyChance": "Denní šance"
+	},
 	"airquality": {
 		"euaqi": {
 			"main": "Evropský index kvality ovzduší (EU IKO) je metrika kvality ovzduší používaná v Evropě. Hodnota odráží současnou kvalitu ovzduší. Existuje zvýšené riziko u lidí se srdečními a dýchacími potížemi.\n\nOficiální pokyny Evropské unie a údaje o znečištění ovzduší v reálném čase naleznete na této stránce:",
@@ -246,7 +251,7 @@
 	},
 	"feelslike": "Pocitově:",
 	"hourlyforecast": {
-		"now": "teď",
+		"now": "Teď",
 		"title": "Hodinová předpověď"
 	},
 	"humidity": {

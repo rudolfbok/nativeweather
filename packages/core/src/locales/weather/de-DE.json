@@ -1,4 +1,9 @@
 {
+	"chart": {
+		"unavailable": "Für diesen Tag ist kein Diagramm verfügbar",
+		"dailyTotal": "Tagessumme",
+		"dailyChance": "Tageschance"
+	},
 	"airquality": {
 		"euaqi": {
 			"main": "Der europäische Luftqualitätsindex (EU AQI) beschreibt die aktuelle Luftqualität in Europa. Für Menschen mit Herz- oder Atemwegserkrankungen kann eine erhöhte Schadstoffbelastung ein besonderes Risiko darstellen.\n\nOffizielle Informationen der Europäischen Union und aktuelle Luftschadstoffdaten findest du auf dieser Website:",
@@ -246,7 +251,7 @@
 	},
 	"feelslike": "Gefühlt:",
 	"hourlyforecast": {
-		"now": "jetzt",
+		"now": "Jetzt",
 		"title": "Stündliche Vorhersage"
 	},
 	"humidity": {

@@ -14,6 +14,9 @@
 		"title": "Boussole"
 	},
 	"datasource": {
+		"weatherapi": "Météo actuelle",
+		"openmeteo": "Données météorologiques et météo",
+		"openfreemap": "Fonds de carte",
 		"title": "Sources de données"
 	},
 	"feedback": {

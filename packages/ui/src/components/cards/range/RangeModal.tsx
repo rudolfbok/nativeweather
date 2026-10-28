@@ -17,7 +17,10 @@ export const RangeModal = () => {
 		{ name: t('description.range.2'), value: selectUnit({ metric: '2 - 4km', imperial: '2 - 3mil', currentUnits }) },
 		{ name: t('description.range.3'), value: selectUnit({ metric: '4 - 10km', imperial: '3 - 6mil', currentUnits }) },
 		{ name: t('description.range.4'), value: selectUnit({ metric: '10 - 20km', imperial: '6 - 12mil', currentUnits }) },
-		{ name: t('description.range.5'), value: selectUnit({ metric: '20 - 50km', imperial: '12 - 30mil', currentUnits }) },
+		{
+			name: t('description.range.5'),
+			value: selectUnit({ metric: '20 - 50km', imperial: '12 - 30mil', currentUnits }),
+		},
 		{ name: t('description.range.6'), value: selectUnit({ metric: '> 50km', imperial: '> 30mil', currentUnits }) },
 	];
 

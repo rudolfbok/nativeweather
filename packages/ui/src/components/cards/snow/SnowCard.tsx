@@ -12,6 +12,7 @@ import { DataCard } from '../DataCard';
 import { SnowModal } from './SnowModal';
 
 interface SnowCardProps {
+	forecastDate?: string;
 	snowPrecipCm: number;
 	snowPrecipIn: number;
 	snowChance: number;
@@ -19,15 +20,22 @@ interface SnowCardProps {
 	onCloseParent?: () => void;
 }
 
-export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop, onCloseParent }: SnowCardProps) => {
+export const SnowCard = ({
+	forecastDate,
+	snowPrecipCm,
+	snowPrecipIn,
+	snowChance,
+	showBackdrop,
+	onCloseParent,
+}: SnowCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToSnow = useModalNavigation({
-		mobile: () => router.push('/modals/snow'),
-		macos: () => setModalScreen('snow'),
+		mobile: () => router.push(`/modals/snow${forecastDate ? `?date=${encodeURIComponent(forecastDate)}` : ''}`),
+		macos: () => setModalScreen('snow', forecastDate),
 		web: () => setShowModal(true),
 	});
 
@@ -77,7 +85,7 @@ export const SnowCard = ({ snowPrecipCm, snowPrecipIn, snowChance, showBackdrop,
 						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
-						<SnowModal />
+						<SnowModal initialDate={forecastDate} />
 					</StyledModal>
 				)
 			}

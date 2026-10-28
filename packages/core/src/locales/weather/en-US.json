@@ -1,4 +1,9 @@
 {
+	"chart": {
+		"unavailable": "Graph unavailable for this day",
+		"dailyTotal": "Daily total",
+		"dailyChance": "Daily chance"
+	},
 	"airquality": {
 		"euaqi": {
 			"main": "The European Air Quality Index (EU AQI) is air quality metric used in Europe. The value reperesents the current quality of air. There is increased risk for people with heart and breathing problems.\n\nFor official guidelines by the European Union and for the realtime air pollution data please visit this site:",
@@ -246,7 +251,7 @@
 	},
 	"feelslike": "Feels like:",
 	"hourlyforecast": {
-		"now": "now",
+		"now": "Now",
 		"title": "Hourly forecast"
 	},
 	"humidity": {

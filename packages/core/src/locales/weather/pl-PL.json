@@ -1,4 +1,9 @@
 {
+	"chart": {
+		"unavailable": "Wykres dla tego dnia jest niedostępny",
+		"dailyTotal": "Suma dobowa",
+		"dailyChance": "Szansa opadów"
+	},
 	"airquality": {
 		"euaqi": {
 			"main": "Europejski indeks jakości powietrza (EU AQI) opisuje aktualną jakość powietrza w Europie. Osoby z chorobami serca lub układu oddechowego są bardziej narażone na skutki zanieczyszczenia.\n\nOficjalne zalecenia Unii Europejskiej i bieżące dane o zanieczyszczeniu powietrza znajdziesz na tej stronie:",
@@ -246,7 +251,7 @@
 	},
 	"feelslike": "Odczuwalna:",
 	"hourlyforecast": {
-		"now": "teraz",
+		"now": "Teraz",
 		"title": "Prognoza godzinowa"
 	},
 	"humidity": {

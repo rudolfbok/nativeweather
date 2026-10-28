@@ -25,13 +25,14 @@ export type ModalScreen =
 interface NavigationState {
 	navigationScreen: NavigationScreen;
 	modalScreen: ModalScreen;
+	modalDate?: string;
 	setNavigationScreen: (screen: NavigationScreen) => void;
-	setModalScreen: (screen: ModalScreen) => void;
+	setModalScreen: (screen: ModalScreen, date?: string) => void;
 }
 
 export const useNavigationScreen = create<NavigationState>((set) => ({
 	navigationScreen: 'weather',
 	modalScreen: null,
-	setNavigationScreen: (screen) => set({ navigationScreen: screen, modalScreen: null }),
-	setModalScreen: (screen) => set({ modalScreen: screen }),
+	setNavigationScreen: (screen) => set({ navigationScreen: screen, modalScreen: null, modalDate: undefined }),
+	setModalScreen: (screen, date) => set({ modalScreen: screen, modalDate: date }),
 }));

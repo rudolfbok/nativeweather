@@ -1,3 +1,4 @@
+import { useChartDay } from '../../../hooks/weather/useChartDay';
 import { useTranslate } from '@tolgee/react';
 import { StyledText } from '../../common/styled/StyledText';
 import { ContentRow } from '../../common/layout/ContentRow';
@@ -7,9 +8,10 @@ import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
-export const UVModal = () => {
+export const UVModal = ({ initialDate }: { initialDate?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
+	const { date, selectDay } = useChartDay(weatherData, initialDate);
 	const nowEpoch = weatherData?.location.localtimeEpoch ?? 0;
 	const timeZone = weatherData?.location.tzId ?? 'UTC';
 
@@ -25,11 +27,15 @@ export const UVModal = () => {
 		<View className={clsx('gap-2')}>
 			{weatherData && (
 				<WeatherChart
+					selectedDate={date}
+					onSelectDay={selectDay}
 					forecastDays={weatherData.forecast.forecastday}
 					currentTimeEpoch={nowEpoch}
 					timeZone={timeZone}
 					getValue={(hour) => Math.round(hour.uv)}
 					seriesLabel={t('uv.index.title')}
+					minimumMaxValue={15}
+					domainStep={5}
 					color="#7A007B"
 				/>
 			)}

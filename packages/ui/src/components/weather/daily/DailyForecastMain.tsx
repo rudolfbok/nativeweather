@@ -97,6 +97,7 @@ export const DailyForecastMain = ({
 			>
 				{day.day.dailySnowChance > day.day.dailyRainChance ? (
 					<SnowCard
+						forecastDate={day.date}
 						snowChance={day.day.dailySnowChance}
 						snowPrecipCm={day.day.totalSnowCm}
 						snowPrecipIn={Number((day.day.totalSnowCm * 0.393701).toFixed(2))}
@@ -105,6 +106,7 @@ export const DailyForecastMain = ({
 					/>
 				) : (
 					<RainCard
+						forecastDate={day.date}
 						rainChance={day.day.dailyRainChance}
 						rainPrecipMm={day.day.totalPrecipMm}
 						rainPrecipIn={day.day.totalPrecipIn}
@@ -113,7 +115,7 @@ export const DailyForecastMain = ({
 					/>
 				)}
 
-				<UVCard data={day.day.uv} showBackdrop={false} onCloseParent={onCloseParent} />
+				<UVCard forecastDate={day.date} data={day.day.uv} showBackdrop={false} onCloseParent={onCloseParent} />
 				<RangeCard
 					visKm={day.day.avgVisKm}
 					visMiles={day.day.avgVisMiles}
@@ -121,6 +123,7 @@ export const DailyForecastMain = ({
 					onCloseParent={onCloseParent}
 				/>
 				<WindCard
+					forecastDate={day.date}
 					windKm={Math.round(day.day.maxWindKph)}
 					windMil={Math.round(day.day.maxWindMph)}
 					details={false}

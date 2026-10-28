@@ -12,6 +12,7 @@ import { DataCard } from '../DataCard';
 import { RainModal } from './RainModal';
 
 interface RainCardProps {
+	forecastDate?: string;
 	rainPrecipMm: number;
 	rainPrecipIn: number;
 	rainChance: number;
@@ -19,7 +20,14 @@ interface RainCardProps {
 	onCloseParent?: () => void;
 }
 
-export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop, onCloseParent }: RainCardProps) => {
+export const RainCard = ({
+	forecastDate,
+	rainPrecipMm,
+	rainPrecipIn,
+	rainChance,
+	showBackdrop,
+	onCloseParent,
+}: RainCardProps) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const [showModal, setShowModal] = useState(false);
@@ -27,8 +35,8 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop,
 	const router = useRouter();
 
 	const navigateToRain = useModalNavigation({
-		mobile: () => router.push('/modals/rain'),
-		macos: () => setModalScreen('rain'),
+		mobile: () => router.push(`/modals/rain${forecastDate ? `?date=${encodeURIComponent(forecastDate)}` : ''}`),
+		macos: () => setModalScreen('rain', forecastDate),
 		web: () => setShowModal(true),
 	});
 
@@ -78,7 +86,7 @@ export const RainCard = ({ rainPrecipMm, rainPrecipIn, rainChance, showBackdrop,
 						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
-						<RainModal />
+						<RainModal initialDate={forecastDate} />
 					</StyledModal>
 				)
 			}

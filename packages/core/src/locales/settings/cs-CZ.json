@@ -14,6 +14,9 @@
 		"title": "Kompas"
 	},
 	"datasource": {
+		"weatherapi": "Aktuální počasí",
+		"openmeteo": "Meteorologická data a počasí",
+		"openfreemap": "Mapové podklady",
 		"title": "Zdroje dat"
 	},
 	"feedback": {

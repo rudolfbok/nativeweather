@@ -1,3 +1,4 @@
+import { useChartDay } from '../../../hooks/weather/useChartDay';
 import { useTranslate } from '@tolgee/react';
 import { WeatherChart } from '../../weather/WeatherChart';
 import { StyledText } from '../../common/styled/StyledText';
@@ -7,9 +8,10 @@ import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { View } from 'react-native';
 
-export const HumidityModal = () => {
+export const HumidityModal = ({ initialDate }: { initialDate?: string }) => {
 	const { t } = useTranslate('weather');
 	const { weatherData } = useWeather();
+	const { date, selectDay } = useChartDay(weatherData, initialDate);
 
 	const humidityScaleValues = [
 		{ name: t('description.humidity.0'), value: '0 - 20%' },
@@ -23,6 +25,8 @@ export const HumidityModal = () => {
 		<View className={clsx('gap-2')}>
 			{weatherData && (
 				<WeatherChart
+					selectedDate={date}
+					onSelectDay={selectDay}
 					forecastDays={weatherData.forecast.forecastday}
 					currentTimeEpoch={weatherData.location.localtimeEpoch}
 					timeZone={weatherData.location.tzId}

@@ -14,6 +14,9 @@
 		"title": "Compass"
 	},
 	"datasource": {
+		"weatherapi": "Current weather",
+		"openmeteo": "Meteorological data and weather",
+		"openfreemap": "Map tiles",
 		"title": "Data sources"
 	},
 	"feedback": {

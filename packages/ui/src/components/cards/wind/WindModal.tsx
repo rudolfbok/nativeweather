@@ -1,3 +1,4 @@
+import { useChartDay } from '../../../hooks/weather/useChartDay';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
@@ -13,10 +14,11 @@ import { StyledText } from '../../common/styled/StyledText';
 import { WindDirectionIcon } from '../../icons/ui/WindDirectionIcon';
 import { WeatherChart } from '../../weather/WeatherChart';
 
-export const WindModal = () => {
+export const WindModal = ({ initialDate }: { initialDate?: string }) => {
 	const { t } = useTranslate('weather');
 	const [currentUnits] = useStorageString('currentUnits');
 	const { weatherData } = useWeather();
+	const { date, isToday, selectDay } = useChartDay(weatherData, initialDate);
 
 	const beaufortScaleValues = [
 		{
@@ -108,6 +110,8 @@ export const WindModal = () => {
 		<View className={clsx('gap-2')}>
 			{weatherData && (
 				<WeatherChart
+					selectedDate={date}
+					onSelectDay={selectDay}
 					forecastDays={weatherData.forecast.forecastday}
 					currentTimeEpoch={weatherData.location.localtimeEpoch}
 					timeZone={weatherData.location.tzId}
@@ -119,22 +123,26 @@ export const WindModal = () => {
 				/>
 			)}
 
-			<ContentRow title={t('wind.current.title')}>
-				<View className={clsx('w-full justify-between gap-4')}>
-					{windData.map((item, index) => (
-						<View key={index} className={clsx('gap-4')}>
-							<View className={clsx('flex-row items-center')}>
-								<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>{item.icon}</View>
-								<View className={clsx('flex-1 flex-row justify-between')}>
-									<StyledText type="sectiontitle">{item.label}</StyledText>
-									<StyledText type="body">{item.value}</StyledText>
+			{isToday && (
+				<ContentRow title={t('wind.current.title')}>
+					<View className={clsx('w-full justify-between gap-4')}>
+						{windData.map((item, index) => (
+							<View key={index} className={clsx('gap-4')}>
+								<View className={clsx('flex-row items-center')}>
+									<View className={clsx('mr-4 items-center justify-center rounded-lg bg-gray-500 p-1')}>
+										{item.icon}
+									</View>
+									<View className={clsx('flex-1 flex-row justify-between')}>
+										<StyledText type="sectiontitle">{item.label}</StyledText>
+										<StyledText type="body">{item.value}</StyledText>
+									</View>
 								</View>
+								{index < windData.length - 1 && <Separator />}
 							</View>
-							{index < windData.length - 1 && <Separator />}
-						</View>
-					))}
-				</View>
-			</ContentRow>
+						))}
+					</View>
+				</ContentRow>
+			)}
 
 			<ContentRow title={t('wind.beaufortscale')}>
 				<StyledText type="body">{t('wind.description')}</StyledText>

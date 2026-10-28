@@ -28,7 +28,7 @@ export const SuggestionsList = ({ suggestions, onSelect }: SuggestionsListProps)
 						city={item.name}
 						region={item.region}
 						country={item.country}
-						isLast={index !== visibleSuggestions.length - 1}
+						isLast={index === visibleSuggestions.length - 1}
 					/>
 				))}
 			</View>

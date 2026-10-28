@@ -15,18 +15,22 @@ import { SettingsItem } from '../../components/settings/items/SettingsItem';
 
 interface DataSourceItemProps {
 	name: string;
+	subtitle: string;
 	logo: ReactNode;
 	url: string;
 }
 
-const DataSourceItem = ({ name, logo, url }: DataSourceItemProps) => {
+const DataSourceItem = ({ name, subtitle, logo, url }: DataSourceItemProps) => {
 	const { text } = useThemeColors();
 
 	return (
-		<StyledPressable onPress={() => Linking.openURL(url)} className={clsx('flex-row items-center gap-2 p-4')}>
-			<View className={clsx('w-12 items-center')}>{logo}</View>
-			<View className={clsx('flex-1')}>
+		<StyledPressable onPress={() => Linking.openURL(url)} className={clsx('flex-row items-center gap-4 p-4')}>
+			<View className={clsx('w-10 items-center')}>{logo}</View>
+			<View className={clsx('min-w-0 flex-1 gap-1')}>
 				<StyledText type="sectiontitle">{name}</StyledText>
+				<StyledText type="caption" className={clsx('opacity-70')}>
+					{subtitle}
+				</StyledText>
 			</View>
 			<ChevronRight color={text} />
 		</StyledPressable>
@@ -40,16 +44,19 @@ export const AboutFeature = () => {
 	const dataSourceItemValues = [
 		{
 			name: 'Weather API',
+			subtitle: t('datasource.weatherapi'),
 			logo: <WeatherAPILogo />,
 			url: 'https://www.weatherapi.com/',
 		},
 		{
 			name: 'OpenMeteo API',
+			subtitle: t('datasource.openmeteo'),
 			logo: <OpenMeteoLogo />,
 			url: 'https://open-meteo.com/',
 		},
 		{
 			name: 'OpenFreeMap',
+			subtitle: t('datasource.openfreemap'),
 			logo: <OpenFreeMapLogo />,
 			url: 'https://openfreemap.org/',
 		},
@@ -63,9 +70,9 @@ export const AboutFeature = () => {
 			<View className={clsx('gap-2')}>
 				<StyledText type="sectiontitle">{t('datasource.title')}</StyledText>
 				<RoundView>
-					{dataSourceItemValues.map(({ name, logo, url }, index) => (
+					{dataSourceItemValues.map(({ name, subtitle, logo, url }, index) => (
 						<View key={name}>
-							<DataSourceItem name={name} logo={logo} url={url} />
+							<DataSourceItem name={name} subtitle={subtitle} logo={logo} url={url} />
 							{index < dataSourceItemValues.length - 1 && <Separator className="mx-4" />}
 						</View>
 					))}
@@ -93,9 +100,9 @@ export const AboutFeature = () => {
 			</View>
 			<View className="mt-2 flex-row items-center justify-center gap-1">
 				<StyledText type="caption">© {year}</StyledText>
-				<Pressable onPress={() => Linking.openURL('https://bitwebs.pages.dev')}>
+				<Pressable onPress={() => Linking.openURL('https://sidewebs.pages.dev')}>
 					<StyledText type="caption" className="hover:underline">
-						bitwebs
+						sidewebs
 					</StyledText>
 				</Pressable>
 			</View>

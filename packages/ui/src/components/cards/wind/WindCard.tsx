@@ -1,40 +1,36 @@
-import { useTranslate } from '@tolgee/react';
-import { WindIcon } from '../../icons/main';
+import { useStorageString } from '@nativeweather/core/database/useStorage';
+import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
+import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
-import { useStorageString } from '@nativeweather/core/database/useStorage';
-import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
-import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
+import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
+import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { StyledText } from '../../common/styled/StyledText';
+import { WindIcon } from '../../icons/main';
 import { WindArrowIcon } from '../../icons/ui/WindArrowIcon';
 import { DataCard } from '../DataCard';
 import { WindModal } from './WindModal';
 
 interface WindCardProps {
+	forecastDate?: string;
 	windKm: number;
 	windMil: number;
-	gustKm?: number;
-	gustMil?: number;
 	degree?: number;
 	details: boolean;
-	currentWind: boolean;
 	showBackdrop?: boolean;
 	onCloseParent?: () => void;
 }
 
 export const WindCard = ({
+	forecastDate,
 	windKm,
 	windMil,
-	gustKm,
-	gustMil,
 	degree,
 	details,
-	currentWind,
 	showBackdrop,
 	onCloseParent,
 }: WindCardProps) => {
@@ -44,20 +40,14 @@ export const WindCard = ({
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToWind = useModalNavigation({
-		mobile: () => router.push('/modals/wind'),
-		macos: () => setModalScreen('wind'),
+		mobile: () => router.push(`/modals/wind${forecastDate ? `?date=${encodeURIComponent(forecastDate)}` : ''}`),
+		macos: () => setModalScreen('wind', forecastDate),
 		web: () => setShowModal(true),
 	});
 
 	const displaySpeed = selectUnit({
 		metric: `${Math.round(windKm)}km/h`,
 		imperial: `${Math.round(windMil)}mph`,
-		currentUnits: currentUnits,
-	});
-
-	const displayGust = selectUnit({
-		metric: `${Math.round(gustKm ?? 0)}km/h`,
-		imperial: `${Math.round(gustMil ?? 0)}mph`,
 		currentUnits: currentUnits,
 	});
 
@@ -117,7 +107,7 @@ export const WindCard = ({
 						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
-						<WindModal />
+						<WindModal initialDate={forecastDate} />
 					</StyledModal>
 				)
 			}

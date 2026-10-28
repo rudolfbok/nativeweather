@@ -13,20 +13,21 @@ import { DataCard } from '../DataCard';
 import { UVModal } from './UVModal';
 
 interface UVCardProps {
+	forecastDate?: string;
 	data: number;
 	showBackdrop?: boolean;
 	onCloseParent?: () => void;
 }
 
-export const UVCard = ({ data, showBackdrop, onCloseParent }: UVCardProps) => {
+export const UVCard = ({ forecastDate, data, showBackdrop, onCloseParent }: UVCardProps) => {
 	const { weatherData } = useWeather();
 	const { t } = useTranslate('weather');
 	const [showModal, setShowModal] = useState(false);
 	const { setModalScreen } = useNavigationScreen();
 	const router = useRouter();
 	const navigateToUV = useModalNavigation({
-		mobile: () => router.push('/modals/uv'),
-		macos: () => setModalScreen('uv'),
+		mobile: () => router.push(`/modals/uv${forecastDate ? `?date=${encodeURIComponent(forecastDate)}` : ''}`),
+		macos: () => setModalScreen('uv', forecastDate),
 		web: () => setShowModal(true),
 	});
 
@@ -82,7 +83,7 @@ export const UVCard = ({ data, showBackdrop, onCloseParent }: UVCardProps) => {
 						goBackOnPress={() => setShowModal(false)}
 						showBackdrop={showBackdrop}
 					>
-						<UVModal />
+						<UVModal initialDate={forecastDate} />
 					</StyledModal>
 				)
 			}

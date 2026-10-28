@@ -14,6 +14,9 @@
 		"title": "指南针"
 	},
 	"datasource": {
+		"weatherapi": "当前天气",
+		"openmeteo": "气象数据与天气",
+		"openfreemap": "地图底图",
 		"title": "数据来源"
 	},
 	"feedback": {

@@ -12,6 +12,8 @@ interface RecentSearchesProps {
 const recentSearchesCount = Platform.OS === 'web' || Platform.OS === 'macos' ? 5 : 10;
 
 export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps) => {
+	const visibleRecentSearches = (recentSearches || []).slice(0, recentSearchesCount);
+
 	return (
 		<View className={clsx('macos:mt-4 w-full items-center web:px-6')}>
 			<View
@@ -20,7 +22,7 @@ export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps
 					border
 				)}
 			>
-				{(recentSearches || []).slice(0, recentSearchesCount).map((item, index) => (
+				{visibleRecentSearches.map((item, index) => (
 					<SearchResult
 						key={index}
 						index={index}
@@ -28,7 +30,7 @@ export const RecentSearches = ({ recentSearches, onSelect }: RecentSearchesProps
 						city={item.name}
 						region={item.region}
 						country={item.country}
-						isLast={index !== recentSearches.length - 1}
+						isLast={index === visibleRecentSearches.length - 1}
 					/>
 				))}
 			</View>

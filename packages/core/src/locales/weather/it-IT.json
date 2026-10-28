@@ -1,4 +1,9 @@
 {
+	"chart": {
+		"unavailable": "Grafico non disponibile per questo giorno",
+		"dailyTotal": "Totale giorn.",
+		"dailyChance": "Possibilità"
+	},
 	"airquality": {
 		"euaqi": {
 			"main": "L’indice europeo di qualità dell’aria (EU AQI) descrive la qualità attuale dell’aria in Europa. Le persone con malattie cardiache o respiratorie sono più vulnerabili agli effetti dell’inquinamento.\n\nPer consultare le indicazioni ufficiali dell’Unione europea e i dati sull’inquinamento in tempo reale, visita questo sito:",
@@ -246,7 +251,7 @@
 	},
 	"feelslike": "Percepita:",
 	"hourlyforecast": {
-		"now": "ora",
+		"now": "Ora",
 		"title": "Previsioni orarie"
 	},
 	"humidity": {

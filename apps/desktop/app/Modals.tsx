@@ -87,7 +87,7 @@ export const Modals = () => {
 	const { t } = useTranslate('weather');
 	const { t: settingsT } = useTranslate('settings');
 	const tolgee = useTolgee();
-	const { modalScreen, setModalScreen } = useNavigationScreen();
+	const { modalScreen, modalDate, setModalScreen } = useNavigationScreen();
 	const { weatherData, airQualityData } = useWeather();
 	const { selectedDay, setSelectedDay } = useSelectedDay();
 	const [selectedAlert, setSelectedAlert] = useState<WeatherAlert | null>(null);
@@ -144,8 +144,8 @@ export const Modals = () => {
 					closeModal();
 					setSelectedDay(null);
 				}}
-				daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={setSelectedDay} />}
 			>
+				<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={setSelectedDay} />
 				<DailyForecastMain day={selectedDay} />
 			</ModalContent>
 		);
@@ -186,16 +186,24 @@ export const Modals = () => {
 		{ icon: ReactNode; header: string; content: ReactNode }
 	> = {
 		clouds: { icon: <CloudsIcon />, header: t('cloudcover.title'), content: <CloudsModal /> },
-		humidity: { icon: <HumidityIcon />, header: t('humidity.title'), content: <HumidityModal /> },
+		humidity: {
+			icon: <HumidityIcon />,
+			header: t('humidity.title'),
+			content: <HumidityModal initialDate={modalDate} />,
+		},
 		moon: { icon: <MoonIcon />, header: t('moon.title'), content: <MoonModal /> },
-		pressure: { icon: <PressureIcon />, header: t('pressure.title'), content: <PressureModal /> },
-		rain: { icon: <RainIcon />, header: t('rain.title'), content: <RainModal /> },
+		pressure: {
+			icon: <PressureIcon />,
+			header: t('pressure.title'),
+			content: <PressureModal initialDate={modalDate} />,
+		},
+		rain: { icon: <RainIcon />, header: t('rain.title'), content: <RainModal initialDate={modalDate} /> },
 		range: { icon: <RangeIcon />, header: t('range.title'), content: <RangeModal /> },
-		snow: { icon: <SnowIcon />, header: t('snow.title'), content: <SnowModal /> },
+		snow: { icon: <SnowIcon />, header: t('snow.title'), content: <SnowModal initialDate={modalDate} /> },
 		sunrise: { icon: <SunriseIcon />, header: t('sunrise.title'), content: <SunriseModal /> },
 		sunset: { icon: <SunsetIcon />, header: t('sunset.title'), content: <SunsetModal /> },
-		uv: { icon: <UVIcon />, header: 'UV Index', content: <UVModal /> },
-		wind: { icon: <WindIcon />, header: t('wind.title'), content: <WindModal /> },
+		uv: { icon: <UVIcon />, header: 'UV Index', content: <UVModal initialDate={modalDate} /> },
+		wind: { icon: <WindIcon />, header: t('wind.title'), content: <WindModal initialDate={modalDate} /> },
 	};
 	const modal = modalScreen ? modals[modalScreen as keyof typeof modals] : null;
 
@@ -204,7 +212,13 @@ export const Modals = () => {
 	}
 
 	return (
-		<ModalContent icon={modal.icon} header={modal.header} onClose={() => setModalScreen(null)}>
+		<ModalContent
+			icon={modal.icon}
+			header={modal.header}
+			goBackHeader={Boolean(modalDate)}
+			goBackOnPress={() => setModalScreen('forecast')}
+			onClose={() => setModalScreen(null)}
+		>
 			{modal.content}
 		</ModalContent>
 	);

@@ -14,6 +14,9 @@
 		"title": "Bussola"
 	},
 	"datasource": {
+		"weatherapi": "Meteo attuale",
+		"openmeteo": "Dati meteorologici e meteo",
+		"openfreemap": "Basi cartografiche",
 		"title": "Fonti dei dati"
 	},
 	"feedback": {

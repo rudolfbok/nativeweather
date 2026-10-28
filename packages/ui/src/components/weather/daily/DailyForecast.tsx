@@ -139,8 +139,8 @@ export const DailyForecast = () => {
 					header={getDayNameSecond(selectedDay.date, false)}
 					subHeader={formatDate(selectedDay.date)}
 					onClose={handleCloseForecast}
-					daysToggle={<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={handleSelectDay} />}
 				>
+					<DaysToggle days={weatherData.forecast.forecastday} onSelectDay={handleSelectDay} />
 					<DailyForecastMain day={selectedDay} onCloseParent={handleCloseForecast} />
 				</StyledModal>
 			)}
