@@ -100,9 +100,9 @@ export const AboutFeature = () => {
 			</View>
 			<View className="mt-2 flex-row items-center justify-center gap-1">
 				<StyledText type="caption">© {year}</StyledText>
-				<Pressable onPress={() => Linking.openURL('https://sidewebs.pages.dev')}>
+				<Pressable onPress={() => Linking.openURL('https://bitwebs.pages.dev')}>
 					<StyledText type="caption" className="hover:underline">
-						sidewebs
+						bitwebs
 					</StyledText>
 				</Pressable>
 			</View>

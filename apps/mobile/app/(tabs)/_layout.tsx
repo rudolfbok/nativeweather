@@ -7,17 +7,17 @@ export default function TabLayout() {
 	const { text } = useThemeColors();
 
 	return (
-		<NativeTabs>
+		<NativeTabs labelStyle={{ selected: { color: text } }}>
 			<NativeTabs.Trigger name="(home)">
 				<NativeTabs.Trigger.Label>{t('tab.home')}</NativeTabs.Trigger.Label>
-				<NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" selectedColor={text} />
+				<NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" selectedColor="#007AFF" />
 			</NativeTabs.Trigger>
 			<NativeTabs.Trigger name="(weather)">
 				<NativeTabs.Trigger.Label>{t('tab.weather')}</NativeTabs.Trigger.Label>
 				<NativeTabs.Trigger.Icon
 					sf={{ default: 'sun.max', selected: 'sun.max.fill' }}
 					md="sunny"
-					selectedColor={text}
+					selectedColor="#007AFF"
 				/>
 			</NativeTabs.Trigger>
 			{/* <NativeTabs.Trigger name="(maps)">
@@ -29,16 +29,12 @@ export default function TabLayout() {
 				<NativeTabs.Trigger.Icon
 					sf={{ default: 'gearshape', selected: 'gearshape.fill' }}
 					md="settings"
-					selectedColor={text}
+					selectedColor="#007AFF"
 				/>
 			</NativeTabs.Trigger>
 			<NativeTabs.Trigger name="(search)" role="search">
 				<NativeTabs.Trigger.Label>{t('tab.search')}</NativeTabs.Trigger.Label>
-				<NativeTabs.Trigger.Icon
-					sf={{ default: 'magnifyingglass', selected: 'magnifyingglass.circle.fill' }}
-					md="search"
-					selectedColor={text}
-				/>
+				<NativeTabs.Trigger.Icon sf="magnifyingglass" md="search" selectedColor="#007AFF" />
 			</NativeTabs.Trigger>
 		</NativeTabs>
 	);

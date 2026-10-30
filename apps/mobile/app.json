@@ -1,88 +1,119 @@
 {
-	"expo": {
-		"name": "NativeWeather",
-		"slug": "nativeweather",
-		"version": "1.0",
-		"orientation": "portrait",
-		"icon": "./assets/images/icon.png",
-		"scheme": "mobile",
-		"userInterfaceStyle": "automatic",
-		"ios": {
-			"icon": "./assets/images/icon.png",
-			"supportsTablet": true,
-			"bundleIdentifier": "com.rudyxsides.nativeweather",
-			"infoPlist": {
-				"NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast."
-			}
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/images/icon.png",
-				"backgroundColor": "#ffffff"
-			},
-			"package": "com.rudyxsides.nativeweather"
-		},
-		"plugins": [
-			"expo-router",
-			"@maplibre/maplibre-react-native",
-			[
-				"expo-splash-screen",
-				{
-					"image": "./assets/images/splash-icon.png",
-					"imageWidth": 200,
-					"resizeMode": "contain",
-					"backgroundColor": "#007AFF"
-				}
-			],
-			[
-				"expo-widgets",
-				{
-					"bundleIdentifier": "com.rudyxsides.nativeweather.ExpoWidgetsTarget",
-					"groupIdentifier": "group.com.rudyxsides.nativeweather",
-					"widgets": [
-						{
-							"name": "SmallLocal",
-							"displayName": "Curret temperature",
-							"description": "See how is the weather right now",
-							"contentMarginsDisabled": true,
-							"supportedFamilies": ["systemSmall"]
-						},
-						{
-							"name": "MediumLocal",
-							"displayName": "Local widget",
-							"description": "Local weather with hourly forecast",
-							"contentMarginsDisabled": true,
-							"supportedFamilies": ["systemMedium"]
-						},
-						{
-							"name": "SmallAQI",
-							"displayName": "Current air quality",
-							"description": "Local air quality index",
-							"contentMarginsDisabled": true,
-							"supportedFamilies": ["systemSmall"]
-						},
-						{
-							"name": "MediumAQI",
-							"displayName": "Local air quality",
-							"description": "Local air quality metrics",
-							"contentMarginsDisabled": true,
-							"supportedFamilies": ["systemMedium"]
-						}
-					]
-				}
-			],
-			"expo-font",
-			"expo-web-browser",
-			"expo-image"
-		],
-		"experiments": {
-			"typedRoutes": false
-		},
-		"extra": {
-			"router": {},
-			"eas": {
-				"projectId": "9bed5f57-4fbe-412e-a893-d89e1129bf8b"
-			}
-		}
-	}
+  "expo": {
+    "name": "NativeWeather",
+    "slug": "nativeweather",
+    "version": "1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "mobile",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/images/icon.png",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rudyxsides.nativeweather",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.rudyxsides.nativeweather"
+    },
+    "plugins": [
+      "expo-router",
+      "@maplibre/maplibre-react-native",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#007AFF"
+        }
+      ],
+      [
+        "expo-widgets",
+        {
+          "bundleIdentifier": "com.rudyxsides.nativeweather.ExpoWidgetsTarget",
+          "groupIdentifier": "group.com.rudyxsides.nativeweather",
+          "widgets": [
+            {
+              "name": "SmallLocal",
+              "displayName": "Curret temperature",
+              "description": "See how is the weather right now",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": [
+                "systemSmall"
+              ]
+            },
+            {
+              "name": "MediumLocal",
+              "displayName": "Local widget",
+              "description": "Local weather with hourly forecast",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": [
+                "systemMedium"
+              ]
+            },
+            {
+              "name": "SmallAQI",
+              "displayName": "Current air quality",
+              "description": "Local air quality index",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": [
+                "systemSmall"
+              ]
+            },
+            {
+              "name": "MediumAQI",
+              "displayName": "Local air quality",
+              "description": "Local air quality metrics",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": [
+                "systemMedium"
+              ]
+            }
+          ]
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      "expo-image"
+    ],
+    "experiments": {
+      "typedRoutes": false
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "c5d2c429-c300-4585-8558-13717e205496",
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "ExpoWidgetsTarget",
+                  "bundleIdentifier": "com.rudyxsides.nativeweather.ExpoWidgetsTarget",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.rudyxsides.nativeweather"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "owner": "rudyxsides"
+  }
 }

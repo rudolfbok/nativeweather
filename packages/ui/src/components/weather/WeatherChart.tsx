@@ -154,7 +154,7 @@ export const WeatherChart = ({
 								<StyledText type="body" className={clsx('font-semibold')}>
 									{chartDate === localDate ? t('hourlyforecast.now') : dailySummary?.label}
 								</StyledText>
-								<StyledText type="caption">
+								<StyledText type="body">
 									{chartDate !== localDate
 										? (dailySummary?.value ?? '--')
 										: currentPoint
