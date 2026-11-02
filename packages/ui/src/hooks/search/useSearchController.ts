@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { fetchLocation } from '@nativeweather/api/fetchWeatherAPI';
 import { useStorageObject } from '@nativeweather/core/database/useStorage';
-import { useNavigationScreen } from '../navigation/useNavigation.macos';
+import { useNavigationScreen } from '../navigation/useNavigationScreen';
 import { useRouter } from '../navigation/useRouter';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import type { City } from '@nativeweather/types/city';

@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { formatTime } from '@nativeweather/core/utils/formatting/formatTime';
 import { useSunEventCountdown } from '@nativeweather/core/hooks/weather/useSunEventCountdown';

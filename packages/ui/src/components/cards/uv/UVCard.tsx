@@ -1,7 +1,7 @@
 import { useTranslate } from '@tolgee/react';
 import { GradientScale } from '../../weather/GradientScale';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { clsx } from 'clsx';
 import { useState } from 'react';

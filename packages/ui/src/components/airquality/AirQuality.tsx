@@ -5,7 +5,7 @@ import { StyledText } from '../common/styled/StyledText';
 import { CardHeader } from '../common/layout/CardHeader';
 import { AirQualityIcon } from '../icons/main/AirQualityIcon';
 import { useModalNavigation } from '../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '../../hooks/navigation/useNavigationScreen';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { clsx } from 'clsx';

@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react-native';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { SettingsItem } from './SettingsItem';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { FeedbackFeature } from '@nativeweather/ui/features/feedback/screen';
 import { useState } from 'react';

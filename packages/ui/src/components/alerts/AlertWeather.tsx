@@ -5,7 +5,7 @@ import { CardHeader } from '../common/layout/CardHeader';
 import { AlertIcon } from '../icons/main/AlertIcon';
 import { ChevronIcon } from '../icons/ui/ChevronIcon';
 import { useModalNavigation } from '../../hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '../../hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '../../hooks/navigation/useNavigationScreen';
 import { useRouter } from '../../hooks/navigation/useRouter';
 import type { WeatherAlert } from '@nativeweather/types/weatherAPI';
 import { getMostSevereAlert } from '@nativeweather/core/utils/alertFilters';

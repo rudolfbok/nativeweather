@@ -167,10 +167,12 @@
 			},
 			"default": "./src/features/weather/screen.web.tsx"
 		},
-		"./hooks/navigation/useNavigation": {
+		"./hooks/navigation/useNavigationScreen": {
 			"react-native": {
-				"macos": "./src/hooks/navigation/useNavigation.macos.ts"
-			}
+				"macos": "./src/hooks/navigation/useNavigationScreen.macos.ts",
+				"default": "./src/hooks/navigation/useNavigationScreen.ts"
+			},
+			"default": "./src/hooks/navigation/useNavigationScreen.ts"
 		},
 		"./hooks/navigation/useRouter": {
 			"react-native": {

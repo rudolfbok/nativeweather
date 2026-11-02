@@ -7,7 +7,7 @@ import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { TemperatureSelect } from '../selectors/TemperatureSelect';
 import { SettingsItem } from './SettingsItem';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 
 export const TemperatureButton = () => {
 	const { t } = useTranslate('settings');

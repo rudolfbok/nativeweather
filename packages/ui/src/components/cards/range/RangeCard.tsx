@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { RangeIcon } from '../../icons/main/RangeIcon';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';

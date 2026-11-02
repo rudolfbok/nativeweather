@@ -7,7 +7,7 @@ import { LanguageSelect } from '../selectors/LanguageSelect';
 import { languageNames } from '../languageNames';
 import { SettingsItem } from './SettingsItem';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 
 export const LanguageButton = () => {
 	const { t } = useTranslate('settings');

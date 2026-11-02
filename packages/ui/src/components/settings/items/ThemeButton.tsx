@@ -7,7 +7,7 @@ import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { ThemeSelect } from '../selectors/ThemeSelect';
 import { SettingsItem } from './SettingsItem';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 
 export const ThemeButton = () => {
 	const { t } = useTranslate('settings');

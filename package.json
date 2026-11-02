@@ -1,32 +1,37 @@
 {
-	"name": "nativeweather",
-	"version": "1.0.0",
-	"description": "NativeWeather monorepo",
-	"main": "index.js",
-	"scripts": {
-		"dev": "turbo dev",
-		"build": "turbo build",
-		"lint": "turbo lint",
-		"format": "prettier --write .",
-		"typecheck": "turbo typecheck",
-		"dev:web": "turbo run dev --filter=nativeweather-web",
-		"dev:mobile": "turbo run dev --filter=nativeweather-mobile",
-		"dev:macos": "stmux -- [ \"pnpm --filter nativeweather-macos dev\" .. \"wait-on tcp:localhost:8081 && pnpm --filter nativeweather-macos macos --no-packager\" ]",
-		"build:web": "turbo run build --filter=nativeweather-web",
-		"build:ios": "pnpm --filter nativeweather-mobile build:ios",
-		"build:android": "turbo run build:android --filter=nativeweather-mobile",
-		"build:macos": "turbo run build:macos --filter=nativeweather-macos",
-		"deploy": "pnpm --filter nativeweather-web deploy"
-	},
-	"keywords": [],
-	"author": "Rudolf Bok",
-	"packageManager": "pnpm@12.6.0",
-	"devDependencies": {
-		"oxlint": "^1.86.0",
-		"prettier": "^3.9.5",
-		"prettier-plugin-tailwindcss": "^0.8.1",
-		"stmux": "^2.0.0",
-		"turbo": "^2.11.5",
-		"wait-on": "^9.0.10"
-	}
+  "name": "nativeweather",
+  "version": "1.0.0",
+  "description": "NativeWeather monorepo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "prettier --write .",
+    "typecheck": "turbo typecheck",
+    "dev:web": "turbo run dev --filter=nativeweather-web",
+    "dev:mobile": "turbo run dev --filter=nativeweather-mobile",
+    "dev:macos": "stmux -- [ \"pnpm --filter nativeweather-macos dev\" .. \"wait-on tcp:localhost:8081 && pnpm --filter nativeweather-macos macos --no-packager\" ]",
+    "build:web": "turbo run build --filter=nativeweather-web",
+    "build:ios": "pnpm --filter nativeweather-mobile build:ios",
+    "build:android": "turbo run build:android --filter=nativeweather-mobile",
+    "build:macos": "turbo run build:macos --filter=nativeweather-macos",
+    "deploy": "pnpm --filter nativeweather-web deploy"
+  },
+  "keywords": [],
+  "author": "Rudolf Bok",
+  "packageManager": "pnpm@12.6.0",
+  "devDependencies": {
+    "oxlint": "^1.86.0",
+    "prettier": "^3.9.5",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "stmux": "^2.0.0",
+    "turbo": "^2.11.5",
+    "wait-on": "^9.0.10"
+  },
+  "dependencies": {
+    "expo": "~58.0.14",
+    "react": "19.3.0",
+    "react-native": "0.88.0"
+  }
 }

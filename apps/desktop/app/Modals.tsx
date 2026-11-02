@@ -44,7 +44,7 @@ import {
 	ModalScreen,
 	SettingsModalScreen,
 	useNavigationScreen,
-} from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+} from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
 import type { WeatherAlert } from '@nativeweather/types/weatherAPI';

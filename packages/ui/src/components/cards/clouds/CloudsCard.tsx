@@ -2,7 +2,7 @@ import { useTranslate } from '@tolgee/react';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { CloudsIcon } from '../../icons/main';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';

@@ -2,7 +2,7 @@ import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { selectUnit } from '@nativeweather/core/utils/formatting/selectUnit';
 import { getDirection } from '@nativeweather/core/utils/mappings/windDirection';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { useTranslate } from '@tolgee/react';
 import { clsx } from 'clsx';

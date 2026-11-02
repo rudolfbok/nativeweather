@@ -8,7 +8,7 @@ import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { AQISelect } from '../selectors/AQISelect';
 import { SettingsItem } from './SettingsItem';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 
 export const AQIButton = () => {
 	const { t } = useTranslate('settings');

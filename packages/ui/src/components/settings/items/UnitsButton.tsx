@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { UnitsSelect } from '../selectors/UnitsSelect';
 import { StyledModal } from '../../common/modal/StyledModal';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 
 export const UnitsButton = () => {
 	const { t } = useTranslate('settings');

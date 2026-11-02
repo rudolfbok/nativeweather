@@ -1,7 +1,6 @@
 'use client';
 
 import { NativeInstance } from '../../utils/nativeInstance';
-
 import { fetchWeather } from '@nativeweather/api/fetchWeather';
 import { useStorageBoolean } from '@nativeweather/core/database/useStorage';
 import { PullIndicator } from '../../components/common/loading/PullIndicator';

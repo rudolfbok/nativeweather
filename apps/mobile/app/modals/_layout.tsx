@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader.ios';
+import { ModalHeader } from '@nativeweather/ui/components/common/modal/ModalHeader';
 import {
 	CloudsIcon,
 	HumidityIcon,

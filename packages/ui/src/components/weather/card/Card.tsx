@@ -19,7 +19,7 @@ interface CardProps {
 export const Card = ({ onPress, tintColor, ...cardProps }: CardProps) => (
 	<StyledPressable
 		onPress={onPress}
-		className={clsx('min-h-[134px] w-full select-none flex-row items-center justify-between rounded-3xl p-4')}
+		className={clsx('min-h-[136px] w-full select-none flex-row items-center justify-between rounded-3xl p-4')}
 		tintColor={`${tintColor}E6`}
 	>
 		<CardContent {...cardProps} />

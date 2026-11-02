@@ -10,7 +10,7 @@ import { WeatherIcon } from '../../icons/weather/WeatherIcon';
 import { useStorageString } from '@nativeweather/core/database/useStorage';
 import { useMapConditions } from '@nativeweather/ui/hooks/conditions/useMapConditions';
 import { useModalNavigation } from '@nativeweather/ui/hooks/navigation/useModalNavigation';
-import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigation.macos';
+import { useNavigationScreen } from '@nativeweather/ui/hooks/navigation/useNavigationScreen';
 import { useRouter } from '@nativeweather/ui/hooks/navigation/useRouter';
 import { useSelectedDay } from '@nativeweather/ui/hooks/weather/useSelectedDay';
 import { useWeather } from '@nativeweather/core/hooks/weather/useWeather';
