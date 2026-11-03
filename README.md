@@ -1,50 +1,72 @@
-# Nativeweather
+# NativeWeather
 
-A pnpm monorepo with one Expo UI for mobile, web, and the Tauri desktop shell.
+A cross-platform weather application built with Expo, React Native, and Tauri.
+
+One shared Expo application powers iOS, Android, Web, and desktop platforms, organized as a pnpm monorepo.
+
+## Project Structure
+
+```text
+apps/
+  expo/       Expo application (iOS, Android, Web)
+  desktop/    Tauri desktop application
+
+packages/
+  ui/         Shared UI components
+```
 
 ## Development
 
-```sh
+### Installation
+
+```bash
 pnpm install
-pnpm dev          # Tauri → Expo/Metro on http://localhost:8081
-pnpm dev:desktop  # Also starts Expo/Metro
-pnpm dev:mobile   # Expo only, without the desktop shell
 ```
 
-Tauri owns the Expo dev server through its `beforeDevCommand`. The combined
-workflow starts only one Metro server. While the desktop is running, use that
-same server for browser and mobile development instead of starting another one.
+### Expo (iOS, Android, Web)
 
-Expo web is a client-only SPA (`web.output: "single"`). Uniwind follows the system
-theme automatically; the home-screen switch sets a light/dark override for the
-current session. There is no custom theme bootstrap or persisted preference.
+Start the Expo development server:
+
+```bash
+pnpm dev
+```
+
+Expo runs on `http://localhost:8081` and provides an interactive CLI for launching iOS, Android, and Web.
+
+### Desktop (Tauri)
+
+With the Expo server running, open a second terminal:
+
+```bash
+pnpm dev:desktop
+```
+
+Tauri connects to the existing Expo Web server at `http://localhost:8081`.
+
+**Only one Expo/Metro server should be running.** Tauri does not start or manage its own Expo process.
 
 ## Building
 
-```sh
-pnpm --filter nativeweather-mobile build  # Export Expo web to apps/expo/dist
-pnpm build                               # Export the UI and bundle Tauri
+To be completed..
+
+## Code Quality
+
+The monorepo uses Oxlint for JavaScript and TypeScript linting.
+
+```bash
+pnpm lint        # Check all workspaces
+pnpm lint:fix    # Automatically fix supported issues
+pnpm typecheck   # Run TypeScript checks
 ```
 
-Tauri's build hook exports Expo web and bundles `apps/expo/dist`.
+Oxlint uses the shared `.oxlintrc.json` configuration. Rust code can be checked separately using Clippy.
 
-## Linting
+## Architecture
 
-[Oxlint](https://oxc.rs/docs/guide/usage/linter.html) lints JavaScript and TypeScript across all apps and packages using the shared root `.oxlintrc.json`. The configuration enables correctness checks, TypeScript rules, and React/Hooks rules, and excludes generated files and build output. Errors and warnings fail the lint commands.
+- **Expo** — Shared application for iOS, Android, and Web.
+- **React Native Web** — Web rendering used by browsers and Tauri.
+- **Tauri 2** — Native desktop shell for macOS, Windows, and Linux.
+- **Uniwind** — Cross-platform styling and theme management.
+- **pnpm workspaces** — Dependency management and shared packages.
 
-```sh
-pnpm install
-pnpm lint      # Check the entire monorepo
-pnpm lint:fix  # Apply safe automatic fixes, then report remaining issues
-```
-
-Each JavaScript/TypeScript workspace also provides `lint` and `lint:fix` scripts. For example:
-
-```sh
-pnpm --filter nativeweather-mobile lint
-pnpm --filter @nativeweather/ui lint:fix
-pnpm --filter @nativeweather/ui lint
-pnpm -r lint  # Run each workspace's lint script
-```
-
-Oxlint does not replace TypeScript type checking or Rust linting. Continue running type checks separately; use Clippy for the Tauri Rust code.
+Development uses a single Expo/Metro server shared across platforms. No additional task runner or build orchestrator is required.

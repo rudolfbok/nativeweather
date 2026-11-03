@@ -7,12 +7,10 @@
     "lint": "pnpm --recursive --if-present run lint",
     "lint:fix": "pnpm --recursive run lint:fix",
     "typecheck": "pnpm --recursive --if-present run typecheck",
-    "build": "pnpm --filter nativeweather-mobile build && pnpm --filter nativeweather-desktop build",
+    "dev": "pnpm --filter nativeweather-mobile start",
     "dev:desktop": "pnpm --filter nativeweather-desktop dev",
-    "dev:mobile": "pnpm --filter nativeweather-mobile start",
-    "dev:web": "pnpm --filter nativeweather-mobile exec expo start --web --port 8081",
-    "tauri": "pnpm --filter nativeweather-desktop exec tauri dev",
-    "expo": "pnpm --filter nativeweather-mobile run start"
+    "dev:web": "pnpm --filter nativeweather-mobile web",
+    "build": "pnpm --filter nativeweather-desktop build"
   },
   "keywords": [],
   "author": "",
