@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "typecheck": "pnpm --recursive exec tsc --noEmit",
-    "build": "pnpm --filter desktop run build",
-    "dev:desktop": "pnpm --filter desktop run tauri dev",
-    "dev:mobile": "pnpm --filter mobile run start",
-    "tauri": "pnpm --filter desktop run tauri dev",
-    "expo": "pnpm --filter mobile run start"
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "pnpm --recursive run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "build": "turbo run build --filter=nativeweather-desktop",
+    "dev:desktop": "pnpm --filter nativeweather-desktop dev",
+    "dev:mobile": "pnpm --filter nativeweather-mobile dev",
+    "tauri": "pnpm --filter nativeweather-desktop exec tauri dev",
+    "expo": "pnpm --filter nativeweather-mobile run start"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +25,9 @@
     }
   },
   "packageManager": "pnpm@12.9.1",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "oxlint": "^1.91.0",
+    "turbo": "^2.5.0"
+  }
 }

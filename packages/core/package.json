@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "lint": "oxlint --config ../../.oxlintrc.json --deny-warnings --no-error-on-unmatched-pattern .",
+    "lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --no-error-on-unmatched-pattern --fix ."
+  },
   "exports": {
     ".": "./src/index.ts"
   },

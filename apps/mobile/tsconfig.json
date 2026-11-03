@@ -5,9 +5,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@/assets/*": [
-        "./assets/*"
       ]
     }
   },
@@ -16,7 +13,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "src/uniwind-env.d.ts",
     "src/uniwind-types.d.ts"
   ]
 }
