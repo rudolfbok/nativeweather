@@ -1,0 +1,10 @@
+@source "./src";
+
+@theme {
+	--color-ui-primary: #2563eb;
+	--color-ui-primary-pressed: #1d4ed8;
+	--color-ui-secondary: #dbeafe;
+	--color-ui-secondary-foreground: #1d4ed8;
+	--color-ui-foreground: #ffffff;
+	--radius-ui: 10px;
+}

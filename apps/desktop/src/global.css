@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "uniwind";
+@import "@nativeweather/ui/theme.css";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}

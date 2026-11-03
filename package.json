@@ -1,0 +1,26 @@
+{
+  "name": "nativeweather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "pnpm --recursive exec tsc --noEmit",
+    "build": "pnpm --filter desktop run build",
+    "dev:desktop": "pnpm --filter desktop run tauri dev",
+    "dev:mobile": "pnpm --filter mobile run start",
+    "tauri": "pnpm --filter desktop run tauri dev",
+    "expo": "pnpm --filter mobile run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.9.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.9.1",
+  "type": "module"
+}
