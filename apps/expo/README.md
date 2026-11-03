@@ -7,15 +7,15 @@ From the repository root:
 
 ```sh
 pnpm install
-pnpm --dir apps/mobile start
+pnpm --dir apps/expo start
 ```
 
-Use `pnpm --dir apps/mobile ios`, `android`, or `web` to launch a platform.
+Use `pnpm --dir apps/expo ios`, `android`, or `web` to launch a platform.
 
 ## Checks
 
 ```sh
-pnpm --dir apps/mobile exec expo install --check
-pnpm --dir apps/mobile exec tsc --noEmit
-pnpm --dir apps/mobile lint
+pnpm --dir apps/expo exec expo install --check
+pnpm --dir apps/expo exec tsc --noEmit
+pnpm --dir apps/expo lint
 ```

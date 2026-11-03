@@ -7,4 +7,33 @@
 	--color-ui-secondary-foreground: #1d4ed8;
 	--color-ui-foreground: #ffffff;
 	--radius-ui: 10px;
+
+	--color-primary-blue: #007AFF;
+	--color-good: #4FF0E6;
+	--color-fair: #009900;
+	--color-moderate: #FFC100;
+	--color-sensitive: #FF6F00;
+	--color-unhealthy: #FF0000;
+	--color-very-unhealthy: #990099;
+	--color-hazardous: #84212F;
+}
+
+@layer theme {
+	:root {
+		@variant light {
+			--color-system-background: #FFFFFF;
+			--color-secondary-system-background: #F2F2F7;
+			--color-tertiary-system-background: #E3E3E8;
+			--color-label: #000000;
+			--color-secondary-label: #6D6D72;
+		}
+
+		@variant dark {
+			--color-system-background: #000000;
+			--color-secondary-system-background: #1C1C1E;
+			--color-tertiary-system-background: #2C2C2E;
+			--color-label: #FFFFFF;
+			--color-secondary-label: #A9A9B0;
+		}
+	}
 }

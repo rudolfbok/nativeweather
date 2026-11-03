@@ -18,9 +18,9 @@
     "**/web-build/**",
     "**/src-tauri/target/**",
     "**/src-tauri/gen/**",
-    "apps/mobile/ios/**",
-    "apps/mobile/android/**",
-    "apps/mobile/expo-env.d.ts",
+    "apps/expo/ios/**",
+    "apps/expo/android/**",
+    "apps/expo/expo-env.d.ts",
     "**/uniwind-types.d.ts",
     "**/vite-env.d.ts"
   ]

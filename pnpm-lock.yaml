@@ -270,7 +270,7 @@ importers:
         specifier: 0.0.12
         version: 0.0.12(react-native-web@0.21.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(supports-color@8.1.1)(vite@8.3.2(@types/node@26.6.4)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
 
-  apps/mobile:
+  apps/expo:
     dependencies:
       '@nativeweather/ui':
         specifier: workspace:*
