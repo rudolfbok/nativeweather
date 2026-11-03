@@ -1,24 +1,47 @@
 import { Button } from "@nativeweather/ui";
-import { Switch, Text, View } from "react-native";
-import { Uniwind, useUniwind } from "uniwind";
+import { useSyncExternalStore } from "react";
+import { Platform, Text, View } from "react-native";
+import { createMMKV } from "react-native-mmkv";
+
+const storage = createMMKV({ id: "nativeweather-web-smoke" });
+const counterKey = "migration.smoke.counter";
 
 export default function HomeScreen() {
-  const { theme } = useUniwind();
-  const isDark = theme === "dark";
+  const counter = useSyncExternalStore(
+    (onChange) => {
+      const listener = storage.addOnValueChangedListener((key) => {
+        if (key === counterKey) onChange();
+      });
+      return () => listener.remove();
+    },
+    () => storage.getNumber(counterKey) ?? 0,
+    // Static rendering must not read browser LocalStorage.
+    () => 0,
+  );
+
+  function increment() {
+    const next = (storage.getNumber(counterKey) ?? 0) + 1;
+    storage.set(counterKey, next);
+  }
 
   return (
     <View className="flex-1 items-center justify-center gap-6 bg-system-background px-6">
-      <View className="w-full max-w-sm flex-row items-center justify-between rounded-xl bg-secondary-system-background p-4">
-        <Text className="text-base font-medium text-label">Dark mode</Text>
-        <Switch
-          accessibilityLabel="Dark mode"
-          value={isDark}
-          onValueChange={(enabled) =>
-            Uniwind.setTheme(enabled ? "dark" : "light")
-          }
-        />
-      </View>
-      <Button>Go backwards</Button>
+      <Text className="text-xl font-semibold text-label">
+        MMKV persistence experiment
+      </Text>
+      <Text className="text-base text-label">Platform: {Platform.OS}</Text>
+      <Text className="text-base text-label">
+        Counter: {counter}
+      </Text>
+      <Button onPress={increment}>
+        Increment
+      </Button>
+      {Platform.OS === "web" && (
+        <Text className="text-center text-base text-label">
+          Inspect Chrome DevTools → Application → Local Storage for this origin.
+          If LocalStorage is unavailable, MMKV falls back to non-persistent memory.
+        </Text>
+      )}
     </View>
   );
 }
