@@ -1,7 +1,33 @@
-# Tauri + React + Typescript
+# NativeWeather desktop
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A Tauri shell for the Expo web UI in `apps/expo`. There is no separate desktop
+React app or Vite build.
 
-## Recommended IDE Setup
+From the repository root:
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+```sh
+pnpm dev          # Run desktop directly
+pnpm dev:desktop  # Run desktop directly
+```
+
+Or from this directory:
+
+```sh
+pnpm tauri dev
+pnpm tauri build
+```
+
+The Tauri dev hook starts Expo/Metro on port 8081. The build hook exports the
+client-only Expo web app and bundles `../expo/dist` into the desktop application.
+Both hooks are configured in `src-tauri/tauri.conf.json`, so direct Tauri CLI
+commands work without first starting or building the frontend manually.
+
+Use the existing Expo server while desktop development is running; do not start
+a second server on port 8081.
+
+## Native checks
+
+```sh
+cargo check --manifest-path src-tauri/Cargo.toml
+cargo clippy --manifest-path src-tauri/Cargo.toml
+```

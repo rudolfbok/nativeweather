@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "com.bitwebs.nativeweather",
   "build": {
-    "beforeDevCommand": "pnpm dev:vite",
-    "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "pnpm build",
-    "frontendDist": "../dist"
+    "beforeDevCommand": "pnpm --filter nativeweather-mobile start",
+    "devUrl": "http://localhost:8081",
+    "beforeBuildCommand": "pnpm --filter nativeweather-mobile build",
+    "frontendDist": "../../expo/dist"
   },
   "app": {
     "windows": [

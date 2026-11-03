@@ -28,8 +28,9 @@ export function Button({
       accessibilityRole="button"
       accessibilityState={{ disabled: isDisabled, busy: loading }}
       disabled={isDisabled}
+      style={style}
       className={twMerge(
-        "min-h-11 flex-row items-center justify-center rounded-ui px-[18px] bg-ui-primary",
+        "min-h-11 flex-row items-center justify-center rounded-ui px-4.5 bg-ui-primary",
         isDisabled && "opacity-55",
         className,
       )}
@@ -38,9 +39,7 @@ export function Button({
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (
-        <Text className={twMerge("text-base !text-white font-semibold")}>
-          {children}
-        </Text>
+        <Text className="text-base font-semibold text-label">{children}</Text>
       )}
     </Pressable>
   );
