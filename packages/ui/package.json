@@ -9,7 +9,6 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./Button": "./src/Button.tsx",
     "./theme.css": "./theme.css"
   },
   "peerDependencies": {

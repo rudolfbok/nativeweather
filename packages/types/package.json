@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "lint": "oxlint --config ../../.oxlintrc.json --deny-warnings .",
-    "lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix ."
+    "lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix .",
+    "typecheck": "tsc --noEmit"
   },
   "exports": {
     ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
   }
 }
