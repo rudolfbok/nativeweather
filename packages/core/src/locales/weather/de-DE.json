@@ -1,0 +1,541 @@
+{
+	"chart": {
+		"unavailable": "Für diesen Tag ist kein Diagramm verfügbar",
+		"dailyTotal": "Tagessumme",
+		"dailyChance": "Tageschance"
+	},
+	"airquality": {
+		"euaqi": {
+			"main": "Der europäische Luftqualitätsindex (EU AQI) beschreibt die aktuelle Luftqualität in Europa. Für Menschen mit Herz- oder Atemwegserkrankungen kann eine erhöhte Schadstoffbelastung ein besonderes Risiko darstellen.\n\nOffizielle Informationen der Europäischen Union und aktuelle Luftschadstoffdaten findest du auf dieser Website:",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität ohne gesundheitliches Risiko. Ideal für Aktivitäten und Sport im Freien.",
+				"1": "Für die meisten Menschen zufriedenstellende Luftqualität. Sehr empfindliche Personen können geringfügig beeinträchtigt sein.",
+				"2": "Für die meisten Menschen akzeptabel. Bei empfindlichen Personen können leichte Beschwerden auftreten. Reduziere in diesem Fall anstrengenden Sport im Freien.",
+				"3": "Gesundheitliche Belastung für empfindliche Personen. Auch bei anderen können leichte Beschwerden auftreten. Beschränke längere Aufenthalte im Freien.",
+				"4": "Gesundheitliche Risiken für alle. Vermeide längere Aufenthalte und Sport im Freien. Empfindliche Personen sollten drinnen bleiben.",
+				"5": "Erhebliche gesundheitliche Risiken für alle. Vermeide Aktivitäten im Freien. Bleibe drinnen und halte die Fenster geschlossen."
+			},
+			"value": {
+				"0": "Gut",
+				"1": "Zufriedenstellend",
+				"2": "Mäßig",
+				"3": "Schlecht",
+				"4": "Sehr schlecht",
+				"5": "Äußerst schlecht"
+			}
+		},
+		"index": {
+			"values": "Indexwerte"
+		},
+		"item": {
+			"euaqi": "Europäischer Index",
+			"no2": "Stickstoffdioxid",
+			"ozone": "Ozon",
+			"pm10": "Feinstaub PM10",
+			"pm25": "Feinstaub PM2,5",
+			"usaqi": "Amerikanischer Index"
+		},
+		"no2": {
+			"main": "Stickstoffdioxid (NO₂) ist ein giftiges Gas, das vor allem aus Fahrzeugabgasen und Kraftwerken stammt. Es kann die Atemwege reizen, Asthma verschlimmern und die Anfälligkeit für Atemwegsinfektionen erhöhen. Eine langfristige Belastung kann das Lungengewebe schädigen und die Lungenfunktion beeinträchtigen.",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität mit minimalen gesundheitlichen Risiken für alle.",
+				"1": "Für die meisten Menschen akzeptable Luftqualität. Bei empfindlichen Personen können leichte Beschwerden auftreten.",
+				"2": "Menschen mit Asthma oder Atemwegserkrankungen sollten Aktivitäten im Freien in der Nähe stark befahrener Straßen und Industriegebiete einschränken.",
+				"3": "Bei allen können Atembeschwerden auftreten. Vermeide Sport in der Nähe stark befahrener Straßen und Industriegebiete.",
+				"4": "Erhebliche gesundheitliche Folgen für alle. Meide stark befahrene Straßen und Industriegebiete.",
+				"5": "Akute Gefahrenlage. Alle sollten Aufenthalte im Freien vermeiden, besonders in der Nähe des Straßenverkehrs."
+			}
+		},
+		"o3": {
+			"main": "Bodennahes Ozon ist ein gesundheitsschädliches Gas. Es entsteht, wenn Sonnenlicht mit Schadstoffen aus Verkehr und Industrie reagiert. Ozon kann Brustschmerzen und Husten verursachen sowie Asthma verschlimmern. Die höchsten Werte treten meist an warmen, sonnigen Nachmittagen auf. Kinder, ältere Menschen und Personen, die im Freien Sport treiben, sind besonders empfindlich.",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität mit minimalen gesundheitlichen Risiken für alle.",
+				"1": "Für die meisten Menschen akzeptable Luftqualität. Bei besonders empfindlichen Personen können leichte Atemwegsbeschwerden auftreten.",
+				"2": "Aktive Kinder und Erwachsene sowie Menschen mit Lungenerkrankungen sollten längere Aktivitäten im Freien einschränken, besonders während der sonnigen Stunden.",
+				"3": "Bei allen können gesundheitliche Beschwerden auftreten. Beschränke Aktivitäten im Freien während der Stunden mit der stärksten Sonneneinstrahlung.",
+				"4": "Erhebliche gesundheitliche Folgen für alle. Vermeide Aktivitäten im Freien, besonders am Nachmittag.",
+				"5": "Akute Gefahrenlage. Alle sollten Aufenthalte im Freien vermeiden. Es besteht eine Gesundheitswarnung."
+			}
+		},
+		"pm10": {
+			"main": "PM10 bezeichnet Partikel mit einem Durchmesser von höchstens 10 Mikrometern. Sie können Augen, Nase und Rachen reizen sowie Asthma verschlimmern. Häufige Quellen sind Staub, Straßenverkehr, Baustellen und Pollen. Bei hohen Konzentrationen können Aufenthalte in Innenräumen mit geschlossenen Fenstern die Belastung verringern.",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität mit minimalen gesundheitlichen Risiken für alle.",
+				"1": "Für die meisten Menschen akzeptable Luftqualität. Bei empfindlichen Personen können leichte Beschwerden auftreten.",
+				"2": "Kinder, ältere Menschen und Personen mit Asthma oder Atemwegserkrankungen sollten Aktivitäten im Freien einschränken.",
+				"3": "Bei allen können Atembeschwerden auftreten. Beschränke Aktivitäten im Freien und erwäge das Tragen einer Schutzmaske.",
+				"4": "Erhebliche gesundheitliche Folgen für alle. Vermeide Aktivitäten im Freien. Bleibe drinnen und halte die Fenster geschlossen.",
+				"5": "Akute Gefahrenlage. Alle sollten Aufenthalte im Freien vermeiden. Es besteht eine Gesundheitswarnung."
+			}
+		},
+		"pm25": {
+			"main": "PM2,5 bezeichnet feine Partikel mit einem Durchmesser von höchstens 2,5 Mikrometern. Sie können tief in die Lunge und in den Blutkreislauf gelangen und schwere gesundheitliche Schäden verursachen. Sie entstehen vor allem bei Verbrennungsprozessen, etwa im Verkehr, beim Heizen, bei Waldbränden und in der Industrie. Aufgrund ihrer geringen Größe bleiben sie länger in der Luft und können sich weiter ausbreiten als größere Partikel.",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität mit minimalen gesundheitlichen Risiken für alle.",
+				"1": "Für die meisten Menschen akzeptable Luftqualität. Bei empfindlichen Personen können leichte Beschwerden auftreten.",
+				"2": "Kinder, ältere Menschen und Personen mit Herz- oder Lungenerkrankungen sollten Aktivitäten im Freien einschränken.",
+				"3": "Bei allen können gesundheitliche Beschwerden auftreten. Beschränke Aktivitäten im Freien und erwäge das Tragen einer Schutzmaske.",
+				"4": "Erhebliche gesundheitliche Folgen für alle. Vermeide Aktivitäten im Freien. Bleibe drinnen und halte die Fenster geschlossen.",
+				"5": "Akute Gefahrenlage. Alle sollten Aufenthalte im Freien vermeiden. Es bestehen Gesundheitswarnungen."
+			}
+		},
+		"pollutant": {
+			"values": "Konzentrationswerte"
+		},
+		"provider": "Daten von ",
+		"title": "Luftqualität",
+		"usaqi": {
+			"main": "Der amerikanische Luftqualitätsindex (US AQI) beschreibt die Luftqualität in den USA. Die Werte reichen von 0 bis 500. Höhere Werte stehen für eine stärkere Luftverschmutzung und größere gesundheitliche Risiken. Der Index dient dazu, die Bevölkerung vor gefährlicher Luftverschmutzung zu warnen. Menschen mit Herz- oder Atemwegserkrankungen sind besonders gefährdet.\n\nOffizielle Informationen der US-Umweltbehörde (EPA) und aktuelle Luftschadstoffdaten findest du auf dieser Website:",
+			"text": {
+				"0": "Ausgezeichnete Luftqualität ohne gesundheitliches Risiko. Ideal für Aktivitäten und Sport im Freien.",
+				"1": "Für die meisten Menschen akzeptable Luftqualität. Bei besonders empfindlichen Personen können leichte Atemwegsbeschwerden auftreten.",
+				"2": "Empfindliche Personen, etwa Kinder, ältere Menschen und Personen mit Herz- oder Lungenerkrankungen, können gesundheitliche Beschwerden entwickeln. Für die übrige Bevölkerung sind Auswirkungen unwahrscheinlich.",
+				"3": "Bei allen können gesundheitliche Beschwerden auftreten. Empfindliche Personen können stärker betroffen sein. Vermeide längere körperliche Anstrengungen im Freien.",
+				"4": "Gesundheitswarnung. Bei allen können erhebliche gesundheitliche Beschwerden auftreten. Vermeide sämtliche Aktivitäten im Freien, besonders Sport.",
+				"5": "Akute Gefahrenlage für die gesamte Bevölkerung. Bleibe drinnen und halte Fenster und Türen geschlossen. Vermeide sämtliche Aktivitäten im Freien."
+			},
+			"value": {
+				"0": "Gut",
+				"1": "Mäßig",
+				"2": "Ungesund für empfindliche Personen",
+				"3": "Ungesund",
+				"4": "Sehr ungesund",
+				"5": "Gefährlich"
+			}
+		},
+		"value": {
+			"0": "Gut",
+			"1": "Mäßig",
+			"2": "Ungesund für empfindliche Personen",
+			"3": "Ungesund",
+			"4": "Sehr ungesund",
+			"5": "Gefährlich"
+		}
+	},
+	"alerts": {
+		"area": "Gebiet",
+		"description": "Beschreibung des Ereignisses",
+		"disclaimer": "Warnungen werden von den zuständigen örtlichen Behörden herausgegeben",
+		"expires": "Gültig bis",
+		"instructions": "Verhaltenshinweise",
+		"modaltitle": "Wetterwarnungen",
+		"severity": "Warnstufe",
+		"severity.extreme": "Extrem",
+		"severity.minor": "Gering",
+		"severity.moderate": "Mäßig",
+		"severity.severe": "Schwer",
+		"severity.unknown": "Unbekannt",
+		"title": "Wetterwarnungen"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "In der Meteorologie gibt der Bewölkungsgrad an, welcher Anteil des Himmels von Wolken bedeckt ist. Fachleute verwenden dafür Achtel. Zur leichteren Einordnung werden häufig Prozentwerte oder beschreibende Begriffe genutzt.",
+			"title": "Bewölkungsgrad in Prozent",
+			"values": "Bewölkungsgrad"
+		},
+		"title": "Bewölkung"
+	},
+	"compass": {
+		"button": {
+			"location": "Standortzugriff erlauben"
+		},
+		"text": "Die Kompassfunktion benötigt ein unterstütztes Apple-Gerät mit einem Magnetometer.\n\niOS kann vor der Nutzung dieses Sensors um Erlaubnis bitten.",
+		"title": "Kompass"
+	},
+	"condition": {
+		"blizzard": "Schneesturm",
+		"clear": {
+			"day": "Sonnig",
+			"night": "Klar"
+		},
+		"cloudy": "Bewölkt",
+		"fog": "Nebel",
+		"freezingfog": "Gefrierender Nebel",
+		"freezingrain": "Gefrierender Regen",
+		"lightrain": "Leichter Regen",
+		"lightsnow": "Leichter Schneefall",
+		"overcast": "Bedeckt",
+		"partlycloudy": "Wolkig",
+		"rain": "Regen",
+		"snow": "Schnee",
+		"thunderstorm": "Gewitter"
+	},
+	"dailyforecast": {
+		"title": "Tagesvorhersage",
+		"today": "heute"
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Wolkenlos",
+			"1": "Wolkig",
+			"2": "Stark bewölkt",
+			"3": "Bedeckt"
+		},
+		"humidity": {
+			"0": "Sehr trocken",
+			"1": "Angenehm",
+			"2": "Feucht",
+			"3": "Sehr feucht",
+			"4": "Extrem feucht"
+		},
+		"moon": {
+			"firstquarter": "Erstes Viertel",
+			"fullmoon": "Vollmond",
+			"lastquarter": "Letztes Viertel",
+			"newmoon": "Neumond",
+			"waningcrescent": "Abnehmende Sichel",
+			"waninggibbous": "Abnehmender Mond",
+			"waxingcrescent": "Zunehmende Sichel",
+			"waxinggibbous": "Zunehmender Mond"
+		},
+		"precip": {
+			"rain": {
+				"0": "Leichter Regen",
+				"1": "Mäßiger Regen",
+				"2": "Starker Regen"
+			},
+			"snow": {
+				"0": "Leichter Schneefall",
+				"1": "Mäßiger Schneefall",
+				"2": "Starker Schneefall"
+			}
+		},
+		"pressure": {
+			"0": "Extrem niedrig",
+			"1": "Sehr niedrig",
+			"2": "Niedrig",
+			"3": "Leicht erniedrigt",
+			"4": "Normal",
+			"5": "Leicht erhöht",
+			"6": "Hoch",
+			"7": "Sehr hoch",
+			"8": "Extrem hoch"
+		},
+		"snow": {
+			"0": "Nicht zu erwarten",
+			"1": "Geringe Wahrscheinlichkeit",
+			"2": "Mäßige Wahrscheinlichkeit",
+			"3": "Schneefall zu erwarten"
+		},
+		"uv": {
+			"0": "Gering",
+			"1": "Mäßig",
+			"2": "Hoch",
+			"3": "Sehr hoch",
+			"4": "Extrem"
+		},
+		"range": {
+			"0": "Dichter Nebel",
+			"1": "Nebel",
+			"2": "Leichter Nebel",
+			"3": "Leichter Dunst",
+			"4": "Gut",
+			"5": "Sehr gut",
+			"6": "Außergewöhnlich gut"
+		},
+		"windspeed": {
+			"0": "Windstille",
+			"1": "Leiser Zug",
+			"10": "Schwerer Sturm",
+			"11": "Orkanartiger Sturm",
+			"12": "Orkan",
+			"2": "Leichte Brise",
+			"3": "Schwache Brise",
+			"4": "Mäßige Brise",
+			"5": "Frische Brise",
+			"6": "Starker Wind",
+			"7": "Steifer Wind",
+			"8": "Stürmischer Wind",
+			"9": "Sturm"
+		}
+	},
+	"feelslike": "Gefühlt:",
+	"hourlyforecast": {
+		"now": "Jetzt",
+		"title": "Stündliche Vorhersage"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "Der Taupunkt ist die Temperatur, bei der der Wasserdampf in der Luft zu kondensieren beginnt und sich Tau bilden kann. Je höher der Taupunkt, desto mehr Feuchtigkeit enthält die Luft. Er beschreibt das Empfinden von Schwüle besser als die relative Luftfeuchtigkeit.",
+			"title": "Taupunkt"
+		},
+		"relativehumidity": {
+			"text": "Die relative Luftfeuchtigkeit beschreibt, wie viel Wasserdampf die Luft im Verhältnis zur maximal möglichen Menge bei der aktuellen Temperatur enthält. Sie wird in Prozent angegeben und beeinflusst, wie wir das Wetter empfinden.",
+			"title": "Relative Luftfeuchtigkeit",
+			"values": "Prozentwerte"
+		},
+		"title": "Luftfeuchtigkeit"
+	},
+	"localtime": "Ortszeit",
+	"remainingtime": "In {time}",
+	"localweather": {
+		"error": {
+			"permission": {
+				"title": "Standortzugriff blockiert",
+				"message": "Erlaube den Standortzugriff in den Geräte- oder Browsereinstellungen."
+			},
+			"unavailable": {
+				"title": "Standort nicht verfügbar",
+				"message": "Dein Gerät konnte deinen aktuellen Standort nicht bestimmen."
+			},
+			"timeout": {
+				"title": "Standortabfrage hat zu lange gedauert",
+				"message": "Versuche es erneut an einem Ort mit besserem GPS- oder Netzempfang."
+			},
+			"network": {
+				"title": "Wetterdienst nicht erreichbar",
+				"message": "Prüfe deine Internetverbindung und versuche es erneut."
+			},
+			"server": {
+				"title": "Wetterdienst nicht verfügbar",
+				"message": "Der Wetteranbieter hat einen Fehler gemeldet. Versuche es später erneut."
+			},
+			"source": {
+				"title": "Keine Wetterquelle ausgewählt",
+				"message": "Wähle in den Einstellungen eine Wetterquelle aus, bevor du das Wetter am Standort abrufst."
+			},
+			"unknown": {
+				"title": "Wetter am Standort konnte nicht geladen werden",
+				"message": "Beim Laden des Wetters am Standort ist ein unerwarteter Fehler aufgetreten."
+			},
+			"retry": "Erneut versuchen"
+		}
+	},
+	"maps": {
+		"layer": {
+			"0": "Temperatur",
+			"1": "Niederschlag",
+			"2": "Wind"
+		},
+		"legend": {
+			"precipitation": "Klicke auf die Karte, um den aktuellen Niederschlag anzuzeigen.",
+			"temperature": "Klicke auf die Karte, um die aktuelle Temperatur anzuzeigen.",
+			"title": "Legende",
+			"wind": "Klicke auf die Karte, um die aktuelle Windgeschwindigkeit anzuzeigen."
+		},
+		"loading": "Karte wird geladen…",
+		"loadError": "Die Karte konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut.",
+		"currentTemperature": "Aktuelle Temperatur",
+		"temperatureUnavailable": "Temperatur nicht verfügbar",
+		"weatherUnavailable": "Wetterdaten nicht verfügbar",
+		"title": "Karten"
+	},
+	"modal": {
+		"description": "Beschreibung"
+	},
+	"moon": {
+		"cycle": "Mondzyklus",
+		"description": "Der Mond durchläuft einen regelmäßigen Zyklus aus acht Phasen, der etwa 29,5 Tage dauert. Die Phasen entstehen, während der Mond die Erde umkreist und sich der Winkel seiner Beleuchtung durch die Sonne verändert. Je nach Phase sehen wir von der Erde aus unterschiedlich große Teile der beleuchteten Mondoberfläche. Die Mondphasen beeinflussen die Gezeiten.",
+		"illumination": "Beleuchtung:",
+		"moonrise": "Mondaufgang:",
+		"moonset": "Monduntergang:",
+		"now": "Aktuelle Monddaten",
+		"phase": "Mondphase",
+		"phase.firstquarter": "Erstes Viertel",
+		"phase.fullmoon": "Vollmond",
+		"phase.lastquarter": "Letztes Viertel",
+		"phase.newmoon": "Neumond",
+		"phase.waningcrescent": "Abnehmende Sichel",
+		"phase.waninggibbous": "Abnehmender Mond",
+		"phase.waxingcrescent": "Zunehmende Sichel",
+		"phase.waxinggibbous": "Zunehmender Mond",
+		"text": {
+			"firstquarter": "Die rechte Hälfte des Mondes ist beleuchtet",
+			"fullmoon": "Der Mond ist vollständig beleuchtet und am hellsten",
+			"lastquarter": "Die linke Hälfte des Mondes ist beleuchtet",
+			"newmoon": "Der Mond ist nicht sichtbar. Ein neuer Mondzyklus beginnt",
+			"waningcrescent": "Eine schmale beleuchtete Sichel auf der linken Seite",
+			"waninggibbous": "Mehr als die Hälfte ist beleuchtet, der beleuchtete Anteil nimmt ab",
+			"waxingcrescent": "Eine schmale beleuchtete Sichel auf der rechten Seite",
+			"waxinggibbous": "Mehr als die Hälfte ist beleuchtet, der Mond nähert sich dem Vollmond"
+		},
+		"title": "Mond"
+	},
+	"precipitation": {
+		"chance": {
+			"0": "Nicht zu erwarten",
+			"1": "Geringe Wahrscheinlichkeit",
+			"2": "Schauer möglich",
+			"3": "Wahrscheinlich",
+			"4": "Sehr wahrscheinlich",
+			"5": "Fast sicher",
+			"6": "Sicher"
+		},
+		"rainfall": {
+			"0": "Leichter Regen",
+			"1": "Mäßiger Regen",
+			"2": "Starker Regen",
+			"3": "Sehr starker Regen",
+			"4": "Extremer Regen"
+		},
+		"snow": {
+			"chance": {
+				"2": "Schneeschauer möglich"
+			}
+		},
+		"snowfall": {
+			"0": "Leichter Schneefall",
+			"1": "Leichter Schneefall",
+			"2": "Starker Schneefall",
+			"3": "Sehr starker Schneefall",
+			"4": "Extremer Schneefall"
+		}
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "Die Luftdruckskala ordnet den atmosphärischen Druck nach seinem Wert und den typischen Wetterbedingungen ein. Sie umfasst neun Stufen, die jeweils einem bestimmten Druckbereich und charakteristischen Wetterbedingungen entsprechen.",
+			"title": "Luftdruckskala",
+			"values": "Skalenwerte"
+		},
+		"text": {
+			"0": "Schwere Unwetter, starker Regen",
+			"1": "Unbeständiges Wetter, häufige Schauer",
+			"2": "Bewölkter Himmel, wechselhaftes Wetter",
+			"3": "Zeitweise sonnig, leichter Niederschlag möglich",
+			"4": "Beständiges Wetter, angenehme Bedingungen",
+			"5": "Überwiegend klar und windschwach",
+			"6": "Klar bis wolkig, schwacher Wind",
+			"7": "Sehr ruhiges Wetter, Nebel möglich",
+			"8": "Außergewöhnlich beständiges Wetter mit klarem Himmel"
+		},
+		"title": "Luftdruck"
+	},
+	"rain": {
+		"chance": {
+			"description": "Der Prozentwert gibt an, wie wahrscheinlich Regen an einem bestimmten Ort im Vorhersagezeitraum ist. Er sagt nichts über die Intensität oder die erwartete Regenmenge aus.",
+			"text": {
+				"0": "Regen ist kaum zu erwarten",
+				"1": "Vereinzelte Schauer möglich, meist bleibt es trocken",
+				"2": "Gebietsweise Regen wahrscheinlich",
+				"3": "Regen sehr wahrscheinlich und verbreitet zu erwarten",
+				"4": "Regen fast sicher, weite Teile des Gebiets sind betroffen",
+				"5": "Regen praktisch sicher und voraussichtlich im gesamten Gebiet zu erwarten"
+			},
+			"title": "Niederschlagswahrscheinlichkeit",
+			"values": "Wahrscheinlichkeit in Prozent"
+		},
+		"rainfall": "Regen:",
+		"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an. Regen- und Schneewahrscheinlichkeit werden getrennt angegeben.",
+		"rainfall.title": "Gesamtniederschlag",
+		"rainfall.values": "Regenmengen",
+		"title": "Regen"
+	},
+	"smartsummary": {
+		"title": "Wetterüberblick"
+	},
+	"snow": {
+		"chance": {
+			"description": "Der Prozentwert gibt an, wie wahrscheinlich Schneefall an einem bestimmten Ort im Vorhersagezeitraum ist. Er sagt nichts über die Intensität oder die erwartete Schneemenge aus.",
+			"text": {
+				"0": "Schneefall ist kaum zu erwarten",
+				"1": "Vereinzelte Schneeschauer möglich, meist bleibt es ohne Schnee",
+				"2": "Gebietsweise Schneefall wahrscheinlich",
+				"3": "Schneefall sehr wahrscheinlich und verbreitet zu erwarten",
+				"4": "Schneefall fast sicher, weite Teile des Gebiets sind betroffen",
+				"5": "Schneefall praktisch sicher und voraussichtlich im gesamten Gebiet zu erwarten"
+			},
+			"title": "Niederschlagswahrscheinlichkeit",
+			"values": "Wahrscheinlichkeit in Prozent"
+		},
+		"snowfall": "Schneemenge:",
+		"snowfall.description": "Die Schneemenge in Zentimetern gibt an, wie viel Neuschnee im Vorhersagezeitraum erwartet wird. Der Wert beschreibt die Höhe des neu gefallenen Schnees, während die Niederschlagswahrscheinlichkeit angibt, wie wahrscheinlich Schneefall ist.",
+		"snowfall.title": "Schneemenge",
+		"snowfall.values": "Schneemengen",
+		"title": "Schnee"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "Die Morgendämmerung ist die Zeit vor Sonnenaufgang, in der der Himmel allmählich heller wird. Sie kündigt den neuen Tag an. Ihre Dauer hängt von Jahreszeit und geografischer Breite ab und beträgt häufig etwa 20 bis 40 Minuten.",
+			"title": "Morgendämmerung"
+		},
+		"modaltitle": "Sonnenaufgang",
+		"text": "Der Sonnenaufgang ist der Moment, in dem die Sonne über dem Horizont erscheint. Schon vorher wird der Himmel allmählich heller. Die Uhrzeit des Sonnenaufgangs verändert sich im Jahresverlauf. Auf der Nordhalbkugel geht die Sonne im Winter später und im Sommer früher auf. Die frühesten Sonnenaufgänge liegen ungefähr um die Sommersonnenwende im Juni, die spätesten um die Wintersonnenwende im Dezember.",
+		"title": "Sonnenaufgang"
+	},
+	"sunset": {
+		"modaltitle": "Sonnenuntergang",
+		"text": "Der Sonnenuntergang ist der Moment, in dem die Sonne unter dem Horizont verschwindet. Auch danach bleibt der Himmel noch eine Zeit lang hell. Die Uhrzeit des Sonnenuntergangs verändert sich im Jahresverlauf. Auf der Nordhalbkugel geht die Sonne im Winter früher und im Sommer später unter. Die spätesten Sonnenuntergänge liegen ungefähr um die Sommersonnenwende im Juni, die frühesten um die Wintersonnenwende im Dezember.",
+		"title": "Sonnenuntergang",
+		"twilight": {
+			"text": "Die Abenddämmerung ist die Zeit nach Sonnenuntergang, in der der Himmel allmählich dunkler wird. Dabei kann er sich in warme Farben tauchen. Ihre Dauer hängt von Jahreszeit und geografischer Breite ab und beträgt häufig etwa 20 bis 40 Minuten.",
+			"title": "Abenddämmerung"
+		}
+	},
+	"uv": {
+		"index": {
+			"description": "Der UV-Index ist ein international einheitliches Maß für die Stärke der ultravioletten Strahlung an der Erdoberfläche. Er hilft dabei, das Risiko von Hautschäden durch Sonnenlicht einzuschätzen und geeignete Schutzmaßnahmen zu treffen.",
+			"title": "Über den UV-Index",
+			"values": "Indexwerte"
+		},
+		"radiation": {
+			"description": "Ultraviolette Strahlung (UV-Strahlung) ist eine für das menschliche Auge unsichtbare elektromagnetische Strahlung. Sie kommt natürlicherweise im Sonnenlicht vor, kann aber auch künstlich erzeugt werden. In kleinen Mengen unterstützt sie beispielsweise die Bildung von Vitamin D. Eine zu hohe Belastung ist jedoch schädlich.",
+			"title": "Ultraviolette Strahlung"
+		},
+		"text": {
+			"0": "Sonnenschutz ist nicht erforderlich",
+			"1": "Trage eine Kopfbedeckung und verwende Sonnencreme mit LSF 15 oder höher. Meide die Mittagssonne.",
+			"2": "Trage eine Kopfbedeckung und eine Sonnenbrille. Verwende Sonnencreme mit LSF 30 oder höher und halte dich mittags im Schatten auf. Ungeschützte Haut kann innerhalb von 15 bis 20 Minuten einen Sonnenbrand bekommen.",
+			"3": "Trage eine Kopfbedeckung, eine Sonnenbrille und schützende Kleidung. Verwende Sonnencreme mit LSF 50 oder höher und beschränke Aufenthalte im Freien um die Mittagszeit. Ungeschützte Haut kann in weniger als 15 Minuten einen Sonnenbrand bekommen.",
+			"4": "Umfassender Sonnenschutz ist erforderlich. Halte dich nicht ungeschützt im Freien auf."
+		}
+	},
+	"range": {
+		"about": "Definition",
+		"text": "Die Sichtweite beschreibt die größte Entfernung, aus der Objekte mit bloßem Auge erkennbar sind. Sie wird durch Nebel, Luftfeuchtigkeit, Luftverschmutzung und Niederschlag beeinflusst. Gute Sicht ist für die Sicherheit im Straßenverkehr, in der Luftfahrt und auf See wichtig.",
+		"title": "Sichtweite",
+		"values": "Sichtweitenskala"
+	},
+	"wind": {
+		"beaufortscale": "Beaufortskala",
+		"current": {
+			"direction": "Richtung",
+			"gust": "Böen",
+			"speed": "Geschwindigkeit",
+			"title": "Aktuelle Winddaten"
+		},
+		"description": "Die Beaufortskala ordnet die Windstärke anhand ihrer Auswirkungen auf die Umgebung ein. Sie wird weltweit in der Meteorologie, der Schifffahrt und der Luftfahrt verwendet. Sichtbare Auswirkungen ermöglichen eine schnelle Einschätzung der Windstärke. Die Skala umfasst 13 Stufen von 0 bis 12. Jede Stufe entspricht einem bestimmten Geschwindigkeitsbereich und typischen Auswirkungen an Land und auf See.",
+		"label": {
+			"long": {
+				"E": "Ost",
+				"ENE": "Ostnordost",
+				"ESE": "Ostsüdost",
+				"N": "Nord",
+				"NE": "Nordost",
+				"NNE": "Nordnordost",
+				"NNW": "Nordnordwest",
+				"NW": "Nordwest",
+				"S": "Süd",
+				"SE": "Südost",
+				"SSE": "Südsüdost",
+				"SSW": "Südsüdwest",
+				"SW": "Südwest",
+				"W": "West",
+				"WNW": "Westnordwest",
+				"WSW": "Westsüdwest"
+			},
+			"short": {
+				"E": "O",
+				"ENE": "ONO",
+				"ESE": "OSO",
+				"N": "N",
+				"NE": "NO",
+				"NNE": "NNO",
+				"NNW": "NNW",
+				"NW": "NW",
+				"S": "S",
+				"SE": "SO",
+				"SSE": "SSO",
+				"SSW": "SSW",
+				"SW": "SW",
+				"W": "W",
+				"WNW": "WNW",
+				"WSW": "WSW"
+			}
+		},
+		"title": "Wind",
+		"values": "Skalenwerte"
+	},
+	"rainfall": "Gesamtniederschlag:",
+	"rainfall.title": "Gesamtniederschlag",
+	"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an."
+}

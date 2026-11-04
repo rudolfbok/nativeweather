@@ -1,0 +1,541 @@
+{
+	"chart": {
+		"unavailable": "Wykres dla tego dnia jest niedostępny",
+		"dailyTotal": "Suma dobowa",
+		"dailyChance": "Szansa opadów"
+	},
+	"airquality": {
+		"euaqi": {
+			"main": "Europejski indeks jakości powietrza (EU AQI) opisuje aktualną jakość powietrza w Europie. Osoby z chorobami serca lub układu oddechowego są bardziej narażone na skutki zanieczyszczenia.\n\nOficjalne zalecenia Unii Europejskiej i bieżące dane o zanieczyszczeniu powietrza znajdziesz na tej stronie:",
+			"text": {
+				"0": "Doskonała jakość powietrza, bez zagrożenia dla zdrowia. Idealne warunki do wszelkich aktywności i ćwiczeń na zewnątrz.",
+				"1": "Jakość powietrza zadowalająca dla większości osób. Minimalne ryzyko dla osób szczególnie wrażliwych.",
+				"2": "Jakość akceptowalna dla większości osób, ale osoby wrażliwe mogą odczuwać łagodne objawy. W takim przypadku ogranicz intensywny wysiłek na zewnątrz.",
+				"3": "Możliwe skutki zdrowotne dla osób wrażliwych. U pozostałych osób mogą wystąpić łagodne objawy. Ogranicz długotrwałą aktywność na zewnątrz.",
+				"4": "Zagrożenie dla zdrowia wszystkich. Unikaj długotrwałej aktywności i ćwiczeń na zewnątrz. Osoby wrażliwe powinny pozostać w pomieszczeniach.",
+				"5": "Poważne zagrożenie dla zdrowia wszystkich. Unikaj aktywności na zewnątrz. Pozostań w pomieszczeniach i zamknij okna."
+			},
+			"value": {
+				"0": "Dobra",
+				"1": "Zadowalająca",
+				"2": "Umiarkowana",
+				"3": "Zła",
+				"4": "Bardzo zła",
+				"5": "Skrajnie zła"
+			}
+		},
+		"index": {
+			"values": "Wartości indeksu"
+		},
+		"item": {
+			"euaqi": "Indeks europejski",
+			"no2": "Dwutlenek azotu",
+			"ozone": "Ozon",
+			"pm10": "Pył zawieszony PM10",
+			"pm25": "Pył drobny PM2,5",
+			"usaqi": "Indeks amerykański"
+		},
+		"no2": {
+			"main": "Dwutlenek azotu (NO₂) to toksyczny gaz pochodzący głównie ze spalin pojazdów i elektrowni. Może podrażniać drogi oddechowe, nasilać astmę i zwiększać podatność na infekcje układu oddechowego. Długotrwałe narażenie może uszkadzać tkankę płucną i osłabiać czynność płuc.",
+			"text": {
+				"0": "Doskonała jakość powietrza, z minimalnym ryzykiem zdrowotnym dla wszystkich.",
+				"1": "Jakość powietrza akceptowalna dla większości osób, choć osoby wrażliwe mogą odczuwać łagodne objawy.",
+				"2": "Osoby z astmą lub problemami oddechowymi powinny ograniczyć aktywność na zewnątrz w pobliżu ruchliwych dróg i terenów przemysłowych.",
+				"3": "U wszystkich mogą wystąpić trudności z oddychaniem. Unikaj ćwiczeń w pobliżu ruchliwych dróg i terenów przemysłowych.",
+				"4": "Poważne skutki zdrowotne dla wszystkich. Trzymaj się z dala od ruchliwych dróg i terenów przemysłowych.",
+				"5": "Sytuacja kryzysowa. Wszyscy powinni unikać pobytu na zewnątrz, szczególnie w pobliżu ruchliwych dróg."
+			}
+		},
+		"o3": {
+			"main": "Ozon przy powierzchni ziemi jest szkodliwy. Powstaje, gdy światło słoneczne wywołuje reakcje zanieczyszczeń pochodzących z transportu i przemysłu. Może powodować ból w klatce piersiowej i kaszel oraz nasilać astmę. Stężenie jest zwykle najwyższe w ciepłe, słoneczne popołudnia. Dzieci, osoby starsze i osoby ćwiczące na zewnątrz są bardziej narażone na jego działanie.",
+			"text": {
+				"0": "Doskonała jakość powietrza, z minimalnym ryzykiem zdrowotnym dla wszystkich.",
+				"1": "Jakość powietrza akceptowalna dla większości osób, choć osoby szczególnie wrażliwe mogą odczuwać łagodny dyskomfort oddechowy.",
+				"2": "Aktywne dzieci i osoby dorosłe oraz osoby z chorobami płuc powinny ograniczyć długotrwałą aktywność na zewnątrz, zwłaszcza w słonecznych godzinach.",
+				"3": "U wszystkich mogą wystąpić problemy zdrowotne. Ogranicz aktywność na zewnątrz w godzinach najsilniejszego nasłonecznienia.",
+				"4": "Poważne skutki zdrowotne dla wszystkich. Unikaj aktywności na zewnątrz, szczególnie po południu.",
+				"5": "Sytuacja kryzysowa. Wszyscy powinni unikać pobytu na zewnątrz. Obowiązuje ostrzeżenie zdrowotne."
+			}
+		},
+		"pm10": {
+			"main": "PM10 to cząstki o średnicy nie większej niż 10 mikrometrów. Mogą podrażniać oczy, nos i gardło oraz nasilać astmę. Często pochodzą z kurzu, ruchu drogowego, prac budowlanych i pyłków. Przy wysokich stężeniach pozostanie w pomieszczeniach z zamkniętymi oknami może ograniczyć narażenie.",
+			"text": {
+				"0": "Doskonała jakość powietrza, z minimalnym ryzykiem zdrowotnym dla wszystkich.",
+				"1": "Jakość powietrza akceptowalna dla większości osób, choć osoby wrażliwe mogą odczuwać łagodne dolegliwości.",
+				"2": "Dzieci, osoby starsze i osoby z astmą lub problemami oddechowymi powinny ograniczyć aktywność na zewnątrz.",
+				"3": "U wszystkich mogą wystąpić trudności z oddychaniem. Ogranicz aktywność na zewnątrz i rozważ użycie maski ochronnej.",
+				"4": "Poważne skutki zdrowotne dla wszystkich. Unikaj aktywności na zewnątrz. Pozostań w pomieszczeniach z zamkniętymi oknami.",
+				"5": "Sytuacja kryzysowa. Wszyscy powinni unikać pobytu na zewnątrz. Obowiązuje ostrzeżenie zdrowotne."
+			}
+		},
+		"pm25": {
+			"main": "PM2,5 to drobne cząstki o średnicy nie większej niż 2,5 mikrometra. Mogą przenikać głęboko do płuc i do krwi, powodując poważne problemy zdrowotne. Powstają głównie podczas spalania, między innymi w transporcie, ogrzewaniu, pożarach lasów i przemyśle. Ze względu na niewielkie rozmiary pozostają w powietrzu dłużej i przemieszczają się dalej niż większe cząstki.",
+			"text": {
+				"0": "Doskonała jakość powietrza, z minimalnym ryzykiem zdrowotnym dla wszystkich.",
+				"1": "Jakość powietrza akceptowalna dla większości osób, choć osoby wrażliwe mogą odczuwać łagodne dolegliwości.",
+				"2": "Dzieci, osoby starsze i osoby z chorobami serca lub płuc powinny ograniczyć aktywność na zewnątrz.",
+				"3": "U wszystkich mogą wystąpić skutki zdrowotne. Ogranicz aktywność na zewnątrz i rozważ użycie maski ochronnej.",
+				"4": "Poważne skutki zdrowotne dla wszystkich. Unikaj aktywności na zewnątrz. Pozostań w pomieszczeniach z zamkniętymi oknami.",
+				"5": "Sytuacja kryzysowa. Wszyscy powinni unikać kontaktu z powietrzem na zewnątrz. Obowiązują ostrzeżenia zdrowotne."
+			}
+		},
+		"pollutant": {
+			"values": "Poziomy stężenia"
+		},
+		"provider": "Dane dostarcza ",
+		"title": "Jakość powietrza",
+		"usaqi": {
+			"main": "Amerykański indeks jakości powietrza (US AQI) opisuje jakość powietrza w Stanach Zjednoczonych. Przyjmuje wartości od 0 do 500: im wyższa wartość, tym większe zanieczyszczenie i ryzyko zdrowotne. Służy do ostrzegania ludności przed niebezpiecznym zanieczyszczeniem. Osoby z chorobami serca lub układu oddechowego są szczególnie narażone.\n\nOficjalne zalecenia amerykańskiej Agencji Ochrony Środowiska (EPA) i bieżące dane o zanieczyszczeniu powietrza znajdziesz na tej stronie:",
+			"text": {
+				"0": "Doskonała jakość powietrza, bez zagrożenia dla zdrowia. Idealne warunki do wszelkich aktywności i ćwiczeń na zewnątrz.",
+				"1": "Jakość powietrza akceptowalna dla większości osób. Osoby szczególnie wrażliwe mogą odczuwać łagodne objawy oddechowe.",
+				"2": "Osoby wrażliwe, w tym dzieci, osoby starsze i osoby z chorobami serca lub płuc, mogą odczuwać skutki zdrowotne. Pozostałe osoby raczej nie będą dotknięte.",
+				"3": "U wszystkich mogą zacząć pojawiać się skutki zdrowotne, poważniejsze u osób wrażliwych. Unikaj długotrwałego wysiłku na zewnątrz.",
+				"4": "Alarm zdrowotny. U wszystkich mogą wystąpić poważne skutki zdrowotne. Unikaj wszelkiej aktywności na zewnątrz, zwłaszcza ćwiczeń.",
+				"5": "Sytuacja kryzysowa dotycząca całej ludności. Pozostań w pomieszczeniach, zamknij okna i drzwi. Unikaj wszelkiej aktywności na zewnątrz."
+			},
+			"value": {
+				"0": "Dobra",
+				"1": "Umiarkowana",
+				"2": "Niezdrowa dla osób wrażliwych",
+				"3": "Niezdrowa",
+				"4": "Bardzo niezdrowa",
+				"5": "Niebezpieczna"
+			}
+		},
+		"value": {
+			"0": "Dobra",
+			"1": "Umiarkowana",
+			"2": "Niezdrowa dla osób wrażliwych",
+			"3": "Niezdrowa",
+			"4": "Bardzo niezdrowa",
+			"5": "Niebezpieczna"
+		}
+	},
+	"alerts": {
+		"area": "Obszar",
+		"description": "Opis zjawiska",
+		"disclaimer": "Ostrzeżenia są wydawane przez właściwe lokalne instytucje",
+		"expires": "Ważne do",
+		"instructions": "Zalecenia",
+		"modaltitle": "Ostrzeżenia pogodowe",
+		"severity": "Stopień zagrożenia",
+		"severity.extreme": "Ekstremalny",
+		"severity.minor": "Niski",
+		"severity.moderate": "Umiarkowany",
+		"severity.severe": "Wysoki",
+		"severity.unknown": "Nieznany",
+		"title": "ostrzeżenia pogodowe"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "W meteorologii zachmurzenie oznacza część nieba pokrytą chmurami. W obserwacjach profesjonalnych używa się oktantów, ale dla ułatwienia często stosuje się procenty lub opisy słowne.",
+			"title": "Zachmurzenie w procentach",
+			"values": "Poziom zachmurzenia"
+		},
+		"title": "Zachmurzenie"
+	},
+	"compass": {
+		"button": {
+			"location": "Zezwól na dostęp do lokalizacji"
+		},
+		"text": "Kompas wymaga obsługiwanego urządzenia Apple z magnetometrem.\n\niOS może poprosić o zgodę przed użyciem tego czujnika.",
+		"title": "Kompas"
+	},
+	"condition": {
+		"blizzard": "Zamieć śnieżna",
+		"clear": {
+			"day": "Słonecznie",
+			"night": "Bezchmurnie"
+		},
+		"cloudy": "Pochmurno",
+		"fog": "Mgła",
+		"freezingfog": "Mgła marznąca",
+		"freezingrain": "Marznący deszcz",
+		"lightrain": "Słaby deszcz",
+		"lightsnow": "Słaby śnieg",
+		"overcast": "Całkowite zachmurzenie",
+		"partlycloudy": "Częściowe zachmurzenie",
+		"rain": "Deszcz",
+		"snow": "Śnieg",
+		"thunderstorm": "Burza"
+	},
+	"dailyforecast": {
+		"title": "Prognoza dzienna",
+		"today": "dziś"
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Bezchmurnie",
+			"1": "Częściowe zachmurzenie",
+			"2": "Pochmurno",
+			"3": "Całkowite zachmurzenie"
+		},
+		"humidity": {
+			"0": "Bardzo sucho",
+			"1": "Komfortowo",
+			"2": "Wilgotno",
+			"3": "Bardzo wilgotno",
+			"4": "Wyjątkowo wilgotno"
+		},
+		"moon": {
+			"firstquarter": "Pierwsza kwadra",
+			"fullmoon": "Pełnia",
+			"lastquarter": "Ostatnia kwadra",
+			"newmoon": "Nów",
+			"waningcrescent": "Sierp ubywający",
+			"waninggibbous": "Księżyc garbaty ubywający",
+			"waxingcrescent": "Sierp przybywający",
+			"waxinggibbous": "Księżyc garbaty przybywający"
+		},
+		"precip": {
+			"rain": {
+				"0": "Słaby deszcz",
+				"1": "Umiarkowany deszcz",
+				"2": "Silny deszcz"
+			},
+			"snow": {
+				"0": "Słaby śnieg",
+				"1": "Umiarkowany śnieg",
+				"2": "Intensywne opady śniegu"
+			}
+		},
+		"pressure": {
+			"0": "Skrajnie niskie",
+			"1": "Bardzo niskie",
+			"2": "Niskie",
+			"3": "Nieznacznie obniżone",
+			"4": "Normalne",
+			"5": "Nieznacznie podwyższone",
+			"6": "Wysokie",
+			"7": "Bardzo wysokie",
+			"8": "Skrajnie wysokie"
+		},
+		"snow": {
+			"0": "Nie przewiduje się",
+			"1": "Niskie prawdopodobieństwo",
+			"2": "Umiarkowane prawdopodobieństwo",
+			"3": "Spodziewany śnieg"
+		},
+		"uv": {
+			"0": "Niski",
+			"1": "Umiarkowany",
+			"2": "Wysoki",
+			"3": "Bardzo wysoki",
+			"4": "Ekstremalny"
+		},
+		"range": {
+			"0": "Gęsta mgła",
+			"1": "Zamglenie",
+			"2": "Lekka mgła",
+			"3": "Lekka mgiełka",
+			"4": "Dobra",
+			"5": "Bardzo dobra",
+			"6": "Doskonała"
+		},
+		"windspeed": {
+			"0": "Cisza",
+			"1": "Powiew",
+			"10": "Sztorm",
+			"11": "Gwałtowny sztorm",
+			"12": "Huragan",
+			"2": "Słaby wiatr",
+			"3": "Łagodny wiatr",
+			"4": "Umiarkowany wiatr",
+			"5": "Dość silny wiatr",
+			"6": "Silny wiatr",
+			"7": "Bardzo silny wiatr",
+			"8": "Wicher",
+			"9": "Silny wicher"
+		}
+	},
+	"feelslike": "Odczuwalna:",
+	"hourlyforecast": {
+		"now": "Teraz",
+		"title": "Prognoza godzinowa"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "Punkt rosy to temperatura, przy której para wodna w powietrzu zaczyna skraplać się w krople rosy. Im wyższy punkt rosy, tym więcej wilgoci zawiera powietrze. Lepiej niż wilgotność względna opisuje odczucie parności.",
+			"title": "Punkt rosy"
+		},
+		"relativehumidity": {
+			"text": "Wilgotność względna określa ilość pary wodnej w powietrzu w stosunku do maksymalnej ilości możliwej przy danej temperaturze. Wyraża się ją w procentach i wpływa na to, jak odczuwamy pogodę.",
+			"title": "Wilgotność względna",
+			"values": "Wartości procentowe"
+		},
+		"title": "Wilgotność"
+	},
+	"localtime": "Czas lokalny",
+	"remainingtime": "Za {time}",
+	"localweather": {
+		"error": {
+			"permission": {
+				"title": "Dostęp do lokalizacji jest zablokowany",
+				"message": "Zezwól na dostęp do lokalizacji w ustawieniach urządzenia lub przeglądarki."
+			},
+			"unavailable": {
+				"title": "Lokalizacja jest niedostępna",
+				"message": "Urządzenie nie mogło ustalić Twojej aktualnej lokalizacji."
+			},
+			"timeout": {
+				"title": "Przekroczono czas ustalania lokalizacji",
+				"message": "Spróbuj ponownie w miejscu z lepszym sygnałem GPS lub sieci."
+			},
+			"network": {
+				"title": "Nie można połączyć się z usługą pogodową",
+				"message": "Sprawdź połączenie z Internetem i spróbuj ponownie."
+			},
+			"server": {
+				"title": "Usługa pogodowa jest niedostępna",
+				"message": "Dostawca danych pogodowych zwrócił błąd. Spróbuj ponownie później."
+			},
+			"source": {
+				"title": "Nie skonfigurowano źródła pogody",
+				"message": "Wybierz źródło pogody w ustawieniach przed wczytaniem pogody dla swojej lokalizacji."
+			},
+			"unknown": {
+				"title": "Nie udało się wczytać pogody dla lokalizacji",
+				"message": "Podczas wczytywania pogody dla lokalizacji wystąpił nieoczekiwany błąd."
+			},
+			"retry": "Spróbuj ponownie"
+		}
+	},
+	"maps": {
+		"layer": {
+			"0": "Temperatura",
+			"1": "Opady",
+			"2": "Wiatr"
+		},
+		"legend": {
+			"precipitation": "Kliknij mapę, aby zobaczyć aktualne opady.",
+			"temperature": "Kliknij mapę, aby zobaczyć aktualną temperaturę.",
+			"title": "Legenda",
+			"wind": "Kliknij mapę, aby zobaczyć aktualną prędkość wiatru."
+		},
+		"loading": "Wczytywanie mapy…",
+		"loadError": "Nie udało się wczytać mapy. Sprawdź połączenie i spróbuj ponownie.",
+		"currentTemperature": "Aktualna temperatura",
+		"temperatureUnavailable": "Temperatura niedostępna",
+		"weatherUnavailable": "Dane pogodowe niedostępne",
+		"title": "Mapy"
+	},
+	"modal": {
+		"description": "Opis"
+	},
+	"moon": {
+		"cycle": "Cykl Księżyca",
+		"description": "Księżyc przechodzi regularny cykl ośmiu faz, który trwa około 29,5 dnia. Fazy zmieniają się, gdy Księżyc obiega Ziemię i zmienia się kąt oświetlenia przez Słońce. W każdej fazie widzimy inną część oświetlonej powierzchni Księżyca. Fazy Księżyca wpływają na pływy.",
+		"illumination": "Oświetlenie:",
+		"moonrise": "Wschód Księżyca:",
+		"moonset": "Zachód Księżyca:",
+		"now": "Aktualne dane Księżyca",
+		"phase": "Faza Księżyca",
+		"phase.firstquarter": "Pierwsza kwadra",
+		"phase.fullmoon": "Pełnia",
+		"phase.lastquarter": "Ostatnia kwadra",
+		"phase.newmoon": "Nów",
+		"phase.waningcrescent": "Sierp ubywający",
+		"phase.waninggibbous": "Księżyc garbaty ubywający",
+		"phase.waxingcrescent": "Sierp przybywający",
+		"phase.waxinggibbous": "Księżyc garbaty przybywający",
+		"text": {
+			"firstquarter": "Oświetlona jest prawa połowa Księżyca",
+			"fullmoon": "Księżyc jest w pełni oświetlony i najjaśniejszy",
+			"lastquarter": "Oświetlona jest lewa połowa Księżyca",
+			"newmoon": "Księżyc jest niewidoczny, rozpoczyna się nowy cykl",
+			"waningcrescent": "Po lewej stronie widoczny jest cienki oświetlony sierp",
+			"waninggibbous": "Oświetlona jest ponad połowa tarczy, ale oświetlona część się zmniejsza",
+			"waxingcrescent": "Po prawej stronie widoczny jest cienki oświetlony sierp",
+			"waxinggibbous": "Oświetlona jest ponad połowa tarczy, Księżyc zbliża się do pełni"
+		},
+		"title": "Księżyc"
+	},
+	"precipitation": {
+		"chance": {
+			"0": "Nie przewiduje się",
+			"1": "Niskie prawdopodobieństwo",
+			"2": "Możliwe przelotne opady",
+			"3": "Prawdopodobne",
+			"4": "Bardzo prawdopodobne",
+			"5": "Niemal pewne",
+			"6": "Pewne"
+		},
+		"rainfall": {
+			"0": "Słaby deszcz",
+			"1": "Umiarkowany deszcz",
+			"2": "Silny deszcz",
+			"3": "Bardzo silny deszcz",
+			"4": "Ekstremalny deszcz"
+		},
+		"snow": {
+			"chance": {
+				"2": "Możliwe przelotne opady śniegu"
+			}
+		},
+		"snowfall": {
+			"0": "Pojedyncze płatki",
+			"1": "Słabe opady śniegu",
+			"2": "Intensywne opady śniegu",
+			"3": "Bardzo intensywne opady śniegu",
+			"4": "Ekstremalne opady śniegu"
+		}
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "Skala ciśnienia klasyfikuje ciśnienie atmosferyczne według wartości i typowych warunków pogodowych. Obejmuje dziewięć stopni, z których każdy odpowiada określonemu zakresowi ciśnienia i charakterystycznej pogodzie.",
+			"title": "Skala ciśnienia",
+			"values": "Wartości skali"
+		},
+		"text": {
+			"0": "Silne burze, intensywny deszcz",
+			"1": "Niestabilna pogoda, częste przelotne opady",
+			"2": "Pochmurne niebo, zmienna pogoda",
+			"3": "Przejaśnienia, możliwe słabe opady",
+			"4": "Stabilna pogoda, przyjemne warunki",
+			"5": "Przeważnie bezchmurnie i spokojnie",
+			"6": "Bezchmurnie lub częściowe zachmurzenie, słaby wiatr",
+			"7": "Bardzo spokojna pogoda, możliwa mgła",
+			"8": "Wyjątkowo stabilna i bezchmurna pogoda"
+		},
+		"title": "Ciśnienie"
+	},
+	"rain": {
+		"chance": {
+			"description": "Wartość procentowa określa prawdopodobieństwo deszczu w danym miejscu w okresie objętym prognozą. Nie opisuje intensywności ani oczekiwanej ilości deszczu.",
+			"text": {
+				"0": "Deszcz bardzo mało prawdopodobny",
+				"1": "Możliwe pojedyncze przelotne opady, w większości miejsc bez deszczu",
+				"2": "Prawdopodobne rozproszone opady, deszcz wystąpi w niektórych miejscach",
+				"3": "Deszcz bardzo prawdopodobny, spodziewany na dużej części obszaru",
+				"4": "Deszcz niemal pewny, obejmie większość obszaru",
+				"5": "Deszcz praktycznie pewny, prawdopodobnie na całym obszarze"
+			},
+			"title": "Prawdopodobieństwo opadów",
+			"values": "Prawdopodobieństwo w procentach"
+		},
+		"rainfall": "Deszcz:",
+		"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy. Prawdopodobieństwo deszczu i śniegu podano osobno.",
+		"rainfall.title": "Suma opadów",
+		"rainfall.values": "Zakresy sumy opadów",
+		"title": "Deszcz"
+	},
+	"smartsummary": {
+		"title": "Podsumowanie pogody"
+	},
+	"snow": {
+		"chance": {
+			"description": "Wartość procentowa określa prawdopodobieństwo śniegu w danym miejscu w okresie objętym prognozą. Nie opisuje intensywności ani oczekiwanej ilości śniegu.",
+			"text": {
+				"0": "Śnieg bardzo mało prawdopodobny",
+				"1": "Możliwe pojedyncze przelotne opady śniegu, w większości miejsc bez śniegu",
+				"2": "Prawdopodobne rozproszone opady śniegu, śnieg wystąpi w niektórych miejscach",
+				"3": "Śnieg bardzo prawdopodobny, spodziewany na dużej części obszaru",
+				"4": "Śnieg niemal pewny, obejmie większość obszaru",
+				"5": "Śnieg praktycznie pewny, prawdopodobnie na całym obszarze"
+			},
+			"title": "Prawdopodobieństwo opadów",
+			"values": "Prawdopodobieństwo w procentach"
+		},
+		"snowfall": "Przyrost pokrywy śnieżnej:",
+		"snowfall.description": "Przyrost pokrywy śnieżnej w centymetrach określa grubość świeżego śniegu oczekiwaną w okresie objętym prognozą. Ta wartość opisuje ilość śniegu, która może się zgromadzić, a prawdopodobieństwo opadów określa szansę jego wystąpienia.",
+		"snowfall.title": "Przyrost pokrywy śnieżnej",
+		"snowfall.values": "Zakresy przyrostu pokrywy",
+		"title": "Śnieg"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "Świt to okres stopniowego rozjaśniania nieba przed wschodem Słońca. Zapowiada nowy dzień i zwykle trwa od 20 do 40 minut, zależnie od pory roku i szerokości geograficznej.",
+			"title": "Świt"
+		},
+		"modaltitle": "Wschód Słońca",
+		"text": "Wschód Słońca to chwila, gdy Słońce pojawia się nad horyzontem. Niebo zaczyna rozjaśniać się wcześniej. Godzina wschodu zmienia się w ciągu roku. Na półkuli północnej zimą Słońce wschodzi później, a latem wcześniej. Najwcześniejsze wschody przypadają w pobliżu przesilenia letniego w czerwcu, a najpóźniejsze w pobliżu przesilenia zimowego w grudniu.",
+		"title": "Wschód Słońca"
+	},
+	"sunset": {
+		"modaltitle": "Zachód Słońca",
+		"text": "Zachód Słońca to chwila, gdy Słońce znika pod horyzontem. Niebo pozostaje jeszcze przez pewien czas jasne. Godzina zachodu zmienia się w ciągu roku. Na półkuli północnej zimą Słońce zachodzi wcześniej, a latem później. Najpóźniejsze zachody przypadają w pobliżu przesilenia letniego w czerwcu, a najwcześniejsze w pobliżu przesilenia zimowego w grudniu.",
+		"title": "Zachód Słońca",
+		"twilight": {
+			"text": "Zmierzch to okres stopniowego ciemnienia nieba po zachodzie Słońca. Niebo może wtedy przybierać ciepłe barwy. Zwykle trwa od 20 do 40 minut, zależnie od pory roku i szerokości geograficznej.",
+			"title": "Zmierzch"
+		}
+	},
+	"uv": {
+		"index": {
+			"description": "Indeks UV to międzynarodowy wskaźnik intensywności promieniowania ultrafioletowego docierającego do powierzchni Ziemi. Pomaga ocenić ryzyko uszkodzenia skóry przez słońce i dobrać odpowiednią ochronę.",
+			"title": "O indeksie UV",
+			"values": "Wartości indeksu"
+		},
+		"radiation": {
+			"description": "Promieniowanie ultrafioletowe (UV) to promieniowanie elektromagnetyczne niewidoczne dla ludzkiego oka. Naturalnie występuje w świetle słonecznym, ale może też być wytwarzane sztucznie. W małych ilościach pomaga na przykład w produkcji witaminy D, jednak nadmierna ekspozycja jest szkodliwa.",
+			"title": "Promieniowanie ultrafioletowe"
+		},
+		"text": {
+			"0": "Nie jest potrzebna szczególna ochrona przed słońcem",
+			"1": "Noś nakrycie głowy i używaj kremu z filtrem SPF 15 lub wyższym. Unikaj słońca w południe.",
+			"2": "Noś nakrycie głowy i okulary przeciwsłoneczne. Używaj kremu z filtrem SPF 30 lub wyższym i w południe przebywaj w cieniu. Niechroniona skóra może ulec poparzeniu w ciągu 15–20 minut.",
+			"3": "Noś nakrycie głowy, okulary przeciwsłoneczne i odzież ochronną. Używaj kremu z filtrem SPF 50 lub wyższym i ogranicz pobyt na zewnątrz w południe. Niechroniona skóra może ulec poparzeniu w mniej niż 15 minut.",
+			"4": "Potrzebna jest pełna ochrona przed słońcem. Nie przebywaj na zewnątrz bez zabezpieczenia."
+		}
+	},
+	"range": {
+		"about": "Definicja",
+		"text": "Widoczność określa maksymalną odległość, z której można rozpoznać obiekty gołym okiem. Wpływają na nią mgła, wilgotność, zanieczyszczenie i opady. Jest ważna dla bezpieczeństwa ruchu drogowego, lotnictwa i żeglugi.",
+		"title": "Widoczność",
+		"values": "Skala widoczności"
+	},
+	"wind": {
+		"beaufortscale": "Skala Beauforta",
+		"current": {
+			"direction": "Kierunek",
+			"gust": "Porywy",
+			"speed": "Prędkość",
+			"title": "Aktualne dane wiatru"
+		},
+		"description": "Skala Beauforta klasyfikuje siłę wiatru na podstawie jego wpływu na otoczenie. Jest używana na całym świecie w meteorologii, żegludze i lotnictwie. Pozwala szybko ocenić siłę wiatru na podstawie widocznych skutków. Obejmuje trzynaście stopni, od 0 do 12, z których każdy odpowiada określonemu zakresowi prędkości i typowym warunkom na lądzie i morzu.",
+		"label": {
+			"long": {
+				"E": "wschód",
+				"ENE": "wschód-północny wschód",
+				"ESE": "wschód-południowy wschód",
+				"N": "północ",
+				"NE": "północny wschód",
+				"NNE": "północ-północny wschód",
+				"NNW": "północ-północny zachód",
+				"NW": "północny zachód",
+				"S": "południe",
+				"SE": "południowy wschód",
+				"SSE": "południe-południowy wschód",
+				"SSW": "południe-południowy zachód",
+				"SW": "południowy zachód",
+				"W": "zachód",
+				"WNW": "zachód-północny zachód",
+				"WSW": "zachód-południowy zachód"
+			},
+			"short": {
+				"E": "E",
+				"ENE": "ENE",
+				"ESE": "ESE",
+				"N": "N",
+				"NE": "NE",
+				"NNE": "NNE",
+				"NNW": "NNW",
+				"NW": "NW",
+				"S": "S",
+				"SE": "SE",
+				"SSE": "SSE",
+				"SSW": "SSW",
+				"SW": "SW",
+				"W": "W",
+				"WNW": "WNW",
+				"WSW": "WSW"
+			}
+		},
+		"title": "Wiatr",
+		"values": "Wartości skali"
+	},
+	"rainfall": "Suma opadów:",
+	"rainfall.title": "Suma opadów",
+	"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy."
+}

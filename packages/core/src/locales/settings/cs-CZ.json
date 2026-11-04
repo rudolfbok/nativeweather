@@ -1,0 +1,72 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather je cross-platform aplikace pro zobrazení aktuálního počasí, krátkodobé a dlouhodobé předpovědi. Aplikace zobrazuje aktuální hodnoty znečištění ovzduší a umožňuje sledovat důležité ukazatele kvality vzduchu. Součástí jsou také mapové podklady a meteorologické mapové vrstvy pro celý svět.",
+		"title": "O aplikaci"
+	},
+	"airquality": {
+		"american": "Americký",
+		"european": "Evropský",
+		"title": "Kvalita ovzduší",
+		"titlefull": "Index kvality ovzduší",
+		"titleshort": "IKO"
+	},
+	"compass": {
+		"title": "Kompas"
+	},
+	"datasource": {
+		"weatherapi": "Aktuální počasí",
+		"openmeteo": "Meteorologická data a počasí",
+		"openfreemap": "Mapové podklady",
+		"title": "Zdroje dat"
+	},
+	"feedback": {
+		"bug": "Chyba",
+		"button": {
+			"send": "Poslat názor",
+			"sending": "Odesílání názoru..."
+		},
+		"feature": "Funkce",
+		"feedback": "Zpráva",
+		"message": "Zpráva",
+		"placeholder": "Sem napište zprávu..",
+		"question": "Otázka",
+		"select": "Zvolte typ zprávy",
+		"title": "Poslat názor",
+		"toast": {
+			"error": "Názor se nepodařilo odeslat",
+			"sent": "Názor odeslán"
+		},
+		"type": "Typ"
+	},
+	"language": {
+		"title": "Jazyk"
+	},
+	"legal": {
+		"title": "Právní informace"
+	},
+	"localweather": "Místní počasí",
+	"privacyPolicy": "Ochrana osobních údajů",
+	"settings": "Nastavení",
+	"source": {
+		"title": "Zdroj"
+	},
+	"temperatureScale": {
+		"celsius": "Celsia",
+		"fahrenheit": "Fahrenheita"
+	},
+	"temperature": "Teplota",
+	"theme": {
+		"dark": "Tmavý režim",
+		"light": "Světlý režim",
+		"system": "Podle systému",
+		"title": "Vzhled"
+	},
+	"units": {
+		"imperial": "Imperiální",
+		"metric": "Metrické",
+		"title": "Jednotky"
+	},
+	"version": "verze",
+	"termsOfService": "Podmínky služby",
+	"localtime": "Místní čas"
+}

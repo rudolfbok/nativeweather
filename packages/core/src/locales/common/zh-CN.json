@@ -1,0 +1,44 @@
+{
+	"favorites": {
+		"delete": "删除",
+		"error": "无法加载收藏的城市，请重试。",
+		"loading": "正在加载收藏的城市…",
+		"nosaved": "还没有收藏的城市",
+		"share": "分享",
+		"title": "收藏"
+	},
+	"modal": {
+		"description": "说明"
+	},
+	"search": {
+		"city": {
+			"error": "无法加载天气"
+		},
+		"input": {
+			"error": "无法加载天气"
+		},
+		"searchbar": "搜索城市或经纬度…",
+		"searchbar.native": "搜索…",
+		"title": "搜索",
+		"url": {
+			"error": "未找到你要搜索的城市。\n请检查拼写，或加上国家名称后重试。"
+		}
+	},
+	"share": {
+		"message": "当前天气："
+	},
+	"tab": {
+		"home": "首页",
+		"maps": "地图",
+		"search": "搜索",
+		"settings": "设置",
+		"weather": "天气"
+	},
+	"toast": {
+		"add": "{name}已添加到收藏",
+		"city": "城市",
+		"notrefreshed": "无法更新天气",
+		"refreshed": "天气已更新",
+		"remove": "{name}已从收藏中移除"
+	}
+}

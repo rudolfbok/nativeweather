@@ -1,0 +1,541 @@
+{
+	"chart": {
+		"unavailable": "Graf pro tento den není dostupný",
+		"dailyTotal": "Denní úhrn",
+		"dailyChance": "Denní šance"
+	},
+	"airquality": {
+		"euaqi": {
+			"main": "Evropský index kvality ovzduší (EU IKO) je metrika kvality ovzduší používaná v Evropě. Hodnota odráží současnou kvalitu ovzduší. Existuje zvýšené riziko u lidí se srdečními a dýchacími potížemi.\n\nOficiální pokyny Evropské unie a údaje o znečištění ovzduší v reálném čase naleznete na této stránce:",
+			"text": {
+				"0": "Vynikající kvalita ovzduší bez zdravotních rizik. Ideální pro všechny outdoorové aktivity a cvičení.",
+				"1": "Uspokojivá kvalita ovzduší pro většinu lidí. Velmi minimální riziko pro extrémně citlivé osoby.",
+				"2": "Pro většinu lidí přijatelné, ale citliví jedinci mohou pociťovat mírné příznaky. Pokud jste citliví, zvažte omezení intenzivního pohybu venku.",
+				"3": "Zdravotní rizika pro citlivé skupiny. Mírné účinky se mohou vyskytnout u každého. Omezte dlouhodobé venkovní aktivity.",
+				"4": "Zdravotní rizika pro všechny. Vyhýbejte se dlouhodobým aktivitám a cvičení venku. Citlivý jedinci by měly zůstat uvnitř.",
+				"5": "Vážná zdravotní rizika pro všechny. Zcela se vyhýbejte venkovním aktivitám. Zůstaňte doma a mějte okna zavřená."
+			},
+			"value": {
+				"0": "Dobrý",
+				"1": "Uspokojivý",
+				"2": "Průměrný",
+				"3": "Špatný",
+				"4": "Velice špatný",
+				"5": "Extrémně špatný"
+			}
+		},
+		"index": {
+			"values": "Hodnoty indexu"
+		},
+		"item": {
+			"euaqi": "Evropský index",
+			"no2": "Oxid dusičitý",
+			"ozone": "Ozon",
+			"pm10": "Jemné částice < 10 μg",
+			"pm25": "Jemné částice < 2.5 μg",
+			"usaqi": "Americký index"
+		},
+		"no2": {
+			"main": "Oxid dusičitý (NO2) je toxický plyn pocházející především z výfukových plynů vozidel a elektráren. Může dráždit dýchací cesty, zhoršovat astma a zvyšovat náchylnost k respiračním infekcím. Dlouhodobá expozice může poškodit plicní tkáň a snížit plicní funkce.",
+			"text": {
+				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
+				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když citliví jedinci mohou zaznamenat menší účinky.",
+				"2": "Lidé s astmatem nebo dýchacími potížemi by měli omezit venkovní aktivity v blízkosti rušných silnic a průmyslových oblastí.",
+				"3": "U každého se mohou vyskytnout dýchací potíže. Vyhýbejte se cvičení v blízkosti dopravy a průmyslových zón.",
+				"4": "Vážné zdravotní následky pro všechny. Držte se dál od rušných silnic a průmyslových oblastí.",
+				"5": "Nouzové situace. Každý by se měl vyhýbat pobytu venku, zejména v blízkosti dopravy."
+			}
+		},
+		"o3": {
+			"main": "Přízemní ozon je škodlivý vzdušný polutant, který vzniká při reakci slunečního záření s emisemi z dopravy a průmyslu. Může způsobit bolesti na hrudi, kašel a zhoršovat astma a další plicní onemocnění. Je obzvláště nebezpečný během horkých slunečných dnů. Hodnoty bývají nejvyšší během teplých slunečných odpolední. Zranitelnější jsou děti, starší lidé a lidé, kteří se venku fyzicky namáhají.",
+			"text": {
+				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
+				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když neobvykle citliví jedinci mohou pociťovat mírné dýchací potíže.",
+				"2": "Aktivní děti, dospělí a lidé s plicními onemocněními by měli omezit dlouhodobé venkovní aktivity, zejména během slunečných hodin.",
+				"3": "U každého se mohou vyskytnout zdravotní problémy. Omezte venkovní aktivity během vrcholných slunečných hodin.\n",
+				"4": "Vážné zdravotní následky pro všechny. Vyhýbejte se venkovním aktivitám, zejména během odpoledních hodin.",
+				"5": "Nouzové situace. Každý by se měl vyhýbat pobytu venku. Platí zdravotní varování."
+			}
+		},
+		"pm10": {
+			"main": "PM10 označuje částice o průměru 10 mikrometrů nebo menším. Tyto částice mohou dráždit oči, nos a krk, a mohou zhoršovat astma a další dýchací potíže. Při vyšších koncentracích mohou způsobit kašel, dušnost a zánětlivé reakce dýchacích cest. Často pocházejí z prachu, silniční dopravy, stavebních prací a pylu. Při vysokých koncentracích může expozici snížit pobyt uvnitř a zavřená okna.",
+			"text": {
+				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
+				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když citliví jedinci mohou mít menší problémy.",
+				"2": "Děti, starší lidé a lidé s astmatem nebo dýchacími potížemi by měli omezit venkovní aktivity.",
+				"3": "U každého se mohou vyskytnout dýchací potíže. Omezte venkovní aktivity a zvažte nošení roušek.",
+				"4": "Vážné zdravotní následky pro všechny. Vyhýbejte se venkovním aktivitám. Zůstaňte uvnitř se zavřenými okny.",
+				"5": "Nouzové situace. Každý by se měl vyhýbat pobytu venku. Platí zdravotní varování."
+			}
+		},
+		"pm25": {
+			"main": "PM2.5 označuje jemné částice o průměru 2.5 mikrometru nebo menším. Tyto drobné částice mohou pronikat hluboko do plic a krevního oběhu a způsobit vážné zdravotní problémy, včetně srdečních onemocnění, mrtvice a respiračních potíží. Často vznikají při spalování, například v dopravě, při vytápění, lesních požárech nebo průmyslové činnosti. Protože jsou velmi malé, mohou ve vzduchu zůstávat déle a šířit se dál než větší částice.",
+			"text": {
+				"0": "Kvalita ovzduší je vynikající s minimálním zdravotním rizikem pro všechny skupiny.",
+				"1": "Kvalita ovzduší je pro většinu lidí přijatelná, i když citliví jedinci mohou mít menší problémy.",
+				"2": "Děti, starší lidé a lidé se srdečními/plicními onemocněními by měli omezit venkovní aktivity.",
+				"3": "U každého se mohou vyskytnout zdravotní problémy. Omezte venkovní aktivity a zvažte nošení roušek.",
+				"4": "Vážné zdravotní následky pro všechny. Vyhýbejte se venkovním aktivitám. Zůstaňte uvnitř se zavřenými okny.",
+				"5": "Nouzové situace. Každý by se měl vyhýbat pobytu venku. Platí zdravotní varování."
+			}
+		},
+		"pollutant": {
+			"values": "Hodnoty koncentrace"
+		},
+		"provider": "Data jsou poskytována",
+		"title": "Kvalita ovzduší",
+		"usaqi": {
+			"main": "Americký index kvality ovzduší (IKO) je metrika kvality ovzduší používaná ve Spojených státech. Hodnota se pohybuje od 0 do 500, přičemž vyšší hodnota IKO znamená vyšší úroveň znečištění ovzduší a větší zdravotní riziko. Systém slouží k varování veřejnosti, když je znečištění ovzduší nebezpečné. Existuje zvýšené riziko u lidí se srdečními a dýchacími potížemi.\n\nOficiální pokyny Americké agentury pro ochranu životního prostředí (EPA) a údaje o znečištění ovzduší v reálném čase naleznete na této stránce:",
+			"text": {
+				"0": "Vynikající kvalita ovzduší bez zdravotních rizik. Ideální pro všechny outdoorové aktivity a cvičení.",
+				"1": "Kvalita ovzduší je pro většinu lidí přijatelná. U neobvykle citlivých jedinců se mohou vyskytnout mírné respirační potíže.",
+				"2": "Citlivé skupiny (děti, starší osoby, lidé se srdečními/plicními onemocněními) mohou pociťovat zdravotní účinky. Obyčejná veřejnost pravděpodobně nebude ovlivněna.",
+				"3": "U všech osob se mohou začít projevovat zdravotní potíže. U citlivých skupin mohou být tyto potíže závažnější. Vyhněte se dlouhodobé fyzické námaze venku.",
+				"4": "Zdravotní výstraha. Každý může pocítit vážné zdravotní potíže. Vyhněte se všem venkovním aktivitám, zejména cvičení.",
+				"5": "Nouzové podmínky ovlivňující celou populaci. Zůstaňte uvnitř s uzavřenými okny a dveřmi. Vyhněte se všem venkovním aktivitám."
+			},
+			"value": {
+				"0": "Dobrý",
+				"1": "Průměrný",
+				"2": "Nezdravé pro citlivé skupiny",
+				"3": "Nezdravé",
+				"4": "Velice nezdravé",
+				"5": "Nebezpečné"
+			}
+		},
+		"value": {
+			"0": "Dobrý",
+			"1": "Průměrný",
+			"2": "Nezdravé pro citlivé skupiny",
+			"3": "Nezdravé",
+			"4": "Velice nezdravé",
+			"5": "Nebezpečné"
+		}
+	},
+	"alerts": {
+		"area": "Oblast",
+		"description": "Popis události",
+		"disclaimer": "Výstrahy vydávají místní vládní orgány",
+		"expires": "Platnost vyprší",
+		"instructions": "Instrukce a pokyny",
+		"modaltitle": "Upozornění na počasí",
+		"severity": "Závažnost",
+		"severity.extreme": "Extrémní",
+		"severity.minor": "Nízká",
+		"severity.moderate": "Mírná",
+		"severity.severe": "Vážná",
+		"severity.unknown": "Neznámá",
+		"title": "upozornění na počasí"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "Oblačnost se v meteorologii měří podle toho, kolik procent oblohy je pokryto mraky. Profesionální meteorologové používají osminy (oktas), ale pro snadnější orientaci se často uvádějí procenta nebo slovní vyjádření.",
+			"title": "Procentuální oblačnost",
+			"values": "Úroveň pokrytí"
+		},
+		"title": "Oblačnost"
+	},
+	"compass": {
+		"button": {
+			"location": "Povolit přístup k poloze"
+		},
+		"text": "Funkce kompasu vyžaduje podporované zařízení Apple s magnetometrem.\n\niOS se může před použitím tohoto hardwaru zeptat na povolení.",
+		"title": "Kompas"
+	},
+	"condition": {
+		"blizzard": "Blizzard",
+		"clear": {
+			"day": "Slunečno",
+			"night": "Jasno"
+		},
+		"cloudy": "Oblačno",
+		"fog": "Mlha",
+		"freezingfog": "Mrznoucí mlha",
+		"freezingrain": "Mrznoucí déšť",
+		"lightrain": "Lehký déšť",
+		"lightsnow": "Lehký sníh",
+		"overcast": "Zataženo",
+		"partlycloudy": "Částečně zataženo",
+		"rain": "Déšť",
+		"snow": "Sníh",
+		"thunderstorm": "Bouřky"
+	},
+	"dailyforecast": {
+		"title": "Denní předpověď",
+		"today": "dnes"
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Jasná obloha",
+			"1": "Polojasno",
+			"2": "Oblačno",
+			"3": "Zataženo"
+		},
+		"humidity": {
+			"0": "Velmi sucho",
+			"1": "Příjemně",
+			"2": "Vlhko",
+			"3": "Velmi vlhko",
+			"4": "Extrémně vlhko"
+		},
+		"moon": {
+			"firstquarter": "První čtvrť",
+			"fullmoon": "Úplněk",
+			"lastquarter": "Poslední čtvrť",
+			"newmoon": "Nov",
+			"waningcrescent": "Ubývající srpek",
+			"waninggibbous": "Ubývající měsíc",
+			"waxingcrescent": "Dorůstající srpek",
+			"waxinggibbous": "Dorůstající měsíc"
+		},
+		"precip": {
+			"rain": {
+				"0": "Lehký déšť",
+				"1": "Mírný déšť",
+				"2": "Silný déšť"
+			},
+			"snow": {
+				"0": "Slabé sněžení",
+				"1": "Mírné sněžení",
+				"2": "Silné sněžení"
+			}
+		},
+		"pressure": {
+			"0": "Extrémně nízký",
+			"1": "Velmi nízký",
+			"2": "Nízký",
+			"3": "Mírně snížený",
+			"4": "Normální",
+			"5": "Mírně zvýšený",
+			"6": "Vysoký",
+			"7": "Velmi vysoký",
+			"8": "Extrémně vysoký"
+		},
+		"snow": {
+			"0": "Neočekává se",
+			"1": "Malá šance",
+			"2": "Velká šance",
+			"3": "Bude sněžit"
+		},
+		"uv": {
+			"0": "Minimální",
+			"1": "Střední",
+			"2": "Vysoké",
+			"3": "Velmi vysoké",
+			"4": "Extrémní"
+		},
+		"range": {
+			"0": "Hustá mlha",
+			"1": "Mlha",
+			"2": "Lehká mlha",
+			"3": "Mírný opar",
+			"4": "Dobrá",
+			"5": "Velmi dobrá",
+			"6": "Vyjímečná"
+		},
+		"windspeed": {
+			"0": "Bezvětří",
+			"1": "Vánek",
+			"10": "Silná vichřice",
+			"11": "Mohutná vichřice",
+			"12": "Orkán",
+			"2": "Slabý vítr",
+			"3": "Mírný vítr",
+			"4": "Dosti čerstvý vítr",
+			"5": "Čerstvý vítr",
+			"6": "Silný vítr",
+			"7": "Prudký vítr",
+			"8": "Bouřlivý vítr",
+			"9": "Bouřlivý vítr"
+		}
+	},
+	"feelslike": "Pocitově:",
+	"hourlyforecast": {
+		"now": "Teď",
+		"title": "Hodinová předpověď"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "Rosný bod je teplota, při které se vodní pára ve vzduchu začne srážet v kapičky rosy. Čím vyšší je rosný bod, tím více vlhkosti vzduch obsahuje. Rosný bod lépe než relativní vlhkost popisuje, jaké dusno bude.",
+			"title": "Rosný bod"
+		},
+		"relativehumidity": {
+			"text": "Relativní vlhkost vzduchu udává množství vodní páry obsažené v atmosféře a je důležitým faktorem pro vnímání počasí. Měří se v procentech relativní vlhkosti.",
+			"title": "Relativní vlhkost vzduchu",
+			"values": "Procentuální hodnoty"
+		},
+		"title": "Vlhkost"
+	},
+	"localtime": "Místní čas",
+	"remainingtime": "Za {time}",
+	"localweather": {
+		"error": {
+			"permission": {
+				"title": "Přístup k poloze je zablokovaný",
+				"message": "Povolte přístup k poloze v nastavení zařízení nebo prohlížeče."
+			},
+			"unavailable": {
+				"title": "Poloha není dostupná",
+				"message": "Zařízení nedokázalo určit vaši aktuální polohu."
+			},
+			"timeout": {
+				"title": "Požadavek na polohu vypršel",
+				"message": "Zkuste to znovu na místě s lepším GPS nebo síťovým signálem."
+			},
+			"network": {
+				"title": "Nelze se spojit se službou počasí",
+				"message": "Zkontrolujte připojení k internetu a zkuste to znovu."
+			},
+			"server": {
+				"title": "Služba počasí není dostupná",
+				"message": "Poskytovatel počasí vrátil chybu. Zkuste to později."
+			},
+			"source": {
+				"title": "Zdroj počasí není nastavený",
+				"message": "Před načtením místního počasí vyberte zdroj v Nastavení."
+			},
+			"unknown": {
+				"title": "Místní počasí se nepodařilo načíst",
+				"message": "Při načítání místního počasí došlo k neočekávané chybě."
+			},
+			"retry": "Zkusit znovu"
+		}
+	},
+	"maps": {
+		"layer": {
+			"0": "Teplota",
+			"1": "Srážky",
+			"2": "Vítr"
+		},
+		"legend": {
+			"precipitation": "Klikněte na mapu pro zobrazení aktuálních srážek.",
+			"temperature": "Klikněte na mapu pro zobrazení teploty.",
+			"title": "Legenda",
+			"wind": "Klikněte na mapu pro zobrazení aktuální rychlosti větru."
+		},
+		"loading": "Mapa se načítá…",
+		"loadError": "Mapu se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.",
+		"currentTemperature": "Aktuální teplota",
+		"temperatureUnavailable": "Teplota není dostupná",
+		"weatherUnavailable": "Údaje o počasí nejsou dostupné",
+		"title": "Mapy"
+	},
+	"modal": {
+		"description": "Popis"
+	},
+	"moon": {
+		"cycle": "Měsíční cyklus",
+		"description": "Měsíc prochází pravidelným cyklem osmi fází, který trvá přibližně 29,5 dne. Fáze vznikají, když Měsíc obíhá kolem Země a mění se úhel, pod kterým je osvětlen Sluncem. Každá fáze představuje jiné množství osvětlené části měsíce, kterou vidíme ze Země. Fáze měsíce ovlivňují mořský příliv a odliv",
+		"illumination": "Osvětlení:",
+		"moonrise": "Východ měsíce:",
+		"moonset": "Západ měsíce:",
+		"now": "Aktuální údaje o měsíci",
+		"phase": "Fáze měsíce",
+		"phase.firstquarter": "První čtvrť",
+		"phase.fullmoon": "Úplněk",
+		"phase.lastquarter": "Poslední čtvrť",
+		"phase.newmoon": "Nov",
+		"phase.waningcrescent": "Ubývající srpek",
+		"phase.waninggibbous": "Ubývající měsíc",
+		"phase.waxingcrescent": "Dorůstající srpek",
+		"phase.waxinggibbous": "Dorůstající měsíc",
+		"text": {
+			"firstquarter": "Pravá polovina měsíce je osvětlena",
+			"fullmoon": "Měsíc je plně osvětlený a nejjasnější",
+			"lastquarter": "Levá polovina měsíce je osvětlená",
+			"newmoon": "Měsíc není viditelný, začíná nový lunární cyklus",
+			"waningcrescent": "Tenký osvětlený pruh na levé straně",
+			"waninggibbous": "Více než polovina osvětlená, ale ubývá",
+			"waxingcrescent": "Tenký osvětlený pruh na pravé straně",
+			"waxinggibbous": "Více než z poloviny osvětleno, blíží se úplněk"
+		},
+		"title": "Měsíc"
+	},
+	"precipitation": {
+		"chance": {
+			"0": "Neočekává se",
+			"1": "Malá šance",
+			"2": "Přeháňky možné",
+			"3": "Pravděpodobný",
+			"4": "Velká šance",
+			"5": "Téměř jistý",
+			"6": "Jistý"
+		},
+		"rainfall": {
+			"0": "Slabý déšť",
+			"1": "Mírný déšť",
+			"2": "Silný déšť",
+			"3": "Velmi silný déšť",
+			"4": "Extrémní déšť"
+		},
+		"snow": {
+			"chance": {
+				"2": "Přeháňky možné"
+			}
+		},
+		"snowfall": {
+			"0": "Poprašek",
+			"1": "Mírné sněžení",
+			"2": "Silné sněžení",
+			"3": "Velmi silné sněžení",
+			"4": "Extrémní sněžení"
+		}
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "Barometrická škála je způsob klasifikace atmosférického tlaku podle jeho hodnot a dopadu na počasí. Škála obsahuje 9 stupňů, kde každý stupeň odpovídá určitému rozsahu tlaku a charakteristickým povětrovým podmínkám.",
+			"title": "Barometrická škála",
+			"values": "Stupnice škály"
+		},
+		"text": {
+			"0": "Silné bouře, prudké srážky",
+			"1": "Nestabilní počasí, časté přeháňky",
+			"2": "Oblačno, proměnlivé počasí",
+			"3": "Polojasno s možností slabých srážek",
+			"4": "Stabilní počasí, příjemné podmínky",
+			"5": "Převážně jasno, klidné počasí",
+			"6": "Jasno až polojasno, slabý vítr",
+			"7": "Velmi klidné počasí, možnost mlhy",
+			"8": "Mimořádně stabilní a jasné počasí"
+		},
+		"title": "Tlak"
+	},
+	"rain": {
+		"chance": {
+			"description": "Procento vyjadřuje pravděpodobnost, že v dané oblasti během období předpovědi zaprší. Neudává intenzitu, ale podíl území, kde se srážky očekávají",
+			"text": {
+				"0": "Prakticky nebude pršet",
+				"1": "Izolované přeháňky možné, většina území zůstane suchá",
+				"2": "Rozptýlené srážky pravděpodobné, déšť se objeví na více místech, ale ne všude",
+				"3": "Srážky velmi pravděpodobné, očekávají se na většině území",
+				"4": "Déšť téměř jistě, srážky postihnou většinu území",
+				"5": "Srážky prakticky jisté, pravděpodobně na celém území"
+			},
+			"title": "Pravděpodobnost srážek",
+			"values": "Procentuální šance"
+		},
+		"rainfall": "Srážky:",
+		"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi. Pravděpodobnost deště a sněžení je uvedena zvlášť.",
+		"rainfall.title": "Celkové srážky",
+		"rainfall.values": "Hodnoty srážek",
+		"title": "Déšť"
+	},
+	"smartsummary": {
+		"title": "Chytrý přehled"
+	},
+	"snow": {
+		"chance": {
+			"description": "Procento vyjadřuje pravděpodobnost, že v dané oblasti během období předpovědi bude sněžit. Neudává intenzitu, ale podíl území, kde se srážky očekávají",
+			"text": {
+				"0": "Prakticky nebude sněžit",
+				"1": "Izolované přeháňky možné, většina území zůstane bez sněhu",
+				"2": "Rozptýlené srážky pravděpodobné, sníh se objeví na více místech, ale ne všude",
+				"3": "Srážky velmi pravděpodobné, očekávají se na většině území",
+				"4": "Sníh téměř jistý, srážky postihnou většinu území",
+				"5": "Srážky prakticky jisté, pravděpodobně na celém území"
+			},
+			"title": "Pravděpodobnost srážek",
+			"values": "Procentuální šance"
+		},
+		"snowfall": "Sníh:",
+		"snowfall.description": "Sněhová pokrývka (v centimetrech) je předpokládaná výška sněhu v centimetrech na metr čtvereční. Na rozdíl od pravděpodobnosti tento údaj popisuje intenzitu a množství sněhu, tj. kolik sněhu se skutečně nahromadí, nikoli jak velká plocha bude zasažena srážkami.",
+		"snowfall.title": "Úhrn srážek",
+		"snowfall.values": "Hodnoty srážek",
+		"title": "Sníh"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "Úsvit je období postupného rozjasnění oblohy před východem slunce. Signalizuje příchod nového dne a trvá podobně jako soumrak 20–40 minut v závislosti na roční době a zeměpisné šířce.",
+			"title": "Úsvit"
+		},
+		"modaltitle": "Východ slunce",
+		"text": "Východ slunce je okamžik, kdy slunce vystupuje nad horizont a začíná nový den. První paprsky vidíme několik minut předtím, než slunce skutečně vyjde nad horizont. Čas východu se mění během roku. V zimě vychází slunce později, v létě dříve. Nejdříve vychází kolem 21. června (letní slunovrat), nejpozději kolem 21. prosince (zimní slunovrat).",
+		"title": "Východ"
+	},
+	"sunset": {
+		"modaltitle": "Západ slunce",
+		"text": "Západ slunce je okamžik, kdy slunce zapadá za obzor a den končí. Poslední paprsky vidíme několik minut poté, co slunce skutečně zapadne za obzor. Čas západu slunce se v průběhu roku mění. V zimě slunce zapadá dříve a v létě později. Nejpozději zapadá kolem 21. června (letní slunovrat) a nejdříve kolem 21. prosince (zimní slunovrat).",
+		"title": "Západ",
+		"twilight": {
+			"text": "Soumrak je období postupného stmívání po západu slunce. Během této doby slunce postupně mizí pod obzor a obloha se zbarvuje do teplých tónů. Trvá zpravidla 20–40 minut v závislosti na roční době a zeměpisné šířce.",
+			"title": "Soumrak"
+		}
+	},
+	"uv": {
+		"index": {
+			"description": "UV Index je mezinárodní standard pro měření intenzity ultrafialového záření dopadającího na zemský povrch. Tento index pomáhá lidem pochopit riziko poškození kůže slunečním zářením a přijmout vhodná ochranná opatření.",
+			"title": "Podrobnosti o indexu",
+			"values": "Hodnoty indexu"
+		},
+		"radiation": {
+			"description": "Ultrafialové (UV) záření je typ elektromagnetického záření, které lidské oko nevidí. Je přirozeně součástí slunečního světla, ale může být produkováno i uměle. Ačkoli je pro nás v malém množství užitečné (např. pomáhá tělu vytvářet vitamin D), jeho nadměrná expozice je škodlivá.",
+			"title": "Ultrafialové záření"
+		},
+		"text": {
+			"0": "Není třeba žádná ochrana před sluncem",
+			"1": "Noste pokrývku hlavy a chraňte se krémem SPF 15+, vyhněte se slunci v poledne",
+			"2": "Noste klobouk a sluneční brýle. Chraňte se opalovacím krémem s ochranným faktorem SPF 30+, vyhýbejte se slunci v poledne a zůstaňte ve stínu. Můžete se spálit během 15 - 20 minut",
+			"3": "Noste klobouk, sluneční brýle a další ochranné prvky. Chraňte se opalovacím krémem s ochranným faktorem SPF 50+, omezte během poledne pobyt venku. Spálíte se za méně než 15 minut.",
+			"4": "Chraňte se před sluncem, bez ochrany nevycházejte ven."
+		}
+	},
+	"range": {
+		"about": "Definice",
+		"text": "Dohlednost udává maximální vzdálenost, na kterou lze rozeznat objekty pouhým okem. Je ovlivněna mlhou, vlhkostí vzduchu, znečištěním a srážkami. Dohlednost je důležitá pro bezpečnost v dopravě, letectví a námořní plavbě.",
+		"title": "Dohled",
+		"values": "Stupnice dohlednosti"
+	},
+	"wind": {
+		"beaufortscale": "Beaufortova škála",
+		"current": {
+			"direction": "Směr",
+			"gust": "V nárazech",
+			"speed": "Rychlost",
+			"title": "Aktuální údaje o větru"
+		},
+		"description": "Beaufortova škála je způsob klasifikace síly větru podle jeho účinků na okolní prostředí. Je používána meteorology, námořníky a letci po celém světě. Umožňuje rychlé a intuitivní hodnocení síly větru podle viditelných účinků. Škála obsahuje 13 stupňů (0-12), kde každý stupeň odpovídá určité rychlosti větru a charakteristickým projevům v krajině i na moři. ",
+		"label": {
+			"long": {
+				"E": "východ",
+				"ENE": "východseverovýchod",
+				"ESE": "východjihovýchod",
+				"N": "sever",
+				"NE": "severovýchod",
+				"NNE": "severoseverovýchod",
+				"NNW": "severoseverozápad",
+				"NW": "severozápad",
+				"S": "jih",
+				"SE": "jihovýchod",
+				"SSE": "jihjihovýchod",
+				"SSW": "jihjihozápad",
+				"SW": "jihozápad",
+				"W": "západ",
+				"WNW": "západseverozápad",
+				"WSW": "západjihozápad"
+			},
+			"short": {
+				"E": "V",
+				"ENE": "VSV",
+				"ESE": "VJV",
+				"N": "S",
+				"NE": "SV",
+				"NNE": "SSV",
+				"NNW": "SSZ",
+				"NW": "SZ",
+				"S": "J",
+				"SE": "JV",
+				"SSE": "JJS",
+				"SSW": "JJZ",
+				"SW": "JZ",
+				"W": "Z",
+				"WNW": "ZSV",
+				"WSW": "ZZJ"
+			}
+		},
+		"title": "Vítr",
+		"values": "Hodnoty škály"
+	},
+	"rainfall": "Celkové srážky:",
+	"rainfall.title": "Celkové srážky",
+	"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi."
+}

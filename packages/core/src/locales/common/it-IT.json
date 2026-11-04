@@ -1,0 +1,44 @@
+{
+	"favorites": {
+		"delete": "Elimina",
+		"error": "Impossibile caricare le città preferite. Riprova.",
+		"loading": "Caricamento delle città preferite…",
+		"nosaved": "Non hai ancora salvato città tra i preferiti",
+		"share": "Condividi",
+		"title": "Preferiti"
+	},
+	"modal": {
+		"description": "Descrizione"
+	},
+	"search": {
+		"city": {
+			"error": "Impossibile caricare il meteo"
+		},
+		"input": {
+			"error": "Impossibile caricare il meteo"
+		},
+		"searchbar": "Cerca una città o delle coordinate…",
+		"searchbar.native": "Cerca…",
+		"title": "Cerca",
+		"url": {
+			"error": "La città cercata non è stata trovata.\nControlla il nome o aggiungi il paese e riprova."
+		}
+	},
+	"share": {
+		"message": "Meteo attuale a"
+	},
+	"tab": {
+		"home": "Home",
+		"maps": "Mappe",
+		"search": "Cerca",
+		"settings": "Impostazioni",
+		"weather": "Meteo"
+	},
+	"toast": {
+		"add": "{name} aggiunto ai preferiti",
+		"city": "Città",
+		"notrefreshed": "Impossibile aggiornare il meteo",
+		"refreshed": "Meteo aggiornato",
+		"remove": "{name} rimosso dai preferiti"
+	}
+}

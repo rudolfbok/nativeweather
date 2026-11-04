@@ -1,0 +1,44 @@
+{
+	"favorites": {
+		"delete": "Usuń",
+		"error": "Nie udało się wczytać ulubionych miast. Spróbuj ponownie.",
+		"loading": "Wczytywanie ulubionych miast…",
+		"nosaved": "Nie masz jeszcze ulubionych miast",
+		"share": "Udostępnij",
+		"title": "Ulubione"
+	},
+	"modal": {
+		"description": "Opis"
+	},
+	"search": {
+		"city": {
+			"error": "Nie udało się wczytać pogody"
+		},
+		"input": {
+			"error": "Nie udało się wczytać pogody"
+		},
+		"searchbar": "Szukaj miasta lub współrzędnych…",
+		"searchbar.native": "Szukaj…",
+		"title": "Szukaj",
+		"url": {
+			"error": "Nie znaleziono szukanego miasta.\nSprawdź pisownię lub dodaj nazwę kraju i spróbuj ponownie."
+		}
+	},
+	"share": {
+		"message": "Aktualna pogoda w miejscowości"
+	},
+	"tab": {
+		"home": "Start",
+		"maps": "Mapy",
+		"search": "Szukaj",
+		"settings": "Ustawienia",
+		"weather": "Pogoda"
+	},
+	"toast": {
+		"add": "{name} dodano do ulubionych",
+		"city": "Miasto",
+		"notrefreshed": "Nie udało się zaktualizować pogody",
+		"refreshed": "Pogoda została zaktualizowana",
+		"remove": "{name} usunięto z ulubionych"
+	}
+}

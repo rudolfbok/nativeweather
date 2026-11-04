@@ -1,0 +1,72 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather zeigt das aktuelle Wetter sowie Vorhersagen für die nächsten Stunden und Tage auf verschiedenen Plattformen. Die App zeigt auch aktuelle Luftschadstoffwerte und wichtige Kennzahlen zur Luftqualität. Weltweite Karten mit meteorologischen Kartenebenen ergänzen das Angebot.",
+		"title": "Über die App"
+	},
+	"airquality": {
+		"american": "Amerikanisch",
+		"european": "Europäisch",
+		"title": "Luftqualität",
+		"titlefull": "Luftqualitätsindex",
+		"titleshort": "AQI"
+	},
+	"compass": {
+		"title": "Kompass"
+	},
+	"datasource": {
+		"weatherapi": "Aktuelles Wetter",
+		"openmeteo": "Meteorologische Daten und Wetter",
+		"openfreemap": "Kartenmaterial",
+		"title": "Datenquellen"
+	},
+	"feedback": {
+		"bug": "Fehler",
+		"button": {
+			"send": "Feedback senden",
+			"sending": "Feedback wird gesendet…"
+		},
+		"feature": "Funktionswunsch",
+		"feedback": "Nachricht",
+		"message": "Nachricht",
+		"placeholder": "Schreib hier deine Nachricht…",
+		"question": "Frage",
+		"select": "Art der Nachricht auswählen",
+		"title": "Feedback senden",
+		"toast": {
+			"error": "Feedback konnte nicht gesendet werden",
+			"sent": "Feedback gesendet"
+		},
+		"type": "Art"
+	},
+	"language": {
+		"title": "Sprache"
+	},
+	"legal": {
+		"title": "Rechtliche Hinweise"
+	},
+	"localweather": "Wetter am Standort",
+	"privacyPolicy": "Datenschutzerklärung",
+	"settings": "Einstellungen",
+	"source": {
+		"title": "Quelle"
+	},
+	"temperatureScale": {
+		"celsius": "Celsius",
+		"fahrenheit": "Fahrenheit"
+	},
+	"temperature": "Temperatur",
+	"theme": {
+		"dark": "Dunkel",
+		"light": "Hell",
+		"system": "Systemeinstellung",
+		"title": "Erscheinungsbild"
+	},
+	"units": {
+		"imperial": "Imperial",
+		"metric": "Metrisch",
+		"title": "Einheiten"
+	},
+	"version": "Version",
+	"termsOfService": "Nutzungsbedingungen",
+	"localtime": "Ortszeit"
+}

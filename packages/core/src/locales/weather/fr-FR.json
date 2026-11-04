@@ -1,0 +1,541 @@
+{
+	"chart": {
+		"unavailable": "Graphique indisponible pour ce jour",
+		"dailyTotal": "Cumul du jour",
+		"dailyChance": "Chances du jour"
+	},
+	"airquality": {
+		"euaqi": {
+			"main": "L’indice européen de qualité de l’air (EU AQI) décrit la qualité actuelle de l’air en Europe. Les personnes souffrant de maladies cardiaques ou respiratoires sont plus vulnérables aux effets de la pollution.\n\nPour consulter les recommandations officielles de l’Union européenne et les données de pollution en temps réel, rendez-vous sur ce site :",
+			"text": {
+				"0": "Excellente qualité de l’air, sans risque pour la santé. Idéale pour toutes les activités et tous les sports en plein air.",
+				"1": "Qualité de l’air satisfaisante pour la plupart des personnes. Risque minime pour les personnes particulièrement sensibles.",
+				"2": "Qualité acceptable pour la plupart des personnes, mais des symptômes légers peuvent apparaître chez les personnes sensibles. Dans ce cas, réduisez les efforts intenses en plein air.",
+				"3": "Risques pour les personnes sensibles. Des effets légers peuvent toucher tout le monde. Limitez les activités prolongées en plein air.",
+				"4": "Risques pour la santé de tous. Évitez les activités prolongées et les efforts en plein air. Les personnes sensibles devraient rester à l’intérieur.",
+				"5": "Risques graves pour la santé de tous. Évitez toute activité en plein air. Restez à l’intérieur et gardez les fenêtres fermées."
+			},
+			"value": {
+				"0": "Bonne",
+				"1": "Assez bonne",
+				"2": "Modérée",
+				"3": "Mauvaise",
+				"4": "Très mauvaise",
+				"5": "Extrêmement mauvaise"
+			}
+		},
+		"index": {
+			"values": "Valeurs de l’indice"
+		},
+		"item": {
+			"euaqi": "Indice européen",
+			"no2": "Dioxyde d’azote",
+			"ozone": "Ozone",
+			"pm10": "Particules PM10",
+			"pm25": "Particules fines PM2,5",
+			"usaqi": "Indice américain"
+		},
+		"no2": {
+			"main": "Le dioxyde d’azote (NO₂) est un gaz toxique provenant surtout des gaz d’échappement et des centrales électriques. Il peut irriter les voies respiratoires, aggraver l’asthme et favoriser les infections respiratoires. Une exposition prolongée peut endommager les tissus pulmonaires et réduire la fonction respiratoire.",
+			"text": {
+				"0": "Excellente qualité de l’air, avec des risques minimes pour la santé de tous.",
+				"1": "Qualité de l’air acceptable pour la plupart des personnes, mais des effets légers peuvent apparaître chez les personnes sensibles.",
+				"2": "Les personnes souffrant d’asthme ou de troubles respiratoires devraient limiter les activités en plein air près des routes très fréquentées et des zones industrielles.",
+				"3": "Des difficultés respiratoires peuvent toucher tout le monde. Évitez de faire du sport près des routes très fréquentées et des zones industrielles.",
+				"4": "Effets graves sur la santé de tous. Éloignez-vous des routes très fréquentées et des zones industrielles.",
+				"5": "Situation d’urgence. Tout le monde devrait éviter de rester à l’extérieur, surtout près de la circulation."
+			}
+		},
+		"o3": {
+			"main": "L’ozone au niveau du sol est nocif. Il se forme lorsque la lumière du soleil réagit avec les émissions du trafic et de l’industrie. Il peut provoquer des douleurs thoraciques, de la toux et aggraver l’asthme. Les concentrations sont généralement les plus élevées lors des après-midi chauds et ensoleillés. Les enfants, les personnes âgées et les personnes qui font du sport dehors sont plus vulnérables.",
+			"text": {
+				"0": "Excellente qualité de l’air, avec des risques minimes pour la santé de tous.",
+				"1": "Qualité de l’air acceptable pour la plupart des personnes, mais les personnes particulièrement sensibles peuvent ressentir une légère gêne respiratoire.",
+				"2": "Les enfants et les adultes actifs, ainsi que les personnes atteintes de maladies pulmonaires, devraient limiter les activités prolongées en plein air, surtout pendant les heures ensoleillées.",
+				"3": "Des problèmes de santé peuvent toucher tout le monde. Limitez les activités en plein air aux heures les plus ensoleillées.",
+				"4": "Effets graves sur la santé de tous. Évitez les activités en plein air, surtout l’après-midi.",
+				"5": "Situation d’urgence. Tout le monde devrait éviter de rester à l’extérieur. Une alerte sanitaire est en vigueur."
+			}
+		},
+		"pm10": {
+			"main": "Les PM10 sont des particules d’un diamètre inférieur ou égal à 10 micromètres. Elles peuvent irriter les yeux, le nez et la gorge, et aggraver l’asthme. Elles proviennent souvent de la poussière, du trafic routier, des chantiers et du pollen. Lorsque les concentrations sont élevées, rester à l’intérieur avec les fenêtres fermées peut réduire l’exposition.",
+			"text": {
+				"0": "Excellente qualité de l’air, avec des risques minimes pour la santé de tous.",
+				"1": "Qualité de l’air acceptable pour la plupart des personnes, mais des effets légers peuvent apparaître chez les personnes sensibles.",
+				"2": "Les enfants, les personnes âgées et les personnes souffrant d’asthme ou de troubles respiratoires devraient limiter leurs activités en plein air.",
+				"3": "Des difficultés respiratoires peuvent toucher tout le monde. Limitez les activités en plein air et envisagez de porter un masque de protection.",
+				"4": "Effets graves sur la santé de tous. Évitez les activités en plein air. Restez à l’intérieur avec les fenêtres fermées.",
+				"5": "Situation d’urgence. Tout le monde devrait éviter de rester à l’extérieur. Une alerte sanitaire est en vigueur."
+			}
+		},
+		"pm25": {
+			"main": "Les PM2,5 sont des particules fines d’un diamètre inférieur ou égal à 2,5 micromètres. Elles peuvent pénétrer profondément dans les poumons et dans le sang, entraînant de graves problèmes de santé. Elles proviennent généralement de la combustion, notamment du trafic, du chauffage, des feux de forêt et de l’industrie. Leur petite taille leur permet de rester plus longtemps dans l’air et de voyager plus loin que les particules plus grosses.",
+			"text": {
+				"0": "Excellente qualité de l’air, avec des risques minimes pour la santé de tous.",
+				"1": "Qualité de l’air acceptable pour la plupart des personnes, mais des effets légers peuvent apparaître chez les personnes sensibles.",
+				"2": "Les enfants, les personnes âgées et les personnes atteintes de maladies cardiaques ou pulmonaires devraient limiter leurs activités en plein air.",
+				"3": "Des effets sur la santé peuvent toucher tout le monde. Limitez les activités en plein air et envisagez de porter un masque de protection.",
+				"4": "Effets graves sur la santé de tous. Évitez les activités en plein air. Restez à l’intérieur avec les fenêtres fermées.",
+				"5": "Situation d’urgence. Tout le monde devrait éviter l’exposition à l’air extérieur. Des alertes sanitaires sont en vigueur."
+			}
+		},
+		"pollutant": {
+			"values": "Niveaux de concentration"
+		},
+		"provider": "Données fournies par ",
+		"title": "Qualité de l’air",
+		"usaqi": {
+			"main": "L’indice américain de qualité de l’air (US AQI) décrit la qualité de l’air aux États-Unis. Il varie de 0 à 500 : plus la valeur est élevée, plus la pollution et les risques pour la santé sont importants. Il sert à avertir la population lorsque la pollution devient dangereuse. Les personnes souffrant de maladies cardiaques ou respiratoires sont particulièrement vulnérables.\n\nPour consulter les recommandations officielles de l’Agence américaine de protection de l’environnement (EPA) et les données de pollution en temps réel, rendez-vous sur ce site :",
+			"text": {
+				"0": "Excellente qualité de l’air, sans risque pour la santé. Idéale pour toutes les activités et tous les sports en plein air.",
+				"1": "Qualité de l’air acceptable pour la plupart des personnes. Les personnes particulièrement sensibles peuvent présenter de légers symptômes respiratoires.",
+				"2": "Les personnes sensibles, notamment les enfants, les personnes âgées et celles atteintes de maladies cardiaques ou pulmonaires, peuvent subir des effets sur la santé. Le reste de la population devrait être peu affecté.",
+				"3": "Des effets sur la santé peuvent commencer à toucher tout le monde. Ils peuvent être plus graves chez les personnes sensibles. Évitez les efforts prolongés en plein air.",
+				"4": "Alerte sanitaire. Des effets graves sur la santé peuvent toucher tout le monde. Évitez toutes les activités en plein air, surtout le sport.",
+				"5": "Situation d’urgence concernant toute la population. Restez à l’intérieur, portes et fenêtres fermées. Évitez toutes les activités en plein air."
+			},
+			"value": {
+				"0": "Bonne",
+				"1": "Modérée",
+				"2": "Mauvaise pour les personnes sensibles",
+				"3": "Mauvaise pour la santé",
+				"4": "Très mauvaise pour la santé",
+				"5": "Dangereuse"
+			}
+		},
+		"value": {
+			"0": "Bonne",
+			"1": "Modérée",
+			"2": "Mauvaise pour les personnes sensibles",
+			"3": "Mauvaise pour la santé",
+			"4": "Très mauvaise pour la santé",
+			"5": "Dangereuse"
+		}
+	},
+	"alerts": {
+		"area": "Zone",
+		"description": "Description du phénomène",
+		"disclaimer": "Les alertes sont émises par les autorités locales",
+		"expires": "Valable jusqu’au",
+		"instructions": "Consignes",
+		"modaltitle": "Alertes météo",
+		"severity": "Gravité",
+		"severity.extreme": "Extrême",
+		"severity.minor": "Faible",
+		"severity.moderate": "Modérée",
+		"severity.severe": "Sévère",
+		"severity.unknown": "Inconnue",
+		"title": "alerte météo"
+	},
+	"cloudcover": {
+		"percentage": {
+			"text": "En météorologie, la nébulosité correspond à la part du ciel couverte par les nuages. Les professionnels utilisent les octas, mais des pourcentages ou des descriptions sont souvent employés pour faciliter la lecture.",
+			"title": "Couverture nuageuse en pourcentage",
+			"values": "Niveau de couverture"
+		},
+		"title": "Nuages"
+	},
+	"compass": {
+		"button": {
+			"location": "Autoriser l’accès à la position"
+		},
+		"text": "La boussole nécessite un appareil Apple compatible équipé d’un magnétomètre.\n\niOS peut demander une autorisation avant d’utiliser ce capteur.",
+		"title": "Boussole"
+	},
+	"condition": {
+		"blizzard": "Blizzard",
+		"clear": {
+			"day": "Ensoleillé",
+			"night": "Ciel dégagé"
+		},
+		"cloudy": "Nuageux",
+		"fog": "Brouillard",
+		"freezingfog": "Brouillard givrant",
+		"freezingrain": "Pluie verglaçante",
+		"lightrain": "Pluie faible",
+		"lightsnow": "Neige faible",
+		"overcast": "Couvert",
+		"partlycloudy": "Partiellement nuageux",
+		"rain": "Pluie",
+		"snow": "Neige",
+		"thunderstorm": "Orage"
+	},
+	"dailyforecast": {
+		"title": "Prévisions quotidiennes",
+		"today": "auj."
+	},
+	"description": {
+		"cloudcover": {
+			"0": "Ciel dégagé",
+			"1": "Partiellement nuageux",
+			"2": "Nuageux",
+			"3": "Couvert"
+		},
+		"humidity": {
+			"0": "Très sec",
+			"1": "Agréable",
+			"2": "Humide",
+			"3": "Très humide",
+			"4": "Extrêmement humide"
+		},
+		"moon": {
+			"firstquarter": "Premier quartier",
+			"fullmoon": "Pleine lune",
+			"lastquarter": "Dernier quartier",
+			"newmoon": "Nouvelle lune",
+			"waningcrescent": "Dernier croissant",
+			"waninggibbous": "Lune gibbeuse décroissante",
+			"waxingcrescent": "Premier croissant",
+			"waxinggibbous": "Lune gibbeuse croissante"
+		},
+		"precip": {
+			"rain": {
+				"0": "Pluie faible",
+				"1": "Pluie modérée",
+				"2": "Pluie forte"
+			},
+			"snow": {
+				"0": "Neige faible",
+				"1": "Neige modérée",
+				"2": "Fortes chutes de neige"
+			}
+		},
+		"pressure": {
+			"0": "Extrêmement basse",
+			"1": "Très basse",
+			"2": "Basse",
+			"3": "Légèrement basse",
+			"4": "Normale",
+			"5": "Légèrement élevée",
+			"6": "Élevée",
+			"7": "Très élevée",
+			"8": "Extrêmement élevée"
+		},
+		"snow": {
+			"0": "Non prévue",
+			"1": "Faible probabilité",
+			"2": "Probabilité modérée",
+			"3": "Neige prévue"
+		},
+		"uv": {
+			"0": "Faible",
+			"1": "Modéré",
+			"2": "Élevé",
+			"3": "Très élevé",
+			"4": "Extrême"
+		},
+		"range": {
+			"0": "Brouillard dense",
+			"1": "Brume",
+			"2": "Brouillard léger",
+			"3": "Brume sèche légère",
+			"4": "Bonne",
+			"5": "Très bonne",
+			"6": "Exceptionnelle"
+		},
+		"windspeed": {
+			"0": "Calme",
+			"1": "Très légère brise",
+			"10": "Tempête",
+			"11": "Violente tempête",
+			"12": "Ouragan",
+			"2": "Légère brise",
+			"3": "Petite brise",
+			"4": "Jolie brise",
+			"5": "Bonne brise",
+			"6": "Vent frais",
+			"7": "Grand frais",
+			"8": "Coup de vent",
+			"9": "Fort coup de vent"
+		}
+	},
+	"feelslike": "Ressenti :",
+	"hourlyforecast": {
+		"now": "Maint.",
+		"title": "Prévisions horaires"
+	},
+	"humidity": {
+		"dewpoint": {
+			"text": "Le point de rosée est la température à laquelle la vapeur d’eau présente dans l’air commence à se condenser en gouttelettes. Plus il est élevé, plus l’air contient d’humidité. Il décrit mieux la sensation de moiteur que l’humidité relative.",
+			"title": "Point de rosée"
+		},
+		"relativehumidity": {
+			"text": "L’humidité relative indique la quantité de vapeur d’eau présente dans l’air par rapport au maximum possible à la température actuelle. Elle s’exprime en pourcentage et influence notre perception du temps.",
+			"title": "Humidité relative",
+			"values": "Valeurs en pourcentage"
+		},
+		"title": "Humidité"
+	},
+	"localtime": "Heure locale",
+	"remainingtime": "Dans {time}",
+	"localweather": {
+		"error": {
+			"permission": {
+				"title": "Accès à la position bloqué",
+				"message": "Autorisez l’accès à la position dans les paramètres de votre appareil ou de votre navigateur."
+			},
+			"unavailable": {
+				"title": "Position indisponible",
+				"message": "Votre appareil n’a pas pu déterminer votre position actuelle."
+			},
+			"timeout": {
+				"title": "La localisation a pris trop de temps",
+				"message": "Réessayez dans un endroit où le signal GPS ou réseau est meilleur."
+			},
+			"network": {
+				"title": "Impossible de joindre le service météo",
+				"message": "Vérifiez votre connexion Internet et réessayez."
+			},
+			"server": {
+				"title": "Service météo indisponible",
+				"message": "Le fournisseur météo a renvoyé une erreur. Réessayez plus tard."
+			},
+			"source": {
+				"title": "Source météo non configurée",
+				"message": "Choisissez une source météo dans les paramètres avant de charger la météo locale."
+			},
+			"unknown": {
+				"title": "Impossible de charger la météo locale",
+				"message": "Une erreur inattendue s’est produite lors du chargement de la météo locale."
+			},
+			"retry": "Réessayer"
+		}
+	},
+	"maps": {
+		"layer": {
+			"0": "Température",
+			"1": "Précipitations",
+			"2": "Vent"
+		},
+		"legend": {
+			"precipitation": "Cliquez sur la carte pour afficher les précipitations actuelles.",
+			"temperature": "Cliquez sur la carte pour afficher la température actuelle.",
+			"title": "Légende",
+			"wind": "Cliquez sur la carte pour afficher la vitesse actuelle du vent."
+		},
+		"loading": "Chargement de la carte…",
+		"loadError": "Impossible de charger la carte. Vérifiez votre connexion et réessayez.",
+		"currentTemperature": "Température actuelle",
+		"temperatureUnavailable": "Température indisponible",
+		"weatherUnavailable": "Données météo indisponibles",
+		"title": "Cartes"
+	},
+	"modal": {
+		"description": "Description"
+	},
+	"moon": {
+		"cycle": "Cycle lunaire",
+		"description": "La Lune suit un cycle régulier de huit phases qui dure environ 29,5 jours. Ces phases apparaissent au fil de son orbite autour de la Terre, lorsque l’angle d’éclairage par le Soleil change. Chaque phase correspond à une portion différente de la surface éclairée visible depuis la Terre. Les phases de la Lune influencent les marées.",
+		"illumination": "Illumination :",
+		"moonrise": "Lever de lune :",
+		"moonset": "Coucher de lune :",
+		"now": "Données lunaires actuelles",
+		"phase": "Phase lunaire",
+		"phase.firstquarter": "Premier quartier",
+		"phase.fullmoon": "Pleine lune",
+		"phase.lastquarter": "Dernier quartier",
+		"phase.newmoon": "Nouvelle lune",
+		"phase.waningcrescent": "Dernier croissant",
+		"phase.waninggibbous": "Lune gibbeuse décroissante",
+		"phase.waxingcrescent": "Premier croissant",
+		"phase.waxinggibbous": "Lune gibbeuse croissante",
+		"text": {
+			"firstquarter": "La moitié droite de la Lune est éclairée",
+			"fullmoon": "La Lune est entièrement éclairée et atteint sa luminosité maximale",
+			"lastquarter": "La moitié gauche de la Lune est éclairée",
+			"newmoon": "La Lune n’est pas visible, un nouveau cycle commence",
+			"waningcrescent": "Un fin croissant est éclairé sur le côté gauche",
+			"waninggibbous": "Plus de la moitié est éclairée, mais la partie éclairée diminue",
+			"waxingcrescent": "Un fin croissant est éclairé sur le côté droit",
+			"waxinggibbous": "Plus de la moitié est éclairée, la pleine lune approche"
+		},
+		"title": "Lune"
+	},
+	"precipitation": {
+		"chance": {
+			"0": "Non prévues",
+			"1": "Faible probabilité",
+			"2": "Averses possibles",
+			"3": "Probables",
+			"4": "Très probables",
+			"5": "Presque certaines",
+			"6": "Certaines"
+		},
+		"rainfall": {
+			"0": "Pluie faible",
+			"1": "Pluie modérée",
+			"2": "Pluie forte",
+			"3": "Pluie très forte",
+			"4": "Pluie extrême"
+		},
+		"snow": {
+			"chance": {
+				"2": "Averses de neige possibles"
+			}
+		},
+		"snowfall": {
+			"0": "Quelques flocons",
+			"1": "Faibles chutes de neige",
+			"2": "Fortes chutes de neige",
+			"3": "Très fortes chutes de neige",
+			"4": "Chutes de neige extrêmes"
+		}
+	},
+	"pressure": {
+		"barometricscale": {
+			"text": "L’échelle barométrique classe la pression atmosphérique selon sa valeur et les conditions météo typiques qui lui sont associées. Elle comprend neuf niveaux, chacun correspondant à une plage de pression et à des conditions caractéristiques.",
+			"title": "Échelle barométrique",
+			"values": "Valeurs de l’échelle"
+		},
+		"text": {
+			"0": "Violentes tempêtes, fortes pluies",
+			"1": "Temps instable, averses fréquentes",
+			"2": "Ciel nuageux, temps changeant",
+			"3": "Éclaircies, faibles précipitations possibles",
+			"4": "Temps stable, conditions agréables",
+			"5": "Temps généralement dégagé et calme",
+			"6": "Ciel dégagé à partiellement nuageux, vent faible",
+			"7": "Temps très calme, brouillard possible",
+			"8": "Temps exceptionnellement stable et dégagé"
+		},
+		"title": "Pression"
+	},
+	"rain": {
+		"chance": {
+			"description": "Le pourcentage indique la probabilité qu’il pleuve à un endroit donné pendant la période de prévision. Il ne décrit ni l’intensité ni la quantité de pluie attendue.",
+			"text": {
+				"0": "Pluie très peu probable",
+				"1": "Averses isolées possibles, la plupart des zones resteront sèches",
+				"2": "Pluies éparses probables, certaines zones seront touchées",
+				"3": "Pluie très probable, attendue sur une grande partie de la zone",
+				"4": "Pluie presque certaine, touchant la plupart des secteurs",
+				"5": "Pluie pratiquement certaine, probablement sur toute la zone"
+			},
+			"title": "Probabilité de précipitations",
+			"values": "Probabilité en pourcentage"
+		},
+		"rainfall": "Pluie :",
+		"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision. Les probabilités de pluie et de neige sont indiquées séparément.",
+		"rainfall.title": "Précipitations totales",
+		"rainfall.values": "Cumuls de pluie",
+		"title": "Pluie"
+	},
+	"smartsummary": {
+		"title": "Aperçu météo"
+	},
+	"snow": {
+		"chance": {
+			"description": "Le pourcentage indique la probabilité qu’il neige à un endroit donné pendant la période de prévision. Il ne décrit ni l’intensité ni la quantité de neige attendue.",
+			"text": {
+				"0": "Neige très peu probable",
+				"1": "Quelques averses de neige possibles, la plupart des zones resteront sans neige",
+				"2": "Neige éparse probable, certaines zones seront touchées",
+				"3": "Neige très probable, attendue sur une grande partie de la zone",
+				"4": "Neige presque certaine, touchant la plupart des secteurs",
+				"5": "Neige pratiquement certaine, probablement sur toute la zone"
+			},
+			"title": "Probabilité de précipitations",
+			"values": "Probabilité en pourcentage"
+		},
+		"snowfall": "Cumul de neige :",
+		"snowfall.description": "Le cumul de neige, exprimé en centimètres, indique l’épaisseur de neige fraîche attendue pendant la période de prévision. Cette valeur décrit la quantité qui pourrait s’accumuler, tandis que la probabilité indique les chances qu’il neige.",
+		"snowfall.title": "Cumul de neige",
+		"snowfall.values": "Cumuls de neige",
+		"title": "Neige"
+	},
+	"sunrise": {
+		"dawn": {
+			"text": "L’aube est la période où le ciel s’éclaircit progressivement avant le lever du soleil. Elle annonce une nouvelle journée et dure souvent de 20 à 40 minutes, selon la saison et la latitude.",
+			"title": "Aube"
+		},
+		"modaltitle": "Lever du soleil",
+		"text": "Le lever du soleil est le moment où le Soleil apparaît au-dessus de l’horizon. Le ciel commence à s’éclaircir avant cela. L’heure du lever varie au cours de l’année. Dans l’hémisphère nord, le Soleil se lève plus tard en hiver et plus tôt en été. Les levers les plus précoces se situent autour du solstice d’été en juin, et les plus tardifs autour du solstice d’hiver en décembre.",
+		"title": "Lever du soleil"
+	},
+	"sunset": {
+		"modaltitle": "Coucher du soleil",
+		"text": "Le coucher du soleil est le moment où le Soleil disparaît sous l’horizon. Le ciel reste encore lumineux pendant un certain temps. L’heure du coucher varie au cours de l’année. Dans l’hémisphère nord, le Soleil se couche plus tôt en hiver et plus tard en été. Les couchers les plus tardifs se situent autour du solstice d’été en juin, et les plus précoces autour du solstice d’hiver en décembre.",
+		"title": "Coucher du soleil",
+		"twilight": {
+			"text": "Le crépuscule est la période où le ciel s’assombrit progressivement après le coucher du soleil. Le ciel peut alors prendre des teintes chaudes. Il dure souvent de 20 à 40 minutes, selon la saison et la latitude.",
+			"title": "Crépuscule"
+		}
+	},
+	"uv": {
+		"index": {
+			"description": "L’indice UV est un indicateur international de l’intensité du rayonnement ultraviolet atteignant la surface de la Terre. Il aide à évaluer le risque de lésions cutanées dues au soleil et à prendre des mesures de protection adaptées.",
+			"title": "À propos de l’indice UV",
+			"values": "Valeurs de l’indice"
+		},
+		"radiation": {
+			"description": "Le rayonnement ultraviolet (UV) est un rayonnement électromagnétique invisible à l’œil humain. Il est naturellement présent dans la lumière du soleil, mais peut aussi être produit artificiellement. À faible dose, il favorise notamment la production de vitamine D. Une exposition excessive est toutefois nocive.",
+			"title": "Rayonnement ultraviolet"
+		},
+		"text": {
+			"0": "Aucune protection solaire particulière n’est nécessaire",
+			"1": "Portez un chapeau et utilisez une crème solaire SPF 15 ou plus. Évitez le soleil à la mi-journée.",
+			"2": "Portez un chapeau et des lunettes de soleil. Utilisez une crème solaire SPF 30 ou plus, évitez le soleil à la mi-journée et restez à l’ombre. Une peau non protégée peut brûler en 15 à 20 minutes.",
+			"3": "Portez un chapeau, des lunettes de soleil et des vêtements protecteurs. Utilisez une crème solaire SPF 50 ou plus et limitez les sorties à la mi-journée. Une peau non protégée peut brûler en moins de 15 minutes.",
+			"4": "Une protection solaire complète est nécessaire. Ne restez pas dehors sans protection."
+		}
+	},
+	"range": {
+		"about": "Définition",
+		"text": "La visibilité indique la distance maximale à laquelle les objets peuvent être distingués à l’œil nu. Elle est influencée par le brouillard, l’humidité, la pollution et les précipitations. Elle est importante pour la sécurité routière, aérienne et maritime.",
+		"title": "Visibilité",
+		"values": "Échelle de visibilité"
+	},
+	"wind": {
+		"beaufortscale": "Échelle de Beaufort",
+		"current": {
+			"direction": "Direction",
+			"gust": "Rafales",
+			"speed": "Vitesse",
+			"title": "Données actuelles du vent"
+		},
+		"description": "L’échelle de Beaufort classe la force du vent selon ses effets sur l’environnement. Elle est utilisée dans le monde entier en météorologie, en navigation et en aviation. Elle permet d’estimer rapidement la force du vent à partir de ses effets visibles. Elle comprend treize degrés, de 0 à 12, chacun correspondant à une plage de vitesse et à des conditions caractéristiques sur terre et en mer.",
+		"label": {
+			"long": {
+				"E": "est",
+				"ENE": "est-nord-est",
+				"ESE": "est-sud-est",
+				"N": "nord",
+				"NE": "nord-est",
+				"NNE": "nord-nord-est",
+				"NNW": "nord-nord-ouest",
+				"NW": "nord-ouest",
+				"S": "sud",
+				"SE": "sud-est",
+				"SSE": "sud-sud-est",
+				"SSW": "sud-sud-ouest",
+				"SW": "sud-ouest",
+				"W": "ouest",
+				"WNW": "ouest-nord-ouest",
+				"WSW": "ouest-sud-ouest"
+			},
+			"short": {
+				"E": "E",
+				"ENE": "ENE",
+				"ESE": "ESE",
+				"N": "N",
+				"NE": "NE",
+				"NNE": "NNE",
+				"NNW": "NNO",
+				"NW": "NO",
+				"S": "S",
+				"SE": "SE",
+				"SSE": "SSE",
+				"SSW": "SSO",
+				"SW": "SO",
+				"W": "O",
+				"WNW": "ONO",
+				"WSW": "OSO"
+			}
+		},
+		"title": "Vent",
+		"values": "Valeurs de l’échelle"
+	},
+	"rainfall": "Précipitations totales :",
+	"rainfall.title": "Précipitations totales",
+	"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision."
+}

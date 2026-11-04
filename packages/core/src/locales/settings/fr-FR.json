@@ -1,0 +1,72 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather est une application multiplateforme qui affiche la météo actuelle ainsi que les prévisions à court et à long terme. Elle permet aussi de consulter les niveaux de pollution de l’air et les principaux indicateurs de qualité de l’air. Des cartes et des couches météorologiques couvrant le monde entier complètent ces informations.",
+		"title": "À propos"
+	},
+	"airquality": {
+		"american": "Américain",
+		"european": "Européen",
+		"title": "Qualité de l’air",
+		"titlefull": "Indice de qualité de l’air",
+		"titleshort": "Qualité de l’air"
+	},
+	"compass": {
+		"title": "Boussole"
+	},
+	"datasource": {
+		"weatherapi": "Météo actuelle",
+		"openmeteo": "Données météorologiques et météo",
+		"openfreemap": "Fonds de carte",
+		"title": "Sources de données"
+	},
+	"feedback": {
+		"bug": "Signaler un problème",
+		"button": {
+			"send": "Envoyer un commentaire",
+			"sending": "Envoi du commentaire…"
+		},
+		"feature": "Suggestion de fonctionnalité",
+		"feedback": "Message",
+		"message": "Message",
+		"placeholder": "Écrivez votre message ici…",
+		"question": "Question",
+		"select": "Choisir le type de message",
+		"title": "Envoyer un commentaire",
+		"toast": {
+			"error": "Impossible d’envoyer le commentaire",
+			"sent": "Commentaire envoyé"
+		},
+		"type": "Type"
+	},
+	"language": {
+		"title": "Langue"
+	},
+	"legal": {
+		"title": "Informations légales"
+	},
+	"localweather": "Météo locale",
+	"privacyPolicy": "Politique de confidentialité",
+	"settings": "Paramètres",
+	"source": {
+		"title": "Source"
+	},
+	"temperatureScale": {
+		"celsius": "Celsius",
+		"fahrenheit": "Fahrenheit"
+	},
+	"temperature": "Température",
+	"theme": {
+		"dark": "Sombre",
+		"light": "Clair",
+		"system": "Selon le système",
+		"title": "Apparence"
+	},
+	"units": {
+		"imperial": "Impériales",
+		"metric": "Métriques",
+		"title": "Unités"
+	},
+	"version": "Version",
+	"termsOfService": "Conditions d’utilisation",
+	"localtime": "Heure locale"
+}

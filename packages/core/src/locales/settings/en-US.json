@@ -1,0 +1,72 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather is a cross-platform application for displaying current weather, short-term forecasts, and long-term forecasts. The application also shows current air pollution values and allows users to monitor important air quality indicators. It also includes global map data and meteorological map layers for the entire world.",
+		"title": "About"
+	},
+	"airquality": {
+		"american": "American",
+		"european": "European",
+		"title": "Air quality",
+		"titlefull": "Air quality index",
+		"titleshort": "AQI"
+	},
+	"compass": {
+		"title": "Compass"
+	},
+	"datasource": {
+		"weatherapi": "Current weather",
+		"openmeteo": "Meteorological data and weather",
+		"openfreemap": "Map tiles",
+		"title": "Data sources"
+	},
+	"feedback": {
+		"bug": "Bug",
+		"button": {
+			"send": "Send feedback",
+			"sending": "Sending feedback..."
+		},
+		"feature": "Feature",
+		"feedback": "Message",
+		"message": "Message",
+		"placeholder": "Write your message here..",
+		"question": "Question",
+		"select": "Select message type",
+		"title": "Send feedback",
+		"toast": {
+			"error": "Couldn't send feedback",
+			"sent": "Feedback sent"
+		},
+		"type": "Type"
+	},
+	"language": {
+		"title": "Language"
+	},
+	"legal": {
+		"title": "Legal"
+	},
+	"localweather": "Local weather",
+	"privacyPolicy": "Privacy Policy",
+	"settings": "Settings",
+	"source": {
+		"title": "Source"
+	},
+	"temperatureScale": {
+		"celsius": "Celsius",
+		"fahrenheit": "Fahrenheit"
+	},
+	"temperature": "Temperature",
+	"theme": {
+		"dark": "Dark mode",
+		"light": "Light mode",
+		"system": "System mode",
+		"title": "Theme"
+	},
+	"units": {
+		"imperial": "Imperial",
+		"metric": "Metric",
+		"title": "Units"
+	},
+	"version": "version",
+	"termsOfService": "Terms of Service",
+	"localtime": "Local time"
+}

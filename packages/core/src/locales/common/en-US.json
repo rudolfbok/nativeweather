@@ -1,0 +1,44 @@
+{
+	"favorites": {
+		"delete": "Delete",
+		"error": "There was an error loading your favorite cities. Please try again.",
+		"loading": "Loading your favorite cities..",
+		"nosaved": "There are no favorite cities saved",
+		"share": "Share",
+		"title": "Favorites"
+	},
+	"modal": {
+		"description": "Description"
+	},
+	"search": {
+		"city": {
+			"error": "Couldn't load weather"
+		},
+		"input": {
+			"error": "Couldn't load weather"
+		},
+		"searchbar": "Search any city or coordinates..",
+		"searchbar.native": "Search..",
+		"title": "Search",
+		"url": {
+			"error": "We couldn't find the city you were looking for \nPlease check the spelling or add the country name and try again"
+		}
+	},
+	"share": {
+		"message": "Current weather in"
+	},
+	"tab": {
+		"home": "Home",
+		"maps": "Maps",
+		"search": "Search",
+		"settings": "Settings",
+		"weather": "Weather"
+	},
+	"toast": {
+		"add": "{name} added to favorites",
+		"city": "City",
+		"notrefreshed": "Couldn't update weather",
+		"refreshed": "Weather updated",
+		"remove": "{name} removed from favorites"
+	}
+}

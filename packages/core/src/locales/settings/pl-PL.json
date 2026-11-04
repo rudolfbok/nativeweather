@@ -1,0 +1,72 @@
+{
+	"about": {
+		"aboutapp": "NativeWeather to aplikacja na różne platformy, która pokazuje aktualną pogodę oraz prognozy krótko- i długoterminowe. Umożliwia też sprawdzanie bieżących poziomów zanieczyszczenia powietrza i najważniejszych wskaźników jego jakości. Oferuje również mapy i warstwy meteorologiczne obejmujące cały świat.",
+		"title": "O aplikacji"
+	},
+	"airquality": {
+		"american": "Amerykański",
+		"european": "Europejski",
+		"title": "Jakość powietrza",
+		"titlefull": "Indeks jakości powietrza",
+		"titleshort": "Jakość powietrza"
+	},
+	"compass": {
+		"title": "Kompas"
+	},
+	"datasource": {
+		"weatherapi": "Aktualna pogoda",
+		"openmeteo": "Dane meteorologiczne i pogoda",
+		"openfreemap": "Podkłady mapowe",
+		"title": "Źródła danych"
+	},
+	"feedback": {
+		"bug": "Zgłoszenie błędu",
+		"button": {
+			"send": "Wyślij opinię",
+			"sending": "Wysyłanie opinii…"
+		},
+		"feature": "Propozycja funkcji",
+		"feedback": "Wiadomość",
+		"message": "Wiadomość",
+		"placeholder": "Wpisz wiadomość…",
+		"question": "Pytanie",
+		"select": "Wybierz rodzaj wiadomości",
+		"title": "Wyślij opinię",
+		"toast": {
+			"error": "Nie udało się wysłać opinii",
+			"sent": "Opinia została wysłana"
+		},
+		"type": "Rodzaj"
+	},
+	"language": {
+		"title": "Język"
+	},
+	"legal": {
+		"title": "Informacje prawne"
+	},
+	"localweather": "Pogoda w mojej lokalizacji",
+	"privacyPolicy": "Polityka prywatności",
+	"settings": "Ustawienia",
+	"source": {
+		"title": "Źródło"
+	},
+	"temperatureScale": {
+		"celsius": "Celsjusza",
+		"fahrenheit": "Fahrenheita"
+	},
+	"temperature": "Temperatura",
+	"theme": {
+		"dark": "Ciemny",
+		"light": "Jasny",
+		"system": "Zgodny z systemem",
+		"title": "Wygląd"
+	},
+	"units": {
+		"imperial": "Imperialne",
+		"metric": "Metryczne",
+		"title": "Jednostki"
+	},
+	"version": "Wersja",
+	"termsOfService": "Warunki korzystania",
+	"localtime": "Czas lokalny"
+}
