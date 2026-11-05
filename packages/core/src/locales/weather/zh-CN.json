@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "影响区域",
+		"count": "{count} 条天气预警",
 		"description": "事件说明",
 		"disclaimer": "预警由当地政府部门发布",
 		"expires": "有效期至",
@@ -124,8 +125,7 @@
 		"severity.minor": "轻微",
 		"severity.moderate": "中等",
 		"severity.severe": "严重",
-		"severity.unknown": "未知",
-		"title": "天气预警"
+		"severity.unknown": "未知"
 	},
 	"cloudcover": {
 		"percentage": {

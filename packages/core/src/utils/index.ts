@@ -1,4 +1,5 @@
-export { getAlerts, getMostSevereAlert } from './alertFilters';
+export { findAlert, getAlertKey, getAlerts, getMostSevereAlert } from './alertFilters';
+export { formatAlertExpiry, getAlertText } from './alertText';
 export { countryCode } from './countryCode';
 export { extractCity, getCityRegion } from './extractCity';
 export { buildSlug } from './weatherSlug';

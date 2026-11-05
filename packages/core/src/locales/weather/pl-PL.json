@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "Obszar",
+		"count": "{count, plural, one {# ostrzeżenie pogodowe} few {# ostrzeżenia pogodowe} other {# ostrzeżeń pogodowych}}",
 		"description": "Opis zjawiska",
 		"disclaimer": "Ostrzeżenia są wydawane przez właściwe lokalne instytucje",
 		"expires": "Ważne do",
@@ -124,8 +125,7 @@
 		"severity.minor": "Niski",
 		"severity.moderate": "Umiarkowany",
 		"severity.severe": "Wysoki",
-		"severity.unknown": "Nieznany",
-		"title": "ostrzeżenia pogodowe"
+		"severity.unknown": "Nieznany"
 	},
 	"cloudcover": {
 		"percentage": {

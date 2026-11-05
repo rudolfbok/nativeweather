@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "Zone",
+		"count": "{count, plural, one {# alerte météo} other {# alertes météo}}",
 		"description": "Description du phénomène",
 		"disclaimer": "Les alertes sont émises par les autorités locales",
 		"expires": "Valable jusqu’au",
@@ -124,8 +125,7 @@
 		"severity.minor": "Faible",
 		"severity.moderate": "Modérée",
 		"severity.severe": "Sévère",
-		"severity.unknown": "Inconnue",
-		"title": "alerte météo"
+		"severity.unknown": "Inconnue"
 	},
 	"cloudcover": {
 		"percentage": {

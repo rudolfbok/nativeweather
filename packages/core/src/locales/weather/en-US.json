@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "Area",
+		"count": "{count, plural, one {# weather alert} other {# weather alerts}}",
 		"description": "Description of the event",
 		"disclaimer": "Alerts are issued by local government agencies",
 		"expires": "Expires",
@@ -124,8 +125,7 @@
 		"severity.minor": "Minor",
 		"severity.moderate": "Moderate",
 		"severity.severe": "Severe",
-		"severity.unknown": "Unknown",
-		"title": "weather alert"
+		"severity.unknown": "Unknown"
 	},
 	"cloudcover": {
 		"percentage": {

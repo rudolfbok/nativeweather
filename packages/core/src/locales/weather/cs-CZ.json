@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "Oblast",
+		"count": "{count} upozornění na počasí",
 		"description": "Popis události",
 		"disclaimer": "Výstrahy vydávají místní vládní orgány",
 		"expires": "Platnost vyprší",
@@ -124,8 +125,7 @@
 		"severity.minor": "Nízká",
 		"severity.moderate": "Mírná",
 		"severity.severe": "Vážná",
-		"severity.unknown": "Neznámá",
-		"title": "upozornění na počasí"
+		"severity.unknown": "Neznámá"
 	},
 	"cloudcover": {
 		"percentage": {

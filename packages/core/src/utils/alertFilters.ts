@@ -3,7 +3,7 @@ import { removeDiacritics } from './removeDiacritics';
 
 type AlertLocation = Pick<NormalizedData['location'], 'name' | 'region'>;
 
-const getAlertKey = (alert: WeatherAlert) => alert.identifier || alert.event.trim().toLowerCase();
+export const getAlertKey = (alert: WeatherAlert) => alert.identifier || alert.event.trim().toLowerCase();
 
 const normalizeArea = (value = '') =>
 	removeDiacritics(value)
@@ -65,3 +65,5 @@ export const getMostSevereAlert = (alerts: WeatherAlert[]) => {
 		return mostSevere;
 	}, undefined);
 };
+
+export const findAlert = (alerts: WeatherAlert[], key: string) => alerts.find((alert) => getAlertKey(alert) === key);

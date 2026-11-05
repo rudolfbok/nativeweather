@@ -34,6 +34,12 @@ export { MetricCards } from './components/metrics/MetricCards';
 export { isMetricId, metricDefinitions } from './components/metrics/registry';
 export type { MetricId } from './components/metrics/registry';
 
+// Alerts
+export { AlertDetail } from './components/alerts/AlertDetail';
+export { AlertList } from './components/alerts/AlertList';
+export { AlertsCard } from './components/alerts/AlertsCard';
+export { SeverityDot } from './components/alerts/SeverityDot';
+
 // Air quality
 export { AirQualityCard } from './components/airquality/AirQualityCard';
 export { AirQualityGrid } from './components/airquality/AirQualityGrid';

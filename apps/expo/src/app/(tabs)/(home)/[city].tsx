@@ -3,6 +3,7 @@ import { fetchWeather } from '@nativeweather/api';
 import { useWeather } from '@nativeweather/core';
 import {
 	AirQualityCard,
+	AlertsCard,
 	DailyForecast,
 	HourlyForecast,
 	MainWeather,
@@ -44,6 +45,7 @@ const CityWeather = ({ query }: { query: string }) => {
 					) : weatherData ? (
 						<>
 							<MainWeather weather={weatherData} />
+							<AlertsCard onPress={() => router.push('/modals/alerts')} />
 							<SmartSummary />
 							<HourlyForecast />
 							<DailyForecast

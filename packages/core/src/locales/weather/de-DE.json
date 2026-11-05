@@ -114,6 +114,7 @@
 	},
 	"alerts": {
 		"area": "Gebiet",
+		"count": "{count, plural, one {# Wetterwarnung} other {# Wetterwarnungen}}",
 		"description": "Beschreibung des Ereignisses",
 		"disclaimer": "Warnungen werden von den zuständigen örtlichen Behörden herausgegeben",
 		"expires": "Gültig bis",
@@ -124,8 +125,7 @@
 		"severity.minor": "Gering",
 		"severity.moderate": "Mäßig",
 		"severity.severe": "Schwer",
-		"severity.unknown": "Unbekannt",
-		"title": "Wetterwarnungen"
+		"severity.unknown": "Unbekannt"
 	},
 	"cloudcover": {
 		"percentage": {
