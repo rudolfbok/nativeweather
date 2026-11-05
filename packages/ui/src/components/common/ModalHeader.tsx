@@ -18,9 +18,9 @@ export interface ModalHeaderProps {
 	toolbar?: ReactNode;
 }
 
-const iconButton = 'rounded-full border border-hairline p-1.5 ios:hidden';
+const iconButton = 'rounded-full border border-hairline p-1.5';
 
-// iOS sheets dismiss and go back natively, so the buttons are hidden there.
+// iOS sheets close with a swipe, so only the close button is hidden there.
 export const ModalHeader = ({ header, icon, subHeader, onBack, onClose, toolbar }: ModalHeaderProps) => (
 	<View>
 		<View className="flex-row items-start justify-between gap-2 pb-4">
@@ -46,7 +46,7 @@ export const ModalHeader = ({ header, icon, subHeader, onBack, onClose, toolbar 
 				{subHeader && <Text type="body">{subHeader}</Text>}
 			</View>
 			{onClose && (
-				<Pressable onPress={onClose} accessibilityLabel="Close" className={iconButton}>
+				<Pressable onPress={onClose} accessibilityLabel="Close" className={`${iconButton} ios:hidden`}>
 					<CloseIcon colorClassName="accent-label" size={24} />
 				</Pressable>
 			)}

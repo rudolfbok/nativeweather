@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "UV index",
 		"index": {
 			"description": "The UV Index is an international standard for measuring the intensity of ultraviolet radiation reaching the Earth's surface. This index helps people understand the risk of skin damage from sunlight and take appropriate protective measures.",
 			"title": "About index",

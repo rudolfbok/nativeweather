@@ -23,7 +23,15 @@ export default function ForecastModal() {
 			onClose={close}
 			toolbar={<DaysToggle selectedIndex={dayIndex} onSelect={(index) => router.setParams({ day: String(index) })} />}
 		>
-			<DayForecast dayIndex={dayIndex} />
+			<DayForecast
+				dayIndex={dayIndex}
+				onOpenMetric={(metric, metricDay) =>
+					router.push({
+						pathname: '/modals/[metric]',
+						params: metricDay === undefined ? { metric } : { metric, day: String(metricDay) },
+					})
+				}
+			/>
 		</ModalScreen>
 	);
 }

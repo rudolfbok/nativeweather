@@ -1,0 +1,37 @@
+import { useId } from 'react';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
+
+const scaleStops = {
+	uv: [
+		'#01FF01',
+		'#5DF500',
+		'#BCEB01',
+		'#FFBB01',
+		'#FF8A01',
+		'#FF5B00',
+		'#FF0100',
+		'#E60143',
+		'#D0007B',
+		'#B700BC',
+		'#9E00FF',
+	],
+} as const;
+
+export type GradientScaleType = keyof typeof scaleStops;
+
+export const GradientScale = ({ type, label }: { type: GradientScaleType; label: string }) => {
+	const gradientId = useId().replace(/:/g, '');
+
+	return (
+		<Svg width="100%" height="4" viewBox="0 0 100 4" preserveAspectRatio="none" accessibilityLabel={label}>
+			<Defs>
+				<LinearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+					{scaleStops[type].map((color, index) => (
+						<Stop key={color} offset={`${index * 10}%`} stopColor={color} />
+					))}
+				</LinearGradient>
+			</Defs>
+			<Rect width="100%" height="100%" fill={`url(#${gradientId})`} />
+		</Svg>
+	);
+};

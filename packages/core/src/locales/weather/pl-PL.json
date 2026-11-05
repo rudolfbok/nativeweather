@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "Indeks UV",
 		"index": {
 			"description": "Indeks UV to międzynarodowy wskaźnik intensywności promieniowania ultrafioletowego docierającego do powierzchni Ziemi. Pomaga ocenić ryzyko uszkodzenia skóry przez słońce i dobrać odpowiednią ochronę.",
 			"title": "O indeksie UV",

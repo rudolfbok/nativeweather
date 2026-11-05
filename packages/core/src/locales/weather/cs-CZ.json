@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "UV index",
 		"index": {
 			"description": "UV Index je mezinárodní standard pro měření intenzity ultrafialového záření dopadającího na zemský povrch. Tento index pomáhá lidem pochopit riziko poškození kůže slunečním zářením a přijmout vhodná ochranná opatření.",
 			"title": "Podrobnosti o indexu",

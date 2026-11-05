@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "Indice UV",
 		"index": {
 			"description": "L’indice UV est un indicateur international de l’intensité du rayonnement ultraviolet atteignant la surface de la Terre. Il aide à évaluer le risque de lésions cutanées dues au soleil et à prendre des mesures de protection adaptées.",
 			"title": "À propos de l’indice UV",

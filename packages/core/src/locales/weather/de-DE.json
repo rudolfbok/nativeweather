@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "UV-Index",
 		"index": {
 			"description": "Der UV-Index ist ein international einheitliches Maß für die Stärke der ultravioletten Strahlung an der Erdoberfläche. Er hilft dabei, das Risiko von Hautschäden durch Sonnenlicht einzuschätzen und geeignete Schutzmaßnahmen zu treffen.",
 			"title": "Über den UV-Index",

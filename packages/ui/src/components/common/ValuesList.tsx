@@ -11,6 +11,8 @@ export interface ValueItem {
 	description?: string;
 	/** Text colour class for the name, overrides the list's `valueClassName`. */
 	className?: string;
+	/** Scale colour for the name when no theme token fits (wind, pressure). */
+	color?: string;
 	/** Replaces the index badge, e.g. a moon phase icon. */
 	leading?: ReactNode;
 }
@@ -23,7 +25,7 @@ interface ValuesListProps {
 
 export const ValuesList = ({ values, showIndex = false, valueClassName }: ValuesListProps) => (
 	<View className="gap-4">
-		{values.map(({ name, value, description, className, leading }, index) => (
+		{values.map(({ name, value, description, className, color, leading }, index) => (
 			<Fragment key={name}>
 				{index > 0 && <Separator />}
 				<View className="w-full flex-row items-center gap-4">
@@ -36,7 +38,11 @@ export const ValuesList = ({ values, showIndex = false, valueClassName }: Values
 							</View>
 						))}
 					<View className="flex-1">
-						<Text type="body" className={twMerge('font-semibold', valueClassName, className)}>
+						<Text
+							type="body"
+							className={twMerge('font-semibold', valueClassName, className)}
+							style={color ? { color } : undefined}
+						>
 							{name}
 						</Text>
 						{value && (

@@ -29,6 +29,11 @@ export type { ValueItem } from './components/common/ValuesList';
 export type { ToastData, ToastType } from './components/common/NotificationToast';
 export { Toaster, showToast } from './components/common/Toaster';
 
+// Metric cards and modals
+export { MetricCards } from './components/metrics/MetricCards';
+export { isMetricId, metricDefinitions } from './components/metrics/registry';
+export type { MetricId } from './components/metrics/registry';
+
 // Weather
 export { DailyForecast } from './components/weather/daily/DailyForecast';
 export { DayForecast } from './components/weather/daily/DayForecast';

@@ -465,6 +465,7 @@
 		}
 	},
 	"uv": {
+		"title": "Indice UV",
 		"index": {
 			"description": "L’indice UV è un indicatore internazionale dell’intensità della radiazione ultravioletta che raggiunge la superficie terrestre. Aiuta a valutare il rischio di danni alla pelle dovuti al sole e a scegliere misure di protezione adeguate.",
 			"title": "Informazioni sull’indice UV",
