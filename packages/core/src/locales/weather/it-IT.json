@@ -158,7 +158,10 @@
 		"partlycloudy": "Parzialmente nuvoloso",
 		"rain": "Pioggia",
 		"snow": "Neve",
-		"thunderstorm": "Temporale"
+		"thunderstorm": "Temporale",
+		"haze": "Foschia",
+		"dust": "Polvere",
+		"sleet": "Nevischio"
 	},
 	"dailyforecast": {
 		"title": "Previsioni giornaliere",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Precipitazioni totali:",
 	"rainfall.title": "Precipitazioni totali",
-	"rainfall.description": "Il totale delle precipitazioni indica la quantità prevista nel periodo della previsione."
+	"rainfall.description": "Il totale delle precipitazioni indica la quantità prevista nel periodo della previsione.",
+	"carousel": {
+		"previous": "Precedente",
+		"next": "Successivo"
+	}
 }

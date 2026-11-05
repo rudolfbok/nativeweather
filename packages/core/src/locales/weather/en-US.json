@@ -158,7 +158,10 @@
 		"partlycloudy": "Partly cloudy",
 		"rain": "Rain",
 		"snow": "Snow",
-		"thunderstorm": "Thunderstorm"
+		"thunderstorm": "Thunderstorm",
+		"haze": "Haze",
+		"dust": "Dust",
+		"sleet": "Sleet"
 	},
 	"dailyforecast": {
 		"title": "Daily forecast",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Total precipitation:",
 	"rainfall.title": "Total precipitation",
-	"rainfall.description": "Total precipitation in millimeters is the expected amount of precipitation during the forecast period. One millimeter equals one liter per square meter. The amount and rain or snow probabilities describe different forecast details."
+	"rainfall.description": "Total precipitation in millimeters is the expected amount of precipitation during the forecast period. One millimeter equals one liter per square meter. The amount and rain or snow probabilities describe different forecast details.",
+	"carousel": {
+		"previous": "Previous",
+		"next": "Next"
+	}
 }

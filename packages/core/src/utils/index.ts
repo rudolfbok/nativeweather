@@ -12,3 +12,8 @@ export type { AlertSeverityLevel } from './mappings/alertSeverity';
 export { getLandscapeKey } from './mappings/landscapeColors';
 export type { LandscapeKey } from './mappings/landscapeColors';
 export { getDirection } from './mappings/windDirection';
+export { getConditionLabelKey } from './mappings/conditionLabel';
+export { formatHourLabel, getNext24Hours } from './hourlyForecast';
+export type { ForecastHour } from './hourlyForecast';
+export { getSmartSummary } from './smartSummary';
+export type { SummaryPart } from './smartSummary';

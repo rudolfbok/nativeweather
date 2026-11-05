@@ -158,7 +158,10 @@
 		"partlycloudy": "Částečně zataženo",
 		"rain": "Déšť",
 		"snow": "Sníh",
-		"thunderstorm": "Bouřky"
+		"thunderstorm": "Bouřky",
+		"haze": "Opar",
+		"dust": "Prach",
+		"sleet": "Déšť se sněhem"
 	},
 	"dailyforecast": {
 		"title": "Denní předpověď",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Celkové srážky:",
 	"rainfall.title": "Celkové srážky",
-	"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi."
+	"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi.",
+	"carousel": {
+		"previous": "Předchozí",
+		"next": "Další"
+	}
 }

@@ -25,9 +25,6 @@ export default function HomeScreen() {
 									<Link href="/preview">
 										<Text type="link">/preview (UI gallery, dev only)</Text>
 									</Link>
-									<Link href="/modal-check">
-										<Text type="link">/modal-check (temporary modal route test)</Text>
-									</Link>
 								</>
 							)}
 						</View>

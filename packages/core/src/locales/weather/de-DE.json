@@ -158,7 +158,10 @@
 		"partlycloudy": "Wolkig",
 		"rain": "Regen",
 		"snow": "Schnee",
-		"thunderstorm": "Gewitter"
+		"thunderstorm": "Gewitter",
+		"haze": "Dunst",
+		"dust": "Staub",
+		"sleet": "Schneeregen"
 	},
 	"dailyforecast": {
 		"title": "Tagesvorhersage",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Gesamtniederschlag:",
 	"rainfall.title": "Gesamtniederschlag",
-	"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an."
+	"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an.",
+	"carousel": {
+		"previous": "Zurück",
+		"next": "Weiter"
+	}
 }

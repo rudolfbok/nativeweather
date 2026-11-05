@@ -29,6 +29,13 @@ export type { ValueItem } from './components/common/ValuesList';
 export type { ToastData, ToastType } from './components/common/NotificationToast';
 export { Toaster, showToast } from './components/common/Toaster';
 
+// Weather
+export { HourlyCarousel } from './components/weather/hourly/HourlyCarousel';
+export { HourlyForecast } from './components/weather/hourly/HourlyForecast';
+export { HourlyItem } from './components/weather/hourly/HourlyItem';
+export { MainWeather } from './components/weather/MainWeather';
+export { SmartSummary } from './components/weather/SmartSummary';
+
 // Weather artwork
 export { WeatherIcon } from './utils/mappings/weatherIcons';
 export { WeatherLandscape } from './utils/mappings/landscapes';

@@ -158,7 +158,10 @@
 		"partlycloudy": "Częściowe zachmurzenie",
 		"rain": "Deszcz",
 		"snow": "Śnieg",
-		"thunderstorm": "Burza"
+		"thunderstorm": "Burza",
+		"haze": "Zamglenie",
+		"dust": "Pył",
+		"sleet": "Deszcz ze śniegiem"
 	},
 	"dailyforecast": {
 		"title": "Prognoza dzienna",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Suma opadów:",
 	"rainfall.title": "Suma opadów",
-	"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy."
+	"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy.",
+	"carousel": {
+		"previous": "Poprzedni",
+		"next": "Następny"
+	}
 }

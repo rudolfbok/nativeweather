@@ -20,19 +20,17 @@ export type WeatherCondition = {
 	landscape: 'clear' | 'partclouds' | 'cloudy' | 'overcast' | 'fog' | 'rain' | 'snow' | 'thunder';
 	precipitation: PrecipitationKind;
 	thunder: boolean;
-	freezing: boolean;
 	possible: boolean;
 };
 
 // Canonical WeatherAPI condition IDs. Future source adapters map into these IDs before UI rendering.
 export const weatherConditions: Record<number, WeatherCondition> = {
-	1000: { icon: 'clear', landscape: 'clear', precipitation: 'none', thunder: false, freezing: false, possible: false },
+	1000: { icon: 'clear', landscape: 'clear', precipitation: 'none', thunder: false, possible: false },
 	1003: {
 		icon: 'partclouds',
 		landscape: 'partclouds',
 		precipitation: 'none',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1006: {
@@ -40,7 +38,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'cloudy',
 		precipitation: 'none',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1009: {
@@ -48,28 +45,26 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'overcast',
 		precipitation: 'none',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1012: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1015: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1018: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1021: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1024: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1027: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1030: { icon: 'fog', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1033: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1036: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1039: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1042: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1045: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
-	1048: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
+	1012: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1015: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1018: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1021: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1024: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1027: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1030: { icon: 'fog', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1033: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1036: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1039: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1042: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1045: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
+	1048: { icon: 'obscured', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
 	1063: {
 		icon: 'lightrain',
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: true,
 	},
 	1066: {
@@ -77,7 +72,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'snow',
 		precipitation: 'snow',
 		thunder: false,
-		freezing: false,
 		possible: true,
 	},
 	1069: {
@@ -85,7 +79,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'sleet',
 		thunder: false,
-		freezing: true,
 		possible: true,
 	},
 	1072: {
@@ -93,7 +86,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'freezing',
 		thunder: false,
-		freezing: true,
 		possible: true,
 	},
 	1087: {
@@ -101,25 +93,22 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'thunder',
 		precipitation: 'thunder',
 		thunder: true,
-		freezing: false,
 		possible: true,
 	},
-	1114: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
+	1114: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
 	1117: {
 		icon: 'blizzard',
 		landscape: 'snow',
 		precipitation: 'snow',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1135: { icon: 'fog', landscape: 'fog', precipitation: 'none', thunder: false, freezing: false, possible: false },
+	1135: { icon: 'fog', landscape: 'fog', precipitation: 'none', thunder: false, possible: false },
 	1147: {
 		icon: 'freezingfog',
 		landscape: 'fog',
-		precipitation: 'freezing',
+		precipitation: 'none',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1150: {
@@ -127,7 +116,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1153: {
@@ -135,7 +123,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1168: {
@@ -143,7 +130,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'freezing',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1171: {
@@ -151,7 +137,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'freezing',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1180: {
@@ -159,7 +144,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1183: {
@@ -167,19 +151,17 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1186: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
-	1189: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
-	1192: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
-	1195: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
+	1186: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
+	1189: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
+	1192: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
+	1195: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
 	1198: {
 		icon: 'freezingrain',
 		landscape: 'rain',
 		precipitation: 'freezing',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1201: {
@@ -187,7 +169,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'freezing',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1204: {
@@ -195,7 +176,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'sleet',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1207: {
@@ -203,7 +183,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'sleet',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1210: {
@@ -211,7 +190,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'snow',
 		precipitation: 'snow',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1213: {
@@ -219,19 +197,17 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'snow',
 		precipitation: 'snow',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1216: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
-	1219: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
-	1222: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
-	1225: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
+	1216: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
+	1219: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
+	1222: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
+	1225: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
 	1237: {
 		icon: 'freezingrain',
 		landscape: 'rain',
 		precipitation: 'ice',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1240: {
@@ -239,17 +215,15 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'rain',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1243: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
-	1246: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, freezing: false, possible: false },
+	1243: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
+	1246: { icon: 'rain', landscape: 'rain', precipitation: 'rain', thunder: false, possible: false },
 	1249: {
 		icon: 'freezingrain',
 		landscape: 'rain',
 		precipitation: 'sleet',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1252: {
@@ -257,7 +231,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'sleet',
 		thunder: false,
-		freezing: true,
 		possible: false,
 	},
 	1255: {
@@ -265,16 +238,14 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'snow',
 		precipitation: 'snow',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
-	1258: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, freezing: false, possible: false },
+	1258: { icon: 'snow', landscape: 'snow', precipitation: 'snow', thunder: false, possible: false },
 	1261: {
 		icon: 'freezingrain',
 		landscape: 'rain',
 		precipitation: 'ice',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1264: {
@@ -282,7 +253,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'rain',
 		precipitation: 'ice',
 		thunder: false,
-		freezing: false,
 		possible: false,
 	},
 	1273: {
@@ -290,7 +260,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'thunder',
 		precipitation: 'thunder_rain',
 		thunder: true,
-		freezing: false,
 		possible: false,
 	},
 	1276: {
@@ -298,7 +267,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'thunder',
 		precipitation: 'thunder_rain',
 		thunder: true,
-		freezing: false,
 		possible: false,
 	},
 	1279: {
@@ -306,7 +274,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'thunder',
 		precipitation: 'thunder_snow',
 		thunder: true,
-		freezing: true,
 		possible: false,
 	},
 	1282: {
@@ -314,7 +281,6 @@ export const weatherConditions: Record<number, WeatherCondition> = {
 		landscape: 'thunder',
 		precipitation: 'thunder_snow',
 		thunder: true,
-		freezing: true,
 		possible: false,
 	},
 };

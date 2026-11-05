@@ -158,7 +158,10 @@
 		"partlycloudy": "Partiellement nuageux",
 		"rain": "Pluie",
 		"snow": "Neige",
-		"thunderstorm": "Orage"
+		"thunderstorm": "Orage",
+		"haze": "Brume sèche",
+		"dust": "Poussière",
+		"sleet": "Neige fondue"
 	},
 	"dailyforecast": {
 		"title": "Prévisions quotidiennes",
@@ -537,5 +540,9 @@
 	},
 	"rainfall": "Précipitations totales :",
 	"rainfall.title": "Précipitations totales",
-	"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision."
+	"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision.",
+	"carousel": {
+		"previous": "Précédent",
+		"next": "Suivant"
+	}
 }
