@@ -1,17 +1,17 @@
 {
-  "name": "@nativeweather/types",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "lint": "oxlint --config ../../.oxlintrc.json --deny-warnings .",
-    "lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix .",
-    "typecheck": "tsc --noEmit"
-  },
-  "exports": {
-    ".": "./src/index.ts"
-  },
-  "devDependencies": {
-    "typescript": "~6.0.3"
-  }
+	"name": "@nativeweather/types",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"lint": "oxlint --config ../../.oxlintrc.json --deny-warnings .",
+		"lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix .",
+		"typecheck": "tsc --noEmit"
+	},
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"devDependencies": {
+		"typescript": "~6.0.3"
+	}
 }

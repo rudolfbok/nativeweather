@@ -1,30 +1,29 @@
 {
-  "name": "nativeweather",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "pnpm --recursive --if-present run lint",
-    "lint:fix": "pnpm --recursive run lint:fix",
-    "typecheck": "pnpm --recursive --if-present run typecheck",
-    "dev": "pnpm --filter nativeweather-mobile start",
-    "dev:desktop": "pnpm --filter nativeweather-desktop dev",
-    "dev:web": "pnpm --filter nativeweather-mobile web",
-    "build": "pnpm --filter nativeweather-desktop build"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "12.9.1",
-      "onFail": "download"
-    }
-  },
-  "packageManager": "pnpm@12.9.1",
-  "type": "module",
-  "devDependencies": {
-    "oxlint": "^1.91.0"
-  }
+	"name": "nativeweather",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"lint": "pnpm --recursive --if-present run lint",
+		"lint:fix": "pnpm --recursive run lint:fix",
+		"typecheck": "pnpm --recursive --if-present run typecheck",
+		"dev": "pnpm --filter @nativeweather/expo start",
+		"dev:desktop": "pnpm --filter nativeweather-desktop dev",
+		"dev:web": "pnpm --filter @nativeweather/expo web",
+		"build": "pnpm --filter nativeweather-desktop build",
+		"format": "prettier --write ."
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "12.9.1",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@12.9.1",
+	"type": "module",
+	"devDependencies": {
+		"oxlint": "^1.91.0",
+		"prettier": "^3.9.10",
+		"prettier-plugin-tailwindcss": "^0.8.1"
+	}
 }

@@ -1,4 +1,4 @@
-export type LocalWeatherErrorKind = 'permission' | 'unavailable' | 'timeout' | 'network' | 'server' | 'unknown';
+export type LocalWeatherErrorKind = 'permission' | 'unavailable' | 'timeout' | 'network' | 'unknown';
 
 export class LocalWeatherError extends Error {
 	constructor(
@@ -27,9 +27,6 @@ export const toLocalWeatherError = (error: unknown) => {
 	const message = error instanceof Error ? error.message : String(error);
 	if (/LocationUnavailable|kCLErrorDomain error 0|Cannot obtain current location/i.test(message)) {
 		return new LocalWeatherError('unavailable', 'Your device could not determine its location.', { cause: error });
-	}
-	if (error instanceof Error && 'status' in error && typeof error.status === 'number') {
-		return new LocalWeatherError(error.status >= 500 ? 'server' : 'network', error.message, { cause: error });
 	}
 	return new LocalWeatherError('network', 'Unable to load local weather.', { cause: error });
 };

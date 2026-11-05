@@ -6,6 +6,5 @@ export interface OpenMeteoAQI {
 		pm2_5: number;
 		ozone: number;
 		nitrogen_dioxide: number;
-		carbon_monoxide: number;
 	};
 }

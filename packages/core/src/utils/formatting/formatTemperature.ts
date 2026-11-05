@@ -5,7 +5,12 @@ interface FormatTemperatureProps {
 	includeUnit?: boolean;
 }
 
-export const formatTemperature = ({ celsius, fahrenheit, currentTemp, includeUnit = false }: FormatTemperatureProps) => {
+export const formatTemperature = ({
+	celsius,
+	fahrenheit,
+	currentTemp,
+	includeUnit = false,
+}: FormatTemperatureProps) => {
 	const isFahrenheit = currentTemp === 'fahrenheit';
 	const value = isFahrenheit ? fahrenheit : celsius;
 	const unit = includeUnit ? (isFahrenheit ? 'F' : 'C') : '';

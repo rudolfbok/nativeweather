@@ -1,38 +1,43 @@
 {
-  "name": "nativeweather-mobile",
-  "main": "expo-router/entry",
-  "version": "1.0.0",
-  "dependencies": {
-    "@nativeweather/ui": "workspace:*",
-    "expo": "~58.0.23",
-    "expo-constants": "~58.0.15",
-    "expo-linking": "~58.0.16",
-    "expo-router": "~58.0.30",
-    "expo-system-ui": "~58.0.7",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "react-native": "0.88.1",
-    "react-native-mmkv": "^4.3.2",
-    "react-native-nitro-modules": "^0.37.1",
-    "react-native-safe-area-context": "~5.11.1",
-    "react-native-screens": "~4.30.1",
-    "react-native-web": "^0.21.4",
-    "tailwindcss": "4.3.3",
-    "uniwind": "1.12.2"
-  },
-  "devDependencies": {
-    "@types/react": "~19.3.0",
-    "typescript": "~6.0.3"
-  },
-  "scripts": {
-    "start": "expo start --port 8081",
-    "build": "expo export --platform web",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "typecheck": "tsc --noEmit",
-    "lint": "oxlint --config ../../.oxlintrc.json --deny-warnings .",
-    "lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix ."
-  },
-  "private": true
+	"name": "@nativeweather/expo",
+	"main": "expo-router/entry",
+	"version": "1.0.0",
+	"dependencies": {
+		"@nativeweather/api": "workspace:*",
+		"@nativeweather/core": "workspace:*",
+		"@nativeweather/types": "workspace:*",
+		"@nativeweather/ui": "workspace:*",
+		"expo": "~58.0.23",
+		"expo-constants": "~58.0.15",
+		"expo-dev-client": "~58.0.18",
+		"expo-linking": "~58.0.16",
+		"expo-location": "~58.0.20",
+		"expo-router": "~58.0.30",
+		"expo-system-ui": "~58.0.7",
+		"react": "19.3.0",
+		"react-dom": "19.3.0",
+		"react-native": "0.88.1",
+		"react-native-mmkv": "^4.3.2",
+		"react-native-nitro-modules": "^0.37.1",
+		"react-native-safe-area-context": "~5.11.1",
+		"react-native-screens": "~4.30.1",
+		"react-native-web": "^0.21.4",
+		"tailwindcss": "4.3.3",
+		"uniwind": "1.12.2"
+	},
+	"devDependencies": {
+		"@types/react": "~19.3.0",
+		"typescript": "~6.0.3"
+	},
+	"scripts": {
+		"start": "expo start --port 8081",
+		"build": "expo export --platform web",
+		"android": "expo run:android",
+		"ios": "expo run:ios",
+		"web": "expo start --web",
+		"typecheck": "tsc --noEmit",
+		"lint": "oxlint --config ../../.oxlintrc.json --deny-warnings .",
+		"lint:fix": "oxlint --config ../../.oxlintrc.json --deny-warnings --fix ."
+	},
+	"private": true
 }

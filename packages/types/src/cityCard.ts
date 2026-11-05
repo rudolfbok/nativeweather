@@ -15,8 +15,7 @@ export interface CityCard {
 		feelsLikeF: number;
 		isDay: 0 | 1;
 		condition: {
-			text: string;
-			code: number | null;
+			code: number;
 		};
 	};
 	forecast: {

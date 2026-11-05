@@ -1,13 +1,12 @@
 import type { NormalizedData, WeatherAlert } from '@nativeweather/types';
+import { removeDiacritics } from './removeDiacritics';
 
 type AlertLocation = Pick<NormalizedData['location'], 'name' | 'region'>;
 
 const getAlertKey = (alert: WeatherAlert) => alert.identifier || alert.event.trim().toLowerCase();
 
 const normalizeArea = (value = '') =>
-	value
-		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '')
+	removeDiacritics(value)
 		.toLowerCase()
 		.replace(/[^a-z0-9]+/g, ' ')
 		.trim();

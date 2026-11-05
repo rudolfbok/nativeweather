@@ -1,18 +1,35 @@
 {
-  "expo": {
-    "name": "mobile",
-    "slug": "mobile",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "scheme": "mobile",
-    "userInterfaceStyle": "automatic",
-    "web": {
-      "output": "single"
-    },
-    "plugins": ["expo-router"],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    }
-  }
+	"expo": {
+		"name": "NativeWeather",
+		"slug": "nativeweather",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"scheme": "nativeweather",
+		"userInterfaceStyle": "automatic",
+		"ios": {
+			"bundleIdentifier": "com.bitwebs.nativeweather",
+			"infoPlist": {
+				"NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast."
+			}
+		},
+		"android": {
+			"package": "com.bitwebs.nativeweather"
+		},
+		"web": {
+			"output": "single"
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-location",
+				{
+					"locationWhenInUsePermission": "NativeWeather needs your location to show the local weather forecast."
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true,
+			"reactCompiler": true
+		}
+	}
 }

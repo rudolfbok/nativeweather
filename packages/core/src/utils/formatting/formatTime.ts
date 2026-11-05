@@ -13,11 +13,9 @@ export const formatTime = (timeStr: string, lang = 'en-US'): string => {
 	const date = new Date();
 	date.setHours(hours, minutes, 0);
 
-	// const isCzech = lang.startsWith('cs');
-
 	return new Intl.DateTimeFormat(lang, {
 		hour: '2-digit',
 		minute: '2-digit',
-        hour12: lang === 'en-US',
+		hour12: lang === 'en-US',
 	}).format(date);
 };

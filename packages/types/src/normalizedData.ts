@@ -34,8 +34,7 @@ export interface NormalizedData {
 		cloudCover: number;
 		isDay: 0 | 1;
 		condition: {
-			text: string;
-			code: number | null;
+			code: number;
 		};
 	};
 	forecast: {
@@ -51,17 +50,14 @@ export interface NormalizedData {
 				maxWindMph: number;
 				dailyRainChance: number;
 				dailySnowChance: number;
-				dailyWillItSnow: 0 | 1;
 				uv: number;
 				avgVisKm: number;
 				avgVisMiles: number;
-				avgHumidity: number;
 				totalPrecipMm: number;
 				totalPrecipIn: number;
 				totalSnowCm: number;
 				condition: {
-					text: string;
-					code: number | null;
+					code: number;
 				};
 			};
 			hour: {
@@ -83,8 +79,7 @@ export interface NormalizedData {
 				windKph: number;
 				windMph: number;
 				condition: {
-					text: string;
-					code: number | null;
+					code: number;
 				};
 			}[];
 			astro: {

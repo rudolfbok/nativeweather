@@ -7,7 +7,7 @@ interface SunEventProps {
 	timeZone: string;
 }
 
-export const useSunEvent = ({ data, tomorrowData, timeZone }: SunEventProps) => {
+export const useSunEventCountdown = ({ data, tomorrowData, timeZone }: SunEventProps) => {
 	const [now, setNow] = useState(() => Date.now());
 
 	useEffect(() => {

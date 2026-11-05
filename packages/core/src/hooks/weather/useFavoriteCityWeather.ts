@@ -1,10 +1,9 @@
 import { fetchWeather } from '@nativeweather/api';
 import { getFavoriteCities, isSameCity, removeFavoriteCity } from '../../database/crudMMKVService';
 import { useStorageBoolean, useStorageString } from '../../database/useStorage';
-import { booleanStorageDefaults } from '../../database/storageDefaults';
 import type { City, CityCard } from '@nativeweather/types';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useLocalWeather } from './useLocalWeather';
+import { useLocalWeather } from './weatherStore';
 
 export interface FavoriteCity {
 	city: City;
@@ -17,8 +16,8 @@ interface RefreshFavoritesProps {
 }
 
 export const useFavoriteCityWeather = ({ refresh = false }: { refresh?: boolean } = {}) => {
-	const [favoriteCitiesValue, setFavoriteCitiesValue] = useStorageString('favoriteCities');
-	const [showLocalWeather = booleanStorageDefaults.showLocalWeather] = useStorageBoolean('showLocalWeather');
+	const [favoriteCitiesValue] = useStorageString('favoriteCities');
+	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [favoritesData, setFavoritesData] = useState<FavoriteCity[]>([]);
 	const [loading, setLoading] = useState(refresh);
 	const refreshAbortRef = useRef<AbortController | null>(null);
@@ -33,14 +32,14 @@ export const useFavoriteCityWeather = ({ refresh = false }: { refresh?: boolean 
 			try {
 				const cities = getFavoriteCities();
 				let localRefreshFailed = false;
-				const localWeatherData = useLocalWeather.getState().localWeatherData;
+				const localWeatherData = useLocalWeather.getState().weatherData;
 
 				if (showLocalWeather && localWeatherData) {
 					const weatherData = await fetchWeather([localWeatherData.location.lat, localWeatherData.location.lon], {
 						signal: controller.signal,
 					});
 					if (controller.signal.aborted) return;
-					if (weatherData) await useLocalWeather.getState().setLocalWeatherData(weatherData);
+					if (weatherData) await useLocalWeather.getState().setWeatherData(weatherData);
 					else localRefreshFailed = true;
 				}
 				if (controller.signal.aborted) return;
@@ -71,9 +70,7 @@ export const useFavoriteCityWeather = ({ refresh = false }: { refresh?: boolean 
 
 	const handleRemoveCity = (city: City) => {
 		setFavoritesData((previous) => previous.filter((item) => !isSameCity(item.city, city)));
-		const success = removeFavoriteCity(city);
-		setFavoriteCitiesValue(JSON.stringify(getFavoriteCities()));
-		return success;
+		return removeFavoriteCity(city);
 	};
 
 	useEffect(() => {

@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+**/uniwind-types.d.ts
+**/src-tauri/target
+**/src-tauri/gen
+**/dist
+pnpm-workspace.yaml
+**/.expo

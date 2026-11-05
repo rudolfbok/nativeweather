@@ -11,7 +11,7 @@ const colors = {
 	thunder: ['#43607F', '#1D314E'],
 } as const;
 
-export const weatherLandscapeBg = ({ isDay, code }: { isDay: 0 | 1; code: number | null }) => {
+export const weatherLandscapeBg = ({ isDay, code }: { isDay: 0 | 1; code: number }) => {
 	const family = getWeatherCondition(code)?.landscape;
 	if (!family) return isDay === 1 ? '#6B7280' : '#374151';
 	return colors[family][isDay === 1 ? 0 : 1];

@@ -1,10 +1,9 @@
 import type { NormalizedData } from '@nativeweather/types';
 import { countryCode } from './countryCode';
+import { removeDiacritics } from './removeDiacritics';
 
 const normalizeSlug = (value: string) =>
-	value
-		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '')
+	removeDiacritics(value)
 		.toLowerCase()
 		.replace(/&/g, ' and ')
 		.replace(/[^a-z0-9]+/g, '-')

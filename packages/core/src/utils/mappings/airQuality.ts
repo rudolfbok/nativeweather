@@ -1,86 +1,56 @@
-type Range = {
-	max: number;
-	color: string;
+export type Pollutant = 'euaqi' | 'usaqi' | 'pm25' | 'pm10' | 'o3' | 'no2';
+
+// Upper bounds (exclusive) per level; the last level covers everything above.
+const thresholds: Record<Pollutant, [max: number, color: string][]> = {
+	euaqi: [
+		[20, '#4FF0E6'],
+		[40, '#009900'],
+		[60, '#FFC100'],
+		[80, '#FF9900'],
+		[100, '#FF0000'],
+		[Infinity, '#990099'],
+	],
+	usaqi: [
+		[50, '#009900'],
+		[100, '#FFC100'],
+		[150, '#FF6F00'],
+		[200, '#FF0000'],
+		[300, '#960132'],
+		[Infinity, '#990099'],
+	],
+	pm25: [
+		[15, '#009900'],
+		[25, '#FFC100'],
+		[40, '#FF6F00'],
+		[65, '#FF0000'],
+		[100, '#990099'],
+		[Infinity, '#960132'],
+	],
+	pm10: [
+		[30, '#009900'],
+		[50, '#FFC100'],
+		[80, '#FF6F00'],
+		[120, '#FF0000'],
+		[200, '#990099'],
+		[Infinity, '#960132'],
+	],
+	o3: [
+		[120, '#009900'],
+		[160, '#FFC100'],
+		[240, '#FF6F00'],
+		[320, '#FF0000'],
+		[440, '#960132'],
+		[Infinity, '#990099'],
+	],
+	no2: [
+		[40, '#009900'],
+		[80, '#FFC100'],
+		[150, '#FF6F00'],
+		[250, '#FF0000'],
+		[400, '#960132'],
+		[Infinity, '#990099'],
+	],
 };
 
-const getColorByRanges = (value: number, ranges: Range[], fallback = '#007AFF'): string => {
-	return ranges.find((range) => value < range.max)?.color ?? fallback;
-};
-
-export const EUAQIIndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 20, color: '#4FF0E6' },
-		{ max: 40, color: '#009900' },
-		{ max: 60, color: '#FFC100' },
-		{ max: 80, color: '#FF9900' },
-		{ max: 100, color: '#FF0000' },
-		{ max: Infinity, color: '#990099' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
-
-export const USAQIIndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 50, color: '#009900' },
-		{ max: 100, color: '#FFC100' },
-		{ max: 150, color: '#FF6F00' },
-		{ max: 200, color: '#FF0000' },
-		{ max: 300, color: '#960132' },
-		{ max: Infinity, color: '#990099' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
-
-export const PM25IndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 15, color: '#009900' },
-		{ max: 25, color: '#FFC100' },
-		{ max: 40, color: '#FF6F00' },
-		{ max: 65, color: '#FF0000' },
-		{ max: 100, color: '#990099' },
-		{ max: Infinity, color: '#960132' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
-
-export const PM10IndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 30, color: '#009900' },
-		{ max: 50, color: '#FFC100' },
-		{ max: 80, color: '#FF6F00' },
-		{ max: 120, color: '#FF0000' },
-		{ max: 200, color: '#990099' },
-		{ max: Infinity, color: '#960132' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
-
-export const OzoneIndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 120, color: '#009900' },
-		{ max: 160, color: '#FFC100' },
-		{ max: 240, color: '#FF6F00' },
-		{ max: 320, color: '#FF0000' },
-		{ max: 440, color: '#960132' },
-		{ max: Infinity, color: '#990099' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
-
-export const NO2IndicatorColor = (value: number): string => {
-	const ranges: Range[] = [
-		{ max: 40, color: '#009900' },
-		{ max: 80, color: '#FFC100' },
-		{ max: 150, color: '#FF6F00' },
-		{ max: 250, color: '#FF0000' },
-		{ max: 400, color: '#960132' },
-		{ max: Infinity, color: '#990099' },
-	];
-
-	return getColorByRanges(value, ranges);
-};
+export const getAirQualityColor = (pollutant: Pollutant, value: number) =>
+	thresholds[pollutant].find(([max]) => value < max)?.[1] ?? '#007AFF';

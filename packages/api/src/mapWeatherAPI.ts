@@ -1,8 +1,7 @@
 import type { NormalizedData, WeatherAPIResponse } from '@nativeweather/types';
 import { normalizeWeatherConditionCode } from './utils/weatherCondition';
 
-const mapCondition = (condition: { text?: unknown; code?: unknown } | null | undefined) => ({
-	text: '',
+const mapCondition = (condition?: { code?: unknown }) => ({
 	code: normalizeWeatherConditionCode(condition?.code),
 });
 
@@ -55,11 +54,9 @@ export const mapWeatherApi = (data: WeatherAPIResponse): NormalizedData => {
 					maxWindMph: day.day.maxwind_mph,
 					dailyRainChance: day.day.daily_chance_of_rain,
 					dailySnowChance: day.day.daily_chance_of_snow,
-					dailyWillItSnow: day.day.daily_will_it_snow,
 					uv: day.day.uv,
 					avgVisKm: day.day.avgvis_km,
 					avgVisMiles: day.day.avgvis_miles,
-					avgHumidity: day.day.avghumidity,
 					totalPrecipMm: day.day.totalprecip_mm,
 					totalPrecipIn: day.day.totalprecip_in,
 					totalSnowCm: day.day.totalsnow_cm,
