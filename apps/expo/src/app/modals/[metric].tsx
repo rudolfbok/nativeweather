@@ -1,8 +1,9 @@
 import { useWeather } from '@nativeweather/core';
-import { isMetricId, metricDefinitions, ModalScreen } from '@nativeweather/ui';
+import { isMetricId, metricDefinitions } from '@nativeweather/ui';
 import { useTranslate } from '@tolgee/react';
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
+import { AppModalScreen } from '@/components/AppModalScreen';
 
 export default function MetricModal() {
 	const { metric, day } = useLocalSearchParams<{ metric: string; day?: string }>();
@@ -17,8 +18,8 @@ export default function MetricModal() {
 	const dayIndex = Math.min(Math.max(0, Number(day) || 0), days.length - 1);
 
 	return (
-		<ModalScreen header={t(titleKey)} icon={<Icon />} stacked={stacked} onBack={onBack} onClose={onClose}>
+		<AppModalScreen header={t(titleKey)} icon={<Icon />} stacked={stacked} onBack={onBack} onClose={onClose}>
 			<Modal dayIndex={dayIndex} onSelectDay={(index) => router.setParams({ day: String(index) })} />
-		</ModalScreen>
+		</AppModalScreen>
 	);
 }

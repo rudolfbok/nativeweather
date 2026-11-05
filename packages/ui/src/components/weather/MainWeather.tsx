@@ -17,9 +17,10 @@ interface MainWeatherProps {
 	weather: NormalizedData;
 	/** Shows that forecast day instead of the current conditions. */
 	dayIndex?: number;
+	className?: string;
 }
 
-export const MainWeather = ({ weather, dayIndex }: MainWeatherProps) => {
+export const MainWeather = ({ weather, dayIndex, className }: MainWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const [currentTemp] = useStorageString('currentTemp');
 	const isCurrent = dayIndex === undefined;
@@ -29,7 +30,7 @@ export const MainWeather = ({ weather, dayIndex }: MainWeatherProps) => {
 	const temperature = (celsius: number, fahrenheit: number) => formatTemperature({ celsius, fahrenheit, currentTemp });
 
 	return (
-		<View className={twMerge('items-center gap-2 overflow-hidden rounded-3xl p-4', !isCurrent && 'gap-0')}>
+		<View className={twMerge('items-center gap-2 overflow-hidden rounded-3xl p-4', !isCurrent && 'gap-0', className)}>
 			<View pointerEvents="none" className="absolute inset-0 items-center">
 				<View className="absolute -bottom-6 scale-x-200 web:-bottom-2.5">
 					<WeatherLandscape code={code} isDay={isDay} />

@@ -1,7 +1,8 @@
-import { isPollutant, ModalScreen, PollutantDetail, pollutants } from '@nativeweather/ui';
+import { isPollutant, PollutantDetail, pollutants } from '@nativeweather/ui';
 import { useTranslate } from '@tolgee/react';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
+import { AppModalScreen } from '@/components/AppModalScreen';
 
 export default function PollutantModal() {
 	const { pollutant } = useLocalSearchParams<{ pollutant: string }>();
@@ -11,13 +12,13 @@ export default function PollutantModal() {
 	if (!isPollutant(pollutant)) return <Redirect href="/" />;
 
 	return (
-		<ModalScreen
+		<AppModalScreen
 			header={t(`airquality.item.${pollutants[pollutant].itemKey}`)}
 			stacked={stacked}
 			onBack={onBack}
 			onClose={onClose}
 		>
 			<PollutantDetail pollutant={pollutant} />
-		</ModalScreen>
+		</AppModalScreen>
 	);
 }

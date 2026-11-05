@@ -14,6 +14,7 @@ export { LocalWeatherError, isExpectedLocationError, toLocalWeatherError } from 
 export type { LocalWeatherErrorKind } from './hooks/location/locationError';
 export { useLocalWeather, useWeather } from './hooks/weather/weatherStore';
 export { useAlerts } from './hooks/weather/useAlerts';
+export { useCityWeather } from './hooks/weather/useCityWeather';
 export { useFavoriteCities } from './hooks/weather/useFavoriteCities';
 export { useFavoriteCityWeather } from './hooks/weather/useFavoriteCityWeather';
 export type { FavoriteCity } from './hooks/weather/useFavoriteCityWeather';

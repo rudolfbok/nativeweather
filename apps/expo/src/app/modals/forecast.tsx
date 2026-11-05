@@ -1,7 +1,8 @@
-import { formatLongDate, formatWeekday, useWeather } from '@nativeweather/core';
-import { DayForecast, DaysToggle, ModalScreen } from '@nativeweather/ui';
+import { formatDayTitle, useWeather } from '@nativeweather/core';
+import { DayForecast, DaysToggle } from '@nativeweather/ui';
 import { useTolgee } from '@tolgee/react';
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
+import { AppModalScreen } from '@/components/AppModalScreen';
 
 const close = () => (router.canGoBack() ? router.back() : router.replace('/'));
 
@@ -17,9 +18,8 @@ export default function ForecastModal() {
 	const { date } = days[dayIndex];
 
 	return (
-		<ModalScreen
-			header={formatWeekday(date, language, 'long')}
-			subHeader={formatLongDate(date, language)}
+		<AppModalScreen
+			header={formatDayTitle(date, language)}
 			onClose={close}
 			toolbar={<DaysToggle selectedIndex={dayIndex} onSelect={(index) => router.setParams({ day: String(index) })} />}
 		>
@@ -32,6 +32,6 @@ export default function ForecastModal() {
 					})
 				}
 			/>
-		</ModalScreen>
+		</AppModalScreen>
 	);
 }

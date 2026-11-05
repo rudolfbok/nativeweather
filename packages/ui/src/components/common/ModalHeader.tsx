@@ -16,41 +16,46 @@ export interface ModalHeaderProps {
 	onClose?: () => void;
 	/** Rendered below the header row, e.g. a days toggle. */
 	toolbar?: ReactNode;
+	/** The system navigation bar already shows the title, back and close, so only the subheader and toolbar remain. */
+	native?: boolean;
 }
 
 const iconButton = 'rounded-full border border-hairline p-1.5';
 
-// iOS sheets close with a swipe, so only the close button is hidden there.
-export const ModalHeader = ({ header, icon, subHeader, onBack, onClose, toolbar }: ModalHeaderProps) => (
-	<View>
-		<View className="flex-row items-start justify-between gap-2 pb-4">
-			<View className="flex-1 gap-1">
-				<View className="min-w-0 flex-row items-center gap-2">
-					{onBack ? (
-						<Pressable onPress={onBack} accessibilityLabel="Back" className={iconButton}>
-							<ChevronLeftIcon colorClassName="accent-label" size={24} />
-						</Pressable>
-					) : (
-						icon
-					)}
-					<Text
-						type="title"
-						className="min-w-0 flex-1 ios:font-bold"
-						numberOfLines={1}
-						onPress={onBack}
-						suppressHighlighting
-					>
-						{header}
-					</Text>
-				</View>
-				{subHeader && <Text type="body">{subHeader}</Text>}
-			</View>
-			{onClose && (
-				<Pressable onPress={onClose} accessibilityLabel="Close" className={`${iconButton} ios:hidden`}>
-					<CloseIcon colorClassName="accent-label" size={24} />
-				</Pressable>
+export const ModalHeader = ({ header, icon, subHeader, onBack, onClose, toolbar, native = false }: ModalHeaderProps) =>
+	native ? (
+		<View>
+			{subHeader && (
+				<Text type="body" className="pb-4">
+					{subHeader}
+				</Text>
 			)}
+			{toolbar}
 		</View>
-		{toolbar}
-	</View>
-);
+	) : (
+		<View>
+			<View className="flex-row items-start justify-between gap-2 pb-4">
+				<View className="flex-1 gap-1">
+					<View className="min-w-0 flex-row items-center gap-2">
+						{onBack ? (
+							<Pressable onPress={onBack} accessibilityLabel="Back" className={iconButton}>
+								<ChevronLeftIcon colorClassName="accent-label" size={24} />
+							</Pressable>
+						) : (
+							icon
+						)}
+						<Text type="title" className="min-w-0 flex-1" numberOfLines={1} onPress={onBack} suppressHighlighting>
+							{header}
+						</Text>
+					</View>
+					{subHeader && <Text type="body">{subHeader}</Text>}
+				</View>
+				{onClose && (
+					<Pressable onPress={onClose} accessibilityLabel="Close" className={iconButton}>
+						<CloseIcon colorClassName="accent-label" size={24} />
+					</Pressable>
+				)}
+			</View>
+			{toolbar}
+		</View>
+	);

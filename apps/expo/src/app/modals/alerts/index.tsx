@@ -1,8 +1,9 @@
 import { getAlertKey, useAlerts } from '@nativeweather/core';
-import { AlertList, ModalScreen, SeverityDot } from '@nativeweather/ui';
+import { AlertList, SeverityDot } from '@nativeweather/ui';
 import { useTranslate } from '@tolgee/react';
 import { Redirect, router } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
+import { AppModalScreen } from '@/components/AppModalScreen';
 
 export default function AlertsModal() {
 	const { t } = useTranslate('weather');
@@ -13,7 +14,7 @@ export default function AlertsModal() {
 	if (!alerts.length) return <Redirect href="/" />;
 
 	return (
-		<ModalScreen
+		<AppModalScreen
 			header={t('alerts.modaltitle')}
 			icon={<SeverityDot severity={mostSevere?.severity} />}
 			onClose={onClose}
@@ -22,6 +23,6 @@ export default function AlertsModal() {
 				alerts={alerts}
 				onOpen={(alert) => router.push({ pathname: '/modals/alerts/[alert]', params: { alert: getAlertKey(alert) } })}
 			/>
-		</ModalScreen>
+		</AppModalScreen>
 	);
 }

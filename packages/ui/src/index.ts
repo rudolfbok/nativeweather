@@ -19,6 +19,7 @@ export { CardSkeleton } from './components/common/CardSkeleton';
 export { Skeleton } from './components/common/Skeleton';
 
 // Modals
+export { HeaderTitle } from './components/common/HeaderTitle';
 export { ModalHeader } from './components/common/ModalHeader';
 export type { ModalHeaderProps } from './components/common/ModalHeader';
 export { ModalScreen } from './components/common/ModalScreen';

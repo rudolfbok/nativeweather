@@ -1,74 +1,60 @@
-// STUB(phase-6): slice 6.7 replaces this with the full weather screen; Phase 10A adds the server loader.
-import { fetchWeather } from '@nativeweather/api';
-import { useWeather } from '@nativeweather/core';
-import {
-	AirQualityCard,
-	AlertsCard,
-	DailyForecast,
-	HourlyForecast,
-	MainWeather,
-	MetricCards,
-	ScreenWrapper,
-	Skeleton,
-	SmartSummary,
-	Text,
-} from '@nativeweather/ui';
-import { router, Stack, Unmatched, useLocalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+// Phase 10A adds the server loader here.
+import { getLandscapeKey, useCityWeather } from '@nativeweather/core';
+import { getLandscapeColor, ScreenWrapper, showToast, Text } from '@nativeweather/ui';
+import { useTranslate } from '@tolgee/react';
+import { Stack, Unmatched, useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
+import { Platform, RefreshControl, View } from 'react-native';
+import { HeroSkeleton, WeatherHero } from '@/components/WeatherHero';
 
 // Future static routes that `[city]` would otherwise swallow.
 const reservedSlugs = ['compass', 'modals', 'api'];
 
 const CityWeather = ({ query }: { query: string }) => {
-	const weatherData = useWeather((state) => state.weatherData);
-	const setWeatherData = useWeather((state) => state.setWeatherData);
-	const [failedQuery, setFailedQuery] = useState<string | null>(null);
+	const { t } = useTranslate('common');
+	const { weather, failed, refresh } = useCityWeather(query);
+	const [refreshing, setRefreshing] = useState(false);
+	const sky = weather && getLandscapeColor(getLandscapeKey(weather.current.condition.code), weather.current.isDay);
 
-	useEffect(() => {
-		const controller = new AbortController();
-		void fetchWeather(query, { signal: controller.signal }).then((data) => {
-			if (controller.signal.aborted) return;
-			if (data) void setWeatherData(data);
-			else setFailedQuery(query);
-		});
-		return () => controller.abort();
-	}, [query, setWeatherData]);
+	const onRefresh = async () => {
+		setRefreshing(true);
+		const refreshed = await refresh();
+		setRefreshing(false);
+		showToast({ message: t(refreshed ? 'toast.refreshed' : 'toast.notrefreshed'), type: refreshed ? 'done' : 'error' });
+	};
 
 	return (
 		<View className="flex-1 bg-screen-background">
-			<Stack.Screen options={{ title: weatherData?.location.name ?? '' }} />
-			<ScreenWrapper>
-				<View className="gap-4 pb-8">
-					{failedQuery === query ? (
-						<Text type="body">Couldn't load weather for “{query}”.</Text>
-					) : weatherData ? (
-						<>
-							<MainWeather weather={weatherData} />
-							<AlertsCard onPress={() => router.push('/modals/alerts')} />
-							<SmartSummary />
-							<HourlyForecast />
-							<DailyForecast
-								onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
-							/>
-							<AirQualityCard onPress={() => router.push('/modals/airquality')} />
-							<MetricCards
-								onOpen={(metric, day) =>
-									router.push({
-										pathname: '/modals/[metric]',
-										params: day === undefined ? { metric } : { metric, day: String(day) },
-									})
-								}
-							/>
-						</>
-					) : (
-						<>
-							<Skeleton className="h-72" />
-							<Skeleton className="h-32" />
-							<Skeleton className="h-48" />
-						</>
-					)}
-				</View>
+			{/* The web page shows the city inside the main card instead of a header. */}
+			<Stack.Screen
+				options={{
+					headerShown: Platform.OS !== 'web',
+					title: weather?.location.name ?? '',
+					...(sky && {
+						// The header takes the sky colour of the landscape it sits above.
+						headerTransparent: Platform.OS === 'ios',
+						headerShadowVisible: false,
+						headerTintColor: 'white',
+						headerTitleStyle: { color: 'white' },
+						headerStyle: { backgroundColor: sky },
+					}),
+				}}
+			/>
+			<ScreenWrapper
+				overscrollColor={sky ?? undefined}
+				refreshControl={
+					weather ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="white" /> : undefined
+				}
+			>
+				{failed ? (
+					<Text type="body" className="pt-12 text-center">
+						{t('search.url.error')}
+					</Text>
+				) : weather ? (
+					<WeatherHero weather={weather} />
+				) : (
+					<HeroSkeleton />
+				)}
 			</ScreenWrapper>
 		</View>
 	);
