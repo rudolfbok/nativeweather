@@ -22,7 +22,7 @@ export const NotificationToast = ({ message, type }: ToastData) => {
 	const { Icon, colorClassName } = toastIcons[type];
 
 	return (
-		<View className="flex-row items-center gap-3 rounded-xl border border-hairline bg-system-background p-4 web:w-full web:md:w-[350px]">
+		<View className="flex-row items-center gap-3 rounded-xl border border-hairline bg-system-background p-4 web:w-full web:md:w-87.5">
 			<Icon colorClassName={colorClassName} fill={type === 'add' ? favorite : 'none'} size={20} />
 			<Text type="caption" className="flex-1 font-semibold" numberOfLines={3}>
 				{message}

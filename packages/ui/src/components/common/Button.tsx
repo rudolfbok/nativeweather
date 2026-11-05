@@ -25,13 +25,11 @@ export const Button = ({ children, loading = false, disabled, className, ...prop
 			)}
 			{...props}
 		>
-			{loading ? (
-				<ActivityIndicator colorClassName="accent-ui-foreground" />
-			) : (
-				<Text type="body" className="text-center font-semibold text-ui-foreground">
-					{children}
-				</Text>
-			)}
+			{/* The label stays rendered while loading so the button keeps its size. */}
+			<Text type="body" className={twMerge('text-center font-semibold text-ui-foreground', loading && 'opacity-0')}>
+				{children}
+			</Text>
+			{loading && <ActivityIndicator colorClassName="accent-ui-foreground" className="absolute" />}
 		</Pressable>
 	);
 };

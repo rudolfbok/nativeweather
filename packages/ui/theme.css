@@ -1,9 +1,5 @@
 @source './src';
 
-@theme {
-	--breakpoint-xs: 321px;
-}
-
 /* Static so useCSSVariable can read them even when no className uses them. */
 @theme static {
 	--color-ui-foreground: #ffffff;

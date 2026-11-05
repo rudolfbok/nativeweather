@@ -361,6 +361,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@nativeweather/api':
+        specifier: workspace:*
+        version: link:../api
       '@nativeweather/core':
         specifier: workspace:*
         version: link:../core

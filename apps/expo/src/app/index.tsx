@@ -1,8 +1,35 @@
 // Temporary Phase 4 preview of every ui primitive; replaced by the router shell in Phase 5.
+import { weatherConditions } from '@nativeweather/api';
 import { getAirQualityLevel, getAlertSeverityLevel, getLandscapeKey } from '@nativeweather/core';
 import type { Pollutant } from '@nativeweather/core';
 import {
+	AirQualityIcon,
+	ArrowDownIcon,
+	ArrowUpIcon,
 	Button,
+	CalendarIcon,
+	ClockIcon,
+	DotIndicator,
+	EditIcon,
+	FirstQuarter,
+	FullMoon,
+	HumidityIcon,
+	LastQuarter,
+	MapIcon,
+	NewMoon,
+	PressureIcon,
+	RangeIcon,
+	SmartSummaryIcon,
+	SunriseIcon,
+	SunsetIcon,
+	WaningCrescent,
+	WaningGibbous,
+	WaxingCrescent,
+	WaxingGibbous,
+	WeatherIcon,
+	WeatherLandscape,
+	WindArrowIcon,
+	WindDirectionIcon,
 	CardHeader,
 	CardSkeleton,
 	ContentRow,
@@ -46,11 +73,94 @@ const samples: [Pollutant, number[]][] = [
 ];
 // Clear, partly cloudy, cloudy, overcast, fog, rain, snow, thunder.
 const landscapeCodes = [1000, 1003, 1006, 1009, 1135, 1189, 1219, 1276];
+const conditionCodes = Object.keys(weatherConditions).map(Number);
+const metricIcons = [
+	AirQualityIcon,
+	CalendarIcon,
+	ClockIcon,
+	HumidityIcon,
+	MapIcon,
+	PressureIcon,
+	RangeIcon,
+	SmartSummaryIcon,
+	SunriseIcon,
+	SunsetIcon,
+];
+const moonPhases = [
+	NewMoon,
+	WaxingCrescent,
+	FirstQuarter,
+	WaxingGibbous,
+	FullMoon,
+	WaningGibbous,
+	LastQuarter,
+	WaningCrescent,
+];
+
+const ArtworkGallery = () => (
+	<>
+		<ContentRow title={`Weather icons (${conditionCodes.length} codes, day / night)`}>
+			<View className="flex-row flex-wrap gap-3">
+				{conditionCodes.map((code) => (
+					<View key={code} className="items-center">
+						<View className="flex-row">
+							<WeatherIcon code={code} isDay={1} size={36} />
+							<WeatherIcon code={code} isDay={0} size={36} />
+						</View>
+						<Text type="caption" className="text-xs text-secondary-label">
+							{code}
+						</Text>
+					</View>
+				))}
+			</View>
+		</ContentRow>
+
+		<ContentRow title="Landscapes (day / night)">
+			<View className="flex-row flex-wrap gap-2">
+				{landscapeCodes.map((code) =>
+					([1, 0] as const).map((isDay) => (
+						<View key={`${code}-${isDay}`} className="overflow-hidden rounded-xl">
+							<WeatherLandscape code={code} isDay={isDay} width={90} height={106} />
+						</View>
+					))
+				)}
+			</View>
+		</ContentRow>
+
+		<ContentRow title="Metric, UI and moon icons">
+			<View className="gap-4">
+				<View className="flex-row flex-wrap gap-3">
+					{metricIcons.map((Icon, index) => (
+						<Icon key={index} />
+					))}
+				</View>
+				<View className="flex-row flex-wrap items-center gap-3">
+					<ArrowUpIcon />
+					<ArrowDownIcon />
+					<DotIndicator fill="red" />
+					<EditIcon colorClassName="accent-label" />
+					<WindArrowIcon degree={45} colorClassName="accent-label" />
+					<View className="rounded-full bg-primary-blue p-1">
+						<WindDirectionIcon />
+					</View>
+				</View>
+				<View className="flex-row flex-wrap gap-2">
+					{moonPhases.map((Phase, index) => (
+						<View key={index} className="scale-50">
+							<Phase />
+						</View>
+					))}
+				</View>
+			</View>
+		</ContentRow>
+	</>
+);
 
 export default function PreviewScreen() {
 	const { theme, hasAdaptiveThemes } = useUniwind();
 	const [enabled, setEnabled] = useState(true);
 	const [loading, setLoading] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
 
 	return (
 		<View className="flex-1 bg-secondary-system-background">
@@ -170,31 +280,33 @@ export default function PreviewScreen() {
 						<CardSkeleton />
 					</View>
 
-					<View className="gap-2">
-						<Text type="sectiontitle">Modal screen (route content)</Text>
-						<View className="h-96 overflow-hidden rounded-3xl border border-hairline">
-							<ModalScreen
-								header="Humidity"
-								subHeader="Subheader text"
-								onBack={() => showToast({ message: 'Back', type: 'done' })}
-								onClose={() => showToast({ message: 'Close', type: 'done' })}
-							>
-								<RoundView className="p-4">
-									<ValuesList
-										showIndex
-										valueClassName="text-chart-blue"
-										values={[
-											{ name: 'Dry', value: '0–30 %', description: 'Air feels dry.' },
-											{ name: 'Comfortable', value: '30–60 %' },
-											{ name: 'Humid', value: '60–100 %', className: 'text-unhealthy' },
-										]}
-									/>
-								</RoundView>
-							</ModalScreen>
-						</View>
-					</View>
+					<ArtworkGallery />
+
+					<Button onPress={() => setModalOpen(true)}>Open modal screen</Button>
 				</View>
 			</ScreenWrapper>
+			{modalOpen && (
+				<View className="absolute inset-0">
+					<ModalScreen
+						header="Humidity"
+						subHeader="Subheader text"
+						onBack={() => showToast({ message: 'Back', type: 'done' })}
+						onClose={() => setModalOpen(false)}
+					>
+						<RoundView className="p-4">
+							<ValuesList
+								showIndex
+								valueClassName="text-chart-blue"
+								values={[
+									{ name: 'Dry', value: '0–30 %', description: 'Air feels dry.' },
+									{ name: 'Comfortable', value: '30–60 %' },
+									{ name: 'Humid', value: '60–100 %', className: 'text-unhealthy' },
+								]}
+							/>
+						</RoundView>
+					</ModalScreen>
+				</View>
+			)}
 			<Toaster />
 		</View>
 	);

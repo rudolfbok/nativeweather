@@ -24,6 +24,7 @@
 		"uniwind": "1.12.2"
 	},
 	"dependencies": {
+		"@nativeweather/api": "workspace:*",
 		"@nativeweather/core": "workspace:*",
 		"lucide-react-native": "^1.68.0",
 		"tailwind-merge": "3.7.0"
