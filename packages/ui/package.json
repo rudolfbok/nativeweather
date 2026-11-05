@@ -15,14 +15,17 @@
 	"peerDependencies": {
 		"react": "19.3.0",
 		"react-native": "0.88.1",
+		"react-native-svg": "15.16.0",
 		"uniwind": ">=1.0.0"
 	},
 	"devDependencies": {
 		"@types/react": "~19.3.0",
-		"uniwind": "1.12.2",
-		"typescript": "~6.0.3"
+		"typescript": "~6.0.3",
+		"uniwind": "1.12.2"
 	},
 	"dependencies": {
+		"@nativeweather/core": "workspace:*",
+		"lucide-react-native": "^1.68.0",
 		"tailwind-merge": "3.7.0"
 	}
 }

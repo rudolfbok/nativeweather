@@ -1,12 +1,12 @@
 @source './src';
 
 @theme {
-	--color-ui-primary: #2563eb;
-	--color-ui-primary-pressed: #1d4ed8;
-	--color-ui-secondary: #dbeafe;
-	--color-ui-secondary-foreground: #1d4ed8;
+	--breakpoint-xs: 321px;
+}
+
+/* Static so useCSSVariable can read them even when no className uses them. */
+@theme static {
 	--color-ui-foreground: #ffffff;
-	--radius-ui: 10px;
 
 	--color-primary-blue: #007aff;
 	--color-good: #4ff0e6;
@@ -16,6 +16,11 @@
 	--color-unhealthy: #ff0000;
 	--color-very-unhealthy: #990099;
 	--color-hazardous: #84212f;
+
+	--color-favorite: #fe9804;
+	--color-chart-blue: #2793ff;
+	--color-system-red: #ff3b30;
+	--color-switch-off: #939393;
 }
 
 @layer theme {
@@ -24,16 +29,28 @@
 			--color-system-background: #ffffff;
 			--color-secondary-system-background: #f2f2f7;
 			--color-tertiary-system-background: #e3e3e8;
+			--color-card-background: #ffffff;
+			--color-modal-background: #f2f2f7;
 			--color-label: #000000;
 			--color-secondary-label: #6d6d72;
+			--color-hairline: rgb(0 0 0 / 0.1);
+			--color-separator: #e5e7eb;
+			--color-skeleton: rgb(255 255 255 / 0.5);
+			--color-scrim: rgb(0 0 0 / 0.3);
 		}
 
 		@variant dark {
 			--color-system-background: #000000;
 			--color-secondary-system-background: #1c1c1e;
 			--color-tertiary-system-background: #2c2c2e;
+			--color-card-background: #1c1c1e;
+			--color-modal-background: #0e0e0f;
 			--color-label: #ffffff;
 			--color-secondary-label: #a9a9b0;
+			--color-hairline: rgb(255 255 255 / 0.1);
+			--color-separator: #27272a;
+			--color-skeleton: #0f0f11;
+			--color-scrim: rgb(0 0 0 / 0.6);
 		}
 	}
 }

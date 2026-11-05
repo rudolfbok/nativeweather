@@ -1,0 +1,22 @@
+import type { AirQualityLevel } from '@nativeweather/core';
+
+// Full class names so the Tailwind scanner picks them up.
+export const levelTextClass: Record<AirQualityLevel, string> = {
+	good: 'text-good',
+	fair: 'text-fair',
+	moderate: 'text-moderate',
+	sensitive: 'text-sensitive',
+	unhealthy: 'text-unhealthy',
+	'very-unhealthy': 'text-very-unhealthy',
+	hazardous: 'text-hazardous',
+};
+
+export const levelBgClass: Record<AirQualityLevel, string> = {
+	good: 'bg-good',
+	fair: 'bg-fair',
+	moderate: 'bg-moderate',
+	sensitive: 'bg-sensitive',
+	unhealthy: 'bg-unhealthy',
+	'very-unhealthy': 'bg-very-unhealthy',
+	hazardous: 'bg-hazardous',
+};
