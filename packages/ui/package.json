@@ -29,6 +29,7 @@
 		"@nativeweather/types": "workspace:*",
 		"@tolgee/react": "^7.3.0",
 		"lucide-react-native": "^1.68.0",
+		"react-native-chart-kit": "7.0.4",
 		"tailwind-merge": "3.7.0"
 	}
 }

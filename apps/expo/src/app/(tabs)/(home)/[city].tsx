@@ -13,6 +13,7 @@ import {
 import { router, Stack, Unmatched, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import { SampleCharts } from '@/stubs/SampleCharts';
 
 // Future static routes that `[city]` would otherwise swallow.
 const reservedSlugs = ['compass', 'modals', 'api'];
@@ -47,6 +48,7 @@ const CityWeather = ({ query }: { query: string }) => {
 							<DailyForecast
 								onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
 							/>
+							<SampleCharts />
 						</>
 					) : (
 						<>

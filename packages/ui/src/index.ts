@@ -38,6 +38,7 @@ export { HourlyForecast } from './components/weather/hourly/HourlyForecast';
 export { HourlyItem } from './components/weather/hourly/HourlyItem';
 export { MainWeather } from './components/weather/MainWeather';
 export { SmartSummary } from './components/weather/SmartSummary';
+export { WeatherChart } from './components/weather/WeatherChart';
 
 // Weather artwork
 export { WeatherIcon } from './utils/mappings/weatherIcons';

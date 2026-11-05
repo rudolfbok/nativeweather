@@ -18,3 +18,5 @@ export type { ForecastHour } from './hourlyForecast';
 export { getSmartSummary } from './smartSummary';
 export type { SummaryPart } from './smartSummary';
 export { formatLongDate, formatWeekday } from './formatting/formatDate';
+export { getChartScale } from './chartScale';
+export type { ChartScaleOptions } from './chartScale';
