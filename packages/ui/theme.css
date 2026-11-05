@@ -25,6 +25,7 @@
 			--color-system-background: #ffffff;
 			--color-secondary-system-background: #f2f2f7;
 			--color-tertiary-system-background: #e3e3e8;
+			--color-screen-background: #f2f2f7;
 			--color-card-background: #ffffff;
 			--color-modal-background: #f2f2f7;
 			--color-label: #000000;
@@ -39,6 +40,7 @@
 			--color-system-background: #000000;
 			--color-secondary-system-background: #1c1c1e;
 			--color-tertiary-system-background: #2c2c2e;
+			--color-screen-background: #000000;
 			--color-card-background: #1c1c1e;
 			--color-modal-background: #0e0e0f;
 			--color-label: #ffffff;

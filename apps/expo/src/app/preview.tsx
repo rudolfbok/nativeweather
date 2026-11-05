@@ -1,4 +1,4 @@
-// Temporary Phase 4 preview of every ui primitive; replaced by the router shell in Phase 5.
+// Dev-only gallery of every ui primitive and artwork; delete in Phase 11.
 import { weatherConditions } from '@nativeweather/api';
 import { getAirQualityLevel, getAlertSeverityLevel, getLandscapeKey } from '@nativeweather/core';
 import type { Pollutant } from '@nativeweather/core';
@@ -45,12 +45,12 @@ import {
 	Skeleton,
 	Switch,
 	Text,
-	Toaster,
 	ValuesList,
 } from '@nativeweather/ui';
 import type { TextType, ToastType } from '@nativeweather/ui';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { Redirect } from 'expo-router';
 import { Uniwind, useUniwind } from 'uniwind';
 
 const textTypes: TextType[] = [
@@ -156,7 +156,7 @@ const ArtworkGallery = () => (
 	</>
 );
 
-export default function PreviewScreen() {
+const PreviewScreen = () => {
 	const { theme, hasAdaptiveThemes } = useUniwind();
 	const [enabled, setEnabled] = useState(true);
 	const [loading, setLoading] = useState(false);
@@ -307,7 +307,10 @@ export default function PreviewScreen() {
 					</ModalScreen>
 				</View>
 			)}
-			<Toaster />
 		</View>
 	);
+};
+
+export default function PreviewRoute() {
+	return __DEV__ ? <PreviewScreen /> : <Redirect href="/" />;
 }

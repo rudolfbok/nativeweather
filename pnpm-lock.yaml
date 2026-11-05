@@ -238,6 +238,12 @@ importers:
       '@nativeweather/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@tolgee/format-icu':
+        specifier: ^7.3.0
+        version: 7.3.0
+      '@tolgee/react':
+        specifier: ^7.3.0
+        version: 7.3.0(react@19.3.0)
       expo:
         specifier: ~58.0.23
         version: 58.0.23(@babel/core@7.29.7(supports-color@8.1.1))(@expo/metro-runtime@58.0.17)(expo-router@58.0.30)(react-dom@19.3.0(react@19.3.0))(react-native-web@0.21.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-native-worklets@0.13.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
@@ -1630,6 +1636,20 @@ packages:
     resolution: {integrity: sha512-kEDEiGzG+yAc5FeLxtXpES/VN+F2C8H0r4gDVtfRLKxT9np9101d9REG/Kgo2lr0hKi0IpDsODiHnU3+naOmLg==}
     engines: {node: '>= 10'}
     hasBin: true
+
+  '@tolgee/core@7.3.0':
+    resolution: {integrity: sha512-/oFCQTXn2UFMINxGWIYbrXD/tCZECJd8qqZL0T6m6nFwrbpcjzGuY3Fyb3yKosWI/7167zfMWcJ5EqcBUbc3Jg==}
+
+  '@tolgee/format-icu@7.3.0':
+    resolution: {integrity: sha512-R58Mw3WwiN91oEUWxZfiwA9s6mWDNeWarqiANd7fzTyppcRRhhCBRm06oRuZPaz/yvSS7VV6O0kPDZleUc/8xQ==}
+
+  '@tolgee/react@7.3.0':
+    resolution: {integrity: sha512-cMXMg71O5h8ZM6lDZJbWBsaqBowH1B1Zh6BctZXKSxSm9tGALSUk57ZRgGkJ+SPy+MJ86jcVQNbXcn/oC437gg==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.1 || ^18.1.0 || ^19
+
+  '@tolgee/web@7.3.0':
+    resolution: {integrity: sha512-mHrMKZEf1l0jt7QVMdUEKYv4xDhcKz97CO6jUWwjHlMSA3ELInR+LZ5QKlTzr8gqlRM9CZ4y3IXIWkPwB0aXag==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -5020,6 +5040,19 @@ snapshots:
       '@tauri-apps/cli-win32-arm64-msvc': 2.12.1
       '@tauri-apps/cli-win32-ia32-msvc': 2.12.1
       '@tauri-apps/cli-win32-x64-msvc': 2.12.1
+
+  '@tolgee/core@7.3.0': {}
+
+  '@tolgee/format-icu@7.3.0': {}
+
+  '@tolgee/react@7.3.0(react@19.3.0)':
+    dependencies:
+      '@tolgee/web': 7.3.0
+      react: 19.3.0
+
+  '@tolgee/web@7.3.0':
+    dependencies:
+      '@tolgee/core': 7.3.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
