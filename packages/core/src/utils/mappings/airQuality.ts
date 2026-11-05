@@ -22,3 +22,5 @@ export const getAirQualityLevel = (pollutant: Pollutant, value: number): AirQual
 	const index = bounds.findIndex((max) => value < max);
 	return levels[index === -1 ? levels.length - 1 : index];
 };
+
+export const getAirQualityScale = (pollutant: Pollutant) => scales[pollutant];

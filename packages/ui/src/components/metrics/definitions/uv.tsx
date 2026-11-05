@@ -1,7 +1,7 @@
 import { getRangeIndex, metricBounds } from '@nativeweather/core';
 import { View } from 'react-native';
 import { UVIcon } from '../../icons/main/MetricIcons';
-import { GradientScale } from '../../weather/GradientScale';
+import { ScaleBar } from '../../weather/ScaleBar';
 import { WeatherChart } from '../../weather/WeatherChart';
 import { MetricModal } from '../MetricModal';
 import type { MetricDefinition } from '../types';
@@ -30,14 +30,8 @@ export const uv: MetricDefinition = {
 			value: String(index),
 			description: t(`description.uv.${getRangeIndex(index, metricBounds.uv)}`),
 			extra: (
-				<View className="mt-3 h-1 w-full justify-center">
-					<GradientScale type="uv" label={t('uv.title')} />
-					{index > 0 && (
-						<View
-							className="absolute h-4 w-1 -translate-x-1/2 rounded-full border border-card-background bg-label"
-							style={{ left: `${Math.min(index / scaleMax, 1) * 100}%` }}
-						/>
-					)}
+				<View className="mt-3">
+					<ScaleBar type="uv" label={t('uv.title')} position={index > 0 ? index / scaleMax : null} />
 				</View>
 			),
 		};

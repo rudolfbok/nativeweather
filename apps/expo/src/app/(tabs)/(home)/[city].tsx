@@ -2,6 +2,7 @@
 import { fetchWeather } from '@nativeweather/api';
 import { useWeather } from '@nativeweather/core';
 import {
+	AirQualityCard,
 	DailyForecast,
 	HourlyForecast,
 	MainWeather,
@@ -48,6 +49,7 @@ const CityWeather = ({ query }: { query: string }) => {
 							<DailyForecast
 								onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
 							/>
+							<AirQualityCard onPress={() => router.push('/modals/airquality')} />
 							<MetricCards
 								onOpen={(metric, day) =>
 									router.push({

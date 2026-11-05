@@ -34,6 +34,12 @@ export { MetricCards } from './components/metrics/MetricCards';
 export { isMetricId, metricDefinitions } from './components/metrics/registry';
 export type { MetricId } from './components/metrics/registry';
 
+// Air quality
+export { AirQualityCard } from './components/airquality/AirQualityCard';
+export { AirQualityGrid } from './components/airquality/AirQualityGrid';
+export { PollutantDetail } from './components/airquality/PollutantDetail';
+export { isPollutant, pollutants } from './components/airquality/pollutants';
+
 // Weather
 export { DailyForecast } from './components/weather/daily/DailyForecast';
 export { DayForecast } from './components/weather/daily/DayForecast';

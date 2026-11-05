@@ -5,7 +5,7 @@ export { buildSlug } from './weatherSlug';
 export { formatTemperature } from './formatting/formatTemperature';
 export { formatTime } from './formatting/formatTime';
 export { selectUnit } from './formatting/selectUnit';
-export { getAirQualityLevel } from './mappings/airQuality';
+export { getAirQualityLevel, getAirQualityScale } from './mappings/airQuality';
 export type { AirQualityLevel, Pollutant } from './mappings/airQuality';
 export { getAlertSeverityLevel } from './mappings/alertSeverity';
 export type { AlertSeverityLevel } from './mappings/alertSeverity';

@@ -2,6 +2,32 @@ import { useId } from 'react';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
 const scaleStops = {
+	'eu-aqi': [
+		'#4FF0E6',
+		'#50F0E6',
+		'#3BDAAC',
+		'#0BA41D',
+		'#80AD01',
+		'#FFB600',
+		'#FF8401',
+		'#FF5A01',
+		'#FF0101',
+		'#CD014D',
+		'#990099',
+	],
+	'us-aqi': [
+		'#009900',
+		'#80AD01',
+		'#FFC100',
+		'#FF9801',
+		'#FF6F01',
+		'#FF3700',
+		'#FF0101',
+		'#DB0136',
+		'#9A0199',
+		'#8F1064',
+		'#84212F',
+	],
 	uv: [
 		'#01FF01',
 		'#5DF500',
