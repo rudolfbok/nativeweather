@@ -30,6 +30,9 @@ export type { ToastData, ToastType } from './components/common/NotificationToast
 export { Toaster, showToast } from './components/common/Toaster';
 
 // Weather
+export { DailyForecast } from './components/weather/daily/DailyForecast';
+export { DayForecast } from './components/weather/daily/DayForecast';
+export { DaysToggle } from './components/weather/daily/DaysToggle';
 export { HourlyCarousel } from './components/weather/hourly/HourlyCarousel';
 export { HourlyForecast } from './components/weather/hourly/HourlyForecast';
 export { HourlyItem } from './components/weather/hourly/HourlyItem';

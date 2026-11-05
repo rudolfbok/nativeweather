@@ -1,8 +1,16 @@
 // STUB(phase-6): slice 6.7 replaces this with the full weather screen; Phase 10A adds the server loader.
 import { fetchWeather } from '@nativeweather/api';
 import { useWeather } from '@nativeweather/core';
-import { HourlyForecast, MainWeather, ScreenWrapper, Skeleton, SmartSummary, Text } from '@nativeweather/ui';
-import { Stack, Unmatched, useLocalSearchParams } from 'expo-router';
+import {
+	DailyForecast,
+	HourlyForecast,
+	MainWeather,
+	ScreenWrapper,
+	Skeleton,
+	SmartSummary,
+	Text,
+} from '@nativeweather/ui';
+import { router, Stack, Unmatched, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
@@ -36,6 +44,9 @@ const CityWeather = ({ query }: { query: string }) => {
 							<MainWeather weather={weatherData} />
 							<SmartSummary />
 							<HourlyForecast />
+							<DailyForecast
+								onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
+							/>
 						</>
 					) : (
 						<>

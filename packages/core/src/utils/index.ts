@@ -17,3 +17,4 @@ export { formatHourLabel, getNext24Hours } from './hourlyForecast';
 export type { ForecastHour } from './hourlyForecast';
 export { getSmartSummary } from './smartSummary';
 export type { SummaryPart } from './smartSummary';
+export { formatLongDate, formatWeekday } from './formatting/formatDate';
