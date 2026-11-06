@@ -5,7 +5,8 @@
 - pnpm workspace monorepo.
 - `apps/expo` — Expo application for iOS, Android, and Web.
 - `apps/desktop` — Tauri 2 desktop shell using Expo Web.
-- `packages/ui` — Shared React Native UI components.
+- `apps/expo/src/ui` and `apps/expo/src/core` — UI components and app logic (hooks, storage, utils, locales), imported via the `@/ui` and `@/core` aliases.
+- `packages/types` and `packages/api` — Pure TypeScript with no React Native, Expo, or other platform dependencies.
 - Use a single Expo/Metro development server on port 8081.
 - Tauri connects to the existing Expo Web server.
 - Do not introduce Turborepo or an additional frontend bundler.

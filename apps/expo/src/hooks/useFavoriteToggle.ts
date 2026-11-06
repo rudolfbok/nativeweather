@@ -1,6 +1,6 @@
-import { extractCity, isCityInFavorites, useFavoriteCities } from '@nativeweather/core';
+import { extractCity, isCityInFavorites, useFavoriteCities } from '@/core';
 import type { NormalizedData } from '@nativeweather/types';
-import { showToast } from '@nativeweather/ui';
+import { showToast } from '@/ui';
 import { useTranslate } from '@tolgee/react';
 
 /** Whether the city of this weather is a favourite, and a toggle that confirms with a toast. */

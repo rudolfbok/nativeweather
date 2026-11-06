@@ -1,4 +1,4 @@
-import type { SettingOptionKey } from '@nativeweather/ui';
+import type { SettingOptionKey } from '@/ui';
 import { router } from 'expo-router';
 import { Platform } from 'react-native';
 

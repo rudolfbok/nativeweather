@@ -1,8 +1,7 @@
-import { findAlert, useAlerts } from '@nativeweather/core';
-import { AlertDetail } from '@nativeweather/ui';
+import { findAlert, useAlerts } from '@/core';
+import { AlertDetail, ModalScreen } from '@/ui';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
-import { AppModalScreen } from '@/components/AppModalScreen';
 
 export default function AlertModal() {
 	const { alert: key } = useLocalSearchParams<{ alert: string }>();
@@ -14,8 +13,8 @@ export default function AlertModal() {
 	if (!alert) return <Redirect href="/" />;
 
 	return (
-		<AppModalScreen header={alert.event} stacked={stacked} onBack={onBack} onClose={onClose}>
+		<ModalScreen header={alert.event} stacked={stacked} onBack={onBack} onClose={onClose}>
 			<AlertDetail alert={alert} />
-		</AppModalScreen>
+		</ModalScreen>
 	);
 }

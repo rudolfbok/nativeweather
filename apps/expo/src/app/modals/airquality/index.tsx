@@ -1,9 +1,8 @@
-import { useWeather } from '@nativeweather/core';
-import { AirQualityGrid, AirQualityIcon } from '@nativeweather/ui';
+import { useWeather } from '@/core';
+import { AirQualityGrid, AirQualityIcon, ModalScreen } from '@/ui';
 import { useTranslate } from '@tolgee/react';
 import { Redirect, router } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
-import { AppModalScreen } from '@/components/AppModalScreen';
 
 export default function AirQualityModal() {
 	const { t } = useTranslate('weather');
@@ -14,10 +13,10 @@ export default function AirQualityModal() {
 	if (!hasData) return <Redirect href="/" />;
 
 	return (
-		<AppModalScreen header={t('airquality.title')} icon={<AirQualityIcon />} onClose={onClose}>
+		<ModalScreen header={t('airquality.title')} icon={<AirQualityIcon />} onClose={onClose}>
 			<AirQualityGrid
 				onOpen={(pollutant) => router.push({ pathname: '/modals/airquality/[pollutant]', params: { pollutant } })}
 			/>
-		</AppModalScreen>
+		</ModalScreen>
 	);
 }

@@ -1,4 +1,4 @@
-import { getCityRoute } from '@nativeweather/core';
+import { getCityRoute } from '@/core';
 import { router } from 'expo-router';
 
 /** Opens a city's weather page; a weather location or a search result both work. */

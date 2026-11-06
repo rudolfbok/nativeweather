@@ -1,4 +1,4 @@
-import { FeedbackForm, ScreenWrapper } from '@nativeweather/ui';
+import { FeedbackForm, ScreenWrapper } from '@/ui';
 
 export default function FeedbackScreen() {
 	return (

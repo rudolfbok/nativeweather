@@ -1,6 +1,5 @@
-import { FeedbackForm } from '@nativeweather/ui';
+import { FeedbackForm, ModalScreen } from '@/ui';
 import { useTranslate } from '@tolgee/react';
-import { AppModalScreen } from '@/components/AppModalScreen';
 import { useStackedModal } from '@/hooks/useStackedModal';
 
 export default function FeedbackModal() {
@@ -8,8 +7,8 @@ export default function FeedbackModal() {
 	const { stacked, onBack, onClose } = useStackedModal();
 
 	return (
-		<AppModalScreen header={t('feedback.title')} stacked={stacked} onBack={onBack} onClose={onClose}>
+		<ModalScreen header={t('feedback.title')} stacked={stacked} onBack={onBack} onClose={onClose}>
 			<FeedbackForm />
-		</AppModalScreen>
+		</ModalScreen>
 	);
 }

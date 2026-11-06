@@ -1,4 +1,4 @@
-import { CityList, ScreenWrapper, SearchField } from '@nativeweather/ui';
+import { CityList, ScreenWrapper, SearchField } from '@/ui';
 import { View } from 'react-native';
 import { useCitySelection } from '@/hooks/useCitySelection';
 

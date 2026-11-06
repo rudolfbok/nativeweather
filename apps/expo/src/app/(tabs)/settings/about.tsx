@@ -1,4 +1,4 @@
-import { AboutContent, ScreenWrapper } from '@nativeweather/ui';
+import { AboutContent, ScreenWrapper } from '@/ui';
 import { openExternal } from '@/openExternal';
 
 export default function AboutScreen() {

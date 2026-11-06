@@ -1,4 +1,4 @@
-import { FavoriteCities, LocalWeather, NativeWeatherLogo, ScreenWrapper, showToast } from '@nativeweather/ui';
+import { FavoriteCities, LocalWeather, NativeWeatherLogo, ScreenWrapper, showToast } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import { useState } from 'react';

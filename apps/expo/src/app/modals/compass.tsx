@@ -1,6 +1,5 @@
-import { Compass } from '@nativeweather/ui';
+import { Compass, ModalScreen } from '@/ui';
 import { useTranslate } from '@tolgee/react';
-import { AppModalScreen } from '@/components/AppModalScreen';
 import { useStackedModal } from '@/hooks/useStackedModal';
 
 export default function CompassModal() {
@@ -8,8 +7,8 @@ export default function CompassModal() {
 	const { stacked, onBack, onClose } = useStackedModal();
 
 	return (
-		<AppModalScreen size="narrow" header={t('compass.title')} stacked={stacked} onBack={onBack} onClose={onClose}>
+		<ModalScreen size="narrow" header={t('compass.title')} stacked={stacked} onBack={onBack} onClose={onClose}>
 			<Compass />
-		</AppModalScreen>
+		</ModalScreen>
 	);
 }

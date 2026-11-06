@@ -1,4 +1,4 @@
-import { isCompassSupported, ScreenWrapper, SettingsList, Text } from '@nativeweather/ui';
+import { isCompassSupported, ScreenWrapper, SettingsList, Text } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import Constants from 'expo-constants';

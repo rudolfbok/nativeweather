@@ -1,4 +1,4 @@
-import { getSettingOption, isSettingOptionKey, OptionList, ScreenWrapper } from '@nativeweather/ui';
+import { getSettingOption, isSettingOptionKey, OptionList, ScreenWrapper } from '@/ui';
 import { useTranslate } from '@tolgee/react';
 import { Redirect, Stack, useLocalSearchParams } from 'expo-router';
 

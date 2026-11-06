@@ -1,7 +1,7 @@
 import { fetchWeather } from '@nativeweather/api';
-import { useCitySearch } from '@nativeweather/core';
+import { useCitySearch } from '@/core';
 import type { City } from '@nativeweather/types';
-import { showToast } from '@nativeweather/ui';
+import { showToast } from '@/ui';
 import { useTranslate } from '@tolgee/react';
 import { openCity } from '@/navigation';
 

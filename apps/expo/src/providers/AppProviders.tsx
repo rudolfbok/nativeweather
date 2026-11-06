@@ -1,6 +1,6 @@
-import { initStorageDefaults, useStorageString } from '@nativeweather/core';
-import { availableLanguages, localeData } from '@nativeweather/core/locales';
-import { Toaster } from '@nativeweather/ui';
+import { initStorageDefaults, useStorageString } from '@/core';
+import { availableLanguages, localeData } from '@/core/locales';
+import { Toaster } from '@/ui';
 import { FormatIcu } from '@tolgee/format-icu';
 import { Tolgee, TolgeeProvider } from '@tolgee/react';
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';

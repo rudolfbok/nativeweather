@@ -1,7 +1,7 @@
 // Dev-only gallery of every ui primitive and artwork; delete in Phase 11.
 import { weatherConditions } from '@nativeweather/api';
-import { getAirQualityLevel, getAlertSeverityLevel, getLandscapeKey } from '@nativeweather/core';
-import type { Pollutant } from '@nativeweather/core';
+import { getAirQualityLevel, getAlertSeverityLevel, getLandscapeKey } from '@/core';
+import type { Pollutant } from '@/core';
 import {
 	AirQualityIcon,
 	ArrowDownIcon,
@@ -46,8 +46,8 @@ import {
 	Switch,
 	Text,
 	ValuesList,
-} from '@nativeweather/ui';
-import type { TextType, ToastType } from '@nativeweather/ui';
+} from '@/ui';
+import type { TextType, ToastType } from '@/ui';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { Redirect } from 'expo-router';

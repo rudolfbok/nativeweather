@@ -1,6 +1,6 @@
-import { useFavoriteCityWeather, useLocation, useStorageBoolean } from '@nativeweather/core';
+import { useFavoriteCityWeather, useLocation, useStorageBoolean } from '@/core';
 import type { City } from '@nativeweather/types';
-import { showToast } from '@nativeweather/ui';
+import { showToast } from '@/ui';
 import { useTranslate } from '@tolgee/react';
 import { useEffect } from 'react';
 

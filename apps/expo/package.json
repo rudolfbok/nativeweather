@@ -5,13 +5,12 @@
 	"dependencies": {
 		"@expo/ui": "~58.0.27",
 		"@nativeweather/api": "workspace:*",
-		"@nativeweather/core": "workspace:*",
 		"@nativeweather/types": "workspace:*",
-		"@nativeweather/ui": "workspace:*",
 		"@tauri-apps/api": "^2.12.4",
 		"@tauri-apps/plugin-opener": "^2.7.2",
 		"@tolgee/format-icu": "^7.3.0",
 		"@tolgee/react": "^7.3.0",
+		"clsx": "^2.1.1",
 		"expo": "~58.0.23",
 		"expo-constants": "~58.0.15",
 		"expo-dev-client": "~58.0.18",
@@ -22,9 +21,12 @@
 		"expo-symbols": "~58.0.4",
 		"expo-system-ui": "~58.0.7",
 		"hamburger-react": "^2.5.2",
+		"lucide-react-native": "^1.68.0",
+		"luxon": "^3.7.2",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
 		"react-native": "0.88.1",
+		"react-native-chart-kit": "7.0.4",
 		"react-native-mmkv": "^4.3.2",
 		"react-native-nitro-modules": "^0.37.1",
 		"react-native-safe-area-context": "~5.11.1",
@@ -32,9 +34,11 @@
 		"react-native-svg": "15.16.0",
 		"react-native-web": "^0.21.4",
 		"tailwindcss": "4.3.3",
-		"uniwind": "1.12.2"
+		"uniwind": "1.12.2",
+		"zustand": "^5.0.16"
 	},
 	"devDependencies": {
+		"@types/luxon": "^3.7.6",
 		"@types/react": "~19.3.0",
 		"typescript": "~6.0.3"
 	},

@@ -1,3 +1,3 @@
 @import 'tailwindcss';
 @import 'uniwind';
-@import '@nativeweather/ui/theme.css';
+@import './ui/theme.css';

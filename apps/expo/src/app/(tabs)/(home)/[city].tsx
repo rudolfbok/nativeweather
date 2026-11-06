@@ -1,14 +1,22 @@
 // Phase 10A adds the server loader here.
-import { getLandscapeKey, useCityWeather } from '@nativeweather/core';
+import { getLandscapeKey, useCityWeather } from '@/core';
 import type { NormalizedData } from '@nativeweather/types';
-import { getLandscapeColor, ScreenWrapper, ShareButton, shareWeather, showToast, Text } from '@nativeweather/ui';
+import {
+	CityHeaderButtons,
+	FavoriteStar,
+	getLandscapeColor,
+	HeroSkeleton,
+	ScreenWrapper,
+	ShareButton,
+	shareWeather,
+	showToast,
+	Text,
+	WeatherHero,
+} from '@/ui';
 import { useTranslate } from '@tolgee/react';
 import { Stack, Unmatched, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Platform, RefreshControl, View } from 'react-native';
-import { CityHeaderButtons } from '@/components/CityHeaderButtons';
-import { FavoriteButton } from '@/components/FavoriteButton';
-import { HeroSkeleton, WeatherHero } from '@/components/WeatherHero';
 
 // Future static routes that `[city]` would otherwise swallow.
 const reservedSlugs = ['compass', 'modals', 'api'];
@@ -21,7 +29,7 @@ const AndroidHeaderActions = ({ weather }: { weather: NormalizedData }) => {
 	return (
 		<View className="flex-row items-center gap-4">
 			<ShareButton label={t('favorites.share')} color="white" onPress={() => void shareWeather(weather.location)} />
-			<FavoriteButton weather={weather} color="white" />
+			<FavoriteStar weather={weather} color="white" />
 		</View>
 	);
 };
