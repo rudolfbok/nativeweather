@@ -20,9 +20,11 @@ interface FavoriteCitiesProps {
 	favorites: ReturnType<typeof useFavoriteCityWeather>;
 	onOpen: (city: City) => void;
 	onRemove: (city: City) => void;
+	/** Overrides the viewport-based column count, e.g. for a narrow sidebar. */
+	gridClassName?: string;
 }
 
-export const FavoriteCities = ({ favorites, onOpen, onRemove }: FavoriteCitiesProps) => {
+export const FavoriteCities = ({ favorites, onOpen, onRemove, gridClassName = cityCardGrid }: FavoriteCitiesProps) => {
 	const { t } = useTranslate('common');
 	const [editing, setEditing] = useState(false);
 	const { favoritesData, favoriteCount, loading } = favorites;
@@ -52,7 +54,7 @@ export const FavoriteCities = ({ favorites, onOpen, onRemove }: FavoriteCitiesPr
 					</Text>
 				</RoundView>
 			)}
-			<View className={cityCardGrid}>
+			<View className={gridClassName}>
 				{loading &&
 					favoritesData.length === 0 &&
 					Array.from({ length: favoriteCount }, (_, index) => <CardSkeleton key={index} />)}

@@ -8,7 +8,13 @@ import { Text } from '../common/Text';
 import { ValuesList } from '../common/ValuesList';
 import { pollutants } from './pollutants';
 
-export const PollutantDetail = ({ pollutant }: { pollutant: Pollutant }) => {
+interface PollutantDetailProps {
+	pollutant: Pollutant;
+	/** Defaults to the system handler; the desktop shell passes its own because a webview cannot open links. */
+	openUrl?: (url: string) => void;
+}
+
+export const PollutantDetail = ({ pollutant, openUrl = (url) => void Linking.openURL(url) }: PollutantDetailProps) => {
 	const { t } = useTranslate('weather');
 	const { levelKey, listKey, link } = pollutants[pollutant];
 	const { levels, bounds } = getAirQualityScale(pollutant);
@@ -18,7 +24,7 @@ export const PollutantDetail = ({ pollutant }: { pollutant: Pollutant }) => {
 			<ContentRow title={t('modal.description')}>
 				<Text type="body">{t(`airquality.${pollutant}.main`)}</Text>
 				{link && (
-					<Text type="link" className="mt-4" onPress={() => void Linking.openURL(link)}>
+					<Text type="link" className="mt-4" onPress={() => openUrl(link)}>
 						{link}
 					</Text>
 				)}

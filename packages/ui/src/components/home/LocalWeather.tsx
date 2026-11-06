@@ -11,15 +11,16 @@ import { CityWeatherCard, cityCardGrid } from './CityWeatherCard';
 interface LocalWeatherProps {
 	error: LocalWeatherErrorKind | null;
 	onOpen: (city: City) => void;
+	gridClassName?: string;
 }
 
-export const LocalWeather = ({ error, onOpen }: LocalWeatherProps) => {
+export const LocalWeather = ({ error, onOpen, gridClassName = cityCardGrid }: LocalWeatherProps) => {
 	const { t } = useTranslate('weather');
 	const weather = useLocalWeather((state) => state.weatherData);
 	const city = weather && extractCity(weather);
 
 	return (
-		<View className={cityCardGrid}>
+		<View className={gridClassName}>
 			{error ? (
 				<RoundView className="min-h-[134px] justify-center gap-2 p-4">
 					<Text type="body" className="text-center font-semibold text-system-red">

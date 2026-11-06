@@ -1,7 +1,11 @@
+import { createContext, use } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { RefreshControlProps } from 'react-native';
 import { Platform, ScrollView, View } from 'react-native';
 import { twMerge } from 'tailwind-merge';
+
+/** Content shown above every screen's own content and scrolled with it, e.g. the browser header. */
+export const ScreenHeaderContext = createContext<ReactNode>(null);
 
 interface ScreenWrapperProps {
 	refreshControl?: ReactElement<RefreshControlProps>;
@@ -18,16 +22,18 @@ interface ScreenWrapperProps {
 // pull-to-refresh spinner is drawn behind the content views, so anything opaque up there would hide it.
 export const ScreenWrapper = ({ refreshControl, overscrollColor, dismissKeyboard, children }: ScreenWrapperProps) => {
 	const bounce = Platform.OS === 'ios' && overscrollColor !== undefined;
+	const header = use(ScreenHeaderContext);
 
 	return (
 		<ScrollView
 			contentInsetAdjustmentBehavior="automatic"
-			contentContainerClassName={twMerge('px-4 pt-2 pb-4', bounce && 'grow bg-screen-background')}
+			contentContainerClassName={twMerge('px-4 pt-2 pb-4 web:max-md:pt-0', bounce && 'grow bg-screen-background')}
 			style={bounce ? { backgroundColor: overscrollColor } : undefined}
 			keyboardShouldPersistTaps={dismissKeyboard ? 'handled' : undefined}
 			keyboardDismissMode={dismissKeyboard ? 'on-drag' : undefined}
 			refreshControl={refreshControl}
 		>
+			{header}
 			{children}
 			{/* Hides the sky colour again when the content is pulled past the bottom. */}
 			{bounce && (

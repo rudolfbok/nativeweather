@@ -1,5 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { Stack } from 'expo-router';
+import { Platform } from 'react-native';
 import { useCSSVariable } from 'uniwind';
 
 export default function SettingsLayout() {
@@ -10,6 +11,8 @@ export default function SettingsLayout() {
 		<Stack
 			unstable_nativeProps={{ nativeContainerStyle: { backgroundColor: background } }}
 			screenOptions={{
+				// The web has no navigation bar; settings open as modals there.
+				headerShown: Platform.OS !== 'web',
 				headerTransparent: true,
 				headerTintColor: text,
 				headerBackButtonDisplayMode: 'minimal',

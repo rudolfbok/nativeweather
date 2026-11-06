@@ -3,5 +3,36 @@
 	"identifier": "default",
 	"description": "Capability for the main window",
 	"windows": ["main"],
-	"permissions": ["core:default", "opener:default"]
+	"permissions": [
+		"core:default",
+		{
+			"identifier": "opener:allow-open-url",
+			"allow": [
+				{
+					"url": "https://www.weatherapi.com/"
+				},
+				{
+					"url": "https://open-meteo.com/"
+				},
+				{
+					"url": "https://openfreemap.org/"
+				},
+				{
+					"url": "https://nativeweather.pages.dev/policy"
+				},
+				{
+					"url": "https://nativeweather.pages.dev/tos"
+				},
+				{
+					"url": "https://bitwebs.pages.dev/"
+				},
+				{
+					"url": "https://airindex.eea.europa.eu/AQI/"
+				},
+				{
+					"url": "https://www.airnow.gov/"
+				}
+			]
+		}
+	]
 }

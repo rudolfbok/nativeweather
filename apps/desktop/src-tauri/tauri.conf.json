@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schema.tauri.app/config/2",
-	"productName": "desktop",
+	"productName": "NativeWeather",
 	"version": "0.1.0",
 	"identifier": "com.bitwebs.nativeweather",
 	"build": {
@@ -11,18 +11,40 @@
 	"app": {
 		"windows": [
 			{
-				"title": "desktop",
-				"width": 800,
-				"height": 600
+				"title": "NativeWeather",
+				"width": 1125,
+				"height": 789,
+				"minWidth": 800,
+				"minHeight": 600
 			}
 		],
 		"security": {
-			"csp": null
+			"csp": {
+				"default-src": "'self'",
+				"script-src": "'self'",
+				"style-src": "'self' 'unsafe-inline'",
+				"img-src": "'self' data: blob:",
+				"font-src": "'self' data:",
+				"worker-src": "blob:",
+				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://nativeweather-email.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com"
+			},
+			"devCsp": {
+				"default-src": "'self'",
+				"script-src": "'self' http://localhost:8081",
+				"style-src": "'self' 'unsafe-inline' http://localhost:8081",
+				"img-src": "'self' data: blob: http://localhost:8081",
+				"font-src": "'self' data: http://localhost:8081",
+				"worker-src": "blob:",
+				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://nativeweather-email.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com http://localhost:8081 ws://localhost:8081"
+			}
 		}
 	},
 	"bundle": {
 		"active": true,
 		"targets": "all",
-		"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+		"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+		"macOS": {
+			"entitlements": "Entitlements.plist"
+		}
 	}
 }

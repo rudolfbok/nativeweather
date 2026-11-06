@@ -9,10 +9,11 @@ export { Text } from './components/common/Text';
 export type { TextProps, TextType } from './components/common/Text';
 
 // Layout
+export { DesktopShell } from './components/layout/DesktopShell';
 export { CardHeader } from './components/common/CardHeader';
 export { ContentRow } from './components/common/ContentRow';
 export { RoundView } from './components/common/RoundView';
-export { ScreenWrapper } from './components/common/ScreenWrapper';
+export { ScreenHeaderContext, ScreenWrapper } from './components/common/ScreenWrapper';
 
 // Loading
 export { CardSkeleton } from './components/common/CardSkeleton';
@@ -52,6 +53,9 @@ export { ShareButton } from './components/home/ShareButton';
 export { LocalWeather } from './components/home/LocalWeather';
 export { SearchField } from './components/search/SearchField';
 export { NativeWeatherLogo } from './components/icons/logos/NativeWeatherLogo';
+
+// Compass
+export { Compass, isCompassSupported } from './components/compass/Compass';
 
 // Alerts
 export { AlertDetail } from './components/alerts/AlertDetail';

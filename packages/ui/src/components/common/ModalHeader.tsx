@@ -34,7 +34,7 @@ export const ModalHeader = ({ header, icon, subHeader, onBack, onClose, toolbar,
 		</View>
 	) : (
 		<View>
-			<View className="flex-row items-start justify-between gap-2 pb-4">
+			<View className="flex-row items-center justify-between gap-2 pb-4">
 				<View className="flex-1 gap-1">
 					<View className="min-w-0 flex-row items-center gap-2">
 						{onBack ? (

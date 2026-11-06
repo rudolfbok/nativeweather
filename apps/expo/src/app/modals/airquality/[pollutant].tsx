@@ -3,6 +3,7 @@ import { useTranslate } from '@tolgee/react';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { useStackedModal } from '@/hooks/useStackedModal';
 import { AppModalScreen } from '@/components/AppModalScreen';
+import { openExternal } from '@/openExternal';
 
 export default function PollutantModal() {
 	const { pollutant } = useLocalSearchParams<{ pollutant: string }>();
@@ -18,7 +19,7 @@ export default function PollutantModal() {
 			onBack={onBack}
 			onClose={onClose}
 		>
-			<PollutantDetail pollutant={pollutant} />
+			<PollutantDetail pollutant={pollutant} openUrl={openExternal} />
 		</AppModalScreen>
 	);
 }

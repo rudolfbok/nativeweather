@@ -44,9 +44,13 @@ const dataSources: DataSource[] = [
 	},
 ];
 
-const open = (url: string) => () => void Linking.openURL(url);
+interface AboutContentProps {
+	/** Defaults to the system handler; the desktop shell passes its own because a webview cannot open links. */
+	openUrl?: (url: string) => void;
+}
 
-export const AboutContent = () => {
+export const AboutContent = ({ openUrl = (url) => void Linking.openURL(url) }: AboutContentProps) => {
+	const open = (url: string) => () => openUrl(url);
 	const { t } = useTranslate('settings');
 	const [year] = useState(() => new Date().getFullYear());
 

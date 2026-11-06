@@ -13,10 +13,11 @@ interface SearchFieldProps {
 	value: string;
 	onChangeText: (text: string) => void;
 	onSubmit: () => void;
+	onFocusChange?: (focused: boolean) => void;
 }
 
 // A capsule like the iOS search bar, on every platform.
-export const SearchField = ({ value, onChangeText, onSubmit }: SearchFieldProps) => {
+export const SearchField = ({ value, onChangeText, onSubmit, onFocusChange }: SearchFieldProps) => {
 	const { t } = useTranslate('common');
 	const [focused, setFocused] = useState(false);
 
@@ -34,8 +35,14 @@ export const SearchField = ({ value, onChangeText, onSubmit }: SearchFieldProps)
 				value={value}
 				onChangeText={onChangeText}
 				onSubmitEditing={onSubmit}
-				onFocus={() => setFocused(true)}
-				onBlur={() => setFocused(false)}
+				onFocus={() => {
+					setFocused(true);
+					onFocusChange?.(true);
+				}}
+				onBlur={() => {
+					setFocused(false);
+					onFocusChange?.(false);
+				}}
 				returnKeyType="search"
 				autoComplete="off"
 				placeholder={t('search.searchbar')}

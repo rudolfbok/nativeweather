@@ -43,6 +43,8 @@ interface SettingsListProps {
 	/** Only passed where the compass route exists (web). */
 	onOpenCompass?: () => void;
 	version?: string;
+	/** Lays the groups out in two columns, for a wide page; the drawer and native stay in one. */
+	twoColumns?: boolean;
 }
 
 export const SettingsList = ({
@@ -51,69 +53,103 @@ export const SettingsList = ({
 	onOpenFeedback,
 	onOpenCompass,
 	version,
+	twoColumns = false,
 }: SettingsListProps) => {
 	const { t } = useTranslate('settings');
 	const [showLocalWeather, setShowLocalWeather] = useStorageBoolean('showLocalWeather');
 	const [showWorldTime, setShowWorldTime] = useStorageBoolean('showWorldTime');
 
-	return (
-		<View className="gap-4">
-			<RoundView>
-				<OptionRow option="theme" onPress={() => onOpenOption('theme')} border />
-				<OptionRow option="language" onPress={() => onOpenOption('language')} />
-			</RoundView>
-			<RoundView>
-				<OptionRow option="temperature" onPress={() => onOpenOption('temperature')} border />
-				<OptionRow option="units" onPress={() => onOpenOption('units')} border />
-				<OptionRow option="aqi" onPress={() => onOpenOption('aqi')} />
-			</RoundView>
-			<RoundView>
-				<SettingsRow
-					icon={<TileIcon icon={MapPinHouse} />}
-					tileClassName="bg-system-green"
-					title={t('localweather')}
-					toggle={{ value: showLocalWeather, onChange: setShowLocalWeather }}
-					border
-				/>
-				<SettingsRow
-					icon={<ClockFadingIcon />}
-					title={t('localtime')}
-					toggle={{ value: showWorldTime, onChange: setShowWorldTime }}
-				/>
-			</RoundView>
-			{onOpenCompass && (
-				<RoundView>
-					<SettingsRow
-						icon={<CompassIcon />}
-						tileClassName="bg-system-red"
-						title={t('compass.title')}
-						onPress={onOpenCompass}
-					/>
-				</RoundView>
+	const appearance = (
+		<RoundView>
+			<OptionRow option="theme" onPress={() => onOpenOption('theme')} border />
+			<OptionRow option="language" onPress={() => onOpenOption('language')} />
+		</RoundView>
+	);
+	const units = (
+		<RoundView>
+			<OptionRow option="temperature" onPress={() => onOpenOption('temperature')} border />
+			<OptionRow option="units" onPress={() => onOpenOption('units')} border />
+			<OptionRow option="aqi" onPress={() => onOpenOption('aqi')} />
+		</RoundView>
+	);
+	const toggles = (
+		<RoundView>
+			<SettingsRow
+				icon={<TileIcon icon={MapPinHouse} />}
+				tileClassName="bg-system-green"
+				title={t('localweather')}
+				toggle={{ value: showLocalWeather, onChange: setShowLocalWeather }}
+				border
+			/>
+			<SettingsRow
+				icon={<ClockFadingIcon />}
+				title={t('localtime')}
+				toggle={{ value: showWorldTime, onChange: setShowWorldTime }}
+			/>
+		</RoundView>
+	);
+	const compass = onOpenCompass && (
+		<RoundView>
+			<SettingsRow
+				icon={<CompassIcon />}
+				tileClassName="bg-system-red"
+				title={t('compass.title')}
+				onPress={onOpenCompass}
+			/>
+		</RoundView>
+	);
+	const about = (
+		<RoundView>
+			<SettingsRow
+				icon={<TileIcon icon={Info} />}
+				tileClassName="bg-system-gray"
+				title={t('about.title')}
+				onPress={onOpenAbout}
+				border
+			/>
+			<SettingsRow
+				icon={<TileIcon icon={MessageCircle} />}
+				tileClassName="bg-system-red"
+				title={t('feedback.title')}
+				onPress={onOpenFeedback}
+			/>
+		</RoundView>
+	);
+	const footer = (
+		<View className="items-center">
+			<Text type="caption">NativeWeather</Text>
+			{version && (
+				<Text type="caption">
+					{t('version')}: {version}
+				</Text>
 			)}
-			<RoundView>
-				<SettingsRow
-					icon={<TileIcon icon={Info} />}
-					tileClassName="bg-system-gray"
-					title={t('about.title')}
-					onPress={onOpenAbout}
-					border
-				/>
-				<SettingsRow
-					icon={<TileIcon icon={MessageCircle} />}
-					tileClassName="bg-system-red"
-					title={t('feedback.title')}
-					onPress={onOpenFeedback}
-				/>
-			</RoundView>
-			<View className="items-center">
-				<Text type="caption">NativeWeather</Text>
-				{version && (
-					<Text type="caption">
-						{t('version')}: {version}
-					</Text>
-				)}
+		</View>
+	);
+
+	// Two real columns rather than a grid, so a short group doesn't leave a gap beside a tall one.
+	return twoColumns ? (
+		<View className="gap-4">
+			<View className="flex-row items-start gap-4">
+				<View className="flex-1 gap-4">
+					{appearance}
+					{units}
+				</View>
+				<View className="flex-1 gap-4">
+					{toggles}
+					{compass}
+					{about}
+				</View>
 			</View>
+			{footer}
+		</View>
+	) : (
+		<View className="gap-4">
+			{appearance}
+			{units}
+			{toggles}
+			{compass}
+			{about}
+			{footer}
 		</View>
 	);
 };
