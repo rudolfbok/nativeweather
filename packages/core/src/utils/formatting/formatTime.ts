@@ -19,3 +19,12 @@ export const formatTime = (timeStr: string, lang = 'en-US'): string => {
 		hour12: lang === 'en-US',
 	}).format(date);
 };
+
+/** The current time at a location, e.g. "03:05 PM" in en-US and "15:05" elsewhere. */
+export const formatLocalTime = (timeZone: string, language: string) =>
+	new Date().toLocaleTimeString(language, {
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: language === 'en-US',
+		timeZone,
+	});

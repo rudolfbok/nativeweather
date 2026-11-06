@@ -9,11 +9,21 @@ const normalizeSlug = (value: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-+|-+$/g, '');
 
-export const buildSlug = (weatherData: NormalizedData): string => {
-	const citySlug = normalizeSlug(weatherData.location.name);
-	const regionSlug =
-		normalizeSlug(weatherData.location.region) || normalizeSlug(weatherData.location.country) || citySlug;
-	const code = countryCode(weatherData.location.country);
+type SlugLocation = Pick<NormalizedData['location'], 'name' | 'region' | 'country'>;
 
-	return `/${citySlug}?r=${encodeURIComponent(regionSlug)}&cr=${encodeURIComponent(code)}`;
+/** The params of the `/[city]` route. A weather location and a search result both carry a name, a region and a country. */
+export const getCityRoute = (location: SlugLocation) => {
+	const city = normalizeSlug(location.name);
+
+	return {
+		city,
+		r: normalizeSlug(location.region) || normalizeSlug(location.country) || city,
+		cr: countryCode(location.country),
+	};
+};
+
+export const buildSlug = (location: SlugLocation): string => {
+	const { city, r, cr } = getCityRoute(location);
+
+	return `/${city}?r=${encodeURIComponent(r)}&cr=${encodeURIComponent(cr)}`;
 };

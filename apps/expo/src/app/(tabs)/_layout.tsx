@@ -12,6 +12,10 @@ export default function TabsLayout() {
 				<NativeTabs.Trigger.Label>{t('tab.home')}</NativeTabs.Trigger.Label>
 				<NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" selectedColor={primary} />
 			</NativeTabs.Trigger>
+			<NativeTabs.Trigger name="search">
+				<NativeTabs.Trigger.Label>{t('tab.search')}</NativeTabs.Trigger.Label>
+				<NativeTabs.Trigger.Icon sf="magnifyingglass" md="search" selectedColor={primary} />
+			</NativeTabs.Trigger>
 			<NativeTabs.Trigger name="settings">
 				<NativeTabs.Trigger.Label>{t('tab.settings')}</NativeTabs.Trigger.Label>
 				<NativeTabs.Trigger.Icon
@@ -19,10 +23,6 @@ export default function TabsLayout() {
 					md="settings"
 					selectedColor={primary}
 				/>
-			</NativeTabs.Trigger>
-			<NativeTabs.Trigger name="search" role="search">
-				<NativeTabs.Trigger.Label>{t('tab.search')}</NativeTabs.Trigger.Label>
-				<NativeTabs.Trigger.Icon sf="magnifyingglass" md="search" selectedColor={primary} />
 			</NativeTabs.Trigger>
 		</NativeTabs>
 	);

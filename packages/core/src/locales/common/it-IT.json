@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "Aggiungi ai preferiti",
 		"delete": "Elimina",
 		"error": "Impossibile caricare le città preferite. Riprova.",
 		"loading": "Caricamento delle città preferite…",
 		"nosaved": "Non hai ancora salvato città tra i preferiti",
+		"remove": "Rimuovi dai preferiti",
 		"share": "Condividi",
 		"title": "Preferiti"
 	},

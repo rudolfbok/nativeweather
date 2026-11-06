@@ -2,9 +2,9 @@ export { findAlert, getAlertKey, getAlerts, getMostSevereAlert } from './alertFi
 export { formatAlertExpiry, getAlertText } from './alertText';
 export { countryCode } from './countryCode';
 export { extractCity, getCityRegion } from './extractCity';
-export { buildSlug } from './weatherSlug';
+export { buildSlug, getCityRoute } from './weatherSlug';
 export { formatTemperature } from './formatting/formatTemperature';
-export { formatTime } from './formatting/formatTime';
+export { formatLocalTime, formatTime } from './formatting/formatTime';
 export { selectUnit } from './formatting/selectUnit';
 export { getAirQualityLevel, getAirQualityScale } from './mappings/airQuality';
 export type { AirQualityLevel, Pollutant } from './mappings/airQuality';

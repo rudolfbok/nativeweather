@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "添加到收藏",
 		"delete": "删除",
 		"error": "无法加载收藏的城市，请重试。",
 		"loading": "正在加载收藏的城市…",
 		"nosaved": "还没有收藏的城市",
+		"remove": "从收藏中移除",
 		"share": "分享",
 		"title": "收藏"
 	},

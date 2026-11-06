@@ -43,7 +43,7 @@ export const DailyForecast = ({ onSelectDay }: { onSelectDay: (dayIndex: number)
 							<Text type="body" className="w-10 text-center">
 								{formatTemperature({ celsius: day.minTempC, fahrenheit: day.minTempF, currentTemp })}
 							</Text>
-							<View className="w-22 items-center">
+							<View className="items-center justify-center">
 								<WeatherIcon code={day.condition.code} isDay={1} size={35} strokeWidth={StyleSheet.hairlineWidth} />
 							</View>
 							<Text type="body" className="w-10 text-center font-semibold">

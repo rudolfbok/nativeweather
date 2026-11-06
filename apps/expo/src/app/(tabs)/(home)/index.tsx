@@ -1,34 +1,52 @@
-// STUB(phase-6): home screen arrives with slice 6.8.
-import { ContentRow, ScreenWrapper, Text } from '@nativeweather/ui';
+import { useFavoriteCityWeather, useLocation, useStorageBoolean } from '@nativeweather/core';
+import type { City } from '@nativeweather/types';
+import { FavoriteCities, LocalWeather, NativeWeatherLogo, ScreenWrapper, showToast } from '@nativeweather/ui';
 import { useTranslate } from '@tolgee/react';
-import { Link } from 'expo-router';
-import { View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Platform, RefreshControl, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { openCity } from '@/navigation';
 
 export default function HomeScreen() {
 	const { t } = useTranslate('common');
+	const { top } = useSafeAreaInsets();
+	const [showLocalWeather] = useStorageBoolean('showLocalWeather');
+	const favorites = useFavoriteCityWeather({ refresh: true });
+	const { getLocalWeather, error } = useLocation();
+	const [refreshing, setRefreshing] = useState(false);
+
+	useEffect(() => {
+		if (showLocalWeather) void getLocalWeather();
+	}, [showLocalWeather, getLocalWeather]);
+
+	const onRefresh = async () => {
+		setRefreshing(true);
+		const result = await favorites.refreshFavoriteCities({ showLoading: false });
+		setRefreshing(false);
+		// No result means a newer refresh replaced this one.
+		if (result) {
+			showToast({
+				message: t(result.hasError ? 'toast.notrefreshed' : 'toast.refreshed'),
+				type: result.hasError ? 'error' : 'done',
+			});
+		}
+	};
+
+	const onRemove = (city: City) => {
+		favorites.handleRemoveCity(city);
+		showToast({ message: t('toast.remove', { name: city.name }), type: 'remove' });
+	};
 
 	return (
 		<View className="flex-1 bg-screen-background">
-			<ScreenWrapper>
-				<View className="gap-6 pt-12">
-					<Text type="screentitle">{t('tab.home')}</Text>
-					<ContentRow title="Router stub">
-						<View className="gap-3">
-							<Link href={{ pathname: '/[city]', params: { city: 'peshawar', r: 'north-west-frontier', cr: 'pk' } }}>
-								<Text type="link">/peshawar?r=north-west-frontier&cr=pk</Text>
-							</Link>
-							<Link href="/compass">
-								<Text type="link">/compass (reserved, should 404)</Text>
-							</Link>
-							{__DEV__ && (
-								<>
-									<Link href="/preview">
-										<Text type="link">/preview (UI gallery, dev only)</Text>
-									</Link>
-								</>
-							)}
-						</View>
-					</ContentRow>
+			<ScreenWrapper refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+				{/* iOS adds the status bar inset itself; there is no header on this screen. */}
+				<View className="gap-4" style={Platform.OS === 'ios' ? undefined : { paddingTop: top }}>
+					<View className="pt-2">
+						<NativeWeatherLogo colorClassName="accent-label" />
+					</View>
+					{showLocalWeather && <LocalWeather error={error} onOpen={openCity} />}
+					<FavoriteCities favorites={favorites} onOpen={openCity} onRemove={onRemove} />
 				</View>
 			</ScreenWrapper>
 		</View>

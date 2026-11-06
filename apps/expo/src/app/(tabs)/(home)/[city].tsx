@@ -1,14 +1,30 @@
 // Phase 10A adds the server loader here.
 import { getLandscapeKey, useCityWeather } from '@nativeweather/core';
-import { getLandscapeColor, ScreenWrapper, showToast, Text } from '@nativeweather/ui';
+import type { NormalizedData } from '@nativeweather/types';
+import { getLandscapeColor, ScreenWrapper, ShareButton, shareWeather, showToast, Text } from '@nativeweather/ui';
 import { useTranslate } from '@tolgee/react';
 import { Stack, Unmatched, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Platform, RefreshControl, View } from 'react-native';
+import { CityHeaderButtons } from '@/components/CityHeaderButtons';
+import { FavoriteButton } from '@/components/FavoriteButton';
 import { HeroSkeleton, WeatherHero } from '@/components/WeatherHero';
 
 // Future static routes that `[city]` would otherwise swallow.
 const reservedSlugs = ['compass', 'modals', 'api'];
+
+// iOS has glass buttons in the header (CityHeaderButtons); Android shows the share and favourite buttons there and
+// web puts the star in the main card.
+const AndroidHeaderActions = ({ weather }: { weather: NormalizedData }) => {
+	const { t } = useTranslate('common');
+
+	return (
+		<View className="flex-row items-center gap-4">
+			<ShareButton label={t('favorites.share')} color="white" onPress={() => void shareWeather(weather.location)} />
+			<FavoriteButton weather={weather} color="white" />
+		</View>
+	);
+};
 
 const CityWeather = ({ query }: { query: string }) => {
 	const { t } = useTranslate('common');
@@ -34,12 +50,13 @@ const CityWeather = ({ query }: { query: string }) => {
 						// The header takes the sky colour of the landscape it sits above.
 						headerTransparent: Platform.OS === 'ios',
 						headerShadowVisible: false,
-						headerTintColor: 'white',
 						headerTitleStyle: { color: 'white' },
 						headerStyle: { backgroundColor: sky },
+						headerRight: Platform.OS === 'android' ? () => <AndroidHeaderActions weather={weather} /> : undefined,
 					}),
 				}}
 			/>
+			{weather && Platform.OS === 'ios' && <CityHeaderButtons weather={weather} />}
 			<ScreenWrapper
 				overscrollColor={sky ?? undefined}
 				refreshControl={

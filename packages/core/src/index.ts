@@ -9,6 +9,7 @@ export {
 	isSameCity,
 	removeFavoriteCity,
 } from './database/crudMMKVService';
+export { useCitySearch } from './hooks/search/useCitySearch';
 export { useLocation } from './hooks/location/useLocation';
 export { LocalWeatherError, isExpectedLocationError, toLocalWeatherError } from './hooks/location/locationError';
 export type { LocalWeatherErrorKind } from './hooks/location/locationError';

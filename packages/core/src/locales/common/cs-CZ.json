@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "Přidat do oblíbených",
 		"delete": "Smazat",
 		"error": "Nepodařilo se načíst uložená města",
 		"loading": "Načítají se uložená města..",
 		"nosaved": "Nejsou uložena žádná oblíbená města",
+		"remove": "Odebrat z oblíbených",
 		"share": "Sdílet",
 		"title": "Oblíbené"
 	},

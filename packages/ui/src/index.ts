@@ -35,6 +35,24 @@ export { MetricCards } from './components/metrics/MetricCards';
 export { isMetricId, metricDefinitions } from './components/metrics/registry';
 export type { MetricId } from './components/metrics/registry';
 
+// Settings
+export { AboutContent } from './components/settings/AboutContent';
+export { FeedbackForm } from './components/settings/FeedbackForm';
+export { OptionList } from './components/settings/OptionList';
+export { getSettingOption, isSettingOptionKey } from './components/settings/options';
+export type { SettingOptionKey } from './components/settings/options';
+export { SettingsList } from './components/settings/SettingsList';
+export { shareWeather } from './utils/shareWeather';
+
+// Home and search
+export { CityList } from './components/search/CityList';
+export { FavoriteCities } from './components/home/FavoriteCities';
+export { FavoriteStar } from './components/home/FavoriteStar';
+export { ShareButton } from './components/home/ShareButton';
+export { LocalWeather } from './components/home/LocalWeather';
+export { SearchField } from './components/search/SearchField';
+export { NativeWeatherLogo } from './components/icons/logos/NativeWeatherLogo';
+
 // Alerts
 export { AlertDetail } from './components/alerts/AlertDetail';
 export { AlertList } from './components/alerts/AlertList';

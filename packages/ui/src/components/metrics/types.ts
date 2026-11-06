@@ -28,6 +28,8 @@ export interface MetricDefinition {
 	usesDate?: boolean;
 	/** Spans the full row on phones and half the row from md. */
 	wide?: boolean;
+	/** Hidden on phones; from md it only fills a row so the grid stays even. */
+	tabletOnly?: boolean;
 	/** `dayIndex` is null for current conditions. */
 	card: (context: MetricContext, dayIndex: number | null) => MetricCardContent;
 	Modal: ComponentType<MetricModalProps>;

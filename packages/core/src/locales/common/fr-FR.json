@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "Ajouter aux favoris",
 		"delete": "Supprimer",
 		"error": "Impossible de charger vos villes favorites. Veuillez réessayer.",
 		"loading": "Chargement des villes favorites…",
 		"nosaved": "Vous n’avez pas encore de ville favorite",
+		"remove": "Retirer des favoris",
 		"share": "Partager",
 		"title": "Favoris"
 	},

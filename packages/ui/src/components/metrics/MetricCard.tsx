@@ -12,12 +12,13 @@ interface MetricCardProps {
 	onPress: () => void;
 }
 
-export const MetricCard = ({ definition: { Icon, wide }, title, content, onPress }: MetricCardProps) => (
+export const MetricCard = ({ definition: { Icon, wide, tabletOnly }, title, content, onPress }: MetricCardProps) => (
 	<Pressable
 		onPress={onPress}
 		className={twMerge(
 			'grow justify-between rounded-3xl border border-hairline p-4',
-			wide ? 'basis-full gap-6 md:basis-[40%]' : 'aspect-square basis-[40%] md:basis-[20%]'
+			wide ? 'basis-full gap-6 md:basis-[40%]' : 'aspect-square basis-[40%] md:basis-[20%]',
+			tabletOnly && 'hidden md:flex'
 		)}
 	>
 		<CardHeader icon={<Icon />} header={title} />

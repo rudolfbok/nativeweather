@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "Add to favorites",
 		"delete": "Delete",
 		"error": "There was an error loading your favorite cities. Please try again.",
 		"loading": "Loading your favorite cities..",
 		"nosaved": "There are no favorite cities saved",
+		"remove": "Remove from favorites",
 		"share": "Share",
 		"title": "Favorites"
 	},

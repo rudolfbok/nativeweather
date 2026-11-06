@@ -1,9 +1,11 @@
 {
 	"favorites": {
+		"add": "Zu Favoriten hinzufügen",
 		"delete": "Löschen",
 		"error": "Deine gespeicherten Orte konnten nicht geladen werden. Bitte versuche es erneut.",
 		"loading": "Favoriten werden geladen…",
 		"nosaved": "Du hast noch keine Orte als Favoriten gespeichert",
+		"remove": "Aus Favoriten entfernen",
 		"share": "Teilen",
 		"title": "Favoriten"
 	},
