@@ -6,7 +6,7 @@ const effectiveDate = "September 15, 2026";
 
 const PolicyPage = () => {
   return (
-    <main className="min-h-dvh bg-white px-4 py-6 text-zinc-900 dark:bg-black dark:text-zinc-100 sm:px-8">
+    <main className="min-h-dvh px-4 py-6 text-zinc-900 dark:text-zinc-100 sm:px-8">
       <title>Privacy Policy · NativeWeather</title>
       <article className="mx-auto max-w-3xl leading-7">
         <BackIcon />
