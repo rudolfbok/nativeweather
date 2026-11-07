@@ -6,3 +6,6 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 **/.expo
 **/expo-env.d.ts
+**/ios
+**/android
+**/.wrangler

@@ -4,6 +4,8 @@
 	"version": "1.0.0",
 	"dependencies": {
 		"@expo/ui": "~58.0.27",
+		"@formatjs/intl-locale": "^5.4.2",
+		"@formatjs/intl-pluralrules": "^7.0.2",
 		"@nativeweather/api": "workspace:*",
 		"@nativeweather/types": "workspace:*",
 		"@tauri-apps/api": "^2.12.4",

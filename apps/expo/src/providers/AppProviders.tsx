@@ -1,3 +1,14 @@
+// Hermes (iOS, Android) has no Intl.Locale or Intl.PluralRules, which ICU plurals such as `alerts.count` need; without
+// them FormatIcu renders "invalid". Both polyfills install only where missing, so browsers keep their own.
+import '@formatjs/intl-locale/polyfill.js';
+import '@formatjs/intl-pluralrules/polyfill.js';
+import '@formatjs/intl-pluralrules/locale-data/cs.js';
+import '@formatjs/intl-pluralrules/locale-data/de.js';
+import '@formatjs/intl-pluralrules/locale-data/en.js';
+import '@formatjs/intl-pluralrules/locale-data/fr.js';
+import '@formatjs/intl-pluralrules/locale-data/it.js';
+import '@formatjs/intl-pluralrules/locale-data/pl.js';
+import '@formatjs/intl-pluralrules/locale-data/zh.js';
 import { initStorageDefaults, useStorageString } from '@/core';
 import { availableLanguages, localeData } from '@/core/locales';
 import { useWidgets } from '@/hooks/useWidgets';

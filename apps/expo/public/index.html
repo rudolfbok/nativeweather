@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!-- On nativeweather.app the site Worker (apps/worker) rewrites the title and description of city pages, adds
+		     canonical + social tags, and adds Umami to every page. Neither belongs here: this file is the shell of every
+		     route, and Tauri and the dev server serve it as is. -->
+		<title>NativeWeather</title>
+		<meta
+			name="description"
+			content="Explore current weather and forecasts for cities around the world with NativeWeather."
+		/>
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+		<link rel="preconnect" href="https://tiles.openfreemap.org" />
+		<link rel="preconnect" href="https://weathermaps.weatherapi.com" />
+		<!-- The react-native-web root reset: full-height html, body and #root, scrolling left to the app's ScrollViews. -->
+		<style id="expo-reset">
+			html,
+			body {
+				height: 100%;
+			}
+			body {
+				overflow: hidden;
+			}
+			#root {
+				display: flex;
+				height: 100%;
+				flex: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+	</body>
+</html>

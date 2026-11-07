@@ -1,7 +1,8 @@
-// Phase 10A adds the server loader here.
-import { getLandscapeKey, useCityWeather } from '@/core';
+import { getLandscapeKey, useCityWeather, useWeather } from '@/core';
+import { getCityRoute, getCityTitle, isReservedSlug } from '@nativeweather/api';
 import type { NormalizedData } from '@nativeweather/types';
 import {
+	Button,
 	CityHeaderButtons,
 	FavoriteStar,
 	getLandscapeColor,
@@ -10,16 +11,16 @@ import {
 	ShareButton,
 	shareWeather,
 	showToast,
-	Text,
+	StatusView,
+	SuggestedCities,
 	WeatherHero,
 } from '@/ui';
 import { useTranslate } from '@tolgee/react';
-import { Stack, Unmatched, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { router, Stack, Unmatched, useFocusEffect, useIsFocused, useLocalSearchParams } from 'expo-router';
+import Head from 'expo-router/head';
+import { useCallback, useState } from 'react';
 import { Platform, RefreshControl, View } from 'react-native';
-
-// Future static routes that `[city]` would otherwise swallow.
-const reservedSlugs = ['compass', 'modals', 'api'];
+import { openCity } from '@/navigation';
 
 // iOS has glass buttons in the header (CityHeaderButtons); Android shows the share and favourite buttons there and
 // web puts the star in the main card.
@@ -34,9 +35,40 @@ const AndroidHeaderActions = ({ weather }: { weather: NormalizedData }) => {
 	);
 };
 
-const CityWeather = ({ query }: { query: string }) => {
+type CityParams = { city: string; r?: string; cr?: string };
+
+const isShownAt = (weather: NormalizedData | null, { city, r, cr }: CityParams) => {
+	if (!weather) return false;
+	const route = getCityRoute(weather.location);
+	return route.city === city && route.r === r && route.cr === cr;
+};
+
+const CityWeather = (params: CityParams) => {
 	const { t } = useTranslate('common');
-	const { weather, failed, refresh } = useCityWeather(query);
+	const requested = [params.city, params.r, params.cr].filter(Boolean).join(', ');
+	const [query, setQuery] = useState(requested);
+	const { weather, error, refresh, retry } = useCityWeather(query);
+	const setWeatherData = useWeather((state) => state.setWeatherData);
+	const storeWeather = useWeather((state) => state.weatherData);
+	const shownAtUrl = isShownAt(weather, params);
+	const focused = useIsFocused();
+
+	// A new URL loads a new city, except when it is only the shown city's own slug written back below.
+	if (requested !== query && !shownAtUrl) setQuery(requested);
+
+	// The cards and modals read the open city from the shared store.
+	useFocusEffect(
+		useCallback(() => {
+			if (weather) void setWeatherData(weather);
+		}, [weather, setWeatherData])
+	);
+
+	// `/prague` becomes `/prague?r=hlavni-mesto-praha&cr=cz`, the URL that sharing and the Worker's canonical use.
+	useFocusEffect(
+		useCallback(() => {
+			if (weather && !shownAtUrl) router.setParams(getCityRoute(weather.location));
+		}, [weather, shownAtUrl])
+	);
 	const [refreshing, setRefreshing] = useState(false);
 	const sky = weather && getLandscapeColor(getLandscapeKey(weather.current.condition.code), weather.current.isDay);
 
@@ -64,6 +96,12 @@ const CityWeather = ({ query }: { query: string }) => {
 					}),
 				}}
 			/>
+			{/* The browser tab title. */}
+			{Platform.OS === 'web' && focused && weather && (
+				<Head>
+					<title>{getCityTitle(weather.location)}</title>
+				</Head>
+			)}
 			{weather && Platform.OS === 'ios' && <CityHeaderButtons weather={weather} />}
 			<ScreenWrapper
 				overscrollColor={sky ?? undefined}
@@ -71,11 +109,15 @@ const CityWeather = ({ query }: { query: string }) => {
 					weather ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="white" /> : undefined
 				}
 			>
-				{failed ? (
-					<Text type="body" className="pt-12 text-center">
-						{t('search.url.error')}
-					</Text>
-				) : weather ? (
+				{error === 'notfound' ? (
+					<StatusView icon="notfound" title={t('status.notfound.title')} message={t('status.notfound.message')}>
+						<SuggestedCities onOpen={openCity} />
+					</StatusView>
+				) : error ? (
+					<StatusView icon="error" title={t(`status.${error}.title`)} message={t(`status.${error}.message`)}>
+						<Button onPress={retry}>{t('status.retry')}</Button>
+					</StatusView>
+				) : weather && storeWeather === weather ? (
 					<WeatherHero weather={weather} />
 				) : (
 					<HeroSkeleton />
@@ -86,9 +128,9 @@ const CityWeather = ({ query }: { query: string }) => {
 };
 
 export default function CityScreen() {
-	const { city, r, cr } = useLocalSearchParams<{ city: string; r?: string; cr?: string }>();
+	const { city, r, cr } = useLocalSearchParams<CityParams>();
 
-	if (reservedSlugs.includes(city)) return <Unmatched />;
+	if (isReservedSlug(city)) return <Unmatched />;
 
-	return <CityWeather query={[city, r, cr].filter(Boolean).join(', ')} />;
+	return <CityWeather city={city} r={r} cr={cr} />;
 }

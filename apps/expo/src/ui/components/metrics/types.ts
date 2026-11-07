@@ -13,6 +13,8 @@ export interface MetricCardContent {
 	value: string;
 	description?: string;
 	extra?: ReactNode;
+	/** A wide card's description when it is laid out as a square tile, shown instead of `extra`. */
+	squareDescription?: string;
 }
 
 export interface MetricModalProps {

@@ -1,9 +1,14 @@
 export { fetchAirQuality } from './fetchAirQuality';
-export { fetchWeather } from './fetchWeather';
+export { fetchWeather, fetchWeatherResult } from './fetchWeather';
+export type { WeatherError, WeatherResult } from './fetchWeather';
 export { fetchLocation } from './fetchLocation';
 export { mapWeatherApi } from './mapWeatherAPI';
 export { getWeatherCondition, weatherConditions } from './constants/weatherConditions';
 export type { ConditionIconFamily, PrecipitationKind, WeatherCondition } from './constants/weatherConditions';
 export { normalizeWeatherConditionCode } from './utils/weatherCondition';
+export { getCityTitle } from './utils/cityTitle';
+export { countryCode } from './utils/countryCode';
+export { removeDiacritics } from './utils/removeDiacritics';
+export { buildSlug, getCityRoute, isReservedSlug } from './utils/weatherSlug';
 export { sendFeedback } from './sendFeedback';
 export type { FeedbackType } from './sendFeedback';

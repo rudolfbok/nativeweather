@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Zadejte město nebo souřadnice..",
 		"searchbar.native": "Hledat..",
-		"title": "Hledání",
-		"url": {
-			"error": "Nenašli jsme město, které jste hledali. \nZkontrolujte prosím pravopis nebo přidejte název země a zkuste to znovu."
-		}
+		"title": "Hledání"
 	},
 	"share": {
 		"message": "Aktuální počasí v"
+	},
+	"status": {
+		"empty": {
+			"title": "Není vybráno žádné město",
+			"message": "Vyberte město v postranním panelu nebo vyhledejte jiné."
+		},
+		"error": {
+			"title": "Došlo k chybě",
+			"message": "Při načítání počasí se něco pokazilo. Zkuste to prosím znovu."
+		},
+		"notfound": {
+			"title": "Počasí nenalezeno",
+			"message": "Toto místo ani stránku jsme nenašli. Zkontrolujte adresu nebo vyhledejte jiné město."
+		},
+		"offline": {
+			"title": "Jste offline",
+			"message": "Zkontrolujte připojení k internetu a zkuste to znovu."
+		},
+		"retry": "Zkusit znovu",
+		"suggested": "Doporučená města"
 	},
 	"tab": {
 		"home": "Domů",

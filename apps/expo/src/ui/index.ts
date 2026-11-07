@@ -10,12 +10,14 @@ export type { TextProps, TextType } from './components/common/Text';
 
 // Layout
 export { DesktopShell } from './components/layout/DesktopShell';
-export { DesktopSidebar } from './components/layout/DesktopSidebar';
+export { DesktopSidebar, useStartupCitySettled } from './components/layout/DesktopSidebar';
 export { WebShell } from './components/layout/WebShell';
 export { CardHeader } from './components/common/CardHeader';
 export { ContentRow } from './components/common/ContentRow';
 export { RoundView } from './components/common/RoundView';
 export { ScreenHeaderContext, ScreenWrapper } from './components/common/ScreenWrapper';
+export { StatusView } from './components/common/StatusView';
+export type { StatusIcon } from './components/common/StatusView';
 
 // Loading
 export { CardSkeleton } from './components/common/CardSkeleton';
@@ -57,6 +59,7 @@ export { HeroSkeleton, WeatherHero } from './components/weather/WeatherHero';
 export { ShareButton } from './components/home/ShareButton';
 export { LocalWeather } from './components/home/LocalWeather';
 export { SearchField } from './components/search/SearchField';
+export { SuggestedCities } from './components/search/SuggestedCities';
 export { NativeWeatherLogo } from './components/icons/logos/NativeWeatherLogo';
 
 // Compass
@@ -106,6 +109,8 @@ export { ArrowDownIcon } from './components/icons/ui/ArrowDownIcon';
 export { ArrowUpIcon } from './components/icons/ui/ArrowUpIcon';
 export { DotIndicator } from './components/icons/ui/DotIndicator';
 export { EditIcon } from './components/icons/ui/EditIcon';
+export { ErrorIcon } from './components/icons/ui/ErrorIcon';
+export { NotFoundIcon } from './components/icons/ui/NotFoundIcon';
 export { WindArrowIcon } from './components/icons/ui/WindArrowIcon';
 export { WindDirectionIcon } from './components/icons/ui/WindDirectionIcon';
 

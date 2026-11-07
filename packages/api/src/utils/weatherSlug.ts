@@ -9,6 +9,11 @@ const normalizeSlug = (value: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-+|-+$/g, '');
 
+const reservedSlugs = ['search', 'settings', 'compass', 'modals', 'api'];
+
+/** Top-level routes that the `/[city]` route (and the site Worker) must not treat as a city, in any letter case. */
+export const isReservedSlug = (slug: string) => reservedSlugs.includes(slug.toLowerCase());
+
 type SlugLocation = Pick<NormalizedData['location'], 'name' | 'region' | 'country'>;
 
 /** The params of the `/[city]` route. A weather location and a search result both carry a name, a region and a country. */

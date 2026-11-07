@@ -3,6 +3,7 @@
 **Source (read-only):** `/Users/rudolfbok/Projects/nativeweather-legacy` (branch `main`, `2ec8c99` = `origin/main` in the destination repo)
 **Destination:** `/Users/rudolfbok/Projects/nativeweather`, branch `refactor/project-architecture`
 **Revised:** 2026-11-05, after Phases 0–3. Replaces v2.
+**Amended:** 2026-11-07, after Phase 10.1. Phase 11 lives in `NATIVEWEATHER_PHASE11_PLAN.md`, which wins where the two disagree. `packages/core` / `packages/ui` are now `apps/expo/src/core` / `apps/expo/src/ui`.
 
 ## 0. How to use
 
@@ -17,29 +18,30 @@ The goal is not "port everything". It is **port behaviour, delete structure**. T
 
 ## 1. Status and ground truth (verified 2026-11-05)
 
-| Phase | State |
-|---|---|
-| 0 Baseline | done |
+| Phase            | State                                                      |
+| ---------------- | ---------------------------------------------------------- |
+| 0 Baseline       | done                                                       |
 | 1 MMKV web spike | done (smoke screen still in `apps/expo/src/app/index.tsx`) |
-| 2 Types + API | done |
-| 3 Core + locales | done **with defects** → fixed in Phase 3.5 |
-| 4 → 11 | not started |
+| 2 Types + API    | done                                                       |
+| 3 Core + locales | done **with defects** → fixed in Phase 3.5                 |
+| 3.5 → 10.1       | done (10 = `NATIVEWEATHER_PHASE10_PLAN.md`)                |
+| 11               | next: `NATIVEWEATHER_PHASE11_PLAN.md`                      |
 
 Baseline: `pnpm lint` and `pnpm typecheck` pass. `packages/ui` has no `typecheck` script, so it is only checked through `apps/expo` imports.
 
 Defects found in the Phase 1–3 output:
 
-| Defect | Where | Effect |
-|---|---|---|
-| Storage hooks lost default resolution; settings no longer seeded | `packages/core/src/database/useStorage.ts`, `initStorageDefaults.ts` | Fresh install: units resolve to imperial, temperature to Celsius. `stringStorageDefaults` is dead. |
-| App cannot resolve core | `apps/expo/package.json` lists only `@nativeweather/ui` | Phase 5 would fail to import core/api/types |
-| Vacuous test script | `packages/core` `test` → `tests/*.test.cjs`, no `tests/` dir | Phase 3 test deliverable not met |
-| Carried-over bloat | dead fields, dead try/catch, debug helpers, duplicated stores and location hooks | See Phase 3.5 |
-| Gratuitous renames | `useSunEventCountdown`→`useSunEvent`, `createWeatherDataUpdater`→`createWeatherUpdater` | Breaks 1:1 imports when porting UI |
-| Style drift | core/api use tabs + single quotes; Phase 1 / `Button` / `apps/expo` use spaces + double quotes | No formatter configured |
-| Dirty tree | `packages/ui/src/useThemeColors.ts` (untracked), `packages/ui/src/index.ts` | Copies `theme.css` hex values by hand; Uniwind already has `useCSSVariable` |
-| `Button` text colour | `packages/ui/src/Button.tsx` uses `text-label` on blue | Black text on blue in light mode; `--color-ui-foreground` exists unused |
-| Stale installs | `node_modules/.pnpm` holds `expo@57` leftovers the lockfile no longer references | Run `pnpm install` once |
+| Defect                                                           | Where                                                                                          | Effect                                                                                             |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Storage hooks lost default resolution; settings no longer seeded | `packages/core/src/database/useStorage.ts`, `initStorageDefaults.ts`                           | Fresh install: units resolve to imperial, temperature to Celsius. `stringStorageDefaults` is dead. |
+| App cannot resolve core                                          | `apps/expo/package.json` lists only `@nativeweather/ui`                                        | Phase 5 would fail to import core/api/types                                                        |
+| Vacuous test script                                              | `packages/core` `test` → `tests/*.test.cjs`, no `tests/` dir                                   | Phase 3 test deliverable not met                                                                   |
+| Carried-over bloat                                               | dead fields, dead try/catch, debug helpers, duplicated stores and location hooks               | See Phase 3.5                                                                                      |
+| Gratuitous renames                                               | `useSunEventCountdown`→`useSunEvent`, `createWeatherDataUpdater`→`createWeatherUpdater`        | Breaks 1:1 imports when porting UI                                                                 |
+| Style drift                                                      | core/api use tabs + single quotes; Phase 1 / `Button` / `apps/expo` use spaces + double quotes | No formatter configured                                                                            |
+| Dirty tree                                                       | `packages/ui/src/useThemeColors.ts` (untracked), `packages/ui/src/index.ts`                    | Copies `theme.css` hex values by hand; Uniwind already has `useCSSVariable`                        |
+| `Button` text colour                                             | `packages/ui/src/Button.tsx` uses `text-label` on blue                                         | Black text on blue in light mode; `--color-ui-foreground` exists unused                            |
+| Stale installs                                                   | `node_modules/.pnpm` holds `expo@57` leftovers the lockfile no longer references               | Run `pnpm install` once                                                                            |
 
 ### Corrections to v2
 
@@ -67,24 +69,24 @@ Defects found in the Phase 1–3 output:
 6. **MMKV V4 is the single storage layer on every platform**, Web and Tauri included. Browser and Tauri have separate origins (no shared data). No fallback layer.
 7. `@tolgee/react` is the i18n layer.
 8. MapLibre is Web/Tauri only (`.web.tsx`); mobile has no map for now.
-9. `isTauri()` from `@tauri-apps/api/core` only when a feature truly needs the host — never for layout.
-10. Public web: Expo `web.output: "server"` on Cloudflare Workers (`expo-server/adapter/workerd`), `loader` + `generateMetadata()`. Tauri packages a `single` export of the same app.
+9. `isTauri()` from `@tauri-apps/api/core` for the desktop shell and its layout, and for features that need the host. Phone versus browser layout stays on breakpoints. (Amended 2026-11-07.)
+10. **Superseded by `NATIVEWEATHER_PHASE10_PLAN.md`** (`single` SPA + `apps/worker` HTMLRewriter). Original: Public web: Expo `web.output: "server"` on Cloudflare Workers (`expo-server/adapter/workerd`), `loader` + `generateMetadata()`. Tauri packages a `single` export of the same app.
 11. Identity: `com.bitwebs.nativeweather` (iOS bundle id, Android package, Tauri). App Group `group.com.bitwebs.nativeweather`; widget extension `com.bitwebs.nativeweather.ExpoWidgetsTarget`.
 12. Formatter: Prettier with the legacy style (tabs, single quotes, width 120).
 13. You commit. Agents never commit, push, deploy or touch GitHub.
 
 ### Still owed (each has a default; nothing blocks)
 
-| Question | Default if unanswered |
-|---|---|
-| EAS `projectId` `c5d2c429-c300-4585-8558-13717e205496` / owner `rudyxsides` still right? (projectId changed 2026-10-31) | Carry both over, re-confirm in Phase 9 |
-| URL scheme `mobile` or `nativeweather` | `nativeweather` |
-| Umami analytics (`data-website-id 456c4be6-…`) | Keep, one script tag |
-| Sitemap with city URLs? | Static: `/`, `/compass` |
-| Toasts: `sonner` (web) + `sonner-native`, or one | Keep both until Phase 4 tests sonner-native on web |
-| Chart: `react-native-chart-kit` unpatched, or ~120 LOC custom SVG | Unpatched chart-kit |
-| Canonical fix: server 301, or tag + client `replace` | Tag + client `replace` (legacy) |
-| City page `Cache-Control` | Short `s-maxage` via `setResponseHeaders` |
+| Question                                                                                                                | Default if unanswered                              |
+| ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| EAS `projectId` `c5d2c429-c300-4585-8558-13717e205496` / owner `rudyxsides` still right? (projectId changed 2026-10-31) | Carry both over, re-confirm in Phase 9             |
+| URL scheme `mobile` or `nativeweather`                                                                                  | `nativeweather`                                    |
+| Umami analytics (`data-website-id 456c4be6-…`)                                                                          | Keep, one script tag                               |
+| Sitemap with city URLs?                                                                                                 | Static: `/`, `/compass`                            |
+| Toasts: `sonner` (web) + `sonner-native`, or one                                                                        | Keep both until Phase 4 tests sonner-native on web |
+| Chart: `react-native-chart-kit` unpatched, or ~120 LOC custom SVG                                                       | Unpatched chart-kit                                |
+| Canonical fix: server 301, or tag + client `replace`                                                                    | Tag + client `replace` (legacy)                    |
+| City page `Cache-Control`                                                                                               | Short `s-maxage` via `setResponseHeaders`          |
 
 ---
 
@@ -116,7 +118,7 @@ DEBLOAT RULES
   theme.css tokens.
 
 BANNED (grep before reporting, must be zero in touched files):
-clsx, nativewind, cssInterop, _dark, macos, .macos., 'use client', next/,
+nativewind, cssInterop, _dark, macos, .macos., 'use client', next/,
 solito, @ts-ignore, @ts-expect-error, console.log, `: any`, commented-out code.
 
 TOOLING
@@ -285,17 +287,17 @@ responsive component unless a real platform difference exists.
 Acceptance: the slice's check + side-by-side screenshots mobile / Chrome.
 ```
 
-| ID | Slice | Legacy sources (packages/ui/src unless noted) | Shape of the result | Check |
-|---|---|---|---|---|
-| 6.1 | Current + hourly | components/weather/main/*, components/weather/hourly/*, components/weather/SmartSummary.tsx, hooks/conditions/* | One `MainWeather` (merge native/web), SmartSummary rules → core | Units toggle changes values |
-| 6.2 | Daily list | components/weather/daily/{DailyForecast,DaysToggle}.tsx | `useSelectedDay` store in core | 3/7/14-day toggle |
-| 6.3 | Charts | components/weather/WeatherChart.tsx, utils/getChartDomain.ts, hooks/weather/* (useChartDay) | chart-kit unpatched; date/domain logic → core | Scrub + tooltip web/native |
-| 6.4 | Cards + metric modals | components/cards/**, components/weather/daily/DailyForecastMain.tsx, apps/mobile/app/modals/* | One config-driven `MetricCard` + one `modals/[metric]` route + registry `{component, icon, titleKey, usesDate}`; no useModalNavigation | Every card opens its modal on all platforms |
-| 6.5 | Air quality | components/airquality/**, components/weather/GradientScale.tsx, apps/mobile/app/modals/airquality/* | One `PollutantDetail` + threshold table + `modals/airquality/[pollutant]` | EU/US toggle, 6 pollutants |
-| 6.6 | Alerts | components/alerts/**, core alertFilters | Severity styling in ui; route param = stable id, not array index | List + detail |
-| 6.7 | Hero + weather screen | components/weather/hero/*, features/weather/screen.tsx | One responsive hero (`md:`/`xl:`), RefreshControl instead of PullIndicator | Full page all targets |
-| 6.8 | Home, favourites, search | components/weather/{card,home,search}/**, hooks/search/useSearchController.ts, features/{home,search}/* | Search/debounce flow → core; toasts via callbacks, not wrapper hooks | Add/remove favourite, search, recents |
-| 6.9 | Settings, about, feedback | components/settings/**, components/icons/{settings,logos}/**, features/{settings,about,feedback}/*, utils/shareWeather.ts | Generic option list for 5 selectors; version from expo-constants only; one feedback route | All selectors persist |
+| ID  | Slice                     | Legacy sources (packages/ui/src unless noted)                                                                             | Shape of the result                                                                                                                    | Check                                       |
+| --- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| 6.1 | Current + hourly          | components/weather/main/_, components/weather/hourly/_, components/weather/SmartSummary.tsx, hooks/conditions/*           | One `MainWeather` (merge native/web), SmartSummary rules → core                                                                        | Units toggle changes values                 |
+| 6.2 | Daily list                | components/weather/daily/{DailyForecast,DaysToggle}.tsx                                                                   | `useSelectedDay` store in core                                                                                                         | 3/7/14-day toggle                           |
+| 6.3 | Charts                    | components/weather/WeatherChart.tsx, utils/getChartDomain.ts, hooks/weather/* (useChartDay)                               | chart-kit unpatched; date/domain logic → core                                                                                          | Scrub + tooltip web/native                  |
+| 6.4 | Cards + metric modals     | components/cards/**, components/weather/daily/DailyForecastMain.tsx, apps/mobile/app/modals/*                             | One config-driven `MetricCard` + one `modals/[metric]` route + registry `{component, icon, titleKey, usesDate}`; no useModalNavigation | Every card opens its modal on all platforms |
+| 6.5 | Air quality               | components/airquality/**, components/weather/GradientScale.tsx, apps/mobile/app/modals/airquality/*                       | One `PollutantDetail` + threshold table + `modals/airquality/[pollutant]`                                                              | EU/US toggle, 6 pollutants                  |
+| 6.6 | Alerts                    | components/alerts/**, core alertFilters                                                                                   | Severity styling in ui; route param = stable id, not array index                                                                       | List + detail                               |
+| 6.7 | Hero + weather screen     | components/weather/hero/*, features/weather/screen.tsx                                                                    | One responsive hero (`md:`/`xl:`), RefreshControl instead of PullIndicator                                                             | Full page all targets                       |
+| 6.8 | Home, favourites, search  | components/weather/{card,home,search}/**, hooks/search/useSearchController.ts, features/{home,search}/*                   | Search/debounce flow → core; toasts via callbacks, not wrapper hooks                                                                   | Add/remove favourite, search, recents       |
+| 6.9 | Settings, about, feedback | components/settings/**, components/icons/{settings,logos}/**, features/{settings,about,feedback}/*, utils/shareWeather.ts | Generic option list for 5 selectors; version from expo-constants only; one feedback route                                              | All selectors persist                       |
 
 ### Phase 7 — Desktop shell, compass, Tauri production config
 
@@ -406,6 +408,8 @@ launches from the single export with no server; root scripts: build:web, build:d
 
 ### Phase 11 — Verification and cutover proposal (read-only)
 
+**Superseded:** use the prompt in `NATIVEWEATHER_PHASE11_PLAN.md` §5. The original is kept below for reference.
+
 ```text
 PHASE 11: READ-ONLY RELEASE REVIEW. No edits.
 Matrix (PASS / FAIL / NOT TESTED + proof) for iOS, Android, Chrome, Tauri macOS/Win/Linux:
@@ -422,69 +426,69 @@ SHA, rollback path). Execute nothing.
 
 ## Appendix A — Token map
 
-| Legacy | New class | Status |
-|---|---|---|
-| `systemBackground` / `_dark` | `bg-system-background` | present |
-| `secondarySystemBackground` / `_dark` | `bg-secondary-system-background` | present |
-| `tertiarySystemBackground` / `_dark` | `bg-tertiary-system-background` | present |
-| `label` / `_dark` (`colors.text`) | `text-label` | present |
-| `secondaryLabel` / `_dark` | `text-secondary-label` | present |
-| `primaryblue` | `primary-blue` | present |
-| `good fair moderate sensitive unhealthy hazardous` | same | present |
-| `veryunhealthy` | `very-unhealthy` | present |
-| `dark:…` + `…_dark` pair | single token (switches itself) | remove `dark:` |
-| `macos:…` | — | delete |
-| `colors.modalBg` #F2F2F7 / #0E0E0F | `modal-background` | **add** |
-| `colors.background` #F2F2F2 / #000 | fold into `system-background` / `secondary-…` | decide per use |
-| `border-black/10 dark:border-white/10` (~30 uses) | `hairline` | **add** |
-| Separator gray-200 / zinc-800 | `separator` | **add** |
-| Skeleton `bg-white/50 dark:bg-[#0F0F11]` | `skeleton` | **add** |
-| `bg-black/40`, `bg-black/30 dark:bg-black/60` | `scrim` | **add** |
-| #FE9804 favourite star | `favorite` | **add** |
-| #2793FF rain/chart | `chart-blue` | **add** |
-| iOS accents #FF9500 #00C4CA #00C000 #FF3B30 #727E95 #80848B | `system-orange/teal/green/red/gray…` | **add** if used |
-| `screens.xs` 321px | `--breakpoint-xs` | add only if Text needs it |
-| `!utility` prefix (107 uses) | `utility!` or remove | prefer remove |
-| wind / pressure / map-legend scales (~45 hex) | TS data constants via `style` | keep as data |
+| Legacy                                                      | New class                                     | Status                    |
+| ----------------------------------------------------------- | --------------------------------------------- | ------------------------- |
+| `systemBackground` / `_dark`                                | `bg-system-background`                        | present                   |
+| `secondarySystemBackground` / `_dark`                       | `bg-secondary-system-background`              | present                   |
+| `tertiarySystemBackground` / `_dark`                        | `bg-tertiary-system-background`               | present                   |
+| `label` / `_dark` (`colors.text`)                           | `text-label`                                  | present                   |
+| `secondaryLabel` / `_dark`                                  | `text-secondary-label`                        | present                   |
+| `primaryblue`                                               | `primary-blue`                                | present                   |
+| `good fair moderate sensitive unhealthy hazardous`          | same                                          | present                   |
+| `veryunhealthy`                                             | `very-unhealthy`                              | present                   |
+| `dark:…` + `…_dark` pair                                    | single token (switches itself)                | remove `dark:`            |
+| `macos:…`                                                   | —                                             | delete                    |
+| `colors.modalBg` #F2F2F7 / #0E0E0F                          | `modal-background`                            | **add**                   |
+| `colors.background` #F2F2F2 / #000                          | fold into `system-background` / `secondary-…` | decide per use            |
+| `border-black/10 dark:border-white/10` (~30 uses)           | `hairline`                                    | **add**                   |
+| Separator gray-200 / zinc-800                               | `separator`                                   | **add**                   |
+| Skeleton `bg-white/50 dark:bg-[#0F0F11]`                    | `skeleton`                                    | **add**                   |
+| `bg-black/40`, `bg-black/30 dark:bg-black/60`               | `scrim`                                       | **add**                   |
+| #FE9804 favourite star                                      | `favorite`                                    | **add**                   |
+| #2793FF rain/chart                                          | `chart-blue`                                  | **add**                   |
+| iOS accents #FF9500 #00C4CA #00C000 #FF3B30 #727E95 #80848B | `system-orange/teal/green/red/gray…`          | **add** if used           |
+| `screens.xs` 321px                                          | `--breakpoint-xs`                             | add only if Text needs it |
+| `!utility` prefix (107 uses)                                | `utility!` or remove                          | prefer remove             |
+| wind / pressure / map-legend scales (~45 hex)               | TS data constants via `style`                 | keep as data              |
 
 ## Appendix B — Route consolidation (legacy mobile 33 screens → ~12)
 
-| Legacy | New |
-|---|---|
-| `modals/{clouds,moon,range,sunrise,sunset,humidity,pressure,rain,snow,uv,wind}.tsx` + 11 `Stack.Screen` entries | `modals/[metric].tsx` + registry |
-| `modals/airquality/{no2,o3,pm10,pm25,usaqi,euaqi}.tsx` | `modals/airquality/[pollutant].tsx` |
-| `(settings)/{theme,language,temperature,units,aqi}.tsx` | `settings/[option].tsx` |
-| `(settings)/feedback.tsx` + `modals/feedback.tsx` | one feedback route |
-| `modals/forecast`, `modals/alerts/*`, `modals/airquality/index` | keep (alerts detail by id) |
-| `(tabs)/(weather)/[city]` (never read `city`) | `/[city]` reads slug + r + cr |
-| web `/compass` | `/compass` (web only, Phase 7) |
-| `useModalNavigation({mobile, macos, web})` (22 files) | plain router navigation |
+| Legacy                                                                                                          | New                                 |
+| --------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `modals/{clouds,moon,range,sunrise,sunset,humidity,pressure,rain,snow,uv,wind}.tsx` + 11 `Stack.Screen` entries | `modals/[metric].tsx` + registry    |
+| `modals/airquality/{no2,o3,pm10,pm25,usaqi,euaqi}.tsx`                                                          | `modals/airquality/[pollutant].tsx` |
+| `(settings)/{theme,language,temperature,units,aqi}.tsx`                                                         | `settings/[option].tsx`             |
+| `(settings)/feedback.tsx` + `modals/feedback.tsx`                                                               | one feedback route                  |
+| `modals/forecast`, `modals/alerts/*`, `modals/airquality/index`                                                 | keep (alerts detail by id)          |
+| `(tabs)/(weather)/[city]` (never read `city`)                                                                   | `/[city]` reads slug + r + cr       |
+| web `/compass`                                                                                                  | `/compass` (web only, Phase 7)      |
+| `useModalNavigation({mobile, macos, web})` (22 files)                                                           | plain router navigation             |
 
 ## Appendix C — Keep / merge / drop summary (legacy `packages/ui`)
 
-| Bucket | ≈ Files | Examples |
-|---|---|---|
-| Drop | 59 | 16 `.macos`, `LanguageSelect.android`, `ThemeSync.web`, `useThemeColors(.web)`, `useRouter*`, `useNavigationScreen*`, `AnimatedView(.web)`, `PullIndicator`, `components/web/*` (Next error pages), `TypographyTest`, `LoadingIndicator`, `AirQualityValue`, `VersionInfo`, dead icons, 2 unreferenced PNGs |
-| Merge / rewrite (78 → ~38) | 78 | 11 cards + 11 modals → `MetricCard`; 6 AQI details → `PollutantDetail`; settings buttons/selectors; Hero/Main ×3 → one responsive each; lucide wrappers |
-| Restyle | 69 | primitives, lists, forecasts |
-| As-is | 118 | SVG icons, landscapes, flags, pure utils, PNGs |
+| Bucket                     | ≈ Files | Examples                                                                                                                                                                                                                                                                                                    |
+| -------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Drop                       | 59      | 16 `.macos`, `LanguageSelect.android`, `ThemeSync.web`, `useThemeColors(.web)`, `useRouter*`, `useNavigationScreen*`, `AnimatedView(.web)`, `PullIndicator`, `components/web/*` (Next error pages), `TypographyTest`, `LoadingIndicator`, `AirQualityValue`, `VersionInfo`, dead icons, 2 unreferenced PNGs |
+| Merge / rewrite (78 → ~38) | 78      | 11 cards + 11 modals → `MetricCard`; 6 AQI details → `PollutantDetail`; settings buttons/selectors; Hero/Main ×3 → one responsive each; lucide wrappers                                                                                                                                                     |
+| Restyle                    | 69      | primitives, lists, forecasts                                                                                                                                                                                                                                                                                |
+| As-is                      | 118     | SVG icons, landscapes, flags, pure utils, PNGs                                                                                                                                                                                                                                                              |
 
 Dependencies to drop: `clsx`, `gsap`, `hamburger-react`, `solito`, `next`, `luxon` in ui (use `Intl`), `react-native-webview`, `expo-linear-gradient`, `@maplibre/maplibre-react-native`, `@expo/vector-icons`, `@react-navigation/native`, `expo-device-hub`, `@expo/dom-webview`. Logic to move ui → core: SmartSummary rules, search controller, chart day/domain helpers, `useSelectedDay`, `useMapLayer`, condition-code → i18n key, widget snapshot formatting.
 
 ## Appendix D — Identity values
 
-| Key | Legacy | New |
-|---|---|---|
-| name / slug | `NativeWeather` / `nativeweather` | same |
-| iOS bundle id | `com.rudyxsides.nativeweather` | `com.bitwebs.nativeweather` |
-| Android package | `com.rudyxsides.nativeweather` | `com.bitwebs.nativeweather` |
-| App Group | `group.com.rudyxsides.nativeweather` | `group.com.bitwebs.nativeweather` |
-| Widget extension | `com.rudyxsides.nativeweather.ExpoWidgetsTarget` | `com.bitwebs.nativeweather.ExpoWidgetsTarget` |
-| Tauri identifier | (RN macOS: `org.bitwebs.nativeweather`) | `com.bitwebs.nativeweather` |
-| scheme | `mobile` | owed (default `nativeweather`) |
-| EAS projectId / owner | `c5d2c429-c300-4585-8558-13717e205496` / `rudyxsides` | owed |
-| Location string | "NativeWeather needs your location to show the local weather forecast." | same |
-| Splash | `splash-icon.png`, width 200, bg `#007AFF` | same |
+| Key                   | Legacy                                                                  | New                                           |
+| --------------------- | ----------------------------------------------------------------------- | --------------------------------------------- |
+| name / slug           | `NativeWeather` / `nativeweather`                                       | same                                          |
+| iOS bundle id         | `com.rudyxsides.nativeweather`                                          | `com.bitwebs.nativeweather`                   |
+| Android package       | `com.rudyxsides.nativeweather`                                          | `com.bitwebs.nativeweather`                   |
+| App Group             | `group.com.rudyxsides.nativeweather`                                    | `group.com.bitwebs.nativeweather`             |
+| Widget extension      | `com.rudyxsides.nativeweather.ExpoWidgetsTarget`                        | `com.bitwebs.nativeweather.ExpoWidgetsTarget` |
+| Tauri identifier      | (RN macOS: `org.bitwebs.nativeweather`)                                 | `com.bitwebs.nativeweather`                   |
+| scheme                | `mobile`                                                                | owed (default `nativeweather`)                |
+| EAS projectId / owner | `c5d2c429-c300-4585-8558-13717e205496` / `rudyxsides`                   | owed                                          |
+| Location string       | "NativeWeather needs your location to show the local weather forecast." | same                                          |
+| Splash                | `splash-icon.png`, width 200, bg `#007AFF`                              | same                                          |
 
 ## Appendix E — Legacy artefacts to discard
 

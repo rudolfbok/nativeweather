@@ -18,8 +18,16 @@ const getOrientationApi = () =>
 		? (window.DeviceOrientationEvent as OrientationApi)
 		: null;
 
-/** Whether this browser can report a heading at all; the entry point is hidden where it cannot. */
-export const isCompassSupported = () => getOrientationApi() !== null;
+// Desktop Chrome and Safari expose the orientation API too, but a laptop has no magnetometer, so the entry point is
+// limited to phones and tablets. iPadOS 13+ reports itself as a Mac, hence the touch check.
+const isMobileDevice = () => {
+	const { userAgent, maxTouchPoints } = navigator;
+	return /iPhone|iPad|iPod|Android/.test(userAgent) || (/Macintosh/.test(userAgent) && maxTouchPoints > 1);
+};
+
+/** Whether this browser is on a device that can report a heading; the entry point is hidden elsewhere. */
+export const isCompassSupported = () =>
+	typeof navigator !== 'undefined' && isMobileDevice() && getOrientationApi() !== null;
 
 // Safari reports a true compass heading; elsewhere `alpha` is counter-clockwise from north.
 const getHeading = ({ webkitCompassHeading, alpha }: OrientationEvent) => {

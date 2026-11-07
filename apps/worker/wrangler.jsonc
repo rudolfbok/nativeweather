@@ -1,0 +1,15 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "nativeweather",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-02",
+	"compatibility_flags": ["nodejs_compat"],
+	// The Expo web export (`pnpm build:web`), the same folder Tauri packages.
+	"assets": {
+		"directory": "../expo/dist",
+		"binding": "ASSETS",
+		"not_found_handling": "single-page-application",
+		// Page URLs reach the Worker first (static files on them would otherwise skip it); the JS bundle and images don't.
+		"run_worker_first": ["/*", "!/_expo/*", "!/assets/*"],
+	},
+}

@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Rechercher une ville ou des coordonnées…",
 		"searchbar.native": "Rechercher…",
-		"title": "Recherche",
-		"url": {
-			"error": "La ville recherchée est introuvable.\nVérifiez l’orthographe ou ajoutez le nom du pays, puis réessayez."
-		}
+		"title": "Recherche"
 	},
 	"share": {
 		"message": "Météo actuelle à"
+	},
+	"status": {
+		"empty": {
+			"title": "Aucune ville sélectionnée",
+			"message": "Choisissez une ville dans la barre latérale ou recherchez-en une autre."
+		},
+		"error": {
+			"title": "Une erreur s'est produite",
+			"message": "Un problème est survenu lors du chargement de la météo. Veuillez réessayer."
+		},
+		"notfound": {
+			"title": "Météo introuvable",
+			"message": "Nous n'avons pas trouvé ce lieu ou cette page. Vérifiez l'adresse ou recherchez une autre ville."
+		},
+		"offline": {
+			"title": "Vous êtes hors ligne",
+			"message": "Vérifiez votre connexion Internet et réessayez."
+		},
+		"retry": "Réessayer",
+		"suggested": "Villes suggérées"
 	},
 	"tab": {
 		"home": "Accueil",

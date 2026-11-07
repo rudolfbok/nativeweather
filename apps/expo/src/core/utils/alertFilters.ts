@@ -1,5 +1,5 @@
+import { removeDiacritics } from '@nativeweather/api';
 import type { NormalizedData, WeatherAlert } from '@nativeweather/types';
-import { removeDiacritics } from './removeDiacritics';
 
 type AlertLocation = Pick<NormalizedData['location'], 'name' | 'region'>;
 

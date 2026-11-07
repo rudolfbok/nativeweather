@@ -5,6 +5,7 @@
 - pnpm workspace monorepo.
 - `apps/expo` — Expo application for iOS, Android, and Web.
 - `apps/desktop` — Tauri 2 desktop shell using Expo Web.
+- `apps/worker` — Cloudflare Worker for nativeweather.app: serves the Expo web export, rewrites city `<head>` tags (title, description, canonical, OG), and returns 404 for unknown cities. Run with `pnpm preview:web`.
 - `apps/expo/src/ui` and `apps/expo/src/core` — UI components and app logic (hooks, storage, utils, locales), imported via the `@/ui` and `@/core` aliases.
 - `packages/types` and `packages/api` — Pure TypeScript with no React Native, Expo, or other platform dependencies.
 - Use a single Expo/Metro development server on port 8081.

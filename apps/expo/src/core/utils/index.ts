@@ -1,8 +1,6 @@
 export { findAlert, getAlertKey, getAlerts, getMostSevereAlert } from './alertFilters';
 export { formatAlertExpiry, getAlertText } from './alertText';
-export { countryCode } from './countryCode';
 export { extractCity, getCityRegion } from './extractCity';
-export { buildSlug, getCityRoute } from './weatherSlug';
 export { formatTemperature } from './formatting/formatTemperature';
 export { formatLocalTime, formatTime } from './formatting/formatTime';
 export { selectUnit } from './formatting/selectUnit';

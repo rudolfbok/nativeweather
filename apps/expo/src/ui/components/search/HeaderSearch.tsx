@@ -22,7 +22,7 @@ export const HeaderSearch = () => {
 		<>
 			<SearchField value={query} onChangeText={setQuery} onSubmit={() => void submit()} onFocusChange={onFocusChange} />
 			{focused && cities.length > 0 && (
-				<View className="absolute top-full z-50 mt-2 w-full">
+				<View className="absolute top-full z-50 mt-3 w-full">
 					<CityList cities={cities} onSelect={selectCity} />
 				</View>
 			)}

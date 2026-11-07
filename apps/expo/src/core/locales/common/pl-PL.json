@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Szukaj miasta lub współrzędnych…",
 		"searchbar.native": "Szukaj…",
-		"title": "Szukaj",
-		"url": {
-			"error": "Nie znaleziono szukanego miasta.\nSprawdź pisownię lub dodaj nazwę kraju i spróbuj ponownie."
-		}
+		"title": "Szukaj"
 	},
 	"share": {
 		"message": "Aktualna pogoda w miejscowości"
+	},
+	"status": {
+		"empty": {
+			"title": "Nie wybrano miasta",
+			"message": "Wybierz miasto z panelu bocznego lub wyszukaj inne."
+		},
+		"error": {
+			"title": "Wystąpił błąd",
+			"message": "Coś poszło nie tak podczas wczytywania pogody. Spróbuj ponownie."
+		},
+		"notfound": {
+			"title": "Nie znaleziono pogody",
+			"message": "Nie znaleźliśmy tego miejsca ani strony. Sprawdź adres lub wyszukaj inne miasto."
+		},
+		"offline": {
+			"title": "Jesteś offline",
+			"message": "Sprawdź połączenie z internetem i spróbuj ponownie."
+		},
+		"retry": "Spróbuj ponownie",
+		"suggested": "Proponowane miasta"
 	},
 	"tab": {
 		"home": "Start",

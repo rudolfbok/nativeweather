@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Pressable } from 'react-native';
+import type { PressableProps } from 'react-native';
 import { clsx } from 'clsx';
-import { Pressable } from './Pressable';
-import type { PressableProps } from './Pressable';
 import { Text } from './Text';
 
 export interface ButtonProps extends Omit<PressableProps, 'children'> {
@@ -14,13 +13,14 @@ export const Button = ({ children, loading = false, disabled, className, ...prop
 	const isDisabled = disabled || loading;
 
 	return (
+		// The plain Pressable: ours brings a grey hover background, and the button only fades on hover and press.
 		<Pressable
 			accessibilityRole="button"
 			accessibilityState={{ disabled: isDisabled, busy: loading }}
 			disabled={isDisabled}
 			className={clsx(
-				'w-full flex-row items-center justify-center gap-2 rounded-3xl bg-primary-blue p-4 select-none active:bg-primary-blue active:opacity-80 lg:px-6 web:hover:bg-primary-blue web:hover:opacity-90',
-				isDisabled && 'opacity-55',
+				'w-full flex-row items-center justify-center gap-2 rounded-3xl bg-primary-blue p-4 select-none lg:px-6',
+				isDisabled ? 'opacity-55' : 'active:opacity-80 web:cursor-pointer web:hover:opacity-90',
 				className
 			)}
 			{...props}

@@ -10,9 +10,11 @@ interface MetricCardsProps {
 	dayIndex?: number;
 	/** `day` is set for metrics whose modal charts a day. */
 	onOpen: (metric: MetricId, day?: number) => void;
+	/** Laid out in a narrow column, three tiles per row. */
+	column?: boolean;
 }
 
-export const MetricCards = ({ dayIndex, onOpen }: MetricCardsProps) => {
+export const MetricCards = ({ dayIndex, onOpen, column = false }: MetricCardsProps) => {
 	const context = useMetricContext();
 
 	if (!context) return null;
@@ -21,7 +23,10 @@ export const MetricCards = ({ dayIndex, onOpen }: MetricCardsProps) => {
 	const precipitation = getPrecipitationMetric(context.weather, source);
 	const metrics: MetricId[] =
 		source === null
-			? [precipitation, 'wind', 'uv', 'range', 'humidity', 'pressure', 'sunrise', 'sunset', 'clouds', 'moon']
+			? column
+				? // Nine tiles fill three even rows, so clouds is left out.
+					[precipitation, 'wind', 'uv', 'range', 'humidity', 'pressure', 'sunrise', 'sunset', 'moon']
+				: [precipitation, 'wind', 'uv', 'range', 'humidity', 'pressure', 'sunrise', 'sunset', 'clouds', 'moon']
 			: [precipitation, 'uv', 'range', 'wind'];
 
 	return (
@@ -35,6 +40,7 @@ export const MetricCards = ({ dayIndex, onOpen }: MetricCardsProps) => {
 						title={context.t(definition.titleKey)}
 						content={definition.card(context, source)}
 						onPress={() => onOpen(metric, definition.usesDate ? (dayIndex ?? 0) : undefined)}
+						column={column}
 					/>
 				);
 			})}

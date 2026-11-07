@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Ort oder Koordinaten suchen…",
 		"searchbar.native": "Suchen…",
-		"title": "Suche",
-		"url": {
-			"error": "Der gesuchte Ort wurde nicht gefunden.\nPrüfe die Schreibweise oder ergänze den Ländernamen und versuche es erneut."
-		}
+		"title": "Suche"
 	},
 	"share": {
 		"message": "Aktuelles Wetter in"
+	},
+	"status": {
+		"empty": {
+			"title": "Keine Stadt ausgewählt",
+			"message": "Wähle eine Stadt in der Seitenleiste oder suche nach einer anderen."
+		},
+		"error": {
+			"title": "Es ist ein Fehler aufgetreten",
+			"message": "Beim Laden des Wetters ist etwas schiefgelaufen. Bitte versuche es erneut."
+		},
+		"notfound": {
+			"title": "Wetter nicht gefunden",
+			"message": "Dieser Ort oder diese Seite wurde nicht gefunden. Prüfe die Adresse oder suche nach einer anderen Stadt."
+		},
+		"offline": {
+			"title": "Du bist offline",
+			"message": "Prüfe deine Internetverbindung und versuche es erneut."
+		},
+		"retry": "Erneut versuchen",
+		"suggested": "Vorgeschlagene Städte"
 	},
 	"tab": {
 		"home": "Start",

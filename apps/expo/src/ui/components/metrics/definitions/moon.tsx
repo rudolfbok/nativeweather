@@ -39,6 +39,7 @@ export const moon: MetricDefinition = {
 
 		return {
 			value: t(`moon.phase.${phaseKey(moonPhase)}`),
+			squareDescription: `${t('moon.illumination')} ${moonIllumination}%`,
 			extra: (
 				<View className="flex-row items-center gap-4">
 					{PhaseIcon && <PhaseIcon />}

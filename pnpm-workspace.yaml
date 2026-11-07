@@ -1,6 +1,9 @@
 packages:
   - "apps/*"
   - "packages/*"
+allowBuilds:
+  esbuild: true
+  workerd: true
 minimumReleaseAgeExclude:
   - "@oxlint/binding-android-arm-eabi@1.91.0"
   - "@oxlint/binding-android-arm64@1.91.0"

@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Search any city or coordinates..",
 		"searchbar.native": "Search..",
-		"title": "Search",
-		"url": {
-			"error": "We couldn't find the city you were looking for \nPlease check the spelling or add the country name and try again"
-		}
+		"title": "Search"
 	},
 	"share": {
 		"message": "Current weather in"
+	},
+	"status": {
+		"empty": {
+			"title": "No city selected",
+			"message": "Choose a city from the sidebar, or search for another one."
+		},
+		"error": {
+			"title": "There was an error",
+			"message": "Something went wrong while loading the weather. Please try again."
+		},
+		"notfound": {
+			"title": "Weather not found",
+			"message": "We couldn't find that location or page. Check the address, or search for another city."
+		},
+		"offline": {
+			"title": "You're offline",
+			"message": "Check your internet connection and try again."
+		},
+		"retry": "Try again",
+		"suggested": "Suggested cities"
 	},
 	"tab": {
 		"home": "Home",

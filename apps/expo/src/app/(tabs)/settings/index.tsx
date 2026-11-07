@@ -7,8 +7,7 @@ import { openAbout, openCompass, openFeedback, openSettingOption } from '@/setti
 
 export default function SettingsScreen() {
 	const { t } = useTranslate('settings');
-	// A webview reports orientation events even on a Mac, which has no compass.
-	const compass = Platform.OS === 'web' && !isTauri() && isCompassSupported();
+	const compass = Platform.OS === 'web' && isCompassSupported();
 
 	return (
 		<ScreenWrapper>

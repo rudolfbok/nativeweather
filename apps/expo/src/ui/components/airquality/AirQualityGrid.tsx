@@ -32,8 +32,8 @@ export const AirQualityGrid = ({ onOpen }: { onOpen: (pollutant: Pollutant) => v
 							</Text>
 						</View>
 						<View className="flex-row items-center justify-end gap-2">
-							<View className={`h-2.5 w-2.5 rounded-full ${levelBgClass[getAirQualityLevel(id, value)]}`} />
 							<Text type="data">{`${value}${units}`}</Text>
+							<View className={`h-2.5 w-2.5 rounded-full ${levelBgClass[getAirQualityLevel(id, value)]}`} />
 						</View>
 					</Pressable>
 				);

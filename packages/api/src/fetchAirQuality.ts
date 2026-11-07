@@ -10,9 +10,7 @@ export const fetchAirQuality = async (lat: number, lon: number): Promise<OpenMet
 			throw new Error('Response is not okay');
 		}
 
-		const airQualityData = await response.json();
-
-		return airQualityData;
+		return (await response.json()) as OpenMeteoAQI;
 	} catch (error) {
 		console.error('Failed to fetch air quality data:', error);
 		return null;

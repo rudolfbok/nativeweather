@@ -1,4 +1,13 @@
-import { FavoriteCities, LocalWeather, NativeWeatherLogo, ScreenWrapper, showToast } from '@/ui';
+import {
+	FavoriteCities,
+	HeroSkeleton,
+	LocalWeather,
+	NativeWeatherLogo,
+	ScreenWrapper,
+	showToast,
+	StatusView,
+	useStartupCitySettled,
+} from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import { useState } from 'react';
@@ -7,9 +16,27 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useHomeLists } from '@/hooks/useHomeLists';
 import { openCity } from '@/navigation';
 
-// The Tauri sidebar lists the cities, so the page itself stays empty there.
 export default function Home() {
-	return isTauri() ? <View className="flex-1 bg-screen-background" /> : <HomeScreen />;
+	return isTauri() ? <DesktopHome /> : <HomeScreen />;
+}
+
+// The Tauri sidebar lists the cities and opens the first one on launch: a skeleton stands in until it does, and a
+// hint to pick a city once it has nothing to open or the user comes back here.
+function DesktopHome() {
+	const { t } = useTranslate('common');
+	const settled = useStartupCitySettled((state) => state.settled);
+
+	return (
+		<View className="flex-1 bg-screen-background">
+			<ScreenWrapper>
+				{settled ? (
+					<StatusView icon="notfound" title={t('status.empty.title')} message={t('status.empty.message')} />
+				) : (
+					<HeroSkeleton />
+				)}
+			</ScreenWrapper>
+		</View>
+	);
 }
 
 function HomeScreen() {

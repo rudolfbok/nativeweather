@@ -21,13 +21,30 @@
 		},
 		"searchbar": "搜索城市或经纬度…",
 		"searchbar.native": "搜索…",
-		"title": "搜索",
-		"url": {
-			"error": "未找到你要搜索的城市。\n请检查拼写，或加上国家名称后重试。"
-		}
+		"title": "搜索"
 	},
 	"share": {
 		"message": "当前天气："
+	},
+	"status": {
+		"empty": {
+			"title": "未选择城市",
+			"message": "请从侧边栏选择城市，或搜索其他城市。"
+		},
+		"error": {
+			"title": "出现错误",
+			"message": "加载天气时出了点问题，请重试。"
+		},
+		"notfound": {
+			"title": "未找到天气",
+			"message": "找不到该地点或页面。请检查地址，或搜索其他城市。"
+		},
+		"offline": {
+			"title": "您处于离线状态",
+			"message": "请检查网络连接后重试。"
+		},
+		"retry": "重试",
+		"suggested": "推荐城市"
 	},
 	"tab": {
 		"home": "首页",

@@ -24,7 +24,7 @@ export const SearchField = ({ value, onChangeText, onSubmit, onFocusChange }: Se
 	return (
 		<RoundView
 			className={clsx(
-				'w-full flex-row items-center rounded-full bg-tertiary-system-background px-4',
+				'w-full flex-row items-center rounded-full bg-tertiary-system-background px-4 dark:bg-secondary-system-background',
 				focused && 'border-primary-blue'
 			)}
 		>

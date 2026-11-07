@@ -1,4 +1,4 @@
-import { buildSlug } from '@/core';
+import { buildSlug } from '@nativeweather/api';
 import type { NormalizedData } from '@nativeweather/types';
 import { Platform, Share } from 'react-native';
 

@@ -139,9 +139,7 @@ export const WeatherChart = ({
 								<Text type="body" className="font-semibold">
 									{toggle.dailySummary.label}
 								</Text>
-								<Text type="body">
-									{toggle.dailySummary.value}
-								</Text>
+								<Text type="body">{toggle.dailySummary.value}</Text>
 							</View>
 							<View className="w-24 flex-row gap-1 rounded-full border border-hairline bg-secondary-system-background p-1">
 								{toggle.options.map((option) => {

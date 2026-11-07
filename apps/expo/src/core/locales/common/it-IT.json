@@ -21,13 +21,30 @@
 		},
 		"searchbar": "Cerca una città o delle coordinate…",
 		"searchbar.native": "Cerca…",
-		"title": "Cerca",
-		"url": {
-			"error": "La città cercata non è stata trovata.\nControlla il nome o aggiungi il paese e riprova."
-		}
+		"title": "Cerca"
 	},
 	"share": {
 		"message": "Meteo attuale a"
+	},
+	"status": {
+		"empty": {
+			"title": "Nessuna città selezionata",
+			"message": "Scegli una città dalla barra laterale o cercane un'altra."
+		},
+		"error": {
+			"title": "Si è verificato un errore",
+			"message": "Qualcosa è andato storto durante il caricamento del meteo. Riprova."
+		},
+		"notfound": {
+			"title": "Meteo non trovato",
+			"message": "Non abbiamo trovato questo luogo o questa pagina. Controlla l'indirizzo o cerca un'altra città."
+		},
+		"offline": {
+			"title": "Sei offline",
+			"message": "Controlla la connessione a Internet e riprova."
+		},
+		"retry": "Riprova",
+		"suggested": "Città suggerite"
 	},
 	"tab": {
 		"home": "Home",

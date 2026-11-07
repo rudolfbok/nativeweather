@@ -19,3 +19,6 @@ coverage/
 .DS_Store
 Thumbs.db
 .idea/
+
+# Wrangler (apps/worker) local state
+.wrangler/
