@@ -45,14 +45,11 @@ const HomePage = () => {
         </div>
       </div>
       <div className="flex w-full flex-col gap-4 dark:bg-[#1c1c1e] bg-white p-4 rounded-3xl">
-        {/* <Text as="h2" className="text-left text-xl font-semibold">
-					Available on
-				</Text> */}
         <PlatformCard
           icon={webIcon}
           alt="Web icon"
           title="Web"
-          subtitle="Hosted on the edge with Cloudflare Workers"
+          subtitle="Hosted on Cloudflare Workers"
           actionLabel="Open web app"
           href="https://nativeweather.app/"
         />
