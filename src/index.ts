@@ -50,17 +50,17 @@ const withCorsHeaders = (response: Response): Response => {
 const fetchForecast = async (params: URLSearchParams, env: Env): Promise<Response> => {
 	const query = params.get('q');
 
-	try {
-		if (!query) {
-			throw new Error('Missing query parameter');
-		}
+	if (!query) {
+		return Response.json({ error: 'Missing query parameter' }, { status: 400 });
+	}
 
-		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${query}&days=7&aqi=no&alerts=yes`;
+	try {
+		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${encodeURIComponent(query)}&days=7&aqi=no&alerts=yes`;
 
 		const response = await fetch(weatherUrl);
 
 		if (!response.ok) {
-			throw new Error(`Error: ${response.status}`);
+			return await weatherApiError(response);
 		}
 
 		const weatherData = await response.json();
@@ -72,13 +72,13 @@ const fetchForecast = async (params: URLSearchParams, env: Env): Promise<Respons
 		return Response.json(weatherData);
 	} catch (error) {
 		console.error('Failed to fetch weather data:', error);
-		return Response.json({ error: getErrorMessage(error) }, { status: 500 });
+		return Response.json({ error: getErrorMessage(error) }, { status: 502 });
 	}
 };
 
 const fetchLocation = async (params: URLSearchParams, env: Env): Promise<Response> => {
 	const searchedLocation = params.get('q');
-	const locationUrl = `${WEATHER_API_BASE_URL}/search.json?key=${env.WEATHER_API_KEY}&q=${searchedLocation}`;
+	const locationUrl = `${WEATHER_API_BASE_URL}/search.json?key=${env.WEATHER_API_KEY}&q=${encodeURIComponent(searchedLocation ?? '')}`;
 
 	try {
 		if (!searchedLocation) {
@@ -132,17 +132,17 @@ const fetchAirQuality = async (params: URLSearchParams): Promise<Response> => {
 const fetchWeather = async (params: URLSearchParams, env: Env): Promise<Response> => {
 	const query = params.get('q');
 
-	try {
-		if (!query) {
-			throw new Error('Missing query parameter');
-		}
+	if (!query) {
+		return Response.json({ error: 'Missing query parameter' }, { status: 400 });
+	}
 
-		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${query}&days=7&aqi=no&alerts=yes`;
+	try {
+		const weatherUrl = `${WEATHER_API_BASE_URL}/forecast.json?key=${env.WEATHER_API_KEY}&q=${encodeURIComponent(query)}&days=7&aqi=no&alerts=yes`;
 
 		const weatherResponse = await fetch(weatherUrl);
 
 		if (!weatherResponse.ok) {
-			throw new Error(`Error: ${weatherResponse.status}`);
+			return await weatherApiError(weatherResponse);
 		}
 
 		const weatherData = (await weatherResponse.json()) as {
@@ -171,6 +171,21 @@ const fetchWeather = async (params: URLSearchParams, env: Env): Promise<Response
 		console.error('Failed to fetch weather data:', error);
 		return Response.json({ error: getErrorMessage(error) }, { status: 500 });
 	}
+};
+
+// WeatherAPI answers a place it doesn't know with 400 and error code 1006. That one is the client's 404; every other
+// failure (bad key, quota, outage) is ours, a 502, so the apps can tell "no such city" from "try again later".
+const LOCATION_NOT_FOUND = 1006;
+
+const weatherApiError = async (response: Response): Promise<Response> => {
+	const body = (await response.json().catch(() => null)) as { error?: { code?: number } } | null;
+
+	if (body?.error?.code === LOCATION_NOT_FOUND) {
+		return Response.json({ error: 'City not found' }, { status: 404 });
+	}
+
+	console.error('Weather API failed:', response.status, body?.error?.code);
+	return Response.json({ error: `Error: ${response.status}` }, { status: 502 });
 };
 
 const getErrorMessage = (error: unknown) => {
