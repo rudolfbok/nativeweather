@@ -22,3 +22,13 @@ export type { FavoriteCity } from './hooks/weather/useFavoriteCityWeather';
 export { useSunEventCountdown } from './hooks/weather/useSunEventCountdown';
 export { availableLanguages, localeData } from './locales';
 export * from './utils';
+export {
+	getBaseMapUrl,
+	getWeatherTileUrl,
+	weatherRasterPaint,
+	WEATHER_LAYER_ID,
+	WEATHER_SOURCE_ID,
+} from './constants/weatherMap';
+export type { BaseMapStyle, MapLoadStatus, WeatherMapLayer } from './constants/weatherMap';
+export { useMapWeatherPoint } from './hooks/maps/useMapWeatherPoint';
+export type { MapWeatherPoint } from './hooks/maps/useMapWeatherPoint';

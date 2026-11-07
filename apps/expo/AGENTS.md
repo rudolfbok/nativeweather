@@ -13,7 +13,7 @@ Expo ships breaking changes every SDK release. APIs you remember are likely rena
 ```bash
 pnpm exec expo install <package>  # ALWAYS use instead of npm/yarn/pnpm/bun add — resolves SDK-compatible versions
 pnpm exec expo start              # start the dev server
-pnpm exec expo lint               # lint
+pnpm lint                         # lint (oxlint — do NOT run `expo lint`, it auto-installs ESLint)
 pnpm exec tsc --noEmit            # typecheck
 pnpm dlx expo-doctor              # diagnose dependency and config issues
 pnpm exec expo install --fix      # fix incompatible package versions

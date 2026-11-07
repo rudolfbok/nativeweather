@@ -8,13 +8,15 @@ import { MetricCards } from '../metrics/MetricCards';
 import { Skeleton } from '../common/Skeleton';
 import { DailyForecast } from './daily/DailyForecast';
 import { HourlyForecast } from './hourly/HourlyForecast';
+import { MapsView } from '../maps/MapsView';
 import { MainWeather } from './MainWeather';
 import { SmartSummary } from './SmartSummary';
 
 // One column on phones; from md the forecast moves beside the summary and the metric cards span the full width.
+// The columns stretch to the same height so the map card fills what the forecast leaves in the right one.
 export const WeatherHero = ({ weather }: { weather: NormalizedData }) => (
 	<View className="gap-4">
-		<View className="gap-4 md:flex-row md:items-start">
+		<View className="gap-4 md:flex-row">
 			<View className="gap-4 md:flex-1">
 				{/* On phones the landscape runs edge to edge up to the native header, cancelling ScreenWrapper's padding. */}
 				<View>
@@ -30,10 +32,11 @@ export const WeatherHero = ({ weather }: { weather: NormalizedData }) => (
 				<HourlyForecast />
 				<AirQualityCard onPress={() => router.push('/modals/airquality')} />
 			</View>
-			<View className="md:flex-1">
+			<View className="gap-4 md:flex-1">
 				<DailyForecast
 					onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
 				/>
+				<MapsView />
 			</View>
 		</View>
 		<MetricCards

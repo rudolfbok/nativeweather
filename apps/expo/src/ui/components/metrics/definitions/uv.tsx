@@ -10,11 +10,11 @@ import { useMetricContext } from '../useMetricContext';
 const scaleMax = 15;
 
 const uvLevels = [
-	{ range: '0 - 2', className: 'text-fair' },
-	{ range: '3 - 5', className: 'text-moderate' },
-	{ range: '6 - 7', className: 'text-sensitive' },
-	{ range: '8 - 10', className: 'text-unhealthy' },
-	{ range: '11+', className: 'text-very-unhealthy' },
+	{ range: '0 - 2', className: 'text-fair!' },
+	{ range: '3 - 5', className: 'text-moderate!' },
+	{ range: '6 - 7', className: 'text-sensitive!' },
+	{ range: '8 - 10', className: 'text-unhealthy!' },
+	{ range: '11+', className: 'text-very-unhealthy!' },
 ];
 
 export const uv: MetricDefinition = {

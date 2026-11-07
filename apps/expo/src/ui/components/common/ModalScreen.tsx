@@ -10,6 +10,7 @@ import type { ModalHeaderProps } from './ModalHeader';
 const sizeClasses = {
 	default: 'web:md:max-w-2xl web:lg:max-w-3xl',
 	narrow: 'web:md:max-w-md web:lg:max-w-lg',
+	wide: 'web:md:max-w-5xl',
 };
 
 interface ModalScreenProps extends Omit<ModalHeaderProps, 'native'> {

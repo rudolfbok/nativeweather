@@ -16,7 +16,6 @@ interface ChartToggle {
 	options: [string, string];
 	selected: string;
 	onChange: (option: string) => void;
-	/** Replaces the "now" readout on days other than today. */
 	dailySummary: { label: string; value: string };
 }
 
@@ -60,15 +59,10 @@ export const WeatherChart = ({
 
 	if (!weatherData) return null;
 
-	const { tzId, localtimeEpoch } = weatherData.location;
+	const { tzId } = weatherData.location;
 	const days = weatherData.forecast.forecastday.slice(0, 7);
 	const chartData = (days[dayIndex]?.hour ?? []).map((hour) => ({ time: hour.timeEpoch, value: getValue(hour) }));
 	const chartWidth = Math.max(1, (containerWidth || windowWidth - 32) - 17);
-	const currentPoint = chartData.reduce<(typeof chartData)[number] | undefined>(
-		(closest, point) =>
-			!closest || Math.abs(point.time - localtimeEpoch) < Math.abs(closest.time - localtimeEpoch) ? point : closest,
-		undefined
-	);
 	const hourFormatter = new Intl.DateTimeFormat(language, { hour: 'numeric', hourCycle: 'h23', timeZone: tzId });
 	const formatHour = (time: string | number | Date) =>
 		hourFormatter.formatToParts(new Date(Number(time) * 1000)).find((part) => part.type === 'hour')?.value ?? '';
@@ -143,10 +137,10 @@ export const WeatherChart = ({
 						<View className="flex-1 flex-row items-center justify-between px-4">
 							<View>
 								<Text type="body" className="font-semibold">
-									{dayIndex === 0 ? t('hourlyforecast.now') : toggle.dailySummary.label}
+									{toggle.dailySummary.label}
 								</Text>
 								<Text type="body">
-									{dayIndex === 0 ? (currentPoint ? withSuffix(currentPoint.value) : '--') : toggle.dailySummary.value}
+									{toggle.dailySummary.value}
 								</Text>
 							</View>
 							<View className="w-24 flex-row gap-1 rounded-full border border-hairline bg-secondary-system-background p-1">

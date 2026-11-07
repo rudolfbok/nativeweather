@@ -28,7 +28,7 @@ export const DaysToggle = ({ selectedIndex, onSelect }: DaysToggleProps) => {
 						accessibilityState={{ selected }}
 						className={clsx(
 							'min-h-10 flex-1 items-center justify-center rounded-3xl border border-hairline py-2',
-							selected && 'border-primary-blue bg-primary-blue active:bg-primary-blue web:hover:bg-primary-blue'
+							selected && 'border-primary-blue bg-primary-blue active:bg-primary-blue web:hover:bg-primary-blue!'
 						)}
 					>
 						<Text type="body" className={clsx('font-semibold', selected && 'text-ui-foreground')}>
