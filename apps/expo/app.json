@@ -4,15 +4,22 @@
 		"slug": "nativeweather",
 		"version": "1.0.0",
 		"orientation": "portrait",
+		"icon": "./assets/icon.png",
 		"scheme": "nativeweather",
 		"userInterfaceStyle": "automatic",
 		"ios": {
+			"supportsTablet": true,
 			"bundleIdentifier": "com.bitwebs.nativeweather",
 			"infoPlist": {
-				"NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast."
+				"NSLocationWhenInUseUsageDescription": "NativeWeather needs your location to show the local weather forecast.",
+				"ITSAppUsesNonExemptEncryption": false
 			}
 		},
 		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/icon.png",
+				"backgroundColor": "#007AFF"
+			},
 			"package": "com.bitwebs.nativeweather"
 		},
 		"web": {
@@ -25,11 +32,79 @@
 				{
 					"locationWhenInUsePermission": "NativeWeather needs your location to show the local weather forecast."
 				}
-			]
+			],
+			[
+				"expo-splash-screen",
+				{
+					"image": "./assets/splash-icon.png",
+					"imageWidth": 200,
+					"resizeMode": "contain",
+					"backgroundColor": "#007AFF"
+				}
+			],
+			[
+				"expo-widgets",
+				{
+					"bundleIdentifier": "com.bitwebs.nativeweather.ExpoWidgetsTarget",
+					"groupIdentifier": "group.com.bitwebs.nativeweather",
+					"widgets": [
+						{
+							"name": "SmallLocal",
+							"displayName": "Current temperature",
+							"description": "See how is the weather right now",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemSmall"]
+						},
+						{
+							"name": "MediumLocal",
+							"displayName": "Local widget",
+							"description": "Local weather with hourly forecast",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemMedium"]
+						},
+						{
+							"name": "SmallAQI",
+							"displayName": "Current air quality",
+							"description": "Local air quality index",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemSmall"]
+						},
+						{
+							"name": "MediumAQI",
+							"displayName": "Local air quality",
+							"description": "Local air quality metrics",
+							"contentMarginsDisabled": true,
+							"supportedFamilies": ["systemMedium"]
+						}
+					]
+				}
+			],
+			"expo-asset"
 		],
 		"experiments": {
 			"typedRoutes": true,
 			"reactCompiler": true
-		}
+		},
+		"extra": {
+			"eas": {
+				"projectId": "c5d2c429-c300-4585-8558-13717e205496",
+				"build": {
+					"experimental": {
+						"ios": {
+							"appExtensions": [
+								{
+									"targetName": "ExpoWidgetsTarget",
+									"bundleIdentifier": "com.bitwebs.nativeweather.ExpoWidgetsTarget",
+									"entitlements": {
+										"com.apple.security.application-groups": ["group.com.bitwebs.nativeweather"]
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"owner": "rudyxsides"
 	}
 }

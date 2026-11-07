@@ -22,3 +22,5 @@ export { formatDayTitle, formatLongDate, formatWeekday } from './formatting/form
 export { getChartScale } from './chartScale';
 export type { ChartScaleOptions } from './chartScale';
 export { getRangeIndex, metricBounds } from './mappings/metricRanges';
+export { buildAirQualityWidgetSnapshot, buildLocalWidgetSnapshot } from './widgets/buildWidgetSnapshots';
+export type { AirQualityWidgetSnapshot, LocalWidgetSnapshot, WidgetPreferences } from './widgets/buildWidgetSnapshots';

@@ -1,5 +1,6 @@
 import { initStorageDefaults, useStorageString } from '@/core';
 import { availableLanguages, localeData } from '@/core/locales';
+import { useWidgets } from '@/hooks/useWidgets';
 import { Toaster } from '@/ui';
 import { FormatIcu } from '@tolgee/format-icu';
 import { Tolgee, TolgeeProvider } from '@tolgee/react';
@@ -61,6 +62,12 @@ const AppThemeProvider = ({ children }: { children: ReactNode }) => {
 	return <ThemeProvider value={navigationTheme}>{children}</ThemeProvider>;
 };
 
+// Needs the Tolgee and theme contexts, so it renders inside them.
+const WidgetSync = () => {
+	useWidgets();
+	return null;
+};
+
 export const AppProviders = ({ children }: { children: ReactNode }) => {
 	useEffect(initStorageDefaults, []);
 
@@ -68,6 +75,7 @@ export const AppProviders = ({ children }: { children: ReactNode }) => {
 		<I18nProvider>
 			<AppThemeProvider>
 				{children}
+				<WidgetSync />
 				<Toaster />
 			</AppThemeProvider>
 		</I18nProvider>
