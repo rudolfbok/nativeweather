@@ -56,7 +56,7 @@ export const WebShell = ({ search, drawer, onOpenHome, children }: WebShellProps
 				aria-hidden={!open}
 				className={`fixed top-0 right-0 bottom-0 z-50 w-full bg-screen-background transition-transform duration-300 ease-out md:w-85 ${open ? 'translate-x-0' : 'translate-x-full'}`}
 			>
-				<View className="absolute top-2 right-2 z-10">
+				<View className="absolute top-0 right-2 z-10 md:top-2">
 					<Hamburger toggled={open} toggle={setOpen} size={22} color={label} label="Close" />
 				</View>
 				<ScrollView className="flex-1" contentContainerClassName="px-4 pt-14 pb-4">
