@@ -116,7 +116,6 @@
 		"area": "影响区域",
 		"count": "{count} 条天气预警",
 		"description": "事件说明",
-		"disclaimer": "预警由当地政府部门发布",
 		"expires": "有效期至",
 		"instructions": "防范建议",
 		"modaltitle": "天气预警",
@@ -134,13 +133,6 @@
 			"values": "云量范围"
 		},
 		"title": "云量"
-	},
-	"compass": {
-		"button": {
-			"location": "允许访问位置"
-		},
-		"text": "指南针功能需要配备磁力计的受支持 Apple 设备。\n\niOS 可能会在使用该传感器前请求授权。",
-		"title": "指南针"
 	},
 	"condition": {
 		"blizzard": "暴风雪",
@@ -181,28 +173,6 @@
 			"3": "很潮湿",
 			"4": "极其潮湿"
 		},
-		"moon": {
-			"firstquarter": "上弦月",
-			"fullmoon": "满月",
-			"lastquarter": "下弦月",
-			"newmoon": "新月",
-			"waningcrescent": "残月",
-			"waninggibbous": "亏凸月",
-			"waxingcrescent": "娥眉月",
-			"waxinggibbous": "盈凸月"
-		},
-		"precip": {
-			"rain": {
-				"0": "小雨",
-				"1": "中雨",
-				"2": "大雨"
-			},
-			"snow": {
-				"0": "小雪",
-				"1": "中雪",
-				"2": "大雪"
-			}
-		},
 		"pressure": {
 			"0": "极低",
 			"1": "很低",
@@ -213,12 +183,6 @@
 			"6": "高",
 			"7": "很高",
 			"8": "极高"
-		},
-		"snow": {
-			"0": "预计无雪",
-			"1": "概率较低",
-			"2": "概率中等",
-			"3": "预计有雪"
 		},
 		"uv": {
 			"0": "低",
@@ -311,15 +275,10 @@
 			"2": "风"
 		},
 		"legend": {
-			"precipitation": "点击地图查看当前降水。",
-			"temperature": "点击地图查看当前温度。",
-			"title": "图例",
-			"wind": "点击地图查看当前风速。"
+			"title": "图例"
 		},
 		"loading": "正在加载地图…",
 		"loadError": "无法加载地图，请检查网络连接后重试。",
-		"currentTemperature": "当前温度",
-		"temperatureUnavailable": "暂无温度数据",
 		"weatherUnavailable": "暂无天气数据",
 		"title": "地图"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "照明比例:",
 		"moonrise": "月出:",
 		"moonset": "月落:",
-		"now": "当前月亮信息",
+		"now": "当前数据",
 		"phase": "月相",
 		"phase.firstquarter": "上弦月",
 		"phase.fullmoon": "满月",
@@ -423,9 +382,6 @@
 		"rainfall.values": "降雨量范围",
 		"title": "雨"
 	},
-	"smartsummary": {
-		"title": "天气概览"
-	},
 	"snow": {
 		"chance": {
 			"description": "百分比表示预报时段内某个地点出现降雪的可能性，不代表降雪强度或雪量。",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "定义",
 		"text": "能见度表示肉眼能够辨认物体的最远距离，受雾、湿度、污染和降水影响。能见度对道路交通、航空和航海安全十分重要。",
 		"title": "能见度",
 		"values": "能见度等级"
@@ -495,7 +450,7 @@
 			"direction": "风向",
 			"gust": "阵风",
 			"speed": "风速",
-			"title": "当前风况"
+			"title": "当前数据"
 		},
 		"description": "蒲福风级根据风对周围环境的影响划分风力，被世界各地的气象、航海和航空人员广泛使用。通过观察风的可见影响，可以快速判断风力。该等级共有 13 级，从 0 到 12 级，每一级对应一定的风速范围及陆地和海面的典型表现。",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "风级范围"
 	},
 	"rainfall": "总降水量：",
-	"rainfall.title": "总降水量",
-	"rainfall.description": "总降水量表示预报时段内预计的降水总量。",
 	"carousel": {
 		"previous": "上一个",
 		"next": "下一个"

@@ -12,5 +12,3 @@ export const openAbout = () => router.push(Platform.OS === 'web' ? '/modals/sett
 
 export const openFeedback = () =>
 	router.push(Platform.OS === 'web' ? '/modals/settings/feedback' : '/settings/feedback');
-
-export const openCompass = () => router.push('/compass');

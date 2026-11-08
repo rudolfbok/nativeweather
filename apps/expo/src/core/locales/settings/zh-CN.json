@@ -10,9 +10,6 @@
 		"titlefull": "空气质量指数",
 		"titleshort": "空气质量"
 	},
-	"compass": {
-		"title": "指南针"
-	},
 	"datasource": {
 		"weatherapi": "当前天气",
 		"openmeteo": "气象数据与天气",
@@ -47,9 +44,6 @@
 	"localweather": "本地天气",
 	"privacyPolicy": "隐私政策",
 	"settings": "设置",
-	"source": {
-		"title": "来源"
-	},
 	"temperatureScale": {
 		"celsius": "摄氏度",
 		"fahrenheit": "华氏度"

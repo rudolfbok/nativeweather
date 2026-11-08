@@ -116,7 +116,6 @@
 		"area": "Zone",
 		"count": "{count, plural, one {# alerte météo} other {# alertes météo}}",
 		"description": "Description du phénomène",
-		"disclaimer": "Les alertes sont émises par les autorités locales",
 		"expires": "Valable jusqu’au",
 		"instructions": "Consignes",
 		"modaltitle": "Alertes météo",
@@ -134,13 +133,6 @@
 			"values": "Niveau de couverture"
 		},
 		"title": "Nuages"
-	},
-	"compass": {
-		"button": {
-			"location": "Autoriser l’accès à la position"
-		},
-		"text": "La boussole nécessite un appareil Apple compatible équipé d’un magnétomètre.\n\niOS peut demander une autorisation avant d’utiliser ce capteur.",
-		"title": "Boussole"
 	},
 	"condition": {
 		"blizzard": "Blizzard",
@@ -181,28 +173,6 @@
 			"3": "Très humide",
 			"4": "Extrêmement humide"
 		},
-		"moon": {
-			"firstquarter": "Premier quartier",
-			"fullmoon": "Pleine lune",
-			"lastquarter": "Dernier quartier",
-			"newmoon": "Nouvelle lune",
-			"waningcrescent": "Dernier croissant",
-			"waninggibbous": "Lune gibbeuse décroissante",
-			"waxingcrescent": "Premier croissant",
-			"waxinggibbous": "Lune gibbeuse croissante"
-		},
-		"precip": {
-			"rain": {
-				"0": "Pluie faible",
-				"1": "Pluie modérée",
-				"2": "Pluie forte"
-			},
-			"snow": {
-				"0": "Neige faible",
-				"1": "Neige modérée",
-				"2": "Fortes chutes de neige"
-			}
-		},
 		"pressure": {
 			"0": "Extrêmement basse",
 			"1": "Très basse",
@@ -213,12 +183,6 @@
 			"6": "Élevée",
 			"7": "Très élevée",
 			"8": "Extrêmement élevée"
-		},
-		"snow": {
-			"0": "Non prévue",
-			"1": "Faible probabilité",
-			"2": "Probabilité modérée",
-			"3": "Neige prévue"
 		},
 		"uv": {
 			"0": "Faible",
@@ -311,15 +275,10 @@
 			"2": "Vent"
 		},
 		"legend": {
-			"precipitation": "Cliquez sur la carte pour afficher les précipitations actuelles.",
-			"temperature": "Cliquez sur la carte pour afficher la température actuelle.",
-			"title": "Légende",
-			"wind": "Cliquez sur la carte pour afficher la vitesse actuelle du vent."
+			"title": "Légende"
 		},
 		"loading": "Chargement de la carte…",
 		"loadError": "Impossible de charger la carte. Vérifiez votre connexion et réessayez.",
-		"currentTemperature": "Température actuelle",
-		"temperatureUnavailable": "Température indisponible",
 		"weatherUnavailable": "Données météo indisponibles",
 		"title": "Cartes"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Illumination :",
 		"moonrise": "Lever de lune :",
 		"moonset": "Coucher de lune :",
-		"now": "Données lunaires actuelles",
+		"now": "Données actuelles",
 		"phase": "Phase lunaire",
 		"phase.firstquarter": "Premier quartier",
 		"phase.fullmoon": "Pleine lune",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Cumuls de pluie",
 		"title": "Pluie"
 	},
-	"smartsummary": {
-		"title": "Aperçu météo"
-	},
 	"snow": {
 		"chance": {
 			"description": "Le pourcentage indique la probabilité qu’il neige à un endroit donné pendant la période de prévision. Il ne décrit ni l’intensité ni la quantité de neige attendue.",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Définition",
 		"text": "La visibilité indique la distance maximale à laquelle les objets peuvent être distingués à l’œil nu. Elle est influencée par le brouillard, l’humidité, la pollution et les précipitations. Elle est importante pour la sécurité routière, aérienne et maritime.",
 		"title": "Visibilité",
 		"values": "Échelle de visibilité"
@@ -495,7 +450,7 @@
 			"direction": "Direction",
 			"gust": "Rafales",
 			"speed": "Vitesse",
-			"title": "Données actuelles du vent"
+			"title": "Données actuelles"
 		},
 		"description": "L’échelle de Beaufort classe la force du vent selon ses effets sur l’environnement. Elle est utilisée dans le monde entier en météorologie, en navigation et en aviation. Elle permet d’estimer rapidement la force du vent à partir de ses effets visibles. Elle comprend treize degrés, de 0 à 12, chacun correspondant à une plage de vitesse et à des conditions caractéristiques sur terre et en mer.",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Valeurs de l’échelle"
 	},
 	"rainfall": "Précipitations totales :",
-	"rainfall.title": "Précipitations totales",
-	"rainfall.description": "Le total des précipitations indique la quantité prévue pendant la période de prévision.",
 	"carousel": {
 		"previous": "Précédent",
 		"next": "Suivant"

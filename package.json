@@ -12,6 +12,7 @@
 		"build": "pnpm --filter nativeweather-desktop build",
 		"build:web": "pnpm --filter @nativeweather/expo build",
 		"preview:web": "pnpm build:web && pnpm --filter @nativeweather/worker dev",
+		"deploy:web": "pnpm build:web && pnpm --filter @nativeweather/worker run deploy",
 		"format": "prettier --write ."
 	},
 	"devEngines": {

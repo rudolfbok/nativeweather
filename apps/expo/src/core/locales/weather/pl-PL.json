@@ -116,7 +116,6 @@
 		"area": "Obszar",
 		"count": "{count, plural, one {# ostrzeżenie pogodowe} few {# ostrzeżenia pogodowe} other {# ostrzeżeń pogodowych}}",
 		"description": "Opis zjawiska",
-		"disclaimer": "Ostrzeżenia są wydawane przez właściwe lokalne instytucje",
 		"expires": "Ważne do",
 		"instructions": "Zalecenia",
 		"modaltitle": "Ostrzeżenia pogodowe",
@@ -134,13 +133,6 @@
 			"values": "Poziom zachmurzenia"
 		},
 		"title": "Zachmurzenie"
-	},
-	"compass": {
-		"button": {
-			"location": "Zezwól na dostęp do lokalizacji"
-		},
-		"text": "Kompas wymaga obsługiwanego urządzenia Apple z magnetometrem.\n\niOS może poprosić o zgodę przed użyciem tego czujnika.",
-		"title": "Kompas"
 	},
 	"condition": {
 		"blizzard": "Zamieć śnieżna",
@@ -181,28 +173,6 @@
 			"3": "Bardzo wilgotno",
 			"4": "Wyjątkowo wilgotno"
 		},
-		"moon": {
-			"firstquarter": "Pierwsza kwadra",
-			"fullmoon": "Pełnia",
-			"lastquarter": "Ostatnia kwadra",
-			"newmoon": "Nów",
-			"waningcrescent": "Sierp ubywający",
-			"waninggibbous": "Księżyc garbaty ubywający",
-			"waxingcrescent": "Sierp przybywający",
-			"waxinggibbous": "Księżyc garbaty przybywający"
-		},
-		"precip": {
-			"rain": {
-				"0": "Słaby deszcz",
-				"1": "Umiarkowany deszcz",
-				"2": "Silny deszcz"
-			},
-			"snow": {
-				"0": "Słaby śnieg",
-				"1": "Umiarkowany śnieg",
-				"2": "Intensywne opady śniegu"
-			}
-		},
 		"pressure": {
 			"0": "Skrajnie niskie",
 			"1": "Bardzo niskie",
@@ -213,12 +183,6 @@
 			"6": "Wysokie",
 			"7": "Bardzo wysokie",
 			"8": "Skrajnie wysokie"
-		},
-		"snow": {
-			"0": "Nie przewiduje się",
-			"1": "Niskie prawdopodobieństwo",
-			"2": "Umiarkowane prawdopodobieństwo",
-			"3": "Spodziewany śnieg"
 		},
 		"uv": {
 			"0": "Niski",
@@ -311,15 +275,10 @@
 			"2": "Wiatr"
 		},
 		"legend": {
-			"precipitation": "Kliknij mapę, aby zobaczyć aktualne opady.",
-			"temperature": "Kliknij mapę, aby zobaczyć aktualną temperaturę.",
-			"title": "Legenda",
-			"wind": "Kliknij mapę, aby zobaczyć aktualną prędkość wiatru."
+			"title": "Legenda"
 		},
 		"loading": "Wczytywanie mapy…",
 		"loadError": "Nie udało się wczytać mapy. Sprawdź połączenie i spróbuj ponownie.",
-		"currentTemperature": "Aktualna temperatura",
-		"temperatureUnavailable": "Temperatura niedostępna",
 		"weatherUnavailable": "Dane pogodowe niedostępne",
 		"title": "Mapy"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Oświetlenie:",
 		"moonrise": "Wschód Księżyca:",
 		"moonset": "Zachód Księżyca:",
-		"now": "Aktualne dane Księżyca",
+		"now": "Aktualne dane",
 		"phase": "Faza Księżyca",
 		"phase.firstquarter": "Pierwsza kwadra",
 		"phase.fullmoon": "Pełnia",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Zakresy sumy opadów",
 		"title": "Deszcz"
 	},
-	"smartsummary": {
-		"title": "Podsumowanie pogody"
-	},
 	"snow": {
 		"chance": {
 			"description": "Wartość procentowa określa prawdopodobieństwo śniegu w danym miejscu w okresie objętym prognozą. Nie opisuje intensywności ani oczekiwanej ilości śniegu.",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Definicja",
 		"text": "Widoczność określa maksymalną odległość, z której można rozpoznać obiekty gołym okiem. Wpływają na nią mgła, wilgotność, zanieczyszczenie i opady. Jest ważna dla bezpieczeństwa ruchu drogowego, lotnictwa i żeglugi.",
 		"title": "Widoczność",
 		"values": "Skala widoczności"
@@ -495,7 +450,7 @@
 			"direction": "Kierunek",
 			"gust": "Porywy",
 			"speed": "Prędkość",
-			"title": "Aktualne dane wiatru"
+			"title": "Aktualne dane"
 		},
 		"description": "Skala Beauforta klasyfikuje siłę wiatru na podstawie jego wpływu na otoczenie. Jest używana na całym świecie w meteorologii, żegludze i lotnictwie. Pozwala szybko ocenić siłę wiatru na podstawie widocznych skutków. Obejmuje trzynaście stopni, od 0 do 12, z których każdy odpowiada określonemu zakresowi prędkości i typowym warunkom na lądzie i morzu.",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Wartości skali"
 	},
 	"rainfall": "Suma opadów:",
-	"rainfall.title": "Suma opadów",
-	"rainfall.description": "Suma opadów wskazuje przewidywaną ilość w okresie prognozy.",
 	"carousel": {
 		"previous": "Poprzedni",
 		"next": "Następny"

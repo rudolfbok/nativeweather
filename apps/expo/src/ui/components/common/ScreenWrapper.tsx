@@ -23,9 +23,12 @@ interface ScreenWrapperProps {
 export const ScreenWrapper = ({ refreshControl, overscrollColor, dismissKeyboard, children }: ScreenWrapperProps) => {
 	const bounce = Platform.OS === 'ios' && overscrollColor !== undefined;
 	const header = use(ScreenHeaderContext);
+	// Web, below md: the page scrolls as the document instead (see public/index.html), so the scroll view is marked.
+	const pageScroll = Platform.OS === 'web' ? ({ dataSet: { pageScroll: '' } } as object) : undefined;
 
 	return (
 		<ScrollView
+			{...pageScroll}
 			contentInsetAdjustmentBehavior="automatic"
 			contentContainerClassName={clsx('px-4 pt-2 pb-4 web:max-md:pt-0', bounce && 'grow bg-screen-background')}
 			style={bounce ? { backgroundColor: overscrollColor } : undefined}

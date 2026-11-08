@@ -4,7 +4,6 @@ import { Info, MapPinHouse, MessageCircle } from 'lucide-react-native';
 import { View } from 'react-native';
 import { Text } from '../common/Text';
 import { ClockFadingIcon } from '../icons/settings/ClockFadingIcon';
-import { CompassIcon } from '../icons/settings/CompassIcon';
 import { getSettingOption, optionLabel } from './options';
 import type { SettingOptionKey } from './options';
 import { RoundView } from '../common/RoundView';
@@ -40,8 +39,6 @@ interface SettingsListProps {
 	onOpenOption: (option: SettingOptionKey) => void;
 	onOpenAbout: () => void;
 	onOpenFeedback: () => void;
-	/** Only passed where the compass route exists (web). */
-	onOpenCompass?: () => void;
 	version?: string;
 	/** Lays the groups out in two columns, for a wide page; the drawer and native stay in one. */
 	twoColumns?: boolean;
@@ -51,7 +48,6 @@ export const SettingsList = ({
 	onOpenOption,
 	onOpenAbout,
 	onOpenFeedback,
-	onOpenCompass,
 	version,
 	twoColumns = false,
 }: SettingsListProps) => {
@@ -85,16 +81,6 @@ export const SettingsList = ({
 				icon={<ClockFadingIcon />}
 				title={t('localtime')}
 				toggle={{ value: showWorldTime, onChange: setShowWorldTime }}
-			/>
-		</RoundView>
-	);
-	const compass = onOpenCompass && (
-		<RoundView>
-			<SettingsRow
-				icon={<CompassIcon />}
-				tileClassName="bg-system-red"
-				title={t('compass.title')}
-				onPress={onOpenCompass}
 			/>
 		</RoundView>
 	);
@@ -136,7 +122,6 @@ export const SettingsList = ({
 				</View>
 				<View className="flex-1 gap-4">
 					{toggles}
-					{compass}
 					{about}
 				</View>
 			</View>
@@ -147,7 +132,6 @@ export const SettingsList = ({
 			{appearance}
 			{units}
 			{toggles}
-			{compass}
 			{about}
 			{footer}
 		</View>

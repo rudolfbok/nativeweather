@@ -10,9 +10,6 @@
 		"titlefull": "Luftqualitätsindex",
 		"titleshort": "AQI"
 	},
-	"compass": {
-		"title": "Kompass"
-	},
 	"datasource": {
 		"weatherapi": "Aktuelles Wetter",
 		"openmeteo": "Meteorologische Daten und Wetter",
@@ -47,9 +44,6 @@
 	"localweather": "Wetter am Standort",
 	"privacyPolicy": "Datenschutzerklärung",
 	"settings": "Einstellungen",
-	"source": {
-		"title": "Quelle"
-	},
 	"temperatureScale": {
 		"celsius": "Celsius",
 		"fahrenheit": "Fahrenheit"

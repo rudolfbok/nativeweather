@@ -116,7 +116,6 @@
 		"area": "Oblast",
 		"count": "{count} upozornění na počasí",
 		"description": "Popis události",
-		"disclaimer": "Výstrahy vydávají místní vládní orgány",
 		"expires": "Platnost vyprší",
 		"instructions": "Instrukce a pokyny",
 		"modaltitle": "Upozornění na počasí",
@@ -134,13 +133,6 @@
 			"values": "Úroveň pokrytí"
 		},
 		"title": "Oblačnost"
-	},
-	"compass": {
-		"button": {
-			"location": "Povolit přístup k poloze"
-		},
-		"text": "Funkce kompasu vyžaduje podporované zařízení Apple s magnetometrem.\n\niOS se může před použitím tohoto hardwaru zeptat na povolení.",
-		"title": "Kompas"
 	},
 	"condition": {
 		"blizzard": "Blizzard",
@@ -181,28 +173,6 @@
 			"3": "Velmi vlhko",
 			"4": "Extrémně vlhko"
 		},
-		"moon": {
-			"firstquarter": "První čtvrť",
-			"fullmoon": "Úplněk",
-			"lastquarter": "Poslední čtvrť",
-			"newmoon": "Nov",
-			"waningcrescent": "Ubývající srpek",
-			"waninggibbous": "Ubývající měsíc",
-			"waxingcrescent": "Dorůstající srpek",
-			"waxinggibbous": "Dorůstající měsíc"
-		},
-		"precip": {
-			"rain": {
-				"0": "Lehký déšť",
-				"1": "Mírný déšť",
-				"2": "Silný déšť"
-			},
-			"snow": {
-				"0": "Slabé sněžení",
-				"1": "Mírné sněžení",
-				"2": "Silné sněžení"
-			}
-		},
 		"pressure": {
 			"0": "Extrémně nízký",
 			"1": "Velmi nízký",
@@ -213,12 +183,6 @@
 			"6": "Vysoký",
 			"7": "Velmi vysoký",
 			"8": "Extrémně vysoký"
-		},
-		"snow": {
-			"0": "Neočekává se",
-			"1": "Malá šance",
-			"2": "Velká šance",
-			"3": "Bude sněžit"
 		},
 		"uv": {
 			"0": "Minimální",
@@ -311,15 +275,10 @@
 			"2": "Vítr"
 		},
 		"legend": {
-			"precipitation": "Klikněte na mapu pro zobrazení aktuálních srážek.",
-			"temperature": "Klikněte na mapu pro zobrazení teploty.",
-			"title": "Legenda",
-			"wind": "Klikněte na mapu pro zobrazení aktuální rychlosti větru."
+			"title": "Legenda"
 		},
 		"loading": "Mapa se načítá…",
 		"loadError": "Mapu se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.",
-		"currentTemperature": "Aktuální teplota",
-		"temperatureUnavailable": "Teplota není dostupná",
 		"weatherUnavailable": "Údaje o počasí nejsou dostupné",
 		"title": "Mapy"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Osvětlení:",
 		"moonrise": "Východ měsíce:",
 		"moonset": "Západ měsíce:",
-		"now": "Aktuální údaje o měsíci",
+		"now": "Aktuální údaje",
 		"phase": "Fáze měsíce",
 		"phase.firstquarter": "První čtvrť",
 		"phase.fullmoon": "Úplněk",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Hodnoty srážek",
 		"title": "Déšť"
 	},
-	"smartsummary": {
-		"title": "Chytrý přehled"
-	},
 	"snow": {
 		"chance": {
 			"description": "Procento vyjadřuje pravděpodobnost, že v dané oblasti během období předpovědi bude sněžit. Neudává intenzitu, ale podíl území, kde se srážky očekávají",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Definice",
 		"text": "Dohlednost udává maximální vzdálenost, na kterou lze rozeznat objekty pouhým okem. Je ovlivněna mlhou, vlhkostí vzduchu, znečištěním a srážkami. Dohlednost je důležitá pro bezpečnost v dopravě, letectví a námořní plavbě.",
 		"title": "Dohled",
 		"values": "Stupnice dohlednosti"
@@ -495,7 +450,7 @@
 			"direction": "Směr",
 			"gust": "V nárazech",
 			"speed": "Rychlost",
-			"title": "Aktuální údaje o větru"
+			"title": "Aktuální údaje"
 		},
 		"description": "Beaufortova škála je způsob klasifikace síly větru podle jeho účinků na okolní prostředí. Je používána meteorology, námořníky a letci po celém světě. Umožňuje rychlé a intuitivní hodnocení síly větru podle viditelných účinků. Škála obsahuje 13 stupňů (0-12), kde každý stupeň odpovídá určité rychlosti větru a charakteristickým projevům v krajině i na moři. ",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Hodnoty škály"
 	},
 	"rainfall": "Celkové srážky:",
-	"rainfall.title": "Celkové srážky",
-	"rainfall.description": "Celkové srážky uvádějí očekávané množství za dobu předpovědi.",
 	"carousel": {
 		"previous": "Předchozí",
 		"next": "Další"

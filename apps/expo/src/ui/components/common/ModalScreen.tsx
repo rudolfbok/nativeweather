@@ -10,6 +10,7 @@ import type { ModalHeaderProps } from './ModalHeader';
 const sizeClasses = {
 	default: 'web:md:max-w-2xl web:lg:max-w-3xl',
 	narrow: 'web:md:max-w-md web:lg:max-w-lg',
+	medium: 'web:md:max-w-xl web:lg:max-w-2xl',
 	wide: 'web:md:max-w-5xl',
 };
 
@@ -76,6 +77,7 @@ export const ModalScreen = ({ children, stacked = false, size = 'default', ...he
 					<ScrollView
 						contentInsetAdjustmentBehavior="automatic"
 						showsVerticalScrollIndicator={false}
+						className="web:overscroll-contain"
 						contentContainerClassName={clsx('pb-4', native && 'px-4 pt-[14px]')}
 					>
 						{native && header}

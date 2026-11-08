@@ -1,13 +1,12 @@
-import { isCompassSupported, ScreenWrapper, SettingsList, Text } from '@/ui';
+import { ScreenWrapper, SettingsList, Text } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
-import { openAbout, openCompass, openFeedback, openSettingOption } from '@/settingsNavigation';
+import { openAbout, openFeedback, openSettingOption } from '@/settingsNavigation';
 
 export default function SettingsScreen() {
 	const { t } = useTranslate('settings');
-	const compass = Platform.OS === 'web' && isCompassSupported();
 
 	return (
 		<ScreenWrapper>
@@ -23,7 +22,6 @@ export default function SettingsScreen() {
 				onOpenOption={openSettingOption}
 				onOpenAbout={openAbout}
 				onOpenFeedback={openFeedback}
-				onOpenCompass={compass ? openCompass : undefined}
 			/>
 		</ScreenWrapper>
 	);

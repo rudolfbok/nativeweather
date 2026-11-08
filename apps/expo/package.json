@@ -1,7 +1,7 @@
 {
 	"name": "@nativeweather/expo",
 	"main": "expo-router/entry",
-	"version": "1.0.0",
+	"version": "2.0",
 	"dependencies": {
 		"@expo/ui": "~58.0.27",
 		"@formatjs/intl-locale": "^5.4.2",

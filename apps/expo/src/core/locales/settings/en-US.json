@@ -10,9 +10,6 @@
 		"titlefull": "Air quality index",
 		"titleshort": "AQI"
 	},
-	"compass": {
-		"title": "Compass"
-	},
 	"datasource": {
 		"weatherapi": "Current weather",
 		"openmeteo": "Meteorological data and weather",
@@ -47,9 +44,6 @@
 	"localweather": "Local weather",
 	"privacyPolicy": "Privacy Policy",
 	"settings": "Settings",
-	"source": {
-		"title": "Source"
-	},
 	"temperatureScale": {
 		"celsius": "Celsius",
 		"fahrenheit": "Fahrenheit"

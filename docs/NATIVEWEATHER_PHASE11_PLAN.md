@@ -96,6 +96,21 @@ Known limits, accepted:
 - Contract BANNED list: no `clsx`. Locked rule 9 is amended as in §3.4.
 - Phases 3.5–10.1 are done.
 
+## 4b. Phase 11 step 1 (prune): done 2026-11-07
+
+- **Bug fixed:** on rainy days the smart summary showed the raw key `precip_rain_total_N`; it now uses `precip_rain_N`, the
+  key that exists in every locale. Legacy had the same bug.
+- Deleted `DotIndicator.tsx` and `formatLongDate`; `MetricSection` is no longer exported.
+- Barrels trimmed to what code outside the folder imports: `@/ui` (about 60 exports), `@/core` (storage internals,
+  favourite CRUD, location-error helpers, `localeData`) and `core/utils` (alert filters, `formatLongDate`, internal types).
+- About 40 unused locale keys removed from each of the 7 languages (`common`, `settings`, `weather`, `summary`). Keys built
+  at runtime were checked one by one and kept.
+- What knip still reports are false positives (platform `.web`/`.ios` files, widgets loaded by dynamic import, `theme.css`,
+  `metro.config.js`, `expo-updates` from its Expo plugin) and props types exported next to their component. Left as is.
+- Checks: prettier, `pnpm lint`, `pnpm typecheck`, `pnpm build:web` all PASS. Source is now 275 files / 12.8k LOC.
+
+Step 2 (the release matrix) is still open, and the owner is deploying first.
+
 ## 5. The Phase 11 prompt (paste after the §3 Contract)
 
 ```text

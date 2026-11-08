@@ -13,6 +13,7 @@ export default function PollutantModal() {
 
 	return (
 		<ModalScreen
+			size="medium"
 			header={t(`airquality.item.${pollutants[pollutant].itemKey}`)}
 			stacked={stacked}
 			onBack={onBack}

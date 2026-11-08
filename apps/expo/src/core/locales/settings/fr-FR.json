@@ -10,9 +10,6 @@
 		"titlefull": "Indice de qualité de l’air",
 		"titleshort": "Qualité de l’air"
 	},
-	"compass": {
-		"title": "Boussole"
-	},
 	"datasource": {
 		"weatherapi": "Météo actuelle",
 		"openmeteo": "Données météorologiques et météo",
@@ -47,9 +44,6 @@
 	"localweather": "Météo locale",
 	"privacyPolicy": "Politique de confidentialité",
 	"settings": "Paramètres",
-	"source": {
-		"title": "Source"
-	},
 	"temperatureScale": {
 		"celsius": "Celsius",
 		"fahrenheit": "Fahrenheit"

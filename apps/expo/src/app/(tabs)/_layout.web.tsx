@@ -1,9 +1,9 @@
-import { DesktopShell, DesktopSidebar, HeaderSearch, isCompassSupported, SettingsList, Text, WebShell } from '@/ui';
+import { DesktopShell, DesktopSidebar, HeaderSearch, SettingsList, Text, WebShell } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import Constants from 'expo-constants';
 import { router, Slot } from 'expo-router';
-import { openAbout, openCompass, openFeedback, openSettingOption } from '@/settingsNavigation';
+import { openAbout, openFeedback, openSettingOption } from '@/settingsNavigation';
 
 // The Tauri window gets a sidebar; the browser gets a header with search and a settings drawer.
 export default function TabsLayout() {
@@ -36,7 +36,6 @@ export default function TabsLayout() {
 						onOpenOption={openSettingOption}
 						onOpenAbout={openAbout}
 						onOpenFeedback={openFeedback}
-						onOpenCompass={isCompassSupported() ? openCompass : undefined}
 					/>
 				</>
 			}

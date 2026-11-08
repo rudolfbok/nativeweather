@@ -116,7 +116,6 @@
 		"area": "Area",
 		"count": "{count, plural, one {# allerta meteo} other {# allerte meteo}}",
 		"description": "Descrizione del fenomeno",
-		"disclaimer": "Le allerte sono emesse dalle autorità locali",
 		"expires": "Valida fino a",
 		"instructions": "Indicazioni",
 		"modaltitle": "Allerte meteo",
@@ -134,13 +133,6 @@
 			"values": "Livello di copertura"
 		},
 		"title": "Nuvole"
-	},
-	"compass": {
-		"button": {
-			"location": "Consenti l’accesso alla posizione"
-		},
-		"text": "La bussola richiede un dispositivo Apple compatibile dotato di magnetometro.\n\niOS potrebbe chiedere un’autorizzazione prima di usare questo sensore.",
-		"title": "Bussola"
 	},
 	"condition": {
 		"blizzard": "Bufera di neve",
@@ -181,28 +173,6 @@
 			"3": "Molto umido",
 			"4": "Estremamente umido"
 		},
-		"moon": {
-			"firstquarter": "Primo quarto",
-			"fullmoon": "Luna piena",
-			"lastquarter": "Ultimo quarto",
-			"newmoon": "Luna nuova",
-			"waningcrescent": "Falce calante",
-			"waninggibbous": "Gibbosa calante",
-			"waxingcrescent": "Falce crescente",
-			"waxinggibbous": "Gibbosa crescente"
-		},
-		"precip": {
-			"rain": {
-				"0": "Pioggia debole",
-				"1": "Pioggia moderata",
-				"2": "Pioggia forte"
-			},
-			"snow": {
-				"0": "Neve debole",
-				"1": "Neve moderata",
-				"2": "Nevicata intensa"
-			}
-		},
 		"pressure": {
 			"0": "Estremamente bassa",
 			"1": "Molto bassa",
@@ -213,12 +183,6 @@
 			"6": "Alta",
 			"7": "Molto alta",
 			"8": "Estremamente alta"
-		},
-		"snow": {
-			"0": "Non prevista",
-			"1": "Bassa probabilità",
-			"2": "Probabilità moderata",
-			"3": "Neve prevista"
 		},
 		"uv": {
 			"0": "Basso",
@@ -311,15 +275,10 @@
 			"2": "Vento"
 		},
 		"legend": {
-			"precipitation": "Fai clic sulla mappa per vedere le precipitazioni attuali.",
-			"temperature": "Fai clic sulla mappa per vedere la temperatura attuale.",
-			"title": "Legenda",
-			"wind": "Fai clic sulla mappa per vedere la velocità attuale del vento."
+			"title": "Legenda"
 		},
 		"loading": "Caricamento della mappa…",
 		"loadError": "Impossibile caricare la mappa. Controlla la connessione e riprova.",
-		"currentTemperature": "Temperatura attuale",
-		"temperatureUnavailable": "Temperatura non disponibile",
 		"weatherUnavailable": "Dati meteo non disponibili",
 		"title": "Mappe"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Illuminazione:",
 		"moonrise": "Sorgere della Luna:",
 		"moonset": "Tramonto della Luna:",
-		"now": "Dati lunari attuali",
+		"now": "Dati attuali",
 		"phase": "Fase lunare",
 		"phase.firstquarter": "Primo quarto",
 		"phase.fullmoon": "Luna piena",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Accumuli di pioggia",
 		"title": "Pioggia"
 	},
-	"smartsummary": {
-		"title": "Riepilogo meteo"
-	},
 	"snow": {
 		"chance": {
 			"description": "La percentuale indica la probabilità che nevichi in un determinato luogo durante il periodo di previsione. Non descrive l’intensità o la quantità di neve attesa.",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Definizione",
 		"text": "La visibilità indica la distanza massima alla quale gli oggetti possono essere distinti a occhio nudo. È influenzata da nebbia, umidità, inquinamento e precipitazioni. È importante per la sicurezza stradale, aerea e marittima.",
 		"title": "Visibilità",
 		"values": "Scala della visibilità"
@@ -495,7 +450,7 @@
 			"direction": "Direzione",
 			"gust": "Raffiche",
 			"speed": "Velocità",
-			"title": "Dati attuali del vento"
+			"title": "Dati attuali"
 		},
 		"description": "La scala Beaufort classifica la forza del vento in base agli effetti sull’ambiente circostante. È usata in tutto il mondo in meteorologia, navigazione e aviazione. Permette di stimare rapidamente la forza del vento osservandone gli effetti. Comprende tredici gradi, da 0 a 12, ciascuno corrispondente a un intervallo di velocità e a condizioni caratteristiche sulla terraferma e in mare.",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Valori della scala"
 	},
 	"rainfall": "Precipitazioni totali:",
-	"rainfall.title": "Precipitazioni totali",
-	"rainfall.description": "Il totale delle precipitazioni indica la quantità prevista nel periodo della previsione.",
 	"carousel": {
 		"previous": "Precedente",
 		"next": "Successivo"

@@ -62,11 +62,34 @@ export const moon: MetricDefinition = {
 
 		if (!context) return null;
 
-		const { t } = context;
+		const { t, weather, language } = context;
+		const { moonPhase, moonIllumination, isMoonUp, moonRise, moonSet } = weather.forecast.forecastday[0].astro;
+		const PhaseIcon = phases[moonPhase];
 
 		return (
 			<MetricModal
 				sections={[
+					{
+						// The square desktop card has no room for these; below xl the wide card already shows them.
+						title: t('moon.now'),
+						className: 'max-xl:hidden',
+						content: (
+							<View className="flex-row items-center gap-4">
+								{PhaseIcon && <PhaseIcon />}
+								<View>
+									<Text type="body">
+										{t('moon.illumination')} {moonIllumination}%
+									</Text>
+									<Text type="body">
+										{isMoonUp
+											? `${t('moon.moonrise')} ${formatTime(moonRise, language)}`
+											: `${t('moon.moonset')} ${formatTime(moonSet, language)}`}
+									</Text>
+									<Text type="sectiontitle">{t(`moon.phase.${phaseKey(moonPhase)}`)}</Text>
+								</View>
+							</View>
+						),
+					},
 					{ title: t('moon.cycle'), text: t('moon.description') },
 					{
 						title: t('moon.phase'),

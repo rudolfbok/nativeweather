@@ -5,7 +5,7 @@ import { Text } from '../common/Text';
 import { ValuesList } from '../common/ValuesList';
 import type { ValueItem } from '../common/ValuesList';
 
-export type MetricSection = { title: string } & (
+type MetricSection = { title: string; className?: string } & (
 	{ text: string } | { values: ValueItem[]; showIndex?: boolean; valueClassName?: string } | { content: ReactNode }
 );
 
@@ -16,7 +16,7 @@ export const MetricModal = ({ chart, sections }: { chart?: ReactNode; sections: 
 		{sections.map(
 			(section) =>
 				section && (
-					<ContentRow key={section.title} title={section.title}>
+					<ContentRow key={section.title} title={section.title} className={section.className}>
 						{'text' in section ? (
 							<Text type="body">{section.text}</Text>
 						) : 'values' in section ? (

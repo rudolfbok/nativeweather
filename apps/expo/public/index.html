@@ -24,6 +24,16 @@
 			body {
 				height: 100%;
 			}
+			/* The theme token, so the area behind the app (Safari's overscroll, short pages) matches the screens. The
+			   fallbacks are the same colours for the moment before the bundled stylesheet defines the variable. */
+			html {
+				background-color: var(--color-screen-background, #f2f2f7);
+			}
+			@media (prefers-color-scheme: dark) {
+				html {
+					background-color: var(--color-screen-background, #000000);
+				}
+			}
 			body {
 				overflow: hidden;
 			}
@@ -31,6 +41,34 @@
 				display: flex;
 				height: 100%;
 				flex: 1;
+			}
+			/* Below md the document itself scrolls, so iOS Safari can collapse its toolbar (it ignores inner scrollers).
+			   Stack screens are absolutely positioned and the scroll view is a fixed-height scroller, so every ancestor of a
+			   page scroll view (marked by ScreenWrapper) is switched back to normal flow and the scroller stops scrolling. */
+			@media (max-width: 767px) {
+				html,
+				body {
+					height: auto;
+					min-height: 100%;
+				}
+				body {
+					overflow: visible;
+				}
+				#root {
+					height: auto;
+					min-height: 100vh;
+					min-height: 100dvh;
+				}
+				#root div:has([data-page-scroll]) {
+					position: relative !important;
+					height: auto !important;
+					overflow: visible !important;
+				}
+				[data-page-scroll] {
+					flex: none !important;
+					height: auto !important;
+					overflow: visible !important;
+				}
 			}
 		</style>
 	</head>

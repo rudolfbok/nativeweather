@@ -13,7 +13,7 @@ export default function AirQualityModal() {
 	if (!hasData) return <Redirect href="/" />;
 
 	return (
-		<ModalScreen header={t('airquality.title')} icon={<AirQualityIcon />} onClose={onClose}>
+		<ModalScreen size="medium" header={t('airquality.title')} icon={<AirQualityIcon />} onClose={onClose}>
 			<AirQualityGrid
 				onOpen={(pollutant) => router.push({ pathname: '/modals/airquality/[pollutant]', params: { pollutant } })}
 			/>

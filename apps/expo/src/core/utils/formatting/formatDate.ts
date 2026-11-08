@@ -5,9 +5,6 @@ const toDate = (date: string) => new Date(`${date}T00:00:00Z`);
 export const formatWeekday = (date: string, language: string, length: 'short' | 'long' = 'short') =>
 	toDate(date).toLocaleDateString(language, { weekday: length, timeZone: 'UTC' });
 
-export const formatLongDate = (date: string, language: string) =>
-	toDate(date).toLocaleDateString(language, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-
 // French, Italian and Chinese write the weekday and the date without a comma.
 const spaceSeparated = ['fr', 'it', 'zh'];
 

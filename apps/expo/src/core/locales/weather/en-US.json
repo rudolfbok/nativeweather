@@ -116,7 +116,6 @@
 		"area": "Area",
 		"count": "{count, plural, one {# weather alert} other {# weather alerts}}",
 		"description": "Description of the event",
-		"disclaimer": "Alerts are issued by local government agencies",
 		"expires": "Expires",
 		"instructions": "Instructions",
 		"modaltitle": "Weather alerts",
@@ -134,13 +133,6 @@
 			"values": "Coverage level"
 		},
 		"title": "Clouds"
-	},
-	"compass": {
-		"button": {
-			"location": "Allow location access"
-		},
-		"text": "The compass feature requires a supported Apple device with a magnetometer.\n\niOS may ask for permission before using this hardware.",
-		"title": "Compass"
 	},
 	"condition": {
 		"blizzard": "Blizzard",
@@ -181,28 +173,6 @@
 			"3": "Very humid",
 			"4": "Extremely humid"
 		},
-		"moon": {
-			"firstquarter": "First quarter",
-			"fullmoon": "Full moon",
-			"lastquarter": "Last quarter",
-			"newmoon": "New moon",
-			"waningcrescent": "Waning crescent",
-			"waninggibbous": "Waning gibbous",
-			"waxingcrescent": "Waxing crescent",
-			"waxinggibbous": "Waxing gibbous"
-		},
-		"precip": {
-			"rain": {
-				"0": "Light rain",
-				"1": "Moderate rain",
-				"2": "Heavy rain"
-			},
-			"snow": {
-				"0": "Light snow",
-				"1": "Moderate snow",
-				"2": "Heavy snowfall"
-			}
-		},
 		"pressure": {
 			"0": "Extremely low",
 			"1": "Very low",
@@ -213,12 +183,6 @@
 			"6": "High",
 			"7": "Very high",
 			"8": "Extremely high"
-		},
-		"snow": {
-			"0": "Not expected",
-			"1": "Slight chance",
-			"2": "Moderate chance",
-			"3": "It will snow"
 		},
 		"uv": {
 			"0": "Minimal",
@@ -311,15 +275,10 @@
 			"2": "Wind"
 		},
 		"legend": {
-			"precipitation": "Click on the map to show the current precipitation.",
-			"temperature": "Click on the map to show the current temperature.",
-			"title": "Legend",
-			"wind": "Click on the map to show the current wind speed."
+			"title": "Legend"
 		},
 		"loading": "Map is loading…",
 		"loadError": "The map could not be loaded. Check your connection and try again.",
-		"currentTemperature": "Current temperature",
-		"temperatureUnavailable": "Temperature unavailable",
 		"weatherUnavailable": "Weather data unavailable",
 		"title": "Maps"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Illumination:",
 		"moonrise": "Moonrise:",
 		"moonset": "Moonset:",
-		"now": "Current moon data",
+		"now": "Current data",
 		"phase": "Lunar phase",
 		"phase.firstquarter": "First quarter",
 		"phase.fullmoon": "Full moon",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Rainfall values",
 		"title": "Rain"
 	},
-	"smartsummary": {
-		"title": "Smart summary"
-	},
 	"snow": {
 		"chance": {
 			"description": "The percentage expresses the probability that it will snow in a given area during the forecast period. It does not indicate intensity, but rather the proportion of the territory where precipitation is expected.",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Definition",
 		"text": "Range indicates the maximum distance at which objects can be seen with the naked eye. It is affected by fog, humidity, pollution, and precipitation. Range is important for safety in transportation, aviation, and maritime navigation.",
 		"title": "Range",
 		"values": "Range scale"
@@ -495,7 +450,7 @@
 			"direction": "Direction",
 			"gust": "Gust",
 			"speed": "Speed",
-			"title": "Current wind data"
+			"title": "Current data"
 		},
 		"description": "The Beaufort scale is a method of classifying wind strength based on its effects on the surrounding environment. It is used by meteorologists, sailors, and aviators around the world. It allows for quick and intuitive assessment of wind strength based on visible effects. The scale has 13 degrees (0-12), where each degree corresponds to a certain wind speed and characteristic conditions on land and at sea.",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Scale values"
 	},
 	"rainfall": "Total precipitation:",
-	"rainfall.title": "Total precipitation",
-	"rainfall.description": "Total precipitation in millimeters is the expected amount of precipitation during the forecast period. One millimeter equals one liter per square meter. The amount and rain or snow probabilities describe different forecast details.",
 	"carousel": {
 		"previous": "Previous",
 		"next": "Next"

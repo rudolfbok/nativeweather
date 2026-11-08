@@ -84,7 +84,6 @@ const CityWeather = (params: CityParams) => {
 			{/* The web page shows the city inside the main card instead of a header. */}
 			<Stack.Screen
 				options={{
-					headerShown: Platform.OS !== 'web',
 					title: weather?.location.name ?? '',
 					...(sky && {
 						// The header takes the sky colour of the landscape it sits above.

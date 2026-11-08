@@ -3,7 +3,6 @@
 		"add": "Zu Favoriten hinzufügen",
 		"delete": "Löschen",
 		"error": "Deine gespeicherten Orte konnten nicht geladen werden. Bitte versuche es erneut.",
-		"loading": "Favoriten werden geladen…",
 		"nosaved": "Du hast noch keine Orte als Favoriten gespeichert",
 		"remove": "Aus Favoriten entfernen",
 		"share": "Teilen",
@@ -13,18 +12,11 @@
 		"description": "Beschreibung"
 	},
 	"search": {
-		"city": {
-			"error": "Wetter konnte nicht geladen werden"
-		},
 		"input": {
 			"error": "Wetter konnte nicht geladen werden"
 		},
 		"searchbar": "Ort oder Koordinaten suchen…",
-		"searchbar.native": "Suchen…",
 		"title": "Suche"
-	},
-	"share": {
-		"message": "Aktuelles Wetter in"
 	},
 	"status": {
 		"empty": {
@@ -48,10 +40,8 @@
 	},
 	"tab": {
 		"home": "Start",
-		"maps": "Karten",
 		"search": "Suche",
-		"settings": "Einstellungen",
-		"weather": "Wetter"
+		"settings": "Einstellungen"
 	},
 	"toast": {
 		"add": "{name} zu den Favoriten hinzugefügt",

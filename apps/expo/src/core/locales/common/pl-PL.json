@@ -3,7 +3,6 @@
 		"add": "Dodaj do ulubionych",
 		"delete": "Usuń",
 		"error": "Nie udało się wczytać ulubionych miast. Spróbuj ponownie.",
-		"loading": "Wczytywanie ulubionych miast…",
 		"nosaved": "Nie masz jeszcze ulubionych miast",
 		"remove": "Usuń z ulubionych",
 		"share": "Udostępnij",
@@ -13,18 +12,11 @@
 		"description": "Opis"
 	},
 	"search": {
-		"city": {
-			"error": "Nie udało się wczytać pogody"
-		},
 		"input": {
 			"error": "Nie udało się wczytać pogody"
 		},
 		"searchbar": "Szukaj miasta lub współrzędnych…",
-		"searchbar.native": "Szukaj…",
 		"title": "Szukaj"
-	},
-	"share": {
-		"message": "Aktualna pogoda w miejscowości"
 	},
 	"status": {
 		"empty": {
@@ -48,10 +40,8 @@
 	},
 	"tab": {
 		"home": "Start",
-		"maps": "Mapy",
 		"search": "Szukaj",
-		"settings": "Ustawienia",
-		"weather": "Pogoda"
+		"settings": "Ustawienia"
 	},
 	"toast": {
 		"add": "{name} dodano do ulubionych",

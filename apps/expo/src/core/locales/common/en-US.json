@@ -3,7 +3,6 @@
 		"add": "Add to favorites",
 		"delete": "Delete",
 		"error": "There was an error loading your favorite cities. Please try again.",
-		"loading": "Loading your favorite cities..",
 		"nosaved": "There are no favorite cities saved",
 		"remove": "Remove from favorites",
 		"share": "Share",
@@ -13,18 +12,11 @@
 		"description": "Description"
 	},
 	"search": {
-		"city": {
-			"error": "Couldn't load weather"
-		},
 		"input": {
 			"error": "Couldn't load weather"
 		},
 		"searchbar": "Search any city or coordinates..",
-		"searchbar.native": "Search..",
 		"title": "Search"
-	},
-	"share": {
-		"message": "Current weather in"
 	},
 	"status": {
 		"empty": {
@@ -48,10 +40,8 @@
 	},
 	"tab": {
 		"home": "Home",
-		"maps": "Maps",
 		"search": "Search",
-		"settings": "Settings",
-		"weather": "Weather"
+		"settings": "Settings"
 	},
 	"toast": {
 		"add": "{name} added to favorites",

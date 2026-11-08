@@ -38,7 +38,7 @@ export const Toaster = () => {
 	return (
 		<View
 			pointerEvents="box-none"
-			className="absolute inset-x-4 bottom-22.5 items-center web:bottom-4 web:md:left-auto web:md:items-end"
+			className="absolute inset-x-4 bottom-22.5 items-center web:fixed web:bottom-4 web:z-70 web:md:left-auto web:md:items-end"
 		>
 			<Animated.View
 				className="w-full web:md:w-auto"

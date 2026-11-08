@@ -3,7 +3,6 @@
 		"add": "添加到收藏",
 		"delete": "删除",
 		"error": "无法加载收藏的城市，请重试。",
-		"loading": "正在加载收藏的城市…",
 		"nosaved": "还没有收藏的城市",
 		"remove": "从收藏中移除",
 		"share": "分享",
@@ -13,18 +12,11 @@
 		"description": "说明"
 	},
 	"search": {
-		"city": {
-			"error": "无法加载天气"
-		},
 		"input": {
 			"error": "无法加载天气"
 		},
 		"searchbar": "搜索城市或经纬度…",
-		"searchbar.native": "搜索…",
 		"title": "搜索"
-	},
-	"share": {
-		"message": "当前天气："
 	},
 	"status": {
 		"empty": {
@@ -48,10 +40,8 @@
 	},
 	"tab": {
 		"home": "首页",
-		"maps": "地图",
 		"search": "搜索",
-		"settings": "设置",
-		"weather": "天气"
+		"settings": "设置"
 	},
 	"toast": {
 		"add": "{name}已添加到收藏",

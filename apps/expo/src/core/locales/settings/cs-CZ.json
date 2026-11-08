@@ -10,9 +10,6 @@
 		"titlefull": "Index kvality ovzduší",
 		"titleshort": "IKO"
 	},
-	"compass": {
-		"title": "Kompas"
-	},
 	"datasource": {
 		"weatherapi": "Aktuální počasí",
 		"openmeteo": "Meteorologická data a počasí",
@@ -47,9 +44,6 @@
 	"localweather": "Místní počasí",
 	"privacyPolicy": "Ochrana osobních údajů",
 	"settings": "Nastavení",
-	"source": {
-		"title": "Zdroj"
-	},
 	"temperatureScale": {
 		"celsius": "Celsia",
 		"fahrenheit": "Fahrenheita"

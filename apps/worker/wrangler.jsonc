@@ -2,6 +2,7 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "nativeweather",
 	"main": "src/index.ts",
+	"minify": true,
 	"compatibility_date": "2026-10-02",
 	"compatibility_flags": ["nodejs_compat"],
 	// The Expo web export (`pnpm build:web`), the same folder Tauri packages.

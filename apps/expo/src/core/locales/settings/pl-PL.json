@@ -10,9 +10,6 @@
 		"titlefull": "Indeks jakości powietrza",
 		"titleshort": "Jakość powietrza"
 	},
-	"compass": {
-		"title": "Kompas"
-	},
 	"datasource": {
 		"weatherapi": "Aktualna pogoda",
 		"openmeteo": "Dane meteorologiczne i pogoda",
@@ -47,9 +44,6 @@
 	"localweather": "Pogoda w mojej lokalizacji",
 	"privacyPolicy": "Polityka prywatności",
 	"settings": "Ustawienia",
-	"source": {
-		"title": "Źródło"
-	},
 	"temperatureScale": {
 		"celsius": "Celsjusza",
 		"fahrenheit": "Fahrenheita"

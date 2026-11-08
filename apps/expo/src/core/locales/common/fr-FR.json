@@ -3,7 +3,6 @@
 		"add": "Ajouter aux favoris",
 		"delete": "Supprimer",
 		"error": "Impossible de charger vos villes favorites. Veuillez réessayer.",
-		"loading": "Chargement des villes favorites…",
 		"nosaved": "Vous n’avez pas encore de ville favorite",
 		"remove": "Retirer des favoris",
 		"share": "Partager",
@@ -13,18 +12,11 @@
 		"description": "Description"
 	},
 	"search": {
-		"city": {
-			"error": "Impossible de charger la météo"
-		},
 		"input": {
 			"error": "Impossible de charger la météo"
 		},
 		"searchbar": "Rechercher une ville ou des coordonnées…",
-		"searchbar.native": "Rechercher…",
 		"title": "Recherche"
-	},
-	"share": {
-		"message": "Météo actuelle à"
 	},
 	"status": {
 		"empty": {
@@ -48,10 +40,8 @@
 	},
 	"tab": {
 		"home": "Accueil",
-		"maps": "Cartes",
 		"search": "Recherche",
-		"settings": "Paramètres",
-		"weather": "Météo"
+		"settings": "Paramètres"
 	},
 	"toast": {
 		"add": "{name} ajouté aux favoris",

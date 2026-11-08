@@ -134,7 +134,7 @@ export const getSmartSummary = ({
 	else if (hasPossibleCondition) add('precip', 12, 'precip_possible');
 	else if (hasRain && hasSnow) add('precip', 10, `precip_both_${variant}`);
 	else if (hasSnow) add('precip', 11, `precip_snow_${variant}`, { amount: snow });
-	else if (hasRain) add('precip', day.totalPrecipMm >= 5 ? 12 : 28, `precip_rain_total_${variant}`, { amount: rain });
+	else if (hasRain) add('precip', day.totalPrecipMm >= 5 ? 12 : 28, `precip_rain_${variant}`, { amount: rain });
 	else if (hasOtherPrecip) add('precip', 11, `precip_other_${variant}`);
 	else if (hasUnknownCondition && day.totalPrecipMm <= 0.1) add('precip', 20, 'precip_unknown');
 	else if (day.totalPrecipMm > 0.1) add('precip', 30, `precip_total_${variant}`, { amount: rain });

@@ -116,7 +116,6 @@
 		"area": "Gebiet",
 		"count": "{count, plural, one {# Wetterwarnung} other {# Wetterwarnungen}}",
 		"description": "Beschreibung des Ereignisses",
-		"disclaimer": "Warnungen werden von den zuständigen örtlichen Behörden herausgegeben",
 		"expires": "Gültig bis",
 		"instructions": "Verhaltenshinweise",
 		"modaltitle": "Wetterwarnungen",
@@ -134,13 +133,6 @@
 			"values": "Bewölkungsgrad"
 		},
 		"title": "Bewölkung"
-	},
-	"compass": {
-		"button": {
-			"location": "Standortzugriff erlauben"
-		},
-		"text": "Die Kompassfunktion benötigt ein unterstütztes Apple-Gerät mit einem Magnetometer.\n\niOS kann vor der Nutzung dieses Sensors um Erlaubnis bitten.",
-		"title": "Kompass"
 	},
 	"condition": {
 		"blizzard": "Schneesturm",
@@ -181,28 +173,6 @@
 			"3": "Sehr feucht",
 			"4": "Extrem feucht"
 		},
-		"moon": {
-			"firstquarter": "Erstes Viertel",
-			"fullmoon": "Vollmond",
-			"lastquarter": "Letztes Viertel",
-			"newmoon": "Neumond",
-			"waningcrescent": "Abnehmende Sichel",
-			"waninggibbous": "Abnehmender Mond",
-			"waxingcrescent": "Zunehmende Sichel",
-			"waxinggibbous": "Zunehmender Mond"
-		},
-		"precip": {
-			"rain": {
-				"0": "Leichter Regen",
-				"1": "Mäßiger Regen",
-				"2": "Starker Regen"
-			},
-			"snow": {
-				"0": "Leichter Schneefall",
-				"1": "Mäßiger Schneefall",
-				"2": "Starker Schneefall"
-			}
-		},
 		"pressure": {
 			"0": "Extrem niedrig",
 			"1": "Sehr niedrig",
@@ -213,12 +183,6 @@
 			"6": "Hoch",
 			"7": "Sehr hoch",
 			"8": "Extrem hoch"
-		},
-		"snow": {
-			"0": "Nicht zu erwarten",
-			"1": "Geringe Wahrscheinlichkeit",
-			"2": "Mäßige Wahrscheinlichkeit",
-			"3": "Schneefall zu erwarten"
 		},
 		"uv": {
 			"0": "Gering",
@@ -311,15 +275,10 @@
 			"2": "Wind"
 		},
 		"legend": {
-			"precipitation": "Klicke auf die Karte, um den aktuellen Niederschlag anzuzeigen.",
-			"temperature": "Klicke auf die Karte, um die aktuelle Temperatur anzuzeigen.",
-			"title": "Legende",
-			"wind": "Klicke auf die Karte, um die aktuelle Windgeschwindigkeit anzuzeigen."
+			"title": "Legende"
 		},
 		"loading": "Karte wird geladen…",
 		"loadError": "Die Karte konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut.",
-		"currentTemperature": "Aktuelle Temperatur",
-		"temperatureUnavailable": "Temperatur nicht verfügbar",
 		"weatherUnavailable": "Wetterdaten nicht verfügbar",
 		"title": "Karten"
 	},
@@ -332,7 +291,7 @@
 		"illumination": "Beleuchtung:",
 		"moonrise": "Mondaufgang:",
 		"moonset": "Monduntergang:",
-		"now": "Aktuelle Monddaten",
+		"now": "Aktuelle Daten",
 		"phase": "Mondphase",
 		"phase.firstquarter": "Erstes Viertel",
 		"phase.fullmoon": "Vollmond",
@@ -423,9 +382,6 @@
 		"rainfall.values": "Regenmengen",
 		"title": "Regen"
 	},
-	"smartsummary": {
-		"title": "Wetterüberblick"
-	},
 	"snow": {
 		"chance": {
 			"description": "Der Prozentwert gibt an, wie wahrscheinlich Schneefall an einem bestimmten Ort im Vorhersagezeitraum ist. Er sagt nichts über die Intensität oder die erwartete Schneemenge aus.",
@@ -484,7 +440,6 @@
 		}
 	},
 	"range": {
-		"about": "Definition",
 		"text": "Die Sichtweite beschreibt die größte Entfernung, aus der Objekte mit bloßem Auge erkennbar sind. Sie wird durch Nebel, Luftfeuchtigkeit, Luftverschmutzung und Niederschlag beeinflusst. Gute Sicht ist für die Sicherheit im Straßenverkehr, in der Luftfahrt und auf See wichtig.",
 		"title": "Sichtweite",
 		"values": "Sichtweitenskala"
@@ -495,7 +450,7 @@
 			"direction": "Richtung",
 			"gust": "Böen",
 			"speed": "Geschwindigkeit",
-			"title": "Aktuelle Winddaten"
+			"title": "Aktuelle Daten"
 		},
 		"description": "Die Beaufortskala ordnet die Windstärke anhand ihrer Auswirkungen auf die Umgebung ein. Sie wird weltweit in der Meteorologie, der Schifffahrt und der Luftfahrt verwendet. Sichtbare Auswirkungen ermöglichen eine schnelle Einschätzung der Windstärke. Die Skala umfasst 13 Stufen von 0 bis 12. Jede Stufe entspricht einem bestimmten Geschwindigkeitsbereich und typischen Auswirkungen an Land und auf See.",
 		"label": {
@@ -540,8 +495,6 @@
 		"values": "Skalenwerte"
 	},
 	"rainfall": "Gesamtniederschlag:",
-	"rainfall.title": "Gesamtniederschlag",
-	"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an.",
 	"carousel": {
 		"previous": "Zurück",
 		"next": "Weiter"

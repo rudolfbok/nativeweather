@@ -1,7 +1,6 @@
 import type { City } from '@nativeweather/types';
 import { useTranslate } from '@tolgee/react';
-import { View } from 'react-native';
-import { Pressable } from '../common/Pressable';
+import { Pressable, View } from 'react-native';
 import { Text } from '../common/Text';
 
 // Labels are the familiar names; the cities are what the weather API calls them.
@@ -28,7 +27,7 @@ export const SuggestedCities = ({ onOpen }: { onOpen: (city: City) => void }) =>
 						key={label}
 						onPress={() => onOpen(city)}
 						accessibilityRole="link"
-						className="rounded-3xl bg-primary-blue px-4 py-3 active:bg-primary-blue active:opacity-80 web:hover:bg-primary-blue web:hover:opacity-90"
+						className="rounded-3xl bg-primary-blue px-4 py-3 active:opacity-80 web:cursor-pointer web:hover:opacity-90"
 					>
 						<Text type="body" className="text-ui-foreground">
 							{label}
