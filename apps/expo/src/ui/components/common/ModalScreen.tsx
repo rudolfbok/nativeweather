@@ -70,7 +70,7 @@ export const ModalScreen = ({ children, stacked = false, size = 'default', ...he
 					className={clsx(
 						'flex-1 bg-modal-background web:w-full web:md:max-h-[85vh] web:md:flex-initial web:md:rounded-3xl web:md:border web:md:border-hairline',
 						sizeClasses[size],
-						!native && 'px-4 pt-4'
+						!native && 'px-4 pt-4 dark:bg-system-background'
 					)}
 				>
 					{!native && header}

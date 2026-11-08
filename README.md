@@ -1,18 +1,24 @@
-# NativeWeather
-
-A cross-platform weather application built with Expo, React Native, and Tauri.
-
-One shared Expo application powers iOS, Android, Web, and desktop platforms, organized as a pnpm monorepo.
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo_dark.png" width="200">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/logo_light.png" width="200">
+    <img alt="NativeWeather logo" src="docs/images/logo_light.png" width="200">
+  </picture>
+  <p>A cross-platform weather application built with Expo, React Native, and Tauri.</p>
+  <p>One shared Expo application powers iOS, Android, Web, and desktop platforms, organized as a pnpm monorepo.</p>
+</div>
 
 ## Project Structure
 
 ```text
-apps/
-  expo/       Expo application (iOS, Android, Web)
-  desktop/    Tauri desktop application
-
-packages/
-  ui/         Shared UI components
+├── apps/
+│   ├── expo/                # Expo app (iOS, Android, Web)
+│   ├── desktop/             # Tauri desktop shell (uses Expo Web)
+│   └── worker/              # Cloudflare Worker for nativeweather.app
+├── packages/
+│   ├── api/                 # Weather and location API clients
+│   └── types/               # Shared TypeScript types
+└── pnpm-workspace.yaml      # pnpm monorepo config
 ```
 
 ## Development
@@ -47,7 +53,53 @@ Tauri connects to the existing Expo Web server at `http://localhost:8081`.
 
 ## Building
 
-To be completed..
+### Web
+
+Export the Expo Web build to `apps/expo/dist`:
+
+```bash
+pnpm build:web
+```
+
+Preview it locally through the Cloudflare Worker (builds first):
+
+```bash
+pnpm preview:web
+```
+
+Deploy to nativeweather.app (builds first, then runs `wrangler deploy`):
+
+```bash
+pnpm deploy:web
+```
+
+The Worker serves the exported files, rewrites the `<head>` tags for city pages, and returns 404 for unknown cities.
+
+### Desktop (Tauri)
+
+Build the desktop application:
+
+```bash
+pnpm build:desktop
+```
+
+This runs `tauri build` and packages the Expo Web export from `apps/expo/dist`. Rust and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) must be installed.
+
+### iOS and Android
+
+Create a native development build locally:
+
+```bash
+pnpm --filter @nativeweather/expo ios
+pnpm --filter @nativeweather/expo android
+```
+
+Release builds use EAS with the `development`, `preview`, and `production` profiles defined in `apps/expo/eas.json`:
+
+```bash
+cd apps/expo
+eas build --platform ios --profile production
+```
 
 ## Code Quality
 
