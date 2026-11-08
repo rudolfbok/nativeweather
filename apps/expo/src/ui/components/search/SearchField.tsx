@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { Search, X } from 'lucide-react-native';
+import { Search, X } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import { Pressable, TextInput } from 'react-native';
 import { clsx } from 'clsx';

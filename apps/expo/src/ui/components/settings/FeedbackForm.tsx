@@ -1,7 +1,7 @@
 import { sendFeedback } from '@nativeweather/api';
 import type { FeedbackType } from '@nativeweather/api';
 import { useTranslate } from '@tolgee/react';
-import { Bug, Check, ChevronDown, CircleQuestionMark, Cog, MessageCircle } from 'lucide-react-native';
+import { Bug, Check, ChevronDown, CircleQuestionMark, Cog, MessageCircle } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import { Keyboard, TextInput, View } from 'react-native';
 import { withUniwind } from 'uniwind';

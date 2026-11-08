@@ -1,5 +1,5 @@
 import type { MapWeatherPoint } from '@/core';
-import { X } from 'lucide-react-native';
+import { X } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import type { LayoutChangeEvent } from 'react-native';
 import { ActivityIndicator, Pressable as NativePressable, View } from 'react-native';

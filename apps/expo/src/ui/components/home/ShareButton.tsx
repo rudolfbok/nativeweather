@@ -1,4 +1,4 @@
-import { Share } from 'lucide-react-native';
+import { Share } from '@/ui/components/icons/lucide';
 import { Pressable } from 'react-native';
 
 // Android's header action next to the favourite star; iOS has a native menu instead.

@@ -1,6 +1,6 @@
 import type { BaseMapStyle, WeatherMapLayer } from '@/core';
 import { useTranslate } from '@tolgee/react';
-import { CloudOff, Copyright, Info, Locate, Minus, Plus, X } from 'lucide-react-native';
+import { CloudOff, Copyright, Info, Locate, Minus, Plus, X } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { Linking, View } from 'react-native';

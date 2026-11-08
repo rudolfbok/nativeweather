@@ -1,5 +1,5 @@
 import { availableLanguages } from '@/core';
-import { Languages, Moon, Paintbrush, Ruler, Sun, Thermometer } from 'lucide-react-native';
+import { Languages, Moon, Paintbrush, Ruler, Sun, Thermometer } from '@/ui/components/icons/lucide';
 import type { ReactNode } from 'react';
 import { AirQualitySettingsIcon } from '../icons/settings/AirQualitySettingsIcon';
 import { CelsiusIcon } from '../icons/settings/CelsiusIcon';

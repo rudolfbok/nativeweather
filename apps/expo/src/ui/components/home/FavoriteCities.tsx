@@ -2,7 +2,7 @@ import { getCityRegion } from '@/core';
 import type { useFavoriteCityWeather } from '@/core';
 import type { City } from '@nativeweather/types';
 import { useTranslate } from '@tolgee/react';
-import { Check, Trash2 } from 'lucide-react-native';
+import { Check, Trash2 } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import { Pressable as NativePressable, View } from 'react-native';
 import { withUniwind } from 'uniwind';

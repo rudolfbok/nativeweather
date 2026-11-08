@@ -1,4 +1,4 @@
-import { Check, Star, StarOff, X } from 'lucide-react-native';
+import { Check, Star, StarOff, X } from '@/ui/components/icons/lucide';
 import { View } from 'react-native';
 import { useCSSVariable, withUniwind } from 'uniwind';
 import { Text } from './Text';

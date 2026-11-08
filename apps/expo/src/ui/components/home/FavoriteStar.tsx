@@ -1,5 +1,5 @@
 import type { NormalizedData } from '@nativeweather/types';
-import { Star } from 'lucide-react-native';
+import { Star } from '@/ui/components/icons/lucide';
 import { Pressable } from 'react-native';
 import { useCSSVariable } from 'uniwind';
 import { useFavoriteToggle } from '@/hooks/useFavoriteToggle';

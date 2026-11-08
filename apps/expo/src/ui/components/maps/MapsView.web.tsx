@@ -1,6 +1,6 @@
 import { useTranslate } from '@tolgee/react';
 import { router } from 'expo-router';
-import { Maximize2 } from 'lucide-react-native';
+import { Maximize2 } from '@/ui/components/icons/lucide';
 import { View } from 'react-native';
 import { withUniwind } from 'uniwind';
 import { CardHeader } from '../common/CardHeader';

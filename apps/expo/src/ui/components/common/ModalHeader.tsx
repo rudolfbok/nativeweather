@@ -1,4 +1,4 @@
-import { ChevronLeft, X } from 'lucide-react-native';
+import { ChevronLeft, X } from '@/ui/components/icons/lucide';
 import type { ReactNode } from 'react';
 import { View } from 'react-native';
 import { withUniwind } from 'uniwind';

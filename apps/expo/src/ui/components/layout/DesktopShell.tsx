@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { Search, Settings } from 'lucide-react-native';
+import { Search, Settings } from '@/ui/components/icons/lucide';
 import type { ReactNode } from 'react';
 import { Pressable as NativePressable, ScrollView, View, type ViewProps } from 'react-native';
 import { clsx } from 'clsx';

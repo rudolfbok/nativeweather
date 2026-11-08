@@ -1,5 +1,5 @@
-import type { LucideIcon } from 'lucide-react-native';
-import { Cloud, Droplet, Moon, Snowflake, Sun, Wind } from 'lucide-react-native';
+import type { LucideIcon } from '@/ui/components/icons/lucide';
+import { Cloud, Droplet, Moon, Snowflake, Sun, Wind } from '@/ui/components/icons/lucide';
 import { useCSSVariable } from 'uniwind';
 
 // Lucide badges with a theme-token stroke and fill; withUniwind can't map `fill`, so the tokens are read here.

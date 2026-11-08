@@ -1,6 +1,6 @@
 import { useStorageBoolean, useStorageString } from '@/core';
 import { useTranslate } from '@tolgee/react';
-import { Info, MapPinHouse, MessageCircle } from 'lucide-react-native';
+import { Info, MapPinHouse, MessageCircle } from '@/ui/components/icons/lucide';
 import { View } from 'react-native';
 import { Text } from '../common/Text';
 import { ClockFadingIcon } from '../icons/settings/ClockFadingIcon';

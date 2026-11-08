@@ -1,5 +1,5 @@
-import { Check } from 'lucide-react-native';
-import type { LucideIcon } from 'lucide-react-native';
+import { Check } from '@/ui/components/icons/lucide';
+import type { LucideIcon } from '@/ui/components/icons/lucide';
 import type { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { clsx } from 'clsx';

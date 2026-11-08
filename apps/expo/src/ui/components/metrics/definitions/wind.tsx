@@ -1,5 +1,5 @@
 import { getDirection, getRangeIndex, metricBounds } from '@/core';
-import { Gauge, Wind } from 'lucide-react-native';
+import { Gauge, Wind } from '@/ui/components/icons/lucide';
 import { Fragment } from 'react';
 import { View } from 'react-native';
 import { withUniwind } from 'uniwind';

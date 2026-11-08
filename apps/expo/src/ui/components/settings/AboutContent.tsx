@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { ChevronRight, FileText, ShieldCheck } from 'lucide-react-native';
+import { ChevronRight, FileText, ShieldCheck } from '@/ui/components/icons/lucide';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { Linking, Pressable as NativePressable, View } from 'react-native';

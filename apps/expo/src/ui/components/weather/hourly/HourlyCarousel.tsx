@@ -1,5 +1,5 @@
 import { useTranslate } from '@tolgee/react';
-import { ChevronLeftCircle, ChevronRightCircle } from 'lucide-react-native';
+import { ChevronLeftCircle, ChevronRightCircle } from '@/ui/components/icons/lucide';
 import type { ReactNode } from 'react';
 import { useRef, useState } from 'react';
 import type { LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent, ScrollViewInstance } from 'react-native';
