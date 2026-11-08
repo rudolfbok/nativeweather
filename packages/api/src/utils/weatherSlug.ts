@@ -9,7 +9,7 @@ const normalizeSlug = (value: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-+|-+$/g, '');
 
-const reservedSlugs = ['search', 'settings', 'modals', 'api'];
+const reservedSlugs = ['search', 'settings', 'metric', 'setting', 'map', 'forecast', 'alerts', 'airquality', 'api'];
 
 /** Top-level routes that the `/[city]` route (and the site Worker) must not treat as a city, in any letter case. */
 export const isReservedSlug = (slug: string) => reservedSlugs.includes(slug.toLowerCase());

@@ -1,7 +1,6 @@
 import { MapIcon, ModalScreen } from '@/ui';
 import { MapLibreView } from '@/ui/components/maps/MapLibreView.web';
 import { useTranslate } from '@tolgee/react';
-import { View } from 'react-native';
 import { useStackedModal } from '@/hooks/useStackedModal';
 
 export default function MapModal() {
@@ -11,15 +10,14 @@ export default function MapModal() {
 	return (
 		<ModalScreen
 			size="wide"
+			fill
 			icon={<MapIcon />}
 			header={t('maps.title')}
 			stacked={stacked}
 			onBack={onBack}
 			onClose={onClose}
 		>
-			<View className="h-[70vh]">
-				<MapLibreView interactive />
-			</View>
+			<MapLibreView interactive />
 		</ModalScreen>
 	);
 }

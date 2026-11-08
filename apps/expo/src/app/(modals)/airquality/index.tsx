@@ -15,7 +15,7 @@ export default function AirQualityModal() {
 	return (
 		<ModalScreen size="medium" header={t('airquality.title')} icon={<AirQualityIcon />} onClose={onClose}>
 			<AirQualityGrid
-				onOpen={(pollutant) => router.push({ pathname: '/modals/airquality/[pollutant]', params: { pollutant } })}
+				onOpen={(pollutant) => router.push({ pathname: '/airquality/[pollutant]', params: { pollutant } })}
 			/>
 		</ModalScreen>
 	);

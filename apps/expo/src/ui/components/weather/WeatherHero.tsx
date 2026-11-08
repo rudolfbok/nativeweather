@@ -23,7 +23,7 @@ const desktopWidth = isTauri() ? 'w-full max-w-4xl self-center' : undefined;
 
 const openMetric = (metric: MetricId, day?: number) =>
 	router.push({
-		pathname: '/modals/[metric]',
+		pathname: '/metric/[metric]',
 		params: day === undefined ? { metric } : { metric, day: String(day) },
 	});
 
@@ -33,7 +33,7 @@ const openMetric = (metric: MetricId, day?: number) =>
 export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
 	const { width } = useWindowDimensions();
 	const threeColumns = Platform.OS === 'web' && !isTauri() && width >= threeColumnWidth;
-	const airQuality = <AirQualityCard onPress={() => router.push('/modals/airquality')} />;
+	const airQuality = <AirQualityCard onPress={() => router.push('/airquality')} />;
 
 	return (
 		<View className={clsx('gap-4', desktopWidth)}>
@@ -48,14 +48,14 @@ export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
 						{/* The other platforms have the star in the navigation header. */}
 						{Platform.OS === 'web' && <FavoriteStar weather={weather} className="absolute right-4 bottom-4 z-10 p-2" />}
 					</View>
-					<AlertsCard onPress={() => router.push('/modals/alerts')} />
+					<AlertsCard onPress={() => router.push('/alerts')} />
 					<SmartSummary />
 					<HourlyForecast />
 					{!threeColumns && airQuality}
 				</View>
 				<View className="gap-4 md:flex-1">
 					<DailyForecast
-						onSelectDay={(day) => router.push({ pathname: '/modals/forecast', params: { day: String(day) } })}
+						onSelectDay={(day) => router.push({ pathname: '/forecast', params: { day: String(day) } })}
 					/>
 					<MapsView />
 				</View>

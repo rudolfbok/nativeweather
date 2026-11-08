@@ -9,7 +9,7 @@ import { uv } from './definitions/uv';
 import { wind } from './definitions/wind';
 import type { MetricDefinition } from './types';
 
-/** Every metric with a card and a modal; the key is the `/modals/[metric]` route param. */
+/** Every metric with a card and a modal; the key is the `/metric/[metric]` route param. */
 export const metricDefinitions = {
 	rain,
 	snow,

@@ -14,10 +14,11 @@ interface SearchFieldProps {
 	onChangeText: (text: string) => void;
 	onSubmit: () => void;
 	onFocusChange?: (focused: boolean) => void;
+	autoFocus?: boolean;
 }
 
 // A capsule like the iOS search bar, on every platform.
-export const SearchField = ({ value, onChangeText, onSubmit, onFocusChange }: SearchFieldProps) => {
+export const SearchField = ({ value, onChangeText, onSubmit, onFocusChange, autoFocus }: SearchFieldProps) => {
 	const { t } = useTranslate('common');
 	const [focused, setFocused] = useState(false);
 
@@ -33,6 +34,7 @@ export const SearchField = ({ value, onChangeText, onSubmit, onFocusChange }: Se
 			</Pressable>
 			<TextInput
 				value={value}
+				autoFocus={autoFocus}
 				onChangeText={onChangeText}
 				onSubmitEditing={onSubmit}
 				onFocus={() => {

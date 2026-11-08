@@ -20,7 +20,7 @@ export default function AlertsModal() {
 		>
 			<AlertList
 				alerts={alerts}
-				onOpen={(alert) => router.push({ pathname: '/modals/alerts/[alert]', params: { alert: getAlertKey(alert) } })}
+				onOpen={(alert) => router.push({ pathname: '/alerts/[alert]', params: { alert: getAlertKey(alert) } })}
 			/>
 		</ModalScreen>
 	);

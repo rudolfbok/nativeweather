@@ -19,12 +19,14 @@ interface ModalScreenProps extends Omit<ModalHeaderProps, 'native'> {
 	/** Opened on top of another modal: web skips the second scrim so the backdrop doesn't darken twice. */
 	stacked?: boolean;
 	size?: keyof typeof sizeClasses;
+	/** Content that fills the panel (a map) instead of scrolling: the panel gets a fixed height and children can use flex-1. */
+	fill?: boolean;
 }
 
 // iOS gets the system navigation bar: its title, a native back button when pushed on another modal, and a native
 // close button. Other platforms draw the same controls themselves in ModalHeader. Native presents this inside a
 // sheet; on web it draws its own overlay, full screen below md and centred above.
-export const ModalScreen = ({ children, stacked = false, size = 'default', ...headerProps }: ModalScreenProps) => {
+export const ModalScreen = ({ children, stacked = false, size = 'default', fill = false, ...headerProps }: ModalScreenProps) => {
 	const native = Platform.OS === 'ios';
 	const { header: title, icon, onClose } = headerProps;
 	// The native header is transparent: the scroll view starts at the top of the screen so content passes under it,
@@ -68,21 +70,29 @@ export const ModalScreen = ({ children, stacked = false, size = 'default', ...he
 				)}
 				<View
 					className={clsx(
-						'flex-1 bg-modal-background web:w-full web:md:max-h-[85vh] web:md:flex-initial web:md:rounded-3xl web:md:border web:md:border-hairline',
+						'flex-1 bg-modal-background web:w-full web:md:max-h-[91vh] web:md:flex-initial web:md:rounded-3xl web:md:border web:md:border-hairline',
 						sizeClasses[size],
+						fill && 'web:md:h-[91vh]',
 						!native && 'px-4 pt-4 dark:bg-system-background'
 					)}
 				>
 					{!native && header}
-					<ScrollView
-						contentInsetAdjustmentBehavior="automatic"
-						showsVerticalScrollIndicator={false}
-						className="web:overscroll-contain"
-						contentContainerClassName={clsx('pb-4', native && 'px-4 pt-[14px]')}
-					>
-						{native && header}
-						{children}
-					</ScrollView>
+					{fill ? (
+						<View className={clsx('flex-1 pb-4', native && 'px-4 pt-[14px]')}>
+							{native && header}
+							{children}
+						</View>
+					) : (
+						<ScrollView
+							contentInsetAdjustmentBehavior="automatic"
+							showsVerticalScrollIndicator={false}
+							className="web:overscroll-contain"
+							contentContainerClassName={clsx('pb-4', native && 'px-4 pt-[14px]')}
+						>
+							{native && header}
+							{children}
+						</ScrollView>
+					)}
 				</View>
 			</View>
 		</>

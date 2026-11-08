@@ -19,7 +19,7 @@ export const MapsView = () => {
 			<View className="mb-2 min-w-0 flex-row items-center justify-between">
 				<CardHeader icon={<MapIcon />} header={t('maps.title')} className="flex-1" />
 				<Pressable
-					onPress={() => router.push('/modals/map')}
+					onPress={() => router.push('/map')}
 					accessibilityLabel={t('maps.title')}
 					className="shrink-0 rounded-full p-1.5"
 				>

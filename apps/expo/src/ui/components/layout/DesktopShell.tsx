@@ -65,7 +65,7 @@ export const DesktopShell = ({ sidebar, onOpenHome, onOpenSearch, onOpenSettings
 
 	return (
 		<View className="flex-1 flex-row bg-screen-background">
-			<View className="w-85 border-r border-hairline bg-system-background">
+			<View className="w-85 border-r border-hairline bg-sidebar-background">
 				{/* Under the overlay title bar the traffic lights sit at the start of this row, centred on it. */}
 				<View
 					{...dragRegion}

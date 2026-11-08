@@ -1,4 +1,5 @@
 import { CityList, ScreenWrapper, SearchField, Text } from '@/ui';
+import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import { Platform, View } from 'react-native';
 import { useCitySelection } from '@/hooks/useCitySelection';
@@ -16,7 +17,12 @@ export default function SearchScreen() {
 				</Text>
 			)}
 			<View className="gap-4">
-				<SearchField value={query} onChangeText={setQuery} onSubmit={() => void submit()} />
+				<SearchField
+					value={query}
+					onChangeText={setQuery}
+					onSubmit={() => void submit()}
+					autoFocus={Platform.OS === 'web' && isTauri()}
+				/>
 				<CityList cities={cities} onSelect={selectCity} />
 			</View>
 		</ScreenWrapper>

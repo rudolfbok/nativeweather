@@ -26,7 +26,7 @@ export default function ForecastModal() {
 				dayIndex={dayIndex}
 				onOpenMetric={(metric, metricDay) =>
 					router.push({
-						pathname: '/modals/[metric]',
+						pathname: '/metric/[metric]',
 						params: metricDay === undefined ? { metric } : { metric, day: String(metricDay) },
 					})
 				}

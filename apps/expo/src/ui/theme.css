@@ -40,6 +40,7 @@
 			--color-screen-background: #f2f2f7;
 			--color-card-background: #ffffff;
 			--color-modal-background: #f2f2f7;
+			--color-sidebar-background: #ffffff;
 			--color-label: #000000;
 			--color-secondary-label: #6d6d72;
 			--color-hairline: rgb(0 0 0 / 0.1);
@@ -55,6 +56,7 @@
 			--color-screen-background: #000000;
 			--color-card-background: #1c1c1e;
 			--color-modal-background: #0a0a0a;
+			--color-sidebar-background: #1c1c1e;
 			--color-label: #ffffff;
 			--color-secondary-label: #a9a9b0;
 			--color-hairline: rgb(255 255 255 / 0.1);
