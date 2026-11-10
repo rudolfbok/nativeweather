@@ -26,6 +26,7 @@ export { getSettingOption, isSettingOptionKey } from './components/settings/opti
 export type { SettingOptionKey } from './components/settings/options';
 export { SettingsList } from './components/settings/SettingsList';
 export { shareWeather } from './utils/shareWeather';
+export { desktopWidth } from './utils/desktopWidth';
 
 // Home and search
 export { CityList } from './components/search/CityList';

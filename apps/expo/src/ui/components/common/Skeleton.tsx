@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Animated, View } from 'react-native';
 import { clsx } from 'clsx';
 
-export const Skeleton = ({ className }: { className?: string }) => {
+export const Skeleton = ({ className, fill = false }: { className?: string; fill?: boolean }) => {
 	const [opacity] = useState(() => new Animated.Value(1));
 
 	useEffect(() => {
@@ -13,8 +13,8 @@ export const Skeleton = ({ className }: { className?: string }) => {
 	}, [opacity]);
 
 	return (
-		<Animated.View style={{ opacity }}>
-			<View className={clsx('w-full rounded-3xl bg-skeleton', className)} />
+		<Animated.View style={fill ? { opacity, flexGrow: 1 } : { opacity }}>
+			<View className={clsx('w-full rounded-3xl bg-skeleton', fill && 'flex-1', className)} />
 		</Animated.View>
 	);
 };

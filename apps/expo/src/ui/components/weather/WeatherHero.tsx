@@ -9,6 +9,7 @@ import { FavoriteStar } from '../home/FavoriteStar';
 import { MetricCards } from '../metrics/MetricCards';
 import type { MetricId } from '../metrics/registry';
 import { Skeleton } from '../common/Skeleton';
+import { desktopWidth } from '../../utils/desktopWidth';
 import { DailyForecast } from './daily/DailyForecast';
 import { HourlyForecast } from './hourly/HourlyForecast';
 import { MapsView } from '../maps/MapsView';
@@ -17,9 +18,6 @@ import { SmartSummary } from './SmartSummary';
 
 // Wide enough for the metric cards to move into a third column beside the forecasts.
 const threeColumnWidth = 1280;
-
-// The Tauri window keeps two columns and centres them, leaving blank space at the sides when it is maximised.
-const desktopWidth = isTauri() ? 'w-full max-w-4xl self-center' : undefined;
 
 const openMetric = (metric: MetricId, day?: number) =>
 	router.push({
@@ -30,9 +28,13 @@ const openMetric = (metric: MetricId, day?: number) =>
 // One column on phones; from md the forecast moves beside the summary and the metric cards span the full width.
 // A wide browser window gets a third column with the air quality and metric cards, as the web app always had.
 // The columns stretch to the same height so the map card fills what the forecast leaves in the middle one.
-export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
+const useThreeColumns = () => {
 	const { width } = useWindowDimensions();
-	const threeColumns = Platform.OS === 'web' && !isTauri() && width >= threeColumnWidth;
+	return Platform.OS === 'web' && !isTauri() && width >= threeColumnWidth;
+};
+
+export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
+	const threeColumns = useThreeColumns();
 	const airQuality = <AirQualityCard onPress={() => router.push('/airquality')} />;
 
 	return (
@@ -71,15 +73,45 @@ export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
 	);
 };
 
-export const HeroSkeleton = () => (
-	<View className={clsx('gap-4 md:flex-row md:items-start', desktopWidth)} role="status">
-		<View className="gap-4 md:flex-1">
-			<Skeleton className="h-72" />
-			<Skeleton className="h-32" />
-			<Skeleton className="h-32" />
-		</View>
-		<View className="md:flex-1">
-			<Skeleton className="h-96" />
-		</View>
+// Mirrors WeatherHero's layout, so the page does not jump when the data arrives.
+const MetricSkeletons = ({ count, column = false }: { count: number; column?: boolean }) => (
+	<View className="w-full flex-row flex-wrap gap-4">
+		{Array.from({ length: count }, (_, index) => (
+			<View
+				key={index}
+				className={clsx('grow', column ? 'aspect-square basis-[30%]' : 'aspect-square basis-[40%] md:basis-[20%]')}
+			>
+				<Skeleton className="h-full" />
+			</View>
+		))}
 	</View>
 );
+
+export const HeroSkeleton = () => {
+	const threeColumns = useThreeColumns();
+
+	return (
+		<View className={clsx('gap-4', desktopWidth)} role="status">
+			<View className="gap-4 md:flex-row">
+				<View className="gap-4 md:flex-1">
+					<Skeleton className="h-72" />
+					<Skeleton className="h-20" />
+					<Skeleton className="h-28" />
+					<Skeleton className="h-52" />
+					{!threeColumns && <Skeleton className="h-32" />}
+				</View>
+				<View className="gap-4 md:flex-1">
+					<Skeleton className="h-96" />
+					<Skeleton fill className="min-h-80" />
+				</View>
+				{threeColumns && (
+					<View className="flex-1 gap-4">
+						<Skeleton className="h-32" />
+						<MetricSkeletons count={9} column />
+					</View>
+				)}
+			</View>
+			{!threeColumns && <MetricSkeletons count={10} />}
+		</View>
+	);
+};

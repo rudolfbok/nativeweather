@@ -1,8 +1,9 @@
-import { ScreenWrapper, SettingsList, Text } from '@/ui';
+import { desktopWidth, ScreenWrapper, SettingsList, Text } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
 import Constants from 'expo-constants';
-import { Platform } from 'react-native';
+import { clsx } from 'clsx';
+import { Platform, View } from 'react-native';
 import { openAbout, openFeedback, openSettingOption } from '@/settingsNavigation';
 
 export default function SettingsScreen() {
@@ -11,6 +12,7 @@ export default function SettingsScreen() {
 	return (
 		<ScreenWrapper>
 			{/* Native has a large title in the navigation bar; the web has no bar. */}
+			<View className={clsx(desktopWidth)}>
 			{Platform.OS === 'web' && (
 				<Text type="screentitle" className="mb-3">
 					{t('settings')}
@@ -23,6 +25,7 @@ export default function SettingsScreen() {
 				onOpenAbout={openAbout}
 				onOpenFeedback={openFeedback}
 			/>
+			</View>
 		</ScreenWrapper>
 	);
 }

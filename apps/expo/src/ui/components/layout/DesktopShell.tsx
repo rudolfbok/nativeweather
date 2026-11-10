@@ -43,7 +43,7 @@ const IconButton = ({
 
 // On macOS the title bar is an overlay (see tauri.conf.json): the traffic lights float over the top of the window,
 // and a transparent strip there lets it be dragged. Windows and Linux keep their native title bar.
-const overlayTitleBar = typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac');
+const overlayTitleBar = typeof navigator !== 'undefined' && (navigator.userAgent?.includes('Mac') ?? false);
 
 // Tauri drags the window from these; buttons and links inside them still take clicks. `dataSet` is
 // react-native-web's way to set data-* attributes, which React Native's types don't know.
