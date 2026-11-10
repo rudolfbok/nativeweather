@@ -1,6 +1,7 @@
 export { initStorageDefaults } from './database/initStorageDefaults';
 export { useStorageBoolean, useStorageString } from './database/useStorage';
 export { getFavoriteCities, isCityInFavorites } from './database/crudMMKVService';
+export { useAppVersion } from './hooks/useAppVersion';
 export { useCitySearch } from './hooks/search/useCitySearch';
 export { useLocation } from './hooks/location/useLocation';
 export type { LocalWeatherErrorKind } from './hooks/location/locationError';

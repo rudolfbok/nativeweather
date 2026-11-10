@@ -13,11 +13,7 @@ export default function SearchScreen() {
 		<ScreenWrapper dismissKeyboard>
 			{/* Native has a title in the navigation bar; the web has no bar. */}
 			<View className={clsx('gap-4', desktopWidth)}>
-			{Platform.OS === 'web' && (
-				<Text type="screentitle" className="mb-3">
-					{t('search.title')}
-				</Text>
-			)}
+				{Platform.OS === 'web' && <Text type="screentitle">{t('search.title')}</Text>}
 				<SearchField
 					value={query}
 					onChangeText={setQuery}

@@ -1,13 +1,14 @@
+import { useAppVersion } from '@/core';
 import { desktopWidth, ScreenWrapper, SettingsList, Text } from '@/ui';
 import { isTauri } from '@tauri-apps/api/core';
 import { useTranslate } from '@tolgee/react';
-import Constants from 'expo-constants';
 import { clsx } from 'clsx';
 import { Platform, View } from 'react-native';
 import { openAbout, openFeedback, openSettingOption } from '@/settingsNavigation';
 
 export default function SettingsScreen() {
 	const { t } = useTranslate('settings');
+	const version = useAppVersion();
 
 	return (
 		<ScreenWrapper>
@@ -19,7 +20,7 @@ export default function SettingsScreen() {
 				</Text>
 			)}
 			<SettingsList
-				version={Constants.expoConfig?.version}
+				version={version}
 				twoColumns={isTauri()}
 				onOpenOption={openSettingOption}
 				onOpenAbout={openAbout}
