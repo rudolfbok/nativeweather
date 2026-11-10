@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import androidIcon from "../assets/androidicon.svg";
 import appIcon from "../assets/app-icon.png";
@@ -5,11 +6,14 @@ import appleIcon from "../assets/appleicon.svg";
 import wordmark from "../assets/mainlogo.svg";
 import wordmarkDark from "../assets/mainlogo_dark.svg";
 import webIcon from "../assets/webicon.svg";
+import { DownloadModal } from "../components/DownloadModal";
 import { PlatformCard } from "../components/PlatformCard";
 import { Separator } from "../components/Separator";
 import { Text } from "../components/Text";
 
 const HomePage = () => {
+  const [downloadOpen, setDownloadOpen] = useState(false);
+
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-4 max-w-2xl mx-auto p-4 text-black dark:text-white">
       <title>NativeWeather — Official Website</title>
@@ -77,7 +81,7 @@ const HomePage = () => {
           title="macOS"
           subtitle="Download the .dmg installer"
           actionLabel="Download"
-          href="[REPLACE-WITH-DMG-URL]"
+          onAction={() => setDownloadOpen(true)}
           iconClassName="dark:invert"
         />
         {/* <img src={windowsIcon} width="60" height="60" alt="Windows icon" /> */}
@@ -109,6 +113,10 @@ const HomePage = () => {
           bitwebs
         </a>
       </Text>
+      <DownloadModal
+        open={downloadOpen}
+        onClose={() => setDownloadOpen(false)}
+      />
     </main>
   );
 };

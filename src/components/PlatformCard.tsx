@@ -7,6 +7,7 @@ interface PlatformCardProps {
   subtitle?: string;
   actionLabel: string;
   href?: string;
+  onAction?: () => void;
   iconClassName?: string;
 }
 
@@ -17,6 +18,7 @@ export const PlatformCard = ({
   subtitle,
   actionLabel,
   href,
+  onAction,
   iconClassName,
 }: PlatformCardProps) => {
   const buttonClassName =
@@ -37,7 +39,15 @@ export const PlatformCard = ({
           {subtitle && <Text className="text-left">{subtitle}</Text>}
         </div>
       </div>
-      {href ? (
+      {onAction ? (
+        <button
+          type="button"
+          onClick={onAction}
+          className={`${buttonClassName} cursor-pointer hover:bg-blue-700`}
+        >
+          {actionLabel}
+        </button>
+      ) : href ? (
         <a href={href} className={`${buttonClassName} hover:bg-blue-700`}>
           {actionLabel}
         </a>
