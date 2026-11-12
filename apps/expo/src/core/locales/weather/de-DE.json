@@ -1,8 +1,8 @@
 {
 	"chart": {
-		"unavailable": "Für diesen Tag ist kein Diagramm verfügbar",
+		"unavailable": "Kein Diagramm verfügbar",
 		"dailyTotal": "Tagessumme",
-		"dailyChance": "Tageschance"
+		"dailyChance": "Tageswert"
 	},
 	"airquality": {
 		"euaqi": {
@@ -17,7 +17,7 @@
 			},
 			"value": {
 				"0": "Gut",
-				"1": "Zufriedenstellend",
+				"1": "Akzeptabel",
 				"2": "Mäßig",
 				"3": "Schlecht",
 				"4": "Sehr schlecht",
@@ -97,7 +97,7 @@
 			"value": {
 				"0": "Gut",
 				"1": "Mäßig",
-				"2": "Ungesund für empfindliche Personen",
+				"2": "Ungesund für Empfindliche",
 				"3": "Ungesund",
 				"4": "Sehr ungesund",
 				"5": "Gefährlich"
@@ -106,7 +106,7 @@
 		"value": {
 			"0": "Gut",
 			"1": "Mäßig",
-			"2": "Ungesund für empfindliche Personen",
+			"2": "Ungesund für Empfindliche",
 			"3": "Ungesund",
 			"4": "Sehr ungesund",
 			"5": "Gefährlich"
@@ -115,7 +115,7 @@
 	"alerts": {
 		"area": "Gebiet",
 		"count": "{count, plural, one {# Wetterwarnung} other {# Wetterwarnungen}}",
-		"description": "Beschreibung des Ereignisses",
+		"description": "Beschreibung",
 		"expires": "Gültig bis",
 		"instructions": "Verhaltenshinweise",
 		"modaltitle": "Wetterwarnungen",
@@ -129,8 +129,8 @@
 	"cloudcover": {
 		"percentage": {
 			"text": "In der Meteorologie gibt der Bewölkungsgrad an, welcher Anteil des Himmels von Wolken bedeckt ist. Fachleute verwenden dafür Achtel. Zur leichteren Einordnung werden häufig Prozentwerte oder beschreibende Begriffe genutzt.",
-			"title": "Bewölkungsgrad in Prozent",
-			"values": "Bewölkungsgrad"
+			"title": "Bewölkungsgrad",
+			"values": "Skalenwerte"
 		},
 		"title": "Bewölkung"
 	},
@@ -157,7 +157,7 @@
 	},
 	"dailyforecast": {
 		"title": "Tagesvorhersage",
-		"today": "heute"
+		"today": "Heute"
 	},
 	"description": {
 		"cloudcover": {
@@ -177,9 +177,9 @@
 			"0": "Extrem niedrig",
 			"1": "Sehr niedrig",
 			"2": "Niedrig",
-			"3": "Leicht erniedrigt",
+			"3": "Etwas niedrig",
 			"4": "Normal",
-			"5": "Leicht erhöht",
+			"5": "Etwas hoch",
 			"6": "Hoch",
 			"7": "Sehr hoch",
 			"8": "Extrem hoch"
@@ -194,11 +194,11 @@
 		"range": {
 			"0": "Dichter Nebel",
 			"1": "Nebel",
-			"2": "Leichter Nebel",
+			"2": "Dunst",
 			"3": "Leichter Dunst",
 			"4": "Gut",
 			"5": "Sehr gut",
-			"6": "Außergewöhnlich gut"
+			"6": "Ausgezeichnet"
 		},
 		"windspeed": {
 			"0": "Windstille",
@@ -219,7 +219,7 @@
 	"feelslike": "Gefühlt:",
 	"hourlyforecast": {
 		"now": "Jetzt",
-		"title": "Stündliche Vorhersage"
+		"title": "Stundenvorhersage"
 	},
 	"humidity": {
 		"dewpoint": {
@@ -228,10 +228,10 @@
 		},
 		"relativehumidity": {
 			"text": "Die relative Luftfeuchtigkeit beschreibt, wie viel Wasserdampf die Luft im Verhältnis zur maximal möglichen Menge bei der aktuellen Temperatur enthält. Sie wird in Prozent angegeben und beeinflusst, wie wir das Wetter empfinden.",
-			"title": "Relative Luftfeuchtigkeit",
+			"title": "Relative Luftfeuchte",
 			"values": "Prozentwerte"
 		},
-		"title": "Luftfeuchtigkeit"
+		"title": "Luftfeuchte"
 	},
 	"localtime": "Ortszeit",
 	"remainingtime": "In {time}",
@@ -246,7 +246,7 @@
 				"message": "Dein Gerät konnte deinen aktuellen Standort nicht bestimmen."
 			},
 			"timeout": {
-				"title": "Standortabfrage hat zu lange gedauert",
+				"title": "Zeitüberschreitung",
 				"message": "Versuche es erneut an einem Ort mit besserem GPS- oder Netzempfang."
 			},
 			"network": {
@@ -258,11 +258,11 @@
 				"message": "Der Wetteranbieter hat einen Fehler gemeldet. Versuche es später erneut."
 			},
 			"source": {
-				"title": "Keine Wetterquelle ausgewählt",
+				"title": "Keine Wetterquelle",
 				"message": "Wähle in den Einstellungen eine Wetterquelle aus, bevor du das Wetter am Standort abrufst."
 			},
 			"unknown": {
-				"title": "Wetter am Standort konnte nicht geladen werden",
+				"title": "Laden fehlgeschlagen",
 				"message": "Beim Laden des Wetters am Standort ist ein unerwarteter Fehler aufgetreten."
 			},
 			"retry": "Erneut versuchen"
@@ -279,7 +279,7 @@
 		},
 		"loading": "Karte wird geladen…",
 		"loadError": "Die Karte konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut.",
-		"weatherUnavailable": "Wetterdaten nicht verfügbar",
+		"weatherUnavailable": "Keine Wetterdaten",
 		"title": "Karten"
 	},
 	"modal": {
@@ -291,7 +291,7 @@
 		"illumination": "Beleuchtung:",
 		"moonrise": "Mondaufgang:",
 		"moonset": "Monduntergang:",
-		"now": "Aktuelle Daten",
+		"now": "Aktuell",
 		"phase": "Mondphase",
 		"phase.firstquarter": "Erstes Viertel",
 		"phase.fullmoon": "Vollmond",
@@ -315,8 +315,8 @@
 	},
 	"precipitation": {
 		"chance": {
-			"0": "Nicht zu erwarten",
-			"1": "Geringe Wahrscheinlichkeit",
+			"0": "Unwahrscheinlich",
+			"1": "Geringe Chance",
 			"2": "Schauer möglich",
 			"3": "Wahrscheinlich",
 			"4": "Sehr wahrscheinlich",
@@ -332,12 +332,12 @@
 		},
 		"snow": {
 			"chance": {
-				"2": "Schneeschauer möglich"
+				"2": "Schnee möglich"
 			}
 		},
 		"snowfall": {
 			"0": "Leichter Schneefall",
-			"1": "Leichter Schneefall",
+			"1": "Mäßiger Schneefall",
 			"2": "Starker Schneefall",
 			"3": "Sehr starker Schneefall",
 			"4": "Extremer Schneefall"
@@ -373,8 +373,8 @@
 				"4": "Regen fast sicher, weite Teile des Gebiets sind betroffen",
 				"5": "Regen praktisch sicher und voraussichtlich im gesamten Gebiet zu erwarten"
 			},
-			"title": "Niederschlagswahrscheinlichkeit",
-			"values": "Wahrscheinlichkeit in Prozent"
+			"title": "Regenwahrscheinlichkeit",
+			"values": "Prozentwerte"
 		},
 		"rainfall": "Regen:",
 		"rainfall.description": "Der Gesamtniederschlag gibt die vorhergesagte Menge im Prognosezeitraum an. Regen- und Schneewahrscheinlichkeit werden getrennt angegeben.",
@@ -393,12 +393,12 @@
 				"4": "Schneefall fast sicher, weite Teile des Gebiets sind betroffen",
 				"5": "Schneefall praktisch sicher und voraussichtlich im gesamten Gebiet zu erwarten"
 			},
-			"title": "Niederschlagswahrscheinlichkeit",
-			"values": "Wahrscheinlichkeit in Prozent"
+			"title": "Schneewahrscheinlichkeit",
+			"values": "Prozentwerte"
 		},
-		"snowfall": "Schneemenge:",
+		"snowfall": "Neuschnee:",
 		"snowfall.description": "Die Schneemenge in Zentimetern gibt an, wie viel Neuschnee im Vorhersagezeitraum erwartet wird. Der Wert beschreibt die Höhe des neu gefallenen Schnees, während die Niederschlagswahrscheinlichkeit angibt, wie wahrscheinlich Schneefall ist.",
-		"snowfall.title": "Schneemenge",
+		"snowfall.title": "Neuschnee",
 		"snowfall.values": "Schneemengen",
 		"title": "Schnee"
 	},
@@ -429,7 +429,7 @@
 		},
 		"radiation": {
 			"description": "Ultraviolette Strahlung (UV-Strahlung) ist eine für das menschliche Auge unsichtbare elektromagnetische Strahlung. Sie kommt natürlicherweise im Sonnenlicht vor, kann aber auch künstlich erzeugt werden. In kleinen Mengen unterstützt sie beispielsweise die Bildung von Vitamin D. Eine zu hohe Belastung ist jedoch schädlich.",
-			"title": "Ultraviolette Strahlung"
+			"title": "UV-Strahlung"
 		},
 		"text": {
 			"0": "Sonnenschutz ist nicht erforderlich",
@@ -442,7 +442,7 @@
 	"range": {
 		"text": "Die Sichtweite beschreibt die größte Entfernung, aus der Objekte mit bloßem Auge erkennbar sind. Sie wird durch Nebel, Luftfeuchtigkeit, Luftverschmutzung und Niederschlag beeinflusst. Gute Sicht ist für die Sicherheit im Straßenverkehr, in der Luftfahrt und auf See wichtig.",
 		"title": "Sichtweite",
-		"values": "Sichtweitenskala"
+		"values": "Skalenwerte"
 	},
 	"wind": {
 		"beaufortscale": "Beaufortskala",
@@ -450,7 +450,7 @@
 			"direction": "Richtung",
 			"gust": "Böen",
 			"speed": "Geschwindigkeit",
-			"title": "Aktuelle Daten"
+			"title": "Aktuell"
 		},
 		"description": "Die Beaufortskala ordnet die Windstärke anhand ihrer Auswirkungen auf die Umgebung ein. Sie wird weltweit in der Meteorologie, der Schifffahrt und der Luftfahrt verwendet. Sichtbare Auswirkungen ermöglichen eine schnelle Einschätzung der Windstärke. Die Skala umfasst 13 Stufen von 0 bis 12. Jede Stufe entspricht einem bestimmten Geschwindigkeitsbereich und typischen Auswirkungen an Land und auf See.",
 		"label": {
@@ -494,7 +494,7 @@
 		"title": "Wind",
 		"values": "Skalenwerte"
 	},
-	"rainfall": "Gesamtniederschlag:",
+	"rainfall": "Niederschlag:",
 	"carousel": {
 		"previous": "Zurück",
 		"next": "Weiter"

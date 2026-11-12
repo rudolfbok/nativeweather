@@ -2,8 +2,8 @@
 	"favorites": {
 		"add": "Zu Favoriten hinzufügen",
 		"delete": "Löschen",
-		"error": "Deine gespeicherten Orte konnten nicht geladen werden. Bitte versuche es erneut.",
-		"nosaved": "Du hast noch keine Orte als Favoriten gespeichert",
+		"error": "Favoriten konnten nicht geladen werden",
+		"nosaved": "Noch keine Favoriten",
 		"remove": "Aus Favoriten entfernen",
 		"share": "Teilen",
 		"title": "Favoriten"
@@ -20,11 +20,11 @@
 	},
 	"status": {
 		"empty": {
-			"title": "Keine Stadt ausgewählt",
-			"message": "Wähle eine Stadt in der Seitenleiste oder suche nach einer anderen."
+			"title": "Kein Ort ausgewählt",
+			"message": "Wähle einen Ort in der Seitenleiste oder suche einen anderen."
 		},
 		"error": {
-			"title": "Es ist ein Fehler aufgetreten",
+			"title": "Fehler beim Laden",
 			"message": "Beim Laden des Wetters ist etwas schiefgelaufen. Bitte versuche es erneut."
 		},
 		"notfound": {
@@ -36,7 +36,7 @@
 			"message": "Prüfe deine Internetverbindung und versuche es erneut."
 		},
 		"retry": "Erneut versuchen",
-		"suggested": "Vorgeschlagene Städte"
+		"suggested": "Vorschläge"
 	},
 	"tab": {
 		"home": "Start",
@@ -44,10 +44,10 @@
 		"settings": "Einstellungen"
 	},
 	"toast": {
-		"add": "{name} zu den Favoriten hinzugefügt",
+		"add": "{name} hinzugefügt",
 		"city": "Ort",
-		"notrefreshed": "Wetter konnte nicht aktualisiert werden",
+		"notrefreshed": "Aktualisierung fehlgeschlagen",
 		"refreshed": "Wetter aktualisiert",
-		"remove": "{name} aus den Favoriten entfernt"
+		"remove": "{name} entfernt"
 	}
 }

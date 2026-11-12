@@ -12,25 +12,25 @@
 	},
 	"datasource": {
 		"weatherapi": "Aktuelles Wetter",
-		"openmeteo": "Meteorologische Daten und Wetter",
-		"openfreemap": "Kartenmaterial",
+		"openmeteo": "Wetterdaten",
+		"openfreemap": "Kartendaten",
 		"title": "Datenquellen"
 	},
 	"feedback": {
 		"bug": "Fehler",
 		"button": {
 			"send": "Feedback senden",
-			"sending": "Feedback wird gesendet…"
+			"sending": "Wird gesendet…"
 		},
 		"feature": "Funktionswunsch",
 		"feedback": "Nachricht",
 		"message": "Nachricht",
-		"placeholder": "Schreib hier deine Nachricht…",
+		"placeholder": "Deine Nachricht…",
 		"question": "Frage",
-		"select": "Art der Nachricht auswählen",
+		"select": "Art auswählen",
 		"title": "Feedback senden",
 		"toast": {
-			"error": "Feedback konnte nicht gesendet werden",
+			"error": "Senden fehlgeschlagen",
 			"sent": "Feedback gesendet"
 		},
 		"type": "Art"
@@ -39,10 +39,10 @@
 		"title": "Sprache"
 	},
 	"legal": {
-		"title": "Rechtliche Hinweise"
+		"title": "Rechtliches"
 	},
-	"localweather": "Wetter am Standort",
-	"privacyPolicy": "Datenschutzerklärung",
+	"localweather": "Mein Standort",
+	"privacyPolicy": "Datenschutz",
 	"settings": "Einstellungen",
 	"temperatureScale": {
 		"celsius": "Celsius",
@@ -52,8 +52,8 @@
 	"theme": {
 		"dark": "Dunkel",
 		"light": "Hell",
-		"system": "Systemeinstellung",
-		"title": "Erscheinungsbild"
+		"system": "System",
+		"title": "Design"
 	},
 	"units": {
 		"imperial": "Imperial",
