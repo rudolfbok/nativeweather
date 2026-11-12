@@ -17,7 +17,7 @@ const kinds = {
 	rain: {
 		Icon: RainIcon,
 		color: 'chart-blue',
-		valueClassName: 'text-chart-blue',
+		valueClassName: 'text-chart-blue!',
 		amountKey: 'rainfall',
 		metricUnit: 'mm',
 		inchesPerUnit: 0.0393701,
