@@ -2,6 +2,18 @@
 @import 'uniwind';
 @import './ui/theme.css';
 
+/* Native-feeling UI: no text selection on web and desktop (native Text is unselectable by default), except in fields. */
+body {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+input,
+textarea {
+	-webkit-user-select: text;
+	user-select: text;
+}
+
 .maplibregl-canvas-container.maplibregl-interactive {
 	cursor: pointer;
 }
