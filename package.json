@@ -6,6 +6,7 @@
 		"lint": "pnpm --recursive --if-present run lint",
 		"lint:fix": "pnpm --recursive run lint:fix",
 		"typecheck": "pnpm --recursive --if-present run typecheck",
+		"format": "oxfmt",
 		"dev": "pnpm --filter @nativeweather/expo start",
 		"dev:desktop": "pnpm --filter nativeweather-desktop dev",
 		"dev:web": "pnpm --filter @nativeweather/expo web",
@@ -16,7 +17,6 @@
 		"build:site": "pnpm --filter @nativeweather/site build",
 		"preview:web": "pnpm build:web && pnpm --filter @nativeweather/worker dev",
 		"deploy:web": "pnpm build:web && pnpm --filter @nativeweather/worker run deploy",
-		"format": "oxfmt",
 		"deploy:site": "pnpm --filter @nativeweather/site run deploy",
 		"deploy:api": "pnpm --filter @nativeweather/api-worker run deploy",
 		"deploy:site:preview": "pnpm --filter @nativeweather/site run deploy:preview"

@@ -4,7 +4,7 @@
     <source media="(prefers-color-scheme: light)" srcset="docs/images/logo_light.png" width="200">
     <img alt="NativeWeather logo" src="docs/images/logo_light.png" width="200">
   </picture>
-	<p><strong>⚠️ ** THIS PROJECT IS UNDER ACTIVE DEVELOPMENT AND SHOULD BE CONSIDERED AS SUCH **</strong></p>
+	<p><strong>⚠️ THIS PROJECT IS UNDER ACTIVE DEVELOPMENT AND SHOULD BE CONSIDERED AS SUCH</strong></p>
   <p>A cross-platform weather application built with Expo, React Native, and Tauri.</p>
   <p>One shared Expo application powers iOS, Android, Web, and desktop platforms, organized as a pnpm monorepo.</p>
 </div>
@@ -15,6 +15,8 @@
 ├── apps/
 │   ├── expo/                # Expo app (iOS, Android, Web)
 │   ├── desktop/             # Tauri desktop shell (uses Expo Web)
+│   ├── api/                 # Cloudflare Worker API (proxies weather providers)
+│   ├── site/                # Marketing site (Vite + React, Cloudflare Pages)
 │   └── worker/              # Cloudflare Worker for nativeweather.app
 ├── packages/
 │   ├── api/                 # Weather and location API clients
