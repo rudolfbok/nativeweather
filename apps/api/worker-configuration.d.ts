@@ -8,6 +8,7 @@ interface __BaseEnv_Env {
 	EMAILJS_SERVICE_ID: "service_vokedf9";
 	EMAILJS_TEMPLATE_ID: "template_tix3tiv";
 	FEEDBACK_EMAIL: "nativeweather@post.cz";
+	FEEDBACK_RATE_LIMITER: RateLimit;
 }
 declare namespace Cloudflare {
 	interface GlobalProps {

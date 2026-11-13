@@ -194,6 +194,14 @@ const weatherApiError = async (response: Response): Promise<Response> => {
 };
 
 const sendFeedback = async (request: Request, env: Env): Promise<Response> => {
+	const { success } = await env.FEEDBACK_RATE_LIMITER.limit({
+		key: request.headers.get('CF-Connecting-IP') ?? 'unknown',
+	});
+
+	if (!success) {
+		return Response.json({ error: 'Too many requests' }, { status: 429 });
+	}
+
 	let body: { type?: unknown; message?: unknown };
 
 	try {
