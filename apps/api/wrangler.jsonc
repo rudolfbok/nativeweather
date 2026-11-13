@@ -4,6 +4,11 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-06-10",
 	"compatibility_flags": ["nodejs_compat"],
+	"vars": {
+		"EMAILJS_SERVICE_ID": "service_vokedf9",
+		"EMAILJS_TEMPLATE_ID": "template_tix3tiv",
+		"FEEDBACK_EMAIL": "nativeweather@post.cz"
+	},
 	"observability": {
 		"enabled": true,
 		"logs": {

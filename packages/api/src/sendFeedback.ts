@@ -1,6 +1,6 @@
 export type FeedbackType = 'bug' | 'feature' | 'message' | 'question';
 
-const FEEDBACK_URL = 'https://nativeweather-email.bitwebs.workers.dev';
+const FEEDBACK_URL = 'https://nativeweather-api.bitwebs.workers.dev/feedback';
 
 /** Resolves to whether the feedback was accepted. */
 export const sendFeedback = async (type: FeedbackType, message: string): Promise<boolean> => {

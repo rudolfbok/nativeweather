@@ -3,6 +3,11 @@
 // Runtime types generated with workerd@1.20260609.1 2026-06-10 nodejs_compat
 interface __BaseEnv_Env {
 	WEATHER_API_KEY: string;
+	EMAILJS_PUBLIC_KEY: string;
+	EMAILJS_PRIVATE_KEY: string;
+	EMAILJS_SERVICE_ID: "service_vokedf9";
+	EMAILJS_TEMPLATE_ID: "template_tix3tiv";
+	FEEDBACK_EMAIL: "nativeweather@post.cz";
 }
 declare namespace Cloudflare {
 	interface GlobalProps {

@@ -22,3 +22,4 @@ Thumbs.db
 
 # Wrangler (apps/worker) local state
 .wrangler/
+.dev.vars

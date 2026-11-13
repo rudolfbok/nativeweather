@@ -1,8 +1,11 @@
 const WEATHER_API_BASE_URL = 'https://api.weatherapi.com/v1';
 const AIR_QUALITY_API_URL = 'https://air-quality-api.open-meteo.com/v1/air-quality';
+const FEEDBACK_TYPES = new Set(['bug', 'feature', 'message', 'question']);
+const FEEDBACK_MAX_MESSAGE_LENGTH = 5000;
+const EMAILJS_URL = 'https://api.emailjs.com/api/v1.0/email/send';
 const CORS_HEADERS = {
 	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'GET, OPTIONS',
+	'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 	'Access-Control-Allow-Headers': 'Content-Type',
 };
 
@@ -25,6 +28,8 @@ export default {
 			response = await fetchAirQuality(url.searchParams);
 		} else if (url.pathname === '/weather') {
 			response = await fetchWeather(url.searchParams, env);
+		} else if (url.pathname === '/feedback' && request.method === 'POST') {
+			response = await sendFeedback(request, env);
 		} else {
 			response = Response.json({ error: 'Not found' }, { status: 404 });
 		}
@@ -186,6 +191,52 @@ const weatherApiError = async (response: Response): Promise<Response> => {
 
 	console.error('Weather API failed:', response.status, body?.error?.code);
 	return Response.json({ error: `Error: ${response.status}` }, { status: 502 });
+};
+
+const sendFeedback = async (request: Request, env: Env): Promise<Response> => {
+	let body: { type?: unknown; message?: unknown };
+
+	try {
+		body = await request.json();
+	} catch {
+		return Response.json({ error: 'Invalid JSON' }, { status: 400 });
+	}
+
+	const type = typeof body.type === 'string' ? body.type.trim() : '';
+	const message = typeof body.message === 'string' ? body.message.trim() : '';
+
+	if (!FEEDBACK_TYPES.has(type) || !message || message.length > FEEDBACK_MAX_MESSAGE_LENGTH) {
+		return Response.json({ error: 'Invalid feedback' }, { status: 400 });
+	}
+
+	try {
+		const emailResponse = await fetch(EMAILJS_URL, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				service_id: env.EMAILJS_SERVICE_ID,
+				template_id: env.EMAILJS_TEMPLATE_ID,
+				user_id: env.EMAILJS_PUBLIC_KEY,
+				accessToken: env.EMAILJS_PRIVATE_KEY,
+				template_params: {
+					type,
+					message,
+					subject: `${type}: NativeWeather Contact Form`,
+					email: env.FEEDBACK_EMAIL,
+				},
+			}),
+		});
+
+		if (!emailResponse.ok) {
+			console.error('EmailJS request failed:', emailResponse.status, await emailResponse.text());
+			return Response.json({ error: 'Email delivery failed' }, { status: 502 });
+		}
+
+		return Response.json({ ok: true });
+	} catch (error) {
+		console.error('Failed to send feedback:', error);
+		return Response.json({ error: getErrorMessage(error) }, { status: 502 });
+	}
 };
 
 const getErrorMessage = (error: unknown) => {

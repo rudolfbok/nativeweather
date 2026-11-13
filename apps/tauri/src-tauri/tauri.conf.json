@@ -31,7 +31,7 @@
 				"img-src": "'self' data: blob:",
 				"font-src": "'self' data:",
 				"worker-src": "blob:",
-				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://nativeweather-email.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com"
+				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com"
 			},
 			"devCsp": {
 				"default-src": "'self'",
@@ -40,7 +40,7 @@
 				"img-src": "'self' data: blob: http://localhost:8081",
 				"font-src": "'self' data: http://localhost:8081",
 				"worker-src": "blob:",
-				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://nativeweather-email.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com http://localhost:8081 ws://localhost:8081"
+				"connect-src": "'self' ipc: http://ipc.localhost https://nativeweather-api.bitwebs.workers.dev https://air-quality-api.open-meteo.com https://tiles.openfreemap.org https://weathermaps.weatherapi.com http://localhost:8081 ws://localhost:8081"
 			}
 		}
 	},
