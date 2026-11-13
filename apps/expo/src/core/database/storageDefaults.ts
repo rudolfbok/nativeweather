@@ -1,3 +1,5 @@
+import { isTauri } from '@tauri-apps/api/core';
+
 export const stringStorageDefaults = {
 	currentLang: 'en-US',
 	currentTheme: 'system',
@@ -7,6 +9,6 @@ export const stringStorageDefaults = {
 };
 
 export const booleanStorageDefaults = {
-	showLocalWeather: true,
+	showLocalWeather: !isTauri(),
 	showWorldTime: true,
 };

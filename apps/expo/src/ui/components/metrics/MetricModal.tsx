@@ -6,7 +6,9 @@ import { ValuesList } from '../common/ValuesList';
 import type { ValueItem } from '../common/ValuesList';
 
 type MetricSection = { title: string; className?: string } & (
-	{ text: string } | { values: ValueItem[]; showIndex?: boolean; valueClassName?: string } | { content: ReactNode }
+	| { text: string }
+	| { values: ValueItem[]; showIndex?: boolean; valueClassName?: string }
+	| { content: ReactNode }
 );
 
 /** Modal body shared by every metric: an optional chart, then titled sections. */

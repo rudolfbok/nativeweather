@@ -22,7 +22,10 @@ export default function RootLayout() {
 			<Stack screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="(tabs)" />
 				{/* Web keeps the page rendered underneath; ModalScreen draws the blurred overlay. */}
-				<Stack.Screen name="(modals)" options={{ presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal' }} />
+				<Stack.Screen
+					name="(modals)"
+					options={{ presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal' }}
+				/>
 			</Stack>
 		</AppProviders>
 	);

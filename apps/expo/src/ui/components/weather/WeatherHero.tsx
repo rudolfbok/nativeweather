@@ -56,9 +56,7 @@ export const WeatherHero = ({ weather }: { weather: NormalizedData }) => {
 					{!threeColumns && airQuality}
 				</View>
 				<View className="gap-4 md:flex-1">
-					<DailyForecast
-						onSelectDay={(day) => router.push({ pathname: '/forecast', params: { day: String(day) } })}
-					/>
+					<DailyForecast onSelectDay={(day) => router.push({ pathname: '/forecast', params: { day: String(day) } })} />
 					<MapsView />
 				</View>
 				{threeColumns && (

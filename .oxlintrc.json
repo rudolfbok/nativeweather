@@ -17,6 +17,7 @@
 		"**/.expo/**",
 		"**/web-build/**",
 		"**/src-tauri/target/**",
+		"**/src-tauri/target.noindex/**",
 		"**/src-tauri/gen/**",
 		"apps/expo/ios/**",
 		"apps/expo/android/**",

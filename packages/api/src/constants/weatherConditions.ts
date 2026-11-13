@@ -14,7 +14,15 @@ export type ConditionIconFamily =
 	| 'thunder'
 	| 'rain';
 export type PrecipitationKind =
-	'none' | 'rain' | 'snow' | 'sleet' | 'freezing' | 'ice' | 'thunder' | 'thunder_rain' | 'thunder_snow';
+	| 'none'
+	| 'rain'
+	| 'snow'
+	| 'sleet'
+	| 'freezing'
+	| 'ice'
+	| 'thunder'
+	| 'thunder_rain'
+	| 'thunder_snow';
 export type WeatherCondition = {
 	icon: ConditionIconFamily;
 	landscape: 'clear' | 'partclouds' | 'cloudy' | 'overcast' | 'fog' | 'rain' | 'snow' | 'thunder';

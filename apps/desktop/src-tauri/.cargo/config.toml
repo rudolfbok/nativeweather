@@ -1,0 +1,4 @@
+[build]
+# The ".noindex" suffix keeps Spotlight from indexing build output, so bundled
+# NativeWeather.app copies don't show up in the macOS Apps view.
+target-dir = "target.noindex"

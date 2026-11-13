@@ -41,7 +41,6 @@ export { SearchField } from './components/search/SearchField';
 export { SuggestedCities } from './components/search/SuggestedCities';
 export { NativeWeatherLogo } from './components/icons/logos/NativeWeatherLogo';
 
-
 // Alerts
 export { AlertDetail } from './components/alerts/AlertDetail';
 export { AlertList } from './components/alerts/AlertList';

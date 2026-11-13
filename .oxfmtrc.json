@@ -1,0 +1,14 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 120,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"sortPackageJson": false,
+	"sortTailwindcss": {
+		"functions": ["clsx"],
+		"stylesheet": "./apps/expo/src/global.css"
+	},
+	"ignorePatterns": ["pnpm-workspace.yaml", "**/uniwind-types.d.ts", "**/src-tauri/gen"]
+}

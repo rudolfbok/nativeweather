@@ -10,5 +10,4 @@ export const openSettingOption = (option: SettingOptionKey) =>
 
 export const openAbout = () => router.push(Platform.OS === 'web' ? '/setting/about' : '/settings/about');
 
-export const openFeedback = () =>
-	router.push(Platform.OS === 'web' ? '/setting/feedback' : '/settings/feedback');
+export const openFeedback = () => router.push(Platform.OS === 'web' ? '/setting/feedback' : '/settings/feedback');

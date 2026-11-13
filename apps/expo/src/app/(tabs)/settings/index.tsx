@@ -14,18 +14,18 @@ export default function SettingsScreen() {
 		<ScreenWrapper>
 			{/* Native has a large title in the navigation bar; the web has no bar. */}
 			<View className={clsx(desktopWidth)}>
-			{Platform.OS === 'web' && (
-				<Text type="screentitle" className="mb-3">
-					{t('settings')}
-				</Text>
-			)}
-			<SettingsList
-				version={version}
-				twoColumns={isTauri()}
-				onOpenOption={openSettingOption}
-				onOpenAbout={openAbout}
-				onOpenFeedback={openFeedback}
-			/>
+				{Platform.OS === 'web' && (
+					<Text type="screentitle" className="mb-3">
+						{t('settings')}
+					</Text>
+				)}
+				<SettingsList
+					version={version}
+					twoColumns={isTauri()}
+					onOpenOption={openSettingOption}
+					onOpenAbout={openAbout}
+					onOpenFeedback={openFeedback}
+				/>
 			</View>
 		</ScreenWrapper>
 	);

@@ -26,7 +26,13 @@ interface ModalScreenProps extends Omit<ModalHeaderProps, 'native'> {
 // iOS gets the system navigation bar: its title, a native back button when pushed on another modal, and a native
 // close button. Other platforms draw the same controls themselves in ModalHeader. Native presents this inside a
 // sheet; on web it draws its own overlay, full screen below md and centred above.
-export const ModalScreen = ({ children, stacked = false, size = 'default', fill = false, ...headerProps }: ModalScreenProps) => {
+export const ModalScreen = ({
+	children,
+	stacked = false,
+	size = 'default',
+	fill = false,
+	...headerProps
+}: ModalScreenProps) => {
 	const native = Platform.OS === 'ios';
 	const { header: title, icon, onClose } = headerProps;
 	// The native header is transparent: the scroll view starts at the top of the screen so content passes under it,
