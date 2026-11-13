@@ -97,7 +97,7 @@ export const FeedbackForm = () => {
 					placeholderTextColorClassName="accent-secondary-label"
 					multiline
 					textAlignVertical="top"
-					className="h-[200px] rounded-3xl border border-hairline bg-card-background p-4 text-base text-label outline-none"
+					className="h-[200px] rounded-3xl border border-hairline bg-card-background p-4 text-base text-label outline-none resize-none"
 				/>
 			</View>
 			<Button onPress={() => void submit()} loading={sending}>
