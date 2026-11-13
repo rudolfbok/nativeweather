@@ -1,12 +1,25 @@
 @import 'tailwindcss';
 
+@theme {
+	--color-primary-blue: #007aff;
+	--color-secondary-background: #f2f2f7;
+	--color-card-background: #ffffff;
+}
+
 :root {
-	background-color: #f5f5f5;
+	--color-primary-blue: #007aff;
+	--color-secondary-background: #f2f2f7;
+	--color-screen-background: #f2f2f7;
+	--color-card-background: #ffffff;
+	background-color: var(--color-screen-background);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		background-color: #0a0a0a;
+		--color-secondary-background: #1c1c1e;
+		--color-screen-background: #000000;
+		--color-card-background: #1c1c1e;
+		background-color: var(--color-screen-background);
 	}
 }
 

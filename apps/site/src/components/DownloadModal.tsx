@@ -36,7 +36,7 @@ export const DownloadModal = ({ open, onClose }: DownloadModalProps) => {
 			ref={dialogRef}
 			onClose={onClose}
 			onClick={(e) => e.target === dialogRef.current && onClose()}
-			className="m-auto w-[calc(100%-2rem)] max-w-md rounded-3xl bg-white p-6 text-black backdrop:bg-black/50 dark:bg-[#1c1c1e] dark:text-white"
+			className="m-auto w-[calc(100%-2rem)] max-w-md rounded-3xl bg-card-background p-6 text-black backdrop:bg-black/50 dark:text-white"
 		>
 			<div className="flex flex-col gap-4">
 				<Text as="h2" className="text-xl font-semibold">
@@ -70,7 +70,7 @@ export const DownloadModal = ({ open, onClose }: DownloadModalProps) => {
 						href={DMG_URL}
 						download
 						onClick={onClose}
-						className="flex-1 rounded-full bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-blue-700"
+						className="flex-1 rounded-full bg-primary-blue px-4 py-2 text-center text-sm font-semibold text-white hover:bg-primary-blue/90"
 					>
 						Download .dmg
 					</a>

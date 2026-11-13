@@ -21,7 +21,7 @@ export const PlatformCard = ({
 	onAction,
 	iconClassName,
 }: PlatformCardProps) => {
-	const buttonClassName = 'shrink-0 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white';
+	const buttonClassName = 'shrink-0 rounded-full bg-primary-blue px-4 py-2 text-sm font-semibold text-white';
 
 	return (
 		<div className="flex flex-row items-center justify-between gap-2">
@@ -33,11 +33,11 @@ export const PlatformCard = ({
 				</div>
 			</div>
 			{onAction ? (
-				<button type="button" onClick={onAction} className={`${buttonClassName} cursor-pointer hover:bg-blue-700`}>
+				<button type="button" onClick={onAction} className={`${buttonClassName} cursor-pointer hover:bg-primary-blue/90`}>
 					{actionLabel}
 				</button>
 			) : href ? (
-				<a href={href} className={`${buttonClassName} hover:bg-blue-700`}>
+				<a href={href} className={`${buttonClassName} hover:bg-primary-blue/90`}>
 					{actionLabel}
 				</a>
 			) : (

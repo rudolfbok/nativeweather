@@ -34,7 +34,7 @@ const HomePage = () => {
 					</Text>
 				</div>
 			</div>
-			<div className="flex w-full flex-col gap-4 rounded-3xl bg-white p-4 dark:bg-[#1c1c1e]">
+			<div className="flex w-full flex-col gap-4 rounded-3xl bg-card-background p-4">
 				<PlatformCard
 					icon={webIcon}
 					alt="Web icon"
