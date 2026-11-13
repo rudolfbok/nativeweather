@@ -6,6 +6,7 @@
 - `apps/expo` — Expo application for iOS, Android, and Web.
 - `apps/desktop` — Tauri 2 desktop shell using Expo Web.
 - `apps/site` — Vite + React + Tailwind marketing site, deployed to Cloudflare Pages (`nativeweather.pages.dev`). Vite is intentional here; it is separate from the Expo app. Run with `pnpm dev:site`.
+- `apps/api` — Cloudflare Worker API (`@nativeweather/api-worker`, deployed as `nativeweather-api`). Proxies WeatherAPI.com and Open-Meteo so the API key stays server-side. Run with `pnpm dev:api`, deploy with `pnpm deploy:api`.
 - `apps/worker` — Cloudflare Worker for nativeweather.app: serves the Expo web export, rewrites city `<head>` tags (title, description, canonical, OG), and returns 404 for unknown cities. Run with `pnpm preview:web`.
 - `apps/expo/src/ui` and `apps/expo/src/core` — UI components and app logic (hooks, storage, utils, locales), imported via the `@/ui` and `@/core` aliases.
 - `packages/types` and `packages/api` — Pure TypeScript with no React Native, Expo, or other platform dependencies.

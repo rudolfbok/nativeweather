@@ -123,3 +123,7 @@ Oxlint uses the shared `.oxlintrc.json` configuration. Rust code can be checked 
 - **pnpm workspaces** — Dependency management and shared packages.
 
 Development uses a single Expo/Metro server shared across platforms. No additional task runner or build orchestrator is required.
+
+## API
+
+The weather API Worker lives in `apps/api`. Run it locally with `pnpm dev:api` (put `WEATHER_API_KEY` in `apps/api/.env.local`) and deploy with `pnpm deploy:api`. See `apps/api/README.md` for endpoints.

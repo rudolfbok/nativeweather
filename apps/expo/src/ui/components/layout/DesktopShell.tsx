@@ -65,16 +65,16 @@ export const DesktopShell = ({ sidebar, onOpenHome, onOpenSearch, onOpenSettings
 
 	return (
 		<View className="flex-1 flex-row bg-screen-background">
-			<View className="w-85 border-r border-hairline bg-sidebar-background">
+			<View className="w-85 lg:w-96 xl:w-112 border-r border-hairline bg-sidebar-background">
 				{/* Under the overlay title bar the traffic lights sit at the start of this row, centred on it. */}
 				<View
 					{...dragRegion}
-					className={clsx('flex-row items-center justify-between px-4 py-4', overlayTitleBar && 'pt-10')}
+					className={clsx('flex-row items-center justify-between px-4 lg:px-5 xl:px-6 py-4', overlayTitleBar && 'pt-10')}
 				>
 					{logo}
 					{settingsButton}
 				</View>
-				<ScrollView className="flex-1" contentContainerClassName="gap-4 px-4 pb-20">
+				<ScrollView className="flex-1" contentContainerClassName="gap-4 px-4 lg:px-5 xl:px-6 pb-20">
 					{sidebar}
 				</ScrollView>
 				<View className="absolute right-4 bottom-4">

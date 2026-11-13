@@ -9,6 +9,7 @@
 		"dev": "pnpm --filter @nativeweather/expo start",
 		"dev:desktop": "pnpm --filter nativeweather-desktop dev",
 		"dev:web": "pnpm --filter @nativeweather/expo web",
+		"dev:api": "pnpm --filter @nativeweather/api-worker dev",
 		"dev:site": "pnpm --filter @nativeweather/site dev",
 		"build:desktop": "pnpm --filter nativeweather-desktop build",
 		"build:web": "pnpm --filter @nativeweather/expo build",
@@ -17,6 +18,7 @@
 		"deploy:web": "pnpm build:web && pnpm --filter @nativeweather/worker run deploy",
 		"format": "oxfmt",
 		"deploy:site": "pnpm --filter @nativeweather/site run deploy",
+		"deploy:api": "pnpm --filter @nativeweather/api-worker run deploy",
 		"deploy:site:preview": "pnpm --filter @nativeweather/site run deploy:preview"
 	},
 	"devEngines": {
