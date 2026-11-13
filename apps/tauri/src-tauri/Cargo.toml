@@ -1,6 +1,6 @@
 [package]
 name = "desktop"
-version = "0.9.0"
+version = "2.0.0"
 description = "NativeWeather desktop shell"
 authors = ["bitwebs"]
 edition = "2021"

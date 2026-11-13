@@ -28,3 +28,9 @@
 - Keep implementations simple and cross-platform.
 - Run lint and type checks after changes.
 - Avoid unnecessary dependencies, duplicated configuration, and platform-specific code unless required.
+
+## Versioning
+
+- One SemVer product version shared by every platform (web, iOS, Android, desktop). Platform availability (e.g. no App Store release) is a distribution status, not a different version.
+- Bump together: `apps/expo/app.json`, `apps/expo/package.json`, `apps/tauri/package.json`, root `package.json`, and `apps/tauri/src-tauri/Cargo.toml`. `tauri.conf.json` reads its version from `apps/tauri/package.json`.
+- PATCH for fixes, MINOR for features, MAJOR for redesigns or breaking changes. Tag releases as `vX.Y.Z`.
