@@ -227,12 +227,6 @@ importers:
         specifier: ^4.158.0
         version: 4.158.0(@cloudflare/workers-types@5.20261106.1)(@types/node@25.9.9)
 
-  apps/desktop:
-    devDependencies:
-      '@tauri-apps/cli':
-        specifier: ^2
-        version: 2.12.1
-
   apps/expo:
     dependencies:
       '@expo/ui':
@@ -411,6 +405,12 @@ importers:
       wrangler:
         specifier: ^4.158.0
         version: 4.158.0(@cloudflare/workers-types@5.20261106.1)(@types/node@24.19.2)
+
+  apps/tauri:
+    devDependencies:
+      '@tauri-apps/cli':
+        specifier: ^2
+        version: 2.12.1
 
   apps/worker:
     dependencies:

@@ -1,9 +1,6 @@
 import type { City, NormalizedData } from '@nativeweather/types';
 
-export const getCityRegion = (city: City): string => {
-	if (city.region && city.region !== city.name) return city.region;
-	return city.country || city.region || city.name;
-};
+export const getCityRegion = (city: City): string => city.region || city.name;
 
 export const extractCity = (weatherData: NormalizedData): City => ({
 	name: weatherData.location.name,

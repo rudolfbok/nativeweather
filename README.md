@@ -14,7 +14,7 @@
 ```text
 ├── apps/
 │   ├── expo/                # Expo app (iOS, Android, Web)
-│   ├── desktop/             # Tauri desktop shell (uses Expo Web)
+│   ├── tauri/               # Tauri desktop shell (uses Expo Web)
 │   ├── api/                 # Cloudflare Worker API (proxies weather providers)
 │   ├── site/                # Marketing site (Vite + React, Cloudflare Pages)
 │   └── worker/              # Cloudflare Worker for nativeweather.app
@@ -47,7 +47,7 @@ Expo runs on `http://localhost:8081` and provides an interactive CLI for launchi
 With the Expo server running, open a second terminal:
 
 ```bash
-pnpm dev:desktop
+pnpm dev:tauri
 ```
 
 Tauri connects to the existing Expo Web server at `http://localhost:8081`.
@@ -83,7 +83,7 @@ The Worker serves the exported files, rewrites the `<head>` tags for city pages,
 Build the desktop application:
 
 ```bash
-pnpm build:desktop
+pnpm build:tauri
 ```
 
 This runs `tauri build` and packages the Expo Web export from `apps/expo/dist`. Rust and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) must be installed.

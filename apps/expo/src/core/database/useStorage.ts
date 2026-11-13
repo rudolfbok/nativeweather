@@ -2,24 +2,25 @@ import { useMMKVBoolean, useMMKVObject, useMMKVString } from 'react-native-mmkv'
 import { storage } from './initStorage';
 import { booleanStorageDefaults, stringStorageDefaults } from './storageDefaults';
 
-type BooleanStorage = ReturnType<typeof useMMKVBoolean>;
-type StringStorage = ReturnType<typeof useMMKVString>;
-
 const booleanDefaults: Partial<Record<string, boolean>> = booleanStorageDefaults;
 const stringDefaults: Partial<Record<string, string>> = stringStorageDefaults;
 
-export function useStorageBoolean(key: keyof typeof booleanStorageDefaults): [boolean, BooleanStorage[1]];
-export function useStorageBoolean(key: string): BooleanStorage;
-export function useStorageBoolean(key: string): BooleanStorage {
-	const [value, setValue] = useMMKVBoolean(key, storage);
-	return [value ?? booleanDefaults[key], setValue];
-}
+type Fallback<K extends string, Defaults, T> = K extends keyof Defaults ? T : T | undefined;
 
-export function useStorageString(key: keyof typeof stringStorageDefaults): [string, StringStorage[1]];
-export function useStorageString(key: string): StringStorage;
-export function useStorageString(key: string): StringStorage {
+export const useStorageBoolean = <K extends string>(key: K) => {
+	const [value, setValue] = useMMKVBoolean(key, storage);
+	return [value ?? booleanDefaults[key], setValue] as [
+		Fallback<K, typeof booleanStorageDefaults, boolean>,
+		ReturnType<typeof useMMKVBoolean>[1],
+	];
+};
+
+export const useStorageString = <K extends string>(key: K) => {
 	const [value, setValue] = useMMKVString(key, storage);
-	return [value ?? stringDefaults[key], setValue];
-}
+	return [value ?? stringDefaults[key], setValue] as [
+		Fallback<K, typeof stringStorageDefaults, string>,
+		ReturnType<typeof useMMKVString>[1],
+	];
+};
 
 export const useStorageObject = <T>(key: string) => useMMKVObject<T>(key, storage);

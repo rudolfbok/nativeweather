@@ -28,7 +28,7 @@ function DesktopHome() {
 
 	return (
 		<View className="flex-1 bg-screen-background">
-			<ScreenWrapper>
+			<ScreenWrapper centered={settled}>
 				{settled ? (
 					<StatusView icon="notfound" title={t('status.empty.title')} message={t('status.empty.message')} />
 				) : (

@@ -1,5 +1,5 @@
 {
-	"name": "nativeweather-desktop",
+	"name": "nativeweather-tauri",
 	"private": true,
 	"version": "0.9.0",
 	"type": "module",

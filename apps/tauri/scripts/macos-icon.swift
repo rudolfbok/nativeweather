@@ -1,6 +1,6 @@
 // Builds src-tauri/icons/icon.icns from the Expo app icon in the macOS icon shape: the artwork is inset on the
 // 1024 canvas and clipped to a rounded square, as the Dock expects. The other platforms' icons stay full-bleed.
-// Run from apps/desktop: swift scripts/macos-icon.swift
+// Run from apps/tauri: swift scripts/macos-icon.swift
 import AppKit
 
 let source = NSImage(contentsOfFile: "../expo/assets/icon.png")!

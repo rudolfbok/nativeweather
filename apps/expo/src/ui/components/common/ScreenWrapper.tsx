@@ -13,6 +13,8 @@ interface ScreenWrapperProps {
 	overscrollColor?: string;
 	/** For screens with a text field: taps on content land while the keyboard is up, and dragging dismisses it. */
 	dismissKeyboard?: boolean;
+	/** Centres the content vertically in the visible area, for a status view that stands alone on the screen. */
+	centered?: boolean;
 	children: ReactNode;
 }
 
@@ -20,7 +22,13 @@ interface ScreenWrapperProps {
 // render this directly, with nothing around it.
 // The overscroll colour is the scroll view's own background rather than a view in the content: a native
 // pull-to-refresh spinner is drawn behind the content views, so anything opaque up there would hide it.
-export const ScreenWrapper = ({ refreshControl, overscrollColor, dismissKeyboard, children }: ScreenWrapperProps) => {
+export const ScreenWrapper = ({
+	refreshControl,
+	overscrollColor,
+	dismissKeyboard,
+	centered,
+	children,
+}: ScreenWrapperProps) => {
 	const bounce = Platform.OS === 'ios' && overscrollColor !== undefined;
 	const header = use(ScreenHeaderContext);
 	// Web, below md: the page scrolls as the document instead (see public/index.html), so the scroll view is marked.
@@ -34,7 +42,9 @@ export const ScreenWrapper = ({ refreshControl, overscrollColor, dismissKeyboard
 			contentInsetAdjustmentBehavior="automatic"
 			contentContainerClassName={clsx(
 				'w-full max-w-page self-center px-4 pt-2 pb-4 web:max-md:pt-0',
-				bounce && 'grow bg-screen-background'
+				(bounce || centered) && 'grow',
+				bounce && 'bg-screen-background',
+				centered && 'justify-center'
 			)}
 			style={bounce ? { backgroundColor: overscrollColor } : undefined}
 			keyboardShouldPersistTaps={dismissKeyboard ? 'handled' : undefined}

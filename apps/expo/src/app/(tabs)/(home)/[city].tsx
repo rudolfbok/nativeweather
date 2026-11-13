@@ -16,6 +16,7 @@ import {
 	WeatherHero,
 } from '@/ui';
 import { useTranslate } from '@tolgee/react';
+import { isTauri } from '@tauri-apps/api/core';
 import { router, Stack, Unmatched, useFocusEffect, useIsFocused, useLocalSearchParams } from 'expo-router';
 import Head from 'expo-router/head';
 import { useCallback, useState } from 'react';
@@ -103,6 +104,7 @@ const CityWeather = (params: CityParams) => {
 			)}
 			{weather && Platform.OS === 'ios' && <CityHeaderButtons weather={weather} />}
 			<ScreenWrapper
+				centered={isTauri() && Boolean(error)}
 				overscrollColor={sky ?? undefined}
 				refreshControl={
 					weather ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="white" /> : undefined
