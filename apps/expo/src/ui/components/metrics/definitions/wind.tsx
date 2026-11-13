@@ -19,8 +19,8 @@ const GustIcon = withUniwind(Wind);
 // Beaufort 0–12: metric and imperial ranges plus a scale colour (data, not theme tokens).
 const beaufortScale = [
 	['< 1km/h', '< 1mph', undefined],
-	['1 - 5km/h', '1 - 2mph', '#0891B2'],
-	['6 - 11km/h', '3 - 7mph', '#059669'],
+	['1 - 5km/h', '1 - 3mph', '#0891B2'],
+	['6 - 11km/h', '4 - 7mph', '#059669'],
 	['12 - 19km/h', '8 - 12mph', '#16A34A'],
 	['20 - 28km/h', '13 - 18mph', '#22C55E'],
 	['29 - 38km/h', '19 - 24mph', '#65A30D'],
@@ -30,7 +30,7 @@ const beaufortScale = [
 	['75 - 88km/h', '47 - 54mph', '#EA580C'],
 	['89 - 102km/h', '55 - 63mph', '#DC2626'],
 	['103 - 117km/h', '64 - 72mph', '#B91C1C'],
-	['> 118km/h', '> 73mph', '#991B1B'],
+	['> 117km/h', '> 72mph', '#991B1B'],
 ] as const;
 
 export const wind: MetricDefinition = {

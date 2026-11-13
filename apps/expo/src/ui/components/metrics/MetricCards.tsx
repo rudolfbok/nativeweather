@@ -1,6 +1,9 @@
 import { View } from 'react-native';
+import { clsx } from 'clsx';
+import { Skeleton } from '../common/Skeleton';
 import { getPrecipitationMetric } from './definitions/precipitation';
-import { MetricCard } from './MetricCard';
+import { MetricCard, metricCellClassName } from './MetricCard';
+import type { MetricLayout } from './MetricCard';
 import { metricDefinitions } from './registry';
 import type { MetricId } from './registry';
 import { useMetricContext } from './useMetricContext';
@@ -20,6 +23,7 @@ export const MetricCards = ({ dayIndex, onOpen, column = false }: MetricCardsPro
 	if (!context) return null;
 
 	const source = dayIndex ?? null;
+	const layout: MetricLayout = column ? 'column' : source === null ? 'row' : 'day';
 	const precipitation = getPrecipitationMetric(context.weather, source);
 	const metrics: MetricId[] =
 		source === null
@@ -27,10 +31,10 @@ export const MetricCards = ({ dayIndex, onOpen, column = false }: MetricCardsPro
 				? // Nine tiles fill three even rows, so clouds is left out.
 					[precipitation, 'wind', 'uv', 'range', 'humidity', 'pressure', 'sunrise', 'sunset', 'moon']
 				: [precipitation, 'wind', 'uv', 'range', 'humidity', 'pressure', 'sunrise', 'sunset', 'clouds', 'moon']
-			: [precipitation, 'uv', 'range', 'wind'];
+			: [precipitation, 'wind', 'uv', 'range'];
 
 	return (
-		<View className="w-full flex-row flex-wrap gap-4">
+		<View className="-m-2 flex-row flex-wrap">
 			{metrics.map((metric) => {
 				const definition = metricDefinitions[metric];
 				return (
@@ -40,10 +44,30 @@ export const MetricCards = ({ dayIndex, onOpen, column = false }: MetricCardsPro
 						title={context.t(definition.titleKey)}
 						content={definition.card(context, source)}
 						onPress={() => onOpen(metric, definition.usesDate ? (dayIndex ?? 0) : undefined)}
-						column={column}
+						layout={layout}
 					/>
 				);
 			})}
 		</View>
 	);
 };
+
+const square = {};
+const columnTiles = Array.from({ length: 9 }, () => square);
+// Eight squares, then clouds and moon.
+const rowTiles = [...Array.from({ length: 8 }, () => square), { wide: true, tabletOnly: true }, { wide: true }];
+
+/** Mirrors the current conditions' grid, so the page does not jump when the data arrives. */
+export const MetricCardsSkeleton = ({ column = false }: { column?: boolean }) => (
+	<View className="-m-2 flex-row flex-wrap">
+		{(column ? columnTiles : rowTiles).map((tile, index) => (
+			<View
+				key={index}
+				// Without content to size them, the wide ones take the height of a row of squares.
+				className={clsx(metricCellClassName(column ? 'column' : 'row', tile), 'wide' in tile && 'aspect-[2/1]')}
+			>
+				<Skeleton fill />
+			</View>
+		))}
+	</View>
+);

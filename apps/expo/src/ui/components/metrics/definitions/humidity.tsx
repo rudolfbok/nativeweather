@@ -17,7 +17,7 @@ export const humidity: MetricDefinition = {
 		description: t(`description.humidity.${getRangeIndex(current.humidity, metricBounds.humidity)}`),
 		extra: (
 			<Text type="body" numberOfLines={1}>
-				{t('humidity.dewpoint.title')}:{' '}
+				{t('humidity.dewpoint.label')}{' '}
 				{formatTemperature({ celsius: current.dewPointC, fahrenheit: current.dewPointF, currentTemp })}
 			</Text>
 		),

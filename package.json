@@ -9,11 +9,15 @@
 		"dev": "pnpm --filter @nativeweather/expo start",
 		"dev:desktop": "pnpm --filter nativeweather-desktop dev",
 		"dev:web": "pnpm --filter @nativeweather/expo web",
+		"dev:site": "pnpm --filter @nativeweather/site dev",
 		"build:desktop": "pnpm --filter nativeweather-desktop build",
 		"build:web": "pnpm --filter @nativeweather/expo build",
+		"build:site": "pnpm --filter @nativeweather/site build",
 		"preview:web": "pnpm build:web && pnpm --filter @nativeweather/worker dev",
 		"deploy:web": "pnpm build:web && pnpm --filter @nativeweather/worker run deploy",
-		"format": "oxfmt"
+		"format": "oxfmt",
+		"deploy:site": "pnpm --filter @nativeweather/site run deploy",
+		"deploy:site:preview": "pnpm --filter @nativeweather/site run deploy:preview"
 	},
 	"devEngines": {
 		"packageManager": {

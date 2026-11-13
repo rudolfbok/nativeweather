@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Punkt rosy:",
 			"text": "Punkt rosy to temperatura, przy której para wodna w powietrzu zaczyna skraplać się w krople rosy. Im wyższy punkt rosy, tym więcej wilgoci zawiera powietrze. Lepiej niż wilgotność względna opisuje odczucie parności.",
 			"title": "Punkt rosy"
 		},
@@ -320,8 +321,7 @@
 			"2": "Możliwe przelotne opady",
 			"3": "Prawdopodobne",
 			"4": "Bardzo prawdopodobne",
-			"5": "Niemal pewne",
-			"6": "Pewne"
+			"5": "Niemal pewne"
 		},
 		"rainfall": {
 			"0": "Słaby deszcz",

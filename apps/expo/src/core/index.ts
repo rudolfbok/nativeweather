@@ -10,7 +10,7 @@ export { useAlerts } from './hooks/weather/useAlerts';
 export { useCityWeather } from './hooks/weather/useCityWeather';
 export { useFavoriteCities } from './hooks/weather/useFavoriteCities';
 export { useFavoriteCityWeather } from './hooks/weather/useFavoriteCityWeather';
-export { useSunEventCountdown } from './hooks/weather/useSunEventCountdown';
+export { hasSunEventPassed, useSunEventCountdown } from './hooks/weather/useSunEventCountdown';
 export { availableLanguages } from './locales';
 export * from './utils';
 export {

@@ -22,8 +22,8 @@ const kinds = {
 		metricUnit: 'mm',
 		inchesPerUnit: 0.0393701,
 		amountRanges: {
-			metric: ['0.1 - 2mm', '2 - 10mm', '10 - 30mm', '30 - 50mm', '> 50mm'],
-			imperial: ['0.01 - 0.08in', '0.08 - 0.40in', '0.40 - 1.20in', '1.20 - 2.00in', '> 2.00in'],
+			metric: ['< 2mm', '2 - 10mm', '10 - 30mm', '30 - 50mm', '> 50mm'],
+			imperial: ['< 0.08in', '0.08 - 0.40in', '0.40 - 1.20in', '1.20 - 2.00in', '> 2.00in'],
 		},
 		hourChance: (hour: ForecastHour) => hour.chanceOfRain,
 		hourAmount: (hour: ForecastHour) => hour.precipMm,
@@ -39,8 +39,8 @@ const kinds = {
 		metricUnit: 'cm',
 		inchesPerUnit: 0.393701,
 		amountRanges: {
-			metric: ['1 - 2cm', '2 - 10cm', '10 - 30cm', '30 - 50cm', '> 50cm'],
-			imperial: ['0.4 - 0.8in', '0.8 - 4.0in', '4.0 - 12.0in', '12.0 - 20.0in', '> 20.0in'],
+			metric: ['< 2cm', '2 - 10cm', '10 - 30cm', '30 - 50cm', '> 50cm'],
+			imperial: ['< 0.8in', '0.8 - 4.0in', '4.0 - 12.0in', '12.0 - 20.0in', '> 20.0in'],
 		},
 		hourChance: (hour: ForecastHour) => hour.chanceOfSnow,
 		hourAmount: (hour: ForecastHour) => hour.snowCm,
@@ -79,15 +79,16 @@ const createPrecipitation = (kind: PrecipitationKind): MetricDefinition => {
 		usesDate: true,
 		card: ({ weather, t, isMetric }, dayIndex) => {
 			const day = dayIndex === null ? null : weather.forecast.forecastday[dayIndex]?.day;
-			const chance = getChance(kind, weather, dayIndex);
-			const amount = day ? config.dayAmount(day) : config.currentAmount(weather);
+			const chance = Math.round(getChance(kind, weather, dayIndex));
+			const amount = formatAmount(day ? config.dayAmount(day) : config.currentAmount(weather), isMetric);
 
 			return {
-				value: `${Math.round(chance)}%`,
+				value: `${chance}%`,
 				description: t(chanceKey(kind, getRangeIndex(chance, metricBounds.precipitationChance))),
-				extra: amount >= 0.1 && (
+				// Hidden while the amount rounds to zero in the shown unit.
+				extra: parseFloat(amount) > 0 && (
 					<Text type="body" numberOfLines={1}>
-						{t(`${kind}.${config.amountKey}`)} {formatAmount(amount, isMetric)}
+						{t(`${kind}.${config.amountKey}`)} {amount}
 					</Text>
 				),
 			};

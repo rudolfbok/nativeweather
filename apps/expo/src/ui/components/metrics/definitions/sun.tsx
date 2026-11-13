@@ -1,4 +1,4 @@
-import { formatTime, useSunEventCountdown } from '@/core';
+import { formatTime, hasSunEventPassed, useSunEventCountdown } from '@/core';
 import { useTranslate } from '@tolgee/react';
 import { Text } from '../../common/Text';
 import { SunriseIcon } from '../../icons/main/SunriseIcon';
@@ -27,9 +27,11 @@ const createSunEvent = (event: SunEvent, Icon: MetricDefinition['Icon'], detailK
 	titleKey: `${event}.title`,
 	card: ({ weather: { forecast, location }, language }) => {
 		const [today, tomorrow] = forecast.forecastday;
+		// Matches the countdown, which targets tomorrow's event once today's has passed.
+		const next = tomorrow && hasSunEventPassed(today.astro[event], location.tzId) ? tomorrow : today;
 
 		return {
-			value: formatTime(today.astro[event], language),
+			value: formatTime(next.astro[event], language),
 			extra: <Countdown data={today.astro[event]} tomorrowData={tomorrow?.astro[event]} timeZone={location.tzId} />,
 		};
 	},

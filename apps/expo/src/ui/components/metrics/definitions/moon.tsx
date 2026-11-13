@@ -11,6 +11,7 @@ import { WaningCrescent } from '../../icons/moonphases/WaningCrescent';
 import { WaningGibbous } from '../../icons/moonphases/WaningGibbous';
 import { WaxingCrescent } from '../../icons/moonphases/WaxingCrescent';
 import { WaxingGibbous } from '../../icons/moonphases/WaxingGibbous';
+import { useThreeColumns } from '../../layout/useThreeColumns';
 import { MetricModal } from '../MetricModal';
 import type { MetricDefinition } from '../types';
 import { useMetricContext } from '../useMetricContext';
@@ -49,8 +50,8 @@ export const moon: MetricDefinition = {
 						</Text>
 						<Text type="body" numberOfLines={1}>
 							{isMoonUp
-								? `${t('moon.moonrise')} ${formatTime(moonRise, language)}`
-								: `${t('moon.moonset')} ${formatTime(moonSet, language)}`}
+								? `${t('moon.moonset')} ${formatTime(moonSet, language)}`
+								: `${t('moon.moonrise')} ${formatTime(moonRise, language)}`}
 						</Text>
 					</View>
 				</View>
@@ -59,6 +60,7 @@ export const moon: MetricDefinition = {
 	},
 	Modal: () => {
 		const context = useMetricContext();
+		const threeColumns = useThreeColumns();
 
 		if (!context) return null;
 
@@ -69,23 +71,22 @@ export const moon: MetricDefinition = {
 		return (
 			<MetricModal
 				sections={[
-					{
-						// The square desktop card has no room for these; below xl the wide card already shows them.
+					// The square card in the third column has no room for these; the wide card already shows them.
+					threeColumns && {
 						title: t('moon.now'),
-						className: 'max-xl:hidden',
 						content: (
 							<View className="flex-row items-center gap-4">
 								{PhaseIcon && <PhaseIcon />}
 								<View>
+									<Text type="sectiontitle">{t(`moon.phase.${phaseKey(moonPhase)}`)}</Text>
 									<Text type="body">
 										{t('moon.illumination')} {moonIllumination}%
 									</Text>
 									<Text type="body">
 										{isMoonUp
-											? `${t('moon.moonrise')} ${formatTime(moonRise, language)}`
-											: `${t('moon.moonset')} ${formatTime(moonSet, language)}`}
+											? `${t('moon.moonset')} ${formatTime(moonSet, language)}`
+											: `${t('moon.moonrise')} ${formatTime(moonRise, language)}`}
 									</Text>
-									<Text type="sectiontitle">{t(`moon.phase.${phaseKey(moonPhase)}`)}</Text>
 								</View>
 							</View>
 						),

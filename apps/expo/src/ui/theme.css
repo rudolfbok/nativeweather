@@ -31,6 +31,17 @@
 	--color-switch-off: #939393;
 }
 
+/* From sm a row fits four metric tiles and from lg six, each wide enough for its longest description; from xl the
+   browser's city page gets a third column (useThreeColumns), whose tiles fit then too. Pages stop growing at 1800px,
+   so nothing comes after xl. */
+@theme {
+	--breakpoint-sm: 46rem; /* 736px; Tailwind's default is 40rem */
+	--breakpoint-lg: 70rem; /* 1120px; Tailwind's default is 64rem */
+	--breakpoint-xl: 104rem; /* 1664px; Tailwind's default is 80rem */
+	--breakpoint-2xl: initial;
+	--container-page: 112.5rem; /* 1800px, for max-w-page */
+}
+
 @layer theme {
 	:root {
 		@variant light {

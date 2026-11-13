@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Punto di rugiada:",
 			"text": "Il punto di rugiada è la temperatura alla quale il vapore acqueo nell’aria inizia a condensarsi in goccioline. Più è alto, maggiore è l’umidità presente nell’aria. Descrive la sensazione di afa meglio dell’umidità relativa.",
 			"title": "Punto di rugiada"
 		},
@@ -320,8 +321,7 @@
 			"2": "Possibili rovesci",
 			"3": "Probabili",
 			"4": "Molto probabili",
-			"5": "Quasi certe",
-			"6": "Certe"
+			"5": "Quasi certe"
 		},
 		"rainfall": {
 			"0": "Pioggia debole",

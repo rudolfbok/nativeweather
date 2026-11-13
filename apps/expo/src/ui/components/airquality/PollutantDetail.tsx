@@ -33,13 +33,13 @@ export const PollutantDetail = ({ pollutant, openUrl = (url) => void Linking.ope
 				<ValuesList
 					values={levels.map((level, index) => ({
 						name: t(`${levelKey}.${index}`),
-						// The US index runs to 500; every other scale is open-ended.
+						// The US index is whole numbers to 500 with inclusive tops; every other scale is open-ended.
 						value:
-							index === bounds.length
-								? pollutant === 'usaqi'
-									? `${bounds[index - 1]} - 500`
-									: `${bounds[index - 1]}+`
-								: `${bounds[index - 1] ?? 0} - ${bounds[index]}`,
+							pollutant === 'usaqi'
+								? `${bounds[index - 1] ?? 0} - ${(bounds[index] ?? 501) - 1}`
+								: index === bounds.length
+									? `${bounds[index - 1]}+`
+									: `${bounds[index - 1] ?? 0} - ${bounds[index]}`,
 						description: t(`airquality.${pollutant}.text.${index}`),
 						className: levelTextClass[level],
 					}))}

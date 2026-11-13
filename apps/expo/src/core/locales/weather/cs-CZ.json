@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Rosný bod:",
 			"text": "Rosný bod je teplota, při které se vodní pára ve vzduchu začne srážet v kapičky rosy. Čím vyšší je rosný bod, tím více vlhkosti vzduch obsahuje. Rosný bod lépe než relativní vlhkost popisuje, jaké dusno bude.",
 			"title": "Rosný bod"
 		},
@@ -320,8 +321,7 @@
 			"2": "Přeháňky možné",
 			"3": "Pravděpodobný",
 			"4": "Velká šance",
-			"5": "Téměř jistý",
-			"6": "Jistý"
+			"5": "Téměř jistý"
 		},
 		"rainfall": {
 			"0": "Slabý déšť",

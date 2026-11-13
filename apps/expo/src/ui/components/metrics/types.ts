@@ -28,9 +28,9 @@ export interface MetricDefinition {
 	titleKey: string;
 	/** The modal charts one day, so a card from a forecast day opens it on that day. */
 	usesDate?: boolean;
-	/** Spans the full row on phones and half the row from md. */
+	/** Spans the full row on phones and two tiles from sm. */
 	wide?: boolean;
-	/** Hidden on phones; from md it only fills a row so the grid stays even. */
+	/** Hidden on phones; from sm it pairs with the other wide tile so the grid stays even. */
 	tabletOnly?: boolean;
 	/** `dayIndex` is null for current conditions. */
 	card: (context: MetricContext, dayIndex: number | null) => MetricCardContent;

@@ -20,6 +20,7 @@ export default function ForecastModal() {
 		<ModalScreen
 			header={formatDayTitle(date, language)}
 			onClose={close}
+			tall
 			toolbar={<DaysToggle selectedIndex={dayIndex} onSelect={(index) => router.setParams({ day: String(index) })} />}
 		>
 			<DayForecast

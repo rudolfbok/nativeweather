@@ -26,11 +26,16 @@ export const ScreenWrapper = ({ refreshControl, overscrollColor, dismissKeyboard
 	// Web, below md: the page scrolls as the document instead (see public/index.html), so the scroll view is marked.
 	const pageScroll = Platform.OS === 'web' ? ({ dataSet: { pageScroll: '' } } as object) : undefined;
 
+	// On very wide screens the content (and the browser header with it) stays a centred column; the scroll view keeps
+	// the full width so its scrollbar stays at the window edge.
 	return (
 		<ScrollView
 			{...pageScroll}
 			contentInsetAdjustmentBehavior="automatic"
-			contentContainerClassName={clsx('px-4 pt-2 pb-4 web:max-md:pt-0', bounce && 'grow bg-screen-background')}
+			contentContainerClassName={clsx(
+				'w-full max-w-page self-center px-4 pt-2 pb-4 web:max-md:pt-0',
+				bounce && 'grow bg-screen-background'
+			)}
 			style={bounce ? { backgroundColor: overscrollColor } : undefined}
 			keyboardShouldPersistTaps={dismissKeyboard ? 'handled' : undefined}
 			keyboardDismissMode={dismissKeyboard ? 'on-drag' : undefined}

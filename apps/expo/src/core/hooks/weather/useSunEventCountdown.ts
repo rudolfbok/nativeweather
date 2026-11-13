@@ -7,6 +7,17 @@ interface SunEventProps {
 	timeZone: string;
 }
 
+/** Whether today's event, given as `h:mm a`, has already happened in the location's time zone. */
+export const hasSunEventPassed = (data: string, timeZone: string) => {
+	const currentTime = DateTime.now().setZone(timeZone || 'UTC');
+	const eventTime = DateTime.fromFormat(data, 'h:mm a', { zone: timeZone || 'UTC' }).set({
+		year: currentTime.year,
+		month: currentTime.month,
+		day: currentTime.day,
+	});
+	return eventTime.isValid && eventTime <= currentTime;
+};
+
 export const useSunEventCountdown = ({ data, tomorrowData, timeZone }: SunEventProps) => {
 	const [now, setNow] = useState(() => Date.now());
 

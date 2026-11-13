@@ -3,15 +3,15 @@ export const metricBounds = {
 	humidity: [20, 40, 60, 80],
 	// Applied to the rounded index, so 0–2 is low and 11+ extreme (WHO bands).
 	uv: [3, 6, 8, 11],
-	cloudCover: [13, 50, 75],
-	precipitationChance: [10, 30, 50, 70, 90, 100],
+	cloudCover: [12, 50, 75],
+	precipitationChance: [10, 30, 50, 70, 90],
 	rangeKm: [1, 2, 4, 10, 20, 50],
 	rangeMiles: [1, 2, 3, 6, 12, 30],
 	// Beaufort scale; calm is below 1 km/h (1 mph).
-	windKph: [1, 5, 11, 19, 28, 38, 49, 61, 74, 88, 102, 117],
-	windMph: [1, 2, 7, 12, 18, 24, 31, 38, 46, 54, 63, 72],
-	pressureMb: [980, 995, 1005, 1012, 1020, 1025, 1035, 1045],
-	pressureInHg: [28.94, 29.38, 29.68, 29.88, 30.12, 30.27, 30.56, 30.86],
+	windKph: [1, 6, 12, 20, 29, 39, 50, 62, 75, 89, 103, 118],
+	windMph: [1, 4, 8, 13, 19, 25, 32, 39, 47, 55, 64, 73],
+	// Applied to the rounded hPa value for both units; the inHg labels are its conversions.
+	pressureMb: [980, 996, 1006, 1013, 1021, 1026, 1036, 1046],
 } as const;
 
 export const getRangeIndex = (value: number, bounds: readonly number[]) => {

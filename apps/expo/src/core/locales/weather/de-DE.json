@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Taupunkt:",
 			"text": "Der Taupunkt ist die Temperatur, bei der der Wasserdampf in der Luft zu kondensieren beginnt und sich Tau bilden kann. Je höher der Taupunkt, desto mehr Feuchtigkeit enthält die Luft. Er beschreibt das Empfinden von Schwüle besser als die relative Luftfeuchtigkeit.",
 			"title": "Taupunkt"
 		},
@@ -320,8 +321,7 @@
 			"2": "Schauer möglich",
 			"3": "Wahrscheinlich",
 			"4": "Sehr wahrscheinlich",
-			"5": "Fast sicher",
-			"6": "Sicher"
+			"5": "Fast sicher"
 		},
 		"rainfall": {
 			"0": "Leichter Regen",

@@ -10,7 +10,8 @@ const scales: Record<Pollutant, { levels: AirQualityLevel[]; bounds: number[] }>
 		levels: ['good', 'fair', 'moderate', 'sensitive', 'unhealthy', 'very-unhealthy'],
 		bounds: [20, 40, 60, 80, 100],
 	},
-	usaqi: { levels: usLevels, bounds: [50, 100, 150, 200, 300] },
+	// US AQI bands are whole numbers with inclusive tops (Good 0–50, Moderate 51–100…).
+	usaqi: { levels: usLevels, bounds: [51, 101, 151, 201, 301] },
 	pm25: { levels: usLevels, bounds: [15, 25, 40, 65, 100] },
 	pm10: { levels: usLevels, bounds: [30, 50, 80, 120, 200] },
 	o3: { levels: usLevels, bounds: [120, 160, 240, 320, 440] },

@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Point de rosée :",
 			"text": "Le point de rosée est la température à laquelle la vapeur d’eau présente dans l’air commence à se condenser en gouttelettes. Plus il est élevé, plus l’air contient d’humidité. Il décrit mieux la sensation de moiteur que l’humidité relative.",
 			"title": "Point de rosée"
 		},
@@ -320,8 +321,7 @@
 			"2": "Averses possibles",
 			"3": "Probables",
 			"4": "Très probables",
-			"5": "Presque certaines",
-			"6": "Certaines"
+			"5": "Presque certaines"
 		},
 		"rainfall": {
 			"0": "Pluie faible",

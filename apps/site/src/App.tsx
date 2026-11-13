@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router";
-import HomePage from "./pages/Home";
-import TOSPage from "./pages/TOS";
-import PolicyPage from "./pages/Policy";
+import { Route, Routes } from 'react-router';
+import HomePage from './pages/Home';
+import TOSPage from './pages/TOS';
+import PolicyPage from './pages/Policy';
 
 const App = () => {
 	return (

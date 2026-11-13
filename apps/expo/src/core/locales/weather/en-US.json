@@ -223,6 +223,7 @@
 	},
 	"humidity": {
 		"dewpoint": {
+			"label": "Dew point:",
 			"text": "The dew point is the temperature at which water vapor in the air begins to condense into dewdrops. The higher the dew point, the more moisture the air contains. The dew point describes how muggy it will be better than relative humidity.",
 			"title": "Dew point"
 		},
@@ -320,8 +321,7 @@
 			"2": "Showers possible",
 			"3": "Likely",
 			"4": "Very likely",
-			"5": "Almost certain",
-			"6": "Certain"
+			"5": "Almost certain"
 		},
 		"rainfall": {
 			"0": "Light rain",

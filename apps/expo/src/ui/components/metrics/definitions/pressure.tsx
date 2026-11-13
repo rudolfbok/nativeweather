@@ -23,12 +23,10 @@ export const pressure: MetricDefinition = {
 	titleKey: 'pressure.title',
 	usesDate: true,
 	card: ({ weather: { current }, t, isMetric }) => {
-		const level = isMetric
-			? getRangeIndex(current.pressureMb, metricBounds.pressureMb)
-			: getRangeIndex(current.pressureInHg, metricBounds.pressureInHg);
+		const level = getRangeIndex(Math.round(current.pressureMb), metricBounds.pressureMb);
 
 		return {
-			value: isMetric ? `${Math.round(current.pressureMb)}hPa` : `${current.pressureInHg.toFixed(1)}inHg`,
+			value: isMetric ? `${Math.round(current.pressureMb)}hPa` : `${current.pressureInHg.toFixed(2)}inHg`,
 			description: t(`description.pressure.${level}`),
 		};
 	},
