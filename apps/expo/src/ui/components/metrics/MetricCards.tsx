@@ -54,8 +54,15 @@ export const MetricCards = ({ dayIndex, onOpen, column = false }: MetricCardsPro
 
 const square = {};
 const columnTiles = Array.from({ length: 9 }, () => square);
-// Eight squares, then clouds and moon.
-const rowTiles = [...Array.from({ length: 8 }, () => square), { wide: true, tabletOnly: true }, { wide: true }];
+// Eight squares (UV third), then clouds and moon.
+const rowTiles = [
+	square,
+	square,
+	{ swapsAtLg: true },
+	...Array.from({ length: 5 }, () => square),
+	{ wide: true, tabletOnly: true, swapsAtLg: true },
+	{ wide: true },
+];
 
 /** Mirrors the current conditions' grid, so the page does not jump when the data arrives. */
 export const MetricCardsSkeleton = ({ column = false }: { column?: boolean }) => (

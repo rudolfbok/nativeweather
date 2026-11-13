@@ -21,7 +21,7 @@ interface ModalScreenProps extends Omit<ModalHeaderProps, 'native'> {
 	size?: keyof typeof sizeClasses;
 	/** Content that fills the panel (a map) instead of scrolling: the panel gets a fixed height and children can use flex-1. */
 	fill?: boolean;
-	/** Panel stays at 95vh on desktop instead of sizing to its content. */
+	/** Panel stays at 90vh on desktop instead of sizing to its content. */
 	tall?: boolean;
 }
 
@@ -42,6 +42,8 @@ export const ModalScreen = ({
 	// and the subheader and toolbar scroll with the content instead of sitting above it. The side padding moves onto the
 	// content so the scroll view, and the system blur at its edge, spans the full width.
 	const header = <ModalHeader {...headerProps} native={native} />;
+	// Web keeps the title row fixed above the scroll view; the toolbar scrolls away with the content, as it does on iOS.
+	const fixedHeader = fill ? header : <ModalHeader {...headerProps} toolbar={undefined} />;
 
 	return (
 		<>
@@ -80,13 +82,13 @@ export const ModalScreen = ({
 				<View
 					className={clsx(
 						'flex-1 bg-modal-background web:w-full web:md:flex-initial web:md:rounded-3xl web:md:border web:md:border-hairline',
-						tall ? 'web:md:h-[95vh] web:md:max-h-[95vh]' : 'web:md:max-h-[91vh]',
+						tall ? 'web:md:h-[90vh] web:md:max-h-[90vh]' : 'web:md:max-h-[91vh]',
 						sizeClasses[size],
 						fill && 'web:md:h-[91vh]',
 						!native && 'px-4 pt-4 dark:bg-system-background'
 					)}
 				>
-					{!native && header}
+					{!native && fixedHeader}
 					{fill ? (
 						<View className={clsx('flex-1 pb-4', native && 'px-4 pt-[14px]')}>
 							{native && header}
@@ -99,7 +101,7 @@ export const ModalScreen = ({
 							className="web:overscroll-contain"
 							contentContainerClassName={clsx('pb-4', native && 'px-4 pt-[14px]')}
 						>
-							{native && header}
+							{native ? header : headerProps.toolbar}
 							{children}
 						</ScrollView>
 					)}

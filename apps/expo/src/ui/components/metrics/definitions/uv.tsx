@@ -21,6 +21,7 @@ export const uv: MetricDefinition = {
 	Icon: UVIcon,
 	titleKey: 'uv.title',
 	usesDate: true,
+	swapsAtLg: true,
 	card: ({ weather, t }, dayIndex) => {
 		const index = Math.round(
 			dayIndex === null ? weather.current.uv : (weather.forecast.forecastday[dayIndex]?.day.uv ?? 0)
